@@ -1,2 +1,1 @@
-# neu715
-Neu715 - Neuroscientific Data Analysis using Python
+[Neu715 - Neuroscientific Data Analysis using Python](http://janclemenslab.org/neu715)
