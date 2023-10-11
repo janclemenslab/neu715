@@ -1,0 +1,920 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3. Lecture 1.3 - Lists &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 1/1.03_lists';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. Lecture 1.4 - Loops" href="1.04_loops_simple.html" />
+    <link rel="prev" title="2. Lecture 1.2 - Conditionals" href="1.02_conditionals.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to Neu715 - Neuroscientific Data Analysis using Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 1</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1.01_variables.html">1. Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.02_conditionals.html">2. Conditionals</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.04_loops_simple.html">4. Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.05_matplotlib.html">5. Plotting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.01_variables_exercises.html">1. Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.02_conditionals_exercises.html">2. Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.03_lists_exercises.html">3. Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.04_loops_simple_exercises.html">4. Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.05_matplotlib_exercises.html">5. Plotting</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/master?urlpath=tree/lectures/lecture 1/1.03_lists.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/lectures/lecture 1/1.03_lists.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 1.3 - Lists</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-need-to-know-to-detect-spikes-using-python">3.1. What do we need to know to detect spikes using python?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#present-and-access-data-in-a-time-series-lists">3.2. Present and access data in a time series - lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-lists">3.2.1. Making lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-individual-elements-of-a-list">3.2.2. Accessing individual elements of a list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#index-arithmetic">3.2.3. Index arithmetic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-parts-of-a-list-slice-indexing">3.2.4. Accessing parts of a list - slice indexing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-number-of-elements-in-a-list">3.2.5. Getting the number of elements in a list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-manipulations">3.2.6. List manipulations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-elements-to-a-list">3.2.6.1. Adding elements to a list</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-list-elements">3.2.6.2. Deleting list elements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-functions-for-lists">3.2.6.3. Useful functions for lists</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.2.7. What do we need to know to detect spikes using python?</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-1-3-lists">
+<h1><span class="section-number">3. </span>Lecture 1.3 - Lists<a class="headerlink" href="#lecture-1-3-lists" title="Permalink to this heading">#</a></h1>
+<section id="what-do-we-need-to-know-to-detect-spikes-using-python">
+<h2><span class="section-number">3.1. </span>What do we need to know to detect spikes using python?<a class="headerlink" href="#what-do-we-need-to-know-to-detect-spikes-using-python" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="../../_images/voltage_trace.png" /></p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Present data in code (individual voltage values, manipulate them and store the results) - variables</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Compare variables (voltage to threshold) - boolean values</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Present and access data in a time series of voltage values - lists</strong></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Perform an action for each element in a sequence of values (inspect voltage values one-by-one) - for loops</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Separate data and logic so we can use the same code for new recordings - functions</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Apply this to multi data files</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Plot and save the results</p></li>
+</ul>
+<p>The core computation of the spike detection problem is solved!!</p>
+<p>Now we need to learn how to process a whole time series of voltage values!
+We could print the numbers from the text file to paper, read them, and then manually enter different values of the <code class="docutils literal notranslate"><span class="pre">voltage</span></code> variable. But this would be tedious.</p>
+<p>So far all variables hold single values - numbers or strings.
+How do we present sequences of numbers? And how do we work through a sequence and apply the spike detection to each individual value in the sequence? This is were <em>lists</em> and <em>loops</em> come into play…</p>
+</section>
+<section id="present-and-access-data-in-a-time-series-lists">
+<h2><span class="section-number">3.2. </span>Present and access data in a time series - lists<a class="headerlink" href="#present-and-access-data-in-a-time-series-lists" title="Permalink to this heading">#</a></h2>
+<section id="making-lists">
+<h3><span class="section-number">3.2.1. </span>Making lists<a class="headerlink" href="#making-lists" title="Permalink to this heading">#</a></h3>
+<p>Lists hold sequences of values. The individual elements of a list are also called <em>items</em>.</p>
+<p>Lists are constructed by enclosing a comma-separated sequence of items - values or variable names - with square brackets:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">item1</span><span class="p">,</span> <span class="n">item2</span><span class="p">,</span> <span class="n">item3</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-10, -12, -23, -45, 10, -12, -23]
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can create empty lists in two ways:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">d</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can store, or “collect”, the variables in a list.
+Do you understand what is happening here?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">outlier</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1_000</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">outlier</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, -1000, 20]
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can mix variables of different types, like numbers and text, in the same list:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="s1">&#39;pi&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3.14, &#39;pi&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lists can even contain other lists as items - this will results in a list of lists, or a so-called <em>nested list</em>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zinc&#39;</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="s1">&#39;radium&#39;</span><span class="p">]</span>
+<span class="n">atomic_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span><span class="mi">79</span><span class="p">,</span><span class="mi">88</span><span class="p">]</span>
+<span class="n">nested_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">elements</span><span class="p">,</span> <span class="n">atomic_numbers</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;nested_list:&#39;</span><span class="p">,</span> <span class="n">nested_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;elements:&#39;</span><span class="p">,</span> <span class="n">nested_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;atomic numbers:&#39;</span><span class="p">,</span> <span class="n">nested_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nested_list: [[&#39;zinc&#39;, &#39;gold&#39;, &#39;radium&#39;], [30, 79, 88]]
+elements: [&#39;zinc&#39;, &#39;gold&#39;, &#39;radium&#39;]
+atomic numbers: [30, 79, 88]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="accessing-individual-elements-of-a-list">
+<h3><span class="section-number">3.2.2. </span>Accessing individual elements of a list<a class="headerlink" href="#accessing-individual-elements-of-a-list" title="Permalink to this heading">#</a></h3>
+<p>You can access the values of different elements of the list by enclosing an integer “index” in square brackets following the name of the list variable.</p>
+<p>The index of the first element is <code class="docutils literal notranslate"><span class="pre">0</span></code>, not <code class="docutils literal notranslate"><span class="pre">1</span></code>!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the full list:&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the first element (index 0):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the second element (index 1):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the last element (index -1):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the full list: [-10, -12, -23, -45, 10, -12, -23]
+the first element (index 0): -10
+the second element (index 1): -12
+the last element (index -1): -23
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note: The index must be a positive or negative integer value! Indexing with a float throws an error:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">31354</span><span class="p">,</span> <span class="mi">235</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">31354</span><span class="p">,</span> <span class="mi">235</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">a</span><span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+
+<span class="ne">TypeError</span>: list indices must be integers or slices, not float
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="index-arithmetic">
+<h3><span class="section-number">3.2.3. </span>Index arithmetic<a class="headerlink" href="#index-arithmetic" title="Permalink to this heading">#</a></h3>
+<p>We can use variables for indexing!! This allows us to perform computations on indices.</p>
+<p>For instance, given an index, we can get the list item at the preceeding or the next index:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">424</span><span class="p">,</span> <span class="mi">1234</span><span class="p">,</span> <span class="mi">14456</span><span class="p">]</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value at index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value following index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value preceeding index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value halfway between 0 and the index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># fix this</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Value at index 4 1234
+Value following index 4 14456
+Value preceeding index 4 424
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value following index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value preceeding index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value halfway between 0 and the index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># fix this</span>
+
+<span class="ne">TypeError</span>: list indices must be integers or slices, not float
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="accessing-parts-of-a-list-slice-indexing">
+<h3><span class="section-number">3.2.4. </span>Accessing parts of a list - slice indexing<a class="headerlink" href="#accessing-parts-of-a-list-slice-indexing" title="Permalink to this heading">#</a></h3>
+<p>General form <code class="docutils literal notranslate"><span class="pre">list[start_index:stop_index:step]</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">424</span><span class="p">,</span> <span class="mi">1234</span><span class="p">,</span> <span class="mi">14456</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[::</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 12, 235, 424]
+[1234, 14456]
+[1, 235, 1234]
+[12, 424, 14456]
+[12, 424]
+[14456, 424, 12]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-the-number-of-elements-in-a-list">
+<h3><span class="section-number">3.2.5. </span>Getting the number of elements in a list<a class="headerlink" href="#getting-the-number-of-elements-in-a-list" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">len</span></code> function gives us the number of elements in the list, its “length”. You use the <code class="docutils literal notranslate"><span class="pre">len</span></code> function like the <code class="docutils literal notranslate"><span class="pre">print</span></code> function - you “call” it by it’s name “len” followed by its “argument” in parentheses: <code class="docutils literal notranslate"><span class="pre">len(name_of_list_variable)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A has&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="s2">&quot;elements.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-10, -12, -23, -45, 10, -12, -23]
+A has 7 elements.
+</pre></div>
+</div>
+</div>
+</div>
+<p>While the <code class="docutils literal notranslate"><span class="pre">print</span></code> function did not “return” a result - it simply printed the input - <code class="docutils literal notranslate"><span class="pre">len</span></code> does return a result - the number of elements in the list - and we can store this number in a new variable for further computations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length_of_a</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">length_of_a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now present the time series of voltage values as a list, and access individual elements:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">voltage_trace</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">-</span><span class="mf">42.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.63</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.04</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.63</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.83</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.27</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.14</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.19</span><span class="p">,</span> <span class="o">-</span><span class="mf">42.90</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.50</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.45</span><span class="p">,</span> <span class="o">-</span><span class="mf">75.46</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.18</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.01</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.06</span><span class="p">,</span> <span class="o">-</span><span class="mf">45.14</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.63</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.13</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.69</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.30</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">40.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.26</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.04</span><span class="p">,</span> <span class="mf">15.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.76</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.32</span><span class="p">,</span> <span class="o">-</span><span class="mf">76.23</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.53</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.56</span><span class="p">,</span> <span class="mf">22.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.97</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.74</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.70</span><span class="p">,</span> <span class="o">-</span><span class="mf">82.48</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.68</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.87</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.47</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.92</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">45.12</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.18</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.54</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">79.14</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">46.66</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.97</span><span class="p">,</span> <span class="o">-</span><span class="mf">42.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.75</span><span class="p">,</span> <span class="mf">41.51</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.47</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.64</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">40.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.01</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">42.30</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.16</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.51</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.96</span><span class="p">,</span> <span class="o">-</span><span class="mf">46.08</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.71</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.86</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.38</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.32</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">89.16</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.72</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.91</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.16</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.60</span><span class="p">,</span> <span class="mf">43.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.09</span><span class="p">,</span> <span class="mf">46.79</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.00</span><span class="p">,</span> <span class="o">-</span><span class="mf">38.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.26</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.94</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.80</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.36</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.67</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.51</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.31</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.31</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.87</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.17</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.16</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.90</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.14</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.48</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.14</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.34</span><span class="p">,</span> <span class="o">-</span><span class="mf">46.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.78</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.74</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.53</span><span class="p">,</span> <span class="o">-</span><span class="mf">77.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.74</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.13</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.77</span><span class="p">,</span> <span class="mf">42.76</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.48</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.37</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.68</span><span class="p">,</span> <span class="o">-</span><span class="mf">40.91</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.41</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.78</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.41</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">76.76</span><span class="p">,</span> <span class="mf">30.94</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.12</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.72</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.58</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.16</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.69</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.74</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.49</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.64</span><span class="p">,</span> <span class="mf">44.92</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.28</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.21</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.40</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.98</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.35</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.41</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.96</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.27</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.98</span><span class="p">,</span> <span class="o">-</span><span class="mf">33.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.71</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.87</span><span class="p">,</span> <span class="o">-</span><span class="mf">45.91</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.71</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.29</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.37</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.48</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.31</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.40</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.29</span><span class="p">,</span> <span class="o">-</span><span class="mf">76.22</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.36</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.41</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.68</span><span class="p">,</span> <span class="mf">57.29</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.06</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.23</span><span class="p">,</span> <span class="o">-</span><span class="mf">80.30</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.29</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.60</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">75.47</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.28</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.52</span><span class="p">,</span> <span class="mf">44.46</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.83</span><span class="p">,</span> <span class="o">-</span><span class="mf">40.12</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.95</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.27</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.22</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.49</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.19</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.16</span><span class="p">,</span> <span class="mf">47.69</span><span class="p">,</span> <span class="o">-</span><span class="mf">46.34</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.53</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.10</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.12</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.87</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.87</span><span class="p">,</span> <span class="o">-</span><span class="mf">40.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.60</span><span class="p">,</span> <span class="o">-</span><span class="mf">40.09</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.49</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.47</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.76</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.07</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.41</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.76</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.66</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.50</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.69</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.68</span><span class="p">,</span> <span class="o">-</span><span class="mf">42.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">86.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.82</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.38</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.94</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.60</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.65</span><span class="p">,</span> <span class="o">-</span><span class="mf">31.88</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.48</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.00</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.40</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.67</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.98</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.33</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.59</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.96</span><span class="p">,</span> <span class="o">-</span><span class="mf">41.18</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.06</span><span class="p">,</span> <span class="o">-</span><span class="mf">39.29</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.30</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.33</span><span class="p">,</span> <span class="o">-</span><span class="mf">42.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">83.59</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.71</span><span class="p">,</span> <span class="mf">42.66</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.12</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.56</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.54</span><span class="p">,</span> <span class="o">-</span><span class="mf">32.88</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.73</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.54</span><span class="p">,</span> <span class="mf">53.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.37</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.15</span><span class="p">,</span> <span class="mf">43.51</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.73</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.34</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.78</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.35</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.72</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.87</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.05</span><span class="p">,</span> <span class="mf">40.80</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.95</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.66</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.28</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.17</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.47</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.83</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.38</span><span class="p">,</span> <span class="o">-</span><span class="mf">41.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">36.84</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.08</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.12</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.36</span><span class="p">,</span> <span class="o">-</span><span class="mf">41.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.06</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.13</span><span class="p">,</span> <span class="o">-</span><span class="mf">76.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.37</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.59</span><span class="p">,</span> <span class="o">-</span><span class="mf">44.97</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.92</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.30</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.30</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.12</span><span class="p">,</span> <span class="o">-</span><span class="mf">46.00</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.50</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.94</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.49</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.27</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.60</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.47</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.56</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.40</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">82.72</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.12</span><span class="p">,</span> <span class="mf">22.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.29</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.74</span><span class="p">,</span> <span class="o">-</span><span class="mf">39.80</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.74</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">82.82</span><span class="p">,</span> <span class="mf">36.70</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.09</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.63</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.92</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.12</span><span class="p">,</span> <span class="o">-</span><span class="mf">40.34</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.71</span><span class="p">,</span> <span class="o">-</span><span class="mf">80.29</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.32</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.65</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.82</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.92</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.09</span><span class="p">,</span> <span class="o">-</span><span class="mf">82.17</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.46</span><span class="p">,</span> <span class="o">-</span><span class="mf">44.13</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">75.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">89.84</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.17</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.64</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.96</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.56</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.60</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.73</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.65</span><span class="p">,</span> <span class="o">-</span><span class="mf">79.45</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.60</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.76</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.06</span><span class="p">,</span> <span class="o">-</span><span class="mf">44.99</span><span class="p">,</span> <span class="mf">31.30</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.40</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.45</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.31</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.04</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.71</span><span class="p">,</span> <span class="mf">54.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.84</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.30</span><span class="p">,</span> <span class="o">-</span><span class="mf">45.08</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.98</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.83</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.33</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.69</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.07</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.22</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.98</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.46</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.87</span><span class="p">,</span> <span class="mf">40.97</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.86</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.44</span><span class="p">,</span> <span class="mf">36.31</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.19</span><span class="p">,</span> <span class="mf">33.74</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.92</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.73</span><span class="p">,</span> <span class="o">-</span><span class="mf">86.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.30</span><span class="p">,</span> <span class="mf">40.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">39.54</span><span class="p">,</span> <span class="mf">46.67</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.21</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.65</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.21</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.35</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.64</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.84</span><span class="p">,</span> <span class="mf">58.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.90</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.73</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.31</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.08</span><span class="p">,</span> <span class="mf">35.46</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.85</span><span class="p">,</span> <span class="mf">40.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.30</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.65</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.53</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.13</span><span class="p">,</span> <span class="o">-</span><span class="mf">75.09</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.90</span><span class="p">,</span> <span class="mf">49.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.19</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.97</span><span class="p">,</span> <span class="mf">51.78</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.60</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.28</span><span class="p">,</span> <span class="o">-</span><span class="mf">75.94</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.49</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.38</span><span class="p">,</span> <span class="mf">58.31</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.38</span><span class="p">,</span> <span class="o">-</span><span class="mf">41.30</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.34</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.59</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.38</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.03</span><span class="p">,</span> <span class="mf">52.08</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.43</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.83</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.35</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.13</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.23</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.08</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.37</span><span class="p">,</span> <span class="mf">34.60</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.65</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.53</span><span class="p">,</span> <span class="o">-</span><span class="mf">41.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.08</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.92</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.08</span><span class="p">,</span> <span class="mf">33.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">44.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.04</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.10</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.94</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.26</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.84</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.97</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.74</span><span class="p">,</span> <span class="mf">45.97</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.12</span><span class="p">,</span> <span class="mf">38.31</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.58</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.67</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.19</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.44</span><span class="p">,</span> <span class="mf">47.47</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.48</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.74</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.83</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.07</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.76</span><span class="p">,</span> <span class="o">-</span><span class="mf">42.32</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.49</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">46.28</span><span class="p">,</span> <span class="mf">42.95</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.53</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">79.56</span><span class="p">,</span> <span class="o">-</span><span class="mf">41.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.16</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.14</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.99</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.64</span><span class="p">,</span> <span class="mf">48.88</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.14</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.94</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.88</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.96</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.51</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.51</span><span class="p">,</span> <span class="mf">51.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.68</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.26</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.98</span><span class="p">,</span> <span class="mf">33.13</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.36</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.91</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.30</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.87</span><span class="p">,</span> <span class="o">-</span><span class="mf">77.46</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.59</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.73</span><span class="p">,</span> <span class="o">-</span><span class="mf">38.06</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.86</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.07</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.17</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.10</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.00</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.82</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">44.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">39.10</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.33</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.23</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.64</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.50</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.14</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.14</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.42</span><span class="p">,</span> <span class="mf">53.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.59</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.51</span><span class="p">,</span> <span class="o">-</span><span class="mf">75.61</span><span class="p">,</span> <span class="mf">29.72</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.83</span><span class="p">,</span> <span class="mf">46.63</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.15</span><span class="p">,</span> <span class="mf">35.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.90</span><span class="p">,</span> <span class="mf">24.19</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">41.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">82.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.58</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.56</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.64</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.17</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.32</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.44</span><span class="p">,</span> <span class="mf">54.31</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.41</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.64</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.10</span><span class="p">,</span> <span class="o">-</span><span class="mf">46.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.19</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.70</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.14</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.01</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.40</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.68</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.91</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.43</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.69</span><span class="p">,</span> <span class="mf">35.73</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.78</span><span class="p">,</span> <span class="mf">55.18</span><span class="p">,</span> <span class="o">-</span><span class="mf">26.86</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.46</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.92</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.34</span><span class="p">,</span> <span class="mf">27.58</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.71</span><span class="p">,</span> <span class="o">-</span><span class="mf">45.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.98</span><span class="p">,</span> <span class="mf">31.93</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.32</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.40</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.90</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">77.12</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.72</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.04</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.61</span><span class="p">,</span> <span class="mf">41.45</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.54</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.56</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.00</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.91</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.63</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.53</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.12</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">46.74</span><span class="p">,</span> <span class="o">-</span><span class="mf">44.12</span><span class="p">,</span> <span class="mf">42.26</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.13</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.15</span><span class="p">,</span> <span class="mf">40.14</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.48</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.27</span><span class="p">,</span> <span class="mf">41.50</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.97</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.36</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.91</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.19</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.98</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.86</span><span class="p">,</span> <span class="o">-</span><span class="mf">42.95</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.41</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.66</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.48</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.10</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.31</span><span class="p">,</span> <span class="mf">56.66</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.31</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.17</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.76</span><span class="p">,</span> <span class="mf">33.72</span><span class="p">,</span> <span class="o">-</span><span class="mf">76.59</span><span class="p">,</span> <span class="mf">40.19</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.49</span><span class="p">,</span> <span class="o">-</span><span class="mf">75.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.35</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.20</span><span class="p">,</span> <span class="mf">35.80</span><span class="p">,</span> <span class="o">-</span><span class="mf">36.95</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.45</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.16</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.23</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.09</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.84</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.68</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.59</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.53</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.41</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.13</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.67</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.87</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.38</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.74</span><span class="p">,</span> <span class="o">-</span><span class="mf">22.98</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.83</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.96</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.48</span><span class="p">,</span> <span class="o">-</span><span class="mf">44.27</span><span class="p">,</span> <span class="o">-</span><span class="mf">80.21</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.02</span><span class="p">,</span> <span class="mf">33.16</span><span class="p">,</span> <span class="o">-</span><span class="mf">82.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.78</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.06</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.46</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.83</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.35</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.63</span><span class="p">,</span> <span class="o">-</span><span class="mf">81.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.13</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.90</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.21</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.37</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.26</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.06</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.65</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.19</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.19</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.88</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.69</span><span class="p">,</span> <span class="o">-</span><span class="mf">75.06</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.08</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.99</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.48</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.18</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.21</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.66</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.74</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.12</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.78</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.71</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.76</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">46.86</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.50</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.99</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.08</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.04</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.12</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.70</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.54</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.26</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.87</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.51</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.97</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.93</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.60</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.90</span><span class="p">,</span> <span class="o">-</span><span class="mf">40.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">79.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.69</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.99</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.66</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.38</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.96</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.97</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.33</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.21</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.71</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.91</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.98</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.54</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.96</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.58</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.69</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.56</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.78</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.96</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.33</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.96</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.67</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">76.17</span><span class="p">,</span> <span class="mf">31.78</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.54</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.96</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.45</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.58</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.76</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.50</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.09</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.71</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.46</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">36.82</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.40</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.32</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.72</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.29</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.95</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.50</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.23</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.54</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.32</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.53</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.35</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.87</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.51</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.33</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.40</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.32</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.37</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.66</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.64</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.17</span><span class="p">,</span> <span class="o">-</span><span class="mf">78.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">45.43</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.72</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.17</span><span class="p">,</span> <span class="o">-</span><span class="mf">44.18</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.31</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.38</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.37</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.37</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.60</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">89.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">79.59</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.66</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.13</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">77.84</span><span class="p">,</span> <span class="o">-</span><span class="mf">48.00</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.68</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.47</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.54</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.50</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.18</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.54</span><span class="p">,</span> <span class="o">-</span><span class="mf">46.50</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">45.59</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.49</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.82</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.73</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.35</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.23</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.63</span><span class="p">,</span> <span class="o">-</span><span class="mf">41.70</span><span class="p">,</span> <span class="o">-</span><span class="mf">76.16</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.71</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.09</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.64</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.84</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.91</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.10</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">34.88</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">80.54</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.92</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.63</span><span class="p">,</span> <span class="mf">47.56</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.17</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.09</span><span class="p">,</span> <span class="o">-</span><span class="mf">42.92</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.40</span><span class="p">,</span> <span class="o">-</span><span class="mf">77.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.59</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.43</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.33</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.66</span><span class="p">,</span> <span class="o">-</span><span class="mf">45.84</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.73</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.47</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.91</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.59</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.18</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.28</span><span class="p">,</span> <span class="o">-</span><span class="mf">46.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.96</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.37</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.48</span><span class="p">,</span> <span class="o">-</span><span class="mf">46.35</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.98</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.59</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.47</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.04</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.10</span><span class="p">,</span> <span class="o">-</span><span class="mf">45.48</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.74</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.19</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.22</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.35</span><span class="p">,</span> <span class="o">-</span><span class="mf">46.34</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.73</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.93</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.34</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">83.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.50</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.19</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.41</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.48</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.88</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.45</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.46</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.72</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.45</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.97</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">82.73</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.02</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.08</span><span class="p">,</span> <span class="o">-</span><span class="mf">39.49</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.26</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.16</span><span class="p">,</span> <span class="o">-</span><span class="mf">75.90</span><span class="p">,</span> <span class="o">-</span><span class="mf">40.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.26</span><span class="p">,</span> <span class="o">-</span><span class="mf">51.04</span><span class="p">,</span> <span class="o">-</span><span class="mf">83.06</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.51</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.17</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">68.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.07</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.91</span><span class="p">,</span> <span class="o">-</span><span class="mf">55.64</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.93</span><span class="p">,</span> <span class="o">-</span><span class="mf">69.27</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.78</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.80</span><span class="p">,</span> <span class="o">-</span><span class="mf">58.98</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.42</span><span class="p">,</span> <span class="o">-</span><span class="mf">39.65</span><span class="p">,</span> <span class="o">-</span><span class="mf">44.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.79</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.21</span><span class="p">,</span> <span class="o">-</span><span class="mf">43.38</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.44</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.17</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.90</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.00</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.22</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">53.71</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">61.53</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.31</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.70</span><span class="p">,</span> <span class="o">-</span><span class="mf">67.46</span><span class="p">,</span> <span class="o">-</span><span class="mf">62.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">47.95</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.80</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.95</span><span class="p">,</span> <span class="o">-</span><span class="mf">60.25</span><span class="p">,</span> <span class="o">-</span><span class="mf">70.65</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.98</span><span class="p">,</span> <span class="o">-</span><span class="mf">81.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">45.49</span><span class="p">,</span> <span class="o">-</span><span class="mf">64.35</span><span class="p">,</span> <span class="o">-</span><span class="mf">72.57</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.18</span><span class="p">,</span> <span class="o">-</span><span class="mf">77.11</span><span class="p">,</span> <span class="o">-</span><span class="mf">54.63</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.26</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.76</span><span class="p">,</span> <span class="o">-</span><span class="mf">63.89</span><span class="p">,</span> <span class="o">-</span><span class="mf">50.51</span><span class="p">,</span> <span class="o">-</span><span class="mf">66.71</span><span class="p">,</span> <span class="o">-</span><span class="mf">59.77</span><span class="p">,</span> <span class="o">-</span><span class="mf">56.52</span><span class="p">,</span> <span class="o">-</span><span class="mf">44.40</span><span class="p">,</span> <span class="o">-</span><span class="mf">65.03</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">voltage_trace</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">voltage_trace</span><span class="p">[</span><span class="mi">100</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1000
+-51.26
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-manipulations">
+<h3><span class="section-number">3.2.6. </span>List manipulations<a class="headerlink" href="#list-manipulations" title="Permalink to this heading">#</a></h3>
+<section id="adding-elements-to-a-list">
+<h4><span class="section-number">3.2.6.1. </span>Adding elements to a list<a class="headerlink" href="#adding-elements-to-a-list" title="Permalink to this heading">#</a></h4>
+<p>To build up a list of spike times, we need to be able to add elements to a list as they are computed.</p>
+<p>This is done using the <code class="docutils literal notranslate"><span class="pre">append</span></code> function. It is attached to the name of list variable and is used like so: <code class="docutils literal notranslate"><span class="pre">name_of_list_variable.append(new_element)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spike_times</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># intialize an empty list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span>
+<span class="n">time_of_first_spike</span> <span class="o">=</span> <span class="mf">10.3</span>
+<span class="n">spike_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_of_first_spike</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span>
+<span class="n">time_of_second_spike</span> <span class="o">=</span> <span class="mf">50.3</span>
+<span class="n">spike_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_of_second_spike</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+[10.3]
+[10.3, 50.3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Adding multiple elements to a list</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="n">my_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+
+<span class="c1"># `append` will append the list [1,2,3] as a a single element to the original list and create a nested list</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, &#39;b&#39;]
+[&#39;a&#39;, &#39;b&#39;, 1, 2, 3]
+[&#39;a&#39;, &#39;b&#39;]
+[&#39;a&#39;, &#39;b&#39;, [1, 2, 3]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>What does the <code class="docutils literal notranslate"><span class="pre">append</span></code> function return?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="n">ret_append</span> <span class="o">=</span> <span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ret_append</span><span class="p">)</span>
+<span class="n">ret_print</span> <span class="o">=</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Printing 10&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ret_print</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+Printing 10
+None
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">None</span></code> values is used to indicate no value at all - like in functions that do not return anything.</p>
+</section>
+<section id="deleting-list-elements">
+<h4><span class="section-number">3.2.6.2. </span>Deleting list elements<a class="headerlink" href="#deleting-list-elements" title="Permalink to this heading">#</a></h4>
+<p>We can also remove elements using the <code class="docutils literal notranslate"><span class="pre">del</span></code> function followed by the list element we want to delete:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="k">del</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, 20, 30, 40]
+[10, 30, 40]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also delete list elements by specifying their value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;before:&#39;</span><span class="p">,</span> <span class="n">my_list</span><span class="p">)</span>
+<span class="n">my_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;after:&#39;</span><span class="p">,</span> <span class="n">my_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>before: [10, 20, 30, 20, 40]
+after: [10, 30, 20, 40]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="useful-functions-for-lists">
+<h4><span class="section-number">3.2.6.3. </span>Useful functions for lists<a class="headerlink" href="#useful-functions-for-lists" title="Permalink to this heading">#</a></h4>
+<p><a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html">https://docs.python.org/3/tutorial/datastructures.html</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>  <span class="c1"># return and remove indexed or if arg is omitted, the last element</span>
+<span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># add single value to list</span>
+<span class="n">extend</span><span class="p">([</span><span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">])</span>  <span class="c1"># add multiple values in a list to list</span>
+<span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>  <span class="c1"># insert value at index</span>
+<span class="n">remove</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># remove item by value</span>
+<span class="k">del</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>  <span class="c1"># remove item by index</span>
+<span class="n">index</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># get first index of value</span>
+<span class="n">sort</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># sort the list in-place - returns None</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>  <span class="c1"># return sorted copy of the list without changing the original one</span>
+<span class="n">value</span> <span class="ow">in</span> <span class="nb">list</span>  <span class="c1"># value if item is in list</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h3><span class="section-number">3.2.7. </span>What do we need to know to detect spikes using python?<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p><img alt="" src="../../_images/voltage_trace.png" /></p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Present data in code (individual voltage values, manipulate them and store the results) - variables</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Compare variables (voltage to threshold) - boolean values</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Present and access data in a time series of voltage values - lists</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Perform an action for each element in a sequence of values (inspect voltage values one-by-one) - for loops</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Separate data and logic so we can use the same code for new recordings - functions</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Apply this to multi data files</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Plot and save the results</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures/lecture 1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1.02_conditionals.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Lecture 1.2 - Conditionals</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="1.04_loops_simple.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Lecture 1.4 - Loops</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-need-to-know-to-detect-spikes-using-python">3.1. What do we need to know to detect spikes using python?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#present-and-access-data-in-a-time-series-lists">3.2. Present and access data in a time series - lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-lists">3.2.1. Making lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-individual-elements-of-a-list">3.2.2. Accessing individual elements of a list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#index-arithmetic">3.2.3. Index arithmetic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-parts-of-a-list-slice-indexing">3.2.4. Accessing parts of a list - slice indexing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-number-of-elements-in-a-list">3.2.5. Getting the number of elements in a list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-manipulations">3.2.6. List manipulations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-elements-to-a-list">3.2.6.1. Adding elements to a list</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-list-elements">3.2.6.2. Deleting list elements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-functions-for-lists">3.2.6.3. Useful functions for lists</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.2.7. What do we need to know to detect spikes using python?</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jan Clemens
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

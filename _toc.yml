@@ -1,0 +1,36 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Lecture 1
+    numbered: true  # Only applies to chapters in Part 1.
+    chapters:
+    - file: lectures/lecture 1/1.01_variables
+      title: Variables
+    - file: lectures/lecture 1/1.02_conditionals
+      title: Conditionals
+    - file: lectures/lecture 1/1.03_lists
+      title: Lists
+    - file: lectures/lecture 1/1.04_loops_simple
+      title: Loops
+    - file: lectures/lecture 1/1.05_matplotlib
+      title: Plotting
+  - caption: Exercises 1
+    numbered: true  # Only applies to chapters in Part 1.
+    chapters:
+    - file: exercises/exercises 1/1.01_variables_exercises
+      title: Variables
+    - file: exercises/exercises 1/1.02_conditionals_exercises
+      title: Conditionals
+    - file: exercises/exercises 1/1.03_lists_exercises
+      title: Lists
+    - file: exercises/exercises 1/1.04_loops_simple_exercises
+      title: Loops
+    - file: exercises/exercises 1/1.05_matplotlib_exercises
+      title: Plotting
+  # - caption: Lecture 2
+  #   numbered: true  # Only applies to chapters in Part 1.
+  # - caption: Exercises 2
+  #   numbered: true  # Only applies to chapters in Part 1.
