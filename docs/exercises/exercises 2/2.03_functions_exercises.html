@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercises 1.4 - Loops &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Excercises 2.3 - Functions &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -64,11 +64,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 1/1.04_loops_simple_exercises';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 2/2.03_functions_exercises';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Exercises 1.5 - Plotting" href="1.05_matplotlib_exercises.html" />
-    <link rel="prev" title="Exercises 1.3 - Lists" href="1.03_lists_exercises.html" />
+    <link rel="next" title="Exercise 2.4 - Handling errors" href="2.04_exceptions_exercises.html" />
+    <link rel="prev" title="Exercise 2.2 - Loops (part 2)" href="2.02_loops_more_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -171,12 +171,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.05_matplotlib.html">Plotting</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 1</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1.01_variables_exercises.html">Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1.02_conditionals_exercises.html">Conditionals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1.03_lists_exercises.html">Lists</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1.05_matplotlib_exercises.html">Plotting</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.01_variables_exercises.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.03_lists_exercises.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.05_matplotlib_exercises.html">Plotting</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 2</span></p>
 <ul class="nav bd-sidenav">
@@ -188,12 +188,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.05_imports.html">External code</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 2</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.01_composites_exercises.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.02_loops_more_exercises.html">Loops (part 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.03_functions_exercises.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.04_exceptions_exercises.html">Handling errors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.05_imports_exercises.html">External code</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2.01_composites_exercises.html">Composite data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.02_loops_more_exercises.html">Loops (part 2)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.04_exceptions_exercises.html">Handling errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.05_imports_exercises.html">External code</a></li>
 </ul>
 
     </div>
@@ -248,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/exercises/exercises 1/1.04_loops_simple_exercises.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/exercises/exercises 2/2.03_functions_exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -279,7 +279,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/exercises/exercises 1/1.04_loops_simple_exercises.ipynb" target="_blank"
+      <li><a href="../../_sources/exercises/exercises 2/2.03_functions_exercises.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -361,7 +361,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercises 1.4 - Loops</h1>
+    <h1>Excercises 2.3 - Functions</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -371,14 +371,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-convert-units">Exercise 1 - Convert units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-turn-this-code-into-a-function">Exercise 1 - turn this code into a function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-4-5">Exercises 4+5</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-substract-the-mean-value">Exercise 4 - substract the mean value</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-z-score">Exercise 5 - z-score</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-accumulating-outputs">Exercise 3 - accumulating outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-combining-functions">Exercise 4 - combining functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-keeping-track-of-results">Exercise 5 - keeping track of results</a></li>
 </ul>
             </nav>
         </div>
@@ -390,16 +387,36 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercises-1-4-loops">
-<h1>Exercises 1.4 - Loops<a class="headerlink" href="#exercises-1-4-loops" title="Permalink to this heading">#</a></h1>
-<section id="exercise-1-convert-units">
-<h2>Exercise 1 - Convert units<a class="headerlink" href="#exercise-1-convert-units" title="Permalink to this heading">#</a></h2>
-<p>We have a list of weights in grams - create a new list, called <code class="docutils literal notranslate"><span class="pre">tons</span></code> that contains the weights in tons.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="excercises-2-3-functions">
+<h1>Excercises 2.3 - Functions<a class="headerlink" href="#excercises-2-3-functions" title="Permalink to this heading">#</a></h1>
+<section id="exercise-1-turn-this-code-into-a-function">
+<h2>Exercise 1 - turn this code into a function<a class="headerlink" href="#exercise-1-turn-this-code-into-a-function" title="Permalink to this heading">#</a></h2>
+<p>The code below computes the cumulative sum over the values in a list.</p>
+<p>Given a list [1,2,3], the cumulative sum is a new list with these items: [1, 1+2, 1+2+3] = [1, 3, 6].</p>
+<p>Turn this code into a function with the following properties:</p>
+<ul class="simple">
+<li><p>name: cumsum</p></li>
+<li><p>argument: a list</p></li>
+<li><p>returns: the cumulative sum</p></li>
+</ul>
+<p>Document this function with an appropriate docstring.</p>
+<p>Test your function by making up a new list and calculating the cumulative sum over its values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grams</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1243891290</span><span class="p">,</span> <span class="mi">1234129401</span><span class="p">,</span> <span class="mi">14910395130</span><span class="p">,</span> <span class="mi">1340981394</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="n">cumsum</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)):</span>
+    <span class="n">cumsum</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">[:</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cumsum</span><span class="p">)</span>
 
 <span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 6, 10, 13, 15, 19]
 </pre></div>
 </div>
 </div>
@@ -407,112 +424,98 @@ document.write(`
 </section>
 <section id="exercise-2">
 <h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h2>
-<p>The following code is supposed to generate a list that only contains the even values from the list <code class="docutils literal notranslate"><span class="pre">all_values</span></code>.</p>
-<p>Does it produce the correct result? If not, fix it!</p>
+<p>Write a function that computes the value of the following mathematical function: <span class="math notranslate nohighlight">\(f(x,y) = x^2 + y\)</span></p>
+<p>Plot the results for
+100 x-values covering the range of [-2.0, 2.0]
+and three different, but constant, values of y = [-1, 0, 1].
+This should produce three curves, each with 100 data points.</p>
+<p>Annotate the plot with proper labels and a legend that indicates the vale of y.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">all_values</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">yy</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+    <span class="c1"># return [xx**2 + yy for xx, yy in zip(x, y)]</span>
 
-<span class="c1"># fix this code:</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">20</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">)]</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">for</span> <span class="n">yy</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">yy</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;y=</span><span class="si">{</span><span class="n">yy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-</pre></div>
-</div>
+<img alt="../../_images/108629c3d93a948e0af1e4162e8794ae6ea8bac056fb198e464cdf536d24a357.png" src="../../_images/108629c3d93a948e0af1e4162e8794ae6ea8bac056fb198e464cdf536d24a357.png" />
 </div>
 </div>
 </section>
-<section id="exercise-3">
-<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h2>
-<p>The following code is supposed to compute the sum of the values in the list <code class="docutils literal notranslate"><span class="pre">all_values</span></code>.</p>
-<p>Does it produce the correct result? If not, fix it!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">all_values</span><span class="p">)</span>
-
-<span class="c1"># fix this code:</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercises-4-5">
-<h2>Exercises 4+5<a class="headerlink" href="#exercises-4-5" title="Permalink to this heading">#</a></h2>
-<p>For the next two exercises, we will play with temperature anomaly data - deviations of the global mean temperature:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXECUTE BUT DO NOT CHANGE THIS CELL</span>
-<span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.19, -0.177, -0.308, -0.289, -0.193, -0.057, 0.077, 0.026, 0.029, 0.068, 0.256, 0.342, 0.591, 0.792]
-</pre></div>
-</div>
-</div>
-</div>
-<section id="exercise-4-substract-the-mean-value">
-<h3>Exercise 4 - substract the mean value<a class="headerlink" href="#exercise-4-substract-the-mean-value" title="Permalink to this heading">#</a></h3>
-<p>We can use numpy, a numerical computing library, to compute the mean and standard deviation of the anomaly values.</p>
-<p>We will learn more about numpy later. For now, all you need to know is the following:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">avg_anomaly</span> <span class="pre">=</span> <span class="pre">np.mean(temperature_anomalies)</span></code> computes the average value of the list elements</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">stdev_anomaly</span> <span class="pre">=</span> <span class="pre">np.std(temperature_anomalies)</span></code> computes the standard deviation value of the list elements</p></li>
-</ul>
-<p>This code is already in the next cell.</p>
-<p>Create a new list, <code class="docutils literal notranslate"><span class="pre">mean_subtracted</span></code> that holds the mean-subtracted anomaly values. Subtract the mean of the anomaly values from each element in <code class="docutils literal notranslate"><span class="pre">temperature_anomalies</span></code> using a for loop:</p>
+<section id="exercise-3-accumulating-outputs">
+<h2>Exercise 3 - accumulating outputs<a class="headerlink" href="#exercise-3-accumulating-outputs" title="Permalink to this heading">#</a></h2>
+<p>Write a function, that computes the mean of the temperature anomalies.</p>
+<p>Hint: First solve the problem without using a function, then re-organize your code by wrapping the solution in a function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">avg_anomaly</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the average is </span><span class="si">{</span><span class="n">avg_anomaly</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">stdev_anomaly</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the standard deviation is </span><span class="si">{</span><span class="n">stdev_anomaly</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># your solutions here</span>
+<span class="c1"># your solution here</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the average is 0.06907142857142858
-the standard deviation is 0.31516831428068814
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06907142857142858
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06907142857142858
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-5-z-score">
-<h3>Exercise 5 - z-score<a class="headerlink" href="#exercise-5-z-score" title="Permalink to this heading">#</a></h3>
-<p>A common operation in statistic is z-scoring - normalizing the data so that it has zero mean and unit standard deviation (std=1).</p>
-<p>This can be done by applying the following two steps to each value in the list:</p>
+<section id="exercise-4-combining-functions">
+<h2>Exercise 4 - combining functions<a class="headerlink" href="#exercise-4-combining-functions" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>subtract the mean,</p></li>
-<li><p>divide by the standard deviation:</p></li>
+<li><p>Write another function that computes the standard deviation of the anomalies. Remember that the standard deviation involves calculating the mean. Re-use the function you used to calculate the mean! You will need to compute the square root - it is available in the <code class="docutils literal notranslate"><span class="pre">math</span></code> module.</p></li>
+<li><p>Write a third function that uses the first two functions to compute the standard error and the coefficient of variation. If you do not know what these are, google it.</p></li>
 </ol>
-<p>In math: <span class="math notranslate nohighlight">\(x_z = (x - x_{mean} / x_{std})\)</span> where <span class="math notranslate nohighlight">\(x_z\)</span> is the z-scored value and <span class="math notranslate nohighlight">\(x_{mean}\)</span> and  <span class="math notranslate nohighlight">\(x_{std}\)</span> are mean and standard deviation of the data.</p>
-<p>Create a new list of z-scored anomaly values using a for-loop:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solutions here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
+
+<span class="c1"># your solution here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
+<section id="exercise-5-keeping-track-of-results">
+<h2>Exercise 5 - keeping track of results<a class="headerlink" href="#exercise-5-keeping-track-of-results" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Write a function that returns the maximum value of the anomalies. Call this function <code class="docutils literal notranslate"><span class="pre">my_max</span></code>. Use a for loop. Do not use the built in functions <code class="docutils literal notranslate"><span class="pre">max</span></code>! But: Test your function by comparing its output to that of the <code class="docutils literal notranslate"><span class="pre">max</span></code> function.</p></li>
+<li><p>Write another function that returns the index of that maximum value. Call this function <code class="docutils literal notranslate"><span class="pre">argmax</span></code>. Use <code class="docutils literal notranslate"><span class="pre">my_max</span></code>, the function you wrote in step 1, in this new <code class="docutils literal notranslate"><span class="pre">argmax</span></code> function.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
+
+<span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1 0
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -529,7 +532,7 @@ the standard deviation is 0.31516831428068814
         },
         kernelOptions: {
             name: "python3",
-            path: "./exercises/exercises 1"
+            path: "./exercises/exercises 2"
         },
         predefinedOutput: true
     }
@@ -547,20 +550,20 @@ the standard deviation is 0.31516831428068814
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="1.03_lists_exercises.html"
+       href="2.02_loops_more_exercises.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exercises 1.3 - Lists</p>
+        <p class="prev-next-title">Exercise 2.2 - Loops (part 2)</p>
       </div>
     </a>
     <a class="right-next"
-       href="1.05_matplotlib_exercises.html"
+       href="2.04_exceptions_exercises.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercises 1.5 - Plotting</p>
+        <p class="prev-next-title">Exercise 2.4 - Handling errors</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -579,14 +582,11 @@ the standard deviation is 0.31516831428068814
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-convert-units">Exercise 1 - Convert units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-turn-this-code-into-a-function">Exercise 1 - turn this code into a function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-4-5">Exercises 4+5</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-substract-the-mean-value">Exercise 4 - substract the mean value</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-z-score">Exercise 5 - z-score</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-accumulating-outputs">Exercise 3 - accumulating outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-combining-functions">Exercise 4 - combining functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-keeping-track-of-results">Exercise 5 - keeping track of results</a></li>
 </ul>
   </nav></div>
 

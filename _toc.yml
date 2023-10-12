@@ -3,9 +3,10 @@
 
 format: jb-book
 root: intro
+options:
+  numbered: true
 parts:
   - caption: Lecture 1
-    numbered: true  # Only applies to chapters in Part 1.
     chapters:
     - file: lectures/lecture 1/1.01_variables
       title: Variables
@@ -18,7 +19,6 @@ parts:
     - file: lectures/lecture 1/1.05_matplotlib
       title: Plotting
   - caption: Exercises 1
-    numbered: true  # Only applies to chapters in Part 1.
     chapters:
     - file: exercises/exercises 1/1.01_variables_exercises
       title: Variables
@@ -30,7 +30,28 @@ parts:
       title: Loops
     - file: exercises/exercises 1/1.05_matplotlib_exercises
       title: Plotting
-  # - caption: Lecture 2
-  #   numbered: true  # Only applies to chapters in Part 1.
-  # - caption: Exercises 2
-  #   numbered: true  # Only applies to chapters in Part 1.
+  - caption: Lecture 2
+    chapters:
+    - file: lectures/lecture 2/2.01_composites
+      title: Composite data types
+    - file: lectures/lecture 2/2.02_loops_more
+      title: Loops (part 2)
+    - file: lectures/lecture 2/2.03_functions
+      title: Functions
+    - file: lectures/lecture 2/2.04_exceptions
+      title: Handling errors
+    - file: lectures/lecture 2/2.05_imports
+      title: External code
+  - caption: Exercises 2
+    chapters:
+    - file: exercises/exercises 2/2.01_composites_exercises
+      title: Composite data types
+    - file: exercises/exercises 2/2.02_loops_more_exercises
+      title: Loops (part 2)
+    - file: exercises/exercises 2/2.03_functions_exercises
+      title: Functions
+    - file: exercises/exercises 2/2.04_exceptions_exercises
+      title: Handling errors
+    - file: exercises/exercises 2/2.05_imports_exercises
+      title: External code
+

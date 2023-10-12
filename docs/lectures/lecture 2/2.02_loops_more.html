@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Lecture 1.2 - Conditionals &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Lecture 2.2 - For loops &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -62,11 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 1/1.02_conditionals';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 2/2.02_loops_more';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lecture 1.3 - Lists" href="1.03_lists.html" />
-    <link rel="prev" title="Lecture 1.1 - Variables" href="1.01_variables.html" />
+    <link rel="next" title="Lecture 2.3 - Functions" href="2.03_functions.html" />
+    <link rel="prev" title="Lecture 2.1 - Other collection data types" href="2.01_composites.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -161,12 +161,12 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 1</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1.01_variables.html">Variables</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Conditionals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1.03_lists.html">Lists</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1.04_loops_simple.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1.05_matplotlib.html">Plotting</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.01_variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.02_conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.03_lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.04_loops_simple.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.05_matplotlib.html">Plotting</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 1</span></p>
 <ul class="nav bd-sidenav">
@@ -177,13 +177,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.05_matplotlib_exercises.html">Plotting</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 2</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.01_composites.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.02_loops_more.html">Loops (part 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.03_functions.html">Lecture 2.3 - Functions</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2.01_composites.html">Composite data types</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Loops (part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.03_functions.html">Lecture 2.3 - Functions</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.04_exceptions.html">Handling errors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.05_imports.html">External code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.04_exceptions.html">Handling errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.05_imports.html">External code</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 2</span></p>
 <ul class="nav bd-sidenav">
@@ -246,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/lectures/lecture 1/1.02_conditionals.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/lectures/lecture 2/2.02_loops_more.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +277,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/lectures/lecture 1/1.02_conditionals.ipynb" target="_blank"
+      <li><a href="../../_sources/lectures/lecture 2/2.02_loops_more.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -359,7 +359,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 1.2 - Conditionals</h1>
+    <h1>Lecture 2.2 - For loops</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -369,10 +369,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-need-to-know-to-detect-spikes-using-python">What do we need to know to detect spikes using python?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-variables">Compare variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-different-actions-based-on-the-value-of-a-variable">Perform different actions based on the value of a variable</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-going-on">What’s going on?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-need-to-know-to-detect-spikes-using-python">What do we need to know to detect spikes using python?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-indices-and-items">Getting indices and items</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-multiple-lists-in-parallel">Looping over multiple lists in parallel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-lists">Searching lists</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">What do we need to know to detect spikes using python?</a></li>
 </ul>
 </li>
@@ -387,162 +387,147 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-1-2-conditionals">
-<h1>Lecture 1.2 - Conditionals<a class="headerlink" href="#lecture-1-2-conditionals" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-2-2-for-loops">
+<h1>Lecture 2.2 - For loops<a class="headerlink" href="#lecture-2-2-for-loops" title="Permalink to this heading">#</a></h1>
 <section id="what-do-we-need-to-know-to-detect-spikes-using-python">
 <h2>What do we need to know to detect spikes using python?<a class="headerlink" href="#what-do-we-need-to-know-to-detect-spikes-using-python" title="Permalink to this heading">#</a></h2>
-<p><img alt="" src="../../_images/voltage_trace.png" /></p>
+<p><img alt="" src="../../_images/voltage_trace1.png" /></p>
 <ul class="contains-task-list simple">
 <li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Present data in code (individual voltage values, manipulate them and store the results) - variables</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Compare variables (voltage to threshold) - boolean operations</strong></p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements</strong></p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Present and access data in a time series of voltage values - lists</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Perform an action for each element in a sequence of values (inspect voltage values one-by-one) - for loops</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Compare variables (voltage to threshold) - boolean values</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Present and access data in a time series of voltage values - lists</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Perform an action for each element in a sequence of values (inspect voltage values one-by-one) - for loops</strong></p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Separate data and logic so we can use the same code for new recordings - functions</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Apply this to multi data files</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Plot and save the results</p></li>
 </ul>
-</section>
-<section id="compare-variables">
-<h2>Compare variables<a class="headerlink" href="#compare-variables" title="Permalink to this heading">#</a></h2>
-<p>Until now, we know how to add, subtract, multiply, and divide variables.</p>
-<p>However, to solve our spike detection problem, we need to compare values: We need to dermine whether the voltage exceeds the threshold!</p>
-<p>This is done using comparison operators:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> greater than</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> smaller than</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">==</span></code> equal (not to be confused with <code class="docutils literal notranslate"><span class="pre">=</span></code> which assigns values to variables)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> greater or equal (not to be confused with <code class="docutils literal notranslate"><span class="pre">=</span></code> which assigns values to variables)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> smaller or equal (not to be confused with <code class="docutils literal notranslate"><span class="pre">=</span></code> which assigns values to variables)</p></li>
-</ul>
+<p>Last week, we learned about lists: how to build them, how to get data out of them, and how to work with them using for (and while) loops:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">voltage</span> <span class="o">=</span> <span class="o">-</span><span class="mi">40</span>
-<span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">100</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5
+1.0
+1.5
+50.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are a couple more useful ways of using lists:</p>
+<section id="getting-indices-and-items">
+<h3>Getting indices and items<a class="headerlink" href="#getting-indices-and-items" title="Permalink to this heading">#</a></h3>
+<p>We saw last time that <code class="docutils literal notranslate"><span class="pre">range</span></code> can be used to generate indices to retrieve items from a list in a for loop:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Estelle&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>However, it is prefereable and more readable to directly loop over the list items:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you need the index and the item, use <code class="docutils literal notranslate"><span class="pre">enumerate(list)</span></code>, which returns <code class="docutils literal notranslate"><span class="pre">(index,</span> <span class="pre">item)</span></code> tuples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Estelle&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 Tom
+1 Yolanda
+2 Estelle
+</pre></div>
+</div>
+</div>
+</div>
+<p>What’s going on?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Estelle&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">index_item_tuple</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">index_item_tuple</span><span class="p">)</span>
 
-<span class="n">voltage</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">voltage</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">voltage</span> <span class="o">==</span> <span class="n">threshold</span>
+<span class="c1"># this &quot;unpacks&quot; the individual items in a tuple:</span>
+<span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="o">=</span> <span class="n">index_item_tuple</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(True, False, False)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, &#39;Tom&#39;)
+(1, &#39;Yolanda&#39;)
+(2, &#39;Estelle&#39;)
+2 Estelle
 </pre></div>
 </div>
 </div>
 </div>
-<p>The result is not a number, but <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-<p>We call the resulting variables <em>boolean</em> variables after George Boole.</p>
 </section>
-<section id="perform-different-actions-based-on-the-value-of-a-variable">
-<h2>Perform different actions based on the value of a variable<a class="headerlink" href="#perform-different-actions-based-on-the-value-of-a-variable" title="Permalink to this heading">#</a></h2>
-<p>Yay - we can now figure out whether our voltage exceeds the threshold!</p>
-<p>But that alone is pretty useless - we want to perform specific computations based on the outcome of this comparison, for instance, print the time of that spike for those voltage values that exceed the threshold.</p>
-<p>The basic logic is this: <code class="docutils literal notranslate"><span class="pre">If</span></code> EXPRESSION is True we do one thing, <code class="docutils literal notranslate"><span class="pre">else</span></code> we do something else.</p>
-<p>In python, this is done using if-else statements:</p>
+<section id="looping-over-multiple-lists-in-parallel">
+<h3>Looping over multiple lists in parallel<a class="headerlink" href="#looping-over-multiple-lists-in-parallel" title="Permalink to this heading">#</a></h3>
+<p>To loop over two or more “parallel” lists at the same time use
+<code class="docutils literal notranslate"><span class="pre">zip(list1,</span> <span class="pre">list2,</span> <span class="pre">...)</span></code> which returns <code class="docutils literal notranslate"><span class="pre">(item1,</span> <span class="pre">item2,</span> <span class="pre">...)</span></code> tuples</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_name</span> <span class="o">=</span> <span class="s1">&#39;Anton&#39;</span>
-
-<span class="k">if</span> <span class="n">first_name</span> <span class="o">==</span> <span class="s1">&#39;Anton&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The first name is &quot;Anton&quot;.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The first name is not &quot;Anton&quot;.&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Estelle&#39;</span><span class="p">]</span>
+<span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">124325</span><span class="p">,</span> <span class="mi">463763</span><span class="p">,</span> <span class="mi">7902435</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">phone_number</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">phone_numbers</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">phone_number</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The first name is &quot;Anton&quot;.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tom 124325
+Yolanda 463763
+Estelle 7902435
 </pre></div>
 </div>
 </div>
 </div>
-<p>A couple of new things:</p>
+</section>
+<section id="searching-lists">
+<h3>Searching lists<a class="headerlink" href="#searching-lists" title="Permalink to this heading">#</a></h3>
+<p>We can use all of this to search lists:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> keywords</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">:</span></code></p></li>
-<li><p>Indentation</p></li>
+<li><p>get number if matching elements in list</p></li>
+<li><p>get indices if matching elements</p></li>
+<li><p>get values if matching elements</p></li>
 </ul>
-<section id="what-s-going-on">
-<h3>What’s going on?<a class="headerlink" href="#what-s-going-on" title="Permalink to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p>We create a variable with name <code class="docutils literal notranslate"><span class="pre">first_name</span></code> and value <code class="docutils literal notranslate"><span class="pre">Anton</span></code>.</p></li>
-<li><p>Python checks whether the value of the variable <code class="docutils literal notranslate"><span class="pre">first_name</span></code> equals (<code class="docutils literal notranslate"><span class="pre">==</span></code>) <code class="docutils literal notranslate"><span class="pre">Anton</span></code> (not to be confused with the <code class="docutils literal notranslate"><span class="pre">=</span></code> used for assigning values to variables).</p></li>
-<li><p>It does evalute to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
-</ol>
+<p>(There is a more efficient way of doing this, using numpy - we’ll learn about numpy next week)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first_name</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">first_name</span> <span class="o">==</span> <span class="s1">&#39;Anton&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_score</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">test_scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+
+<span class="n">failed</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">failed_indices</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">test_score</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_scores</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">test_score</span> <span class="o">&lt;</span> <span class="n">target_score</span><span class="p">:</span>
+        <span class="n">failed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_score</span><span class="p">)</span>
+        <span class="n">failed_indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Data contained </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">failed</span><span class="p">)</span><span class="si">}</span><span class="s1"> failed tests with fewer than </span><span class="si">{</span><span class="n">target_score</span><span class="si">}</span><span class="s1"> points.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The failed tests had these scores: </span><span class="si">{</span><span class="n">failed</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Students with these indices failed: </span><span class="si">{</span><span class="n">failed_indices</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Anton
-True
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="arabic simple" start="4">
-<li><p>Since the condition for the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the indented code block after <code class="docutils literal notranslate"><span class="pre">if</span></code> is executed. If the condition evaluated to <code class="docutils literal notranslate"><span class="pre">False</span></code> the indented code block after <code class="docutils literal notranslate"><span class="pre">else</span></code> would be executed.</p></li>
-</ol>
-<p>How about this?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_name</span> <span class="o">=</span> <span class="s1">&#39;Benton&#39;</span>
-<span class="k">if</span> <span class="n">first_name</span> <span class="o">==</span> <span class="s1">&#39;Anton&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First name starts with &quot;A&quot;.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not sure.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Not sure.
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="arabic simple">
-<li><p>We create a variable with name <code class="docutils literal notranslate"><span class="pre">first_name</span></code> and value <code class="docutils literal notranslate"><span class="pre">Benton</span></code>.</p></li>
-<li><p>Python checks whether the value of the variable <code class="docutils literal notranslate"><span class="pre">first_name</span></code> equals (<code class="docutils literal notranslate"><span class="pre">==</span></code>) <code class="docutils literal notranslate"><span class="pre">Anton</span></code></p></li>
-<li><p>It does not - it evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>:</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first_name</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">first_name</span> <span class="o">==</span> <span class="s1">&#39;Anton&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Benton
-False
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="arabic simple" start="4">
-<li><p>Since the condition for the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is <code class="docutils literal notranslate"><span class="pre">False</span></code>, the code block after <code class="docutils literal notranslate"><span class="pre">if</span></code> is <em>skipped</em>.</p></li>
-<li><p>Python moves to the <code class="docutils literal notranslate"><span class="pre">else</span></code> block and executes the indented code block.</p></li>
-</ol>
-<p>Multiple conditions can be checked for by using <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements (short for “else if”). Note, that the order of comparisons matters - python will only execute the first matching statement.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Benton&#39;</span>
-<span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Anton&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Name starts with &quot;A&quot;.&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Benton&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Name starts with &quot;B&quot;.&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Canton&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Name starts with &quot;C&quot;.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not sure.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name starts with &quot;B&quot;.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data contained 2 failed tests with fewer than 10 points.
+The failed tests had these scores: [7, 8]
+Students with these indices failed: [0, 3]
 </pre></div>
 </div>
 </div>
@@ -550,22 +535,22 @@ False
 </section>
 <section id="id1">
 <h3>What do we need to know to detect spikes using python?<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<p><img alt="" src="../../_images/voltage_trace.png" /></p>
+<p><img alt="" src="../../_images/voltage_trace1.png" /></p>
 <ul class="contains-task-list simple">
 <li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Present data in code (individual voltage values, manipulate them and store the results) - variables</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Compare variables (voltage to threshold) - boolean values</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Present and access data in a time series of voltage values - lists</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Perform an action for each element in a sequence of values (inspect voltage values one-by-one) - for loops</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Present and access data in a time series of voltage values - lists</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Perform an action for each element in a sequence of values (inspect voltage values one-by-one) - for loops</p></li>
+</ul>
+<p>Now write your spike detector!!</p>
+<p>Next steps:</p>
+<ul class="contains-task-list simple">
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Separate data and logic so we can use the same code for new recordings - functions</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Apply this to multi data files</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Plot and save the results</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Make everything more efficient and robust using numeric computation libraries (numpy, scipy)</p></li>
 </ul>
-<p>The core computation of the spike detection problem is solved!! (You will put the individual steps together durint the exercise.)</p>
-<p>Now we need to learn how to process the whole time series of voltage values!
-We could read the numbers from the text file and manually enter different values of the <code class="docutils literal notranslate"><span class="pre">voltage</span></code> variable but this would be tedious.</p>
-<p>So far all variables hold single values - numbers or strings.
-How do we present sequences of numbers? And how do we work through a sequence and apply the spike detection to each individual value in the sequence?</p>
 </section>
 </section>
 </section>
@@ -583,7 +568,7 @@ How do we present sequences of numbers? And how do we work through a sequence an
         },
         kernelOptions: {
             name: "python3",
-            path: "./lectures/lecture 1"
+            path: "./lectures/lecture 2"
         },
         predefinedOutput: true
     }
@@ -601,20 +586,20 @@ How do we present sequences of numbers? And how do we work through a sequence an
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="1.01_variables.html"
+       href="2.01_composites.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lecture 1.1 - Variables</p>
+        <p class="prev-next-title">Lecture 2.1 - Other collection data types</p>
       </div>
     </a>
     <a class="right-next"
-       href="1.03_lists.html"
+       href="2.03_functions.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 1.3 - Lists</p>
+        <p class="prev-next-title">Lecture 2.3 - Functions</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -633,10 +618,10 @@ How do we present sequences of numbers? And how do we work through a sequence an
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-need-to-know-to-detect-spikes-using-python">What do we need to know to detect spikes using python?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-variables">Compare variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-different-actions-based-on-the-value-of-a-variable">Perform different actions based on the value of a variable</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-going-on">What’s going on?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-need-to-know-to-detect-spikes-using-python">What do we need to know to detect spikes using python?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-indices-and-items">Getting indices and items</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-multiple-lists-in-parallel">Looping over multiple lists in parallel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-lists">Searching lists</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">What do we need to know to detect spikes using python?</a></li>
 </ul>
 </li>

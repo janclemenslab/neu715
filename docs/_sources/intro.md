@@ -1,4 +1,4 @@
-# Welcome to Neu715 - Neuroscientific Data Analysis using Python
+# Neu715 - Neuroscientific Data Analysis using Python
 
 You can open and execute the notebooks using this link:
 
