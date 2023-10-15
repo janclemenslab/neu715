@@ -429,15 +429,14 @@ document.write(`
 </div>
 </div>
 </div>
-<p>The result is not a number, but <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>The result of a comparison is not a number, but <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <p>We call the resulting variables <em>boolean</em> variables after George Boole.</p>
 </section>
 <section id="perform-different-actions-based-on-the-value-of-a-variable">
 <h2>Perform different actions based on the value of a variable<a class="headerlink" href="#perform-different-actions-based-on-the-value-of-a-variable" title="Permalink to this heading">#</a></h2>
 <p>Yay - we can now figure out whether our voltage exceeds the threshold!</p>
-<p>But that alone is pretty useless - we want to perform specific computations based on the outcome of this comparison, for instance, print the time of that spike for those voltage values that exceed the threshold.</p>
-<p>The basic logic is this: <code class="docutils literal notranslate"><span class="pre">If</span></code> EXPRESSION is True we do one thing, <code class="docutils literal notranslate"><span class="pre">else</span></code> we do something else.</p>
-<p>In python, this is done using if-else statements:</p>
+<p>But that alone is pretty useless - we want to perform specific computations based on the outcome of this comparison, for instance, if the voltage value that exceed the threshold, then we want to print it’s time point.</p>
+<p>This can be done using if-else statements. The basic logic of these statements is this: <code class="docutils literal notranslate"><span class="pre">if</span></code> EXPRESSION is True, then we do one thing, <code class="docutils literal notranslate"><span class="pre">else</span></code> we do something else:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_name</span> <span class="o">=</span> <span class="s1">&#39;Anton&#39;</span>
@@ -445,7 +444,7 @@ document.write(`
 <span class="k">if</span> <span class="n">first_name</span> <span class="o">==</span> <span class="s1">&#39;Anton&#39;</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The first name is &quot;Anton&quot;.&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The first name is not &quot;Anton&quot;.&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The first name is NOT &quot;Anton&quot;.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -458,8 +457,8 @@ document.write(`
 <p>A couple of new things:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> keywords</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">:</span></code></p></li>
-<li><p>Indentation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:</span></code> - marks the end of a special statement like <code class="docutils literal notranslate"><span class="pre">if</span></code> or <code class="docutils literal notranslate"><span class="pre">else</span></code>.</p></li>
+<li><p>Indentation marks code blocks that are executed after each statement.</p></li>
 </ul>
 <section id="what-s-going-on">
 <h3>What’s going on?<a class="headerlink" href="#what-s-going-on" title="Permalink to this heading">#</a></h3>
@@ -492,12 +491,12 @@ True
 <span class="k">if</span> <span class="n">first_name</span> <span class="o">==</span> <span class="s1">&#39;Anton&#39;</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First name starts with &quot;A&quot;.&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not sure.&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Not sure.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No!
 </pre></div>
 </div>
 </div>
@@ -525,7 +524,7 @@ False
 <li><p>Since the condition for the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is <code class="docutils literal notranslate"><span class="pre">False</span></code>, the code block after <code class="docutils literal notranslate"><span class="pre">if</span></code> is <em>skipped</em>.</p></li>
 <li><p>Python moves to the <code class="docutils literal notranslate"><span class="pre">else</span></code> block and executes the indented code block.</p></li>
 </ol>
-<p>Multiple conditions can be checked for by using <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements (short for “else if”). Note, that the order of comparisons matters - python will only execute the first matching statement.</p>
+<p>Multiple conditions can be checked by using <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements (short for “else if”). Note, that the order of comparisons matters - python will only execute the first matching statement.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Benton&#39;</span>
@@ -536,7 +535,7 @@ False
 <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Canton&#39;</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Name starts with &quot;C&quot;.&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not sure.&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -546,25 +545,40 @@ False
 </div>
 </div>
 </div>
+<p>Lastly, the <code class="docutils literal notranslate"><span class="pre">else</span></code> statement is optional. You can also use <code class="docutils literal notranslate"><span class="pre">if</span></code> only statements:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today</span> <span class="o">=</span> <span class="s2">&quot;Monday&quot;</span>
+<span class="k">if</span> <span class="n">today</span> <span class="o">==</span> <span class="s2">&quot;Monday&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I hate Mondays!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I hate Mondays!
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id1">
 <h3>What do we need to know to detect spikes using python?<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p><img alt="" src="../../_images/voltage_trace.png" /></p>
 <ul class="contains-task-list simple">
-<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Present data in code (individual voltage values, manipulate them and store the results) - variables</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Compare variables (voltage to threshold) - boolean values</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <em>Present data in code (individual voltage values, manipulate them and store the results) - variables</em></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> __Compare variables (voltage to threshold) - boolean values</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements__</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Present and access data in a time series of voltage values - lists</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Perform an action for each element in a sequence of values (inspect voltage values one-by-one) - for loops</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Separate data and logic so we can use the same code for new recordings - functions</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Apply this to multi data files</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Plot and save the results</p></li>
 </ul>
-<p>The core computation of the spike detection problem is solved!! (You will put the individual steps together durint the exercise.)</p>
+<p>The core computation of the spike detection problem is solved!! (You will put the individual steps together during the exercise.)</p>
 <p>Now we need to learn how to process the whole time series of voltage values!
-We could read the numbers from the text file and manually enter different values of the <code class="docutils literal notranslate"><span class="pre">voltage</span></code> variable but this would be tedious.</p>
-<p>So far all variables hold single values - numbers or strings.
-How do we present sequences of numbers? And how do we work through a sequence and apply the spike detection to each individual value in the sequence?</p>
+We could manually read the numbers from the text file and enter different values of the <code class="docutils literal notranslate"><span class="pre">voltage</span></code> variable but this would be tedious.</p>
+<p>So far all variables held single values - numbers or strings.
+How do we present sequences of numbers, like our time series of voltage values? And how do we work through a sequence and apply the spike detection to each individual value in the sequence?</p>
 </section>
 </section>
 </section>
