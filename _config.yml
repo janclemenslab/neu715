@@ -25,6 +25,5 @@ html:
   use_multitoc_numbering: false
 
 launch_buttons:
-  # colab_url: "https://colab.research.google.com"
   binderhub_url: "https://mybinder.org"  # The URL for your BinderHub (e.g., https://mybinder.org)
-
+  colab_url: "https://colab.research.google.com"
