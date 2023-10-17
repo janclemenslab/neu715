@@ -497,18 +497,18 @@ document.write(`
 <p>You can work directly with numbers and use python as a calculator:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">4</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">7</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
 </pre></div>
 </div>
 </div>
 </div>
 <p>Try it yourself by clicking into the cell above and changing the numbers.</p>
-<p>You can execute the code using Control+Enter (on a mac), or ??? in Windows/Linux.</p>
+<p>You can execute the code using Control+Enter.</p>
 </section>
 <section id="variables-abstract-away-specific-data-types-roles-from-the-specific-data-values">
 <h3>Variables abstract away specific data “types”/”roles” from the specific data values<a class="headerlink" href="#variables-abstract-away-specific-data-types-roles-from-the-specific-data-values" title="Permalink to this heading">#</a></h3>
@@ -542,7 +542,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.25
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.375
 </pre></div>
 </div>
 </div>
@@ -562,6 +562,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_spikes</span> <span class="o">=</span> <span class="mi">132</span>
 <span class="n">duration</span> <span class="o">=</span> <span class="mi">16</span>  <span class="c1"># seconds</span>
+<span class="c1"># compute the firing rate</span>
 <span class="n">firing_rate</span> <span class="o">=</span> <span class="n">n_spikes</span> <span class="o">/</span> <span class="n">duration</span>  <span class="c1"># 1/seconds=Hz</span>
 <span class="n">firing_rate</span>
 </pre></div>
@@ -615,7 +616,17 @@ Variables with text as values are called <em>strings</em>.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_of_the_whale</span> <span class="o">=</span> <span class="s1">&#39;Keiko&#39;</span>
 <span class="n">speed</span> <span class="o">=</span> <span class="s2">&quot;Mach 2&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;speed=&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="p">)</span>
 <span class="n">year</span> <span class="o">=</span> <span class="s2">&quot;1968&quot;</span>
+<span class="n">year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>speed= Mach 2
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;1968&#39;
 </pre></div>
 </div>
 </div>
@@ -734,6 +745,21 @@ print(...)
 </table>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.333333333333333
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Examples</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mi">16</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
@@ -784,7 +810,7 @@ Modulo 1 0 2
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">15.6</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;12.4&#39;</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
@@ -1042,6 +1068,18 @@ Modulo 1 0 2
 <section id="re-using-and-updating-variables">
 <h3>Re-using and updating variables<a class="headerlink" href="#re-using-and-updating-variables" title="Permalink to this heading">#</a></h3>
 <p>Alice and Bob count mosquitoes. Alice, to store her count, creates a variable with name <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> and value <code class="docutils literal notranslate"><span class="pre">1</span></code> (she has counted only one mosquito so far).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new variable `n_alice_mosquitoes` and </span>

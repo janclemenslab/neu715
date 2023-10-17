@@ -461,9 +461,12 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">number</span> <span class="pre">in</span> <span class="pre">my_list</span></code> does the following:</p>
 <ul>
 <li><p>it creates a variable called <code class="docutils literal notranslate"><span class="pre">number</span></code> (the loop variable)</p></li>
-<li><p>it goes through the list, element by element</p></li>
-<li><p>and sets the value of the <code class="docutils literal notranslate"><span class="pre">number</span></code> variable to that of each element</p></li>
-<li><p>it then prints the value of the <code class="docutils literal notranslate"><span class="pre">number</span></code> variable</p></li>
+<li><p>it goes through the list, element by element, in each step (for each element) and does the following:</p></li>
+<li><p>set the value of the <code class="docutils literal notranslate"><span class="pre">number</span></code> variable to the first element</p></li>
+<li><p>print the value of the <code class="docutils literal notranslate"><span class="pre">number</span></code> variable</p></li>
+<li><p>set the value of the <code class="docutils literal notranslate"><span class="pre">number</span></code> variable to the <em>next</em> element</p></li>
+<li><p>go back to the top of the indented block and execute it (print the value of <code class="docutils literal notranslate"><span class="pre">number</span></code>)</p></li>
+<li><p>repeat this until the end of the list is reached</p></li>
 </ul>
 </li>
 </ul>
@@ -518,7 +521,7 @@ Name is Canton
 </div>
 </div>
 </div>
-<p>For loops can be nested:</p>
+<p>For loops can be nested - indentation matters:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">outer</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]:</span>
@@ -553,7 +556,7 @@ Name is Canton
 <p>Append the results to a new list using a for loop:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Goal: divide by ten each element in lst</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Goal: divide by ten each element in the list &quot;data&quot;, collect the results in a new list &quot;results&quot;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;data:&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
@@ -594,19 +597,19 @@ results: [0.1, 0.2, 0.3]
 <p>Append the results to a new list using a for loop:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
 
-<span class="c1"># add 0.5 to each odd element in lst</span>
+<span class="c1"># create a new list that only holds the elements in the list &quot;numbers&quot; that are smaller than 10</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">item</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">item</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.5, 3.5, 5.5]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 2, 7]
 </pre></div>
 </div>
 </div>
@@ -614,13 +617,13 @@ results: [0.1, 0.2, 0.3]
 <p><strong>Bonus:</strong> Or more concisely using a list comprehension:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">numbers</span> <span class="k">if</span> <span class="n">item</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">numbers</span> <span class="k">if</span> <span class="n">item</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.5, 3.5, 5.5]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 2, 7]
 </pre></div>
 </div>
 </div>
@@ -681,11 +684,11 @@ results: [0.1, 0.2, 0.3]
 </section>
 <section id="using-indices">
 <h4>Using indices<a class="headerlink" href="#using-indices" title="Permalink to this heading">#</a></h4>
-<p>The range function generates a range of integer numbers with specified start, stop (non-inclusive), and step (interval) value:</p>
+<p>The range function generates a sequence of integer numbers with specified start, stop (non-inclusive), and step (interval) value:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>There are short cuts with implicit start=0 and step=1 values:</p>
+<p>There are short cuts with implicit start=0 and step=1 values (similar to how slices work):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
 <span class="nb">range</span><span class="p">(</span><span class="n">stop</span><span class="p">)</span>
 </pre></div>
@@ -695,7 +698,7 @@ results: [0.1, 0.2, 0.3]
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>  <span class="c1"># to inspect the range, we can cast it to a list. Note that the stop value (10) is not included</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>  <span class="c1"># to inspect the range, we can cast it to a list. Note that the stop value (10) is not included (just like in slices)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>  <span class="c1"># equivalent to range(10), the rest is implicit</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
@@ -757,7 +760,7 @@ results: [0.1, 0.2, 0.3]
 </section>
 <section id="id1">
 <h3>What do we need to know to detect spikes using python?<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<p><img alt="" src="lectures/lecture 1/fig/voltage_trace.png" /></p>
+<p><img alt="" src="../../_images/voltage_trace.png" /></p>
 <ul class="contains-task-list simple">
 <li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Present data in code (individual voltage values, manipulate them and store the results) - variables</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Compare variables (voltage to threshold) - boolean values</p></li>

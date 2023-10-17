@@ -426,8 +426,8 @@ document.write(`
 <p>However, to solve our spike detection problem, we need to compare values: We need to dermine whether the voltage exceeds the threshold!</p>
 <p>This is done using comparison operators:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> greater than</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> smaller than</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> greater than</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> smaller than</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">==</span></code> equal (not to be confused with <code class="docutils literal notranslate"><span class="pre">=</span></code> which assigns values to variables)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> greater or equal (not to be confused with <code class="docutils literal notranslate"><span class="pre">=</span></code> which assigns values to variables)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> smaller or equal (not to be confused with <code class="docutils literal notranslate"><span class="pre">=</span></code> which assigns values to variables)</p></li>
@@ -437,12 +437,16 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">voltage</span> <span class="o">=</span> <span class="o">-</span><span class="mi">40</span>
 <span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
 
-<span class="n">voltage</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">voltage</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">voltage</span> <span class="o">==</span> <span class="n">threshold</span>
+<span class="n">voltage</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">voltage</span> <span class="o">&gt;</span> <span class="n">threshold</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">voltage</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+<span class="n">voltage</span> <span class="o">=</span> <span class="n">threshold</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">voltage</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(True, False, False)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-40 10
+10 10
 </pre></div>
 </div>
 </div>
@@ -453,8 +457,8 @@ document.write(`
 <section id="perform-different-actions-based-on-the-value-of-a-variable">
 <h2>Perform different actions based on the value of a variable<a class="headerlink" href="#perform-different-actions-based-on-the-value-of-a-variable" title="Permalink to this heading">#</a></h2>
 <p>Yay - we can now figure out whether our voltage exceeds the threshold!</p>
-<p>But that alone is pretty useless - we want to perform specific computations based on the outcome of this comparison, for instance, if the voltage value that exceed the threshold, then we want to print it’s time point.</p>
-<p>This can be done using if-else statements. The basic logic of these statements is this: <code class="docutils literal notranslate"><span class="pre">if</span></code> EXPRESSION is True, then we do one thing, <code class="docutils literal notranslate"><span class="pre">else</span></code> we do something else:</p>
+<p>But that alone is pretty useless - we want to perform specific computations based on the outcome of this comparison, for instance, if the voltage value exceeds the threshold, then we want to print it’s time point.</p>
+<p>This can be done using so-called “if-else” statements. The basic logic of these statements is this: <code class="docutils literal notranslate"><span class="pre">if</span></code> EXPRESSION is True, then we do one thing, <code class="docutils literal notranslate"><span class="pre">else</span></code> we do something else:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_name</span> <span class="o">=</span> <span class="s1">&#39;Anton&#39;</span>
@@ -474,9 +478,9 @@ document.write(`
 </div>
 <p>A couple of new things:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> keywords</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> keywords. <code class="docutils literal notranslate"><span class="pre">if</span></code> is followed by the expression whos <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code> value determines what is done.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">:</span></code> - marks the end of a special statement like <code class="docutils literal notranslate"><span class="pre">if</span></code> or <code class="docutils literal notranslate"><span class="pre">else</span></code>.</p></li>
-<li><p>Indentation marks code blocks that are executed after each statement.</p></li>
+<li><p>Indentation marks code blocks that are executed after each statement, based on the <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code> value of the expression after <code class="docutils literal notranslate"><span class="pre">if</span></code>.</p></li>
 </ul>
 <section id="what-s-going-on">
 <h3>What’s going on?<a class="headerlink" href="#what-s-going-on" title="Permalink to this heading">#</a></h3>
@@ -563,12 +567,14 @@ False
 </div>
 </div>
 </div>
-<p>Lastly, the <code class="docutils literal notranslate"><span class="pre">else</span></code> statement is optional. You can also use <code class="docutils literal notranslate"><span class="pre">if</span></code> only statements:</p>
+<p>Lastly, the <code class="docutils literal notranslate"><span class="pre">else</span></code> statement is optional. You can use <code class="docutils literal notranslate"><span class="pre">if</span></code> without the <code class="docutils literal notranslate"><span class="pre">else</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today</span> <span class="o">=</span> <span class="s2">&quot;Monday&quot;</span>
 <span class="k">if</span> <span class="n">today</span> <span class="o">==</span> <span class="s2">&quot;Monday&quot;</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I hate Mondays!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;whatever&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -584,8 +590,8 @@ False
 <p><img alt="" src="../../_images/voltage_trace.png" /></p>
 <ul class="contains-task-list simple">
 <li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <em>Present data in code (individual voltage values, manipulate them and store the results) - variables</em></p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> __Compare variables (voltage to threshold) - boolean values</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements__</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <strong>Compare variables (voltage to threshold) - boolean values</strong></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <strong>Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements</strong></p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Present and access data in a time series of voltage values - lists</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Perform an action for each element in a sequence of values (inspect voltage values one-by-one) - for loops</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Separate data and logic so we can use the same code for new recordings - functions</p></li>

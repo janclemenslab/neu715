@@ -866,6 +866,21 @@ None &lt;class &#39;NoneType&#39;&gt;
 </div>
 </div>
 </div>
+<p>We’ve encountered functions that do not return anything in our introduction to lists. <code class="docutils literal notranslate"><span class="pre">append</span></code> does not return anything. So <code class="docutils literal notranslate"><span class="pre">new_list</span> <span class="pre">=</span> <span class="pre">list.append(value)</span></code> will set <code class="docutils literal notranslate"><span class="pre">new_list``</span> <span class="pre">to</span> </code>None`:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+<span class="n">new_list</span> <span class="o">=</span> <span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="the-scope-of-a-variable-local-variables">
 <h2>The “scope” of a variable - local variables<a class="headerlink" href="#the-scope-of-a-variable-local-variables" title="Permalink to this heading">#</a></h2>

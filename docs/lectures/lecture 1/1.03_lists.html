@@ -419,9 +419,9 @@ document.write(`
 <h2>What do we need to know to detect spikes using python?<a class="headerlink" href="#what-do-we-need-to-know-to-detect-spikes-using-python" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="../../_images/voltage_trace.png" /></p>
 <ul class="contains-task-list simple">
-<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Present data in code (individual voltage values, manipulate them and store the results) - variables</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Compare variables (voltage to threshold) - boolean values</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <em>Present data in code (individual voltage values, manipulate them and store the results) - variables</em></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <em>Compare variables (voltage to threshold) - boolean values</em></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <em>Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements</em></p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Present and access data in a time series of voltage values - lists</strong></p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Perform an action for each element in a sequence of values (inspect voltage values one-by-one) - for loops</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Separate data and logic so we can use the same code for new recordings - functions</p></li>
@@ -438,7 +438,7 @@ How do we present sequences of numbers? And how do we work through a sequence an
 <h2>Present and access data in a time series - lists<a class="headerlink" href="#present-and-access-data-in-a-time-series-lists" title="Permalink to this heading">#</a></h2>
 <section id="making-lists">
 <h3>Making lists<a class="headerlink" href="#making-lists" title="Permalink to this heading">#</a></h3>
-<p>Lists hold sequences of values. The individual elements of a list are also called <em>items</em>.</p>
+<p>Lists hold an ordered sequence of values. The individual elements of a list are also called <em>items</em>.</p>
 <p>Lists are constructed by enclosing a comma-separated sequence of items - values or variable names - with square brackets:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">item1</span><span class="p">,</span> <span class="n">item2</span><span class="p">,</span> <span class="n">item3</span><span class="p">]</span>
 </pre></div>
@@ -451,12 +451,12 @@ How do we present sequences of numbers? And how do we work through a sequence an
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-10, -12, -23, -45, 10, -12, -23]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-10, 12, -23, -45, 10, -12, -23]
 </pre></div>
 </div>
 </div>
 </div>
-<p>You can create empty lists in two ways:</p>
+<p>You can create empty lists (for adding items to it later) in two ways:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[]</span>
@@ -465,7 +465,7 @@ How do we present sequences of numbers? And how do we work through a sequence an
 </div>
 </div>
 </div>
-<p>You can store, or “collect”, the variables in a list.
+<p>You can store, or “collect”, multiple variables in a list.
 Do you understand what is happening here?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -504,16 +504,16 @@ Do you understand what is happening here?</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zinc&#39;</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="s1">&#39;radium&#39;</span><span class="p">]</span>
 <span class="n">atomic_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span><span class="mi">79</span><span class="p">,</span><span class="mi">88</span><span class="p">]</span>
 <span class="n">nested_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">elements</span><span class="p">,</span> <span class="n">atomic_numbers</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;nested_list:&#39;</span><span class="p">,</span> <span class="n">nested_list</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;elements:&#39;</span><span class="p">,</span> <span class="n">nested_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;atomic numbers:&#39;</span><span class="p">,</span> <span class="n">nested_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;nested_list:&#39;</span><span class="p">,</span> <span class="n">nested_list</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nested_list: [[&#39;zinc&#39;, &#39;gold&#39;, &#39;radium&#39;], [30, 79, 88]]
-elements: [&#39;zinc&#39;, &#39;gold&#39;, &#39;radium&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>elements: [&#39;zinc&#39;, &#39;gold&#39;, &#39;radium&#39;]
 atomic numbers: [30, 79, 88]
+nested_list: [[&#39;zinc&#39;, &#39;gold&#39;, &#39;radium&#39;], [30, 79, 88]]
 </pre></div>
 </div>
 </div>
@@ -521,15 +521,16 @@ atomic numbers: [30, 79, 88]
 </section>
 <section id="accessing-individual-elements-of-a-list">
 <h3>Accessing individual elements of a list<a class="headerlink" href="#accessing-individual-elements-of-a-list" title="Permalink to this heading">#</a></h3>
-<p>You can access the values of different elements of the list by enclosing an integer “index” in square brackets following the name of the list variable.</p>
-<p>The index of the first element is <code class="docutils literal notranslate"><span class="pre">0</span></code>, not <code class="docutils literal notranslate"><span class="pre">1</span></code>!</p>
+<p>You can access the values of different elements of the list by enclosing an integer “index”, which is the position of a list element, in square brackets following the name of the list variable.</p>
+<p>The index (position) of the first element is <code class="docutils literal notranslate"><span class="pre">0</span></code>, not <code class="docutils literal notranslate"><span class="pre">1</span></code>!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the full list:&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the first element (index 0):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the second element (index 1):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the last element (index -1):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the fifth element (index 5):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the last element (index -1):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -537,7 +538,8 @@ atomic numbers: [30, 79, 88]
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the full list: [-10, -12, -23, -45, 10, -12, -23]
 the first element (index 0): -10
 the second element (index 1): -12
-the last element (index -1): -23
+the fifth element (index 5): 10
+the last element (index -1): -12
 </pre></div>
 </div>
 </div>
@@ -553,7 +555,7 @@ the last element (index -1): -23
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">31354</span><span class="p">,</span> <span class="mi">235</span><span class="p">]</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">a</span><span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
 
@@ -586,10 +588,10 @@ Value preceeding index 4 424
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value following index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value preceeding index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value halfway between 0 and the index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># fix this</span>
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">janc</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">CloudStorage</span><span class="o">/</span><span class="n">Dropbox</span><span class="o">/</span><span class="n">_teaching</span><span class="o">/</span><span class="mi">2023</span><span class="n">ws</span> <span class="n">python</span> <span class="n">course</span><span class="o">/</span><span class="n">neu715</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="n">lecture</span> <span class="mi">1</span><span class="o">/</span><span class="mf">1.03</span><span class="n">_lists</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">17</span> <span class="n">line</span> <span class="mi">6</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/2023ws%20python</span><span class="si">%20c</span><span class="s1">ourse/neu715/lectures/lecture%201/1.03_lists.ipynb#X22sZmlsZQ%3D%3D?line=3&#39;</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value following index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/2023ws%20python</span><span class="si">%20c</span><span class="s1">ourse/neu715/lectures/lecture%201/1.03_lists.ipynb#X22sZmlsZQ%3D%3D?line=4&#39;</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value preceeding index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/2023ws%20python</span><span class="si">%20c</span><span class="s1">ourse/neu715/lectures/lecture%201/1.03_lists.ipynb#X22sZmlsZQ%3D%3D?line=5&#39;</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value halfway between 0 and the index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># fix this</span>
 
 <span class="ne">TypeError</span>: list indices must be integers or slices, not float
 </pre></div>
@@ -599,7 +601,13 @@ Value preceeding index 4 424
 </section>
 <section id="accessing-parts-of-a-list-slice-indexing">
 <h3>Accessing parts of a list - slice indexing<a class="headerlink" href="#accessing-parts-of-a-list-slice-indexing" title="Permalink to this heading">#</a></h3>
-<p>General form <code class="docutils literal notranslate"><span class="pre">list[start_index:stop_index:step]</span></code>:</p>
+<p>General form <code class="docutils literal notranslate"><span class="pre">list[start_index:stop_index:step]</span></code>.</p>
+<p>You can omit <code class="docutils literal notranslate"><span class="pre">start_index</span></code>, <code class="docutils literal notranslate"><span class="pre">stop_index</span></code>, or <code class="docutils literal notranslate"><span class="pre">step</span></code> and python will fill in defaults:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">start_index</span></code> as in <code class="docutils literal notranslate"><span class="pre">list[:stop_index:step]</span></code>: default is 0 (first index)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stop_index</span></code>  as in <code class="docutils literal notranslate"><span class="pre">list[start_index::step]</span></code>: default the last element</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">step</span></code> as in  as in <code class="docutils literal notranslate"><span class="pre">list[start_index:stop_index:]</span></code>:  default is 1 (get every element)</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">424</span><span class="p">,</span> <span class="mi">1234</span><span class="p">,</span> <span class="mi">14456</span><span class="p">]</span>
@@ -609,6 +617,7 @@ Value preceeding index 4 424
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
 </pre></div>
 </div>
 </div>
@@ -619,6 +628,7 @@ Value preceeding index 4 424
 [12, 424, 14456]
 [12, 424]
 [14456, 424, 12]
+[12, 235, 424, 1234, 14456]
 </pre></div>
 </div>
 </div>
@@ -680,7 +690,7 @@ A has 7 elements.
 <section id="adding-elements-to-a-list">
 <h4>Adding elements to a list<a class="headerlink" href="#adding-elements-to-a-list" title="Permalink to this heading">#</a></h4>
 <p>To build up a list of spike times, we need to be able to add elements to a list as they are computed.</p>
-<p>This is done using the <code class="docutils literal notranslate"><span class="pre">append</span></code> function. It is attached to the name of list variable and is used like so: <code class="docutils literal notranslate"><span class="pre">name_of_list_variable.append(new_element)</span></code>.</p>
+<p>This is done using the <code class="docutils literal notranslate"><span class="pre">append</span></code> function. This will add the argument to the <em>end of the list</em>. It is attached to the name of list variable with a <code class="docutils literal notranslate"><span class="pre">.</span></code> and is used like so: <code class="docutils literal notranslate"><span class="pre">name_of_list_variable.append(new_element)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spike_times</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># intialize an empty list</span>
@@ -702,51 +712,29 @@ A has 7 elements.
 </div>
 </div>
 </div>
-<p>Adding multiple elements to a list</p>
+<p><strong>Side note:</strong> Adding multiple elements to a list</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
-<span class="n">my_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
-
-<span class="c1"># `append` will append the list [1,2,3] as a a single element to the original list and create a nested list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `append` will append the list [1,2,3] as a a single element to the original list and create a nested list</span>
 <span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
-<span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+
+<span class="c1"># `extend` will add the elements in the argument as individual elements of the list:</span>
+<span class="n">my_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, &#39;b&#39;]
-[&#39;a&#39;, &#39;b&#39;, 1, 2, 3]
-[&#39;a&#39;, &#39;b&#39;]
 [&#39;a&#39;, &#39;b&#39;, [1, 2, 3]]
+[&#39;a&#39;, &#39;b&#39;, [1, 2, 3], 5, 6, 7]
 </pre></div>
 </div>
 </div>
 </div>
-<p>What does the <code class="docutils literal notranslate"><span class="pre">append</span></code> function return?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
-<span class="n">ret_append</span> <span class="o">=</span> <span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret_append</span><span class="p">)</span>
-<span class="n">ret_print</span> <span class="o">=</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Printing 10&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ret_print</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
-Printing 10
-None
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">None</span></code> values is used to indicate no value at all - like in functions that do not return anything.</p>
 </section>
 <section id="deleting-list-elements">
 <h4>Deleting list elements<a class="headerlink" href="#deleting-list-elements" title="Permalink to this heading">#</a></h4>
@@ -790,7 +778,7 @@ after: [10, 30, 20, 40]
 <p><a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html">https://docs.python.org/3/tutorial/datastructures.html</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pop</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>  <span class="c1"># return and remove indexed or if arg is omitted, the last element</span>
 <span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># add single value to list</span>
-<span class="n">extend</span><span class="p">([</span><span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">])</span>  <span class="c1"># add multiple values in a list to list</span>
+<span class="n">extend</span><span class="p">([</span><span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">])</span>  <span class="c1"># add elements of a list as individual elements to a list</span>
 <span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>  <span class="c1"># insert value at index</span>
 <span class="n">remove</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># remove item by value</span>
 <span class="k">del</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>  <span class="c1"># remove item by index</span>
