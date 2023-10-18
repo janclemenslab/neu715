@@ -432,11 +432,17 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="n">all_values</span><span class="p">)</span>
 
 <span class="c1"># fix this code:</span>
+<span class="n">even_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">all_values</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="n">even_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">even_values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[1, 3, 5, 7, 9]
 </pre></div>
 </div>
 </div>
@@ -452,11 +458,17 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="n">all_values</span><span class="p">)</span>
 
 <span class="c1"># fix this code:</span>
+<span class="n">sum_of_values</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">all_values</span><span class="p">:</span>
+    <span class="n">sum_of_values</span> <span class="o">=</span> <span class="n">value</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sum_of_values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+9
 </pre></div>
 </div>
 </div>
@@ -520,7 +532,7 @@ the standard deviation is 0.31516831428068814
 <li><p>subtract the mean,</p></li>
 <li><p>divide by the standard deviation:</p></li>
 </ol>
-<p>In math: <span class="math notranslate nohighlight">\(x_z = (x - x_{mean} / x_{std})\)</span> where <span class="math notranslate nohighlight">\(x_z\)</span> is the z-scored value and <span class="math notranslate nohighlight">\(x_{mean}\)</span> and  <span class="math notranslate nohighlight">\(x_{std}\)</span> are mean and standard deviation of the data.</p>
+<p>In math: <span class="math notranslate nohighlight">\(x_z = (x - x_{mean}) / x_{std}\)</span> where <span class="math notranslate nohighlight">\(x_z\)</span> is the z-scored value and <span class="math notranslate nohighlight">\(x_{mean}\)</span> and  <span class="math notranslate nohighlight">\(x_{std}\)</span> are mean and standard deviation of the data.</p>
 <p>Create a new list of z-scored anomaly values using a for-loop:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
