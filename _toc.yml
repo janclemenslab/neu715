@@ -54,4 +54,18 @@ parts:
       title: Handling errors
     - file: exercises/exercises 2/2.05_imports_exercises
       title: External code
+  - caption: Lecture 2
+    chapters:
+    - file: lectures/lecture 3/3.01_packages_and_environments
+      title: Installing packages
+    - file: lectures/lecture 3/3.02_numpy
+      title: Numerical computing
+    - file: lectures/lecture 3/3.03_files
+      title: Working with files
+  # - caption: Exercises 2
+  #   chapters:
+  #   - file: exercises/exercises 3/3.02_numpy_exercises
+  #     title: Numerical computing
+  #   - file: exercises/exercises 3/3.03_files_exercises
+  #     title: Working with files
 
