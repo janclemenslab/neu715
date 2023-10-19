@@ -388,8 +388,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-make-a-digital-phone-book">Exercise 1 - Make a digital phone book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-keeping-track-of-and-updating-results-in-a-for-loop">Exercise 1 - keeping track of and updating results in a for loop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-nested-loops">Exercise 2 - nested loops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-filtering-a-list">Exercise 3 - filtering a list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-filtering-a-list">Exercise 2 - filtering a list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-nested-loops">Exercise 3 - nested loops</a></li>
 </ul>
             </nav>
         </div>
@@ -422,9 +422,9 @@ We are given two parallel lists of names and phone numbers. Generate a phone boo
 <h2>Exercise 1 - keeping track of and updating results in a for loop<a class="headerlink" href="#exercise-1-keeping-track-of-and-updating-results-in-a-for-loop" title="Permalink to this heading">#</a></h2>
 <p>Using for loops:</p>
 <ol class="arabic simple">
-<li><p>Determine the maximum value and the minimum value of the anomalies.</p></li>
-<li><p>Determine the index of the maximum and of the minimum value, so-called <em>argmax</em> and <em>argmin</em>.</p></li>
-<li><p>Determine the year of the maximum and of the minimum value.</p></li>
+<li><p>Determine the <em>maximum</em> value of the anomalies.</p></li>
+<li><p>Determine the index of the <em>minimum</em> value, so-called <em>argmin</em>.</p></li>
+<li><p>Determine the year of the <em>minimum</em> value.</p></li>
 <li><p>Compute the average value</p></li>
 </ol>
 <div class="cell docutils container">
@@ -464,27 +464,11 @@ average value: 0.06907142857142858
 </div>
 </div>
 </section>
-<section id="exercise-2-nested-loops">
-<h2>Exercise 2 - nested loops<a class="headerlink" href="#exercise-2-nested-loops" title="Permalink to this heading">#</a></h2>
-<p>Take two lists, say for example these two:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">89</span><span class="p">]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>and write a program that returns a list that contains only the elements that occur in both lists (without duplicates). Make sure your program works for any two lists.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-3-filtering-a-list">
-<h2>Exercise 3 - filtering a list<a class="headerlink" href="#exercise-3-filtering-a-list" title="Permalink to this heading">#</a></h2>
+<section id="exercise-2-filtering-a-list">
+<h2>Exercise 2 - filtering a list<a class="headerlink" href="#exercise-2-filtering-a-list" title="Permalink to this heading">#</a></h2>
 <p>We’d like to produce a plot that highlights when neg. and pos. anomaly values occurred.</p>
 <ol class="arabic simple">
-<li><p>Combine a for loop and if statements to construct lists that contain the years and anomaly values for negative anomaly values and for positive anomaly values.</p></li>
+<li><p>Combine a for loop and if statements to construct lists that contain the years and anomaly values for positive anomaly values.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -502,7 +486,25 @@ average value: 0.06907142857142858
 <p><img alt="" src="../../_images/2.02_loops_more_exercises.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e8989d3bd16ef133ed1ccf6c1db64dc06bfc007150e66da5d50cc1b3c622893b.png" src="../../_images/e8989d3bd16ef133ed1ccf6c1db64dc06bfc007150e66da5d50cc1b3c622893b.png" />
+</div>
+</div>
+</section>
+<section id="exercise-3-nested-loops">
+<h2>Exercise 3 - nested loops<a class="headerlink" href="#exercise-3-nested-loops" title="Permalink to this heading">#</a></h2>
+<p>Take two lists and write a program that returns a list that contains only the elements that occur in both lists.
+<em>Bonus:</em> Are there duplicates in your list? Remove them so that the list of contains only unique values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">89</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+
+<span class="c1"># your solution here</span>
 </pre></div>
 </div>
 </div>
@@ -575,8 +577,8 @@ average value: 0.06907142857142858
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-make-a-digital-phone-book">Exercise 1 - Make a digital phone book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-keeping-track-of-and-updating-results-in-a-for-loop">Exercise 1 - keeping track of and updating results in a for loop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-nested-loops">Exercise 2 - nested loops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-filtering-a-list">Exercise 3 - filtering a list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-filtering-a-list">Exercise 2 - filtering a list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-nested-loops">Exercise 3 - nested loops</a></li>
 </ul>
   </nav></div>
 

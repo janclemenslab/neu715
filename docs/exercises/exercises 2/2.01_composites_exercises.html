@@ -387,7 +387,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-immutable-tuples-vs-lists">Exercise - Immutable tuples vs lists</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-using-sets-to-find-unique-values">Exercise - using sets to find unique values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-find-the-unique-values-in-a-list-using-set">Exercise - find the unique values in a list using <code class="docutils literal notranslate"><span class="pre">set</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-dictionaries-and-f-strings">Exercise - Dictionaries and f-strings</a></li>
 </ul>
             </nav>
@@ -408,7 +408,7 @@ document.write(`
 Fix below code to make this work:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># this is a tuple</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
 </pre></div>
 </div>
@@ -416,18 +416,30 @@ Fix below code to make this work:</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">clemens10</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">CloudStorage</span><span class="o">/</span><span class="n">Dropbox</span><span class="o">/</span><span class="n">_teaching</span><span class="o">/</span><span class="mi">2023</span><span class="n">ws</span> <span class="n">python</span> <span class="n">course</span><span class="o">/</span><span class="n">neu715</span><span class="o">/</span><span class="n">exercises</span><span class="o">/</span><span class="n">exercises</span> <span class="mi">2</span><span class="o">/</span><span class="mf">2.01</span><span class="n">_composites_exercises</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">2</span> <span class="n">line</span> <span class="mi">2</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/clemens10/Library/CloudStorage/Dropbox/_teaching/2023ws%20python</span><span class="si">%20c</span><span class="s1">ourse/neu715/exercises/exercises%202/2.01_composites_exercises.ipynb#W1sZmlsZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># this is a tuple</span>
-<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/clemens10/Library/CloudStorage/Dropbox/_teaching/2023ws%20python</span><span class="si">%20c</span><span class="s1">ourse/neu715/exercises/exercises%202/2.01_composites_exercises.ipynb#W1sZmlsZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">janc</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">CloudStorage</span><span class="o">/</span><span class="n">Dropbox</span><span class="o">/</span><span class="n">_teaching</span><span class="o">/</span><span class="n">neu715</span><span class="o">/</span><span class="n">exercises</span> <span class="n">solutions</span><span class="o">/</span><span class="n">exercises</span> <span class="mi">2</span> <span class="n">solutions</span><span class="o">/</span><span class="mf">2.01</span><span class="n">_composites_exercises</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">2</span> <span class="n">line</span> <span class="mi">2</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/exercises</span><span class="si">%20s</span><span class="s1">olutions/exercises</span><span class="si">%202%</span><span class="s1">20solutions/2.01_composites_exercises.ipynb#W1sZmlsZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># this is a tuple</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/exercises</span><span class="si">%20s</span><span class="s1">olutions/exercises</span><span class="si">%202%</span><span class="s1">20solutions/2.01_composites_exercises.ipynb#W1sZmlsZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
 
 <span class="ne">TypeError</span>: &#39;tuple&#39; object does not support item assignment
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fix the code here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="exercise-using-sets-to-find-unique-values">
-<h2>Exercise - using sets to find unique values<a class="headerlink" href="#exercise-using-sets-to-find-unique-values" title="Permalink to this heading">#</a></h2>
+<section id="exercise-find-the-unique-values-in-a-list-using-set">
+<h2>Exercise - find the unique values in a list using <code class="docutils literal notranslate"><span class="pre">set</span></code><a class="headerlink" href="#exercise-find-the-unique-values-in-a-list-using-set" title="Permalink to this heading">#</a></h2>
 <p>Taylor claims he as ten friends - he can even prove it using python programming:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -446,6 +458,11 @@ Fix below code to make this work:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Franziska&#39;, &#39;Tom&#39;, &#39;Tamara&#39;, &#39;Emre&#39;, &#39;Anatol&#39;, &#39;Tim&#39;, &#39;Milo&#39;, &#39;Samson&#39;}
 </pre></div>
 </div>
 </div>
@@ -470,6 +487,12 @@ Fix below code to make this work:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;zinc&#39;: 30, &#39;gold&#39;: 79, &#39;vibranium&#39;: 1000, &#39;radium&#39;: 88}
+{&#39;zinc&#39;: 30, &#39;gold&#39;: 79, &#39;radium&#39;: 88}
+{&#39;zinc&#39;: 30, &#39;gold&#39;: 79, &#39;radium&#39;: 88, &#39;silver&#39;: 47}
+The atomic number for zinc is 30
+The atomic number for gold is 79
+The atomic number for radium is 88
+The atomic number for silver is 47
 </pre></div>
 </div>
 </div>
@@ -541,7 +564,7 @@ Fix below code to make this work:</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-immutable-tuples-vs-lists">Exercise - Immutable tuples vs lists</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-using-sets-to-find-unique-values">Exercise - using sets to find unique values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-find-the-unique-values-in-a-list-using-set">Exercise - find the unique values in a list using <code class="docutils literal notranslate"><span class="pre">set</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-dictionaries-and-f-strings">Exercise - Dictionaries and f-strings</a></li>
 </ul>
   </nav></div>
