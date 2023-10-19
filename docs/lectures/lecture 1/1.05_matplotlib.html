@@ -245,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/lectures/lecture 1/1.05_matplotlib.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 1/1.05_matplotlib.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -263,7 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/lectures/lecture 1/1.05_matplotlib.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 1/1.05_matplotlib.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -432,11 +432,10 @@ document.write(`
 </div>
 </div>
 <p>Plotting is not part of core python - we have to use an external library for that: <a class="reference external" href="https://matplotlib.org">Matplotlib</a>.</p>
-<p>Matplotlib comes installed with the anaconda distribution and the pyplot module is the most user friendly.
-To make it available in the notebook, we need to “import” it.</p>
-<p>What you need to know for now (More details on how to work with external libraries next week):</p>
+<p>Matplotlib comes installed with the anaconda distribution and the pyplot module is the most user-friendly way of plotting in python.</p>
+<p>To make it available in the notebook, we need to “import” it. What you need to know for now (More details on how to work with external libraries next week):</p>
 <p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">matplotlib.pyplot</span> <span class="pre">as</span> <span class="pre">plt</span></code></p>
-<p>imports the pyplot module of matplotlib and makes everything under it available via the <code class="docutils literal notranslate"><span class="pre">plt</span></code> shortcut:</p>
+<p>This adds the pyplot module of matplotlib to your notebook’s memory and makes all functions in <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> available via the <code class="docutils literal notranslate"><span class="pre">plt</span></code> shortcut:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
