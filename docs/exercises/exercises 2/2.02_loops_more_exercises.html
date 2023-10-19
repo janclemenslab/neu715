@@ -387,9 +387,9 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-make-a-digital-phone-book">Exercise 1 - Make a digital phone book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-keeping-track-of-and-updating-results-in-a-for-loop">Exercise 1 - keeping track of and updating results in a for loop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-filtering-a-list">Exercise 2 - filtering a list</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-nested-loops">Exercise 3 - nested loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-keeping-track-of-and-updating-results-in-a-for-loop">Exercise 2 - keeping track of and updating results in a for loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-filtering-a-list">Exercise 3 - filtering a list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-nested-loops">Exercise 4 - nested loops</a></li>
 </ul>
             </nav>
         </div>
@@ -416,10 +416,19 @@ We are given two parallel lists of names and phone numbers. Generate a phone boo
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Alice&#39;: 432246234,
+ &#39;Yolanda&#39;: 190998010,
+ &#39;Tom&#39;: 984703,
+ &#39;Francoise&#39;: 123156,
+ &#39;Alan&#39;: 9630}
+</pre></div>
+</div>
+</div>
 </div>
 </section>
-<section id="exercise-1-keeping-track-of-and-updating-results-in-a-for-loop">
-<h2>Exercise 1 - keeping track of and updating results in a for loop<a class="headerlink" href="#exercise-1-keeping-track-of-and-updating-results-in-a-for-loop" title="Permalink to this heading">#</a></h2>
+<section id="exercise-2-keeping-track-of-and-updating-results-in-a-for-loop">
+<h2>Exercise 2 - keeping track of and updating results in a for loop<a class="headerlink" href="#exercise-2-keeping-track-of-and-updating-results-in-a-for-loop" title="Permalink to this heading">#</a></h2>
 <p>Using for loops:</p>
 <ol class="arabic simple">
 <li><p>Determine the <em>maximum</em> value of the anomalies.</p></li>
@@ -427,24 +436,7 @@ We are given two parallel lists of names and phone numbers. Generate a phone boo
 <li><p>Determine the year of the <em>minimum</em> value.</p></li>
 <li><p>Compute the average value</p></li>
 </ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;min value:&#39;</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;max value:&#39;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;average value:&#39;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>min value: -0.308
-max value: 0.792
-average value: 0.06907142857142858
-</pre></div>
-</div>
-</div>
-</div>
-<p>To learn how to handle data in lists and some coding patterns, let’s re-create these functions. Do not use min/max/sum. Try to use <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> and <code class="docutils literal notranslate"><span class="pre">zip</span></code> if possible!</p>
+<p>To learn how to handle data in lists and some coding patterns, let’s re-create these functions. Do not use min/max/sum. Try to use <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> if possible!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
@@ -459,13 +451,17 @@ average value: 0.06907142857142858
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.19, -0.177, -0.308, -0.289, -0.193, -0.057, 0.077, 0.026, 0.029, 0.068, 0.256, 0.342, 0.591, 0.792]
 [1880, 1890, 1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010]
+max_val 0.792
+min val -0.308 at index 2
+year of min val 1900
+average value 0.06907142857142858
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-2-filtering-a-list">
-<h2>Exercise 2 - filtering a list<a class="headerlink" href="#exercise-2-filtering-a-list" title="Permalink to this heading">#</a></h2>
+<section id="exercise-3-filtering-a-list">
+<h2>Exercise 3 - filtering a list<a class="headerlink" href="#exercise-3-filtering-a-list" title="Permalink to this heading">#</a></h2>
 <p>We’d like to produce a plot that highlights when neg. and pos. anomaly values occurred.</p>
 <ol class="arabic simple">
 <li><p>Combine a for loop and if statements to construct lists that contain the years and anomaly values for positive anomaly values.</p></li>
@@ -495,8 +491,8 @@ average value: 0.06907142857142858
 </div>
 </div>
 </section>
-<section id="exercise-3-nested-loops">
-<h2>Exercise 3 - nested loops<a class="headerlink" href="#exercise-3-nested-loops" title="Permalink to this heading">#</a></h2>
+<section id="exercise-4-nested-loops">
+<h2>Exercise 4 - nested loops<a class="headerlink" href="#exercise-4-nested-loops" title="Permalink to this heading">#</a></h2>
 <p>Take two lists and write a program that returns a list that contains only the elements that occur in both lists.
 <em>Bonus:</em> Are there duplicates in your list? Remove them so that the list of contains only unique values.</p>
 <div class="cell docutils container">
@@ -505,6 +501,12 @@ average value: 0.06907142857142858
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
 
 <span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 2, 3, 5, 8]
+{1, 2, 3, 5, 8}
 </pre></div>
 </div>
 </div>
@@ -576,9 +578,9 @@ average value: 0.06907142857142858
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-make-a-digital-phone-book">Exercise 1 - Make a digital phone book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-keeping-track-of-and-updating-results-in-a-for-loop">Exercise 1 - keeping track of and updating results in a for loop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-filtering-a-list">Exercise 2 - filtering a list</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-nested-loops">Exercise 3 - nested loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-keeping-track-of-and-updating-results-in-a-for-loop">Exercise 2 - keeping track of and updating results in a for loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-filtering-a-list">Exercise 3 - filtering a list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-nested-loops">Exercise 4 - nested loops</a></li>
 </ul>
   </nav></div>
 
