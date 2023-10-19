@@ -245,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 1/1.04_loops_simple.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/lectures/lecture 1/1.04_loops_simple.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -263,7 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 1/1.04_loops_simple.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/lectures/lecture 1/1.04_loops_simple.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -631,6 +631,13 @@ results: [0.1, 0.2, 0.3]
 </section>
 <section id="while-loops">
 <h2>While loops<a class="headerlink" href="#while-loops" title="Permalink to this heading">#</a></h2>
+<p>For loops are great if you have a pre-specified list of items and you want to do something with each item. Or if you have a computation and want to run it a fixed amount of times. However, sometimes you do not know beforehand how often you need to run a computation or you have an unspecified amount of items you need to work through.</p>
+<p>So-called <em>while loops</em> allow you to apply a computation as long as a specified condition is met. While loops have the following form:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">CONDITION</span><span class="p">:</span>
+    <span class="n">do</span> <span class="n">something</span>
+</pre></div>
+</div>
+<p>For instance, we can use a while loop to count down to zero:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># need to define the variable beforehand</span>
@@ -665,16 +672,16 @@ results: [0.1, 0.2, 0.3]
 <h4>Directly over the items (preferred)<a class="headerlink" href="#directly-over-the-items-preferred" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Estelle&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
-2
-3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tom
+Yolanda
+Estelle
 </pre></div>
 </div>
 </div>
@@ -694,7 +701,7 @@ results: [0.1, 0.2, 0.3]
 <p>Range does not return a list but a special <code class="docutils literal notranslate"><span class="pre">range</span></code> object - that way we can have ranges that do not fit in memory, e.g. <code class="docutils literal notranslate"><span class="pre">range(1000000000000000)</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">a</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
