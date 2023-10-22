@@ -393,8 +393,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-plot-temperature-anomaly-values">Exercise 1: Plot temperature anomaly values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-plotting-multiple-datasets-using-for-loops-important">Exercise 2: Plotting multiple datasets using for loops (IMPORTANT)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-plot-the-original-and-downsampled-anomaly-values">Exercise 3: Plot the original and “downsampled” anomaly values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-plotting-multiple-datasets-using-for-loops">Exercise 2: Plotting multiple datasets using for loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-plot-the-original-and-downsampled-anomaly-values-bonus">Exercise 3: Plot the original and “downsampled” anomaly values (Bonus)</a></li>
 </ul>
             </nav>
         </div>
@@ -442,11 +442,11 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Now copy the code for plotting above to the next cell and modify it to show:</p>
+<p>Now copy your solution above to the next cell and modify it to show:</p>
 <ul class="simple">
 <li><p>a black line connecting individual values (as before)</p></li>
-<li><p>a red dot if the anomaly value is positive</p></li>
 <li><p>a horizontal red line at y=0</p></li>
+<li><p>a red dot if the anomaly value is positive (you will need a for loop combined with an if statement for that)</p></li>
 </ul>
 <p>Roughly like so:</p>
 <p><img alt="" src="../../_images/1.05_matplotlib_exercises2b.png" /></p>
@@ -458,8 +458,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-2-plotting-multiple-datasets-using-for-loops-important">
-<h2>Exercise 2: Plotting multiple datasets using for loops (IMPORTANT)<a class="headerlink" href="#exercise-2-plotting-multiple-datasets-using-for-loops-important" title="Permalink to this heading">#</a></h2>
+<section id="exercise-2-plotting-multiple-datasets-using-for-loops">
+<h2>Exercise 2: Plotting multiple datasets using for loops<a class="headerlink" href="#exercise-2-plotting-multiple-datasets-using-for-loops" title="Permalink to this heading">#</a></h2>
 <p>You can combine for-loops and subplots to generate multi-panel plots.</p>
 <p>You are given a variable, <code class="docutils literal notranslate"><span class="pre">datasets</span></code>, which is a list of list. Each list in <code class="docutils literal notranslate"><span class="pre">datasets</span></code> contains a dataset composed of 3 values.</p>
 <p>Use a for loop to plot all three datasets in three subplots:</p>
@@ -496,8 +496,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-3-plot-the-original-and-downsampled-anomaly-values">
-<h2>Exercise 3: Plot the original and “downsampled” anomaly values<a class="headerlink" href="#exercise-3-plot-the-original-and-downsampled-anomaly-values" title="Permalink to this heading">#</a></h2>
+<section id="exercise-3-plot-the-original-and-downsampled-anomaly-values-bonus">
+<h2>Exercise 3: Plot the original and “downsampled” anomaly values (Bonus)<a class="headerlink" href="#exercise-3-plot-the-original-and-downsampled-anomaly-values-bonus" title="Permalink to this heading">#</a></h2>
 <p>Downsample by computing the avg. anomaly value in blocks of 10 years. Each point in the plot is the average over ten years of anomaly data. The first green point is the average over years 1880-1890, and is placed at 1885, the second point is the average over the years 1890-1900 and is placed at 1895 etc. The original anomaly values are plotted as a grey line.</p>
 <p>Save the figure to an image file in the png-format using <code class="docutils literal notranslate"><span class="pre">plt.savefig(FILENAME)</span></code>, where <code class="docutils literal notranslate"><span class="pre">FILENAME</span></code> is the name of the image file, for instance <code class="docutils literal notranslate"><span class="pre">my_amazing_figure.png</span></code>.</p>
 <p>Important: For the figure to be saved in the png-format, the file’s name needs to end in <code class="docutils literal notranslate"><span class="pre">.png</span></code>. You need to use <code class="docutils literal notranslate"><span class="pre">plt.savefig</span></code> in the same cell in which you generated the plot. But before calling <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>.</p>
@@ -577,8 +577,8 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-plot-temperature-anomaly-values">Exercise 1: Plot temperature anomaly values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-plotting-multiple-datasets-using-for-loops-important">Exercise 2: Plotting multiple datasets using for loops (IMPORTANT)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-plot-the-original-and-downsampled-anomaly-values">Exercise 3: Plot the original and “downsampled” anomaly values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-plotting-multiple-datasets-using-for-loops">Exercise 2: Plotting multiple datasets using for loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-plot-the-original-and-downsampled-anomaly-values-bonus">Exercise 3: Plot the original and “downsampled” anomaly values (Bonus)</a></li>
 </ul>
   </nav></div>
 

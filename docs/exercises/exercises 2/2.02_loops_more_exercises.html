@@ -392,10 +392,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-make-a-digital-phone-book">Exercise 1 - Make a digital phone book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-keeping-track-of-and-updating-results-in-a-for-loop">Exercise 2 - keeping track of and updating results in a for loop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-filtering-a-list">Exercise 3 - filtering a list</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-nested-loops">Exercise 4 - nested loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-converting-units">Exercise 1 - Converting units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-plotting">Exercise 2 - Plotting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-enumerate">Exercise 3 - <code class="docutils literal notranslate"><span class="pre">enumerate</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-zip">Exercise 4 - <code class="docutils literal notranslate"><span class="pre">zip</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-make-a-digital-phone-book">Exercise 5 - Make a digital phone book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-keeping-track-of-and-updating-results-in-a-for-loop">Exercise 6 - keeping track of and updating results in a for loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-filtering-a-list">Exercise 7 - filtering a list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-nested-loops-bonus">Exercise 8 - nested loops (Bonus)</a></li>
 </ul>
             </nav>
         </div>
@@ -409,8 +413,140 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-2-2-loops-part-2">
 <h1>Exercise 2.2 - Loops (part 2)<a class="headerlink" href="#exercise-2-2-loops-part-2" title="Permalink to this heading">#</a></h1>
-<section id="exercise-1-make-a-digital-phone-book">
-<h2>Exercise 1 - Make a digital phone book<a class="headerlink" href="#exercise-1-make-a-digital-phone-book" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-converting-units">
+<h2>Exercise 1 - Converting units<a class="headerlink" href="#exercise-1-converting-units" title="Permalink to this heading">#</a></h2>
+<p>Using <code class="docutils literal notranslate"><span class="pre">range</span></code> we can generate a sequence of numners, with a specified start, end (non-inclusive) and step size: <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">=</span> <span class="pre">range(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code></p>
+<p>The output of <code class="docutils literal notranslate"><span class="pre">range</span></code> is not a list but something special - so we need to cast it to a list: <code class="docutils literal notranslate"><span class="pre">r_as_list</span> <span class="pre">=</span> <span class="pre">list(r)</span></code>.</p>
+<p>Let’s assume these numbers are angles, in radians.</p>
+<p>Create a new list with the angles in degrees</p>
+<p>Reminder: <code class="docutils literal notranslate"><span class="pre">degrees</span> <span class="pre">=</span> <span class="pre">radians</span> <span class="pre">*</span> <span class="pre">180</span> <span class="pre">/</span> <span class="pre">pi</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">pi</span></code> is approximately 3.14.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">angles_radians</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">angles_radians</span><span class="p">)</span>
+
+<span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2-plotting">
+<h2>Exercise 2 - Plotting<a class="headerlink" href="#exercise-2-plotting" title="Permalink to this heading">#</a></h2>
+<p>You are given a list of lists called <code class="docutils literal notranslate"><span class="pre">data</span></code>. Each item in <code class="docutils literal notranslate"><span class="pre">data</span></code> is a list of 4 numbers.</p>
+<p>Plot these numbers in the following way:</p>
+<ol class="arabic simple">
+<li><p>The first list of numbers as a red line with red dot as markers. Set the values of the x-ticks and y-ticks to 0, 2, 4.</p></li>
+</ol>
+<p><img alt="" src="../../_images/2.02_loops_more_exercises_01.png" /></p>
+<ol class="arabic simple" start="2">
+<li><p>The second and third lists in <code class="docutils literal notranslate"><span class="pre">data</span></code> in side-by-side subplots as green and red lines, respectively. Have the y-axis start at 0 and end at 16 for both subplots.</p></li>
+</ol>
+<p><img alt="" src="../../_images/2.02_loops_more_exercises_02.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]]</span>
+
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;2.02_loops_more_exercises_01.png&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;+-&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;+-&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;2.02_loops_more_exercises_02.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2f9c2996f41569ffa46ab9d7dbaed678706c906828412c914de6257b30b4c6dc.png" src="../../_images/2f9c2996f41569ffa46ab9d7dbaed678706c906828412c914de6257b30b4c6dc.png" />
+<img alt="../../_images/79b79f4bd6741a68953304131ce2131dfbe924f4cd7f5e5c1e81ad31ae8b83b5.png" src="../../_images/79b79f4bd6741a68953304131ce2131dfbe924f4cd7f5e5c1e81ad31ae8b83b5.png" />
+</div>
+</div>
+</section>
+<section id="exercise-3-enumerate">
+<h2>Exercise 3 - <code class="docutils literal notranslate"><span class="pre">enumerate</span></code><a class="headerlink" href="#exercise-3-enumerate" title="Permalink to this heading">#</a></h2>
+<p>Remember the last week’s exercise, in which we combined for loops, the range statement, and subplots?</p>
+<p><img alt="" src="../../_images/1.05_matplotlib_exercises11.png" /></p>
+<p>Modify the old solution below:</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> instead of <code class="docutils literal notranslate"><span class="pre">range</span></code>. Remember enumerate returns the index and the item at that index:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="n">do</span> <span class="n">something</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">datasets</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">datasets</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dataset </span><span class="si">{</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Awesomeness&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Shuffle factor&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/53a1506e50ba88ec12362fe93aacae467bf7c5dbd482e4d41f5e34656fa11327.png" src="../../_images/53a1506e50ba88ec12362fe93aacae467bf7c5dbd482e4d41f5e34656fa11327.png" />
+</div>
+</div>
+</section>
+<section id="exercise-4-zip">
+<h2>Exercise 4 - <code class="docutils literal notranslate"><span class="pre">zip</span></code><a class="headerlink" href="#exercise-4-zip" title="Permalink to this heading">#</a></h2>
+<p>You are given to lists - names with associated phone numbers.</p>
+<p>Print each name and the associated phone number, like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Alice</span> <span class="mi">432246234</span>
+<span class="n">Yolanda</span> <span class="mi">190998010</span>
+<span class="n">Tom</span> <span class="mi">984703</span>
+<span class="n">Francoise</span> <span class="mi">123156</span>
+<span class="n">Alan</span> <span class="mi">9630</span>
+</pre></div>
+</div>
+<p>Use a for loop and <code class="docutils literal notranslate"><span class="pre">zip</span></code> to loop over both lists in parallel. Remember, <code class="docutils literal notranslate"><span class="pre">zip</span></code> takes two (or more) lists as input and returns the items for both lists:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item_list1</span><span class="p">,</span> <span class="n">item_list2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">)</span>
+    <span class="n">do</span> <span class="n">something</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Francoise&#39;</span><span class="p">,</span> <span class="s1">&#39;Alan&#39;</span><span class="p">]</span>
+<span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">432246234</span><span class="p">,</span> <span class="mi">190998010</span><span class="p">,</span> <span class="mi">984703</span><span class="p">,</span> <span class="mi">123156</span><span class="p">,</span> <span class="mi">9630</span><span class="p">]</span>
+
+<span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-5-make-a-digital-phone-book">
+<h2>Exercise 5 - Make a digital phone book<a class="headerlink" href="#exercise-5-make-a-digital-phone-book" title="Permalink to this heading">#</a></h2>
 <p>Make a phone book using a dictionary, so we can easily look up phone numbers using the name as the key.
 We are given two parallel lists of names and phone numbers. Generate a phone book dictionary that has each name as a key and the associated phone number as a value. Use <code class="docutils literal notranslate"><span class="pre">zip</span></code> to loop over the parallel lists.</p>
 <div class="cell docutils container">
@@ -422,19 +558,10 @@ We are given two parallel lists of names and phone numbers. Generate a phone boo
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Alice&#39;: 432246234,
- &#39;Yolanda&#39;: 190998010,
- &#39;Tom&#39;: 984703,
- &#39;Francoise&#39;: 123156,
- &#39;Alan&#39;: 9630}
-</pre></div>
-</div>
-</div>
 </div>
 </section>
-<section id="exercise-2-keeping-track-of-and-updating-results-in-a-for-loop">
-<h2>Exercise 2 - keeping track of and updating results in a for loop<a class="headerlink" href="#exercise-2-keeping-track-of-and-updating-results-in-a-for-loop" title="Permalink to this heading">#</a></h2>
+<section id="exercise-6-keeping-track-of-and-updating-results-in-a-for-loop">
+<h2>Exercise 6 - keeping track of and updating results in a for loop<a class="headerlink" href="#exercise-6-keeping-track-of-and-updating-results-in-a-for-loop" title="Permalink to this heading">#</a></h2>
 <p>Using for loops:</p>
 <ol class="arabic simple">
 <li><p>Determine the <em>maximum</em> value of the anomalies.</p></li>
@@ -457,17 +584,13 @@ We are given two parallel lists of names and phone numbers. Generate a phone boo
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.19, -0.177, -0.308, -0.289, -0.193, -0.057, 0.077, 0.026, 0.029, 0.068, 0.256, 0.342, 0.591, 0.792]
 [1880, 1890, 1900, 1910, 1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010]
-max_val 0.792
-min val -0.308 at index 2
-year of min val 1900
-average value 0.06907142857142858
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-3-filtering-a-list">
-<h2>Exercise 3 - filtering a list<a class="headerlink" href="#exercise-3-filtering-a-list" title="Permalink to this heading">#</a></h2>
+<section id="exercise-7-filtering-a-list">
+<h2>Exercise 7 - filtering a list<a class="headerlink" href="#exercise-7-filtering-a-list" title="Permalink to this heading">#</a></h2>
 <p>We’d like to produce a plot that highlights when neg. and pos. anomaly values occurred.</p>
 <ol class="arabic simple">
 <li><p>Combine a for loop and if statements to construct lists that contain the years and anomaly values for positive anomaly values.</p></li>
@@ -492,13 +615,10 @@ average value 0.06907142857142858
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/e8989d3bd16ef133ed1ccf6c1db64dc06bfc007150e66da5d50cc1b3c622893b.png" src="../../_images/e8989d3bd16ef133ed1ccf6c1db64dc06bfc007150e66da5d50cc1b3c622893b.png" />
-</div>
 </div>
 </section>
-<section id="exercise-4-nested-loops">
-<h2>Exercise 4 - nested loops<a class="headerlink" href="#exercise-4-nested-loops" title="Permalink to this heading">#</a></h2>
+<section id="exercise-8-nested-loops-bonus">
+<h2>Exercise 8 - nested loops (Bonus)<a class="headerlink" href="#exercise-8-nested-loops-bonus" title="Permalink to this heading">#</a></h2>
 <p>Take two lists and write a program that returns a list that contains only the elements that occur in both lists.
 <em>Bonus:</em> Are there duplicates in your list? Remove them so that the list of contains only unique values.</p>
 <div class="cell docutils container">
@@ -507,12 +627,6 @@ average value 0.06907142857142858
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
 
 <span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 2, 3, 5, 8]
-{1, 2, 3, 5, 8}
 </pre></div>
 </div>
 </div>
@@ -583,10 +697,14 @@ average value 0.06907142857142858
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-make-a-digital-phone-book">Exercise 1 - Make a digital phone book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-keeping-track-of-and-updating-results-in-a-for-loop">Exercise 2 - keeping track of and updating results in a for loop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-filtering-a-list">Exercise 3 - filtering a list</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-nested-loops">Exercise 4 - nested loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-converting-units">Exercise 1 - Converting units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-plotting">Exercise 2 - Plotting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-enumerate">Exercise 3 - <code class="docutils literal notranslate"><span class="pre">enumerate</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-zip">Exercise 4 - <code class="docutils literal notranslate"><span class="pre">zip</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-make-a-digital-phone-book">Exercise 5 - Make a digital phone book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-keeping-track-of-and-updating-results-in-a-for-loop">Exercise 6 - keeping track of and updating results in a for loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-filtering-a-list">Exercise 7 - filtering a list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-nested-loops-bonus">Exercise 8 - nested loops (Bonus)</a></li>
 </ul>
   </nav></div>
 
