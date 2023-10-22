@@ -452,10 +452,11 @@ document.write(`
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>PACKAGE_NAME
 </pre></div>
 </div>
-<p>There are different “channels” - EXPLAIN</p>
+<p>Sometimes you will see instructions that include one or more occurrences of the argument <code class="docutils literal notranslate"><span class="pre">-c</span></code>, short for “channel”:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>PACKAGE_NAME<span class="w"> </span>-c<span class="w"> </span>CHANNEL_NAME
 </pre></div>
 </div>
+<p>Channels are specific locations inside the anaconda package library, where packages are stored.</p>
 </section>
 </section>
 </section>
@@ -464,7 +465,7 @@ document.write(`
 <p>Why is package management hard? There are many different python packages, sometimes for very specific purposes, developed by many independent developers. However, this freedom and diversity can complicate things, if you need two packages, but they both rely on different versions of another package:
 <img src="fig/dep_hell.png" alt="from https://medium.com/knerd/the-nine-circles-of-python-dependency-hell-481d53e3e025" width="400"/></p>
 <p>This can lead to unresolvable dependencies and is known as the “python version hell” or “python dependency hell”.</p>
-<p>Even worse, if you are not careful, you can completely break your python installation: You install a new package, that requires and installs a different version of matplotlib. However, this will break existing packages, which only works with the original version of matplotlib, not the newly installed one.</p>
+<p>Even worse, if you are not careful, you can completely break your python installation: You install a new package, that requires and installs a different version of matplotlib. However, this will break existing packages, which only work with the original version of matplotlib, not the newly installed one.</p>
 </section>
 <section id="environments">
 <h2>Environments<a class="headerlink" href="#environments" title="Permalink to this heading">#</a></h2>

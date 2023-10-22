@@ -444,7 +444,7 @@ If you know Matlab, than numpy is conceptually very similar. Here is a great res
 <section id="why">
 <h2>Why?<a class="headerlink" href="#why" title="Permalink to this heading">#</a></h2>
 <p>So far, we’ve dealt with small data sets - what if we have realistic amounts of data?
-For isntance, it is now easy to record electrophysiological activity for many hours on hundreds of channels. Processing these large volumes of data should not take days!!</p>
+For instance, it is now easy to record electrophysiological activity for many hours on hundreds of channels. Processing these large volumes of data should not take days!!</p>
 <p>However, python is slow for raw number crunching.</p>
 <p>As an example, take a moderately long recording - 10 hours of single channel data voltage recordings:</p>
 <div class="cell docutils container">
@@ -472,8 +472,8 @@ For isntance, it is now easy to record electrophysiological activity for many ho
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Detected 5270400 spikes.
-CPU times: user 9.69 s, sys: 420 ms, total: 10.1 s
-Wall time: 10.1 s
+CPU times: total: 13.5 s
+Wall time: 47.6 s
 </pre></div>
 </div>
 </div>
@@ -492,8 +492,8 @@ Wall time: 10.1 s
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Detected 5270400
-CPU times: user 1.37 s, sys: 230 ms, total: 1.6 s
-Wall time: 1.6 s
+CPU times: total: 2.62 s
+Wall time: 6.39 s
 </pre></div>
 </div>
 </div>
@@ -565,7 +565,7 @@ data=array([24,  6, 32,  9, 32, 43])
 Number of dimensions (1D, 2D, ND): data.ndim=1
 Shape: data.shape=(6,)
 This returns the size of the first dimension: len(data)=6
-Data type of the array elements data.dtype=dtype(&#39;int64&#39;)
+Data type of the array elements data.dtype=dtype(&#39;int32&#39;)
 </pre></div>
 </div>
 </div>
@@ -596,7 +596,7 @@ Data type of the array elements data.dtype=dtype(&#39;int64&#39;)
 Number of dimensions (1D, 2D, ND): data.ndim=2
 Shape: data.shape=(2, 3)
 This returns the size of the first dimension: len(data)=2
-Data type of the array elements data.dtype=dtype(&#39;int64&#39;)
+Data type of the array elements data.dtype=dtype(&#39;int32&#39;)
 </pre></div>
 </div>
 </div>
@@ -733,10 +733,10 @@ data values at the indices: data[indices]=array([0.2, 1.4, 3.6])
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">janc</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">CloudStorage</span><span class="o">/</span><span class="n">Dropbox</span><span class="o">/</span><span class="n">_teaching</span><span class="o">/</span><span class="n">neu715</span><span class="o">/</span><span class="n">neu715</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="n">lecture</span> <span class="mi">3</span><span class="o">/</span><span class="mf">3.02</span><span class="n">_numpy</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">27</span> <span class="n">line</span> <span class="mi">3</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture%203/3.02_numpy.ipynb#X35sZmlsZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">])</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture%203/3.02_numpy.ipynb#X35sZmlsZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Indices are of type float: </span><span class="si">{</span><span class="n">indices</span><span class="o">.</span><span class="n">dtype</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture%203/3.02_numpy.ipynb#X35sZmlsZQ%3D%3D?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This does not work: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="ne">c</span>:\Users\schul\Dropbox\2023ws python course\neu715\lectures\lecture 3\3.02_numpy.ipynb Cell 26 line 3
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/c%3A/Users/schul/Dropbox/2023ws%20python</span><span class="si">%20c</span><span class="s1">ourse/neu715/lectures/lecture%203/3.02_numpy.ipynb#X34sZmlsZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">])</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/c%3A/Users/schul/Dropbox/2023ws%20python</span><span class="si">%20c</span><span class="s1">ourse/neu715/lectures/lecture%203/3.02_numpy.ipynb#X34sZmlsZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Indices are of type float: </span><span class="si">{</span><span class="n">indices</span><span class="o">.</span><span class="n">dtype</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/c%3A/Users/schul/Dropbox/2023ws%20python</span><span class="si">%20c</span><span class="s1">ourse/neu715/lectures/lecture%203/3.02_numpy.ipynb#X34sZmlsZQ%3D%3D?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This does not work: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="ne">IndexError</span>: arrays used as indices must be of integer (or boolean) type
 </pre></div>
@@ -825,8 +825,8 @@ np.diff(data)=array([0.11111111, 0.11111111, 0.11111111, 0.11111111, 0.11111111,
 </div>
 </div>
 </div>
-<p>In many numpy function, the <code class="docutils literal notranslate"><span class="pre">axis</span></code> argument allows you to apply an operation only to an axis, not to the full matrix.
-This allows you to comput the mean only over rows, or only over columns.</p>
+<p>In many numpy functions, the <code class="docutils literal notranslate"><span class="pre">axis</span></code> argument allows you to apply an operation only to an axis, not to the full matrix.
+This allows you to compute the mean only over rows, or only over columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]]</span>
@@ -928,7 +928,7 @@ data &gt; 10=array([[ True, False,  True],
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lower</span> <span class="o">=</span> <span class="n">data</span> <span class="o">&lt;</span> <span class="mi">10</span>
 <span class="n">upper</span> <span class="o">=</span> <span class="n">data</span> <span class="o">&gt;</span> <span class="mi">31</span>
-<span class="n">both</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span>  <span class="c1"># takes two boolean arrays, returns a new array in which all elements are True that where True at least one of the two inputs - lower OR upper</span>
+<span class="n">both</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span>  <span class="c1"># takes two boolean arrays, returns a new array in which all elements are True that where True in at least one of the two inputs - lower OR upper</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lower</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">upper</span><span class="p">)</span>
