@@ -520,9 +520,11 @@ But can have arbitrary indices, like strings or floats, not just integers.</p>
 <p>Create with <code class="docutils literal notranslate"><span class="pre">{key1:</span> <span class="pre">value1,</span> <span class="pre">key2:</span> <span class="pre">value2,</span> <span class="pre">...}</span></code> (not to be confused with set creation <code class="docutils literal notranslate"><span class="pre">{value1,</span> <span class="pre">value2}</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a phone book as a dictionary, with names as keys, and phone numbers as values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A phone book can be represented as two &quot;parallel&quot; lists - one with the names, and one with the phone numbers</span>
 <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">]</span>
 <span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">125324123</span><span class="p">,</span> <span class="mi">432246234</span><span class="p">]</span>
+
+<span class="c1"># We can represent the same data using a dictionary, with names as keys, and phone numbers as values</span>
 
 <span class="n">phone_book</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">125324123</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">:</span> <span class="mi">432246234</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">)</span>
@@ -534,7 +536,7 @@ But can have arbitrary indices, like strings or floats, not just integers.</p>
 
 <span class="c1"># Tom was mean to us - we are no longer friends. Let&#39;s delete his entry:</span>
 <span class="k">del</span> <span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">phone_number</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -567,6 +569,7 @@ But can have arbitrary indices, like strings or floats, not just integers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phone_book</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">:</span> <span class="mi">246234</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">:</span> <span class="mi">110</span><span class="p">}</span>
+
 <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="ow">in</span> <span class="n">phone_book</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
 </pre></div>
