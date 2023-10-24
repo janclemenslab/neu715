@@ -458,12 +458,17 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If you need the index and the item, use <code class="docutils literal notranslate"><span class="pre">enumerate(list)</span></code>, which returns <code class="docutils literal notranslate"><span class="pre">(index,</span> <span class="pre">item)</span></code> tuples:</p>
+<p>If you need the index and the item, use <code class="docutils literal notranslate"><span class="pre">enumerate(list)</span></code>. This creates and updates two variables in each iteration of the for loop - the first one for the list index, the second one for the list item:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">list_index</span><span class="p">,</span> <span class="n">list_item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="n">do</span> <span class="n">something</span>
+</pre></div>
+</div>
+<p>Here is an example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Estelle&#39;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -475,23 +480,31 @@ document.write(`
 </div>
 </div>
 </div>
-<p>What’s going on?</p>
+<p><strong>Unimportant side note</strong> Just so you can interpret error messages: Technically, <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> returns a tuple with two elements, <code class="docutils literal notranslate"><span class="pre">(index,</span> <span class="pre">item)</span></code>, and the two elements in the tuple are unpacked into two variables in the <code class="docutils literal notranslate"><span class="pre">for</span></code> statement.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Estelle&#39;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">index_item_tuple</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">index_item_tuple</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>  <span class="c1"># generate a tuple with two elements</span>
+<span class="n">element1</span><span class="p">,</span> <span class="n">element2</span> <span class="o">=</span> <span class="n">a_tuple</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">element1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">element2</span><span class="p">)</span>
 
-<span class="c1"># this &quot;unpacks&quot; the individual items in a tuple:</span>
-<span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="o">=</span> <span class="n">index_item_tuple</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+<span class="c1"># to illustrate this - please do not use enumerate like that</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Estelle&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">what</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">what</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">what</span><span class="p">))</span>  <span class="c1"># enumerate returns a tuple</span>
+    <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="o">=</span> <span class="n">what</span>  <span class="c1"># we can unpack the tuple - this is done implicitly in the statement &quot;for number, name in enumerate(names)&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, &#39;Tom&#39;)
-(1, &#39;Yolanda&#39;)
-(2, &#39;Estelle&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+20
+(0, &#39;Tom&#39;) &lt;class &#39;tuple&#39;&gt;
+0 Tom
+(1, &#39;Yolanda&#39;) &lt;class &#39;tuple&#39;&gt;
+1 Yolanda
+(2, &#39;Estelle&#39;) &lt;class &#39;tuple&#39;&gt;
 2 Estelle
 </pre></div>
 </div>
@@ -500,8 +513,12 @@ document.write(`
 </section>
 <section id="looping-over-multiple-lists-in-parallel">
 <h3>Looping over multiple lists in parallel<a class="headerlink" href="#looping-over-multiple-lists-in-parallel" title="Permalink to this heading">#</a></h3>
-<p>To loop over two or more “parallel” lists at the same time use
-<code class="docutils literal notranslate"><span class="pre">zip(list1,</span> <span class="pre">list2,</span> <span class="pre">...)</span></code> which returns <code class="docutils literal notranslate"><span class="pre">(item1,</span> <span class="pre">item2,</span> <span class="pre">...)</span></code> tuples</p>
+<p>To loop over two or more “parallel” lists at the same time use <code class="docutils literal notranslate"><span class="pre">zip()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item_from_list1</span><span class="p">,</span> <span class="n">item_from_list2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">):</span>
+    <span class="n">do</span> <span class="n">stuff</span>
+</pre></div>
+</div>
+<p>For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Estelle&#39;</span><span class="p">]</span>
@@ -515,6 +532,26 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tom 124325
 Yolanda 463763
 Estelle 7902435
+</pre></div>
+</div>
+</div>
+</div>
+<p>Just like <code class="docutils literal notranslate"><span class="pre">enumerate</span></code>, <code class="docutils literal notranslate"><span class="pre">zip</span></code> returns tuples with as many elements as you the lists you provided to <code class="docutils literal notranslate"><span class="pre">zip</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Estelle&#39;</span><span class="p">]</span>
+<span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">124325</span><span class="p">,</span> <span class="mi">463763</span><span class="p">,</span> <span class="mi">7902435</span><span class="p">]</span>
+<span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">whatever</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">phone_numbers</span><span class="p">,</span> <span class="n">ages</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">whatever</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">whatever</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;Tom&#39;, 124325, 23) &lt;class &#39;tuple&#39;&gt;
+(&#39;Yolanda&#39;, 463763, 28) &lt;class &#39;tuple&#39;&gt;
+(&#39;Estelle&#39;, 7902435, 25) &lt;class &#39;tuple&#39;&gt;
 </pre></div>
 </div>
 </div>
