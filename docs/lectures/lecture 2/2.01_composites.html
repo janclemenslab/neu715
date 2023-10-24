@@ -395,6 +395,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-this-useful">Why is this useful?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-key-value-pairs-in-a-dictionary">Looping over key/value pairs in a dictionary:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-dictionary-comprehensions">Bonus: Dictionary comprehensions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-dict-functions">Useful dict functions</a></li>
@@ -429,6 +430,25 @@ document.write(`
 </div>
 <p>Lists can be cast to tuples using <code class="docutils literal notranslate"><span class="pre">tuple(list_var)</span></code>.</p>
 <p><strong>Caution</strong>: However, the parentheses are pure decoration - it’s the comma that makes a tuple. For instance, a trailing comma after a value is sufficient to generate a tuple - this is a frequent cause for bugs. So always use parentheses!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">a_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+
+<span class="n">a_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
+[1, 10, 3, 4]
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">also_a_tuple</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># note the trailing comma after 1</span>
@@ -479,14 +499,13 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_with_duplicates</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>  <span class="c1"># list with duplicate values</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">list_with_duplicates</span><span class="p">)</span>
 
-<span class="n">list_as_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">list_with_duplicates</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">list_as_set</span><span class="p">),</span> <span class="n">list_as_set</span><span class="p">)</span>  <span class="c1"># contains only the unique values</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">list_with_duplicates</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 2, 4]
-&lt;class &#39;set&#39;&gt; {1, 2, 3, 4}
+{1, 2, 3, 4}
 </pre></div>
 </div>
 </div>
@@ -502,16 +521,19 @@ But can have arbitrary indices, like strings or floats, not just integers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a phone book as a dictionary, with names as keys, and phone numbers as values</span>
-<span class="n">phone_number</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">125324123</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">:</span> <span class="mi">432246234</span><span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">phone_number</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">phone_number</span><span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">])</span>  <span class="c1"># access values</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">]</span>
+<span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">125324123</span><span class="p">,</span> <span class="mi">432246234</span><span class="p">]</span>
+
+<span class="n">phone_book</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">125324123</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">:</span> <span class="mi">432246234</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">])</span>  <span class="c1"># access values</span>
 
 <span class="c1"># We made a new friend, let&#39;s add them to the phone book</span>
-<span class="n">phone_number</span><span class="p">[</span><span class="s1">&#39;Yolanda&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">190998010</span>  <span class="c1"># add/update valyes</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">phone_number</span><span class="p">)</span>
+<span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Yolanda&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">190998010</span>  <span class="c1"># add/update valyes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">)</span>
 
 <span class="c1"># Tom was mean to us - we are no longer friends. Let&#39;s delete his entry:</span>
-<span class="k">del</span> <span class="n">phone_number</span><span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">phone_number</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -525,15 +547,20 @@ But can have arbitrary indices, like strings or floats, not just integers.</p>
 </div>
 </div>
 </div>
-<p>There are two ways for creating an empty dictionary:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-<span class="n">d2</span> <span class="o">=</span> <span class="p">{}</span>
+<section id="why-is-this-useful">
+<h3>Why is this useful?<a class="headerlink" href="#why-is-this-useful" title="Permalink to this heading">#</a></h3>
+<p>First, dictionaries allow you to link to related datasets, like names and phone numbers, or animal names and behavioral scores.</p>
+<p>Second, it makes code more clear and readable, because dictionaires allow you to access data using keys as more meaningful indices. With a list, you can only use integers as indices. The integer corresponds to the position of the item in the list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">125324123</span><span class="p">,</span> <span class="mi">432246234</span><span class="p">]</span>
+<span class="n">phone_numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1">#  unclear who this number belongs to</span>
 </pre></div>
 </div>
+<p>But for a phone number, the important thing is the owner’s name, not where in the list it exists. With dictionaries, you can use the name as an “index” - the key. The meaning of the value in the dictionary is obvious from the code because it is made explicit:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">phone_book</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">125324123</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">:</span> <span class="mi">432246234</span><span class="p">}</span>
+<span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">]</span>  <span class="c1"># this is clearly Tom&#39;s phone number</span>
+</pre></div>
 </div>
-</div>
+</section>
 <section id="looping-over-key-value-pairs-in-a-dictionary">
 <h3>Looping over key/value pairs in a dictionary:<a class="headerlink" href="#looping-over-key-value-pairs-in-a-dictionary" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Dict.items()</span></code> returns (key, val) tuples. The parentheses are optional.</p>
@@ -727,6 +754,7 @@ False
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-this-useful">Why is this useful?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-key-value-pairs-in-a-dictionary">Looping over key/value pairs in a dictionary:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-dictionary-comprehensions">Bonus: Dictionary comprehensions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-dict-functions">Useful dict functions</a></li>
