@@ -429,22 +429,16 @@ document.write(`
 </pre></div>
 </div>
 <p>Lists can be cast to tuples using <code class="docutils literal notranslate"><span class="pre">tuple(list_var)</span></code>.</p>
-<p><strong>Caution</strong>: However, the parentheses are pure decoration - it’s the comma that makes a tuple. For instance, a trailing comma after a value is sufficient to generate a tuple - this is a frequent cause for bugs. So always use parentheses!</p>
+<p><strong>Caution</strong>: The parentheses are pure decoration - it’s the comma that makes a tuple. For instance, a trailing comma after a value is sufficient to generate a tuple - this is a frequent cause for bugs. So always use parentheses!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">a_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
-
-<span class="n">a_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
-[1, 10, 3, 4]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 2, 3, 4) &lt;class &#39;tuple&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -477,11 +471,28 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">a_tuple</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># this will fail, since tuples cannot be changed after creation</span>
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">janc</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">CloudStorage</span><span class="o">/</span><span class="n">Dropbox</span><span class="o">/</span><span class="n">_teaching</span><span class="o">/</span><span class="n">neu715</span><span class="o">/</span><span class="n">neu715</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="n">lecture</span> <span class="mi">2</span><span class="o">/</span><span class="mf">2.01</span><span class="n">_composites</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">5</span> <span class="n">line</span> <span class="mi">2</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture%202/2.01_composites.ipynb#W4sZmlsZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture%202/2.01_composites.ipynb#W4sZmlsZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">a_tuple</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># this will fail, since tuples cannot be changed after creation</span>
 
 <span class="ne">TypeError</span>: &#39;tuple&#39; object does not support item assignment
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you need to change the content of a tuple, cast it to a list:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">list_from_tuple</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span>  <span class="c1"># cast tuple to list</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">list_from_tuple</span><span class="p">))</span>
+
+<span class="n">list_from_tuple</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># this works</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;list&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -499,7 +510,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_with_duplicates</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>  <span class="c1"># list with duplicate values</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">list_with_duplicates</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">list_with_duplicates</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">list_with_duplicates</span><span class="p">))</span>  <span class="c1"># only keeps the unique values</span>
 </pre></div>
 </div>
 </div>
@@ -516,7 +527,7 @@ document.write(`
 <p>Dictionaries are central to the python intrinsics. And also quite useful.</p>
 <p>They can hold any value, like a list.
 But can have arbitrary indices, like strings or floats, not just integers.</p>
-<p>They consist of <code class="docutils literal notranslate"><span class="pre">key:value</span></code> pairs, where both the key and the value can be arbitrary python objects (numbers, strings, lists, …).</p>
+<p>They consist of <code class="docutils literal notranslate"><span class="pre">key:value</span></code> pairs, where both the key and the value can be almost any python object (numbers, strings, tuples (but not lists)).</p>
 <p>Create with <code class="docutils literal notranslate"><span class="pre">{key1:</span> <span class="pre">value1,</span> <span class="pre">key2:</span> <span class="pre">value2,</span> <span class="pre">...}</span></code> (not to be confused with set creation <code class="docutils literal notranslate"><span class="pre">{value1,</span> <span class="pre">value2}</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -528,23 +539,23 @@ But can have arbitrary indices, like strings or floats, not just integers.</p>
 
 <span class="n">phone_book</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">125324123</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">:</span> <span class="mi">432246234</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">])</span>  <span class="c1"># access values</span>
 
-<span class="c1"># We made a new friend, let&#39;s add them to the phone book</span>
-<span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Yolanda&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">190998010</span>  <span class="c1"># add/update valyes</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">])</span>  <span class="c1"># get values using the key inside brackets</span>
 
-<span class="c1"># Tom was mean to us - we are no longer friends. Let&#39;s delete his entry:</span>
-<span class="k">del</span> <span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">]</span>
+<span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1245264</span>  <span class="c1"># we can change the values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">])</span>
+
+<span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Bob&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">991</span>  <span class="c1"># we can add new key-value pairs to an existing list</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Tom&#39;: 125324123, &#39;Alice&#39;: 432246234}
-125324123
-{&#39;Tom&#39;: 125324123, &#39;Alice&#39;: 432246234, &#39;Yolanda&#39;: 190998010}
-{&#39;Alice&#39;: 432246234, &#39;Yolanda&#39;: 190998010}
+432246234
+1245264
+{&#39;Tom&#39;: 125324123, &#39;Alice&#39;: 1245264, &#39;Bob&#39;: 991}
 </pre></div>
 </div>
 </div>
@@ -565,13 +576,13 @@ But can have arbitrary indices, like strings or floats, not just integers.</p>
 </section>
 <section id="looping-over-key-value-pairs-in-a-dictionary">
 <h3>Looping over key/value pairs in a dictionary:<a class="headerlink" href="#looping-over-key-value-pairs-in-a-dictionary" title="Permalink to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">Dict.items()</span></code> returns (key, val) tuples. The parentheses are optional.</p>
+<p><code class="docutils literal notranslate"><span class="pre">my_dict.items()</span></code> returns (key, val) tuples. The parentheses are optional.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phone_book</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">:</span> <span class="mi">246234</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">:</span> <span class="mi">110</span><span class="p">}</span>
 
-<span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="ow">in</span> <span class="n">phone_book</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">phone_number</span> <span class="ow">in</span> <span class="n">phone_book</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">phone_number</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -620,30 +631,31 @@ Yolanda 110
 </section>
 <section id="useful-dict-functions">
 <h3>Useful dict functions<a class="headerlink" href="#useful-dict-functions" title="Permalink to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dct</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_value</span>  <span class="c1"># adds new and overwrites existing key:value pair</span>
-<span class="n">dct</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">other_dct</span><span class="p">)</span>  <span class="c1"># &quot;merge&quot; two dictionaries, adds new and overwrites existing key:value pairs</span>
-<span class="n">key</span> <span class="ow">in</span> <span class="n">dct</span>  <span class="c1"># check if a key is in the dictionary</span>
-<span class="n">dct</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>  <span class="c1"># &quot;view&quot; of all keys in the dictionary, can cast to list</span>
-<span class="n">dct</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>  <span class="c1"># &quot;view&quot; of all values in the dictionary, can cast to list</span>
-<span class="k">del</span> <span class="n">dct</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="c1"># remove key:value pair, indexed by &quot;key&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># create an emptu dict called my_dict</span>
+<span class="n">my_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_value</span>  <span class="c1"># adds new and overwrites existing key:value pair</span>
+<span class="n">my_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">other_my_dict</span><span class="p">)</span>  <span class="c1"># &quot;merge&quot; two dictionaries, adds new and overwrites existing key:value pairs</span>
+<span class="n">key</span> <span class="ow">in</span> <span class="n">my_dict</span>  <span class="c1"># check if a key is in the dictionary</span>
+<span class="n">my_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>  <span class="c1"># &quot;view&quot; of all keys in the dictionary, can cast to list</span>
+<span class="n">my_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>  <span class="c1"># &quot;view&quot; of all values in the dictionary, can cast to list</span>
+<span class="k">del</span> <span class="n">my_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="c1"># remove key:value pair, indexed by &quot;key&quot;</span>
 </pre></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phone_book</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">:</span> <span class="mi">246234</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">:</span> <span class="mi">110</span><span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">phone_number</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">phone_number</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Olaf&#39;</span> <span class="ow">in</span> <span class="n">phone_number</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">phone_book</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Olaf&#39;</span> <span class="ow">in</span> <span class="n">phone_book</span><span class="p">)</span>
 
 <span class="c1"># new key/value pairs will be added, values for existing keys will be overwritten</span>
-<span class="n">phone_number</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">984703</span><span class="p">,</span> <span class="s1">&#39;Francoise&#39;</span><span class="p">:</span> <span class="mi">123156</span><span class="p">,</span> <span class="s1">&#39;Alan&#39;</span><span class="p">:</span> <span class="mi">9630</span><span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">phone_number</span><span class="p">)</span>
+<span class="n">phone_book</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">984703</span><span class="p">,</span> <span class="s1">&#39;Francoise&#39;</span><span class="p">:</span> <span class="mi">123156</span><span class="p">,</span> <span class="s1">&#39;Alan&#39;</span><span class="p">:</span> <span class="mi">9630</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;Alice&#39;, &#39;Yolanda&#39;, &#39;Tom&#39;, &#39;Francoise&#39;, &#39;Alan&#39;]) dict_values([432246234, 190998010, 984703, 123156, 9630])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;Tom&#39;, &#39;Alice&#39;, &#39;Yolanda&#39;]) dict_values([123, 246234, 110])
 False
-{&#39;Alice&#39;: 432246234, &#39;Yolanda&#39;: 190998010, &#39;Tom&#39;: 984703, &#39;Francoise&#39;: 123156, &#39;Alan&#39;: 9630}
+{&#39;Tom&#39;: 984703, &#39;Alice&#39;: 246234, &#39;Yolanda&#39;: 110, &#39;Francoise&#39;: 123156, &#39;Alan&#39;: 9630}
 </pre></div>
 </div>
 </div>

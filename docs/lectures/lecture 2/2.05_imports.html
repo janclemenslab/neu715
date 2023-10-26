@@ -422,7 +422,7 @@ document.write(`
 </div>
 <p>So what is going on? Let’s use a simpler example:</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> package allows you - among other things - to discover and manipulate directories and files.</p>
-<p>To use the <code class="docutils literal notranslate"><span class="pre">os</span></code> package, we need to import it. The general syntax for importing is</p>
+<p>To use the <code class="docutils literal notranslate"><span class="pre">os</span></code> package, we need to “import” it into the python memory. The general syntax for importing is</p>
 <p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">PACKAGE_NAME</span></code></p>
 <p>You can then access functions within the package using the dot notation: <code class="docutils literal notranslate"><span class="pre">PACKAGE_NAME.FUNCTION_NAME</span></code></p>
 <div class="cell docutils container">
@@ -444,27 +444,33 @@ For instance, functions in the <code class="docutils literal notranslate"><span 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="n">current_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">current_dir</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">current_dir</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;/Users/clemens10/Library/CloudStorage/Dropbox/code.lab/teaching/2023ws python course&#39;, &#39;2 loops and functions&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current_dir=&#39;/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture 2&#39;
+os.path.split(current_dir)=(&#39;/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures&#39;, &#39;lecture 2&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <p>Sometimes, the modules need to be imported explicitely, with <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">PACKAGE_NAME.MODULE_NAME</span></code>, for instance <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os.path</span></code>.</p>
-<p>Referring to modules within packages can lead to long names or sometimes you want to use only a module. The <code class="docutils literal notranslate"><span class="pre">as</span></code> keyword allows you to define an alias: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">PACKAGE_NAME</span> <span class="pre">as</span> <span class="pre">ALIAS</span></code> or <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">PACKAGE_NAME.MODULE_NAME</span> <span class="pre">as</span> <span class="pre">ALIAS</span></code>:</p>
+<p>This is what we do when we call <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">matplotlib.pyplot</span></code> - we import <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> from the package <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
+<p>Referring to modules within packages can lead to long names or sometimes you want to use only a module. The <code class="docutils literal notranslate"><span class="pre">as</span></code> keyword allows you to define an alias: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">PACKAGE_NAME</span> <span class="pre">as</span> <span class="pre">ALIAS</span></code> or <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">PACKAGE_NAME.MODULE_NAME</span> <span class="pre">as</span> <span class="pre">ALIAS</span></code>.</p>
+<p>You can then access all functions in the module using the alias:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">osp</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">current_dir</span><span class="p">))</span>  <span class="c1"># this is equivalent to calling `os.path.split()`</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">current_dir</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;/Users/clemens10/Library/CloudStorage/Dropbox/code.lab/teaching/2023ws python course&#39;, &#39;2 loops and functions&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures&#39;, &#39;lecture 2&#39;)
+(&#39;/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures&#39;, &#39;lecture 2&#39;)
 </pre></div>
 </div>
 </div>
@@ -477,11 +483,19 @@ For instance, functions in the <code class="docutils literal notranslate"><span 
 
 <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">29</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="s1">&#39;or&#39;</span><span class="p">)</span>
 <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="c1"># the above is the same as:</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">alias</span>
+
+<span class="n">alias</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">29</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="s1">&#39;or&#39;</span><span class="p">)</span>
+<span class="n">alias</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ffe963c86fc0d8d0a6a6ab9981e257e1d2b71b271be6e3409716c21a54fca7cc.png" src="../../_images/ffe963c86fc0d8d0a6a6ab9981e257e1d2b71b271be6e3409716c21a54fca7cc.png" />
+<img alt="../../_images/9e20cc139e29ba80aba68f419f65764f56f569a5648db238749c23b437307804.png" src="../../_images/9e20cc139e29ba80aba68f419f65764f56f569a5648db238749c23b437307804.png" />
+<img alt="../../_images/9e20cc139e29ba80aba68f419f65764f56f569a5648db238749c23b437307804.png" src="../../_images/9e20cc139e29ba80aba68f419f65764f56f569a5648db238749c23b437307804.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">as</span> <span class="pre">plt</span></code> provides a shortcut, for accessing everything under <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> through the much shorter <code class="docutils literal notranslate"><span class="pre">plt</span></code>.</p>
@@ -506,31 +520,40 @@ For instance, functions in the <code class="docutils literal notranslate"><span 
 <p>Here are common aliases everyone in the python world uses - if you use these packages, import them the same as everyone else so that others understand your code more easily.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># you used these already</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># next week!</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># in two weeks!</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Just for completeness, there is another way of importing: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">PACKAGE_NAME</span> <span class="pre">import</span> <span class="pre">MODULE_NAME</span> <span class="pre">as</span> <span class="pre">ALIAS</span></code></p>
+<p>Just for completeness, there is another way of importing: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">PACKAGE_NAME</span> <span class="pre">import</span> <span class="pre">MODULE_NAME</span></code>.</p>
+<p>With that you can access functions using the module name:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt22</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Can also be combined with an alias</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt22</span>
 <span class="n">plt22</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">plt22</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/30c8667ca86179e3d56ae932227188eb64218fa247294dde561b8d7979fbba54.png" src="../../_images/30c8667ca86179e3d56ae932227188eb64218fa247294dde561b8d7979fbba54.png" />
+<img alt="../../_images/bf97f6f19355530508404f1c7f00fdb0cf77f738ec6b11adf612eee420526af5.png" src="../../_images/bf97f6f19355530508404f1c7f00fdb0cf77f738ec6b11adf612eee420526af5.png" />
+<img alt="../../_images/bf97f6f19355530508404f1c7f00fdb0cf77f738ec6b11adf612eee420526af5.png" src="../../_images/bf97f6f19355530508404f1c7f00fdb0cf77f738ec6b11adf612eee420526af5.png" />
 </div>
 </div>
 <section id="importing-your-own-code">
 <h2>Importing your own code<a class="headerlink" href="#importing-your-own-code" title="Permalink to this heading">#</a></h2>
 <p>So far, everything happened inside a single notebook.</p>
 <p>But what if we want to re-use our own code across notebooks, for instance the <code class="docutils literal notranslate"><span class="pre">mean</span></code> or <code class="docutils literal notranslate"><span class="pre">concat</span></code> functions?</p>
-<p>We can save the code to a python code file, with the ending <code class="docutils literal notranslate"><span class="pre">.py</span></code> and import it!</p>
+<p>Well, any python code file (ending inn <code class="docutils literal notranslate"><span class="pre">.py</span></code>) is a module.</p>
+<p>We can save the code to a python code file, with the ending <code class="docutils literal notranslate"><span class="pre">.py</span></code> and import it!
+Note that the file needs to be in the same directory as the notebook you import it into. There are ways around this but we will not cover this here.</p>
 <p>Say we have this function for getting the max from a list:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -563,12 +586,9 @@ For instance, functions in the <code class="docutils literal notranslate"><span 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_functions</span>
-<span class="n">my_functions</span><span class="o">.</span><span class="n">my_max</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54
+<span class="nb">print</span><span class="p">(</span><span class="n">my_functions</span><span class="o">.</span><span class="n">my_max</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">45</span><span class="p">]))</span> <span class="c1"># call the imported function</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">my_max_local</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">45</span><span class="p">]))</span>  <span class="c1"># call the local function</span>
 </pre></div>
 </div>
 </div>
@@ -609,6 +629,14 @@ For instance, functions in the <code class="docutils literal notranslate"><span 
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Caution</strong> Once you’ve imported a function, any changes to it will not be reflected immediately in the code. This is because when python encounters an import statement, it “checks” whether this package/module has been imported before and will only import it if it has not been imported before. You have to restart the notebook kernel and import the module again to use changed code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code example</span>
 </pre></div>
 </div>
 </div>

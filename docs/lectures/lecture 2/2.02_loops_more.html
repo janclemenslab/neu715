@@ -467,8 +467,9 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Estelle&#39;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -523,8 +524,9 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Estelle&#39;</span><span class="p">]</span>
 <span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">124325</span><span class="p">,</span> <span class="mi">463763</span><span class="p">,</span> <span class="mi">7902435</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">phone_number</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">phone_numbers</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">phone_number</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">phone_numbers</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -543,15 +545,15 @@ Estelle 7902435
 <span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">124325</span><span class="p">,</span> <span class="mi">463763</span><span class="p">,</span> <span class="mi">7902435</span><span class="p">]</span>
 <span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">whatever</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">phone_numbers</span><span class="p">,</span> <span class="n">ages</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">whatever</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">whatever</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">age</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">phone_numbers</span><span class="p">,</span> <span class="n">ages</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;Tom&#39;, 124325, 23) &lt;class &#39;tuple&#39;&gt;
-(&#39;Yolanda&#39;, 463763, 28) &lt;class &#39;tuple&#39;&gt;
-(&#39;Estelle&#39;, 7902435, 25) &lt;class &#39;tuple&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tom 124325 23
+Yolanda 463763 28
+Estelle 7902435 25
 </pre></div>
 </div>
 </div>
@@ -573,21 +575,27 @@ Estelle 7902435
 
 <span class="n">failed</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">failed_indices</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">test_score</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_scores</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">test_score</span> <span class="o">&lt;</span> <span class="n">target_score</span><span class="p">:</span>
-        <span class="n">failed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_score</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_scores</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="n">target_score</span><span class="p">:</span>
+        <span class="n">failed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
         <span class="n">failed_indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Data contained </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">failed</span><span class="p">)</span><span class="si">}</span><span class="s1"> failed tests with fewer than </span><span class="si">{</span><span class="n">target_score</span><span class="si">}</span><span class="s1"> points.&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The failed tests had these scores: </span><span class="si">{</span><span class="n">failed</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Students with these indices failed: </span><span class="si">{</span><span class="n">failed_indices</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">failed</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">failed_indices</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data contained 2 failed tests with fewer than 10 points.
-The failed tests had these scores: [7, 8]
-Students with these indices failed: [0, 3]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 7
+1 12
+2 13
+3 8
+4 15
+[7, 8]
+[0, 3]
 </pre></div>
 </div>
 </div>
