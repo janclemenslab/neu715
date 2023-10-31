@@ -403,8 +403,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-management-dependency-hell-and-environments">Package management, dependency hell, and environments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environments">Environments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-tricks">Tips and tricks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-conda-faster">Make conda faster</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-jupyter-notebooks-in-an-environment">Install jupyter notebooks in an environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-lost-track-of-my-environments-and-what-is-installed-in-them">I lost track of my environments and what is installed in them</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-if-i-messed-up-my-environment">What if I messed up my environment?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-work-with-jupyter-notebooks-in-my-environment">How do I work with jupyter notebooks in my environment?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-is-slow">Conda is slow!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anaconda-is-big">Anaconda is big!</a></li>
 </ul>
 </li>
 </ul>
@@ -473,30 +476,50 @@ document.write(`
 <p>You should never directly install anything into <code class="docutils literal notranslate"><span class="pre">base</span></code>!</p>
 <p>Rather, you create an environment, activate and install things into it. That way, if you mess up, you can delete the specific environment, but still have a working python installation.</p>
 <ol class="arabic simple">
-<li><p>Create the environment: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">test</span></code>. This will create an empty environment. You can also specify packages to install during creation, for instance a python version or numpy: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--n</span> <span class="pre">pynp</span> <span class="pre">python=3.9</span> <span class="pre">numpy</span></code></p></li>
-<li><p>Activate the environment: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">what</span></code>. You command line should indicate that the active environment is now <code class="docutils literal notranslate"><span class="pre">what</span></code>. Any call to <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code> will only affect the active environment.</p></li>
-<li><p>Install your packages: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">matplotlib</span></code>. Conda will find the matplotlib packages, plus all packages matplotlib depends on (basically, imports). With the right versions!</p></li>
+<li><p>Create the environment: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">my_env</span></code>. This will create an empty environment. You can also specify packages to install during creation, for instance a python version or numpy: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">my_env</span> <span class="pre">python=3.9</span> <span class="pre">numpy</span></code></p></li>
+<li><p>Activate the environment: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">my_env</span></code>. You command line should indicate that the active environment is now <code class="docutils literal notranslate"><span class="pre">my_env</span></code>. Any call to <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code> will now only affect the active environment.</p></li>
+<li><p>Install your packages: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">matplotlib</span></code>. Conda will find the matplotlib packages, plus all packages matplotlib depends on (basically, all imports). With the right versions!</p></li>
 </ol>
 <p>It is good practice to have one environment per project. If you want to switch between environments, always deactivate the current one, with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code>. Otherwise, you get weird interaction effects.</p>
-<p>If you messed up, you can easily remove the environment and start from scratch:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
-conda<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> </span>--name<span class="w"> </span>what
-</pre></div>
-</div>
+<p>I will demonstrate this in one example:</p>
+<ul class="simple">
+<li><p>create env</p></li>
+<li><p>activate env</p></li>
+<li><p>install conda packages</p></li>
+<li><p>install pip package</p></li>
+<li><p>deactivate env</p></li>
+</ul>
 </section>
 <section id="tips-and-tricks">
 <h2>Tips and tricks<a class="headerlink" href="#tips-and-tricks" title="Permalink to this heading">#</a></h2>
-<section id="make-conda-faster">
-<h3>Make conda faster<a class="headerlink" href="#make-conda-faster" title="Permalink to this heading">#</a></h3>
-<p>Conda can be slow to resolve all dependencies between the packages and their dependencies.</p>
-<p>Exercise: Install and enable the faster mamba solver - google: “conda mamba solver” and follow the instructions.</p>
+<section id="i-lost-track-of-my-environments-and-what-is-installed-in-them">
+<h3>I lost track of my environments and what is installed in them<a class="headerlink" href="#i-lost-track-of-my-environments-and-what-is-installed-in-them" title="Permalink to this heading">#</a></h3>
+<p>You can list all conda environments on your machine with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code>.</p>
+<p>You can list all packages install in the currently active environment with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code>.</p>
 </section>
-<section id="install-jupyter-notebooks-in-an-environment">
-<h3>Install jupyter notebooks in an environment<a class="headerlink" href="#install-jupyter-notebooks-in-an-environment" title="Permalink to this heading">#</a></h3>
+<section id="what-if-i-messed-up-my-environment">
+<h3>What if I messed up my environment?<a class="headerlink" href="#what-if-i-messed-up-my-environment" title="Permalink to this heading">#</a></h3>
+<p>If you messed up, you can easily remove the environment and start from scratch:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
+conda<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> </span>--name<span class="w"> </span>my_env
+</pre></div>
+</div>
+</section>
+<section id="how-do-i-work-with-jupyter-notebooks-in-my-environment">
+<h3>How do I work with jupyter notebooks in my environment?<a class="headerlink" href="#how-do-i-work-with-jupyter-notebooks-in-my-environment" title="Permalink to this heading">#</a></h3>
+<p>Install the following packages:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">ipykernel</span></code> (if you use VSCode)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">jupyterlab</span></code> (otherwise)</p></li>
 </ul>
+</section>
+<section id="conda-is-slow">
+<h3>Conda is slow!<a class="headerlink" href="#conda-is-slow" title="Permalink to this heading">#</a></h3>
+<p>Conda can be slow to resolve all dependencies between the packages and their dependencies. The “mamba solver” speeds up this process. To install and use it, google “conda mamba solver” and follow the instructions.</p>
+</section>
+<section id="anaconda-is-big">
+<h3>Anaconda is big!<a class="headerlink" href="#anaconda-is-big" title="Permalink to this heading">#</a></h3>
+<p>Install miniforge: <span class="xref myst">https://github.com/conda-forge/miniforge</span>.</p>
 </section>
 </section>
 </section>
@@ -575,8 +598,11 @@ conda<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> <
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-management-dependency-hell-and-environments">Package management, dependency hell, and environments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environments">Environments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-tricks">Tips and tricks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-conda-faster">Make conda faster</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-jupyter-notebooks-in-an-environment">Install jupyter notebooks in an environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-lost-track-of-my-environments-and-what-is-installed-in-them">I lost track of my environments and what is installed in them</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-if-i-messed-up-my-environment">What if I messed up my environment?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-work-with-jupyter-notebooks-in-my-environment">How do I work with jupyter notebooks in my environment?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-is-slow">Conda is slow!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anaconda-is-big">Anaconda is big!</a></li>
 </ul>
 </li>
 </ul>
