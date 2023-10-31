@@ -62,10 +62,10 @@ parts:
       title: Numerical computing
     - file: lectures/lecture 3/3.03_files
       title: Working with files
-  # - caption: Exercises 3
-  #   chapters:
-  #   - file: exercises/exercises 3/3.02_numpy_exercises
-  #     title: Numerical computing
-  #   - file: exercises/exercises 3/3.03_files_exercises
-  #     title: Working with files
+  - caption: Exercises 3
+    chapters:
+    - file: exercises/exercises 3/3.02_numpy_exercises
+      title: Numerical computing
+    - file: exercises/exercises 3/3.03_files_exercises
+      title: Working with files
 

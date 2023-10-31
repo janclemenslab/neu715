@@ -1,0 +1,970 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Exercises 3.03 - Working with files &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 3/3.03_files_exercises';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Exercises 3.2 - Numpy" href="3.02_numpy_exercises.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Neu715 - Neuroscientific Data Analysis using Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.01_variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.02_conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.03_lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.04_loops_simple.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.05_matplotlib.html">Plotting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.01_variables_exercises.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.03_lists_exercises.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.05_matplotlib_exercises.html">Plotting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.01_composites.html">Composite data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.02_loops_more.html">Loops (part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.03_functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.04_exceptions.html">Handling errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.05_imports.html">External code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.01_composites_exercises.html">Composite data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.02_loops_more_exercises.html">Loops (part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.03_functions_exercises.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.04_exceptions_exercises.html">Handling errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.05_imports_exercises.html">External code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.01_packages_and_environments.html">Installing packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.02_numpy.html">Numerical computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.03_files.html">Working with files</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 3</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="3.02_numpy_exercises.html">Numerical computing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Working with files</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 3/3.03_files_exercises.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 3/3.03_files_exercises.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/exercises/exercises 3/3.03_files_exercises.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exercises 3.03 - Working with files</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-common-data-analysis-workflow">A common data analysis workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-processing-and-generating-file-paths">Exercise 1 - processing and generating file paths</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#take-the-path-for-the-data-file-apart">1) Take the path for the data file apart:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reassemble-the-parts-to-form-the-path-for-the-results-file">2) Reassemble the parts to form the path for the results file:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-discovering-files">Exercise 2 - Discovering files</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-files-in-a-folder">1) List all files in a folder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-only-the-data-files-ending-in-csv-in-the-sub-folder">2) List only the data files (ending in .csv) in the sub folder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-data-files-ending-in-csv-in-all-sub-folders">3) List all data files (ending in csv) in all sub folders</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-manipulate-file-names-in-a-list">Exercise 3 - Manipulate file names in a list</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1) Take the path for the data file apart:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reassemble-the-parts-from-the-first-file-name-form-the-path-for-the-results-file">2) Reassemble the parts from the first file name form the path for the results file</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-steps-1-2-to-all-files-in-the-list">3) Apply steps 1 + 2 to all files in the list</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-processing-files">Exercise 4 - Processing files</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-from-a-single-file">1) Load data from a single file</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-mean">2) Compute the mean</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-list">3) Load data from all files, compute the means and collect the means in a list</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-2d-numpy-array">4) Load data from all files, compute the means and collect the means in a 2D numpy array</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-results-to-a-file">5) Save the results to a file</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-load-the-results-from-the-file-you-just-saved-and-plot-the-results">Exercise 5 - load the results from the file you just saved and plot the results</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises-3-03-working-with-files">
+<h1>Exercises 3.03 - Working with files<a class="headerlink" href="#exercises-3-03-working-with-files" title="Permalink to this heading">#</a></h1>
+<section id="a-common-data-analysis-workflow">
+<h2>A common data analysis workflow<a class="headerlink" href="#a-common-data-analysis-workflow" title="Permalink to this heading">#</a></h2>
+<p>In this exercise, you will implement step-by-step a common workflow for analyzing and aggregating experimental datasets:</p>
+<ul class="simple">
+<li><p>Experimental data were collected over multiple days, with the data for each day in a separate subdirectory in <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code>.</p></li>
+<li><p>During the day, the animal was trained. The animal was tested in 40 trials before (“initial”) and after (“final”) training and the resulting behavioral scores were saved in separate files in each day’s folder.</p></li>
+</ul>
+<p>We want to:</p>
+<ol class="arabic simple">
+<li><p>compute the average initial and final score for each days</p></li>
+<li><p>plot the initial and final average scores across days.</p></li>
+</ol>
+<p>To do that we need to:</p>
+<ol class="arabic simple">
+<li><p>Discover the data files</p></li>
+<li><p>Load and process the data files for each day and epoch (initial/final)</p></li>
+<li><p>Save the processed results in a file</p></li>
+<li><p>Load and plot the results</p></li>
+</ol>
+<section id="exercise-1-processing-and-generating-file-paths">
+<h3>Exercise 1 - processing and generating file paths<a class="headerlink" href="#exercise-1-processing-and-generating-file-paths" title="Permalink to this heading">#</a></h3>
+<p>The behavioral data is organized in the following folder structure:
+<code class="docutils literal notranslate"><span class="pre">behavioral_data/DATENAME/DATA_FILE_NAME.SUFFIX</span></code></p>
+<p>Familiarize yourself with how the directory is organized using the windows file explorer or mac file finder.</p>
+<p>We want to process the data, and save the results into the following path:
+<code class="docutils literal notranslate"><span class="pre">behavioral_results/DATENAME/DATA_FILE_NAME.SUFFIX</span></code>. In exercise one, you will generate the paths for the results file from the paths of the data file.</p>
+<p>To make this concrete: Say the data file is at ‘behavioral_data/20230914/final_behavioral_scores.csv’. Generate a path so we can save the results file to ‘behavioral_results/20230914/final_behavioral_scores.txt’. What we need to change is the top directory from ‘behavioral_data’ to ‘behavioral_results’ and the extension from ‘csv’ to ‘txt’. We keep the names of the experiment directory and of the data file.</p>
+<section id="take-the-path-for-the-data-file-apart">
+<h4>1) Take the path for the data file apart:<a class="headerlink" href="#take-the-path-for-the-data-file-apart" title="Permalink to this heading">#</a></h4>
+<p>You are given the following path: ‘behavioral_data/20230914/final_behavioral_scores.csv’</p>
+<p>As a first step, use path manipulations to extract the following information form the path:</p>
+<ul class="simple">
+<li><p>the parent directory (‘behavioral_data’)</p></li>
+<li><p>the directory for the experiment (‘20230914’)</p></li>
+<li><p>the stem of the data file (‘final_behavioral_scores’)</p></li>
+<li><p>the suffix of the data file (‘.csv’)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;</span>
+
+<span class="c1"># your solution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>all parts: [&#39;behavioral_data&#39;, &#39;20230914&#39;, &#39;final_behavioral_scores.csv&#39;]
+top directory: behavioral_data
+experiment directory: 20230914
+file stem: final_behavioral_scores
+file suffix: .csv
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reassemble-the-parts-to-form-the-path-for-the-results-file">
+<h4>2) Reassemble the parts to form the path for the results file:<a class="headerlink" href="#reassemble-the-parts-to-form-the-path-for-the-results-file" title="Permalink to this heading">#</a></h4>
+<p>For the data file in ‘behavioral_data/20230914/final_behavioral_scores.csv’, the results should be in
+‘behavioral_results/20230914/final_behavioral_scores.txt’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>behavioral_results/20230914/final_behavioral_scores.txt
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-2-discovering-files">
+<h3>Exercise 2 - Discovering files<a class="headerlink" href="#exercise-2-discovering-files" title="Permalink to this heading">#</a></h3>
+<p>To process all data files in the folder <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code>, we first need to discover them, using <code class="docutils literal notranslate"><span class="pre">glob</span></code>.</p>
+<section id="list-all-files-in-a-folder">
+<h4>1) List all files in a folder<a class="headerlink" href="#list-all-files-in-a-folder" title="Permalink to this heading">#</a></h4>
+<p>The subfolder <code class="docutils literal notranslate"><span class="pre">20230914</span></code> in <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code> contains a bunch of files. Use <code class="docutils literal notranslate"><span class="pre">glob</span></code> to list all files in that folder:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230914/broken.msg&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-only-the-data-files-ending-in-csv-in-the-sub-folder">
+<h4>2) List only the data files (ending in .csv) in the sub folder<a class="headerlink" href="#list-only-the-data-files-ending-in-csv-in-the-sub-folder" title="Permalink to this heading">#</a></h4>
+<p>The listing above yielded 3 files - two data files ending in ‘.csv’ and one garbage file called ‘broken.msg’. We only want to list the data files - not the garbage file.</p>
+<p>Modify your code that uses <code class="docutils literal notranslate"><span class="pre">glob</span></code> above to list only the ‘.csv’ files, but no other files that might exist in that folder.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-all-data-files-ending-in-csv-in-all-sub-folders">
+<h4>3) List all data files (ending in csv) in all sub folders<a class="headerlink" href="#list-all-data-files-ending-in-csv-in-all-sub-folders" title="Permalink to this heading">#</a></h4>
+<p>We want to process <em>all</em> data files - from all days in <code class="docutils literal notranslate"><span class="pre">behavioral_results</span></code>, not just the ones from the day <code class="docutils literal notranslate"><span class="pre">20230914</span></code>.</p>
+<p>Modify your code that uses <code class="docutils literal notranslate"><span class="pre">glob</span></code> above to list all the csv files in all subfolders in <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code>. Use a single command - no for loop!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;behavioral_data/20230912/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230912/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230913/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230913/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230915/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230915/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230916/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230916/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230917/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230917/initial_behavioral_scores.csv&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-3-manipulate-file-names-in-a-list">
+<h3>Exercise 3 - Manipulate file names in a list<a class="headerlink" href="#exercise-3-manipulate-file-names-in-a-list" title="Permalink to this heading">#</a></h3>
+<p>Now that we have a listing of the data files, we can now take apart the names of the data files and generate the names for results files. We will basically apply what we have done in exercises 1 + 2 above to all paths, using a for loop.</p>
+<section id="id1">
+<h4>1) Take the path for the data file apart:<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<p>As a first step, take the first file in the list <code class="docutils literal notranslate"><span class="pre">data_files</span></code>.</p>
+<p>Use path manipulations to extract the following information form the path:</p>
+<ul class="simple">
+<li><p>the parent directory (‘behavioral_data’)</p></li>
+<li><p>the directory for the experiment (‘20230912’)</p></li>
+<li><p>the stem of the data file (‘final_behavioral_scores)</p></li>
+<li><p>the suffix of the data file (‘.csv’)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;behavioral_data/20230912/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230912/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/initial_behavioral_scores.csv&#39;</span><span class="p">]</span>
+
+<span class="c1"># your solution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>behavioral_data/20230912/final_behavioral_scores.csv
+[&#39;behavioral_data&#39;, &#39;20230912&#39;, &#39;final_behavioral_scores.csv&#39;] 20230912 final_behavioral_scores.csv final_behavioral_scores .csv
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reassemble-the-parts-from-the-first-file-name-form-the-path-for-the-results-file">
+<h4>2) Reassemble the parts from the first file name form the path for the results file<a class="headerlink" href="#reassemble-the-parts-from-the-first-file-name-form-the-path-for-the-results-file" title="Permalink to this heading">#</a></h4>
+<p>Now take the file parts and reassemble/modify them to generate the path for a results file.</p>
+<p>For the data file in ‘behavioral_data/20230912/final_behavioral_scores.csv’, the results should be in
+‘behavioral_results/20230912/final_behavioral_scores.txt’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>behavioral_results/20230912/final_behavioral_scores.txt
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="apply-steps-1-2-to-all-files-in-the-list">
+<h4>3) Apply steps 1 + 2 to all files in the list<a class="headerlink" href="#apply-steps-1-2-to-all-files-in-the-list" title="Permalink to this heading">#</a></h4>
+<p>Now take apart the names of the data files and reassemble them to the names of the results files for files in <code class="docutils literal notranslate"><span class="pre">data_files</span></code>.</p>
+<p>Collect the names of the results files in a new list called <code class="docutils literal notranslate"><span class="pre">results_file_names</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;behavioral_data/20230912/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230912/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/initial_behavioral_scores.csv&#39;</span><span class="p">]</span>
+
+<span class="c1"># your solution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>behavioral_data/20230912/final_behavioral_scores.csv
+behavioral_results/20230912/final_behavioral_scores.txt
+behavioral_data/20230912/initial_behavioral_scores.csv
+behavioral_results/20230912/initial_behavioral_scores.txt
+behavioral_data/20230913/final_behavioral_scores.csv
+behavioral_results/20230913/final_behavioral_scores.txt
+behavioral_data/20230913/initial_behavioral_scores.csv
+behavioral_results/20230913/initial_behavioral_scores.txt
+behavioral_data/20230914/final_behavioral_scores.csv
+behavioral_results/20230914/final_behavioral_scores.txt
+behavioral_data/20230914/initial_behavioral_scores.csv
+behavioral_results/20230914/initial_behavioral_scores.txt
+behavioral_data/20230915/final_behavioral_scores.csv
+behavioral_results/20230915/final_behavioral_scores.txt
+behavioral_data/20230915/initial_behavioral_scores.csv
+behavioral_results/20230915/initial_behavioral_scores.txt
+behavioral_data/20230916/final_behavioral_scores.csv
+behavioral_results/20230916/final_behavioral_scores.txt
+behavioral_data/20230916/initial_behavioral_scores.csv
+behavioral_results/20230916/initial_behavioral_scores.txt
+behavioral_data/20230917/final_behavioral_scores.csv
+behavioral_results/20230917/final_behavioral_scores.txt
+behavioral_data/20230917/initial_behavioral_scores.csv
+behavioral_results/20230917/initial_behavioral_scores.txt
+[&#39;behavioral_results/20230912/final_behavioral_scores.txt&#39;, &#39;behavioral_results/20230912/initial_behavioral_scores.txt&#39;, &#39;behavioral_results/20230913/final_behavioral_scores.txt&#39;, &#39;behavioral_results/20230913/initial_behavioral_scores.txt&#39;, &#39;behavioral_results/20230914/final_behavioral_scores.txt&#39;, &#39;behavioral_results/20230914/initial_behavioral_scores.txt&#39;, &#39;behavioral_results/20230915/final_behavioral_scores.txt&#39;, &#39;behavioral_results/20230915/initial_behavioral_scores.txt&#39;, &#39;behavioral_results/20230916/final_behavioral_scores.txt&#39;, &#39;behavioral_results/20230916/initial_behavioral_scores.txt&#39;, &#39;behavioral_results/20230917/final_behavioral_scores.txt&#39;, &#39;behavioral_results/20230917/initial_behavioral_scores.txt&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-4-processing-files">
+<h3>Exercise 4 - Processing files<a class="headerlink" href="#exercise-4-processing-files" title="Permalink to this heading">#</a></h3>
+<p>We have a list of all data files in the folder <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code>. Let’s process the data.</p>
+<section id="load-data-from-a-single-file">
+<h4>1) Load data from a single file<a class="headerlink" href="#load-data-from-a-single-file" title="Permalink to this heading">#</a></h4>
+<p>As a first step, take the first file in the list <code class="docutils literal notranslate"><span class="pre">data_files</span></code>.</p>
+<p>Load the data from the file using <code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;behavioral_data/20230912/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230912/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/initial_behavioral_scores.csv&#39;</span><span class="p">]</span>
+
+<span class="c1"># your solution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.22274863 0.40350196 0.         0.56353078 0.519613   0.21905378
+ 0.37689013 0.2829951  0.13681079 0.28961837 0.44172765 0.21148458
+ 0.21238843 0.26258821 0.34724939 0.48806321 0.16922012 0.35973271
+ 0.31101933 0.         0.20511392 0.25294518 0.26840496 0.32933391
+ 0.         0.28270925 0.16205407 0.0350935  0.36238274 0.3975466
+ 0.16612496 0.41540938 0.21141392 0.2860815  0.09187684 0.53908118
+ 0.         0.2597579  0.39085327 0.        ]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="compute-the-mean">
+<h4>2) Compute the mean<a class="headerlink" href="#compute-the-mean" title="Permalink to this heading">#</a></h4>
+<p>Compute the mean of the data loaded from the first file</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-list">
+<h4>3) Load data from all files, compute the means and collect the means in a list<a class="headerlink" href="#load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-list" title="Permalink to this heading">#</a></h4>
+<p>Now let’s apply steps 1+2 to all data files using a for loop:</p>
+<ul class="simple">
+<li><p>load the data from each file using <code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code></p></li>
+<li><p>compute the average of the values in each file</p></li>
+<li><p>collect all results in a list</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;behavioral_data/20230912/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230912/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/initial_behavioral_scores.csv&#39;</span><span class="p">]</span>
+
+<span class="c1"># your solution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.2618604801587121,
+ 0.08656876767920035,
+ 0.4894819412043526,
+ 0.2708178821903651,
+ 0.6570028706902653,
+ 0.47072198956329847,
+ 0.8168024268485145,
+ 0.5599663891082376,
+ 0.9868654497357406,
+ 0.8488095892472007,
+ 0.9946592530266862,
+ 0.9104513105983869]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-2d-numpy-array">
+<h4>4) Load data from all files, compute the means and collect the means in a 2D numpy array<a class="headerlink" href="#load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-2d-numpy-array" title="Permalink to this heading">#</a></h4>
+<p>The goal of our analysis is the compare the intial and final score for each data, to see whether our animal made progress. Saving all results in a simple list is not very useful, since we do not now which value in the list corresponds to which day and which epoch (initial or final).</p>
+<p>Let’s arrange the data in a 2D numpy array:</p>
+<ul class="simple">
+<li><p>rows are files</p></li>
+<li><p>first column - initial scores</p></li>
+<li><p>second column - final scores</p></li>
+</ul>
+<p>Modify the code from above to:</p>
+<ul class="simple">
+<li><p>load the data from each file using <code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code></p></li>
+<li><p>collect all results in a 2D numpy array structured as explained above</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;behavioral_data/20230912/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230912/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/initial_behavioral_scores.csv&#39;</span><span class="p">]</span>
+
+<span class="c1"># your solution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>behavioral_data/20230912/final_behavioral_scores.csv
+behavioral_data/20230912/initial_behavioral_scores.csv
+behavioral_data/20230913/final_behavioral_scores.csv
+behavioral_data/20230913/initial_behavioral_scores.csv
+behavioral_data/20230914/final_behavioral_scores.csv
+behavioral_data/20230914/initial_behavioral_scores.csv
+behavioral_data/20230915/final_behavioral_scores.csv
+behavioral_data/20230915/initial_behavioral_scores.csv
+behavioral_data/20230916/final_behavioral_scores.csv
+behavioral_data/20230916/initial_behavioral_scores.csv
+behavioral_data/20230917/final_behavioral_scores.csv
+behavioral_data/20230917/initial_behavioral_scores.csv
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.08656877, 0.26186048],
+       [0.27081788, 0.48948194],
+       [0.47072199, 0.65700287],
+       [0.55996639, 0.81680243],
+       [0.84880959, 0.98686545],
+       [0.91045131, 0.99465925]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="save-the-results-to-a-file">
+<h4>5) Save the results to a file<a class="headerlink" href="#save-the-results-to-a-file" title="Permalink to this heading">#</a></h4>
+<p>You are given a 2D numpy array with results (first column - initial scores, second column - final scores, rows are files).</p>
+<p>Save the array to a text file in the folder <code class="docutils literal notranslate"><span class="pre">behavioral_results</span></code> as the file <code class="docutils literal notranslate"><span class="pre">scores.txt</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.27081788</span><span class="p">,</span> <span class="mf">0.48948194</span><span class="p">],</span>
+           <span class="p">[</span><span class="mf">0.47072199</span><span class="p">,</span> <span class="mf">0.65700287</span><span class="p">],</span>
+           <span class="p">[</span><span class="mf">0.55996639</span><span class="p">,</span> <span class="mf">0.81680243</span><span class="p">],</span>
+           <span class="p">[</span><span class="mf">0.08656877</span><span class="p">,</span> <span class="mf">0.26186048</span><span class="p">],</span>
+           <span class="p">[</span><span class="mf">0.91045131</span><span class="p">,</span> <span class="mf">0.99465925</span><span class="p">],</span>
+           <span class="p">[</span><span class="mf">0.84880959</span><span class="p">,</span> <span class="mf">0.98686545</span><span class="p">]]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="c1"># your solution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.27081788 0.48948194]
+ [0.47072199 0.65700287]
+ [0.55996639 0.81680243]
+ [0.08656877 0.26186048]
+ [0.91045131 0.99465925]
+ [0.84880959 0.98686545]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-5-load-the-results-from-the-file-you-just-saved-and-plot-the-results">
+<h3>Exercise 5 - load the results from the file you just saved and plot the results<a class="headerlink" href="#exercise-5-load-the-results-from-the-file-you-just-saved-and-plot-the-results" title="Permalink to this heading">#</a></h3>
+<p>Now load the results from the file and plot them.</p>
+<p>Generate a single plot, with the initial results as a red line, and the final results as a green line.</p>
+<p>Save the plot to a file <code class="docutils literal notranslate"><span class="pre">scores.png</span></code> in the folder <code class="docutils literal notranslate"><span class="pre">behavioral_results</span></code>.</p>
+<p>Roughly like so:</p>
+<p><img alt="" src="../../_images/3.03_files_exercises_final_plot.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bd2d474d810664be30d3f91ff89ec3f5d2abffa86af4062757a771b8e5a0b2b6.png" src="../../_images/bd2d474d810664be30d3f91ff89ec3f5d2abffa86af4062757a771b8e5a0b2b6.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./exercises/exercises 3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3.02_numpy_exercises.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exercises 3.2 - Numpy</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-common-data-analysis-workflow">A common data analysis workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-processing-and-generating-file-paths">Exercise 1 - processing and generating file paths</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#take-the-path-for-the-data-file-apart">1) Take the path for the data file apart:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reassemble-the-parts-to-form-the-path-for-the-results-file">2) Reassemble the parts to form the path for the results file:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-discovering-files">Exercise 2 - Discovering files</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-files-in-a-folder">1) List all files in a folder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-only-the-data-files-ending-in-csv-in-the-sub-folder">2) List only the data files (ending in .csv) in the sub folder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-data-files-ending-in-csv-in-all-sub-folders">3) List all data files (ending in csv) in all sub folders</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-manipulate-file-names-in-a-list">Exercise 3 - Manipulate file names in a list</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1) Take the path for the data file apart:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reassemble-the-parts-from-the-first-file-name-form-the-path-for-the-results-file">2) Reassemble the parts from the first file name form the path for the results file</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-steps-1-2-to-all-files-in-the-list">3) Apply steps 1 + 2 to all files in the list</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-processing-files">Exercise 4 - Processing files</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-from-a-single-file">1) Load data from a single file</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-mean">2) Compute the mean</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-list">3) Load data from all files, compute the means and collect the means in a list</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-2d-numpy-array">4) Load data from all files, compute the means and collect the means in a 2D numpy array</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-results-to-a-file">5) Save the results to a file</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-load-the-results-from-the-file-you-just-saved-and-plot-the-results">Exercise 5 - load the results from the file you just saved and plot the results</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jan Clemens
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
