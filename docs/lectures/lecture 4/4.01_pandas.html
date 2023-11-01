@@ -1,0 +1,2593 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Working with tabular data: Pandas &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 4/4.01_pandas';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Exercises 4 - Pandas and connectomics" href="../../exercises/exercises%204/4.01_pandas_exercises.html" />
+    <link rel="prev" title="Exercises 3.03 - Working with files" href="../../exercises/exercises%203/3.03_files_exercises.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Neu715 - Neuroscientific Data Analysis using Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.01_variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.02_conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.03_lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.04_loops_simple.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.05_matplotlib.html">Plotting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.01_variables_exercises.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.03_lists_exercises.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.05_matplotlib_exercises.html">Plotting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.01_composites.html">Composite data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.02_loops_more.html">Loops (part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.03_functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.04_exceptions.html">Handling errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.05_imports.html">External code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.01_composites_exercises.html">Composite data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.02_loops_more_exercises.html">Loops (part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.03_functions_exercises.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.04_exceptions_exercises.html">Handling errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.05_imports_exercises.html">External code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.01_packages_and_environments.html">Installing packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.02_numpy.html">Numerical computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.03_files.html">Working with files</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.02_numpy_exercises.html">Numerical computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.03_files_exercises.html">Working with files</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 4</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tabular data and pandas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%204/4.01_pandas_exercises.html">Tabular data and connectomics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 4/4.01_pandas.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 4/4.01_pandas.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/lectures/lecture 4/4.01_pandas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Working with tabular data: Pandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-yet-another-data-type">Why yet another data type?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-dataframes">Creating DataFrames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-data-in-dataframes">Accessing data in DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-columns-like-a-dictionary">Access to columns like a dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-rows-and-columns-by-name-like-a-2d-dictionary-via-df-loc">Access to rows and columns by name like a 2D dictionary via df.loc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-rows-and-columns-by-index-like-a-2d-array-via-df-iloc">Access to rows and columns by index like a 2D array via df.iloc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-the-underlying-data-like-a-numpy-array">Access the underlying data like a numpy array:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-indexing-also-works">Boolean indexing also works</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby-split-apply-combine">Groupby: Split-apply-combine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-connectomics">Example: Connectomics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classifications-and-connections">Classifications and connections</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-find-neurons-of-a-specific-cell-type">Example: Find neurons of a specific cell type</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-find-all-postsynaptic-partners-of-a-given-neuron">Example: Find all postsynaptic partners of a given neuron</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="working-with-tabular-data-pandas">
+<h1>Working with tabular data: Pandas<a class="headerlink" href="#working-with-tabular-data-pandas" title="Permalink to this heading">#</a></h1>
+<p>Pandas provides three things:</p>
+<ol class="arabic simple">
+<li><p>a new data type specifically designed for tabular data - the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></p></li>
+<li><p>functions for manipulating tabular data</p></li>
+<li><p>IO for tabular data (covered in Week3/Files)</p></li>
+</ol>
+<section id="why-yet-another-data-type">
+<h2>Why yet another data type?<a class="headerlink" href="#why-yet-another-data-type" title="Permalink to this heading">#</a></h2>
+<p>Numpy arrays can hold tabular data - 2D matrices. So why do we need another, special data type?
+One problem with raw 2D arrays is that they are not self-documenting. What does that mean?</p>
+<p>Take the data from exercise of Week3/Files: We calculated behavioral scores, stored them in a numpy array, and saved the array to a text file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># load and print matrix</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;dat/pd_scores.txt&#39;</span><span class="p">)</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.08656877, 0.26186048],
+       [0.27081788, 0.48948194],
+       [0.47072199, 0.65700287],
+       [0.55996639, 0.81680243],
+       [0.84880959, 0.98686545],
+       [0.91045131, 0.99465925]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Do you remember what the data means? What are the individual rows? What are the columns? Imagine this were an analysis on your own data and you’d want to look at the results in 3 monts or so.</p>
+<p>There are no labels, so it’s hard to know from the data itself what they mean - the data is not “self-documenting”</p>
+<p>We can turn this into a DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># the folder names correspond to the days</span>
+<span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;20230912&#39;</span><span class="p">,</span><span class="s1">&#39;20230913&#39;</span><span class="p">,</span><span class="s1">&#39;20230914&#39;</span><span class="p">,</span><span class="s1">&#39;20230915&#39;</span><span class="p">,</span><span class="s1">&#39;20230916&#39;</span><span class="p">,</span><span class="s1">&#39;20230917&#39;</span><span class="p">]</span>
+
+<span class="c1"># make DataFrame - no need to understand the specifics - I will explain soon what is going on here</span>
+<span class="c1"># we can easily turn a dictionary into a DataFrame - keys will be column labels, values are the per-row data</span>
+<span class="c1"># we can also specify row labels - an index.</span>
+<span class="n">scores_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;intial score&#39;</span><span class="p">:</span> <span class="n">scores</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;final score&#39;</span><span class="p">:</span> <span class="n">scores</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores_dict</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">days</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>intial score</th>
+      <th>final score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20230912</th>
+      <td>0.086569</td>
+      <td>0.261860</td>
+    </tr>
+    <tr>
+      <th>20230913</th>
+      <td>0.270818</td>
+      <td>0.489482</td>
+    </tr>
+    <tr>
+      <th>20230914</th>
+      <td>0.470722</td>
+      <td>0.657003</td>
+    </tr>
+    <tr>
+      <th>20230915</th>
+      <td>0.559966</td>
+      <td>0.816802</td>
+    </tr>
+    <tr>
+      <th>20230916</th>
+      <td>0.848810</td>
+      <td>0.986865</td>
+    </tr>
+    <tr>
+      <th>20230917</th>
+      <td>0.910451</td>
+      <td>0.994659</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>You can save the data frame as csv and excel, and reload them as a DataFrame, with the labels being preserved:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;dat/scores_df.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;dat/scores_df.xlsx&#39;</span><span class="p">)</span>
+
+<span class="c1"># load data</span>
+<span class="n">df_from_file</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dat/scores_df.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df_from_file</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>intial score</th>
+      <th>final score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20230912</th>
+      <td>0.086569</td>
+      <td>0.261860</td>
+    </tr>
+    <tr>
+      <th>20230913</th>
+      <td>0.270818</td>
+      <td>0.489482</td>
+    </tr>
+    <tr>
+      <th>20230914</th>
+      <td>0.470722</td>
+      <td>0.657003</td>
+    </tr>
+    <tr>
+      <th>20230915</th>
+      <td>0.559966</td>
+      <td>0.816802</td>
+    </tr>
+    <tr>
+      <th>20230916</th>
+      <td>0.848810</td>
+      <td>0.986865</td>
+    </tr>
+    <tr>
+      <th>20230917</th>
+      <td>0.910451</td>
+      <td>0.994659</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="creating-dataframes">
+<h2>Creating DataFrames<a class="headerlink" href="#creating-dataframes" title="Permalink to this heading">#</a></h2>
+<p>We already learned that pandas provides versatile file I/O (csv, excel): <span class="xref myst">https://pandas.pydata.org/docs/_sources/user_guide/io.html</span> (see Week3/Files)</p>
+<p>As shown above, a DataFrame can also easily be created from Dictionary. If we do not specify an index, it will be generated automatically, as a row numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;column 1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;column 2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;column 1&#39;: [1, 2, 3], &#39;column 2&#39;: [10, 20, 30]}
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>column 1</th>
+      <th>column 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>30</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>A DataFrame can also be created from a 2D np.array. In that case, we need to specify the column names separately:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;initial&#39;</span><span class="p">,</span> <span class="s1">&#39;final&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">days</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>initial</th>
+      <th>final</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20230912</th>
+      <td>0.086569</td>
+      <td>0.261860</td>
+    </tr>
+    <tr>
+      <th>20230913</th>
+      <td>0.270818</td>
+      <td>0.489482</td>
+    </tr>
+    <tr>
+      <th>20230914</th>
+      <td>0.470722</td>
+      <td>0.657003</td>
+    </tr>
+    <tr>
+      <th>20230915</th>
+      <td>0.559966</td>
+      <td>0.816802</td>
+    </tr>
+    <tr>
+      <th>20230916</th>
+      <td>0.848810</td>
+      <td>0.986865</td>
+    </tr>
+    <tr>
+      <th>20230917</th>
+      <td>0.910451</td>
+      <td>0.994659</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="accessing-data-in-dataframes">
+<h2>Accessing data in DataFrames<a class="headerlink" href="#accessing-data-in-dataframes" title="Permalink to this heading">#</a></h2>
+<p>There are many ways of accessing data in a DataFrame. We cover the basics here.</p>
+<p>More details: <span class="xref myst">https://pandas.pydata.org/docs/_sources/user_guide/indexing.html</span></p>
+<section id="access-to-columns-like-a-dictionary">
+<h3>Access to columns like a dictionary<a class="headerlink" href="#access-to-columns-like-a-dictionary" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;initial&#39;</span><span class="p">]</span>  <span class="c1"># df[column_name]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20230912    0.086569
+20230913    0.270818
+20230914    0.470722
+20230915    0.559966
+20230916    0.848810
+20230917    0.910451
+Name: initial, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="access-to-rows-and-columns-by-name-like-a-2d-dictionary-via-df-loc">
+<h3>Access to rows and columns by name like a 2D dictionary via df.loc<a class="headerlink" href="#access-to-rows-and-columns-by-name-like-a-2d-dictionary-via-df-loc" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;initial&#39;</span><span class="p">,</span> <span class="s1">&#39;final&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">days</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;by row name: df.loc[&#39;20230915&#39;]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20230915&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is equivalent to: df.loc[&#39;20230915&#39;, :]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20230915&#39;</span><span class="p">,</span> <span class="p">:])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;by column name: df.loc[:, &#39;initial&#39;]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;initial&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">by row and column name: df.loc[&#39;20230915&#39;, &#39;initial&#39;]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20230915&#39;</span><span class="p">,</span> <span class="s1">&#39;initial&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>initial</th>
+      <th>final</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20230912</th>
+      <td>0.086569</td>
+      <td>0.261860</td>
+    </tr>
+    <tr>
+      <th>20230913</th>
+      <td>0.270818</td>
+      <td>0.489482</td>
+    </tr>
+    <tr>
+      <th>20230914</th>
+      <td>0.470722</td>
+      <td>0.657003</td>
+    </tr>
+    <tr>
+      <th>20230915</th>
+      <td>0.559966</td>
+      <td>0.816802</td>
+    </tr>
+    <tr>
+      <th>20230916</th>
+      <td>0.848810</td>
+      <td>0.986865</td>
+    </tr>
+    <tr>
+      <th>20230917</th>
+      <td>0.910451</td>
+      <td>0.994659</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>by row name: df.loc[&#39;20230915&#39;]
+initial    0.559966
+final      0.816802
+Name: 20230915, dtype: float64
+this is equivalent to: df.loc[&#39;20230915&#39;, :]
+initial    0.559966
+final      0.816802
+Name: 20230915, dtype: float64
+by column name: df.loc[:, &#39;initial&#39;]
+20230912    0.086569
+20230913    0.270818
+20230914    0.470722
+20230915    0.559966
+20230916    0.848810
+20230917    0.910451
+Name: initial, dtype: float64
+
+by row and column name: df.loc[&#39;20230915&#39;, &#39;initial&#39;]
+0.5599663891082376
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="access-to-rows-and-columns-by-index-like-a-2d-array-via-df-iloc">
+<h3>Access to rows and columns by index like a 2D array via df.iloc<a class="headerlink" href="#access-to-rows-and-columns-by-index-like-a-2d-array-via-df-iloc" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># slicing also works</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20230912    0.261860
+20230913    0.489482
+20230914    0.657003
+20230915    0.816802
+20230916    0.986865
+20230917    0.994659
+Name: final, dtype: float64
+initial    0.270818
+final      0.489482
+Name: 20230913, dtype: float64
+initial    0.270818
+final      0.489482
+Name: 20230913, dtype: float64
+0.6570028706902653
+20230912    0.261860
+20230913    0.489482
+Name: final, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="access-the-underlying-data-like-a-numpy-array">
+<h3>Access the underlying data like a numpy array:<a class="headerlink" href="#access-the-underlying-data-like-a-numpy-array" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.08656877, 0.26186048],
+       [0.27081788, 0.48948194],
+       [0.47072199, 0.65700287],
+       [0.55996639, 0.81680243],
+       [0.84880959, 0.98686545],
+       [0.91045131, 0.99465925]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="boolean-indexing-also-works">
+<h3>Boolean indexing also works<a class="headerlink" href="#boolean-indexing-also-works" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;initial&#39;</span><span class="p">]</span><span class="o">&gt;</span> <span class="mf">0.4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>initial</th>
+      <th>final</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20230914</th>
+      <td>0.470722</td>
+      <td>0.657003</td>
+    </tr>
+    <tr>
+      <th>20230915</th>
+      <td>0.559966</td>
+      <td>0.816802</td>
+    </tr>
+    <tr>
+      <th>20230916</th>
+      <td>0.848810</td>
+      <td>0.986865</td>
+    </tr>
+    <tr>
+      <th>20230917</th>
+      <td>0.910451</td>
+      <td>0.994659</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="groupby-split-apply-combine">
+<h2>Groupby: Split-apply-combine<a class="headerlink" href="#groupby-split-apply-combine" title="Permalink to this heading">#</a></h2>
+<p>A common problem in data analysis is:</p>
+<p>We have an experiments with multiple subjects, and multiple measurements per subject. We’d like to compute the average score for each subject for plotting and statistics.</p>
+<p>For instance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># REMOVE - make dummy data for grouped stats</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">nb_animals</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">nb_trials</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nb_animals</span> <span class="o">*</span> <span class="n">nb_trials</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ani</span><span class="p">,</span> <span class="n">animal</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">nb_animals</span><span class="p">)):</span>
+    <span class="n">scores</span><span class="p">[(</span><span class="n">ani</span><span class="p">)</span> <span class="o">*</span> <span class="n">nb_trials</span><span class="p">:(</span><span class="n">ani</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">nb_trials</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">nb_trials</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">scores</span><span class="p">[(</span><span class="n">ani</span><span class="p">)</span> <span class="o">*</span> <span class="n">nb_trials</span><span class="p">:(</span><span class="n">ani</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">nb_trials</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">animal</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;animal&#39;</span><span class="p">:</span> <span class="n">scores</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;pre&#39;</span><span class="p">:</span> <span class="n">scores</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;post&#39;</span><span class="p">:</span> <span class="n">scores</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]})</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;dat/groupby.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/48172657669483a59c65a9e4d3580154825f4551a66e1dfddd17f69d44696304.png" src="../../_images/48172657669483a59c65a9e4d3580154825f4551a66e1dfddd17f69d44696304.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dat/pd_groupby.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>animal</th>
+      <th>pre</th>
+      <th>post</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>2.211986</td>
+      <td>3.107796</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>2.204871</td>
+      <td>2.830730</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>2.560633</td>
+      <td>3.483980</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>1.476412</td>
+      <td>2.801709</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>3.662519</td>
+      <td>3.447005</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.0</td>
+      <td>2.538696</td>
+      <td>3.301515</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.0</td>
+      <td>1.867229</td>
+      <td>3.484270</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.0</td>
+      <td>3.306150</td>
+      <td>3.077195</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1.0</td>
+      <td>2.741388</td>
+      <td>2.586878</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1.0</td>
+      <td>1.874149</td>
+      <td>3.264328</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1.0</td>
+      <td>3.276006</td>
+      <td>2.503612</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1.0</td>
+      <td>3.363795</td>
+      <td>3.175878</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2.0</td>
+      <td>3.645122</td>
+      <td>3.871356</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2.0</td>
+      <td>4.419345</td>
+      <td>3.223414</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2.0</td>
+      <td>3.157167</td>
+      <td>2.851897</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2.0</td>
+      <td>3.075222</td>
+      <td>3.591049</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2.0</td>
+      <td>3.085689</td>
+      <td>4.618074</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2.0</td>
+      <td>2.799818</td>
+      <td>3.586372</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>3.0</td>
+      <td>2.717420</td>
+      <td>3.483265</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>3.0</td>
+      <td>1.267145</td>
+      <td>2.402146</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>3.0</td>
+      <td>3.497071</td>
+      <td>2.818079</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>3.0</td>
+      <td>1.207408</td>
+      <td>2.662157</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>3.0</td>
+      <td>2.392043</td>
+      <td>2.872839</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>3.0</td>
+      <td>2.845028</td>
+      <td>2.683747</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>4.0</td>
+      <td>1.963877</td>
+      <td>1.633267</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>4.0</td>
+      <td>2.557404</td>
+      <td>1.549594</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>4.0</td>
+      <td>1.115516</td>
+      <td>2.964476</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>4.0</td>
+      <td>1.830395</td>
+      <td>1.952609</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>4.0</td>
+      <td>2.170095</td>
+      <td>2.525734</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>4.0</td>
+      <td>2.586667</td>
+      <td>2.240448</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>5.0</td>
+      <td>2.045121</td>
+      <td>3.573011</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>5.0</td>
+      <td>2.054961</td>
+      <td>3.010360</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>5.0</td>
+      <td>2.021420</td>
+      <td>3.538843</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>5.0</td>
+      <td>1.626790</td>
+      <td>2.702867</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>5.0</td>
+      <td>2.342304</td>
+      <td>2.389883</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>5.0</td>
+      <td>1.800452</td>
+      <td>3.311980</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>6.0</td>
+      <td>0.641648</td>
+      <td>1.322786</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>6.0</td>
+      <td>2.275206</td>
+      <td>0.707293</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>6.0</td>
+      <td>1.090543</td>
+      <td>1.291870</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>6.0</td>
+      <td>1.289345</td>
+      <td>1.976258</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>6.0</td>
+      <td>1.828772</td>
+      <td>1.341221</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>6.0</td>
+      <td>0.982321</td>
+      <td>2.676962</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>7.0</td>
+      <td>3.179301</td>
+      <td>4.185368</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>7.0</td>
+      <td>3.756986</td>
+      <td>3.681570</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>7.0</td>
+      <td>2.070850</td>
+      <td>3.249996</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>7.0</td>
+      <td>2.405634</td>
+      <td>3.025023</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>7.0</td>
+      <td>3.773297</td>
+      <td>3.787543</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>7.0</td>
+      <td>3.351603</td>
+      <td>3.171412</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>8.0</td>
+      <td>2.075409</td>
+      <td>3.820043</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>8.0</td>
+      <td>1.989337</td>
+      <td>2.970652</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>8.0</td>
+      <td>2.469318</td>
+      <td>2.046087</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>8.0</td>
+      <td>2.054879</td>
+      <td>2.514335</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>8.0</td>
+      <td>1.448087</td>
+      <td>2.380560</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>8.0</td>
+      <td>2.552318</td>
+      <td>3.016450</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>9.0</td>
+      <td>2.369584</td>
+      <td>1.889417</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>9.0</td>
+      <td>3.086123</td>
+      <td>2.560759</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>9.0</td>
+      <td>2.097187</td>
+      <td>2.446292</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>9.0</td>
+      <td>1.857415</td>
+      <td>0.800996</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>9.0</td>
+      <td>1.498517</td>
+      <td>1.811201</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>9.0</td>
+      <td>0.719002</td>
+      <td>2.691326</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can solve this using for loops and boolean indexing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># identify all animals</span>
+<span class="n">animals</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;animal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+<span class="c1"># example of boolean indexing</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;animal&#39;</span><span class="p">]</span><span class="o">==</span><span class="mf">0.0</span><span class="p">])</span>
+<span class="c1"># compute the mean:</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;animal&#39;</span><span class="p">]</span><span class="o">==</span><span class="mf">0.0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">display</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;animal&#39;</span><span class="p">]</span><span class="o">==</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># loop over all animals</span>
+<span class="n">animal_avg</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="n">animals</span><span class="p">:</span>
+    <span class="n">animal_avg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;animal&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">animal</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">animal_avg</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>animal</th>
+      <th>pre</th>
+      <th>post</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>2.211986</td>
+      <td>3.107796</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>2.204871</td>
+      <td>2.830730</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>2.560633</td>
+      <td>3.483980</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>1.476412</td>
+      <td>2.801709</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>3.662519</td>
+      <td>3.447005</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.0</td>
+      <td>2.538696</td>
+      <td>3.301515</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>animal    0.000000
+pre       2.442519
+post      3.162122
+dtype: float64
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>animal    0.000000
+pre       2.442519
+post      3.162122
+dtype: float64
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([0.        , 2.44251943, 3.16212242]),
+ array([1.        , 2.73811958, 3.01536034]),
+ array([2.        , 3.36372726, 3.62369364]),
+ array([3.        , 2.32101921, 2.82037202]),
+ array([4.        , 2.03732544, 2.14435453]),
+ array([5.        , 1.98184125, 3.0878241 ]),
+ array([6.        , 1.35130571, 1.55273191]),
+ array([7.        , 3.08961177, 3.51681884]),
+ array([8.        , 2.09822498, 2.79135462]),
+ array([9.        , 1.9379714 , 2.03333186])]
+</pre></div>
+</div>
+</div>
+</div>
+<p>This series of steps is so common, that it has been implemented in pandas: <span class="xref myst">https://pandas.pydata.org/docs/_sources/user_guide/groupby.html</span></p>
+<p>It is applied in two steps: <em>groupby</em> and <em>aggregate</em></p>
+<ol class="arabic simple">
+<li><p><em>groupby</em> groups the rows that have the same value in a specific column together</p></li>
+<li><p><em>aggregate</em> applies a computation that aggregates all data in a group to a single number, like the mean, standard deviation, or max.</p></li>
+</ol>
+<p>Here is an example of this in action. <code class="docutils literal notranslate"><span class="pre">df.groupby(column_name)</span></code> will produce a new object, that groups all rows with the same value in the specified column into a “virtual subtable”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;animal&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">grouped</span><span class="p">))</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># get the subtable for all rows where animal==0.0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.groupby.generic.DataFrameGroupBy&#39;&gt;
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>animal</th>
+      <th>pre</th>
+      <th>post</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>2.211986</td>
+      <td>3.107796</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>2.204871</td>
+      <td>2.830730</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>2.560633</td>
+      <td>3.483980</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>1.476412</td>
+      <td>2.801709</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>3.662519</td>
+      <td>3.447005</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.0</td>
+      <td>2.538696</td>
+      <td>3.301515</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Apply the “mean” operation to all values in each subtable and make a new table with the aggregate per-group data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">agg</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
+<span class="n">agg</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/bc/5m_c7nkj1vnc2w7xmmnhpfww0000gn/T/ipykernel_40103/1479352327.py:1: FutureWarning: The provided callable &lt;function mean at 0x103fd49a0&gt; is currently using DataFrameGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;mean&quot; instead.
+  agg = grouped.aggregate(np.mean)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pre</th>
+      <th>post</th>
+    </tr>
+    <tr>
+      <th>animal</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.0</th>
+      <td>2.442519</td>
+      <td>3.162122</td>
+    </tr>
+    <tr>
+      <th>1.0</th>
+      <td>2.738120</td>
+      <td>3.015360</td>
+    </tr>
+    <tr>
+      <th>2.0</th>
+      <td>3.363727</td>
+      <td>3.623694</td>
+    </tr>
+    <tr>
+      <th>3.0</th>
+      <td>2.321019</td>
+      <td>2.820372</td>
+    </tr>
+    <tr>
+      <th>4.0</th>
+      <td>2.037325</td>
+      <td>2.144355</td>
+    </tr>
+    <tr>
+      <th>5.0</th>
+      <td>1.981841</td>
+      <td>3.087824</td>
+    </tr>
+    <tr>
+      <th>6.0</th>
+      <td>1.351306</td>
+      <td>1.552732</td>
+    </tr>
+    <tr>
+      <th>7.0</th>
+      <td>3.089612</td>
+      <td>3.516819</td>
+    </tr>
+    <tr>
+      <th>8.0</th>
+      <td>2.098225</td>
+      <td>2.791355</td>
+    </tr>
+    <tr>
+      <th>9.0</th>
+      <td>1.937971</td>
+      <td>2.033332</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Plot the result:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">agg</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">agg</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o-k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">agg</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Score&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2ebcf516b792bf9aaa83cae06004042bc6c3e461b470313de10ffbf75feffa98.png" src="../../_images/2ebcf516b792bf9aaa83cae06004042bc6c3e461b470313de10ffbf75feffa98.png" />
+</div>
+</div>
+</section>
+<section id="example-connectomics">
+<h2>Example: Connectomics<a class="headerlink" href="#example-connectomics" title="Permalink to this heading">#</a></h2>
+<p>The connectome of the (female) fly brain was recently published.</p>
+<p>It can be accessed usign a beautiful web interface and user friendly web site: <span class="xref myst">https://codex.flywire.ai</span>.</p>
+<p>The web site is great for exploring the fly brain, but clicking around in a web browser has limitations in terms of the reproducibility and scale of an analysis.</p>
+<p>Therefore, the data was made availabel as a set of tables that can be loaded and processed with pandas.</p>
+<p>In the exercise, we will use pandas to answer neuroscience questions about the fly brain - here is a brief introduction to the data:</p>
+<p>There are three main tables:</p>
+<ul class="simple">
+<li><p>connections - connections between cells</p></li>
+<li><p>classification - cell classes (afferent, intrinsic, efferent), …</p></li>
+<li><p>(labels - human annotations of cell types)</p></li>
+</ul>
+<p>Each neuron has a unique identifier, the root_id. The root_id can be used to track neurons across the different tables.
+For instance, to find all neurons of a specific types, and then find their inputs or outputs.</p>
+<section id="classifications-and-connections">
+<h3>Classifications and connections<a class="headerlink" href="#classifications-and-connections" title="Permalink to this heading">#</a></h3>
+<p>The classification table has basic information about each of the 130k neurons in the fly brain: its the cell_type, side of the brain, position in the brain etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classification</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dat/flywire/classification.csv.gz&#39;</span><span class="p">)</span>
+<span class="n">classification</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>root_id</th>
+      <th>flow</th>
+      <th>super_class</th>
+      <th>class</th>
+      <th>sub_class</th>
+      <th>cell_type</th>
+      <th>hemibrain_type</th>
+      <th>hemilineage</th>
+      <th>side</th>
+      <th>nerve</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>720575940627005443</td>
+      <td>intrinsic</td>
+      <td>optic</td>
+      <td>L1-5</td>
+      <td>NaN</td>
+      <td>L4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>720575940615995398</td>
+      <td>intrinsic</td>
+      <td>optic</td>
+      <td>L1-5</td>
+      <td>NaN</td>
+      <td>L4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>720575940621762567</td>
+      <td>afferent</td>
+      <td>ascending</td>
+      <td>AN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>right</td>
+      <td>CV</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>720575940624384007</td>
+      <td>afferent</td>
+      <td>sensory</td>
+      <td>olfactory</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ORN_VA1v</td>
+      <td>NaN</td>
+      <td>left</td>
+      <td>AN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>720575940614422540</td>
+      <td>intrinsic</td>
+      <td>central</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>AOTU032,AOTU034</td>
+      <td>LALa1_posterior</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>127974</th>
+      <td>720575940621500404</td>
+      <td>intrinsic</td>
+      <td>visual_projection</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LLPC1,LLPC2a,LLPC2b,LLPC2c,LLPC2d,LLPC3</td>
+      <td>NaN</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>127975</th>
+      <td>720575940651646966</td>
+      <td>intrinsic</td>
+      <td>central</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LB0_anterior</td>
+      <td>center</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>127976</th>
+      <td>720575940630151162</td>
+      <td>intrinsic</td>
+      <td>optic</td>
+      <td>optic_lobes</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>left</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>127977</th>
+      <td>720575940629364731</td>
+      <td>intrinsic</td>
+      <td>optic</td>
+      <td>optic_lobes</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>127978</th>
+      <td>720575940623859711</td>
+      <td>afferent</td>
+      <td>sensory</td>
+      <td>visual</td>
+      <td>NaN</td>
+      <td>R1-6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>127979 rows × 10 columns</p>
+</div></div></div>
+</div>
+<p>The connections table contains information about all ~4M synaptic synaptic connections:</p>
+<ul class="simple">
+<li><p>pre_root_id: root_id of the presynaptic neuron, the source</p></li>
+<li><p>post_root_id: root_id of the postsynaptic neuron, the target</p></li>
+<li><p>syn_count: number of synapses in connection</p></li>
+<li><p>nt_type: predicted neurotransmitter neurotransmitter</p></li>
+<li><p>neuropil: target neuropil</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">connections</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dat/flywire/connections.csv.gz&#39;</span><span class="p">)</span>
+<span class="n">connections</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pre_root_id</th>
+      <th>post_root_id</th>
+      <th>neuropil</th>
+      <th>syn_count</th>
+      <th>nt_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>720575940596125868</td>
+      <td>720575940608552405</td>
+      <td>LOP_R</td>
+      <td>5</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>720575940596125868</td>
+      <td>720575940611348834</td>
+      <td>LOP_R</td>
+      <td>7</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>720575940596125868</td>
+      <td>720575940613059993</td>
+      <td>LOP_R</td>
+      <td>5</td>
+      <td>GLUT</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>720575940596125868</td>
+      <td>720575940616986553</td>
+      <td>LOP_R</td>
+      <td>5</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>720575940596125868</td>
+      <td>720575940620124326</td>
+      <td>LOP_R</td>
+      <td>8</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3794610</th>
+      <td>720575940660868737</td>
+      <td>720575940607206786</td>
+      <td>ME_L</td>
+      <td>9</td>
+      <td>GABA</td>
+    </tr>
+    <tr>
+      <th>3794611</th>
+      <td>720575940660868737</td>
+      <td>720575940608664873</td>
+      <td>ME_L</td>
+      <td>6</td>
+      <td>GABA</td>
+    </tr>
+    <tr>
+      <th>3794612</th>
+      <td>720575940660868737</td>
+      <td>720575940611462242</td>
+      <td>ME_L</td>
+      <td>6</td>
+      <td>GABA</td>
+    </tr>
+    <tr>
+      <th>3794613</th>
+      <td>720575940660868737</td>
+      <td>720575940622913063</td>
+      <td>ME_L</td>
+      <td>23</td>
+      <td>GABA</td>
+    </tr>
+    <tr>
+      <th>3794614</th>
+      <td>720575940660868737</td>
+      <td>720575940626553546</td>
+      <td>ME_L</td>
+      <td>6</td>
+      <td>ACH</td>
+    </tr>
+  </tbody>
+</table>
+<p>3794615 rows × 5 columns</p>
+</div></div></div>
+</div>
+<section id="example-find-neurons-of-a-specific-cell-type">
+<h4>Example: Find neurons of a specific cell type<a class="headerlink" href="#example-find-neurons-of-a-specific-cell-type" title="Permalink to this heading">#</a></h4>
+<p>LC10a is a cluster of higher-order visual neurons required by Drosophila males to track the female during courtship.</p>
+<p>We can find all LC10a neurons in the fly brain using boolean indexing into the classification table:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LC10a_neurons</span> <span class="o">=</span>  <span class="n">classification</span><span class="p">[</span><span class="n">classification</span><span class="p">[</span><span class="s1">&#39;cell_type&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;LC10a&#39;</span><span class="p">]</span>
+<span class="n">LC10a_neurons</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>root_id</th>
+      <th>flow</th>
+      <th>super_class</th>
+      <th>class</th>
+      <th>sub_class</th>
+      <th>cell_type</th>
+      <th>hemibrain_type</th>
+      <th>hemilineage</th>
+      <th>side</th>
+      <th>nerve</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3035</th>
+      <td>720575940620720112</td>
+      <td>intrinsic</td>
+      <td>visual_projection</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LC10a</td>
+      <td>LC10</td>
+      <td>VPNd2</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3691</th>
+      <td>720575940638285109</td>
+      <td>intrinsic</td>
+      <td>visual_projection</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LC10a</td>
+      <td>LC10</td>
+      <td>VPNd2</td>
+      <td>left</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3737</th>
+      <td>720575940614430111</td>
+      <td>intrinsic</td>
+      <td>visual_projection</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LC10a</td>
+      <td>LC10</td>
+      <td>VPNd2</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4456</th>
+      <td>720575940623082237</td>
+      <td>intrinsic</td>
+      <td>visual_projection</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LC10a</td>
+      <td>LC10</td>
+      <td>VPNd2</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4544</th>
+      <td>720575940623868853</td>
+      <td>intrinsic</td>
+      <td>visual_projection</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LC10a</td>
+      <td>LC10</td>
+      <td>VPNd2</td>
+      <td>left</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>125773</th>
+      <td>720575940631195217</td>
+      <td>intrinsic</td>
+      <td>visual_projection</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LC10a</td>
+      <td>LC10</td>
+      <td>VPNd2</td>
+      <td>left</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>126409</th>
+      <td>720575940631982929</td>
+      <td>intrinsic</td>
+      <td>visual_projection</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LC10a</td>
+      <td>LC10</td>
+      <td>VPNd2</td>
+      <td>left</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>126528</th>
+      <td>720575940631983185</td>
+      <td>intrinsic</td>
+      <td>visual_projection</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LC10a</td>
+      <td>LC10</td>
+      <td>VPNd2</td>
+      <td>left</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>126843</th>
+      <td>720575940627265223</td>
+      <td>intrinsic</td>
+      <td>visual_projection</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LC10a</td>
+      <td>LC10</td>
+      <td>VPNd2</td>
+      <td>left</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>127467</th>
+      <td>720575940610227162</td>
+      <td>intrinsic</td>
+      <td>visual_projection</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LC10a</td>
+      <td>LC10</td>
+      <td>VPNd2</td>
+      <td>left</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>227 rows × 10 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="example-find-all-postsynaptic-partners-of-a-given-neuron">
+<h4>Example: Find all postsynaptic partners of a given neuron<a class="headerlink" href="#example-find-all-postsynaptic-partners-of-a-given-neuron" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select the first neuron in the list and get it&#39;s root_id</span>
+<span class="n">pre_root_id</span> <span class="o">=</span> <span class="n">LC10a_neurons</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;root_id&#39;</span><span class="p">]</span>
+
+<span class="c1"># find all downstream targets for that neuron</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="n">connections</span><span class="p">[</span><span class="n">connections</span><span class="p">[</span><span class="s1">&#39;pre_root_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">pre_root_id</span><span class="p">]</span>
+<span class="n">targets</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pre_root_id</th>
+      <th>post_root_id</th>
+      <th>neuropil</th>
+      <th>syn_count</th>
+      <th>nt_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1309977</th>
+      <td>720575940620720112</td>
+      <td>720575940610389873</td>
+      <td>AOTU_R</td>
+      <td>10</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309978</th>
+      <td>720575940620720112</td>
+      <td>720575940613946783</td>
+      <td>AOTU_R</td>
+      <td>10</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309979</th>
+      <td>720575940620720112</td>
+      <td>720575940614041238</td>
+      <td>AOTU_R</td>
+      <td>9</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309980</th>
+      <td>720575940620720112</td>
+      <td>720575940616012061</td>
+      <td>AOTU_R</td>
+      <td>26</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309981</th>
+      <td>720575940620720112</td>
+      <td>720575940616169629</td>
+      <td>AOTU_R</td>
+      <td>14</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309982</th>
+      <td>720575940620720112</td>
+      <td>720575940616888020</td>
+      <td>AOTU_R</td>
+      <td>7</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309983</th>
+      <td>720575940620720112</td>
+      <td>720575940619453861</td>
+      <td>AOTU_R</td>
+      <td>5</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309984</th>
+      <td>720575940620720112</td>
+      <td>720575940620321158</td>
+      <td>AOTU_R</td>
+      <td>11</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309985</th>
+      <td>720575940620720112</td>
+      <td>720575940621925631</td>
+      <td>AOTU_R</td>
+      <td>7</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309986</th>
+      <td>720575940620720112</td>
+      <td>720575940622538520</td>
+      <td>AOTU_R</td>
+      <td>24</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309987</th>
+      <td>720575940620720112</td>
+      <td>720575940623107509</td>
+      <td>AOTU_R</td>
+      <td>5</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309988</th>
+      <td>720575940620720112</td>
+      <td>720575940626024336</td>
+      <td>AOTU_R</td>
+      <td>5</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309989</th>
+      <td>720575940620720112</td>
+      <td>720575940626643658</td>
+      <td>AOTU_R</td>
+      <td>6</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309990</th>
+      <td>720575940620720112</td>
+      <td>720575940627738640</td>
+      <td>AOTU_R</td>
+      <td>22</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309991</th>
+      <td>720575940620720112</td>
+      <td>720575940628916444</td>
+      <td>AOTU_R</td>
+      <td>13</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309992</th>
+      <td>720575940620720112</td>
+      <td>720575940628972538</td>
+      <td>AOTU_R</td>
+      <td>8</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309993</th>
+      <td>720575940620720112</td>
+      <td>720575940629883971</td>
+      <td>AOTU_R</td>
+      <td>17</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309994</th>
+      <td>720575940620720112</td>
+      <td>720575940631517251</td>
+      <td>AOTU_R</td>
+      <td>31</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309995</th>
+      <td>720575940620720112</td>
+      <td>720575940638668659</td>
+      <td>AOTU_R</td>
+      <td>11</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1309996</th>
+      <td>720575940620720112</td>
+      <td>720575940652922529</td>
+      <td>AOTU_R</td>
+      <td>11</td>
+      <td>ACH</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures/lecture 4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../exercises/exercises%203/3.03_files_exercises.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exercises 3.03 - Working with files</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../exercises/exercises%204/4.01_pandas_exercises.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercises 4 - Pandas and connectomics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-yet-another-data-type">Why yet another data type?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-dataframes">Creating DataFrames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-data-in-dataframes">Accessing data in DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-columns-like-a-dictionary">Access to columns like a dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-rows-and-columns-by-name-like-a-2d-dictionary-via-df-loc">Access to rows and columns by name like a 2D dictionary via df.loc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-rows-and-columns-by-index-like-a-2d-array-via-df-iloc">Access to rows and columns by index like a 2D array via df.iloc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-the-underlying-data-like-a-numpy-array">Access the underlying data like a numpy array:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-indexing-also-works">Boolean indexing also works</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby-split-apply-combine">Groupby: Split-apply-combine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-connectomics">Example: Connectomics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classifications-and-connections">Classifications and connections</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-find-neurons-of-a-specific-cell-type">Example: Find neurons of a specific cell type</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-find-all-postsynaptic-partners-of-a-given-neuron">Example: Find all postsynaptic partners of a given neuron</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jan Clemens
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

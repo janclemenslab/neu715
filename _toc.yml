@@ -68,4 +68,25 @@ parts:
       title: Numerical computing
     - file: exercises/exercises 3/3.03_files_exercises
       title: Working with files
-
+  - caption: Lecture 4
+    chapters:
+    - file: lectures/lecture 4/4.01_pandas
+      title: Tabular data and pandas
+  - caption: Exercises 4
+    chapters:
+    - file: exercises/exercises 4/4.01_pandas_exercises
+      title: Tabular data and connectomics
+  # - caption: Lecture 5
+  #   chapters:
+  #   - file: lectures/lecture 5/5.01_probabilities
+  #     title: Probability distributions
+  #   - file: lectures/lecture 5/5.02_descriptive_stats
+  #     title: Descriptive statistics
+  #   - file: lectures/lecture 5/5.02_inferential_stats
+  #     title: Descriptive statistics
+  # - caption: Exercises 5
+  #   chapters:
+  #   - file: lectures/lecture 5/5.02_descriptive_stats_exercise
+  #     title: Descriptive statistics
+  #   - file: lectures/lecture 5/5.02_inferential_stats_exercise
+  #     title: Descriptive statistics
