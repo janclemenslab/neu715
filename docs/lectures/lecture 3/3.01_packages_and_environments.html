@@ -256,7 +256,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/lectures/lecture 3/3.01_packages_and_environments.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 3/3.01_packages_and_environments.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -274,7 +274,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/lectures/lecture 3/3.01_packages_and_environments.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 3/3.01_packages_and_environments.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -440,15 +440,15 @@ document.write(`
 <p>How do you find packages and installation instructions?</p>
 <ul class="simple">
 <li><p>First, check for the package documentation or github website. This will typically have instructions for installation</p></li>
-<li><p>Second, if out of look, search directly on <span class="xref myst">anaconda.org</span> or <span class="xref myst">pypi.org</span>.</p></li>
+<li><p>Second, if out of luck, search directly on <span class="xref myst">anaconda.org</span> or <span class="xref myst">pypi.org</span>.</p></li>
 </ul>
-<p>Let’s say we want to install the SLEAP package, for pose tracking animals in our behavioral videos.</p>
-<p>Google <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">installation</span></code> and <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">github</span></code> to find the installation instructions and github repository (=page), respectively.</p>
+<p>Let’s say we have read a paper in which SLEAP was used for tracking animals. We want to use it to track our own behavioral videos.
+Google <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">installation</span></code> and <code class="docutils literal notranslate"><span class="pre">sleap</span> <span class="pre">github</span></code> to find the installation instructions and github repository (=page), respectively.</p>
 <section id="how-to-use-pypi-and-conda">
 <h3>How to use pypi and conda<a class="headerlink" href="#how-to-use-pypi-and-conda" title="Permalink to this heading">#</a></h3>
 <section id="pypi">
 <h4>Pypi<a class="headerlink" href="#pypi" title="Permalink to this heading">#</a></h4>
-<p>Pypi is used through the <code class="docutils literal notranslate"><span class="pre">pip</span></code> terminal command. To install a package from pypi, run:</p>
+<p>Pypi is used through the <code class="docutils literal notranslate"><span class="pre">pip</span></code> terminal command. To install a package from pypi, open the command line and enter:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>PACKAGE_NAME
 </pre></div>
 </div>
@@ -456,7 +456,7 @@ document.write(`
 </section>
 <section id="anaconda">
 <h4>Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this heading">#</a></h4>
-<p>Anaconda is accessed through the <code class="docutils literal notranslate"><span class="pre">conda</span></code> (or alternatively, <code class="docutils literal notranslate"><span class="pre">mamba</span></code>) command:</p>
+<p>Anaconda is accessed through the <code class="docutils literal notranslate"><span class="pre">conda</span></code> command:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>PACKAGE_NAME
 </pre></div>
 </div>
@@ -470,20 +470,20 @@ document.write(`
 </section>
 <section id="package-management-dependency-hell-and-environments">
 <h2>Package management, dependency hell, and environments<a class="headerlink" href="#package-management-dependency-hell-and-environments" title="Permalink to this heading">#</a></h2>
-<p>Why is package management hard? There are many different python packages, sometimes for very specific purposes, developed by many independent developers. However, this freedom and diversity can complicate things, if you need two packages, but they both rely on different versions of another package:
+<p>Why is package management hard? There are many different python packages, sometimes for very specific purposes, developed by many independent developers. However, this freedom and diversity can complicate things, if you need two packages in different projects that rely on different versions of another package:
 <img src="fig/dep_hell.png" alt="from https://medium.com/knerd/the-nine-circles-of-python-dependency-hell-481d53e3e025" width="400"/></p>
 <p>This can lead to unresolvable dependencies and is known as the “python version hell” or “python dependency hell”.</p>
-<p>Even worse, if you are not careful, you can completely break your python installation: You install a new package, that requires and installs a different version of matplotlib. However, this will break existing packages, which only work with the original version of matplotlib, not the newly installed one.</p>
+<p>Even worse, if you are not careful, you can completely break your python installation: You install a new package, that requires and installs a different version of matplotlib. However, this can break existing packages, which only work with the original version of matplotlib, not the newly installed one.</p>
 </section>
 <section id="environments">
 <h2>Environments<a class="headerlink" href="#environments" title="Permalink to this heading">#</a></h2>
-<p>Conda environments are a way out of this dilemma, since they allow you to have many independent python installations on your computer. When you install (ana)conda, an environment called <code class="docutils literal notranslate"><span class="pre">base</span></code> is created, which has all the basics, like python itself and everything for installing and managing packages (see below).</p>
+<p>Conda environments are a way out of this dilemma, since they allow you to have many independent python installations, called <em>environments</em>, on your computer. When you install (ana)conda, an environment called <code class="docutils literal notranslate"><span class="pre">base</span></code> is created, which has all the basics, like python itself and everything for installing and managing packages (see below).</p>
 <p>You should never directly install anything into <code class="docutils literal notranslate"><span class="pre">base</span></code>!</p>
-<p>Rather, you create an environment, activate and install things into it. That way, if you mess up, you can delete the specific environment, but still have a working python installation.</p>
+<p>Rather, if you start a new project, create an <em>environment</em>, and install packages into it. That way, if you mess up, you can delete the specific environment, but still have a working python installation.</p>
 <ol class="arabic simple">
 <li><p>Create the environment: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">my_env</span></code>. This will create an empty environment. You can also specify packages to install during creation, for instance a python version or numpy: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">my_env</span> <span class="pre">python=3.9</span> <span class="pre">numpy</span></code></p></li>
-<li><p>Activate the environment: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">my_env</span></code>. You command line should indicate that the active environment is now <code class="docutils literal notranslate"><span class="pre">my_env</span></code>. Any call to <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code> will now only affect the active environment.</p></li>
-<li><p>Install your packages: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">matplotlib</span></code>. Conda will find the matplotlib packages, plus all packages matplotlib depends on (basically, all imports). With the right versions!</p></li>
+<li><p>Activate the environment: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">my_env</span></code>. Your command line should indicate that the active environment is now <code class="docutils literal notranslate"><span class="pre">my_env</span></code>. Any call to <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code> will now only affect the active environment <code class="docutils literal notranslate"><span class="pre">my_env</span></code>.</p></li>
+<li><p>Install your packages: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">matplotlib</span></code>. Conda will find the matplotlib package, plus all packages matplotlib depends on (basically, all imports), and install them.</p></li>
 </ol>
 <p>It is good practice to have one environment per project. If you want to switch between environments, always deactivate the current one, with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code>. Otherwise, you get weird interaction effects.</p>
 <p>I will demonstrate this in one example:</p>
