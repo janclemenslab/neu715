@@ -86,6 +86,8 @@ parts:
   #     title: Descriptive statistics
   # - caption: Exercises 5
   #   chapters:
+  #   - file: lectures/lecture 5/5.01_probabilities_exercise
+  #     title: Probability distributions
   #   - file: lectures/lecture 5/5.02_descriptive_stats_exercise
   #     title: Descriptive statistics
   #   - file: lectures/lecture 5/5.02_inferential_stats_exercise
