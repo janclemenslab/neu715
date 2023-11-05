@@ -404,14 +404,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-1-groupby">Exercise 4.1: Groupby</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-2-connectome-analyses-using-pandas">Exercise 4.2: Connectome analyses using pandas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-2a-loading-and-inspecting-the-data">Exercise 4.2a: Loading and inspecting the data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-2b-how-many-jons-exist-per-subtype">Exercise 4.2b: How many JONs exist per subtype?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-2c-are-jons-connected-to-the-giant-fibre-neuron-if-so-how-many-neurons-per-subtype">Exercise 4.2c: Are JONs connected to the giant-fibre neuron? If so how many neurons per subtype?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-plot-the-synapse-count-for-each-of-the-jon-inputs-to-the-gfn">Bonus: Plot the synapse count for each of the JON inputs to the GFN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-1-make-a-pandas-dataframe">Exercise 4.1: Make a pandas DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-2-make-a-dataframe-2">Exercise 4.2: Make a DataFrame 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-3-connectome-analyses-using-pandas">Exercise 4.3: Connectome analyses using pandas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-3a-loading-and-inspecting-the-data">Exercise 4.3a: Loading and inspecting the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-3b-how-many-jons-exist-per-subtype">Exercise 4.3b: How many JONs exist per subtype?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-3c-are-jons-connected-to-the-giant-fibre-neuron-if-so-how-many-neurons-per-subtype">Exercise 4.3c: Are JONs connected to the giant-fibre neuron? If so how many neurons per subtype?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-3d-bonus-plot-the-synapse-count-for-each-of-the-jon-inputs-to-the-gfn">Exercise 4.3d: Bonus: Plot the synapse count for each of the JON inputs to the GFN</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-4-groupby-bonus">Exercise 4.4: Groupby (Bonus)</a></li>
 </ul>
             </nav>
         </div>
@@ -425,8 +427,523 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercises-4-pandas-and-connectomics">
 <h1>Exercises 4 - Pandas and connectomics<a class="headerlink" href="#exercises-4-pandas-and-connectomics" title="Permalink to this heading">#</a></h1>
-<section id="exercise-4-1-groupby">
-<h2>Exercise 4.1: Groupby<a class="headerlink" href="#exercise-4-1-groupby" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exercise-4-1-make-a-pandas-dataframe">
+<h2>Exercise 4.1: Make a pandas DataFrame<a class="headerlink" href="#exercise-4-1-make-a-pandas-dataframe" title="Permalink to this heading">#</a></h2>
+<p>You are given three lists representing data in a contact book (names, birthdays, phone numbers).</p>
+<ol class="arabic simple">
+<li><p>Turn phone the booke into a DataFrame with the names as index and two columns - birthday and phone number.</p></li>
+<li><p>Access the data in the DataFrame to print the phone number and birthday of Alan.</p></li>
+<li><p>Access the data in the DataFrame to print all phone numbers.</p></li>
+<li><p>Access the data in the DataFrame to print the Yolanda’s birthday.</p></li>
+<li><p>Save the phone book as a csv file</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Francoise&#39;</span><span class="p">,</span> <span class="s1">&#39;Alan&#39;</span><span class="p">]</span>
+<span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">432246234</span><span class="p">,</span> <span class="mi">911</span><span class="p">,</span> <span class="mi">984703</span><span class="p">,</span> <span class="mi">123156</span><span class="p">,</span> <span class="mi">190998010</span><span class="p">]</span>
+<span class="n">birthdays</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1.3.2001&#39;</span><span class="p">,</span> <span class="s1">&#39;4.8.2004&#39;</span><span class="p">,</span> <span class="s1">&#39;17.9.1998&#39;</span><span class="p">,</span> <span class="s1">&#39;24.12.2012&#39;</span><span class="p">,</span> <span class="s1">&#39;8.11.1935&#39;</span><span class="p">]</span>
+
+<span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>birthday    8.11.1935
+phone       190998010
+Name: Alan, dtype: object
+Alice        432246234
+Yolanda            911
+Tom             984703
+Francoise       123156
+Alan         190998010
+Name: phone, dtype: int64
+911
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4-2-make-a-dataframe-2">
+<h2>Exercise 4.2: Make a DataFrame 2<a class="headerlink" href="#exercise-4-2-make-a-dataframe-2" title="Permalink to this heading">#</a></h2>
+<p>You are given a dictionary with element names and their atomic numbers.</p>
+<ol class="arabic simple">
+<li><p>Make a DataFrame with two columns - the element names and the atomic numbers.</p></li>
+<li><p>Access the data in the DataFrame to print the atomic number of gold.</p></li>
+<li><p>Save the DataFrame to an excel file.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atomic_numbers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;zinc&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="s1">&#39;vibranium&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;radium&#39;</span><span class="p">:</span> <span class="mi">88</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atomic_numbers</span><span class="p">)</span>
+
+<span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;zinc&#39;: 30, &#39;gold&#39;: 79, &#39;vibranium&#39;: 1000, &#39;radium&#39;: 88}
+zinc           30
+gold           79
+vibranium    1000
+radium         88
+Name: atomic number, dtype: int64
+atomic number    79
+Name: gold, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4-3-connectome-analyses-using-pandas">
+<h2>Exercise 4.3: Connectome analyses using pandas<a class="headerlink" href="#exercise-4-3-connectome-analyses-using-pandas" title="Permalink to this heading">#</a></h2>
+<p>Johnston’s Organ Neurons (JONs) are antennal mechanosensory neurons that occur in 6 subtypes (A-F) with different preferences for antennal movements. The JON A and B subtypes respond to fast antennal vibrations induced by sound, and hence act as the fly’s auditory receptor neurons. Other JON subtypes respond to other features of antennal movement, for instance, JON C and E encode antennal position.</p>
+<p>In this exercise, we will use the connectome to:</p>
+<ol class="arabic simple">
+<li><p>Determine the number of neurons in each JON subpopulation (JO-A … JO-F).</p></li>
+<li><p>Determine whether a neuron that triggers startle and escape responses to odors, visual and acoustic stimuli is directly connecting to JONs.</p></li>
+</ol>
+<section id="exercise-4-3a-loading-and-inspecting-the-data">
+<h3>Exercise 4.3a: Loading and inspecting the data<a class="headerlink" href="#exercise-4-3a-loading-and-inspecting-the-data" title="Permalink to this heading">#</a></h3>
+<p>But first, let’s load the data. They are saved in two csv files:</p>
+<ul class="simple">
+<li><p>‘dat/flywire/classification.csv.gz’: Contains information on all cells (including cell types)</p></li>
+<li><p>‘dat/flywire/connections.csv.gz’: Synaptic connections and transmitter types</p></li>
+</ul>
+<p>Load them and familiarize yourself with the different columnes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>root_id</th>
+      <th>flow</th>
+      <th>super_class</th>
+      <th>class</th>
+      <th>sub_class</th>
+      <th>cell_type</th>
+      <th>hemibrain_type</th>
+      <th>hemilineage</th>
+      <th>side</th>
+      <th>nerve</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>720575940627005443</td>
+      <td>intrinsic</td>
+      <td>optic</td>
+      <td>L1-5</td>
+      <td>NaN</td>
+      <td>L4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>720575940615995398</td>
+      <td>intrinsic</td>
+      <td>optic</td>
+      <td>L1-5</td>
+      <td>NaN</td>
+      <td>L4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>720575940621762567</td>
+      <td>afferent</td>
+      <td>ascending</td>
+      <td>AN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>right</td>
+      <td>CV</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>720575940624384007</td>
+      <td>afferent</td>
+      <td>sensory</td>
+      <td>olfactory</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>ORN_VA1v</td>
+      <td>NaN</td>
+      <td>left</td>
+      <td>AN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>720575940614422540</td>
+      <td>intrinsic</td>
+      <td>central</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>AOTU032,AOTU034</td>
+      <td>LALa1_posterior</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>127974</th>
+      <td>720575940621500404</td>
+      <td>intrinsic</td>
+      <td>visual_projection</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LLPC1,LLPC2a,LLPC2b,LLPC2c,LLPC2d,LLPC3</td>
+      <td>NaN</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>127975</th>
+      <td>720575940651646966</td>
+      <td>intrinsic</td>
+      <td>central</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>LB0_anterior</td>
+      <td>center</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>127976</th>
+      <td>720575940630151162</td>
+      <td>intrinsic</td>
+      <td>optic</td>
+      <td>optic_lobes</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>left</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>127977</th>
+      <td>720575940629364731</td>
+      <td>intrinsic</td>
+      <td>optic</td>
+      <td>optic_lobes</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>127978</th>
+      <td>720575940623859711</td>
+      <td>afferent</td>
+      <td>sensory</td>
+      <td>visual</td>
+      <td>NaN</td>
+      <td>R1-6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>right</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>127979 rows × 10 columns</p>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pre_root_id</th>
+      <th>post_root_id</th>
+      <th>neuropil</th>
+      <th>syn_count</th>
+      <th>nt_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>720575940596125868</td>
+      <td>720575940608552405</td>
+      <td>LOP_R</td>
+      <td>5</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>720575940596125868</td>
+      <td>720575940611348834</td>
+      <td>LOP_R</td>
+      <td>7</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>720575940596125868</td>
+      <td>720575940613059993</td>
+      <td>LOP_R</td>
+      <td>5</td>
+      <td>GLUT</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>720575940596125868</td>
+      <td>720575940616986553</td>
+      <td>LOP_R</td>
+      <td>5</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>720575940596125868</td>
+      <td>720575940620124326</td>
+      <td>LOP_R</td>
+      <td>8</td>
+      <td>ACH</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3794610</th>
+      <td>720575940660868737</td>
+      <td>720575940607206786</td>
+      <td>ME_L</td>
+      <td>9</td>
+      <td>GABA</td>
+    </tr>
+    <tr>
+      <th>3794611</th>
+      <td>720575940660868737</td>
+      <td>720575940608664873</td>
+      <td>ME_L</td>
+      <td>6</td>
+      <td>GABA</td>
+    </tr>
+    <tr>
+      <th>3794612</th>
+      <td>720575940660868737</td>
+      <td>720575940611462242</td>
+      <td>ME_L</td>
+      <td>6</td>
+      <td>GABA</td>
+    </tr>
+    <tr>
+      <th>3794613</th>
+      <td>720575940660868737</td>
+      <td>720575940622913063</td>
+      <td>ME_L</td>
+      <td>23</td>
+      <td>GABA</td>
+    </tr>
+    <tr>
+      <th>3794614</th>
+      <td>720575940660868737</td>
+      <td>720575940626553546</td>
+      <td>ME_L</td>
+      <td>6</td>
+      <td>ACH</td>
+    </tr>
+  </tbody>
+</table>
+<p>3794615 rows × 5 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="exercise-4-3b-how-many-jons-exist-per-subtype">
+<h3>Exercise 4.3b: How many JONs exist per subtype?<a class="headerlink" href="#exercise-4-3b-how-many-jons-exist-per-subtype" title="Permalink to this heading">#</a></h3>
+<p>For each of the 6 JON subtypes (A, B, C, D, E, F) find the number of neurons instances in the connectome and plot the number of neurons for each subtype as a bar plot (one bar per subtype, bar height indicates number of neurons for that subtype).</p>
+<p>Roughly like so:</p>
+<p><img alt="" src="../../_images/exercises 4" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/fae491e86fc1442f1734c9c7fda432a69e8b0924279555a75f13bca0b270a83b.png" src="../../_images/fae491e86fc1442f1734c9c7fda432a69e8b0924279555a75f13bca0b270a83b.png" />
+</div>
+</div>
+</section>
+<section id="exercise-4-3c-are-jons-connected-to-the-giant-fibre-neuron-if-so-how-many-neurons-per-subtype">
+<h3>Exercise 4.3c: Are JONs connected to the giant-fibre neuron? If so how many neurons per subtype?<a class="headerlink" href="#exercise-4-3c-are-jons-connected-to-the-giant-fibre-neuron-if-so-how-many-neurons-per-subtype" title="Permalink to this heading">#</a></h3>
+<p>The giant-fibre neuron (GFN) is a large neuron that triggers startle and escape responses to different modalities - odors, visual stimuli but also sudden loud sounds. The giant fibre has an axon with a large diameter and is directly connected to motor neurons in the ventral nerve chord to rapidly trigger escape.</p>
+<p>Is it also directly connected to sensory neurons, in particular JONs?</p>
+<ol class="arabic simple">
+<li><p>Find the GFN in the connectome - there should be two, one on each side.</p></li>
+<li><p>For each of the GFNs, identify it’s inputs, and determine how many of each JON subtypes provide direct input to it. Plot this as a bar plot.</p></li>
+</ol>
+<p><strong>Hint</strong> The cell type of the GFN is “DNp01” (DN=Descending Neuron)</p>
+<p>FInd the GFNs in the connectome:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>root_id</th>
+      <th>flow</th>
+      <th>super_class</th>
+      <th>class</th>
+      <th>sub_class</th>
+      <th>cell_type</th>
+      <th>hemibrain_type</th>
+      <th>hemilineage</th>
+      <th>side</th>
+      <th>nerve</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>13301</th>
+      <td>720575940622838154</td>
+      <td>efferent</td>
+      <td>descending</td>
+      <td>DN</td>
+      <td>NaN</td>
+      <td>DNp01</td>
+      <td>Giant Fiber</td>
+      <td>putative_primary</td>
+      <td>left</td>
+      <td>CV</td>
+    </tr>
+    <tr>
+      <th>122666</th>
+      <td>720575940632499757</td>
+      <td>efferent</td>
+      <td>descending</td>
+      <td>DN</td>
+      <td>NaN</td>
+      <td>DNp01</td>
+      <td>Giant Fiber</td>
+      <td>putative_primary</td>
+      <td>right</td>
+      <td>CV</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>For each of the GFNs, identify it’s inputs, and determine how many of each JON subtypes provide direct input to it. For each of the GFNs, plot the number of JONs of each subtype in the inputs as a bar plot.</p>
+<p>Roughly like so:</p>
+<p><img alt="" src="../../_images/4.01_GFN_inputs.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2a803c2863160d8672c37c9f88135751017da841e3c567a75cc52cc55f12b39d.png" src="../../_images/2a803c2863160d8672c37c9f88135751017da841e3c567a75cc52cc55f12b39d.png" />
+</div>
+</div>
+</section>
+<section id="exercise-4-3d-bonus-plot-the-synapse-count-for-each-of-the-jon-inputs-to-the-gfn">
+<h3>Exercise 4.3d: Bonus: Plot the synapse count for each of the JON inputs to the GFN<a class="headerlink" href="#exercise-4-3d-bonus-plot-the-synapse-count-for-each-of-the-jon-inputs-to-the-gfn" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-4-4-groupby-bonus">
+<h2>Exercise 4.4: Groupby (Bonus)<a class="headerlink" href="#exercise-4-4-groupby-bonus" title="Permalink to this heading">#</a></h2>
 <p>In the lecture, we used <code class="docutils literal notranslate"><span class="pre">groupby</span></code> and <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> to compute the mean response for each animal.</p>
 <p>Extend the code from the lecture by computing not only the mean but also the standard deviation for each animal, and plotting them using error bars.</p>
 <div class="cell docutils container">
@@ -498,82 +1015,6 @@ document.write(`
 </div></div></div>
 </div>
 </section>
-<section id="exercise-4-2-connectome-analyses-using-pandas">
-<h2>Exercise 4.2: Connectome analyses using pandas<a class="headerlink" href="#exercise-4-2-connectome-analyses-using-pandas" title="Permalink to this heading">#</a></h2>
-<p>Johnston’s Organ Neurons (JONs) are antennal mechanosensory neurons that occur in 6 subtypes (A-F) with different preferences for antennal movements. The JON A and B subtypes respond to fast antennal vibrations induced by sound, and hence act as the fly’s auditory receptor neurons. Other JON subtypes respond to other features of antennal movement, for instance, JON C and E encode antennal position.</p>
-<p>In this exercise, we will use the connectome to:</p>
-<ol class="arabic simple">
-<li><p>Determine the number of neurons in each JON subpopulation (JO-A … JO-F).</p></li>
-<li><p>Determine whether a neuron that triggers startle and escape responses to odors, visual and acoustic stimuli is directly connecting to JONs.</p></li>
-</ol>
-<section id="exercise-4-2a-loading-and-inspecting-the-data">
-<h3>Exercise 4.2a: Loading and inspecting the data<a class="headerlink" href="#exercise-4-2a-loading-and-inspecting-the-data" title="Permalink to this heading">#</a></h3>
-<p>But first, let’s load the data. They are saved in two csv files:</p>
-<ul class="simple">
-<li><p>‘dat/flywire/classification.csv.gz’: Contains information on all cells (including cell types)</p></li>
-<li><p>‘dat/flywire/connections.csv.gz’: Synaptic connections and transmitter types</p></li>
-</ul>
-<p>Load them and familiarize yourself with the different columnes:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-4-2b-how-many-jons-exist-per-subtype">
-<h3>Exercise 4.2b: How many JONs exist per subtype?<a class="headerlink" href="#exercise-4-2b-how-many-jons-exist-per-subtype" title="Permalink to this heading">#</a></h3>
-<p>For each of the 6 JON subtypes (A, B, C, D, E, F) find the number of neurons instances in the connectome and plot the number of neurons for each subtype as a bar plot (one bar per subtype, bar height indicates number of neurons for that subtype).</p>
-<p>Roughly like so:</p>
-<p><img alt="" src="../../_images/4.01_cell_numbers.png" /></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-4-2c-are-jons-connected-to-the-giant-fibre-neuron-if-so-how-many-neurons-per-subtype">
-<h3>Exercise 4.2c: Are JONs connected to the giant-fibre neuron? If so how many neurons per subtype?<a class="headerlink" href="#exercise-4-2c-are-jons-connected-to-the-giant-fibre-neuron-if-so-how-many-neurons-per-subtype" title="Permalink to this heading">#</a></h3>
-<p>The giant-fibre neuron (GFN) is a large neuron that triggers startle and escape responses to different modalities - odors, visual stimuli but also sudden loud sounds. The giant fibre has an axon with a large diameter and is directly connected to motor neurons in the ventral nerve chord to rapidly trigger escape.</p>
-<p>Is it also directly connected to sensory neurons, in particular JONs?</p>
-<ol class="arabic simple">
-<li><p>Find the GFN in the connectome - there should be two, one on each side.</p></li>
-<li><p>For each of the GFNs, identify it’s inputs, and determine how many of each JON subtypes provide direct input to it. Plot this as a bar plot.</p></li>
-</ol>
-<p><strong>Hint</strong> The cell type of the GFN is “DNp01” (DN=Descending Neuron)</p>
-<p>FInd the GFNs in the connectome:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>For each of the GFNs, identify it’s inputs, and determine how many of each JON subtypes provide direct input to it. For each of the GFNs, plot the number of JONs of each subtype in the inputs as a bar plot.</p>
-<p>Roughly like so:</p>
-<p><img alt="" src="../../_images/4.01_GFN_inputs.png" /></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="bonus-plot-the-synapse-count-for-each-of-the-jon-inputs-to-the-gfn">
-<h3>Bonus: Plot the synapse count for each of the JON inputs to the GFN<a class="headerlink" href="#bonus-plot-the-synapse-count-for-each-of-the-jon-inputs-to-the-gfn" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -630,14 +1071,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-1-groupby">Exercise 4.1: Groupby</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-2-connectome-analyses-using-pandas">Exercise 4.2: Connectome analyses using pandas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-2a-loading-and-inspecting-the-data">Exercise 4.2a: Loading and inspecting the data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-2b-how-many-jons-exist-per-subtype">Exercise 4.2b: How many JONs exist per subtype?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-2c-are-jons-connected-to-the-giant-fibre-neuron-if-so-how-many-neurons-per-subtype">Exercise 4.2c: Are JONs connected to the giant-fibre neuron? If so how many neurons per subtype?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-plot-the-synapse-count-for-each-of-the-jon-inputs-to-the-gfn">Bonus: Plot the synapse count for each of the JON inputs to the GFN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-1-make-a-pandas-dataframe">Exercise 4.1: Make a pandas DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-2-make-a-dataframe-2">Exercise 4.2: Make a DataFrame 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-3-connectome-analyses-using-pandas">Exercise 4.3: Connectome analyses using pandas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-3a-loading-and-inspecting-the-data">Exercise 4.3a: Loading and inspecting the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-3b-how-many-jons-exist-per-subtype">Exercise 4.3b: How many JONs exist per subtype?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-3c-are-jons-connected-to-the-giant-fibre-neuron-if-so-how-many-neurons-per-subtype">Exercise 4.3c: Are JONs connected to the giant-fibre neuron? If so how many neurons per subtype?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-3d-bonus-plot-the-synapse-count-for-each-of-the-jon-inputs-to-the-gfn">Exercise 4.3d: Bonus: Plot the synapse count for each of the JON inputs to the GFN</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-4-groupby-bonus">Exercise 4.4: Groupby (Bonus)</a></li>
 </ul>
   </nav></div>
 
