@@ -474,7 +474,6 @@ One problem with raw 2D arrays is that they are not self-documenting. What does 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="c1"># the folder names correspond to the days</span>
 <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;20230912&#39;</span><span class="p">,</span><span class="s1">&#39;20230913&#39;</span><span class="p">,</span><span class="s1">&#39;20230914&#39;</span><span class="p">,</span><span class="s1">&#39;20230915&#39;</span><span class="p">,</span><span class="s1">&#39;20230916&#39;</span><span class="p">,</span><span class="s1">&#39;20230917&#39;</span><span class="p">]</span>
@@ -975,6 +974,161 @@ Name: final, dtype: float64
       <th>20230917</th>
       <td>0.910451</td>
       <td>0.994659</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>You can do that repeatedly, to filter by different conditions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tim&#39;</span><span class="p">,</span> <span class="s1">&#39;Jim&#39;</span><span class="p">,</span> <span class="s1">&#39;Pim&#39;</span><span class="p">,</span> <span class="s1">&#39;Pip&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">],</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">26</span><span class="p">],</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">]})</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">old_guys</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">&gt;</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">old_guys</span><span class="p">)</span>
+
+<span class="n">high_scorer</span> <span class="o">=</span> <span class="n">old_guys</span><span class="p">[</span><span class="n">old_guys</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="o">&gt;</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">high_scorer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>age</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tim</td>
+      <td>12</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jim</td>
+      <td>24</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Pim</td>
+      <td>18</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Pip</td>
+      <td>22</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Tom</td>
+      <td>26</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>age</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Jim</td>
+      <td>24</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Pip</td>
+      <td>22</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Tom</td>
+      <td>26</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>age</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>Pip</td>
+      <td>22</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Tom</td>
+      <td>26</td>
+      <td>7</td>
     </tr>
   </tbody>
 </table>
