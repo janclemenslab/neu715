@@ -408,9 +408,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-yet-another-data-type">Why yet another data type?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-dataframes">Creating DataFrames</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-data-in-dataframes">Accessing data in DataFrames</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-columns-like-a-dictionary">Access to columns like a dictionary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-rows-and-columns-by-name-like-a-2d-dictionary-via-df-loc">Access to rows and columns by name like a 2D dictionary via df.loc</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-rows-and-columns-by-index-like-a-2d-array-via-df-iloc">Access to rows and columns by index like a 2D array via df.iloc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-columns-like-a-dictionary">Access columns like a dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-rows-and-columns-by-name-like-a-2d-dictionary-via-df-loc">Access rows and columns by name like a 2D dictionary via df.loc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-rows-and-columns-via-a-numerical-index-like-a-2d-array-via-df-iloc">Access to rows and columns via a numerical index like a 2D array via df.iloc</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-the-underlying-data-like-a-numpy-array">Access the underlying data like a numpy array:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-indexing-also-works">Boolean indexing also works</a></li>
 </ul>
@@ -468,7 +468,7 @@ One problem with raw 2D arrays is that they are not self-documenting. What does 
 </div>
 </div>
 </div>
-<p>Do you remember what the data means? What are the individual rows? What are the columns? Imagine this were an analysis on your own data and you’d want to look at the results in 3 monts or so.</p>
+<p>Do you remember what the data means? What are the individual rows? What are the columns? Imagine this were an analysis on your own data and you’d want to look at the results in 3 months or so.</p>
 <p>There are no labels, so it’s hard to know from the data itself what they mean - the data is not “self-documenting”</p>
 <p>We can turn this into a DataFrame:</p>
 <div class="cell docutils container">
@@ -619,10 +619,11 @@ One problem with raw 2D arrays is that they are not self-documenting. What does 
 <section id="creating-dataframes">
 <h2>Creating DataFrames<a class="headerlink" href="#creating-dataframes" title="Permalink to this heading">#</a></h2>
 <p>We already learned that pandas provides versatile file I/O (csv, excel): <span class="xref myst">https://pandas.pydata.org/docs/_sources/user_guide/io.html</span> (see Week3/Files)</p>
-<p>As shown above, a DataFrame can also easily be created from Dictionary. If we do not specify an index, it will be generated automatically, as a row numbers:</p>
+<p>As shown above, a DataFrame can be created from Dictionary.</p>
+<p>Data is 2D and is organized in columns and rows (rows=index). If we do not specify an index during DataFrame creation, it will be generated automatically, as a row numbers:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;column 1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;column 2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;column 1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="s1">&#39;column 2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 <span class="n">df</span>
@@ -630,7 +631,7 @@ One problem with raw 2D arrays is that they are not self-documenting. What does 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;column 1&#39;: [1, 2, 3], &#39;column 2&#39;: [10, 20, 30]}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;column 1&#39;: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;], &#39;column 2&#39;: [10, 20, 30]}
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -658,24 +659,24 @@ One problem with raw 2D arrays is that they are not self-documenting. What does 
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
+      <td>a</td>
       <td>10</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2</td>
+      <td>b</td>
       <td>20</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3</td>
+      <td>c</td>
       <td>30</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>A DataFrame can also be created from a 2D np.array. In that case, we need to specify the column names separately:</p>
+<p>A DataFrame can also be created from a 2D np.array. In that case, we can specify the column names separately:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;initial&#39;</span><span class="p">,</span> <span class="s1">&#39;final&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">days</span><span class="p">)</span>
@@ -746,8 +747,8 @@ One problem with raw 2D arrays is that they are not self-documenting. What does 
 <h2>Accessing data in DataFrames<a class="headerlink" href="#accessing-data-in-dataframes" title="Permalink to this heading">#</a></h2>
 <p>There are many ways of accessing data in a DataFrame. We cover the basics here.</p>
 <p>More details: <span class="xref myst">https://pandas.pydata.org/docs/_sources/user_guide/indexing.html</span></p>
-<section id="access-to-columns-like-a-dictionary">
-<h3>Access to columns like a dictionary<a class="headerlink" href="#access-to-columns-like-a-dictionary" title="Permalink to this heading">#</a></h3>
+<section id="access-columns-like-a-dictionary">
+<h3>Access columns like a dictionary<a class="headerlink" href="#access-columns-like-a-dictionary" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;initial&#39;</span><span class="p">]</span>  <span class="c1"># df[column_name]</span>
@@ -767,23 +768,24 @@ Name: initial, dtype: float64
 </div>
 </div>
 </section>
-<section id="access-to-rows-and-columns-by-name-like-a-2d-dictionary-via-df-loc">
-<h3>Access to rows and columns by name like a 2D dictionary via df.loc<a class="headerlink" href="#access-to-rows-and-columns-by-name-like-a-2d-dictionary-via-df-loc" title="Permalink to this heading">#</a></h3>
+<section id="access-rows-and-columns-by-name-like-a-2d-dictionary-via-df-loc">
+<h3>Access rows and columns by name like a 2D dictionary via df.loc<a class="headerlink" href="#access-rows-and-columns-by-name-like-a-2d-dictionary-via-df-loc" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">df.loc[index_name,</span> <span class="pre">column_name]</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;initial&#39;</span><span class="p">,</span> <span class="s1">&#39;final&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">days</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;by row name: df.loc[&#39;20230915&#39;]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;by row name - all columns: df.loc[&#39;20230915&#39;]&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20230915&#39;</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is equivalent to: df.loc[&#39;20230915&#39;, :]&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20230915&#39;</span><span class="p">,</span> <span class="p">:])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;by column name: df.loc[:, &#39;initial&#39;]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;by column name - all rows, one column: df.loc[:, &#39;initial&#39;]&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;initial&#39;</span><span class="p">])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">by row and column name: df.loc[&#39;20230915&#39;, &#39;initial&#39;]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">by row and column name - returns a single cell in the table: df.loc[&#39;20230915&#39;, &#39;initial&#39;]&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;20230915&#39;</span><span class="p">,</span> <span class="s1">&#39;initial&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -844,7 +846,7 @@ Name: initial, dtype: float64
     </tr>
   </tbody>
 </table>
-</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>by row name: df.loc[&#39;20230915&#39;]
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>by row name - all columns: df.loc[&#39;20230915&#39;]
 initial    0.559966
 final      0.816802
 Name: 20230915, dtype: float64
@@ -852,7 +854,7 @@ this is equivalent to: df.loc[&#39;20230915&#39;, :]
 initial    0.559966
 final      0.816802
 Name: 20230915, dtype: float64
-by column name: df.loc[:, &#39;initial&#39;]
+by column name - all rows, one column: df.loc[:, &#39;initial&#39;]
 20230912    0.086569
 20230913    0.270818
 20230914    0.470722
@@ -861,15 +863,16 @@ by column name: df.loc[:, &#39;initial&#39;]
 20230917    0.910451
 Name: initial, dtype: float64
 
-by row and column name: df.loc[&#39;20230915&#39;, &#39;initial&#39;]
+by row and column name - returns a single cell in the table: df.loc[&#39;20230915&#39;, &#39;initial&#39;]
 0.5599663891082376
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="access-to-rows-and-columns-by-index-like-a-2d-array-via-df-iloc">
-<h3>Access to rows and columns by index like a 2D array via df.iloc<a class="headerlink" href="#access-to-rows-and-columns-by-index-like-a-2d-array-via-df-iloc" title="Permalink to this heading">#</a></h3>
+<section id="access-to-rows-and-columns-via-a-numerical-index-like-a-2d-array-via-df-iloc">
+<h3>Access to rows and columns via a numerical index like a 2D array via df.iloc<a class="headerlink" href="#access-to-rows-and-columns-via-a-numerical-index-like-a-2d-array-via-df-iloc" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">df.iloc[row_number,</span> <span class="pre">column_number]</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
@@ -907,17 +910,19 @@ Name: final, dtype: float64
 <h3>Access the underlying data like a numpy array:<a class="headerlink" href="#access-the-underlying-data-like-a-numpy-array" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span>
+<span class="n">data</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.08656877, 0.26186048],
-       [0.27081788, 0.48948194],
-       [0.47072199, 0.65700287],
-       [0.55996639, 0.81680243],
-       [0.84880959, 0.98686545],
-       [0.91045131, 0.99465925]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[0.08656877, 0.26186048],
+        [0.27081788, 0.48948194],
+        [0.47072199, 0.65700287],
+        [0.55996639, 0.81680243],
+        [0.84880959, 0.98686545],
+        [0.91045131, 0.99465925]]),
+ numpy.ndarray)
 </pre></div>
 </div>
 </div>
@@ -979,7 +984,7 @@ Name: final, dtype: float64
 </table>
 </div></div></div>
 </div>
-<p>You can do that repeatedly, to filter by different conditions:</p>
+<p>You can apply boolean indices repeatedly, to filter by different conditions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tim&#39;</span><span class="p">,</span> <span class="s1">&#39;Jim&#39;</span><span class="p">,</span> <span class="s1">&#39;Pim&#39;</span><span class="p">,</span> <span class="s1">&#39;Pip&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">],</span>
@@ -1143,7 +1148,7 @@ Name: final, dtype: float64
 <section id="groupby-split-apply-combine">
 <h2>Groupby: Split-apply-combine<a class="headerlink" href="#groupby-split-apply-combine" title="Permalink to this heading">#</a></h2>
 <p>A common problem in data analysis is:</p>
-<p>We have an experiments with multiple subjects, and multiple measurements per subject. We’d like to compute the average score for each subject for plotting and statistics.</p>
+<p>We have an experiment with multiple subjects, and multiple measurements per subject. We’d like to compute the average score for each subject for plotting and statistics.</p>
 <p>For instance:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1165,7 +1170,7 @@ Name: final, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/48172657669483a59c65a9e4d3580154825f4551a66e1dfddd17f69d44696304.png" src="../../_images/48172657669483a59c65a9e4d3580154825f4551a66e1dfddd17f69d44696304.png" />
+<img alt="../../_images/f6acdc24485263796875ab9a9be96d886f2d71d3ca26c111ae9127ae6e3bb22d.png" src="../../_images/f6acdc24485263796875ab9a9be96d886f2d71d3ca26c111ae9127ae6e3bb22d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1765,7 +1770,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/bc/5m_c7nkj1vnc2w7xmmnhpfww0000gn/T/ipykernel_40103/1479352327.py:1: FutureWarning: The provided callable &lt;function mean at 0x103fd49a0&gt; is currently using DataFrameGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;mean&quot; instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/zr/6ql4dzjx0tq8mpzht_2dwh480000gn/T/ipykernel_3584/1479352327.py:1: FutureWarning: The provided callable &lt;function mean at 0x1301a4a40&gt; is currently using DataFrameGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;mean&quot; instead.
   agg = grouped.aggregate(np.mean)
 </pre></div>
 </div>
@@ -2679,9 +2684,9 @@ For instance, to find all neurons of a specific types, and then find their input
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-yet-another-data-type">Why yet another data type?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-dataframes">Creating DataFrames</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-data-in-dataframes">Accessing data in DataFrames</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-columns-like-a-dictionary">Access to columns like a dictionary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-rows-and-columns-by-name-like-a-2d-dictionary-via-df-loc">Access to rows and columns by name like a 2D dictionary via df.loc</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-rows-and-columns-by-index-like-a-2d-array-via-df-iloc">Access to rows and columns by index like a 2D array via df.iloc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-columns-like-a-dictionary">Access columns like a dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-rows-and-columns-by-name-like-a-2d-dictionary-via-df-loc">Access rows and columns by name like a 2D dictionary via df.loc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-rows-and-columns-via-a-numerical-index-like-a-2d-array-via-df-iloc">Access to rows and columns via a numerical index like a 2D array via df.iloc</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-the-underlying-data-like-a-numpy-array">Access the underlying data like a numpy array:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-indexing-also-works">Boolean indexing also works</a></li>
 </ul>
