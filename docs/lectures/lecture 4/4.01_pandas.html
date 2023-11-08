@@ -1894,7 +1894,7 @@ dtype: float64
 For instance, to find all neurons of a specific types, and then find their inputs or outputs.</p>
 <section id="classifications-and-connections">
 <h3>Classifications and connections<a class="headerlink" href="#classifications-and-connections" title="Permalink to this heading">#</a></h3>
-<p>The classification table has basic information about each of the 130k neurons in the fly brain: its the cell_type, side of the brain, position in the brain etc.</p>
+<p>The classification table has basic information about each of the 130k neurons in the fly brain: the cell_type, side of the brain, position in the brain etc.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classification</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dat/flywire/classification.csv.gz&#39;</span><span class="p">)</span>
@@ -2413,16 +2413,21 @@ For instance, to find all neurons of a specific types, and then find their input
 <h4>Example: Find all postsynaptic partners of a given neuron<a class="headerlink" href="#example-find-all-postsynaptic-partners-of-a-given-neuron" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select the first neuron in the list and get it&#39;s root_id</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select the first LC10a neuron in the list and get it&#39;s root_id</span>
 <span class="n">pre_root_id</span> <span class="o">=</span> <span class="n">LC10a_neurons</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;root_id&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pre_root_id</span><span class="p">)</span>
 
 <span class="c1"># find all downstream targets for that neuron</span>
+<span class="c1"># that is, all synaptic connections for which our neuron&#39;s root_id is the root_id of the pre-synapse</span>
 <span class="n">targets</span> <span class="o">=</span> <span class="n">connections</span><span class="p">[</span><span class="n">connections</span><span class="p">[</span><span class="s1">&#39;pre_root_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">pre_root_id</span><span class="p">]</span>
 <span class="n">targets</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>720575940620720112
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
