@@ -94,3 +94,15 @@ parts:
       title: Descriptive statistics
     - file: exercises/exercises 5/5.03_inferential_stats_exercise
       title: Inferential statistics
+  # - caption: Lecture 6
+  #   chapters:
+  #   - file: lectures/lecture 6/6.01_linear_regression
+  #     title: Linear regression
+  #   - file: lectures/lecture 6/6.02_nonlinear_regression
+  #     title: Nonlinear regression
+  # - caption: Exercises 6
+  #   chapters:
+  #   - file: exercises/exercise 6/6.01_linear_regression_exercises
+  #     title: Linear regression
+  #   - file: exercises/exercise 6/6.02_nonlinear_regression_exercises
+  #     title: Nonlinear regression
