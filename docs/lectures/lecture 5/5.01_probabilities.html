@@ -424,7 +424,8 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Statistics with python</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-distributions">Probability distributions</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-frequency-distribution-of-your-data-using-histograms">Visualizing the frequency distribution of your data using histograms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function">Probability density function</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function">Probability density function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms-in-python">Histograms in python</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-exercise">Mini-Exercise</a></li>
 </ul>
 </li>
@@ -452,8 +453,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="statistics-with-python">
 <h1>Statistics with python<a class="headerlink" href="#statistics-with-python" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
-<li><p>Descriptive stats (today): Summary stats with python (mean, std, sem, CI, median, percentiles, IQR), statistical plots (hist, boxplot, violin)</p></li>
-<li><p>Inferential stats (next time): Hypothesis testing (parametric/nonparametric, paired/unpaired, two-sided/one-sided, Anova)</p></li>
+<li><p>Descriptive stats (today and tomorrow): Summary stats with python (mean, std, sem, CI, median, percentiles, IQR), statistical plots (hist, boxplot, violin)</p></li>
+<li><p>Inferential stats (Wednesday): Hypothesis testing (parametric/nonparametric, paired/unpaired, two-sided/one-sided, Anova)</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> and numpy cover the basics. For more complex stats use the python package <a class="reference external" href="https://www.statsmodels.org/stable/index.html">statsmodels</a> or the R-language.</p>
 <div class="cell docutils container">
@@ -477,12 +478,7 @@ One parameter is varied (e.g. an electrical current stimulus on a neuron), while
 <h2>Visualizing the frequency distribution of your data using histograms<a class="headerlink" href="#visualizing-the-frequency-distribution-of-your-data-using-histograms" title="Permalink to this heading">#</a></h2>
 <p>The frequency distribution describes how often a measured value occurs and serves to estimate the probability of that measured value.
 We estimate the frequency distribition using a histograms, which can be used to derive the underlying probability density function.</p>
-<p>Histograms show how many of the measured feature values occurred in defined, contiguous ranges (contiguous means that there is no gap between ranges). Each of those ranges (also called “classes” or “bins”) is represented graphically by a rectangle (or bar). The bar’s height represents the measured frequency (number of samples falling into each bin). The choice on the number and borders of the bins depends on the data, the sample size, and the scientific question. Larger samples allow more bins and more details. If too many bins are used for a given sample size, some of the bins will by chance be empty, making it difficult to judge the shape of the frequency distribution.</p>
-<p><img alt="" src="../../_images/5.01_probabilities1.png" /></p>
-</section>
-<section id="probability-density-function">
-<h2>Probability density function<a class="headerlink" href="#probability-density-function" title="Permalink to this heading">#</a></h2>
-<p>In contrast to the frequency distribution, which contains the absolute number of occurrences of feature values in specified classes, the probability density function indicates probabilities for the occurrence of specific feature values. For continuous numerical data, you could imagine first scaling a histogram to relative rather than absolute numbers of occurrences (i.e. giving percentages of occurrences – which refer directly to probabilities). Then, you make the bins of the scaled histogram finer and finer. In consequence, the probability for each class will also get smaller and smaller. If you continue to an infinite number of bins, each bin would have an near-zero probability, because it is very unlikely that your dataset contains samples with that exact feature value. However, the probability to find a person that is 1,70 m tall IS higher than the probability to find a person of 2,20 m (or even 42,50 m)! The probability density function reflects that: The area under the curve is scaled to 1, typically making all values pretty small, but nevertheless clearly &gt;0 in ranges where feature values can be found. Contiguous probability values from data is obtained by binning the data in a histogram and assuming that the true probability density is more or less constant for all feature values falling in that bin.</p>
+<p>Histograms show how many of the measured feature values occurred in defined, contiguous ranges (contiguous means that there is no gap between ranges). Each of those ranges (also called “classes” or “bins”) is represented graphically by a rectangle (or bar). The bar’s height represents the measured frequency (number of samples falling into each bin). The choice off the number and borders of the bins depends on the data, the sample size, and the scientific question. More samples allow more bins and more details. If too many bins are used for a given sample size, some of the bins will by chance be empty, making it difficult to judge the shape of the frequency distribution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE</span>
@@ -491,17 +487,18 @@ We estimate the frequency distribition using a histograms, which can be used to 
 
 <span class="c1"># different ways of plotting histograms</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of samples=</span><span class="se">\n</span><span class="s1">Frequency&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;4 bins - too few&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;16 bins - just right&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;256 bins - too many&#39;</span><span class="p">)</span>
 
@@ -512,9 +509,16 @@ We estimate the frequency distribition using a histograms, which can be used to 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dd359643f2056f9548bc586fbff93899629ddb57fd3bdcbe51adaa4b65a441a5.png" src="../../_images/dd359643f2056f9548bc586fbff93899629ddb57fd3bdcbe51adaa4b65a441a5.png" />
+<img alt="../../_images/12f9550f67128a64bdfceed36e634d1cffbf664f7c80cd4de98d7892723620a1.png" src="../../_images/12f9550f67128a64bdfceed36e634d1cffbf664f7c80cd4de98d7892723620a1.png" />
 </div>
 </div>
+</section>
+<section id="probability-density-function">
+<h2>Probability density function<a class="headerlink" href="#probability-density-function" title="Permalink to this heading">#</a></h2>
+<p>In contrast to the frequency distribution, which contains the absolute number of occurrences of feature values in specified classes, the probability density function indicates probabilities for the occurrence of specific feature values. For continuous numerical data, you could imagine first scaling a histogram to relative rather than absolute numbers of occurrences (i.e. giving percentages of occurrences – which refer directly to probabilities). Then, you make the bins of the scaled histogram finer and finer. In consequence, the probability for each class will also get smaller and smaller. If you continue to an infinite number of bins, each bin would have an near-zero probability, because it is very unlikely that your dataset contains samples with that exact feature value. However, the probability to find a person that is 1,70 m tall <em>is indeed</em> higher than the probability to find a person of 2,20 m (or even 2,50 m)! The probability density function reflects that: The area under the curve is scaled to 1, typically making all values pretty small, but nevertheless clearly &gt;0 in ranges where feature values can be found. Contiguous probability values from data is obtained by binning the data in a histogram and assuming that the true probability density is more or less constant for all feature values falling in that bin.</p>
+</section>
+<section id="histograms-in-python">
+<h2>Histograms in python<a class="headerlink" href="#histograms-in-python" title="Permalink to this heading">#</a></h2>
 <p>In python, we can plot a histogram using <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code>:</p>
 <p><code class="docutils literal notranslate"><span class="pre">n,</span> <span class="pre">bins,</span> <span class="pre">patches</span> <span class="pre">=</span> <span class="pre">plt.hist(x,</span> <span class="pre">bins,</span> <span class="pre">density)</span></code> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html">docs</a>)</p>
 <p>Arguments:</p>
@@ -681,7 +685,7 @@ However, the mean (or sum) of the pips over N subsequent throws approaches a Nor
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7f55e6f5f27f494f6d7a8e9ef293bc4996406c4b3637b33bdeef7e7f583eb237.png" src="../../_images/7f55e6f5f27f494f6d7a8e9ef293bc4996406c4b3637b33bdeef7e7f583eb237.png" />
+<img alt="../../_images/1265b69d35fddda247502155d76366c3411675ededffc7f962e3622538df37b0.png" src="../../_images/1265b69d35fddda247502155d76366c3411675ededffc7f962e3622538df37b0.png" />
 </div>
 </div>
 </section>
@@ -735,7 +739,7 @@ However, the mean (or sum) of the pips over N subsequent throws approaches a Nor
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f6f8006783c1fd8ddcaf540d766d403a1c96bc8dcba54cc07a57ed28f966dcf6.png" src="../../_images/f6f8006783c1fd8ddcaf540d766d403a1c96bc8dcba54cc07a57ed28f966dcf6.png" />
+<img alt="../../_images/ff012ba87d3b02f8b6ae4eab6350283516d3e95d8dd72b71420567b641677a53.png" src="../../_images/ff012ba87d3b02f8b6ae4eab6350283516d3e95d8dd72b71420567b641677a53.png" />
 </div>
 </div>
 </section>
@@ -769,7 +773,7 @@ However, the mean (or sum) of the pips over N subsequent throws approaches a Nor
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9c8ecd3889c43719f5eaaa70bd81d3727e4e3a323ee4d204a5c9f376e67bb407.png" src="../../_images/9c8ecd3889c43719f5eaaa70bd81d3727e4e3a323ee4d204a5c9f376e67bb407.png" />
+<img alt="../../_images/6a356ff112537283226a920bf2a205ed70b58610f2dfd4fd0f6e70613a96db3a.png" src="../../_images/6a356ff112537283226a920bf2a205ed70b58610f2dfd4fd0f6e70613a96db3a.png" />
 </div>
 </div>
 </section>
@@ -831,7 +835,7 @@ However, the mean (or sum) of the pips over N subsequent throws approaches a Nor
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/06f9936a5af80e18c9fde340bc92894daab51f625a69884369a581178e291e10.png" src="../../_images/06f9936a5af80e18c9fde340bc92894daab51f625a69884369a581178e291e10.png" />
+<img alt="../../_images/69a9a410c7cebcff7172c9c768a7398103c16e028a8f95c2d2dcbfe957874fb4.png" src="../../_images/69a9a410c7cebcff7172c9c768a7398103c16e028a8f95c2d2dcbfe957874fb4.png" />
 </div>
 </div>
 </section>
@@ -903,7 +907,8 @@ However, the mean (or sum) of the pips over N subsequent throws approaches a Nor
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Statistics with python</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-distributions">Probability distributions</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-frequency-distribution-of-your-data-using-histograms">Visualizing the frequency distribution of your data using histograms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function">Probability density function</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function">Probability density function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms-in-python">Histograms in python</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-exercise">Mini-Exercise</a></li>
 </ul>
 </li>
