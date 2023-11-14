@@ -418,9 +418,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-p-values">1a. P-values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-p-values">1b. P-values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-tests">2. Statistical tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1a-p-values">Exercise 1a. P-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1b-p-values">Exercise 1b. P-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-statistical-tests-important">Exercise 2. Statistical tests (IMPORTANT)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-groups-bonus">3. Multiple groups (Bonus)</a></li>
 </ul>
             </nav>
@@ -435,8 +435,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-5-03-inferential-statistics">
 <h1>Exercise 5.03 - Inferential Statistics<a class="headerlink" href="#exercise-5-03-inferential-statistics" title="Permalink to this heading">#</a></h1>
-<section id="a-p-values">
-<h2>1a. P-values<a class="headerlink" href="#a-p-values" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1a-p-values">
+<h2>Exercise 1a. P-values<a class="headerlink" href="#exercise-1a-p-values" title="Permalink to this heading">#</a></h2>
 <p>The p-value indicates the likelihood of obtaining the observed results if the null hypothesis is correct.
 Small p-values indicate that the Null hypothesis is unlikely to have generated the data - a strong evidence <em>against</em> the null hypothesis.</p>
 <p>Let’s explore how the p-value behaves if we know that the null hypothesis is true.</p>
@@ -454,8 +454,8 @@ Small p-values indicate that the Null hypothesis is unlikely to have generated t
 </div>
 </div>
 </section>
-<section id="b-p-values">
-<h2>1b. P-values<a class="headerlink" href="#b-p-values" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1b-p-values">
+<h2>Exercise 1b. P-values<a class="headerlink" href="#exercise-1b-p-values" title="Permalink to this heading">#</a></h2>
 <p>Now do the same as above, but instead of generating from a Gaussian distribution, for which we cannot reject the null hypothesis of normality, let’s use samples from a <strong>uniform</strong> distribution.</p>
 <p>Do the same as above with these data:</p>
 <p>Generate 1000 datasets with a <em>Uniform</em> distribution using <code class="docutils literal notranslate"><span class="pre">np.random.rand</span></code>, each with 10000 samples. We know that these samples are <em>not</em> normally distributed!</p>
@@ -474,8 +474,8 @@ Run the normaltest repeatedly time for 1000 different datasets, and plot the dis
 </div>
 </div>
 </section>
-<section id="statistical-tests">
-<h2>2. Statistical tests<a class="headerlink" href="#statistical-tests" title="Permalink to this heading">#</a></h2>
+<section id="exercise-2-statistical-tests-important">
+<h2>Exercise 2. Statistical tests (IMPORTANT)<a class="headerlink" href="#exercise-2-statistical-tests-important" title="Permalink to this heading">#</a></h2>
 <p>You are given experimental data in the file <code class="docutils literal notranslate"><span class="pre">5.03_inferential_stats_exercise.npy</span></code>.</p>
 <ol class="arabic simple">
 <li><p>plot the distribution</p></li>
@@ -490,10 +490,21 @@ Run the normaltest repeatedly time for 1000 different datasets, and plot the dis
 <li><p>larger than b</p></li>
 </ul>
 <p>Inspect the p-values for the different tests and try to understand their relative values (why do the tests for difference vs. smaller vs. larger produce different p-values?).</p>
-<p><strong>Hint</strong> You can use the <code class="docutils literal notranslate"><span class="pre">scipy.stats.ttest_1samp</span></code> test, to test whether a dataset’s mean differes significantly from a specific value.</p>
+<p><strong>Hint</strong> You can use the <code class="docutils literal notranslate"><span class="pre">scipy.stats.ttest_1samp</span></code> test, to test whether a dataset’s mean differes significantly from a specific value.
+<strong>Hint</strong> Files ending in <code class="docutils literal notranslate"><span class="pre">.npy</span></code> contain a single variable only. <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> <span class="pre">np.load('some_file.npy')</span></code> will load the variable into data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the data:</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;5.03_inferential_stats_exercise.npy&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="s1">&#39;Sample size:&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;numpy.ndarray&#39;&gt; Sample size: (1000,)
 </pre></div>
 </div>
 </div>
@@ -572,9 +583,9 @@ Run the normaltest repeatedly time for 1000 different datasets, and plot the dis
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-p-values">1a. P-values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-p-values">1b. P-values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-tests">2. Statistical tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1a-p-values">Exercise 1a. P-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1b-p-values">Exercise 1b. P-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-statistical-tests-important">Exercise 2. Statistical tests (IMPORTANT)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-groups-bonus">3. Multiple groups (Bonus)</a></li>
 </ul>
   </nav></div>

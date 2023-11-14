@@ -419,10 +419,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-the-data-and-visualize-the-distribution">Exercise 1 - load the data and visualize the distribution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualize-the-probability-densities">Exercise 2 - visualize the probability densities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions">Exercise 3 - calculate mean, standard deviation, and standard error of the mean for both distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-plot-with-different-types-of-errorbars">Exercise 4 - plot with different types of errorbars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-the-data-and-determine-sample-sizes-important">Exercise 1 - load the data and determine sample sizes (IMPORTANT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualize-the-probability-densities-important">Exercise 2 - visualize the probability densities (IMPORTANT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions-important">Exercise 3 - calculate mean, standard deviation, and standard error of the mean for both distributions (IMPORTANT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-plot-with-different-types-of-errorbars-important">Exercise 4 - plot with different types of errorbars (IMPORTANT)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-psth">Exercise 5 - PSTH</a></li>
 </ul>
             </nav>
@@ -463,8 +463,8 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="exercise-1-load-the-data-and-visualize-the-distribution">
-<h2>Exercise 1 - load the data and visualize the distribution<a class="headerlink" href="#exercise-1-load-the-data-and-visualize-the-distribution" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-load-the-data-and-determine-sample-sizes-important">
+<h2>Exercise 1 - load the data and determine sample sizes (IMPORTANT)<a class="headerlink" href="#exercise-1-load-the-data-and-determine-sample-sizes-important" title="Permalink to this heading">#</a></h2>
 <p>Load the data from the file <code class="docutils literal notranslate"><span class="pre">5.01_probabilities_exercise.npz</span></code> using numpy.</p>
 <p>Inspect the data - what are the sample sizes for the control and treatment data?</p>
 <div class="cell docutils container">
@@ -475,8 +475,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-2-visualize-the-probability-densities">
-<h2>Exercise 2 - visualize the probability densities<a class="headerlink" href="#exercise-2-visualize-the-probability-densities" title="Permalink to this heading">#</a></h2>
+<section id="exercise-2-visualize-the-probability-densities-important">
+<h2>Exercise 2 - visualize the probability densities (IMPORTANT)<a class="headerlink" href="#exercise-2-visualize-the-probability-densities-important" title="Permalink to this heading">#</a></h2>
 <p>Plot the probability densities for the control and treatment data. Plot them in the same plot so you can directly compare them.</p>
 <p><strong>Hint:</strong> To make the overlapping histograms more easily visible, make them translucent by setting the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> argument to 0.5. Something like <code class="docutils literal notranslate"><span class="pre">plt.hist(x,</span> <span class="pre">bins=10,</span> <span class="pre">alpha=0.5)</span></code>.</p>
 <div class="cell docutils container">
@@ -487,8 +487,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions">
-<h2>Exercise 3 - calculate mean, standard deviation, and standard error of the mean for both distributions<a class="headerlink" href="#exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions" title="Permalink to this heading">#</a></h2>
+<section id="exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions-important">
+<h2>Exercise 3 - calculate mean, standard deviation, and standard error of the mean for both distributions (IMPORTANT)<a class="headerlink" href="#exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions-important" title="Permalink to this heading">#</a></h2>
 <p>Calculate and compare the standard deviation (std) and the standard error of the mean (sem) for both data sets.</p>
 <p>Can you explain why the std is higher for the treatment data, but the sem is lower for the control data?</p>
 <p><strong>HINT</strong>: If your data is represented as a dictionary, you can use a for loop and <code class="docutils literal notranslate"><span class="pre">.items()</span></code> to compute the statistics for each key-value pair.</p>
@@ -500,8 +500,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-4-plot-with-different-types-of-errorbars">
-<h2>Exercise 4 - plot with different types of errorbars<a class="headerlink" href="#exercise-4-plot-with-different-types-of-errorbars" title="Permalink to this heading">#</a></h2>
+<section id="exercise-4-plot-with-different-types-of-errorbars-important">
+<h2>Exercise 4 - plot with different types of errorbars (IMPORTANT)<a class="headerlink" href="#exercise-4-plot-with-different-types-of-errorbars-important" title="Permalink to this heading">#</a></h2>
 <p>Plot the means of control and treatment data with error bars.</p>
 <p>Produce two plots with different definitions of the error bars:</p>
 <ul class="simple">
@@ -604,10 +604,10 @@ A PSTH is nothing more than a histogram of the spike times!</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-the-data-and-visualize-the-distribution">Exercise 1 - load the data and visualize the distribution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualize-the-probability-densities">Exercise 2 - visualize the probability densities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions">Exercise 3 - calculate mean, standard deviation, and standard error of the mean for both distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-plot-with-different-types-of-errorbars">Exercise 4 - plot with different types of errorbars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-the-data-and-determine-sample-sizes-important">Exercise 1 - load the data and determine sample sizes (IMPORTANT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualize-the-probability-densities-important">Exercise 2 - visualize the probability densities (IMPORTANT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions-important">Exercise 3 - calculate mean, standard deviation, and standard error of the mean for both distributions (IMPORTANT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-plot-with-different-types-of-errorbars-important">Exercise 4 - plot with different types of errorbars (IMPORTANT)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-psth">Exercise 5 - PSTH</a></li>
 </ul>
   </nav></div>

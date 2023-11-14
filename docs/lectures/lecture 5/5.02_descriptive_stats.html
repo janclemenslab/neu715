@@ -552,27 +552,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-&lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-&lt;&gt;:30: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-&lt;&gt;:31: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-&lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-&lt;&gt;:30: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-&lt;&gt;:31: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-/var/folders/zr/6ql4dzjx0tq8mpzht_2dwh480000gn/T/ipykernel_16321/2088512525.py:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-  plt.plot([np.nanmean(pdf) - np.nanstd(pdf), np.nanmean(pdf) + np.nanstd(pdf)], [0.0023, 0.0023], c=&#39;r&#39;, label=&#39;68%, $\pm\sigma$&#39;)
-/var/folders/zr/6ql4dzjx0tq8mpzht_2dwh480000gn/T/ipykernel_16321/2088512525.py:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-  plt.plot([np.nanmean(pdf) - 2*np.nanstd(pdf), np.nanmean(pdf) + 2*np.nanstd(pdf)], [0.0006, 0.0006], c=&#39;orange&#39;, label=&#39;95%, $\pm2\sigma$&#39;)
-/var/folders/zr/6ql4dzjx0tq8mpzht_2dwh480000gn/T/ipykernel_16321/2088512525.py:30: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-  plt.plot([np.nanmean(pdf) - np.nanstd(pdf), np.nanmean(pdf) + np.nanstd(pdf)], [0.000013, 0.000013], c=&#39;r&#39;, label=&#39;68%, $\pm\sigma$&#39;)
-/var/folders/zr/6ql4dzjx0tq8mpzht_2dwh480000gn/T/ipykernel_16321/2088512525.py:31: SyntaxWarning: invalid escape sequence &#39;\p&#39;
-  plt.plot([np.nanmean(pdf) - 2*np.nanstd(pdf), np.nanmean(pdf) + 2*np.nanstd(pdf)], [0.000005, 0.000005], c=&#39;orange&#39;, label=&#39;95%, $\pm2\sigma$&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/c94480e8ad4d3ee4f665d12356c51fd5d06c566f0baa5f4b6efa771ae63d24e2.png" src="../../_images/c94480e8ad4d3ee4f665d12356c51fd5d06c566f0baa5f4b6efa771ae63d24e2.png" />
-</div>
 </div>
 <section id="mini-exercise">
 <h3>Mini Exercise<a class="headerlink" href="#mini-exercise" title="Permalink to this heading">#</a></h3>
@@ -582,11 +561,28 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">weibull</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="p">(</span><span class="mi">100_000</span><span class="p">))</span>  <span class="c1"># generate 10k random numbers from a probability distribution</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">weibull</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="p">(</span><span class="mi">100_000</span><span class="p">))</span>  <span class="c1"># generate 100k random numbers from a probability distribution</span>
 
 <span class="c1"># your solution here</span>
+<span class="n">counts</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">bars</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">mode</span> <span class="o">=</span> <span class="n">bins</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">counts</span><span class="p">)]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9.0730e+03 1.3353e+04 1.3642e+04 1.2671e+04 1.1295e+04 9.3410e+03
+ 7.5870e+03 5.9750e+03 4.5970e+03 3.5590e+03 2.6000e+03 1.8880e+03
+ 1.3980e+03 9.6900e+02 6.8900e+02 4.5200e+02 3.2000e+02 2.1000e+02
+ 1.2600e+02 8.1000e+01 6.8000e+01 3.8000e+01 2.7000e+01 2.0000e+01
+ 1.1000e+01 4.0000e+00 0.0000e+00 1.0000e+00 4.0000e+00 0.0000e+00
+ 0.0000e+00 1.0000e+00]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x142d4deb0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/7f012d03a26a0c90a99b41838657a6593956743ec46b46fa4de12dab456b9e83.png" src="../../_images/7f012d03a26a0c90a99b41838657a6593956743ec46b46fa4de12dab456b9e83.png" />
 </div>
 </div>
 </section>
@@ -600,6 +596,32 @@ Is the value at or below which a given percentage of all samples falls.</p>
 <li><p>The first quartile is the 25th percentile - 25% of all samples fall below the quartile.</p></li>
 <li><p>99% of all samples fall below the 99th percentile.</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># median, IQR, perceitiles are rank-based descriptive statistics</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># compute the ranks of the data values:</span>
+<span class="n">x1_rank</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">x2_rank</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/35841f27a7c706ca6fd50b6c4e8ec06543b6c42c2ae097dc070ace5a6bdbf467.png" src="../../_images/35841f27a7c706ca6fd50b6c4e8ec06543b6c42c2ae097dc070ace5a6bdbf467.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2222.2
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="skewness-and-kurtosis">
 <h2>Skewness and kurtosis<a class="headerlink" href="#skewness-and-kurtosis" title="Permalink to this heading">#</a></h2>
