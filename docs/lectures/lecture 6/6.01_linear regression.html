@@ -1,0 +1,748 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Regression analysis (a.k.a curve fitting) &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 6/6.01_linear regression';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Nonlinear Regression" href="6.02_nonlinear_regression.html" />
+    <link rel="prev" title="Exercise 5.03 - Inferential Statistics" href="../../exercises/exercises%205/5.03_inferential_stats_exercise.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Neu715 - Neuroscientific Data Analysis using Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.01_variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.02_conditionals.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.03_lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.04_loops_simple.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.05_matplotlib.html">Plotting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.01_variables_exercises.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.03_lists_exercises.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.05_matplotlib_exercises.html">Plotting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.01_composites.html">Composite data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.02_loops_more.html">Loops (part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.03_functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.04_exceptions.html">Handling errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.05_imports.html">External code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.01_composites_exercises.html">Composite data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.02_loops_more_exercises.html">Loops (part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.03_functions_exercises.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.04_exceptions_exercises.html">Handling errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.05_imports_exercises.html">External code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.01_packages_and_environments.html">Installing packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.02_numpy.html">Numerical computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.03_files.html">Working with files</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.02_numpy_exercises.html">Numerical computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.03_files_exercises.html">Working with files</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture%204/4.01_pandas.html">Tabular data and pandas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%204/4.01_pandas_exercises.html">Tabular data and connectomics</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 5</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.01_probabilities.html">Statistics with python</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.02_descriptive_stats.html">Descriptive statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.03_inferential_stats_1.html">Inferential statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.03_inferential_stats_2.html">Inferential statistics (dataset 2)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 5</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.01_probabilities_exercise.html">Probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.02_descriptive_stats_exercise.html">Descriptive statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.03_inferential_stats_exercise.html">Inferential statistics</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 6</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.02_nonlinear_regression.html">Nonlinear regression</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 6</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%206/6.01_linear_regression_exercises.html">Linear regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%206/6.02_nonlinear_regression_exercises.html">Nonlinear regression</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 6/6.01_linear regression.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 6/6.01_linear regression.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/lectures/lecture 6/6.01_linear regression.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Regression analysis (a.k.a curve fitting)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-model">What is a model?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-model-good-for">What is a model good for?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-analysis">Regression analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-model">The model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifiying-goodness-of-fit">Quantifiying goodness of fit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mean-of-the-squared-residuals">The mean of the squared residuals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-the-squared-residuals">Why the <em>squared</em> residuals?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-of-determination">Coefficient of Determination</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-using-scipy">Linear regression using scipy</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="regression-analysis-a-k-a-curve-fitting">
+<h1>Regression analysis (a.k.a curve fitting)<a class="headerlink" href="#regression-analysis-a-k-a-curve-fitting" title="Permalink to this heading">#</a></h1>
+<section id="what-is-a-model">
+<h2>What is a model?<a class="headerlink" href="#what-is-a-model" title="Permalink to this heading">#</a></h2>
+<p>The goal of a scientific experiment is to identify the relationship between two phenomena - for instance, temperature and pain.
+To do so, we typically manipulate one of them and measure the effect on the other - change temperature, measure the pain level.</p>
+<p>We represent this relationship graphically, by plotting the manipulated variable (temperature) vs. the observed feature (pain level):</p>
+<p><img alt="" src="../../_images/6.01_curve_fitting_1a.png" /></p>
+<p>Scientific modeling describes these dependencies quantitatively, using mathematics. It answers the question: How does property y depend on variable x?
+This question is often answered using curve fitting: The idea is that the measured data points <span class="math notranslate nohighlight">\(y_i\)</span> depend systematically on variable x (independent variable) with some noise and can be written down as a (more or less) simple equation.</p>
+<p><img alt="" src="../../_images/6.01_curve_fitting_1b.png" /></p>
+</section>
+<section id="what-is-a-model-good-for">
+<h2>What is a model good for?<a class="headerlink" href="#what-is-a-model-good-for" title="Permalink to this heading">#</a></h2>
+<p>One thing we can do with a model is <em>prediction</em>:  The mathematical function determined with curve fitting allows us predict the property for new, untested values of the variable. That is, the equation acts as a stand-in for the process that generates the property based on our variable - we can <em>simulate</em> the process. The model’s predictions can then be tested experimentally. If the predictions do not match well the experimental measurements, the model (i.e. the formula describing the dependency) has to be adjusted.</p>
+<p>There are two types of simulation:</p>
+<ul class="simple">
+<li><p><em>Interpolation</em> predicts the property for values of the variable between those already tested.</p></li>
+<li><p><em>Extrapolation</em> predicts how the property will develop outside the tested variable range. This application is particularly useful, but also more dangerous, because it relies on assumptions that cannot be verified at the moment the predictions are calculated. This becomes obvious for predictions into the future, e.g. climate models.</p></li>
+</ul>
+<p><img alt="" src="../../_images/6.01_curve_fitting_1c.png" /></p>
+<p>Another use of curve fitting is to <em>quantify the change</em> in a relationship. For instance, different sensory neurons have different preferred stimuli - we can measure and present that preference in a tuning curve. Or we measure the effect of a treatment - inactivating inhibitory inputs to a neuron may change that neuron’s tuning curve.</p>
+<p><img alt="" src="../../_images/6.01_curve_fitting_1d.png" /></p>
+<p>While we can describe the changes in the curves with words, curving fitting allows us to quantiatively describe these differences:</p>
+<ul class="simple">
+<li><p>We can fit Gaussians to the tuning curves on the left. The mean parameter specifies the preferred orientation (the position of the peak) - it is 115, 160 and 206 degrees. The standard deviation parameters corresponds to the width. It is identical for all three cells at 115 degrees.</p></li>
+<li><p>We can fit a sigmoidal function to the intensity curves on the right. Removing inhibition increases the steepness of the curve (the slope parameter) from 10 to 20, and makes the cell more sensitive - it shifts the curve to the left with a midpoint (intensity at which 50% of the maximal response is elicited) from 50 to 30 dB. The maximal response rate does not change.</p></li>
+</ul>
+<p>Curve fitting therefore allows us to summarize many data points in terms of curve parameters - and we can do statistics on these parameters, to determine whether experimental manipulations change ithe parameters.</p>
+</section>
+<section id="regression-analysis">
+<h2>Regression analysis<a class="headerlink" href="#regression-analysis" title="Permalink to this heading">#</a></h2>
+<p>So how does curve fitting work, conceptually?
+Our equation describing the measured relationship can be a linear equation <span class="math notranslate nohighlight">\(y = 10 * x + 9.3\)</span> or a quadratic equation <span class="math notranslate nohighlight">\(y = (x - 102)^2 / 3 + 18\)</span> or something else. The equations have three components:</p>
+<ul class="simple">
+<li><p>Our manipulated variable(s) <span class="math notranslate nohighlight">\(x\)</span> and our measured variable(s) <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p>Mathematical operations like <span class="math notranslate nohighlight">\(+\)</span> or <span class="math notranslate nohighlight">\(-\)</span> etc. These operations define the structure of the equation and thereby the types of dependencies the equation can capture. A linear equation can only produce lines, a quadratic equation can only produce parabolas.</p></li>
+<li><p>Other numbers in the equation are fixed for all values of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> and they are called <em>parameters</em>. They “tune” the specific form of the relation between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. For instance, in the equation <span class="math notranslate nohighlight">\(y = 10 * x + 9.3\)</span>, 10 determines the slope, and 9.3 the intercept of the line. More generally, we can write the linear equation as <span class="math notranslate nohighlight">\(y = m * x + n\)</span>, with <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> being the slope and intercept parameters. These parameters determine the type of line that describes our data.</p></li>
+</ul>
+<p><img alt="" src="../../_images/6.01_curve_fitting_1e.png" /></p>
+<p><em>Curve fitting</em> is the procedure of determining the parameters that best describe the data given a specific model. Curve fitting is also called <em>regression</em>. Fittin a line is called <em>linear regression</em> (today), fitting a nonlinear curve, is also called <em>nonlinear regression</em> (tomorrow).</p>
+<p>In curve fitting, we need:</p>
+<ol class="arabic simple">
+<li><p><em>A model</em>: Specify an adequate <em>equation</em> that has the potential to describe our data with an appropriate choice of <em>parameters</em>. A line cannot describe the curved relationship between temperature and pain in the plot above - there is no set of slopes and interecepts that produces a curve from a linear equation. So we need something more complicated, like a quadratic equation.</p></li>
+<li><p>A way to quantify the “goodness of fit”: An <em>error function</em> or <em>objective function</em> that tells us how good or bad the fit between the experimental data points and the curve produced by the model is, so we can 1) adjust the parameters to maximize the fit and 2) judge how good the fit is in the end.</p></li>
+<li><p>A way to improve the fit: A <em>fitting procedure</em> to adjust the model parameters so that the resulting line or curve fits our data best - is “as close as possible” to our data.</p></li>
+</ol>
+<p>Today, we will discuss <em>linear regression</em>, in which the model is a line. Linear models are intuitive and the parameters are straightforward to understand. In addition, procedures for fitting and assessing the goodness of fit are robust and well established.</p>
+<p>In the next lecture, we will discuss <em>nonlinear regression</em>, in which the model can be of arbitrary form. This is more flexible and powerful, but also a bit more complicated.</p>
+</section>
+<section id="linear-regression">
+<h2>Linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
+<section id="the-model">
+<h3>The model<a class="headerlink" href="#the-model" title="Permalink to this heading">#</a></h3>
+<p>For linear regression, the model is specified by a linear function with two parameters, the slope and the intercept: <span class="math notranslate nohighlight">\(y=\text{slope} * x + \text{intercept}\)</span>. Linear models are easy to fit and interpret, but also rather constrained, since the can only capture linear relationships.</p>
+<p>Let’s load some data to have an example to work through:
+We’ve stressed a student by exposing them to free jazz by Ornette Coleman and want to quantify how quickly the cortisol levels increase in the blood as a function of Coleman exposure. To that end, we took blood at 6-minute intervals after the onset of music exposure from a jazz and a rock fan and quantified the concentration of cortisol.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">d</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;6.01_linear_regression.npz&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;rock_cortisol&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;rock fan&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;jazz_cortisol&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;coral&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;jazz fan&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time after exposure onset [hours]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Blood cortisol [umol/l]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e36f8f665804fd0a9c148f286b375913533917168a37829b664ffe5f5239a115.png" src="../../_images/e36f8f665804fd0a9c148f286b375913533917168a37829b664ffe5f5239a115.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="quantifiying-goodness-of-fit">
+<h2>Quantifiying goodness of fit<a class="headerlink" href="#quantifiying-goodness-of-fit" title="Permalink to this heading">#</a></h2>
+<section id="the-mean-of-the-squared-residuals">
+<h3>The mean of the squared residuals<a class="headerlink" href="#the-mean-of-the-squared-residuals" title="Permalink to this heading">#</a></h3>
+<p>The mean of the squared residuals, or <strong>mean-squared error (MSE)</strong> is a commonly used error term:</p>
+<p>Let <span class="math notranslate nohighlight">\(f(x_i, \theta)\)</span> be our function (linear, exponential, quadratic), with parameters <span class="math notranslate nohighlight">\(\theta\)</span>, and <span class="math notranslate nohighlight">\(\hat{y_i} = f(x_i, \theta)\)</span> our prediction for <span class="math notranslate nohighlight">\(N\)</span> data points <span class="math notranslate nohighlight">\(x_i\)</span>.</p>
+<p>To compute the MSE we:</p>
+<ol class="arabic simple">
+<li><p>Calculate the difference between all <span class="math notranslate nohighlight">\(N\)</span> predictions and data, <span class="math notranslate nohighlight">\(y_i - \hat{y_i}\)</span> - also called the <em>residuals</em>.</p></li>
+<li><p>Square each residual (why?) to get the <em>squared residuals</em>.</p></li>
+<li><p>Take the mean.</p></li>
+</ol>
+<p><img alt="" src="../../_images/6.01_curve_fitting_1g.png" /></p>
+<p>Like so: <span class="math notranslate nohighlight">\(E = 1/N \sum_i^N (y_i - \hat{y_i})^2\)</span>. This looks a lot like the formula for the variance! The MSE captures the residual variance - the variance in the data not explained by the model prediction.</p>
+</section>
+<section id="why-the-squared-residuals">
+<h3>Why the <em>squared</em> residuals?<a class="headerlink" href="#why-the-squared-residuals" title="Permalink to this heading">#</a></h3>
+<p>To illustrate this, let’s fit our data using a function that is just horizontal line with a constant offset for all x-values.</p>
+<p><img alt="" src="../../_images/6.01_curve_fitting_1h.png" /></p>
+<p>This is clearly not a good model for these data, but there is a value of the offset parameter for which the <em>non-squared error is zero</em>!! Not so for the squared error. A good general measure of error should therefore be symmetrical and not discriminate between positive or negative deviations between model and data.</p>
+</section>
+<section id="coefficient-of-determination">
+<h3>Coefficient of Determination<a class="headerlink" href="#coefficient-of-determination" title="Permalink to this heading">#</a></h3>
+<p>The MSE captures the match between model and data, but it is not normalized: it scales with the magnitude of the data. This makes it hard to determine what value of MSE indicates a good fit, and it makes it hard to compare MSE across data sets with different magnitudes.</p>
+<p>The Coefficient of Determination <span class="math notranslate nohighlight">\(R^2\)</span> is a normalized variant of the MSE:
+<span class="math notranslate nohighlight">\(R^2 = 1 - MSE / \sigma^2\)</span>.
+It is the ratio between the MSE - the variance of the residuals - and <span class="math notranslate nohighlight">\(\sigma^2\)</span> - the total variance of the data.</p>
+<p>If the MSE is much smaller than the data variance, then <span class="math notranslate nohighlight">\(R^2\)</span> approaches 1.0. This corresponds to a perfect linear fit, without any deviation between the data and the fitted line. Noise in the data or a mismatched model (for instance if the relationship between x and y is highly nonlinear) will decrease the <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(R^2\)</span> can also be calculated as the square of Pearson’s correlation, <span class="math notranslate nohighlight">\(r\)</span>, between the data <span class="math notranslate nohighlight">\(y\)</span> and the model predictions <span class="math notranslate nohighlight">\(\hat{y}\)</span>.</p>
+</section>
+</section>
+<section id="linear-regression-using-scipy">
+<h2>Linear regression using scipy<a class="headerlink" href="#linear-regression-using-scipy" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">res</span> <span class="pre">=</span> <span class="pre">scipy.stats.linregress(x,</span> <span class="pre">y)</span></code> (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html">docs</a>)</p>
+<p><code class="docutils literal notranslate"><span class="pre">linregress</span></code> takes two main arguments: your data <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<p>It returns a python object, <code class="docutils literal notranslate"><span class="pre">LinregressResult</span></code>, holding the results with information on:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">slope</span></code> and <code class="docutils literal notranslate"><span class="pre">intercept</span></code>: the fitted parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rvalue</span></code>: pearson’s <span class="math notranslate nohighlight">\(r\)</span>. <span class="math notranslate nohighlight">\(r^2\)</span> is equal to the coefficient of determination.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code>: The p-value for a hypothesis test whose null hypothesis is that the slope is zero, using variant of the t test.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stderr</span></code> and <code class="docutils literal notranslate"><span class="pre">intercept_stderr</span></code>: Standard error of the estimated slope and intercept.</p></li>
+</ul>
+<p>We can generate model predictions <code class="docutils literal notranslate"><span class="pre">y_pred</span></code> using <code class="docutils literal notranslate"><span class="pre">y_pred</span> <span class="pre">=</span> <span class="pre">res.intercept</span> <span class="pre">+</span> <span class="pre">res.slope</span> <span class="pre">*</span> <span class="pre">x</span></code>.</p>
+<p>Let’s perform linear regression on our data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;jazz_cortisol&#39;</span><span class="p">]</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">rvalue</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">res</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;predictions y=</span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">slope</span><span class="si">:</span><span class="s1">1.2f</span><span class="si">}</span><span class="s1">x + </span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">intercept</span><span class="si">:</span><span class="s1">1.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [hours]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Blood cortisol&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Linear regression&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=1.2445293715645902, intercept=1.358218275477359, rvalue=0.9057931143970367, pvalue=2.5177141101420217e-38, stderr=0.058808797325218536, intercept_stderr=0.3369851849823764)
+0.8204611660890831
+</pre></div>
+</div>
+<img alt="../../_images/6a7553b38514735a7235f7d4daca82db992aab68f473371862fa49c38b6848e3.png" src="../../_images/6a7553b38514735a7235f7d4daca82db992aab68f473371862fa49c38b6848e3.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures/lecture 6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../exercises/exercises%205/5.03_inferential_stats_exercise.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exercise 5.03 - Inferential Statistics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="6.02_nonlinear_regression.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Nonlinear Regression</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-model">What is a model?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-model-good-for">What is a model good for?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-analysis">Regression analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-model">The model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifiying-goodness-of-fit">Quantifiying goodness of fit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mean-of-the-squared-residuals">The mean of the squared residuals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-the-squared-residuals">Why the <em>squared</em> residuals?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-of-determination">Coefficient of Determination</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-using-scipy">Linear regression using scipy</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jan Clemens
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
