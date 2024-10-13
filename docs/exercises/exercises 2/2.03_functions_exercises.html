@@ -1,74 +1,69 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Excercises 2.3 - Functions &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Functions &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 2/2.03_functions_exercises';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Exercise 2.4 - Handling errors" href="2.04_exceptions_exercises.html" />
-    <link rel="prev" title="Exercise 2.2 - Loops (part 2)" href="2.02_loops_more_exercises.html" />
+    <link rel="next" title="Imports" href="2.05_imports_exercises.html" />
+    <link rel="prev" title="Loops (part 2)" href="2.02_loops_more_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -78,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -141,6 +139,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -149,10 +150,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -162,58 +175,42 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 1</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.00_notebooks.html">Using notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.01_variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.02_conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.03_lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.04_loops_simple.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.05_matplotlib.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.01_composites.html">Tuples and dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.02_matplotlib.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.03_functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.05_imports.html">Using external code</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 1</span></p>
-<ul class="nav bd-sidenav">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics - exercises</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.01_variables_exercises.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.03_lists_exercises.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.05_matplotlib_exercises.html">Plotting</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 2</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.01_composites.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.02_loops_more.html">Loops (part 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.03_functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.04_exceptions.html">Handling errors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.05_imports.html">External code</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 2</span></p>
-<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1.05_matplotlib_exercises.html">Plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2.01_composites_exercises.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.02_loops_more_exercises.html">Loops (part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.02_loops_more_exercises.html">Loops (Part 2)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.04_exceptions_exercises.html">Handling errors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2.05_imports_exercises.html">External code</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.01_packages_and_environments.html">Installing packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.02_numpy.html">Numerical computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.02_numpy.html">Number crunching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.03_files.html">Working with files</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises%203/3.02_numpy_exercises.html">Numerical computing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%203/3.03_files_exercises.html">Working with files</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 4</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%204/4.01_pandas.html">Tabular data and pandas</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 4</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../exercises%204/4.01_pandas_exercises.html">Tabular data and connectomics</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 5</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%205/5.01_probabilities.html">Statistics with python</a></li>
 
@@ -221,18 +218,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%205/5.03_inferential_stats_1.html">Inferential statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%205/5.03_inferential_stats_2.html">Inferential statistics (dataset 2)</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 5</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.01_probabilities_exercise.html">Probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.02_descriptive_stats_exercise.html">Descriptive statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.03_inferential_stats_exercise.html">Inferential statistics</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 6</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%206/6.01_linear%20regression.html">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%206/6.02_nonlinear_regression.html">Nonlinear regression</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 6</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises%206/6.01_linear_regression_exercises.html">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%206/6.02_nonlinear_regression_exercises.html">Nonlinear regression</a></li>
@@ -251,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -260,14 +257,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -292,14 +289,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 2/2.03_functions_exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -310,14 +307,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 2/2.03_functions_exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -391,26 +388,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -421,7 +420,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Excercises 2.3 - Functions</h1>
+    <h1>Functions</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -431,11 +430,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-turn-this-code-into-a-function">Exercise 1 - turn this code into a function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-accumulating-outputs">Exercise 3 - accumulating outputs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-combining-functions">Exercise 4 - combining functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-keeping-track-of-results">Exercise 5 - keeping track of results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-turn-this-code-into-a-function">Exercise 1: Turn this code into a function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-use-a-python-function-to-for-calculating-the-values-of-a-mathematical-function">Exercise 2: Use a python function to for calculating the values of a mathematical function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-4-organizing-code-with-functions">Exercises 4: Organizing code with functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-1-compute-the-sum-of-all-anomaly-values">Exercise 4.1 - Compute the sum of all anomaly values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-2-compute-the-mean-of-all-anomaly-values">Exercise 4.2 - Compute the mean of all anomaly values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-3-substract-the-mean-value">Exercise 4.3 - substract the mean value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-4-compute-the-standard-deviation">Exercise 4.4 - Compute the standard deviation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-5-z-score">Exercise 4.5 - z-score</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-re-organize-the-code-from-exercise-4-using-functions">Exercise 5: Re-organize the code from exercise 4 using functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-a-function-that-calculates-the-sum-of-all-list-elements">5.1 Write a function that calculates the sum of all list elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">5.2 Mean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subtracting-the-mean">5.3. Subtracting the mean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviation">5.4 Standard deviation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score">5.5 Z-score</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -445,12 +457,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="excercises-2-3-functions">
-<h1>Excercises 2.3 - Functions<a class="headerlink" href="#excercises-2-3-functions" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h1>
 <section id="exercise-1-turn-this-code-into-a-function">
-<h2>Exercise 1 - turn this code into a function<a class="headerlink" href="#exercise-1-turn-this-code-into-a-function" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 1: Turn this code into a function<a class="headerlink" href="#exercise-1-turn-this-code-into-a-function" title="Link to this heading">#</a></h2>
 <p>The code below computes the cumulative sum over the values in a list.</p>
 <p>Given a list [1,2,3], the cumulative sum is a new list with these items: [1, 1+2, 1+2+3] = [1, 3, 6].</p>
 <p>Turn this code into a function with the following properties:</p>
@@ -486,14 +498,14 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-2">
-<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h2>
-<p>Write a function that computes the value of the following mathematical function: <span class="math notranslate nohighlight">\(f(x,y) = x^2 + y\)</span></p>
-<p>Plot the results for
+<section id="exercise-2-use-a-python-function-to-for-calculating-the-values-of-a-mathematical-function">
+<h2>Exercise 2: Use a python function to for calculating the values of a mathematical function<a class="headerlink" href="#exercise-2-use-a-python-function-to-for-calculating-the-values-of-a-mathematical-function" title="Link to this heading">#</a></h2>
+<p>Write a function that computes the value of the following mathematical function: <span class="math notranslate nohighlight">\(f(x,b) = x^2 + b\)</span></p>
+<p>Plot the function <span class="math notranslate nohighlight">\(f\)</span> for
 100 x-values covering the range of [-2.0, 2.0]
-and three different, but constant, values of y = [-1, 0, 1].
+and three different, but constant, values of b = [-1, 0, 1].
 This should produce three curves, each with 100 data points.</p>
-<p>Annotate the plot with proper labels and a legend that indicates the vale of y.</p>
+<p>Annotate the plot with proper labels and a legend that indicates the vale of b.</p>
 <p>Roughly like so:</p>
 <p><img alt="" src="../../_images/2.03_functions_exercises.png" /></p>
 <div class="cell docutils container">
@@ -502,74 +514,190 @@ This should produce three curves, each with 100 data points.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/e38da1f3379e935f34445b0cc7d6c0fe82dcd2a861a91f153fb605d1e27150c0.png" src="../../_images/e38da1f3379e935f34445b0cc7d6c0fe82dcd2a861a91f153fb605d1e27150c0.png" />
-</div>
 </div>
 </section>
-<section id="exercise-3-accumulating-outputs">
-<h2>Exercise 3 - accumulating outputs<a class="headerlink" href="#exercise-3-accumulating-outputs" title="Permalink to this heading">#</a></h2>
-<p>Write a function, that computes the mean of the temperature anomalies.</p>
-<p>Hint: First solve the problem without using a function, then re-organize your code by wrapping the solution in a function.</p>
+<section id="exercises-4-organizing-code-with-functions">
+<h2>Exercises 4: Organizing code with functions<a class="headerlink" href="#exercises-4-organizing-code-with-functions" title="Link to this heading">#</a></h2>
+<p>For the next block of exercises, we will play with temperature anomaly data - deviations of the global mean temperature. We will first solve the problem without using functions (Exercise 4) and then improve the solution by using functions (Exercise 5).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
-
-<span class="c1"># your solution here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXECUTE BUT DO NOT CHANGE THIS CELL</span>
+<span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06907142857142858
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06907142857142858
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.19, -0.177, -0.308, -0.289, -0.193, -0.057, 0.077, 0.026, 0.029, 0.068, 0.256, 0.342, 0.591, 0.792]
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="exercise-4-combining-functions">
-<h2>Exercise 4 - combining functions<a class="headerlink" href="#exercise-4-combining-functions" title="Permalink to this heading">#</a></h2>
+<p>For an analysis, we need to z-score the data:</p>
+<p>Z-scoring is a common operation in statistics. It involves normalizing the data so that it has zero mean and unit standard deviation (std=1).</p>
+<p>This can be done by applying the following two steps to each value in the list:</p>
 <ol class="arabic simple">
-<li><p>Write another function that computes the standard deviation of the anomalies. Remember that the standard deviation involves calculating the mean. Re-use the function you used to calculate the mean! You will need to compute the square root - it is available in the <code class="docutils literal notranslate"><span class="pre">math</span></code> module.</p></li>
-<li><p>Write a third function that uses the first two functions to compute the standard error and the coefficient of variation. If you do not know what these are, google it.</p></li>
+<li><p>subtract the mean,</p></li>
+<li><p>divide by the standard deviation:</p></li>
 </ol>
+<p>In math: <span class="math notranslate nohighlight">\(z = (x - M) / S\)</span> where <span class="math notranslate nohighlight">\(z\)</span> is the z-scored value and <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(S\)</span> are mean and standard deviation of the data.</p>
+<p>In the followign 4 exercises, we will show you how to approach such a problem using the <em>divide and conquer</em> strategy: We split the big, complicated, seemingly unsolvable problem into simpler sub-problems, that are easy to solve. Each exercise that follows solves on such subproblem.</p>
+<p>We will:</p>
+<ol class="arabic simple">
+<li><p>Compute the sum over all elements in a list</p></li>
+<li><p>Compute the mean, by modifying the code from step 1.</p></li>
+<li><p>Generate a list in which the mean was substracted from each list element</p></li>
+<li><p>Compute the standard deviation</p></li>
+<li><p>Generate a list in which each list element is z-scored (mean subtraced, divided by the standard deviation)</p></li>
+</ol>
+<section id="exercise-4-1-compute-the-sum-of-all-anomaly-values">
+<h3>Exercise 4.1 - Compute the sum of all anomaly values<a class="headerlink" href="#exercise-4-1-compute-the-sum-of-all-anomaly-values" title="Link to this heading">#</a></h3>
+<p>The sum of all list values can be written in sum notation as follows:</p>
+<p><span class="math notranslate nohighlight">\(A = \sum_i^N x_i\)</span></p>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span> is the sum</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> is the number of elements in the list</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_i\)</span> is the i-th element in the list, i can range from 0 to N-1</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
-
-<span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06907142857142858 0.3270656166313078 0.0874119628877362 4.735179558260919
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-5-keeping-track-of-results">
-<h2>Exercise 5 - keeping track of results<a class="headerlink" href="#exercise-5-keeping-track-of-results" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Write a function that returns the maximum value of the anomalies. Call this function <code class="docutils literal notranslate"><span class="pre">my_max</span></code>. Use a for loop. Do not use the built in functions <code class="docutils literal notranslate"><span class="pre">max</span></code>! But: Test your function by comparing its output to that of the <code class="docutils literal notranslate"><span class="pre">max</span></code> function.</p></li>
-<li><p>Write another function that returns the index of that maximum value. Call this function <code class="docutils literal notranslate"><span class="pre">argmax</span></code>. Use <code class="docutils literal notranslate"><span class="pre">my_max</span></code>, the function you wrote in step 1, in this new <code class="docutils literal notranslate"><span class="pre">argmax</span></code> function.</p></li>
-</ol>
+<section id="exercise-4-2-compute-the-mean-of-all-anomaly-values">
+<h3>Exercise 4.2 - Compute the mean of all anomaly values<a class="headerlink" href="#exercise-4-2-compute-the-mean-of-all-anomaly-values" title="Link to this heading">#</a></h3>
+<p>The mean is defined as the sum of all values, <span class="math notranslate nohighlight">\(A\)</span>, divided by the number of values in the list, <span class="math notranslate nohighlight">\(N\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(M = A/N =  1/N \sum_i^N x_i\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
-
-<span class="c1"># your solution here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4-3-substract-the-mean-value">
+<h3>Exercise 4.3 - substract the mean value<a class="headerlink" href="#exercise-4-3-substract-the-mean-value" title="Link to this heading">#</a></h3>
+<p>Create a new list, <code class="docutils literal notranslate"><span class="pre">mean_subtracted</span></code> that holds the mean-subtracted anomaly values. Subtract the mean of the anomaly values from each element in <code class="docutils literal notranslate"><span class="pre">temperature_anomalies</span></code> such that <span class="math notranslate nohighlight">\(y_i = x_i - M\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4-4-compute-the-standard-deviation">
+<h3>Exercise 4.4 - Compute the standard deviation<a class="headerlink" href="#exercise-4-4-compute-the-standard-deviation" title="Link to this heading">#</a></h3>
+<p>The standard deviation can be computed by:</p>
+<ol class="arabic simple">
+<li><p>subtracting the mean from each element of the list</p></li>
+<li><p>taking the square of each mean-subtracted value</p></li>
+<li><p>calculating the mean of the squared, mean-subtracted values (this is the variance)</p></li>
+<li><p>taking the square root of the variance</p></li>
+</ol>
+<p>Or more cryptically:</p>
+<p><span class="math notranslate nohighlight">\(S = \sqrt{1/N \sum_i^N (x_i - M)^2} = \sqrt{1/N \sum_i^N y_i^2}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4-5-z-score">
+<h3>Exercise 4.5 - z-score<a class="headerlink" href="#exercise-4-5-z-score" title="Link to this heading">#</a></h3>
+<p>Now create a new list of z-scored anomaly values by re-using the values for mean and standard deviation computed above and applying them to each value in the list:</p>
+<p><span class="math notranslate nohighlight">\(z_i = (x_i - M) / S\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-5-re-organize-the-code-from-exercise-4-using-functions">
+<h2>Exercise 5: Re-organize the code from exercise 4 using functions<a class="headerlink" href="#exercise-5-re-organize-the-code-from-exercise-4-using-functions" title="Link to this heading">#</a></h2>
+<p>Write four functions:</p>
+<ol class="arabic simple">
+<li><p>One that computes the <em>sum</em> of the elements of a list.</p></li>
+<li><p>One that computes the <em>mean</em> of the elements of a list. Use your <code class="docutils literal notranslate"><span class="pre">sum</span></code> created in step 1.</p></li>
+<li><p>One that subtracts a specific value from all elements in a list.</p></li>
+<li><p>One that computes the <em>standard deviation</em> of the elements of a list. Use the <code class="docutils literal notranslate"><span class="pre">mean</span></code> function computed in step 2.</p></li>
+<li><p>One that zscores the list elements (returns a new list in which each element is z-scored). Re-use the functions created in the previous steps.</p></li>
+</ol>
+<p>In each step, first think about the inputs (arguments) and outputs (return) of each function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXECUTE BUT DO NOT CHANGE THIS CELL</span>
+<span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1 0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.19, -0.177, -0.308, -0.289, -0.193, -0.057, 0.077, 0.026, 0.029, 0.068, 0.256, 0.342, 0.591, 0.792]
 </pre></div>
 </div>
 </div>
 </div>
+<section id="write-a-function-that-calculates-the-sum-of-all-list-elements">
+<h3>5.1 Write a function that calculates the sum of all list elements<a class="headerlink" href="#write-a-function-that-calculates-the-sum-of-all-list-elements" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mean">
+<h3>5.2 Mean<a class="headerlink" href="#mean" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="subtracting-the-mean">
+<h3>5.3. Subtracting the mean<a class="headerlink" href="#subtracting-the-mean" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="standard-deviation">
+<h3>5.4 Standard deviation<a class="headerlink" href="#standard-deviation" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="z-score">
+<h3>5.5 Z-score<a class="headerlink" href="#z-score" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -600,8 +728,8 @@ This should produce three curves, each with 100 data points.</p>
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="2.02_loops_more_exercises.html"
@@ -609,15 +737,15 @@ This should produce three curves, each with 100 data points.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exercise 2.2 - Loops (part 2)</p>
+        <p class="prev-next-title">Loops (part 2)</p>
       </div>
     </a>
     <a class="right-next"
-       href="2.04_exceptions_exercises.html"
+       href="2.05_imports_exercises.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercise 2.4 - Handling errors</p>
+        <p class="prev-next-title">Imports</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -630,17 +758,31 @@ This should produce three curves, each with 100 data points.</p>
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-turn-this-code-into-a-function">Exercise 1 - turn this code into a function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-accumulating-outputs">Exercise 3 - accumulating outputs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-combining-functions">Exercise 4 - combining functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-keeping-track-of-results">Exercise 5 - keeping track of results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-turn-this-code-into-a-function">Exercise 1: Turn this code into a function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-use-a-python-function-to-for-calculating-the-values-of-a-mathematical-function">Exercise 2: Use a python function to for calculating the values of a mathematical function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-4-organizing-code-with-functions">Exercises 4: Organizing code with functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-1-compute-the-sum-of-all-anomaly-values">Exercise 4.1 - Compute the sum of all anomaly values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-2-compute-the-mean-of-all-anomaly-values">Exercise 4.2 - Compute the mean of all anomaly values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-3-substract-the-mean-value">Exercise 4.3 - substract the mean value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-4-compute-the-standard-deviation">Exercise 4.4 - Compute the standard deviation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-5-z-score">Exercise 4.5 - z-score</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-re-organize-the-code-from-exercise-4-using-functions">Exercise 5: Re-organize the code from exercise 4 using functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-a-function-that-calculates-the-sum-of-all-list-elements">5.1 Write a function that calculates the sum of all list elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">5.2 Mean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subtracting-the-mean">5.3. Subtracting the mean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviation">5.4 Standard deviation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score">5.5 Z-score</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -662,9 +804,10 @@ By Jan Clemens
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -688,8 +831,8 @@ By Jan Clemens
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

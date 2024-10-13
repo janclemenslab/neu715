@@ -6,8 +6,10 @@ root: intro
 options:
   numbered: true
 parts:
-  - caption: Lecture 1
+  - caption: Basics
     chapters:
+    - file: lectures/lecture 1/1.00_notebooks
+      title: Using notebooks
     - file: lectures/lecture 1/1.01_variables
       title: Variables
     - file: lectures/lecture 1/1.02_conditionals
@@ -16,9 +18,19 @@ parts:
       title: Lists
     - file: lectures/lecture 1/1.04_loops_simple
       title: Loops
-    - file: lectures/lecture 1/1.05_matplotlib
+    - file: lectures/lecture 2/2.01_composites
+      title: Tuples and dictionaries
+    - file: lectures/lecture 2/2.02_matplotlib
       title: Plotting
-  - caption: Exercises 1
+    # - file: lectures/lecture 2/2.02_loops_more
+    #   title: Loops 2
+    - file: lectures/lecture 2/2.03_functions
+      title: Functions
+    # - file: lectures/lecture 2/2.04_exceptions
+    #   title: Handling errors
+    - file: lectures/lecture 2/2.05_imports
+      title: Using external code
+  - caption: Basics - exercises
     chapters:
     - file: exercises/exercises 1/1.01_variables_exercises
       title: Variables
@@ -28,55 +40,37 @@ parts:
       title: Lists
     - file: exercises/exercises 1/1.04_loops_simple_exercises
       title: Loops
-    - file: exercises/exercises 1/1.05_matplotlib_exercises
+    - file: exercises/exercises 2/1.05_matplotlib_exercises
       title: Plotting
-  - caption: Lecture 2
-    chapters:
-    - file: lectures/lecture 2/2.01_composites
-      title: Composite data types
-    - file: lectures/lecture 2/2.02_loops_more
-      title: Loops (part 2)
-    - file: lectures/lecture 2/2.03_functions
-      title: Functions
-    - file: lectures/lecture 2/2.04_exceptions
-      title: Handling errors
-    - file: lectures/lecture 2/2.05_imports
-      title: External code
-  - caption: Exercises 2
-    chapters:
     - file: exercises/exercises 2/2.01_composites_exercises
       title: Composite data types
     - file: exercises/exercises 2/2.02_loops_more_exercises
-      title: Loops (part 2)
+      title: Loops (Part 2)
     - file: exercises/exercises 2/2.03_functions_exercises
       title: Functions
-    - file: exercises/exercises 2/2.04_exceptions_exercises
-      title: Handling errors
+    # - file: exercises/exercises 2/2.04_exceptions_exercises
+    #   title: Handling errors
     - file: exercises/exercises 2/2.05_imports_exercises
       title: External code
-  - caption: Lecture 3
+  - caption: Numerical computing
     chapters:
     - file: lectures/lecture 3/3.01_packages_and_environments
       title: Installing packages
     - file: lectures/lecture 3/3.02_numpy
-      title: Numerical computing
+      title: Number crunching
     - file: lectures/lecture 3/3.03_files
       title: Working with files
-  - caption: Exercises 3
+    # - file: lectures/lecture 4/4.01_pandas
+    #   title: Tabular data and pandas
+  - caption: Numerical computing exercises
     chapters:
     - file: exercises/exercises 3/3.02_numpy_exercises
       title: Numerical computing
     - file: exercises/exercises 3/3.03_files_exercises
       title: Working with files
-  - caption: Lecture 4
-    chapters:
-    - file: lectures/lecture 4/4.01_pandas
-      title: Tabular data and pandas
-  - caption: Exercises 4
-    chapters:
-    - file: exercises/exercises 4/4.01_pandas_exercises
-      title: Tabular data and connectomics
-  - caption: Lecture 5
+    # - file: exercises/exercises 4/4.01_pandas_exercises
+    #   title: Tabular data and connectomics
+  - caption: Statistics
     chapters:
     - file: lectures/lecture 5/5.01_probabilities
       title: Probability distributions
@@ -86,7 +80,7 @@ parts:
       title: Inferential statistics
     - file: lectures/lecture 5/5.03_inferential_stats_2
       title: Inferential statistics (dataset 2)
-  - caption: Exercises 5
+  - caption: Statistics exercises
     chapters:
     - file: exercises/exercises 5/5.01_probabilities_exercise
       title: Probability distributions
@@ -94,13 +88,13 @@ parts:
       title: Descriptive statistics
     - file: exercises/exercises 5/5.03_inferential_stats_exercise
       title: Inferential statistics
-  - caption: Lecture 6
+  - caption: Modeling
     chapters:
     - file: lectures/lecture 6/6.01_linear regression
       title: Linear regression
     - file: lectures/lecture 6/6.02_nonlinear_regression
       title: Nonlinear regression
-  - caption: Exercises 6
+  - caption: Modeling exercises
     chapters:
     - file: exercises/exercises 6/6.01_linear_regression_exercises
       title: Linear regression

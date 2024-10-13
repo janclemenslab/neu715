@@ -1,74 +1,67 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 2.3 - Functions &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Functions &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 2/2.03_functions';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lecture 2.4 - Handling errors with exceptions" href="2.04_exceptions.html" />
-    <link rel="prev" title="Lecture 2.2 - For loops" href="2.02_loops_more.html" />
+    <link rel="next" title="Using external code with the import statment" href="2.05_imports.html" />
+    <link rel="prev" title="Plotting" href="2.02_matplotlib.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -78,28 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +109,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -141,6 +137,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -149,10 +148,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -162,58 +173,42 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 1</span></p>
-<ul class="nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.00_notebooks.html">Using notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.01_variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.02_conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.03_lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.04_loops_simple.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.05_matplotlib.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.01_composites.html">Tuples and dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.02_matplotlib.html">Plotting</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.05_imports.html">Using external code</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 1</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics - exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.01_variables_exercises.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.03_lists_exercises.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.05_matplotlib_exercises.html">Plotting</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 2</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="2.01_composites.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.02_loops_more.html">Loops (part 2)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.04_exceptions.html">Handling errors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.05_imports.html">External code</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 2</span></p>
-<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/1.05_matplotlib_exercises.html">Plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.01_composites_exercises.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.02_loops_more_exercises.html">Loops (part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.02_loops_more_exercises.html">Loops (Part 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.03_functions_exercises.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.04_exceptions_exercises.html">Handling errors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.05_imports_exercises.html">External code</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.01_packages_and_environments.html">Installing packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.02_numpy.html">Numerical computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.02_numpy.html">Number crunching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.03_files.html">Working with files</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.02_numpy_exercises.html">Numerical computing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.03_files_exercises.html">Working with files</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 4</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lecture%204/4.01_pandas.html">Tabular data and pandas</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 4</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%204/4.01_pandas_exercises.html">Tabular data and connectomics</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 5</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.01_probabilities.html">Statistics with python</a></li>
 
@@ -221,18 +216,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.03_inferential_stats_1.html">Inferential statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.03_inferential_stats_2.html">Inferential statistics (dataset 2)</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 5</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.01_probabilities_exercise.html">Probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.02_descriptive_stats_exercise.html">Descriptive statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.03_inferential_stats_exercise.html">Inferential statistics</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 6</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../lecture%206/6.01_linear%20regression.html">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%206/6.02_nonlinear_regression.html">Nonlinear regression</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 6</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%206/6.01_linear_regression_exercises.html">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%206/6.02_nonlinear_regression_exercises.html">Nonlinear regression</a></li>
@@ -251,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -260,14 +255,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -292,14 +287,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 2/2.03_functions.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -310,14 +305,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 2/2.03_functions.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -391,26 +386,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -421,7 +418,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 2.3 - Functions</h1>
+    <h1>Functions</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -432,16 +429,16 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-indentation">Reminder: Indentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-function">The anatomy of a function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-write-a-simple-function">Let’s write a simple function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-function-can-have-zero-one-or-more-arguments">A function can have zero, one, or more arguments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anything-goes">Anything goes!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#you-can-return-multiple-variables-with-a-single-return-statement">You can return multiple variables with a single return statement</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-scope-of-a-variable-local-variables">The “scope” of a variable - local variables</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documenting-functions">Documenting functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-arguments">Function arguments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-and-optional-arguments">Required and optional arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-vs-keyword-arguments">Positional vs. keyword arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arguments-can-be-of-any-type">Arguments can be of any type</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-can-return-zero-one-or-multiple-variables">Functions can return zero, one, or multiple variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-scope-of-a-variable-local-variables">The “scope” of a variable - local variables</a></li>
 </ul>
             </nav>
         </div>
@@ -451,12 +448,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-2-3-functions">
-<h1>Lecture 2.3 - Functions<a class="headerlink" href="#lecture-2-3-functions" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h1>
 <section id="reminder-indentation">
-<h2>Reminder: Indentation<a class="headerlink" href="#reminder-indentation" title="Permalink to this heading">#</a></h2>
+<h2>Reminder: Indentation<a class="headerlink" href="#reminder-indentation" title="Link to this heading">#</a></h2>
 <p>You already know that python uses indentation to define code blocks, for instance, to separate the inside from the outside of a loop:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -464,6 +461,27 @@ document.write(`
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">4</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in the loop&#39;</span><span class="p">)</span>  <span class="c1"># indented so inside the loop</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;after the loop&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>before the loop
+in the loop
+in the loop
+in the loop
+in the loop
+after the loop
+</pre></div>
+</div>
+</div>
+</div>
+<p>Indentation matters:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;before the loop&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in the loop&#39;</span><span class="p">)</span>  <span class="c1"># indented so inside the loop</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;after the loop&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -481,76 +499,10 @@ after the loop
 </div>
 </div>
 </div>
-<p>You can nest <code class="docutils literal notranslate"><span class="pre">for</span></code> loops, and the indention amount determines wich code belongs to which level of the for loop.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mi">0</span>  <span class="c1">#define the variable a and give it a starting value of 0</span>
-
-<span class="k">for</span> <span class="n">III</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="c1"># a loop that repeats everything that is inside it 3 times</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;This is the OUTER loop number III=</span><span class="si">{</span><span class="n">III</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># indented (tab) one time, so it belongs to the III loop</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>  <span class="c1"># this line is indented 1 time (tab) and it belongs to the III loop, so it will be executed 3 times</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;   This is the inner loop number j==</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># everything inside the j loop will be executed 3 times and the j loop self will be called 3 times</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># what will be the value of a at the end of everything?</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;This is the OUTER loop after the inner loop, III==</span><span class="si">{</span><span class="n">III</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># This is to show that the III index will change just when the next iteration of the loop starts</span>
-
-<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;the final value of a is </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># printing the value of a outside all indentations will yield the final value</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This is the OUTER loop number III=0
-   This is the inner loop number j==0
-   This is the inner loop number j==1
-   This is the inner loop number j==2
-This is the OUTER loop after the inner loop, III==0
-This is the OUTER loop number III=1
-   This is the inner loop number j==0
-   This is the inner loop number j==1
-   This is the inner loop number j==2
-This is the OUTER loop after the inner loop, III==1
-This is the OUTER loop number III=2
-   This is the inner loop number j==0
-   This is the inner loop number j==1
-   This is the inner loop number j==2
-This is the OUTER loop after the inner loop, III==2
-the final value of a is 9
-</pre></div>
-</div>
-</div>
-</div>
-<p>Indentation matters - why is the output 3?:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mi">0</span>  <span class="c1">#define the variable a and give it a starting value of 0</span>
-
-<span class="k">for</span> <span class="n">III</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="c1"># a loop that repeats everything that is inside it 3 times</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;This is the OUTER loop number III=</span><span class="si">{</span><span class="n">III</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># indented (tab) one time, so it belongs to the III loop</span>
-<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>  <span class="c1"># this line is indented 1 time (tab) and it belongs to the III loop, so it will be executed 3 times</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;   This is the inner loop number j==</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># everything inside the j loop will be executed 3 times and the j loop self will be called 3 times</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># what will be the value of a at the end of everything?</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;This is the OUTER loop after the inner loop, III==</span><span class="si">{</span><span class="n">III</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># This is to show that the III index will change just when the next iteration of the loop starts</span>
-
-<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;the final value of a is </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># printing the value of a outside all indentations will yield the final value</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This is the OUTER loop number III=0
-This is the OUTER loop number III=1
-This is the OUTER loop number III=2
-   This is the inner loop number j==0
-   This is the inner loop number j==1
-   This is the inner loop number j==2
-This is the OUTER loop after the inner loop, III==2
-the final value of a is 3
-</pre></div>
-</div>
-</div>
-</div>
 </section>
-<section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
-<p>Functions allow you to re-use your code and shorten your code. For instance, if you need to calculate the mean of values in a list in several places in your program, then writing a <code class="docutils literal notranslate"><span class="pre">mean</span></code> function is useful.</p>
+<section id="id1">
+<h2>Functions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Functions allow you to re-use your code and shorten your code. For instance, if you need to calculate the mean of values in a list in several places in your program, then you will duplicate a lot of code. Writing a <code class="docutils literal notranslate"><span class="pre">mean</span></code> function that contains the relevant code and can be re-used throughout the programming is useful.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">4235</span><span class="p">,</span> <span class="mi">2365</span><span class="p">,</span> <span class="mi">6346</span><span class="p">]</span>
@@ -586,11 +538,11 @@ the final value of a is 3
 </ol>
 </section>
 <section id="the-anatomy-of-a-function">
-<h2>The anatomy of a function<a class="headerlink" href="#the-anatomy-of-a-function" title="Permalink to this heading">#</a></h2>
+<h2>The anatomy of a function<a class="headerlink" href="#the-anatomy-of-a-function" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code>, followed by the name of the function</p></li>
 <li><p>arguments following the name in parentheses, multiple arguments separated by commas</p></li>
-<li><p>Optional but highly recommend: A doc string explaining what the function does, the arguments (and it’s expected type) and the output</p></li>
+<li><p>Optional but highly recommend: A doc string explaining what the function does, the arguments (and it’s expected type) and the output. That way, anyone can learn about your function using <code class="docutils literal notranslate"><span class="pre">FUNCTION_NAME?</span></code>.</p></li>
 <li><p>The code that does what the function is supposed to do.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">return</span></code> followed by the variables whose values you want the function to produce as an output. Omit the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement if you do not want to return anything. <strong>Caution:</strong> Lines of code in your function after <code class="docutils literal notranslate"><span class="pre">return</span></code> will not be executed - python will “exit” your function after return.</p></li>
 </ul>
@@ -600,11 +552,11 @@ the final value of a is 3
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;_summary_</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        argument1 (_type_): _description_</span>
-<span class="sd">        argument2 (_type_): _description_</span>
+<span class="sd">        argument1: _description_</span>
+<span class="sd">        argument2: _description_</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        _type_: _description_</span>
+<span class="sd">        _description_</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># things to do/calculate</span>
     <span class="c1"># you write your code here</span>
@@ -613,6 +565,40 @@ the final value of a is 3
     <span class="c1"># if you need to get a value calculated in the function</span>
     <span class="c1"># you need to use a return statement</span>
     <span class="k">return</span> <span class="n">calculated_values</span>
+
+function_name<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> function_name<span class=" -Color -Color-Blue">(</span>argument1<span class=" -Color -Color-Blue">,</span> argument2<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+_summary_
+
+Args:
+    argument1: _description_
+    argument2: _description_
+
+Returns:
+    _description_
+<span class=" -Color -Color-Red">File:</span>      /var/folders/bc/5m_c7nkj1vnc2w7xmmnhpfww0000gn/T/ipykernel_99939/1581233547.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is a very simple function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">nom</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hi </span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">)</span>
+
+<span class="n">greet</span><span class="p">(</span><span class="s1">&#39;Jean&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi Jean!
 </pre></div>
 </div>
 </div>
@@ -636,8 +622,36 @@ the final value of a is 3
     <span class="n">data_mean</span> <span class="o">=</span> <span class="n">data_mean</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">data_mean</span>  <span class="c1"># output</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can print the doc string using the <code class="docutils literal notranslate"><span class="pre">help</span></code> function or <code class="docutils literal notranslate"><span class="pre">?</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mean<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> mean<span class=" -Color -Color-Blue">(</span>data<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Calculate the mean
 
-<span class="n">data1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">4235</span><span class="p">,</span> <span class="mi">2365</span><span class="p">,</span> <span class="mi">6346</span><span class="p">]</span>
+Args:
+    data (list): Should be a list of numbers.
+
+Returns:
+    number: The mean over all items in `data`.
+<span class=" -Color -Color-Red">File:</span>      /var/folders/bc/5m_c7nkj1vnc2w7xmmnhpfww0000gn/T/ipykernel_99939/2853359421.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">4235</span><span class="p">,</span> <span class="mi">2365</span><span class="p">,</span> <span class="mi">6346</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">data1</span><span class="p">))</span>
 
 <span class="n">data2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3523</span><span class="p">,</span> <span class="mi">346346</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">2345243</span><span class="p">,</span> <span class="mi">5234</span><span class="p">,</span><span class="mi">32412</span><span class="p">]</span>
@@ -652,164 +666,189 @@ the final value of a is 3
 </div>
 </div>
 </div>
-<p>You can print the doc string using the <code class="docutils literal notranslate"><span class="pre">help</span></code> function</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function mean in module __main__:
-
-mean(data)
-    Calculate the mean
-
-    Args:
-        data (list): Should be a list of numbers.
-
-    Returns:
-        number: The mean over all items in `data`.
-</pre></div>
-</div>
-</div>
-</div>
 </section>
-<section id="let-s-write-a-simple-function">
-<h2>Let’s write a simple function<a class="headerlink" href="#let-s-write-a-simple-function" title="Permalink to this heading">#</a></h2>
-<p>Jonny likes to be greeted - let’s say Hi to him:</p>
+<section id="function-arguments">
+<h2>Function arguments<a class="headerlink" href="#function-arguments" title="Link to this heading">#</a></h2>
+<section id="required-and-optional-arguments">
+<h3>Required and optional arguments<a class="headerlink" href="#required-and-optional-arguments" title="Link to this heading">#</a></h3>
+<p>A function can have zero, one, or more arguments</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">nom</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hi </span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># function with zero arguments</span>
+<span class="k">def</span> <span class="nf">error</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ERRRRROOOOR&#39;</span><span class="p">)</span>
 
-<span class="n">greet</span><span class="p">(</span><span class="s1">&#39;Jean&#39;</span><span class="p">)</span>
+<span class="n">error</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi Jean!
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERRRRROOOOR
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="a-function-can-have-zero-one-or-more-arguments">
-<h2>A function can have zero, one, or more arguments<a class="headerlink" href="#a-function-can-have-zero-one-or-more-arguments" title="Permalink to this heading">#</a></h2>
-<p>The arguments - values in parentheses - are assigned to variables in the function by position - the first is <code class="docutils literal notranslate"><span class="pre">a</span></code>, the second is <code class="docutils literal notranslate"><span class="pre">b</span></code>. These are therefore called “positional” arguments.</p>
-<p>Let’s use the f-beta score - a generalization of the f1 score as an example:</p>
-<p><span class="math notranslate nohighlight">\(F_\beta = (1 + \beta^2) \cdot \frac{\mathrm{precision} \cdot \mathrm{recall}}{(\beta^2 \cdot \mathrm{precision}) + \mathrm{recall}}.\)</span></p>
+<p>A function with three arguments:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_beta_score</span><span class="p">(</span><span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>   <span class="c1"># the arguments are defined in parentheses after the name of the function</span>
-    <span class="n">score</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">precision</span> <span class="o">*</span> <span class="n">recall</span> <span class="o">/</span> <span class="p">((</span><span class="n">beta</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">recall</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_total</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">discount</span><span class="p">,</span> <span class="n">tax</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the total cost after applying discount and tax.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Arguments </span><span class="si">{</span><span class="n">price</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">discount</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">tax</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># print the values of the arguments for illustration</span>
+    <span class="n">price_after_discount</span> <span class="o">=</span> <span class="n">price</span> <span class="o">-</span> <span class="p">(</span><span class="n">price</span> <span class="o">*</span> <span class="n">discount</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">total_price</span> <span class="o">=</span> <span class="n">price_after_discount</span> <span class="o">+</span> <span class="p">(</span><span class="n">price_after_discount</span> <span class="o">*</span> <span class="n">tax</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total_price</span>
 
-<span class="n">P</span> <span class="o">=</span> <span class="mf">0.7</span>
-<span class="n">R</span> <span class="o">=</span> <span class="mf">0.6</span>
-<span class="n">B</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">f_beta_score</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span>   <span class="c1"># 3 positional arguments - their &quot;meaning&quot; is given by their position in the list of arguments</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f_beta_score</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">))</span>  <span class="c1"># we have to give the exact number of arguments defined in the function</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_total</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_total</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5249999999999999
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arguments price=100, discount=10, tax=19
+107.1
+Arguments price=100, discount=19, tax=10
+89.1
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can make arguments optional, by providing default values. Arguments without default values always need to be provided!</p>
+<p>Since the arguments do not have a value defined in the function definition, you must always provide them when calling the function. If you omit one or provide too many, you produce an error:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if an argument is followed by a value in the function, that argument is now optional - if you omit it, it will have the default value given in the def statement.</span>
-<span class="k">def</span> <span class="nf">f_beta_score</span><span class="p">(</span><span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Arguments: </span><span class="si">{</span><span class="n">precision</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">recall</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">beta</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">score</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">precision</span> <span class="o">*</span> <span class="n">recall</span> <span class="o">/</span> <span class="p">((</span><span class="n">beta</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">recall</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">score</span>
-
-<span class="n">P</span> <span class="o">=</span> <span class="mf">0.7</span>
-<span class="n">R</span> <span class="o">=</span> <span class="mf">0.6</span>
-<span class="n">f1_score</span> <span class="o">=</span> <span class="n">f_beta_score</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>  <span class="c1"># calculate the f-beta score with the default value beta=1 - the f1 score</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f1_score</span><span class="p">)</span>
-
-<span class="n">f2_score</span> <span class="o">=</span> <span class="n">f_beta_score</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># calculate the f-beta score with beta=2 - the &quot;f2 score&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f2_score</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arguments: precision=0.7, recall=0.6, beta=2
-0.4565217391304348
-Arguments: precision=0.7, recall=0.6, beta=2
-0.4565217391304348
-</pre></div>
-</div>
-</div>
-</div>
-<p>You can make your code more readable by using “keyword” arguments:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="mf">0.7</span>
-<span class="n">R</span> <span class="o">=</span> <span class="mf">0.6</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">f_beta_score</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f_beta_score</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">recall</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arguments: precision=0.7, recall=0.6, beta=2
-0.4565217391304348
-Arguments: precision=0.7, recall=0.6, beta=2
-0.4565217391304348
-</pre></div>
-</div>
-</div>
-</div>
-<p>Why do the two following statements fail?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="mf">0.7</span>
-<span class="n">R</span> <span class="o">=</span> <span class="mf">0.6</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">f_beta_score</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arguments: precision=0.7, recall=0.6, beta=2
-0.4565217391304348
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="mf">0.7</span>
-<span class="n">R</span> <span class="o">=</span> <span class="mf">0.6</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">f_beta_score</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_total</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">19</span><span class="p">)</span>  <span class="c1"># all arguments without default arguments are required - we have to give the exact number of arguments defined in the function, otherwise we get an error</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">janc</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">CloudStorage</span><span class="o">/</span><span class="n">Dropbox</span><span class="o">/</span><span class="n">_teaching</span><span class="o">/</span><span class="n">neu715</span><span class="o">/</span><span class="n">neu715</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="n">lecture</span> <span class="mi">2</span><span class="o">/</span><span class="mf">2.03</span><span class="n">_functions</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">26</span> <span class="n">line</span> <span class="mi">4</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture%202/2.03_functions.ipynb#X34sZmlsZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">P</span> <span class="o">=</span> <span class="mf">0.7</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture%202/2.03_functions.ipynb#X34sZmlsZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">R</span> <span class="o">=</span> <span class="mf">0.6</span>
-<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture%202/2.03_functions.ipynb#X34sZmlsZQ%3D%3D?line=3&#39;</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">f_beta_score</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">84</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">calculate_total</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">19</span><span class="p">)</span>  <span class="c1"># all arguments without default arguments are required - we have to give the exact number of arguments defined in the function, otherwise we get an error</span>
 
-<span class="ne">TypeError</span>: f_beta_score() missing 1 required positional argument: &#39;recall&#39;
+<span class="ne">TypeError</span>: calculate_total() missing 1 required positional argument: &#39;tax&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_total</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>  <span class="c1"># too many arguments</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">85</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">calculate_total</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>  <span class="c1"># too many arguments</span>
+
+<span class="ne">TypeError</span>: calculate_total() takes 3 positional arguments but 4 were given
+</pre></div>
+</div>
+</div>
+</div>
+<p>By providing default values in the function definition, we can make arguments optional:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if an argument is followed by a value in the function definition, that argument is now optional - if you omit it, it will have the default value given in the def statement.</span>
+<span class="k">def</span> <span class="nf">calculate_total</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tax</span><span class="o">=</span><span class="mi">19</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the total cost after applying discount and tax.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Arguments </span><span class="si">{</span><span class="n">price</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">discount</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">tax</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># print the values of the arguments for illustration</span>
+    <span class="n">price_after_discount</span> <span class="o">=</span> <span class="n">price</span> <span class="o">-</span> <span class="p">(</span><span class="n">price</span> <span class="o">*</span> <span class="n">discount</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">total_price</span> <span class="o">=</span> <span class="n">price_after_discount</span> <span class="o">+</span> <span class="p">(</span><span class="n">price_after_discount</span> <span class="o">*</span> <span class="n">tax</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total_price</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_total</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>  <span class="c1"># calculate the price with the default discount=0 and tax=19</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_total</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>  <span class="c1"># calculate the price with a discount of 20</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_total</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>  <span class="c1"># calculate the price with a discount of 20 and reduced tax of 9</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arguments price=100, discount=0, tax=19
+119.0
+Arguments price=100, discount=20, tax=19
+95.2
+Arguments price=100, discount=20, tax=9
+87.2
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="anything-goes">
-<h2>Anything goes!<a class="headerlink" href="#anything-goes" title="Permalink to this heading">#</a></h2>
+<section id="positional-vs-keyword-arguments">
+<h3>Positional vs. keyword arguments<a class="headerlink" href="#positional-vs-keyword-arguments" title="Link to this heading">#</a></h3>
+<p>The arguments are assigned to variables in the function by position - the first argument is <code class="docutils literal notranslate"><span class="pre">price</span></code>, the second is <code class="docutils literal notranslate"><span class="pre">discount</span></code> etc. The arguments are used as so-called “positional arguments”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calculate_total</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span>   <span class="c1"># 3 positional arguments - their &quot;meaning&quot; is given by their position</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_total</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>  <span class="c1"># changing the position of the arguments changes their meaning</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arguments price=100, discount=10, tax=19
+107.1
+Arguments price=19, discount=10, tax=100
+34.2
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, you can make your code more readable by providing the arguments with their names (also called “keywords). Then, the name of the arguments, not their position determines their meaning. In that keys, the arguments are used as so-called “keyword arguments”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calculate_total</span><span class="p">(</span><span class="n">price</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">tax</span><span class="o">=</span><span class="mi">9</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_total</span><span class="p">(</span><span class="n">discount</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">tax</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>  <span class="c1"># the meaning of the arguments is now given by the keywords, their position does not matter anymore</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arguments price=100, discount=20, tax=9
+87.2
+Arguments price=100, discount=20, tax=9
+87.2
+</pre></div>
+</div>
+</div>
+</div>
+<p>When defining or using functions, positional arguments must always come before keyword arguments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calculate_total</span><span class="p">(</span><span class="n">price</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">89</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">calculate_total</span><span class="p">(</span><span class="n">price</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+                                          <span class="o">^</span>
+<span class="ne">SyntaxError</span>: positional argument follows keyword argument
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-clicker-question-functions-args-click-me-https-go-uos-de-0ypai admonition">
+<p class="admonition-title">Clicker question “functions args”(<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
+<p>Let’s define the following function. Which of these statements work?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+
+<span class="n">my_fun</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">my_fun</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">my_fun</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">my_fun</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">my_fun</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">my_fun</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</section>
+<section id="arguments-can-be-of-any-type">
+<h3>Arguments can be of any type<a class="headerlink" href="#arguments-can-be-of-any-type" title="Link to this heading">#</a></h3>
 <p>Anything can be an argument: floats, strings, int, lists, tuples, any other objects. The return statement is optional, too.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -826,49 +865,51 @@ Arguments: precision=0.7, recall=0.6, beta=2
 </div>
 </div>
 </div>
-<p>Does a function without a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement return anything? If so, what is the type of return value?</p>
+</section>
+</section>
+<section id="functions-can-return-zero-one-or-multiple-variables">
+<h2>Functions can return zero, one, or multiple variables<a class="headerlink" href="#functions-can-return-zero-one-or-multiple-variables" title="Link to this heading">#</a></h2>
+<p>Functions without a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement or with a blank <code class="docutils literal notranslate"><span class="pre">return</span></code> statement do not return anything:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_name_and_age</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> was born </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years ago.&quot;</span><span class="p">)</span>
+    <span class="c1"># functions with no return statement (or blank return statement) will return nothing</span>
+
+<span class="n">print_name_and_age</span><span class="p">(</span><span class="s1">&#39;Ole&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ole was born 64 years ago.
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="you-can-return-multiple-variables-with-a-single-return-statement">
-<h2>You can return multiple variables with a single return statement<a class="headerlink" href="#you-can-return-multiple-variables-with-a-single-return-statement" title="Permalink to this heading">#</a></h2>
-<p>If a function returns multiple arguments the are a tuple: (return_var1, return_var2). Why?</p>
+<p>Technical side note: functions without a return statement or with a blank return statement return <code class="docutils literal notranslate"><span class="pre">None</span></code>, a special python type that indicates an missing or empty value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">print_name_and_age</span><span class="p">(</span><span class="s2">&quot;Olaf&quot;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">output</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Olaf was born 64 years ago.
+None &lt;class &#39;NoneType&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>To return one or multiple variables from inside the function, add their names in the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement, with mutiple return values separated by a comma: <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">var1,</span> <span class="pre">var2</span></code>. You then “catch” the returned variables like so: <code class="docutils literal notranslate"><span class="pre">returned_var1,</span> <span class="pre">returned_var2</span> <span class="pre">=</span> <span class="pre">my_function()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_and_diff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="n">the_sum</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
     <span class="n">the_diff</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
-    <span class="k">return</span> <span class="n">the_sum</span><span class="p">,</span> <span class="n">the_diff</span>
-    
-<span class="n">output</span> <span class="o">=</span> <span class="n">sum_and_diff</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(30, -10)
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can unpack the outputs:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sm</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="n">sum_and_diff</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sm</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
--10
+    <span class="k">return</span> <span class="n">the_sum</span><span class="p">,</span> <span class="n">the_diff</span>  <span class="c1"># return two variables from inside the function</span>
+
+<span class="n">returned_sum</span><span class="p">,</span> <span class="n">returned_difference</span> <span class="o">=</span> <span class="n">sum_and_diff</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -894,7 +935,7 @@ None &lt;class &#39;NoneType&#39;&gt;
 </div>
 </div>
 </div>
-<p>We’ve encountered functions that do not return anything in our introduction to lists. <code class="docutils literal notranslate"><span class="pre">append</span></code> does not return anything. So <code class="docutils literal notranslate"><span class="pre">new_list</span> <span class="pre">=</span> <span class="pre">list.append(value)</span></code> will set <code class="docutils literal notranslate"><span class="pre">new_list``</span> <span class="pre">to</span> </code>None`:</p>
+<p>We’ve encountered functions that do not return anything in our introduction to lists. <code class="docutils literal notranslate"><span class="pre">append</span></code> does not return anything. So <code class="docutils literal notranslate"><span class="pre">new_list</span> <span class="pre">=</span> <span class="pre">list.append(value)</span></code> will set <code class="docutils literal notranslate"><span class="pre">new_list</span></code> to <code class="docutils literal notranslate"><span class="pre">None</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
@@ -911,35 +952,34 @@ None &lt;class &#39;NoneType&#39;&gt;
 </div>
 </section>
 <section id="the-scope-of-a-variable-local-variables">
-<h2>The “scope” of a variable - local variables<a class="headerlink" href="#the-scope-of-a-variable-local-variables" title="Permalink to this heading">#</a></h2>
-<p>What you define inside a function is not accessible outside: all variables created inside functions are <em>local</em> variables.</p>
+<h2>The “scope” of a variable - local variables<a class="headerlink" href="#the-scope-of-a-variable-local-variables" title="Link to this heading">#</a></h2>
+<p>Why do we need to <code class="docutils literal notranslate"><span class="pre">return</span></code> variables from inside the function? It is because what you define inside a function is not accessible outside: all variables created inside functions are <em>local</em> variables for that function. To access these <em>local</em> variables outside of the function, you need to return them to the outside.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
     <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="c1"># inside the function we change the value of pi, but this is another pi</span>
-    <span class="n">the_area</span> <span class="o">=</span> <span class="n">pi</span><span class="o">*</span> <span class="n">square</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span> <span class="c1"># We calculate the area using the pi inside the function</span>
+    <span class="n">the_area</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span> <span class="c1"># We calculate the area using the pi inside the function</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi inside the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># we print the pi inside the function</span>
     <span class="k">return</span> <span class="n">the_area</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span> <span class="c1"># we print the value returned by our function</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># pi only exists inside the function</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># we print the value returned by our function</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi outside the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># pi only exists inside the function</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The value of pi inside the function is 3.14
-706.5
-4.3
+314.0
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">31</span><span class="p">],</span> <span class="n">line</span> <span class="mi">11</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span> <span class="c1"># we print the value returned by our function</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># pi only exists inside the function</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">square</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">104</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="k">return</span> <span class="n">the_area</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># we print the value returned by our function</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi outside the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># pi only exists inside the function</span>
 
-<span class="ne">NameError</span>: name &#39;square&#39; is not defined
+<span class="ne">NameError</span>: name &#39;pi&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -948,32 +988,24 @@ None &lt;class &#39;NoneType&#39;&gt;
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span><span class="o">=</span><span class="mf">4.3</span>  <span class="c1"># we define pi outside the function giving it a value</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi outside and before the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># we print the pi outside the function</span>
+
 <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
     <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="c1"># inside the function we change the value of pi, but this is another pi</span>
-    <span class="n">the_area</span> <span class="o">=</span> <span class="n">pi</span><span class="o">*</span><span class="n">radius</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># We calculate the area using the pi inside the function</span>
+    <span class="n">the_area</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span> <span class="c1"># We calculate the area using the pi inside the function</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi inside the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># we print the pi inside the function</span>
     <span class="k">return</span> <span class="n">the_area</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span> <span class="c1"># we print the value returned by our function</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># we are ouside the function, so we are looking at the pi we defined before</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># we print the value returned by our function</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi outside and after the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># we print the pi outside the function</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">UnboundLocalError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">29</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi inside the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># we print the pi inside the function</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="k">return</span> <span class="n">the_area</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span> <span class="c1"># we print the value returned by our function</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># we are ouside the function, so we are looking at the pi we defined before</span>
-
-<span class="nn">Cell In[29], line 3,</span> in <span class="ni">area</span><span class="nt">(radius)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">the_area</span> <span class="o">=</span> <span class="n">pi</span><span class="o">*</span><span class="n">radius</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># We calculate the area using the pi inside the function</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="c1"># inside the function we change the value of pi, but this is another pi</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi inside the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># we print the pi inside the function</span>
-
-<span class="ne">UnboundLocalError</span>: cannot access local variable &#39;pi&#39; where it is not associated with a value
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The value of pi outside and before the function is 4.3
+The value of pi inside the function is 3.14
+314.0
+The value of pi outside and after the function is 4.3
 </pre></div>
 </div>
 </div>
@@ -983,93 +1015,38 @@ None &lt;class &#39;NoneType&#39;&gt;
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>
 <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
-    <span class="n">area</span> <span class="o">=</span> <span class="n">pi</span><span class="o">*</span><span class="n">radius</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># because we are not defining any new pi inside the function, python searches the one outside the function</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi inside the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># we print the pi inside the function</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span> <span class="c1"># because we are not defining any new pi inside the function, python searches the one outside the function</span>
     <span class="k">return</span> <span class="n">area</span>
 
-<span class="n">area</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">area</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.14
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The value of pi inside the function is 3.14
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>314.0
 </pre></div>
 </div>
 </div>
 </div>
-<section id="documenting-functions">
-<h3>Documenting functions<a class="headerlink" href="#documenting-functions" title="Permalink to this heading">#</a></h3>
-<p>Functions can be documented using doc strings.
-They can be read by inspecting the source code directly, or using the <code class="docutils literal notranslate"><span class="pre">help</span></code> function.</p>
-<p>Doc strings follow standard formats - here is one of the formats:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+<div class="admonition-clicker-question-functions-scope-click-me-https-go-uos-de-0ypai admonition">
+<p class="admonition-title">Clicker question “functions scope”(<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
+<p>What is the value of x at the end of this code?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">def</span> <span class="nf">my_fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        arg1 (_type_): _description_</span>
-<span class="sd">        arg2 (int, optional): _description_. Defaults to 10.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        _type_: _description_</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">arg1</span>
-
-<span class="n">help</span><span class="p">(</span><span class="n">function_name</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">my_fun</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function function_name in module __main__:
-
-function_name(arg1, arg2=10)
-    _summary_
-
-    Args:
-        arg1 (_type_): _description_
-        arg2 (int, optional): _description_. Defaults to 10.
-
-    Returns:
-        _type_: _description_
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">concat</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Concatenates two lists.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        l1 (list): First list to concatenate.</span>
-<span class="sd">        l2 (list): Second list to concatenate</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        list: Concatenated list [*l1, *l2]</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">l1</span> <span class="o">+</span> <span class="n">l2</span>
-
-<span class="n">help</span><span class="p">(</span><span class="n">concat</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function concat in module __main__:
-
-concat(l1, l2)
-    Concatenates two lists.
-
-    Args:
-        l1 (list): First list to concatenate.
-        l2 (list): Second list to concatenate
-
-    Returns:
-        list: Concatenated list [*l1, *l2]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 </section>
 
@@ -1100,24 +1077,24 @@ concat(l1, l2)
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
-       href="2.02_loops_more.html"
+       href="2.02_matplotlib.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lecture 2.2 - For loops</p>
+        <p class="prev-next-title">Plotting</p>
       </div>
     </a>
     <a class="right-next"
-       href="2.04_exceptions.html"
+       href="2.05_imports.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 2.4 - Handling errors with exceptions</p>
+        <p class="prev-next-title">Using external code with the import statment</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1130,6 +1107,7 @@ concat(l1, l2)
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1137,16 +1115,16 @@ concat(l1, l2)
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-indentation">Reminder: Indentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-function">The anatomy of a function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-write-a-simple-function">Let’s write a simple function</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-function-can-have-zero-one-or-more-arguments">A function can have zero, one, or more arguments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anything-goes">Anything goes!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#you-can-return-multiple-variables-with-a-single-return-statement">You can return multiple variables with a single return statement</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-scope-of-a-variable-local-variables">The “scope” of a variable - local variables</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documenting-functions">Documenting functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-arguments">Function arguments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-and-optional-arguments">Required and optional arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-vs-keyword-arguments">Positional vs. keyword arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arguments-can-be-of-any-type">Arguments can be of any type</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-can-return-zero-one-or-multiple-variables">Functions can return zero, one, or multiple variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-scope-of-a-variable-local-variables">The “scope” of a variable - local variables</a></li>
 </ul>
   </nav></div>
 
@@ -1168,9 +1146,10 @@ By Jan Clemens
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1194,8 +1173,8 @@ By Jan Clemens
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

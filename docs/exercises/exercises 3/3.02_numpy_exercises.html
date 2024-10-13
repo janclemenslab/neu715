@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Exercises 3.2 - Numpy &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
@@ -15,53 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 3/3.02_numpy_exercises';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -76,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -119,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +139,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -147,10 +150,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -160,58 +175,42 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 1</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.00_notebooks.html">Using notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.01_variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.02_conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.03_lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.04_loops_simple.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.05_matplotlib.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.01_composites.html">Tuples and dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.02_matplotlib.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.03_functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.05_imports.html">Using external code</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 1</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics - exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.01_variables_exercises.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.03_lists_exercises.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.05_matplotlib_exercises.html">Plotting</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 2</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.01_composites.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.02_loops_more.html">Loops (part 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.03_functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.04_exceptions.html">Handling errors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.05_imports.html">External code</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 2</span></p>
-<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/1.05_matplotlib_exercises.html">Plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.01_composites_exercises.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.02_loops_more_exercises.html">Loops (part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.02_loops_more_exercises.html">Loops (Part 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.03_functions_exercises.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.04_exceptions_exercises.html">Handling errors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.05_imports_exercises.html">External code</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.01_packages_and_environments.html">Installing packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.02_numpy.html">Numerical computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.02_numpy.html">Number crunching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.03_files.html">Working with files</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing exercises</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Numerical computing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3.03_files_exercises.html">Working with files</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 4</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%204/4.01_pandas.html">Tabular data and pandas</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 4</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../exercises%204/4.01_pandas_exercises.html">Tabular data and connectomics</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 5</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%205/5.01_probabilities.html">Statistics with python</a></li>
 
@@ -219,18 +218,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%205/5.03_inferential_stats_1.html">Inferential statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%205/5.03_inferential_stats_2.html">Inferential statistics (dataset 2)</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 5</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.01_probabilities_exercise.html">Probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.02_descriptive_stats_exercise.html">Descriptive statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.03_inferential_stats_exercise.html">Inferential statistics</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 6</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%206/6.01_linear%20regression.html">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%206/6.02_nonlinear_regression.html">Nonlinear regression</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 6</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises%206/6.01_linear_regression_exercises.html">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%206/6.02_nonlinear_regression_exercises.html">Nonlinear regression</a></li>
@@ -249,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -258,14 +257,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -290,14 +289,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 3/3.02_numpy_exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -308,14 +307,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 3/3.02_numpy_exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -389,26 +388,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -432,24 +433,20 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-arrays">Exercise 1: Creating arrays</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-math-with-arrays">Exercise 2: Math with arrays</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2a-time-axis-starting-at-0-seconds">Exercise 2a - time axis starting at 0 seconds</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2b-time-axis-starting-at-2-seconds">Exercise 2b  - time axis starting at 2 seconds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2b-time-axis-starting-at-2-seconds">Exercise 2b - time axis starting at 2 seconds</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-slice-indexing">Exercise 3: Slice indexing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-boolean-indexing">Exercise 4 - Boolean indexing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4a-comparisons-on-arrays-in-numpy">Exercise 4a - comparisons on arrays in numpy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4b-boolean-indexing">Exercise 4b - boolean indexing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4c-boolean-indexing-2">Exercise 4c - boolean indexing 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-z-scoring-our-data">Exercise 3: Z-scoring our data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-slice-indexing">Exercise 4: Slice indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-boolean-indexing">Exercise 5 - Boolean indexing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5a-comparisons-on-arrays-in-numpy">Exercise 5a - comparisons on arrays in numpy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5b-boolean-indexing-1">Exercise 5b - boolean indexing (1)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5c-boolean-indexing-2">Exercise 5c - boolean indexing (2)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-searching-arrays">Exercise 5: Searching arrays</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5a-counting-true-values">Exercise 5a - counting True values</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5b-getting-the-indices-of-true-values">Exercise 5b - getting the indices of True values</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-detecting-changes-important-for-the-assignment">Exercise 6: Detecting changes (important for the assignment!)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6a-for-how-many-values-is-the-stimulus-sound-on-stimulus-is-1-or-greater">Exercise 6a: For how many values is the stimulus sound on (stimulus is 1 or greater)?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6a-determine-the-indices-at-which-the-stimulus-starts-and-ends">Exercise 6a: Determine the indices at which the stimulus starts and ends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-searching-arrays">Exercise 6: Searching arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6a-counting-true-values-important">Exercise 6a - counting True values (Important)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6b-getting-the-indices-of-true-values">Exercise 6b - getting the indices of True values</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-spike-detection">Exercise 7: Spike detection</a><ul class="nav section-nav flex-column">
@@ -473,12 +470,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercises-3-2-numpy">
-<h1>Exercises 3.2 - Numpy<a class="headerlink" href="#exercises-3-2-numpy" title="Permalink to this heading">#</a></h1>
+<h1>Exercises 3.2 - Numpy<a class="headerlink" href="#exercises-3-2-numpy" title="Link to this heading">#</a></h1>
 <section id="exercise-1-creating-arrays">
-<h2>Exercise 1: Creating arrays<a class="headerlink" href="#exercise-1-creating-arrays" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 1: Creating arrays<a class="headerlink" href="#exercise-1-creating-arrays" title="Link to this heading">#</a></h2>
 <p>Create different numpy arrays with the following properties. Use the numpy functions, no for loops!</p>
 <ol class="arabic simple">
 <li><p>4-element vector of zeros</p></li>
@@ -495,17 +492,24 @@ document.write(`
 </div>
 </section>
 <section id="exercise-2-math-with-arrays">
-<h2>Exercise 2: Math with arrays<a class="headerlink" href="#exercise-2-math-with-arrays" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 2: Math with arrays<a class="headerlink" href="#exercise-2-math-with-arrays" title="Link to this heading">#</a></h2>
 <p>When creating time values for plotting before we needed lists and for loops:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_len</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># say we have 10 data points</span>
-<span class="n">binsize</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># milliseconds - we want a time axis for the data in ms</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">time_ms</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">data_len</span><span class="p">):</span>
-    <span class="n">time_ms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span> <span class="o">*</span> <span class="n">binsize</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">time_ms</span><span class="p">)</span>
+<span class="c1"># say we have 10 data points, sampled every 0.1 seconds, starting at 0 seconds:</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.62</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.61</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.53</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.07</span><span class="p">,</span> <span class="mf">0.87</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.30</span><span class="p">,</span> <span class="mf">1.74</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.76</span><span class="p">,</span> <span class="mf">0.32</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">]</span>
+<span class="n">step_size</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># seconds - we want a time axis for the data in seconds</span>
+
+<span class="n">time_seconds</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+    <span class="n">time_seconds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index</span> <span class="o">*</span> <span class="n">step_size</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time_seconds</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_seconds</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+<span class="c1"># DO NOT CHANGE THIS CODE</span>
 </pre></div>
 </div>
 </div>
@@ -513,45 +517,138 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0, 0.1, 0.2, 0.30000000000000004, 0.4, 0.5, 0.6000000000000001, 0.7000000000000001, 0.8, 0.9]
 </pre></div>
 </div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Time [s]&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/2071bb7d762f4e7aa38ac20dff5aabb3926bd5fed897fcc4d76e4cdab888547d.png" src="../../_images/2071bb7d762f4e7aa38ac20dff5aabb3926bd5fed897fcc4d76e4cdab888547d.png" />
 </div>
 </div>
 <p>Let’s do this using numpy now - without any for loops.</p>
 <section id="exercise-2a-time-axis-starting-at-0-seconds">
-<h3>Exercise 2a - time axis starting at 0 seconds<a class="headerlink" href="#exercise-2a-time-axis-starting-at-0-seconds" title="Permalink to this heading">#</a></h3>
-<p>Our data has 100 values, sampled at an interval of 10 milliseconds, starting at a value of 2 seconds. Create time values (use milliseconds as the units) using numpy. Plot the data and add proper x-axis labels.</p>
+<h3>Exercise 2a - time axis starting at 0 seconds<a class="headerlink" href="#exercise-2a-time-axis-starting-at-0-seconds" title="Link to this heading">#</a></h3>
+<p>Our data has 10 values, sampled at an interval of 10 milliseconds, starting at 2 seconds. Use <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> function to create the array with time value for plotting in a single line. Plot the data and add proper x-axis labels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-
-<span class="c1"># your solution here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">time_seconds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_seconds</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Time [s]&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/2071bb7d762f4e7aa38ac20dff5aabb3926bd5fed897fcc4d76e4cdab888547d.png" src="../../_images/2071bb7d762f4e7aa38ac20dff5aabb3926bd5fed897fcc4d76e4cdab888547d.png" />
 </div>
 </div>
 </section>
 <section id="exercise-2b-time-axis-starting-at-2-seconds">
-<h3>Exercise 2b  - time axis starting at 2 seconds<a class="headerlink" href="#exercise-2b-time-axis-starting-at-2-seconds" title="Permalink to this heading">#</a></h3>
-<p>We got a new dataset, sampled at the same interval of 10 milliseconds, just as before. However, the first datapoint was collected 2 seconds into the experiment.</p>
-<p>Using numpy (no for loops!), areate time values (use milliseconds as the units) that starts at 2 seconds (not at 0 seconds as before). Plot the data with the time axis and proper x-axis labels</p>
+<h3>Exercise 2b - time axis starting at 2 seconds<a class="headerlink" href="#exercise-2b-time-axis-starting-at-2-seconds" title="Link to this heading">#</a></h3>
+<p>We just realized that we made a mistake - the data were sampled starting at 2 seconds. Add 2 to each value of the time array and replot the data with the new time axis</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_seconds</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Time [s]&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/9e985325fe210e43a702c9b47ef409c8c89f8b5c0b9c797dfb9219cc4b99b9f4.png" src="../../_images/9e985325fe210e43a702c9b47ef409c8c89f8b5c0b9c797dfb9219cc4b99b9f4.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-3-z-scoring-our-data">
+<h2>Exercise 3: Z-scoring our data<a class="headerlink" href="#exercise-3-z-scoring-our-data" title="Link to this heading">#</a></h2>
+<p>In a previous exercised, we have z-scored some temperature data using core python and a bunch of for loops.</p>
+<p>Remember that z-scoring amounts to for each value: subtracting the mean, <span class="math notranslate nohighlight">\(M\)</span>, and dividing by the standard deviation, <span class="math notranslate nohighlight">\(S\)</span>:
+<span class="math notranslate nohighlight">\(z_i = (x_i - M) / S\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXECUTE BUT DO NOT CHANGE THIS CELL</span>
+<span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># compute mean</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">ta</span> <span class="ow">in</span> <span class="n">temperature_anomalies</span><span class="p">:</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">+</span> <span class="n">ta</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span>
+
+<span class="c1"># compute std</span>
+<span class="n">std</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">ta</span> <span class="ow">in</span> <span class="n">temperature_anomalies</span><span class="p">:</span>
+    <span class="n">std</span> <span class="o">=</span> <span class="n">std</span> <span class="o">+</span> <span class="p">(</span><span class="n">ta</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">std</span> <span class="o">=</span> <span class="p">(</span><span class="n">std</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">))</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># z-score - subtract the mean and divide by the standard deviation</span>
+<span class="n">ta_zscored</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ta</span> <span class="ow">in</span> <span class="n">temperature_anomalies</span><span class="p">:</span>
+    <span class="n">ta_zscored</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">ta</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span><span class="p">)</span>
+
+<span class="n">ta_zscored</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.19, -0.177, -0.308, -0.289, -0.193, -0.057, 0.077, 0.026, 0.029, 0.068, 0.256, 0.342, 0.591, 0.792]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.8220097542568958,
+ -0.7807619529680193,
+ -1.1964128736482362,
+ -1.1361276256106474,
+ -0.8315284776312519,
+ -0.4000130179937748,
+ 0.025156626060798284,
+ -0.13666167130325566,
+ -0.12714294792889955,
+ -0.0033995440622700372,
+ 0.5931071207307131,
+ 0.8659771907955884,
+ 1.6560312308671457,
+ 2.2937856969490054]
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is quite a bit of code. Use Numpy to get z-score the data in 1-2 lines of code, without any for loops. You can use <code class="docutils literal notranslate"><span class="pre">np.mean</span></code> and <code class="docutils literal notranslate"><span class="pre">np.std</span></code> to compute the mean and standard deviation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXECUTE BUT DO NOT CHANGE THIS CELL</span>
+<span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span>
 
 <span class="c1"># your solution here</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">ta_zscored</span> <span class="o">=</span> <span class="p">(</span><span class="n">temperature_anomalies</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span>
+<span class="n">ta_zscored</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.19, -0.177, -0.308, -0.289, -0.193, -0.057, 0.077, 0.026, 0.029, 0.068, 0.256, 0.342, 0.591, 0.792]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.82200975, -0.78076195, -1.19641287, -1.13612763, -0.83152848,
+       -0.40001302,  0.02515663, -0.13666167, -0.12714295, -0.00339954,
+        0.59310712,  0.86597719,  1.65603123,  2.2937857 ])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-</section>
-<section id="exercise-3-slice-indexing">
-<h2>Exercise 3: Slice indexing<a class="headerlink" href="#exercise-3-slice-indexing" title="Permalink to this heading">#</a></h2>
+<section id="exercise-4-slice-indexing">
+<h2>Exercise 4: Slice indexing<a class="headerlink" href="#exercise-4-slice-indexing" title="Link to this heading">#</a></h2>
 <p>You are given a matrix. Use slice indexing to:</p>
 <ol class="arabic simple">
 <li><p>print the second row</p></li>
@@ -560,7 +657,7 @@ document.write(`
 <li><p>print the upper left 3x3 matrix</p></li>
 <li><p>print the lower right 2x2 matrix</p></li>
 <li><p>print the matrix with out the first and last row and first and last column</p></li>
-<li><p>set the lower left 3x3 matrix to the mean over all values of the matrix</p></li>
+<li><p>set the lower left 3x3 matrix to 0</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -589,13 +686,13 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-4-boolean-indexing">
-<h2>Exercise 4 - Boolean indexing<a class="headerlink" href="#exercise-4-boolean-indexing" title="Permalink to this heading">#</a></h2>
+<section id="exercise-5-boolean-indexing">
+<h2>Exercise 5 - Boolean indexing<a class="headerlink" href="#exercise-5-boolean-indexing" title="Link to this heading">#</a></h2>
 <p>We are given a numpy array, <code class="docutils literal notranslate"><span class="pre">x</span></code> of data values.</p>
 <p>No for loops allowed in this exercise!</p>
-<section id="exercise-4a-comparisons-on-arrays-in-numpy">
-<h3>Exercise 4a - comparisons on arrays in numpy<a class="headerlink" href="#exercise-4a-comparisons-on-arrays-in-numpy" title="Permalink to this heading">#</a></h3>
-<p>Using numpy (no for loops) and comparison operators, generate an new boolean array <code class="docutils literal notranslate"><span class="pre">greater_zero</span></code> that has the value<code class="docutils literal notranslate"><span class="pre">True</span></code> if the corresponding value in <code class="docutils literal notranslate"><span class="pre">x</span></code> is &gt;0<code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">and</span> </code>False` otherwise:</p>
+<section id="exercise-5a-comparisons-on-arrays-in-numpy">
+<h3>Exercise 5a - comparisons on arrays in numpy<a class="headerlink" href="#exercise-5a-comparisons-on-arrays-in-numpy" title="Link to this heading">#</a></h3>
+<p>Using numpy (no for loops) and comparison operators, generate an new boolean array <code class="docutils literal notranslate"><span class="pre">greater_zero</span></code> that has the value <code class="docutils literal notranslate"><span class="pre">True</span></code> at all indices for which <code class="docutils literal notranslate"><span class="pre">x</span></code> is &gt;0, and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -607,9 +704,9 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-4b-boolean-indexing">
-<h3>Exercise 4b - boolean indexing<a class="headerlink" href="#exercise-4b-boolean-indexing" title="Permalink to this heading">#</a></h3>
-<p>Expand on your solution above. Use boolean arrays to print</p>
+<section id="exercise-5b-boolean-indexing-1">
+<h3>Exercise 5b - boolean indexing (1)<a class="headerlink" href="#exercise-5b-boolean-indexing-1" title="Link to this heading">#</a></h3>
+<p>Expand on your solution above. Use boolean indexing to print</p>
 <ul class="simple">
 <li><p>all values &gt;0</p></li>
 <li><p>all values &lt;0</p></li>
@@ -625,8 +722,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-4c-boolean-indexing-2">
-<h3>Exercise 4c - boolean indexing 2<a class="headerlink" href="#exercise-4c-boolean-indexing-2" title="Permalink to this heading">#</a></h3>
+<section id="exercise-5c-boolean-indexing-2">
+<h3>Exercise 5c - boolean indexing (2)<a class="headerlink" href="#exercise-5c-boolean-indexing-2" title="Link to this heading">#</a></h3>
 <p>Expand again on your solution to compute the mean of:</p>
 <ul class="simple">
 <li><p>all values &gt;0</p></li>
@@ -644,14 +741,15 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="exercise-5-searching-arrays">
-<h2>Exercise 5: Searching arrays<a class="headerlink" href="#exercise-5-searching-arrays" title="Permalink to this heading">#</a></h2>
-<section id="exercise-5a-counting-true-values">
-<h3>Exercise 5a - counting True values<a class="headerlink" href="#exercise-5a-counting-true-values" title="Permalink to this heading">#</a></h3>
+<section id="exercise-6-searching-arrays">
+<h2>Exercise 6: Searching arrays<a class="headerlink" href="#exercise-6-searching-arrays" title="Link to this heading">#</a></h2>
+<section id="exercise-6a-counting-true-values-important">
+<h3>Exercise 6a - counting True values (Important)<a class="headerlink" href="#exercise-6a-counting-true-values-important" title="Link to this heading">#</a></h3>
 <p>In the array <code class="docutils literal notranslate"><span class="pre">x</span></code>, how many values:</p>
 <ul class="simple">
 <li><p>are &lt;0</p></li>
 <li><p>are &gt;0</p></li>
+<li><p>are &gt;-0.5 and &lt;0.5</p></li>
 </ul>
 <p>Do not use a for loop. Use boolean indexing!</p>
 <div class="cell docutils container">
@@ -665,9 +763,9 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-5b-getting-the-indices-of-true-values">
-<h3>Exercise 5b - getting the indices of True values<a class="headerlink" href="#exercise-5b-getting-the-indices-of-true-values" title="Permalink to this heading">#</a></h3>
-<p>Given the following array of data values, get the indices at which:</p>
+<section id="exercise-6b-getting-the-indices-of-true-values">
+<h3>Exercise 6b - getting the indices of True values<a class="headerlink" href="#exercise-6b-getting-the-indices-of-true-values" title="Link to this heading">#</a></h3>
+<p>Given the following array of data values, us <code class="docutils literal notranslate"><span class="pre">np.where</span></code> get the indices at which:</p>
 <ul class="simple">
 <li><p>the data is &lt;0</p></li>
 <li><p>the data is &gt;0</p></li>
@@ -685,54 +783,11 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="exercise-6-detecting-changes-important-for-the-assignment">
-<h2>Exercise 6: Detecting changes (important for the assignment!)<a class="headerlink" href="#exercise-6-detecting-changes-important-for-the-assignment" title="Permalink to this heading">#</a></h2>
-<p>You are given a stimulus array that changes from 0 (sound off) to &gt;=1 (sound on) and then back to 0 (sound off).</p>
-<section id="exercise-6a-for-how-many-values-is-the-stimulus-sound-on-stimulus-is-1-or-greater">
-<h3>Exercise 6a: For how many values is the stimulus sound on (stimulus is 1 or greater)?<a class="headerlink" href="#exercise-6a-for-how-many-values-is-the-stimulus-sound-on-stimulus-is-1-or-greater" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stimulus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-
-<span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-6a-determine-the-indices-at-which-the-stimulus-starts-and-ends">
-<h3>Exercise 6a: Determine the indices at which the stimulus starts and ends<a class="headerlink" href="#exercise-6a-determine-the-indices-at-which-the-stimulus-starts-and-ends" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">np.diff</span></code> to calculate the difference between subsequent values in the stimulus array.</p></li>
-<li><p>Make a plot that shows 1) the stimulus and 2) the output of <code class="docutils literal notranslate"><span class="pre">np.diff</span></code>.</p></li>
-<li><p>What are the output values for <code class="docutils literal notranslate"><span class="pre">np.diff</span></code> for the beginning (0-&gt;1) and end (1-&gt;0) of the sound?</p></li>
-<li><p>Identify the beginning of the sound (sound onset) and the end of the sound (offset) as the indices at which these output values occur.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stimulus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stimulus</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">)</span>
-
-<span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1165f6690&gt;]
-</pre></div>
-</div>
-<img alt="../../_images/a6fcfcf4ac83e6d141aa6fbd34b98ac8f154e3ae1c7be73b6f81f6735c745b3a.png" src="../../_images/a6fcfcf4ac83e6d141aa6fbd34b98ac8f154e3ae1c7be73b6f81f6735c745b3a.png" />
-</div>
-</div>
-</section>
-</section>
 <section id="exercise-7-spike-detection">
-<h2>Exercise 7: Spike detection<a class="headerlink" href="#exercise-7-spike-detection" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 7: Spike detection<a class="headerlink" href="#exercise-7-spike-detection" title="Link to this heading">#</a></h2>
 <p>Let’s implement the simple spike detection task using numpy</p>
 <section id="exercise-7a-load-the-data">
-<h3>Exercise 7a: Load the data:<a class="headerlink" href="#exercise-7a-load-the-data" title="Permalink to this heading">#</a></h3>
+<h3>Exercise 7a: Load the data:<a class="headerlink" href="#exercise-7a-load-the-data" title="Link to this heading">#</a></h3>
 <p>The voltage and time values for each sample in the recording are saved in <code class="docutils literal notranslate"><span class="pre">data/voltage_trace.npz</span></code>. Load the data using <code class="docutils literal notranslate"><span class="pre">np.load</span></code> and plot the data (using the time and voltage values from the data file).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -748,12 +803,30 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/45c8fa7548c06ea87244cef4a6de6f471b49bcc369770515a5ace8151e409e57.png" src="../../_images/45c8fa7548c06ea87244cef4a6de6f471b49bcc369770515a5ace8151e409e57.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">71</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your solution here</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;data/voltage_trace.npz&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="nn">File ~/miniconda3/envs/neu715/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:459,</span> in <span class="ni">load</span><span class="nt">(file, mmap_mode, allow_pickle, fix_imports, encoding, max_header_size)</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span>     <span class="n">own_fid</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">458</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">459</span>     <span class="n">fid</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">enter_context</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">fspath</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="s2">&quot;rb&quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">460</span>     <span class="n">own_fid</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">    </span><span class="mi">462</span> <span class="c1"># Code to distinguish from NumPy binary files and pickles.</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/voltage_trace.npz&#39;
+</pre></div>
+</div>
 </div>
 </div>
 </section>
 <section id="exercise-7b-detect-spikes-using-numpy">
-<h3>Exercise 7b: Detect spikes using numpy<a class="headerlink" href="#exercise-7b-detect-spikes-using-numpy" title="Permalink to this heading">#</a></h3>
+<h3>Exercise 7b: Detect spikes using numpy<a class="headerlink" href="#exercise-7b-detect-spikes-using-numpy" title="Link to this heading">#</a></h3>
 <p>This is our spike detection code, using core python:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -784,7 +857,7 @@ document.write(`
 </div>
 </section>
 <section id="exercise-7c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods">
-<h3>Exercise 7c: Plot the voltage trace and overlay the spike times generated by both methods<a class="headerlink" href="#exercise-7c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods" title="Permalink to this heading">#</a></h3>
+<h3>Exercise 7c: Plot the voltage trace and overlay the spike times generated by both methods<a class="headerlink" href="#exercise-7c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods" title="Link to this heading">#</a></h3>
 <p>The spikes detected using the old python code should be marked as vertical red lines (use <code class="docutils literal notranslate"><span class="pre">plt.axvline</span></code>), the spikes detected using numpy should be marked as green dots at their peaks. Like so:
 <img alt="" src="../../_images/voltage_trace_spikes.png" /></p>
 <p>Did you catch every spike?</p>
@@ -798,7 +871,7 @@ document.write(`
 </section>
 </section>
 <section id="exercise-8-chunking-bonus">
-<h2>Exercise 8: Chunking (bonus)<a class="headerlink" href="#exercise-8-chunking-bonus" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 8: Chunking (bonus)<a class="headerlink" href="#exercise-8-chunking-bonus" title="Link to this heading">#</a></h2>
 <p>We ran an experiment in which we trained a rat to detect a short tone pip. We now tested the rat’s detection performance by presenting the tone pip at different intensities and calculating the detection probability. Load and plot the raw data and compute and plot the mean response probabiltity for each intensity.</p>
 <ul class="simple">
 <li><p>Load the data from the excel file <code class="docutils literal notranslate"><span class="pre">data/sound_expt.xlsx</span></code> and cast it to a numpy array. In parallel, open the data file in excel to determine how the data is structured (which columns hold which information)</p></li>
@@ -807,7 +880,7 @@ document.write(`
 </ul>
 <p><img alt="" src="../../_images/sound_expt.png" /></p>
 <section id="load-the-data-with-pandas-and-cast-it-to-numpy">
-<h3>1. Load the data with pandas and cast it to numpy<a class="headerlink" href="#load-the-data-with-pandas-and-cast-it-to-numpy" title="Permalink to this heading">#</a></h3>
+<h3>1. Load the data with pandas and cast it to numpy<a class="headerlink" href="#load-the-data-with-pandas-and-cast-it-to-numpy" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -817,7 +890,7 @@ document.write(`
 </div>
 </section>
 <section id="compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity">
-<h3>2. Compute the mean over stimulus response probabilities obtained for the same sound intensity<a class="headerlink" href="#compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity" title="Permalink to this heading">#</a></h3>
+<h3>2. Compute the mean over stimulus response probabilities obtained for the same sound intensity<a class="headerlink" href="#compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -827,7 +900,7 @@ document.write(`
 </div>
 </section>
 <section id="plot-the-individual-data-as-points-and-the-mean-values-as-a-curve">
-<h3>3. Plot the individual data as points and the mean values as a curve<a class="headerlink" href="#plot-the-individual-data-as-points-and-the-mean-values-as-a-curve" title="Permalink to this heading">#</a></h3>
+<h3>3. Plot the individual data as points and the mean values as a curve<a class="headerlink" href="#plot-the-individual-data-as-points-and-the-mean-values-as-a-curve" title="Link to this heading">#</a></h3>
 <p>The x-axis should be sound intensity, the y-axis response probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -867,8 +940,8 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="../../lectures/lecture%203/3.03_files.html"
@@ -897,6 +970,7 @@ document.write(`
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -906,24 +980,20 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-arrays">Exercise 1: Creating arrays</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-math-with-arrays">Exercise 2: Math with arrays</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2a-time-axis-starting-at-0-seconds">Exercise 2a - time axis starting at 0 seconds</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2b-time-axis-starting-at-2-seconds">Exercise 2b  - time axis starting at 2 seconds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2b-time-axis-starting-at-2-seconds">Exercise 2b - time axis starting at 2 seconds</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-slice-indexing">Exercise 3: Slice indexing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-boolean-indexing">Exercise 4 - Boolean indexing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4a-comparisons-on-arrays-in-numpy">Exercise 4a - comparisons on arrays in numpy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4b-boolean-indexing">Exercise 4b - boolean indexing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4c-boolean-indexing-2">Exercise 4c - boolean indexing 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-z-scoring-our-data">Exercise 3: Z-scoring our data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-slice-indexing">Exercise 4: Slice indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-boolean-indexing">Exercise 5 - Boolean indexing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5a-comparisons-on-arrays-in-numpy">Exercise 5a - comparisons on arrays in numpy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5b-boolean-indexing-1">Exercise 5b - boolean indexing (1)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5c-boolean-indexing-2">Exercise 5c - boolean indexing (2)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-searching-arrays">Exercise 5: Searching arrays</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5a-counting-true-values">Exercise 5a - counting True values</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5b-getting-the-indices-of-true-values">Exercise 5b - getting the indices of True values</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-detecting-changes-important-for-the-assignment">Exercise 6: Detecting changes (important for the assignment!)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6a-for-how-many-values-is-the-stimulus-sound-on-stimulus-is-1-or-greater">Exercise 6a: For how many values is the stimulus sound on (stimulus is 1 or greater)?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6a-determine-the-indices-at-which-the-stimulus-starts-and-ends">Exercise 6a: Determine the indices at which the stimulus starts and ends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-searching-arrays">Exercise 6: Searching arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6a-counting-true-values-important">Exercise 6a - counting True values (Important)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6b-getting-the-indices-of-true-values">Exercise 6b - getting the indices of True values</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-spike-detection">Exercise 7: Spike detection</a><ul class="nav section-nav flex-column">
@@ -959,9 +1029,10 @@ By Jan Clemens
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -985,8 +1056,8 @@ By Jan Clemens
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lecture 3.2 - Numerical computing and data science - numpy, scipy, pandas &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
@@ -15,53 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 3/3.02_numpy';</script>
@@ -78,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -141,6 +139,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -149,10 +150,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -162,58 +175,42 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 1</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.00_notebooks.html">Using notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.01_variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.02_conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.03_lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.04_loops_simple.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.05_matplotlib.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.01_composites.html">Tuples and dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.02_matplotlib.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.03_functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.05_imports.html">Using external code</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 1</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics - exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.01_variables_exercises.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.03_lists_exercises.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.05_matplotlib_exercises.html">Plotting</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 2</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.01_composites.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.02_loops_more.html">Loops (part 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.03_functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.04_exceptions.html">Handling errors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.05_imports.html">External code</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 2</span></p>
-<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/1.05_matplotlib_exercises.html">Plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.01_composites_exercises.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.02_loops_more_exercises.html">Loops (part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.02_loops_more_exercises.html">Loops (Part 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.03_functions_exercises.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.04_exceptions_exercises.html">Handling errors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.05_imports_exercises.html">External code</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="3.01_packages_and_environments.html">Installing packages</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Numerical computing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Number crunching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3.03_files.html">Working with files</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.02_numpy_exercises.html">Numerical computing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.03_files_exercises.html">Working with files</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 4</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lecture%204/4.01_pandas.html">Tabular data and pandas</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 4</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%204/4.01_pandas_exercises.html">Tabular data and connectomics</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 5</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.01_probabilities.html">Statistics with python</a></li>
 
@@ -221,18 +218,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.03_inferential_stats_1.html">Inferential statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.03_inferential_stats_2.html">Inferential statistics (dataset 2)</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 5</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.01_probabilities_exercise.html">Probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.02_descriptive_stats_exercise.html">Descriptive statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.03_inferential_stats_exercise.html">Inferential statistics</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 6</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../lecture%206/6.01_linear%20regression.html">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%206/6.02_nonlinear_regression.html">Nonlinear regression</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 6</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%206/6.01_linear_regression_exercises.html">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%206/6.02_nonlinear_regression_exercises.html">Nonlinear regression</a></li>
@@ -251,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -260,14 +257,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -292,14 +289,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 3/3.02_numpy.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -310,14 +307,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 3/3.02_numpy.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -391,26 +388,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -437,6 +436,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-creation">Array creation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing">Indexing and slicing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-types-and-casting">Array types and casting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment">Assignment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#math">Math</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-arrays-and-boolean-indexing">Searching arrays and Boolean indexing</a></li>
 </ul>
@@ -450,10 +450,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-3-2-numerical-computing-and-data-science-numpy-scipy-pandas">
-<h1>Lecture 3.2 - Numerical computing and data science - numpy, scipy, pandas<a class="headerlink" href="#lecture-3-2-numerical-computing-and-data-science-numpy-scipy-pandas" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 3.2 - Numerical computing and data science - numpy, scipy, pandas<a class="headerlink" href="#lecture-3-2-numerical-computing-and-data-science-numpy-scipy-pandas" title="Link to this heading">#</a></h1>
 <p>Numpy is the foundation for numerical computing in python. It enables fast numerical operations, by moving computationally expensive computations to faster code.</p>
 <p>Numpy itself mainly provides “low-level” functions for handling vector data:</p>
 <ul class="simple">
@@ -479,7 +479,7 @@ document.write(`
 If you know Matlab, than numpy is conceptually very similar. Here is a great resource for matlab users that want to use numpy: <a class="reference external" href="https://numpy.org/doc/stable/user/numpy-for-matlab-users.html">Numpy for Matlab users</a>.</p>
 <p>Last remark - numpy, scipy, and pandas are large packages, with many functions. We will only scratch the surface of what can be done with these.</p>
 <section id="why">
-<h2>Why?<a class="headerlink" href="#why" title="Permalink to this heading">#</a></h2>
+<h2>Why?<a class="headerlink" href="#why" title="Link to this heading">#</a></h2>
 <p>So far, we’ve dealt with small data sets - what if we have realistic amounts of data?
 For instance, it is now easy to record electrophysiological activity for many hours on hundreds of channels. Processing these large volumes of data should not take days!!</p>
 <p>However, python is slow for raw number crunching.</p>
@@ -487,16 +487,20 @@ For instance, it is now easy to record electrophysiological activity for many ho
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># data = {}</span>
+<span class="c1"># data[&#39;voltage_trace&#39;] = np.load(&#39;data/voltage_trace_long.npz&#39;, allow_pickle=True)[&#39;voltage_trace&#39;][:]</span>
+<span class="c1"># data[&#39;times_seconds&#39;] = np.arange(len(data[&#39;voltage_trace&#39;])) / 10 / 60 / 60</span>
+<span class="c1"># np.savez_compressed(&#39;data/voltage_trace_long.npz&#39;, **data)</span>
+
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;data/voltage_trace_long.npz&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Detecting spikes in these data with our “old” python code takes a long time - 17 seconds.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">spike_times_old</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">spike_voltages_old</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -510,8 +514,30 @@ For instance, it is now easy to record electrophysiological activity for many ho
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Detected 5270400 spikes.
-CPU times: user 10.5 s, sys: 288 ms, total: 10.8 s
-Wall time: 10.8 s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Detecting spikes in these data with our “old” python code takes a long time - 17 seconds.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">spike_times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">spike_voltages</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;voltage_trace&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;times_seconds&#39;</span><span class="p">]):</span>
+    <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+        <span class="n">spike_voltages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">spike_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span><span class="si">}</span><span class="s2"> spikes.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Detected 5270400 spikes.
+CPU times: user 10.4 s, sys: 310 ms, total: 10.7 s
+Wall time: 10.9 s
 </pre></div>
 </div>
 </div>
@@ -521,24 +547,28 @@ Wall time: 10.8 s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+
 <span class="n">idx</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;voltage_trace&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span>  <span class="c1"># determine which values in voltage_trace exceed the threshold</span>
+
 <span class="n">spike_times</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;times_seconds&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>  <span class="c1"># take the time of the super-threshold values</span>
+
 <span class="n">spike_voltages</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;voltage_trace&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>  <span class="c1"># take the voltage of the super-threshold values</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Detected 5270400
-CPU times: user 1.64 s, sys: 294 ms, total: 1.93 s
-Wall time: 1.94 s
+CPU times: user 2.12 s, sys: 339 ms, total: 2.46 s
+Wall time: 2.5 s
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="from-lists-to-numpy-arrays">
-<h2>From lists to numpy arrays<a class="headerlink" href="#from-lists-to-numpy-arrays" title="Permalink to this heading">#</a></h2>
+<h2>From lists to numpy arrays<a class="headerlink" href="#from-lists-to-numpy-arrays" title="Link to this heading">#</a></h2>
 <p>We have a list of numbers and want to subtract the mean from each value in the list.
 This is how it looks using core python:</p>
 <div class="cell docutils container">
@@ -546,12 +576,27 @@ This is how it looks using core python:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">43</span><span class="p">]</span>
 
 <span class="c1"># compute the mean</span>
-<span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">+</span> <span class="n">d</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="c1"># subtract the mean from each element of the list</span>
 <span class="n">new_data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="n">new_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span>
+
+<span class="n">new_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.33333333333333215,
+ -18.333333333333332,
+ 7.666666666666668,
+ -15.333333333333332,
+ 7.666666666666668,
+ 18.666666666666668]
 </pre></div>
 </div>
 </div>
@@ -565,6 +610,7 @@ This is how it looks using core python:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># this is the standard way of importing numpy, as np!</span>
 
 <span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># cast the list into a numpy array</span>
+
 <span class="n">new_array</span> <span class="o">=</span> <span class="n">array</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># compute the mean and subtract it from each element in the array</span>
 <span class="n">new_array</span>
 </pre></div>
@@ -582,7 +628,7 @@ This is how it looks using core python:</p>
 <p>Overall, this makes code easier to read (less text) and faster to execute.</p>
 <p>We will see more examples of this below.</p>
 <section id="numpy-arrays">
-<h3>Numpy arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this heading">#</a></h3>
+<h3>Numpy arrays<a class="headerlink" href="#numpy-arrays" title="Link to this heading">#</a></h3>
 <p>A numpy array can be created from a python list using <code class="docutils literal notranslate"><span class="pre">np.array</span></code>.</p>
 <p>We can inspect the array:</p>
 <div class="cell docutils container">
@@ -595,15 +641,6 @@ This is how it looks using core python:</p>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This returns the size of the first dimension: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data type of the array elements </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([24,  6, 32,  9, 32, 43])
-Number of dimensions (1D, 2D, ND): data.ndim=1
-Shape: data.shape=(6,)
-This returns the size of the first dimension: len(data)=6
-Data type of the array elements data.dtype=dtype(&#39;int64&#39;)
 </pre></div>
 </div>
 </div>
@@ -628,25 +665,15 @@ Data type of the array elements data.dtype=dtype(&#39;int64&#39;)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([[24,  6, 32],
-       [ 9, 32, 43]])
-Number of dimensions (1D, 2D, ND): data.ndim=2
-Shape: data.shape=(2, 3)
-This returns the size of the first dimension: len(data)=2
-Data type of the array elements data.dtype=dtype(&#39;int64&#39;)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="array-creation">
-<h3>Array creation<a class="headerlink" href="#array-creation" title="Permalink to this heading">#</a></h3>
+<h3>Array creation<a class="headerlink" href="#array-creation" title="Link to this heading">#</a></h3>
 <p>Numpy also provides tools for creating “empty” arrays of a specific size, to be filled with data later:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ones:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;zeros:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,)))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ones:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;zeros:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ones 2D:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ones, with same dtype and shape as the &quot;data&quot; array:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;arange:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">))</span>  <span class="c1"># like range but allows non-integer arguments (start, stop, step)</span>
@@ -659,8 +686,7 @@ Data type of the array elements data.dtype=dtype(&#39;int64&#39;)
 zeros: [0. 0. 0. 0.]
 ones 2D: [[1. 1. 1. 1.]
  [1. 1. 1. 1.]]
-ones, with same dtype and shape as the &quot;data&quot; array: [[1 1 1]
- [1 1 1]]
+ones, with same dtype and shape as the &quot;data&quot; array: [1 1 1 1 1 1]
 arange: [-1.   -0.75 -0.5  -0.25  0.    0.25  0.5   0.75]
 linspace: [ 0.          3.33333333  6.66666667 10.        ]
 </pre></div>
@@ -669,7 +695,7 @@ linspace: [ 0.          3.33333333  6.66666667 10.        ]
 </div>
 </section>
 <section id="indexing-and-slicing">
-<h3>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this heading">#</a></h3>
+<h3>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Link to this heading">#</a></h3>
 <p>Indexing and slicing numpy arrays works similar as for lists.</p>
 <p>However, numpy also provides multi-dimensional indexing:</p>
 <div class="cell docutils container">
@@ -677,9 +703,10 @@ linspace: [ 0.          3.33333333  6.66666667 10.        ]
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">32</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">43</span><span class="p">]])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;first row: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">:]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;element at second row, first column: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;same using list-style indexing: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;first row: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">:]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;equivalent to: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;if you want the element at the first row and first column: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;first column: </span><span class="si">{</span><span class="n">data</span><span class="p">[:,</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;first two columns: </span><span class="si">{</span><span class="n">data</span><span class="p">[:,</span><span class="w"> </span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;last column: </span><span class="si">{</span><span class="n">data</span><span class="p">[:,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -689,9 +716,10 @@ linspace: [ 0.          3.33333333  6.66666667 10.        ]
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[24  6 32]
  [ 9 32 43]]
+element at second row, first column: data[1, 0]=np.int64(9)
 first row: data[0, :]=array([24,  6, 32])
-element at second row, first column: data[1, 0]=9
-same using list-style indexing: data[1][0]=9
+equivalent to: data[0]=array([24,  6, 32])
+if you want the element at the first row and first column: data[0, 0]=np.int64(24)
 first column: data[:, 0]=array([24,  9])
 first two columns: data[:, :2]=array([[24,  6],
        [ 9, 32]])
@@ -700,10 +728,97 @@ last column: data[:, -1]=array([32, 43])
 </div>
 </div>
 </div>
-<p>Assignment works similarly:</p>
+<p>One can even use arrays to index other arrays or lists:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">indices</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;data values at the indices: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32,
+       34, 36, 38])
+indices=[1, 2, 3]
+data values at the indices: data[indices]=array([2, 4, 6])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-clicker-question-numpy-indexing-click-me-https-go-uos-de-0ypai admonition">
+<p class="admonition-title">Clicker question “numpy indexing”(<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
+<p>Which of the following expressions is correct?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]])</span>
+<span class="p">[[</span> <span class="mi">1</span>  <span class="mi">2</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">10</span> <span class="mi">20</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]):</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]):</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]):</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Important</strong>, the type of the list elements we want to use for indexing needs to be int, not float.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Indices are of type float: </span><span class="si">{</span><span class="n">indices</span><span class="o">.</span><span class="n">dtype</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This does not work: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Indices are of type float: indices.dtype=dtype(&#39;float64&#39;)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Indices are of type float: </span><span class="si">{</span><span class="n">indices</span><span class="o">.</span><span class="n">dtype</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This does not work: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="ne">IndexError</span>: arrays used as indices must be of integer (or boolean) type
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="array-types-and-casting">
+<h3>Array types and casting<a class="headerlink" href="#array-types-and-casting" title="Link to this heading">#</a></h3>
+<p>The type of all data in an array can be easily changed. This is useful to ensure you can use an array for indexing!</p>
+<p>To fix the above array, we need to cast the indices array to integers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">indices_as_int</span> <span class="o">=</span> <span class="n">indices</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Indices are of type float: </span><span class="si">{</span><span class="n">indices_as_int</span><span class="o">.</span><span class="n">dtype</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This does not work: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">indices_as_int</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Indices are of type float: indices_as_int.dtype=dtype(&#39;int64&#39;)
+This does not work: data[indices_as_int]=array([ 2, 14, 36])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="assignment">
+<h3>Assignment<a class="headerlink" href="#assignment" title="Link to this heading">#</a></h3>
+<p>Assignment works similarly to indexing:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="n">d</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 
 <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
@@ -722,6 +837,16 @@ last column: data[:, -1]=array([32, 43])
  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]]
+[[ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0. -1.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
+ [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.]]
 [[  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
  [  0.   0.   0.   0.   0. 100. 100. 100.   0.   0.]
  [  0.   0.   0.   0.   0. 100. 100. 100.   0.   0.]
@@ -729,92 +854,16 @@ last column: data[:, -1]=array([32, 43])
  [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
  [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
  [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
- [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
+ [  0.   0.  -1.   0.   0.   0.   0.   0.   0.   0.]
  [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]
  [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]]
 </pre></div>
 </div>
 </div>
 </div>
-<p>One can even use arrays to index other arrays or lists:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="n">indices</span> <span class="o">=</span> <span class="n">data</span> <span class="o">&gt;</span> <span class="mi">10</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">indices</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;data values at the indices: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32,
-       34, 36, 38])
-indices=array([False, False, False, False, False, False,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True])
-data values at the indices: data[indices]=array([12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38])
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Important</strong>, the type of the list elements we want to use for indexing needs to be int, not float.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Indices are of type float: </span><span class="si">{</span><span class="n">indices</span><span class="o">.</span><span class="n">dtype</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This does not work: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Indices are of type float: indices.dtype=dtype(&#39;float64&#39;)
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">janc</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">CloudStorage</span><span class="o">/</span><span class="n">Dropbox</span><span class="o">/</span><span class="n">_teaching</span><span class="o">/</span><span class="n">neu715</span><span class="o">/</span><span class="n">neu715</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="n">lecture</span> <span class="mi">3</span><span class="o">/</span><span class="mf">3.02</span><span class="n">_numpy</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">26</span> <span class="n">line</span> <span class="mi">3</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture%203/3.02_numpy.ipynb#X34sZmlsZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">])</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture%203/3.02_numpy.ipynb#X34sZmlsZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Indices are of type float: </span><span class="si">{</span><span class="n">indices</span><span class="o">.</span><span class="n">dtype</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture%203/3.02_numpy.ipynb#X34sZmlsZQ%3D%3D?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This does not work: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="ne">IndexError</span>: arrays used as indices must be of integer (or boolean) type
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="array-types-and-casting">
-<h3>Array types and casting<a class="headerlink" href="#array-types-and-casting" title="Permalink to this heading">#</a></h3>
-<p>The type of all data in an array can be easily changed. This is useful to ensure you can use an array for indexing!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># default type if float64</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># cast to int</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># cast to unsigned int</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x=array([-4. , -3.5, -3. , -2.5, -2. , -1.5, -1. , -0.5,  0. ,  0.5,  1. ,
-        1.5,  2. ,  2.5,  3. ,  3.5])
-x.dtype=dtype(&#39;float64&#39;)
-x.astype(int)=array([-4, -3, -3, -2, -2, -1, -1,  0,  0,  0,  1,  1,  2,  2,  3,  3])
-x.astype(np.uint)=array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 3], dtype=uint64)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/bc/5m_c7nkj1vnc2w7xmmnhpfww0000gn/T/ipykernel_30083/2679548855.py:5: RuntimeWarning: invalid value encountered in cast
-  print(f&quot;{x.astype(np.uint)=}&quot;)  # cast to unsigned int
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="math">
-<h3>Math<a class="headerlink" href="#math" title="Permalink to this heading">#</a></h3>
+<h3>Math<a class="headerlink" href="#math" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -825,24 +874,6 @@ x.astype(np.uint)=array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 3], dtype=
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32,
-       34, 36, 38])
-data + 10=array([10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42,
-       44, 46, 48])
-data - np.ones_like(data) * 2=array([-2,  0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30,
-       32, 34, 36])
-data - np.array([[1], [2.5]])=array([[-1. ,  1. ,  3. ,  5. ,  7. ,  9. , 11. , 13. , 15. , 17. , 19. ,
-        21. , 23. , 25. , 27. , 29. , 31. , 33. , 35. , 37. ],
-       [-2.5, -0.5,  1.5,  3.5,  5.5,  7.5,  9.5, 11.5, 13.5, 15.5, 17.5,
-        19.5, 21.5, 23.5, 25.5, 27.5, 29.5, 31.5, 33.5, 35.5]])
-data * np.array([[1], [2.5]])=array([[ 0.,  2.,  4.,  6.,  8., 10., 12., 14., 16., 18., 20., 22., 24.,
-        26., 28., 30., 32., 34., 36., 38.],
-       [ 0.,  5., 10., 15., 20., 25., 30., 35., 40., 45., 50., 55., 60.,
-        65., 70., 75., 80., 85., 90., 95.]])
-</pre></div>
-</div>
-</div>
 </div>
 <p>more functions:</p>
 <div class="cell docutils container">
@@ -850,18 +881,9 @@ data * np.array([[1], [2.5]])=array([[ 0.,  2.,  4.,  6.,  8., 10., 12., 14., 16
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([0.        , 0.11111111, 0.22222222, 0.33333333, 0.44444444,
-       0.55555556, 0.66666667, 0.77777778, 0.88888889, 1.        ])
-np.mean(data)=0.5
-np.prod(data)=0.0
-np.diff(data)=array([0.11111111, 0.11111111, 0.11111111, 0.11111111, 0.11111111,
-       0.11111111, 0.11111111, 0.11111111, 0.11111111])
 </pre></div>
 </div>
 </div>
@@ -877,63 +899,106 @@ This allows you to compute the mean only over rows, or only over columns.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([[ 1,  2,  3],
-       [10, 20, 30]])
-np.mean(data, axis=0)=array([ 5.5, 11. , 16.5])
-np.mean(data, axis=1)=array([ 2., 20.])
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="searching-arrays-and-boolean-indexing">
-<h3>Searching arrays and Boolean indexing<a class="headerlink" href="#searching-arrays-and-boolean-indexing" title="Permalink to this heading">#</a></h3>
+<h3>Searching arrays and Boolean indexing<a class="headerlink" href="#searching-arrays-and-boolean-indexing" title="Link to this heading">#</a></h3>
 <p>Just like with math, we can also apply comparisons to all elements of an array. This creates boolean arrays:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">30</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">43</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">43</span><span class="p">]])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="o">&lt;</span><span class="mi">10</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([[24,  6, 30],
-       [ 9, 32, 43]])
-data &gt; 10=array([[ True, False,  True],
-       [False,  True,  True]])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([[24,  6, 30,  9, 32, 43]])
+data&lt;10=array([[False,  True, False,  True, False, False]])
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can then use the boolean array as an index. This will return only the data values for which the boolean index is <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
+<p>If all we care about is how many values match the condition, we simply take the sum. This works because True will be interpreted as 1 and False as 0 during summation. That way, all True values contribute with 1 to the sum:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">data</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([[24,  6, 30],
-       [ 9, 32, 43]])
-[24 30 32 43]
-[6 9]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([[24,  6, 30,  9, 32, 43]])
+np.sum(data&lt;10)=np.int64(2)
 </pre></div>
 </div>
 </div>
+</div>
+<p>Here’s an example for a matrix with two rows. We can count the total number of True values by summing over all values or we can count in rows or columns by summing only over columns and row, respectively:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">43</span><span class="p">],</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="o">&lt;</span><span class="mi">10</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total number of True values: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">data</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of True values in each row: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">data</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of True values in each column: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">data</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([[24,  6, 30,  9, 32, 43],
+       [18,  3,  8, 89, 38,  5]])
+(2, 6)
+data&lt;10=array([[False,  True, False,  True, False, False],
+       [False,  True,  True, False, False,  True]])
+Total number of True values: np.sum(data&lt;10)=np.int64(5)
+Number of True values in each row: np.sum(data&lt;10, axis=1)=array([2, 3])
+Number of True values in each column: np.sum(data&lt;10, axis=0)=array([0, 2, 1, 1, 0, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then use the boolean array as an index to only get the values in the array that match our condition (in this case “&lt;10”). This will return only the data values for which the boolean index is <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([[24,  6, 30,  9, 32, 43]])
+data[data &lt; 10]=array([6, 9])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-clicker-question-numpy-bool-click-me-https-go-uos-de-0ypai admonition">
+<p class="admonition-title">Clicker question “numpy bool”(<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
+<p>Which of the following pairs of boolean expressions and results are correct?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span> <span class="n">array</span><span class="p">([</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span> <span class="n">array</span><span class="p">([</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">):</span> <span class="n">array</span><span class="p">([</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">):</span> <span class="n">array</span><span class="p">([</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span> <span class="n">array</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span> <span class="n">array</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">np.where</span></code> will return the indices at which the expression is True:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0, 1]), array([1, 0]))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">rows</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">cols</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -944,25 +1009,11 @@ data &gt; 10=array([[ True, False,  True],
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lower</span> <span class="o">=</span> <span class="n">data</span> <span class="o">&gt;</span> <span class="mi">10</span>
 <span class="n">upper</span> <span class="o">=</span> <span class="n">data</span> <span class="o">&lt;</span> <span class="mi">31</span>
 <span class="n">both</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span>  <span class="c1"># takes two boolean arrays, returns a new array in which only elements are True that where True in the two inputs - lower AND upper</span>
-
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lower</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">upper</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">both</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">both</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[24  6 30]
- [ 9 32 43]]
-[[ True False  True]
- [False  True  True]]
-[[ True  True  True]
- [ True False False]]
-[[ True False  True]
- [False False False]]
-[24 30]
 </pre></div>
 </div>
 </div>
@@ -981,47 +1032,20 @@ data &gt; 10=array([[ True, False,  True],
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[24  6 30]
- [ 9 32 43]]
-[[False  True False]
- [ True False False]]
-[[False False False]
- [False  True  True]]
-[[False  True False]
- [ True  True  True]]
-[ 6  9 32 43]
+</div>
+<div class="admonition-clicker-question-numpy-boolean-indexing-click-me-https-go-uos-de-0ypai admonition">
+<p class="admonition-title">Clicker question “numpy boolean indexing”(<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
+<p>Which of these statements is correct?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]):</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]):</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">]):</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span> <span class="o">&gt;-</span><span class="mi">2</span><span class="p">]):</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># max over all axes</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># min over all axes</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># min for each column</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>    <span class="c1"># index of the smallest value, after &quot;flattening&quot; the matrix</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">rows</span><span class="p">,</span><span class="w"> </span><span class="n">cols</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([[24,  6, 30],
-       [ 9, 32, 43]])
-np.max(data)=43
-np.min(data)=6
-np.min(data, axis=0)=array([ 9,  6, 30])
-np.argmin(data)=1
-data.flatten()[1]=6
-np.max(data, axis=1)=array([30, 43])
-rows, cols=(array([0, 0, 1, 1]), array([0, 2, 1, 2]))
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -1054,8 +1078,8 @@ rows, cols=(array([0, 0, 1, 1]), array([0, 2, 1, 2]))
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="3.01_packages_and_environments.html"
@@ -1084,6 +1108,7 @@ rows, cols=(array([0, 0, 1, 1]), array([0, 2, 1, 2]))
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1096,6 +1121,7 @@ rows, cols=(array([0, 0, 1, 1]), array([0, 2, 1, 2]))
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-creation">Array creation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing">Indexing and slicing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-types-and-casting">Array types and casting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment">Assignment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#math">Math</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-arrays-and-boolean-indexing">Searching arrays and Boolean indexing</a></li>
 </ul>
@@ -1121,9 +1147,10 @@ By Jan Clemens
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1147,8 +1174,8 @@ By Jan Clemens
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

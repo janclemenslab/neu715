@@ -1,72 +1,67 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 2.1 - Other collection data types &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Tuples and dictionaries &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 2/2.01_composites';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lecture 2.2 - For loops" href="2.02_loops_more.html" />
-    <link rel="prev" title="Exercises 1.5 - Plotting" href="../../exercises/exercises%201/1.05_matplotlib_exercises.html" />
+    <link rel="next" title="Plotting" href="2.02_matplotlib.html" />
+    <link rel="prev" title="Loops" href="../lecture%201/1.04_loops_simple.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -76,28 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -119,12 +109,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +137,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -147,10 +148,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -160,58 +173,42 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 1</span></p>
-<ul class="nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.00_notebooks.html">Using notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.01_variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.02_conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.03_lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.04_loops_simple.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.05_matplotlib.html">Plotting</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tuples and dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.02_matplotlib.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.03_functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.05_imports.html">Using external code</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 1</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics - exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.01_variables_exercises.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.03_lists_exercises.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.05_matplotlib_exercises.html">Plotting</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 2</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.02_loops_more.html">Loops (part 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.03_functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.04_exceptions.html">Handling errors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.05_imports.html">External code</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 2</span></p>
-<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/1.05_matplotlib_exercises.html">Plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.01_composites_exercises.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.02_loops_more_exercises.html">Loops (part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.02_loops_more_exercises.html">Loops (Part 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.03_functions_exercises.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.04_exceptions_exercises.html">Handling errors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.05_imports_exercises.html">External code</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.01_packages_and_environments.html">Installing packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.02_numpy.html">Numerical computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.02_numpy.html">Number crunching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.03_files.html">Working with files</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.02_numpy_exercises.html">Numerical computing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.03_files_exercises.html">Working with files</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 4</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lecture%204/4.01_pandas.html">Tabular data and pandas</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 4</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%204/4.01_pandas_exercises.html">Tabular data and connectomics</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 5</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.01_probabilities.html">Statistics with python</a></li>
 
@@ -219,18 +216,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.03_inferential_stats_1.html">Inferential statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.03_inferential_stats_2.html">Inferential statistics (dataset 2)</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 5</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.01_probabilities_exercise.html">Probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.02_descriptive_stats_exercise.html">Descriptive statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.03_inferential_stats_exercise.html">Inferential statistics</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 6</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../lecture%206/6.01_linear%20regression.html">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%206/6.02_nonlinear_regression.html">Nonlinear regression</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 6</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%206/6.01_linear_regression_exercises.html">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%206/6.02_nonlinear_regression_exercises.html">Nonlinear regression</a></li>
@@ -249,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -258,14 +255,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -290,14 +287,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 2/2.01_composites.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -308,14 +305,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 2/2.01_composites.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -389,26 +386,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -419,7 +418,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 2.1 - Other collection data types</h1>
+    <h1>Tuples and dictionaries</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -430,12 +429,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-this-useful">Why is this useful?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-dictionaries-this-useful">Why are dictionaries this useful?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-key-value-pairs-in-a-dictionary">Looping over key/value pairs in a dictionary:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-dictionary-comprehensions">Bonus: Dictionary comprehensions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-dict-functions">Useful dict functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-useful-dict-functions">Bonus: Useful dict functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#side-note-producing-nicer-prints-with-string-formatting">Side note: Producing nicer prints with string formatting</a></li>
 </ul>
 </li>
@@ -448,19 +445,18 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-2-1-other-collection-data-types">
-<h1>Lecture 2.1 - Other collection data types<a class="headerlink" href="#lecture-2-1-other-collection-data-types" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tuples-and-dictionaries">
+<h1>Tuples and dictionaries<a class="headerlink" href="#tuples-and-dictionaries" title="Link to this heading">#</a></h1>
 <p>Lists are also called <em>collections</em>, because they are a collection of different things.</p>
 <p>Python has more types of collections:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code> - read-only (immutable) variant of a list. Functions that return multiple results return tuples. Rarely used.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">set</span></code> - read-only variant of a list, contains only unique values. Rarely used.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dict</span></code> - dictionary, for non-ordered collections. Consists of key-value pairs. Keys act as indices, but in contrast to lists, can be of arbitrary types, for instance, strings. Dictionaries are also called “mappings” since they maps keys to values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code> - read-only (immutable) variant of a list. Functions that return multiple results return them as tuples. Rarely used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dict</span></code> - dictionary, for non-ordered collections, like phone books. Consists of key-value pairs (in a phone book: names are the keys, the phone numbers the values). Keys act as indices, but in contrast to lists, are unordered and can be of arbitrary type, for instance, strings. Dictionaries are also called “mappings” since they maps keys to values.</p></li>
 </ul>
 <section id="tuples">
-<h2>Tuples<a class="headerlink" href="#tuples" title="Permalink to this heading">#</a></h2>
+<h2>Tuples<a class="headerlink" href="#tuples" title="Link to this heading">#</a></h2>
 <p>Tuples can be created by enclosing tuple items in parentheses (not square brackets as for lists):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
@@ -534,38 +530,26 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="sets">
-<h2>Sets<a class="headerlink" href="#sets" title="Permalink to this heading">#</a></h2>
-<p>Sets are created with curly brackets:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
-</pre></div>
-</div>
-<p>Since sets only contain unique values, they can be used to quickly identify all unique values in a list, by casting a list with duplicates to a set using <code class="docutils literal notranslate"><span class="pre">set(list_var)</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_with_duplicates</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>  <span class="c1"># list with duplicate values</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">list_with_duplicates</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">list_with_duplicates</span><span class="p">))</span>  <span class="c1"># only keeps the unique values</span>
+<div class="admonition-clicker-question-tuples-and-sets-1-click-me-https-go-uos-de-0ypai admonition">
+<p class="admonition-title">Clicker question “tuples and sets 1” (<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
+<p>What is the output of this code?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_set</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<span class="n">my_set</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_set</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 2, 4]
-{1, 2, 3, 4}
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="dictionaries">
-<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this heading">#</a></h2>
-<p>Dictionaries are central to the python intrinsics. And also quite useful.</p>
-<p>They can hold any value, like a list.
-But can have arbitrary indices, like strings or floats, not just integers.</p>
+<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h2>
+<p>Dictionaries are quite useful for representing data that is not an ordered sequence of elements but that links two different sets of elements, like names and phone numbers, of animal ids and test scores.</p>
+<p>Dictionaries can hold any value, like a list.
+Unlike lists, they can have arbitrary indices, like strings or floats, not just integers.</p>
 <p>They consist of <code class="docutils literal notranslate"><span class="pre">key:value</span></code> pairs, where both the key and the value can be almost any python object (numbers, strings, tuples (but not lists)).</p>
-<p>Create with <code class="docutils literal notranslate"><span class="pre">{key1:</span> <span class="pre">value1,</span> <span class="pre">key2:</span> <span class="pre">value2,</span> <span class="pre">...}</span></code> (not to be confused with set creation <code class="docutils literal notranslate"><span class="pre">{value1,</span> <span class="pre">value2}</span></code>).</p>
+<p>Create with <code class="docutils literal notranslate"><span class="pre">{key1:</span> <span class="pre">value1,</span> <span class="pre">key2:</span> <span class="pre">value2,</span> <span class="pre">...}</span></code> (not to be confused with set creation, which also uses curly brackets <code class="docutils literal notranslate"><span class="pre">{value1,</span> <span class="pre">value2}</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A phone book can be represented as two &quot;parallel&quot; lists - one with the names, and one with the phone numbers</span>
@@ -573,7 +557,6 @@ But can have arbitrary indices, like strings or floats, not just integers.</p>
 <span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">125324123</span><span class="p">,</span> <span class="mi">432246234</span><span class="p">]</span>
 
 <span class="c1"># We can represent the same data using a dictionary, with names as keys, and phone numbers as values</span>
-
 <span class="n">phone_book</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">125324123</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">:</span> <span class="mi">432246234</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">)</span>
 
@@ -597,8 +580,8 @@ But can have arbitrary indices, like strings or floats, not just integers.</p>
 </div>
 </div>
 </div>
-<section id="why-is-this-useful">
-<h3>Why is this useful?<a class="headerlink" href="#why-is-this-useful" title="Permalink to this heading">#</a></h3>
+<section id="why-are-dictionaries-this-useful">
+<h3>Why are dictionaries this useful?<a class="headerlink" href="#why-are-dictionaries-this-useful" title="Link to this heading">#</a></h3>
 <p>First, dictionaries allow you to link to related datasets, like names and phone numbers, or animal names and behavioral scores.</p>
 <p>Second, it makes code more clear and readable, because dictionaires allow you to access data using keys as more meaningful indices. With a list, you can only use integers as indices. The integer corresponds to the position of the item in the list:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">125324123</span><span class="p">,</span> <span class="mi">432246234</span><span class="p">]</span>
@@ -612,8 +595,12 @@ But can have arbitrary indices, like strings or floats, not just integers.</p>
 </div>
 </section>
 <section id="looping-over-key-value-pairs-in-a-dictionary">
-<h3>Looping over key/value pairs in a dictionary:<a class="headerlink" href="#looping-over-key-value-pairs-in-a-dictionary" title="Permalink to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">my_dict.items()</span></code> returns (key, val) tuples. The parentheses are optional.</p>
+<h3>Looping over key/value pairs in a dictionary:<a class="headerlink" href="#looping-over-key-value-pairs-in-a-dictionary" title="Link to this heading">#</a></h3>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">items()</span></code> method attached to a dictionary in a for loop allows you to iterate over key:value pairs:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">my_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">do_stuff</span>
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phone_book</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">:</span> <span class="mi">246234</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">:</span> <span class="mi">110</span><span class="p">}</span>
@@ -631,44 +618,23 @@ Yolanda 110
 </div>
 </div>
 </div>
-</section>
-<section id="bonus-dictionary-comprehensions">
-<h3>Bonus: Dictionary comprehensions<a class="headerlink" href="#bonus-dictionary-comprehensions" title="Permalink to this heading">#</a></h3>
-<p>Let’s say we want to create a dictionary where the key is a number, and the value is twice the key:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
-    <span class="n">results_dict</span><span class="p">[</span><span class="n">number</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">number</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results_dict</span><span class="p">)</span>
+<div class="admonition-clicker-question-composites-all-click-me-https-go-uos-de-0ypai admonition">
+<p class="admonition-title">Clicker question “composites all” (<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
+<p>Which of these statements will fail?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span> <span class="mi">54</span><span class="p">];</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span> <span class="mi">54</span><span class="p">);</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span> <span class="mi">54</span><span class="p">};</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">28</span><span class="p">:</span> <span class="mi">54</span><span class="p">];</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 10}
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
-</div>
-</div>
-</div>
-<p>We can use a dictionary comprehension to write this more consisely (if a little more obscurely):
-<code class="docutils literal notranslate"><span class="pre">{key:</span> <span class="pre">val</span> <span class="pre">for</span> <span class="pre">item</span> <span class="pre">in</span> <span class="pre">items</span> <span class="pre">if</span> <span class="pre">condition}</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">number</span><span class="p">:</span> <span class="n">number</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results_dict</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 10}
-</pre></div>
-</div>
-</div>
 </div>
 </section>
-<section id="useful-dict-functions">
-<h3>Useful dict functions<a class="headerlink" href="#useful-dict-functions" title="Permalink to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># create an emptu dict called my_dict</span>
+<section id="bonus-useful-dict-functions">
+<h3>Bonus: Useful dict functions<a class="headerlink" href="#bonus-useful-dict-functions" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># create an empty dict called my_dict</span>
 <span class="n">my_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_value</span>  <span class="c1"># adds new and overwrites existing key:value pair</span>
 <span class="n">my_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">other_my_dict</span><span class="p">)</span>  <span class="c1"># &quot;merge&quot; two dictionaries, adds new and overwrites existing key:value pairs</span>
 <span class="n">key</span> <span class="ow">in</span> <span class="n">my_dict</span>  <span class="c1"># check if a key is in the dictionary</span>
@@ -699,7 +665,7 @@ False
 </div>
 </section>
 <section id="side-note-producing-nicer-prints-with-string-formatting">
-<h3>Side note: Producing nicer prints with string formatting<a class="headerlink" href="#side-note-producing-nicer-prints-with-string-formatting" title="Permalink to this heading">#</a></h3>
+<h3>Side note: Producing nicer prints with string formatting<a class="headerlink" href="#side-note-producing-nicer-prints-with-string-formatting" title="Link to this heading">#</a></h3>
 <p>f-strings (short for “formatted string literals”)- will substitute variable names with their value when printing:</p>
 <ul class="simple">
 <li><p>prepend string with <code class="docutils literal notranslate"><span class="pre">f</span></code>: <code class="docutils literal notranslate"><span class="pre">f&quot;test&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">f'test'</span></code></p></li>
@@ -767,24 +733,24 @@ False
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../exercises/exercises%201/1.05_matplotlib_exercises.html"
+       href="../lecture%201/1.04_loops_simple.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exercises 1.5 - Plotting</p>
+        <p class="prev-next-title">Loops</p>
       </div>
     </a>
     <a class="right-next"
-       href="2.02_loops_more.html"
+       href="2.02_matplotlib.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 2.2 - For loops</p>
+        <p class="prev-next-title">Plotting</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -797,6 +763,7 @@ False
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -804,12 +771,10 @@ False
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-this-useful">Why is this useful?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-dictionaries-this-useful">Why are dictionaries this useful?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-key-value-pairs-in-a-dictionary">Looping over key/value pairs in a dictionary:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-dictionary-comprehensions">Bonus: Dictionary comprehensions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-dict-functions">Useful dict functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-useful-dict-functions">Bonus: Useful dict functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#side-note-producing-nicer-prints-with-string-formatting">Side note: Producing nicer prints with string formatting</a></li>
 </ul>
 </li>
@@ -834,9 +799,10 @@ By Jan Clemens
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -860,8 +826,8 @@ By Jan Clemens
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

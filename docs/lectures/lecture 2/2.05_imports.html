@@ -1,72 +1,67 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 2.5 - Using external code with the import statment &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Using external code with the import statment &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 2/2.05_imports';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Exercises 2.1 - Composite data types" href="../../exercises/exercises%202/2.01_composites_exercises.html" />
-    <link rel="prev" title="Lecture 2.4 - Handling errors with exceptions" href="2.04_exceptions.html" />
+    <link rel="next" title="Variables" href="../../exercises/exercises%201/1.01_variables_exercises.html" />
+    <link rel="prev" title="Functions" href="2.03_functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -76,28 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -119,12 +109,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +137,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -147,10 +148,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -160,58 +173,42 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 1</span></p>
-<ul class="nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.00_notebooks.html">Using notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.01_variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.02_conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.03_lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.04_loops_simple.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%201/1.05_matplotlib.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.01_composites.html">Tuples and dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.02_matplotlib.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.03_functions.html">Functions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using external code</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 1</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics - exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.01_variables_exercises.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.03_lists_exercises.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.05_matplotlib_exercises.html">Plotting</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 2</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="2.01_composites.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.02_loops_more.html">Loops (part 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.03_functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.04_exceptions.html">Handling errors</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">External code</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 2</span></p>
-<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/1.05_matplotlib_exercises.html">Plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.01_composites_exercises.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.02_loops_more_exercises.html">Loops (part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.02_loops_more_exercises.html">Loops (Part 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.03_functions_exercises.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.04_exceptions_exercises.html">Handling errors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%202/2.05_imports_exercises.html">External code</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.01_packages_and_environments.html">Installing packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.02_numpy.html">Numerical computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.02_numpy.html">Number crunching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.03_files.html">Working with files</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.02_numpy_exercises.html">Numerical computing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.03_files_exercises.html">Working with files</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 4</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lecture%204/4.01_pandas.html">Tabular data and pandas</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 4</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%204/4.01_pandas_exercises.html">Tabular data and connectomics</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 5</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.01_probabilities.html">Statistics with python</a></li>
 
@@ -219,18 +216,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.03_inferential_stats_1.html">Inferential statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%205/5.03_inferential_stats_2.html">Inferential statistics (dataset 2)</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 5</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.01_probabilities_exercise.html">Probability distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.02_descriptive_stats_exercise.html">Descriptive statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%205/5.03_inferential_stats_exercise.html">Inferential statistics</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lecture 6</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../lecture%206/6.01_linear%20regression.html">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%206/6.02_nonlinear_regression.html">Nonlinear regression</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercises 6</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%206/6.01_linear_regression_exercises.html">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%206/6.02_nonlinear_regression_exercises.html">Nonlinear regression</a></li>
@@ -249,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -258,14 +255,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -290,14 +287,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 2/2.05_imports.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -308,14 +305,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 2/2.05_imports.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -389,26 +386,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -419,7 +418,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 2.5 - Using external code with the import statment</h1>
+    <h1>Using external code with the import statment</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -429,6 +428,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-packages">Importing packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-functions">Importing functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-subpackages-and-modules">Importing subpackages and modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aliases">Aliases</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-your-own-code">Importing your own code</a></li>
 </ul>
             </nav>
@@ -439,10 +442,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-2-5-using-external-code-with-the-import-statment">
-<h1>Lecture 2.5 - Using external code with the import statment<a class="headerlink" href="#lecture-2-5-using-external-code-with-the-import-statment" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="using-external-code-with-the-import-statment">
+<h1>Using external code with the import statment<a class="headerlink" href="#using-external-code-with-the-import-statment" title="Link to this heading">#</a></h1>
 <p>We have already worked with external code using the import function, withouth much explanation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -454,14 +457,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ffe963c86fc0d8d0a6a6ab9981e257e1d2b71b271be6e3409716c21a54fca7cc.png" src="../../_images/ffe963c86fc0d8d0a6a6ab9981e257e1d2b71b271be6e3409716c21a54fca7cc.png" />
+<img alt="../../_images/4e4b28e570f70d0e1aac838ad427a3f34863c58c9fdc7195663347eefcc16fc6.png" src="../../_images/4e4b28e570f70d0e1aac838ad427a3f34863c58c9fdc7195663347eefcc16fc6.png" />
 </div>
 </div>
+<section id="importing-packages">
+<h2>Importing packages<a class="headerlink" href="#importing-packages" title="Link to this heading">#</a></h2>
 <p>So what is going on? Let’s use a simpler example:</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> package allows you - among other things - to discover and manipulate directories and files.</p>
-<p>To use the <code class="docutils literal notranslate"><span class="pre">os</span></code> package, we need to “import” it into the python memory. The general syntax for importing is</p>
-<p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">PACKAGE_NAME</span></code></p>
-<p>You can then access functions within the package using the dot notation: <code class="docutils literal notranslate"><span class="pre">PACKAGE_NAME.FUNCTION_NAME</span></code></p>
+<p>To use the <code class="docutils literal notranslate"><span class="pre">os</span></code> package, we need to make it available in the python memory - the namespace. We “import” it into the namespace. The general syntax for importing is</p>
+<p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">PACKAGE</span></code></p>
+<p>You can then access functions within the package using the dot notation: <code class="docutils literal notranslate"><span class="pre">PACKAGE.FUNCTION</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -470,88 +475,68 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture 2&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715 python.2024/neu715/lectures/lecture 2&#39;
 </pre></div>
 </div>
 </div>
 </div>
-<p>Some packages contain modules. You also access them with dot notation: <code class="docutils literal notranslate"><span class="pre">PACKAGE_NAME.MODULE_NAME.FUNCTION_NAME</span></code>.
-For instance, functions in the <code class="docutils literal notranslate"><span class="pre">os.path</span></code> module can by accessed like so:</p>
+</section>
+<section id="importing-functions">
+<h2>Importing functions<a class="headerlink" href="#importing-functions" title="Link to this heading">#</a></h2>
+<p>We can also import individual functions into the namespace, using <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">PACKAGE</span> <span class="pre">import</span> <span class="pre">FUNCTION</span></code>. We can then use the function without the dot notation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">current_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">current_dir</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getcwd</span>
+<span class="n">getcwd</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>current_dir=&#39;/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures/lecture 2&#39;
-os.path.split(current_dir)=(&#39;/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures&#39;, &#39;lecture 2&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715 python.2024/neu715/lectures/lecture 2&#39;
 </pre></div>
 </div>
 </div>
 </div>
-<p>Sometimes, the modules need to be imported explicitely, with <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">PACKAGE_NAME.MODULE_NAME</span></code>, for instance <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os.path</span></code>.</p>
-<p>This is what we do when we call <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">matplotlib.pyplot</span></code> - we import <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> from the package <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
-<p>Referring to modules within packages can lead to long names or sometimes you want to use only a module. The <code class="docutils literal notranslate"><span class="pre">as</span></code> keyword allows you to define an alias: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">PACKAGE_NAME</span> <span class="pre">as</span> <span class="pre">ALIAS</span></code> or <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">PACKAGE_NAME.MODULE_NAME</span> <span class="pre">as</span> <span class="pre">ALIAS</span></code>.</p>
+</section>
+<section id="importing-subpackages-and-modules">
+<h2>Importing subpackages and modules<a class="headerlink" href="#importing-subpackages-and-modules" title="Link to this heading">#</a></h2>
+<p>You can also import <em>all</em> functions from a package into the namespace, using the so-called wildcard character <code class="docutils literal notranslate"><span class="pre">*</span></code> (it’s like a joker card that matches any card) <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">PACKAGE</span> <span class="pre">import</span> <span class="pre">*</span></code>. But this is discouraged because then you clutter your namespace with all these functions and it is unclear which package a given function came from.</p>
+<p>Code is often organized hierarchical, with packages containing subpackages or modules. The precise nomenclature is not important for now. But you access them with dot notation: <code class="docutils literal notranslate"><span class="pre">PACKAGE.SUBPACKAGE.FUNCTION</span></code>. Just as with functions, we can import individual modules from a package: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">PACKAGE</span> <span class="pre">import</span> <span class="pre">SUBPACKAGE</span></code>.</p>
+<p>This is how matplotlib is imported:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> is the package</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyplot</span></code> is a subpackage (or module) within matplotlib</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+
+<span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ae51fb97569e8f2f6b35a943eae9fccd8dbacead9e0b3b3882953c5fc0eadf58.png" src="../../_images/ae51fb97569e8f2f6b35a943eae9fccd8dbacead9e0b3b3882953c5fc0eadf58.png" />
+</div>
+</div>
+</section>
+<section id="aliases">
+<h2>Aliases<a class="headerlink" href="#aliases" title="Link to this heading">#</a></h2>
+<p>Typing <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> everytime we want to plot something gets tedious quickly. We can define a shorter alias for the pyplot module using the <code class="docutils literal notranslate"><span class="pre">as</span></code> keyword: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">PACKAGE</span> <span class="pre">import</span> <span class="pre">MODULE</span> <span class="pre">as</span> <span class="pre">ALIAS</span></code> or <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">PACKAGE.MODULE</span> <span class="pre">as</span> <span class="pre">ALIAS</span></code>.</p>
 <p>You can then access all functions in the module using the alias:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span> <span class="k">as</span> <span class="nn">osp</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">osp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">current_dir</span><span class="p">))</span>  <span class="c1"># this is equivalent to calling `os.path.split()`</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">current_dir</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures&#39;, &#39;lecture 2&#39;)
-(&#39;/Users/janc/Library/CloudStorage/Dropbox/_teaching/neu715/neu715/lectures&#39;, &#39;lecture 2&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<p>That’s exactly what we’re doing when import matplotlib - we want to use all functions in the <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> module of the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> package.</p>
-<p>We could import it via <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">matplotlib.pyplot</span></code>, but then the code for plotting would be very long:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># equivalent</span>
 
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">29</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="s1">&#39;or&#39;</span><span class="p">)</span>
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-
-<span class="c1"># the above is the same as:</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">29</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="s1">&#39;or&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9e20cc139e29ba80aba68f419f65764f56f569a5648db238749c23b437307804.png" src="../../_images/9e20cc139e29ba80aba68f419f65764f56f569a5648db238749c23b437307804.png" />
-<img alt="../../_images/9e20cc139e29ba80aba68f419f65764f56f569a5648db238749c23b437307804.png" src="../../_images/9e20cc139e29ba80aba68f419f65764f56f569a5648db238749c23b437307804.png" />
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">as</span> <span class="pre">plt</span></code> provides a shortcut, for accessing everything under <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> through the much shorter <code class="docutils literal notranslate"><span class="pre">plt</span></code>.</p>
-<p>If you try to import sth that does not exist, you will get an error:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dream</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">dream</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;dream&#39;
-</pre></div>
-</div>
+<img alt="../../_images/ae51fb97569e8f2f6b35a943eae9fccd8dbacead9e0b3b3882953c5fc0eadf58.png" src="../../_images/ae51fb97569e8f2f6b35a943eae9fccd8dbacead9e0b3b3882953c5fc0eadf58.png" />
 </div>
 </div>
 <p>Here are common aliases everyone in the python world uses - if you use these packages, import them the same as everyone else so that others understand your code more easily.</p>
@@ -564,34 +549,15 @@ os.path.split(current_dir)=(&#39;/Users/janc/Library/CloudStorage/Dropbox/_teach
 </div>
 </div>
 </div>
-<p>Just for completeness, there is another way of importing: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">PACKAGE_NAME</span> <span class="pre">import</span> <span class="pre">MODULE_NAME</span></code>.</p>
-<p>With that you can access functions using the module name:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
-<span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Can also be combined with an alias</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt22</span>
-<span class="n">plt22</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">plt22</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/bf97f6f19355530508404f1c7f00fdb0cf77f738ec6b11adf612eee420526af5.png" src="../../_images/bf97f6f19355530508404f1c7f00fdb0cf77f738ec6b11adf612eee420526af5.png" />
-<img alt="../../_images/bf97f6f19355530508404f1c7f00fdb0cf77f738ec6b11adf612eee420526af5.png" src="../../_images/bf97f6f19355530508404f1c7f00fdb0cf77f738ec6b11adf612eee420526af5.png" />
-</div>
-</div>
+</section>
 <section id="importing-your-own-code">
-<h2>Importing your own code<a class="headerlink" href="#importing-your-own-code" title="Permalink to this heading">#</a></h2>
+<h2>Importing your own code<a class="headerlink" href="#importing-your-own-code" title="Link to this heading">#</a></h2>
 <p>So far, everything happened inside a single notebook.</p>
-<p>But what if we want to re-use our own code across notebooks, for instance the <code class="docutils literal notranslate"><span class="pre">mean</span></code> or <code class="docutils literal notranslate"><span class="pre">concat</span></code> functions?</p>
-<p>Well, any python code file (ending inn <code class="docutils literal notranslate"><span class="pre">.py</span></code>) is a module.</p>
-<p>We can save the code to a python code file, with the ending <code class="docutils literal notranslate"><span class="pre">.py</span></code> and import it!
-Note that the file needs to be in the same directory as the notebook you import it into. There are ways around this but we will not cover this here.</p>
-<p>Say we have this function for getting the max from a list:</p>
+<p>But what if we want to re-use our own code across notebooks?</p>
+<p>Any python code file (ending in <code class="docutils literal notranslate"><span class="pre">.py</span></code>) is a module that you can import.</p>
+<p>So we can save our python functions to a python code file, with the ending <code class="docutils literal notranslate"><span class="pre">.py</span></code> and import it!
+Note that the file needs to be in the same directory as the notebook you import it into. There are ways around this but we will not cover them here.</p>
+<p>Say we have this function for computing the mean of a list:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mean_local</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -609,103 +575,81 @@ Note that the file needs to be in the same directory as the notebook you import 
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_mean</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">my_mean</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.5
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_mean</span> <span class="k">as</span> <span class="nn">m</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">my_mean</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.5
-</pre></div>
-</div>
-</div>
-</div>
-<p>If we want to re-use this function in a different notebook, we’d have to copy the code to a cell in the new notebook. This is tedious and clutters the notebook.</p>
-<p>Instead, we can save the function to a python file and import it:</p>
+<p>To make it available across notebooks, we can save the function to a python code file and import it:</p>
 <ul class="simple">
 <li><p>open a text editor (get a good one that has syntax highlighting etc - I use visual studio code)</p></li>
 <li><p>open a new, empty file</p></li>
-<li><p>copy the function text to that file</p></li>
-<li><p>rename the function from <code class="docutils literal notranslate"><span class="pre">my_max_local</span></code> to <code class="docutils literal notranslate"><span class="pre">my_max</span></code></p></li>
-<li><p>save it in the same folder as the current notebook, under the name: <code class="docutils literal notranslate"><span class="pre">my_functions.py</span></code>. It is important to save it to the same folder - otherwise python will not be able to find the file!!</p></li>
+<li><p>copy the function text to that file (starting from the <code class="docutils literal notranslate"><span class="pre">def</span></code> and ending with the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement)</p></li>
+<li><p>rename the function from <code class="docutils literal notranslate"><span class="pre">mean_local</span></code> to <code class="docutils literal notranslate"><span class="pre">mean</span></code></p></li>
+<li><p>add a docstring so it’s clear what the function does and what the inputs and outputs are.</p></li>
+<li><p>save the python code file in the same folder as the current notebook, under the name: <code class="docutils literal notranslate"><span class="pre">my_functions.py</span></code>. It is important to save it in the same folder - otherwise python will not be able to find the file!!</p></li>
 </ul>
+<p>The file content should be like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the mean of all elements in the list `data`.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        data: List of numbers</span>
+
+<span class="sd">    Returns: the mean over all numbers in `data`.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mean_data</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mean_data</span>
+</pre></div>
+</div>
+<p>We can then import the module using the file name (without the extension <code class="docutils literal notranslate"><span class="pre">.py</span></code>), access the function using the dot notation, and even get help:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_functions</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">my_functions</span><span class="o">.</span><span class="n">my_max</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">45</span><span class="p">]))</span> <span class="c1"># call the imported function</span>
+my_functions.mean<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> my_functions<span class=" -Color -Color-Blue">.</span>mean<span class=" -Color -Color-Blue">(</span>data<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Computes the mean of all elements in `data`
 
-<span class="nb">print</span><span class="p">(</span><span class="n">my_max_local</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">45</span><span class="p">]))</span>  <span class="c1"># call the local function</span>
+Args:
+    data: List of numbers
+
+Returns: the mean over all numbers in `data`
+<span class=" -Color -Color-Red">File:</span>      ~/Library/CloudStorage/Dropbox/_teaching/neu715 python.2024/neu715/lectures/lecture 2/my_functions.py
+<span class=" -Color -Color-Red">Type:</span>      function
 </pre></div>
 </div>
 </div>
 </div>
-<p>What if we don’t want to type <code class="docutils literal notranslate"><span class="pre">my_functions</span></code>, every time we want to use <code class="docutils literal notranslate"><span class="pre">my_max</span></code>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_functions</span> <span class="k">as</span> <span class="nn">mf</span>  <span class="c1"># will import the my_max function for direct use</span>
-<span class="n">mf</span><span class="o">.</span><span class="n">my_max</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">my_functions</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.5
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_functions</span> <span class="kn">import</span> <span class="n">my_max</span>  <span class="c1"># will import the my_max function for direct use</span>
-<span class="n">my_max</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_functions</span> <span class="k">as</span> <span class="nn">m</span>  <span class="c1"># we can also use an alias to save typing</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">m</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.5
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_functions</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c1"># will import all functions in the file `my_functions.py` for direct use</span>
-<span class="n">my_max</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Caution</strong> Once you’ve imported a function, any changes to it will not be reflected immediately in the code. This is because when python encounters an import statement, it “checks” whether this package/module has been imported before and will only import it if it has not been imported before. You have to restart the notebook kernel and import the module again to use changed code.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code example</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p><strong>Caution</strong> Once you’ve imported a function, any changes to the code in the file will not be reflected immediately in the notebook. This is because when python encounters an import statement, it “checks” whether this package/module has been imported before and will only import it if it has not been imported before. You have to reset the namespace by restarting the notebook kernel and then import the module again to use changed code.</p>
 </section>
 </section>
 
@@ -736,24 +680,24 @@ Note that the file needs to be in the same directory as the notebook you import 
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
-       href="2.04_exceptions.html"
+       href="2.03_functions.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lecture 2.4 - Handling errors with exceptions</p>
+        <p class="prev-next-title">Functions</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../exercises/exercises%202/2.01_composites_exercises.html"
+       href="../../exercises/exercises%201/1.01_variables_exercises.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercises 2.1 - Composite data types</p>
+        <p class="prev-next-title">Variables</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -766,12 +710,17 @@ Note that the file needs to be in the same directory as the notebook you import 
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-packages">Importing packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-functions">Importing functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-subpackages-and-modules">Importing subpackages and modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aliases">Aliases</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-your-own-code">Importing your own code</a></li>
 </ul>
   </nav></div>
@@ -794,9 +743,10 @@ By Jan Clemens
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -820,8 +770,8 @@ By Jan Clemens
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
