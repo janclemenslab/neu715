@@ -772,7 +772,7 @@ Plus some weird stuff that we will ignore for now:
 <p>Variables come in different flavors - so far, we have encountered two kinds of variables: numbers and text.</p>
 <p>Kinds of variables are called <em>types</em>. These are the most important ones:</p>
 <ul class="simple">
-<li><p>boolean variable: <code class="docutils literal notranslate"><span class="pre">bool</span></code>- only two values: <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p>boolean variables: <code class="docutils literal notranslate"><span class="pre">bool</span></code>- only two values: <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
 <li><p>integer numbers: <code class="docutils literal notranslate"><span class="pre">int</span></code> - number without a decimal point (1, 2, 103241)</p></li>
 <li><p>floating point numbers: <code class="docutils literal notranslate"><span class="pre">float</span></code> - number with a decimal point (3.141)</p></li>
 <li><p>(complex numbers - not covered here: <code class="docutils literal notranslate"><span class="pre">complex</span></code>)</p></li>
@@ -782,7 +782,7 @@ Plus some weird stuff that we will ignore for now:
 </section>
 <section id="determining-the-type-of-variables">
 <h3>Determining the type of variables<a class="headerlink" href="#determining-the-type-of-variables" title="Link to this heading">#</a></h3>
-<p>Wrong variable types can be a source of errors in your code. Below, an error is raised becayse one cannot add a variable of type string to a number in python. It is therefore often useful to determine the type of a variable.</p>
+<p>Wrong variable types can be a source of errors in your code. Below, an error is raised because one cannot add a variable of type string to a number in python. It is therefore often useful to determine the type of a variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">15.6</span>
@@ -794,7 +794,7 @@ Plus some weird stuff that we will ignore for now:
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">34</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">15.6</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;12.4&#39;</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
@@ -812,7 +812,7 @@ Plus some weird stuff that we will ignore for now:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(int, float)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(float, str)
 </pre></div>
 </div>
 </div>
