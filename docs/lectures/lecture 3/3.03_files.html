@@ -431,16 +431,17 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-files">Discovering files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-paths">Manipulating paths</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-directories">Creating directories</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-files">Loading data from files</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-data-from-files">Saving and loading data from files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-text-files">Loading data from text files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-text-files">Saving data to text files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-excel-files">Loading data from excel files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-matlab-files">Loading data from matlab files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-numpy-files">Loading data from numpy files</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-a-file">Saving data to a file</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-text-files">Saving data to text files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-non-text-files">Saving data to non-text files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-data-to-from-a-text-file">Saving and loading data to/from a text file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Saving data to text files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-data-to-from-non-text-files">Saving and loading data to/from non-text files</a></li>
 </ul>
 </li>
 </ul>
@@ -595,8 +596,8 @@ new path: updir/subdir/name.mp3
 <p><code class="docutils literal notranslate"><span class="pre">os.makedirs('tmp/sub1/sub2',</span> <span class="pre">exist_ok=True)</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">exist_ok=True</span></code> prevents an error if the directory already exists.</p>
 </section>
-<section id="loading-data-from-files">
-<h2>Loading data from files<a class="headerlink" href="#loading-data-from-files" title="Link to this heading">#</a></h2>
+<section id="saving-and-loading-data-from-files">
+<h2>Saving and loading data from files<a class="headerlink" href="#saving-and-loading-data-from-files" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Text files: <code class="docutils literal notranslate"><span class="pre">.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">.csv</span></code></p></li>
 <li><p>Excel files ending in <code class="docutils literal notranslate"><span class="pre">.xls</span></code> or <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code></p></li>
@@ -605,9 +606,23 @@ new path: updir/subdir/name.mp3
 </ul>
 <section id="loading-data-from-text-files">
 <h3>Loading data from text files<a class="headerlink" href="#loading-data-from-text-files" title="Link to this heading">#</a></h3>
-<p>Data in text files is typically saved as a single column of data - with one value per row/line</p>
+<p>Data in text files is typically saved as a single column of data - with one value per row/line and a column label:</p>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>Responses
+0.561
+0.342
+0.23
+0.144
+</pre></div>
+</div>
 <p>Tabular data with multiple columns is saved with a specific character separating the individual columns in a row: the <em>delimiter</em>. Common delimiters are <code class="docutils literal notranslate"><span class="pre">,</span></code> (csv - comma-sparated values), <code class="docutils literal notranslate"><span class="pre">;</span></code>, or <code class="docutils literal notranslate"><span class="pre">\tab</span></code>.</p>
-<p>We can use numpy or pandas for loading and saving data. Numpy and pandas are numerical computation packages, and come with function for data IO.</p>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>Time,Responses
+1,0.561
+2,0.342
+3,0.23
+4,0.144
+</pre></div>
+</div>
+<p>We can use numpy or the <a class="reference external" href="https://pandas.pydata.org">pandas library</a> for loading and saving data. Numpy and pandas are numerical computation packages, and come with function for data IO.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -623,35 +638,35 @@ new path: updir/subdir/name.mp3
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="ne">c</span>:\Users\schul\Dropbox\2023ws python course\neu715\lectures\lecture 3\3.03_files.ipynb Cell 13 line 2
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/c%3A/Users/schul/Dropbox/2023ws%20python</span><span class="si">%20c</span><span class="s1">ourse/neu715/lectures/lecture%203/3.03_files.ipynb#X61sZmlsZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/c%3A/Users/schul/Dropbox/2023ws%20python</span><span class="si">%20c</span><span class="s1">ourse/neu715/lectures/lecture%203/3.03_files.ipynb#X61sZmlsZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/mouse1.txt&#39;</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/mouse1.txt&#39;</span><span class="p">)</span>
 
-<span class="nn">File ~\AppData\Roaming\Python\Python311\site-packages\numpy\lib\npyio.py:1356,</span> in <span class="ni">loadtxt</span><span class="nt">(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows, quotechar, like)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1353</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">delimiter</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1354</span>     <span class="n">delimiter</span> <span class="o">=</span> <span class="n">delimiter</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1356</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">_read</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1357</span>             <span class="n">converters</span><span class="o">=</span><span class="n">converters</span><span class="p">,</span> <span class="n">skiplines</span><span class="o">=</span><span class="n">skiprows</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="n">usecols</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1358</span>             <span class="n">unpack</span><span class="o">=</span><span class="n">unpack</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="n">ndmin</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1359</span>             <span class="n">max_rows</span><span class="o">=</span><span class="n">max_rows</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="n">quotechar</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1361</span> <span class="k">return</span> <span class="n">arr</span>
+<span class="nn">File ~/miniconda3/envs/neu715/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1397,</span> in <span class="ni">loadtxt</span><span class="nt">(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows, quotechar, like)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1394</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">delimiter</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1395</span>     <span class="n">delimiter</span> <span class="o">=</span> <span class="n">delimiter</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1397</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">_read</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1398</span>             <span class="n">converters</span><span class="o">=</span><span class="n">converters</span><span class="p">,</span> <span class="n">skiplines</span><span class="o">=</span><span class="n">skiprows</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="n">usecols</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1399</span>             <span class="n">unpack</span><span class="o">=</span><span class="n">unpack</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="n">ndmin</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1400</span>             <span class="n">max_rows</span><span class="o">=</span><span class="n">max_rows</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="n">quotechar</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1402</span> <span class="k">return</span> <span class="n">arr</span>
 
-<span class="nn">File ~\AppData\Roaming\Python\Python311\site-packages\numpy\lib\npyio.py:999,</span> in <span class="ni">_read</span><span class="nt">(fname, delimiter, comment, quote, imaginary_unit, usecols, skiplines, max_rows, converters, ndmin, unpack, dtype, encoding)</span>
-<span class="g g-Whitespace">    </span><span class="mi">996</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">_preprocess_comments</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">comments</span><span class="p">,</span> <span class="n">encoding</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">998</span> <span class="k">if</span> <span class="n">read_dtype_via_object_chunks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">999</span>     <span class="n">arr</span> <span class="o">=</span> <span class="n">_load_from_filelike</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1000</span>         <span class="n">data</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="n">quote</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1001</span>         <span class="n">imaginary_unit</span><span class="o">=</span><span class="n">imaginary_unit</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1002</span>         <span class="n">usecols</span><span class="o">=</span><span class="n">usecols</span><span class="p">,</span> <span class="n">skiplines</span><span class="o">=</span><span class="n">skiplines</span><span class="p">,</span> <span class="n">max_rows</span><span class="o">=</span><span class="n">max_rows</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1003</span>         <span class="n">converters</span><span class="o">=</span><span class="n">converters</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1004</span>         <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">filelike</span><span class="o">=</span><span class="n">filelike</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1005</span>         <span class="n">byte_converters</span><span class="o">=</span><span class="n">byte_converters</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1007</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1008</span>     <span class="c1"># This branch reads the file into chunks of object arrays and then</span>
-<span class="g g-Whitespace">   </span><span class="mi">1009</span>     <span class="c1"># casts them to the desired actual dtype.  This ensures correct</span>
-<span class="g g-Whitespace">   </span><span class="mi">1010</span>     <span class="c1"># string-length and datetime-unit discovery (like `arr.astype()`).</span>
-<span class="g g-Whitespace">   </span><span class="mi">1011</span>     <span class="c1"># Due to chunking, certain error reports are less clear, currently.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1012</span>     <span class="k">if</span> <span class="n">filelike</span><span class="p">:</span>
+<span class="nn">File ~/miniconda3/envs/neu715/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1036,</span> in <span class="ni">_read</span><span class="nt">(fname, delimiter, comment, quote, imaginary_unit, usecols, skiplines, max_rows, converters, ndmin, unpack, dtype, encoding)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1033</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">_preprocess_comments</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">comments</span><span class="p">,</span> <span class="n">encoding</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1035</span> <span class="k">if</span> <span class="n">read_dtype_via_object_chunks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1036</span>     <span class="n">arr</span> <span class="o">=</span> <span class="n">_load_from_filelike</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1037</span>         <span class="n">data</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="n">quote</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1038</span>         <span class="n">imaginary_unit</span><span class="o">=</span><span class="n">imaginary_unit</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1039</span>         <span class="n">usecols</span><span class="o">=</span><span class="n">usecols</span><span class="p">,</span> <span class="n">skiplines</span><span class="o">=</span><span class="n">skiplines</span><span class="p">,</span> <span class="n">max_rows</span><span class="o">=</span><span class="n">max_rows</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1040</span>         <span class="n">converters</span><span class="o">=</span><span class="n">converters</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1041</span>         <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">filelike</span><span class="o">=</span><span class="n">filelike</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1042</span>         <span class="n">byte_converters</span><span class="o">=</span><span class="n">byte_converters</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1044</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1045</span>     <span class="c1"># This branch reads the file into chunks of object arrays and then</span>
+<span class="g g-Whitespace">   </span><span class="mi">1046</span>     <span class="c1"># casts them to the desired actual dtype.  This ensures correct</span>
+<span class="g g-Whitespace">   </span><span class="mi">1047</span>     <span class="c1"># string-length and datetime-unit discovery (like `arr.astype()`).</span>
+<span class="g g-Whitespace">   </span><span class="mi">1048</span>     <span class="c1"># Due to chunking, certain error reports are less clear, currently.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1049</span>     <span class="k">if</span> <span class="n">filelike</span><span class="p">:</span>
 
 <span class="ne">ValueError</span>: could not convert string &#39;Responses&#39; to float64 at row 0, column 1.
 </pre></div>
@@ -664,12 +679,23 @@ new path: updir/subdir/name.mp3
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/mouse1.txt&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np_data</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">np_data</span><span class="p">))</span>
-<span class="n">responses</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  2.  3.  4.  5. 56.  6.] &lt;class &#39;numpy.ndarray&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="saving-data-to-text-files">
+<h3>Saving data to text files<a class="headerlink" href="#saving-data-to-text-files" title="Link to this heading">#</a></h3>
+<p>We can use numpy to save any numpy array to a text file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">]</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s1">&#39;Responses&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -686,92 +712,6 @@ new path: updir/subdir/name.mp3
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Responses</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>15</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>What’s the type of df?</p>
 <div class="cell docutils container">
@@ -841,15 +781,15 @@ new path: updir/subdir/name.mp3
 </div>
 </section>
 </section>
-<section id="saving-data-to-a-file">
-<h2>Saving data to a file<a class="headerlink" href="#saving-data-to-a-file" title="Link to this heading">#</a></h2>
+<section id="saving-and-loading-data-to-from-a-text-file">
+<h2>Saving and loading data to/from a text file<a class="headerlink" href="#saving-and-loading-data-to-from-a-text-file" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Text files: <code class="docutils literal notranslate"><span class="pre">.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">.csv</span></code></p></li>
 <li><p>Excel files ending in <code class="docutils literal notranslate"><span class="pre">.xls</span></code> or <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code></p></li>
 <li><p>Numpy files ending in <code class="docutils literal notranslate"><span class="pre">.npy</span></code>, <code class="docutils literal notranslate"><span class="pre">.npz</span></code></p></li>
 </ul>
-<section id="saving-data-to-text-files">
-<h3>Saving data to text files<a class="headerlink" href="#saving-data-to-text-files" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h3>Saving data to text files<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code> loads data from a text file - guess what <code class="docutils literal notranslate"><span class="pre">np.savetxt</span></code> does! <code class="docutils literal notranslate"><span class="pre">np.savetxt</span></code> will use the <code class="docutils literal notranslate"><span class="pre">,</span></code> as the default delimiter, but you can change that.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -862,8 +802,8 @@ new path: updir/subdir/name.mp3
 </div>
 </div>
 </section>
-<section id="saving-data-to-non-text-files">
-<h3>Saving data to non-text files<a class="headerlink" href="#saving-data-to-non-text-files" title="Link to this heading">#</a></h3>
+<section id="saving-and-loading-data-to-from-non-text-files">
+<h3>Saving and loading data to/from non-text files<a class="headerlink" href="#saving-and-loading-data-to-from-non-text-files" title="Link to this heading">#</a></h3>
 <p>For large datasets - think hours of multi-channel electrophyiology recordings - text files become very big and slow to work with. In that case, we can save data directly as binary, non-text data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -874,7 +814,14 @@ new path: updir/subdir/name.mp3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;dummy.npy&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -972,16 +919,17 @@ file_contents[&#39;names&#39;]=array(&#39;data_new&#39;, dtype=&#39;&lt;U8&#39;)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-files">Discovering files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-paths">Manipulating paths</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-directories">Creating directories</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-files">Loading data from files</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-data-from-files">Saving and loading data from files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-text-files">Loading data from text files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-text-files">Saving data to text files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-excel-files">Loading data from excel files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-matlab-files">Loading data from matlab files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-numpy-files">Loading data from numpy files</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-a-file">Saving data to a file</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-text-files">Saving data to text files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-non-text-files">Saving data to non-text files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-data-to-from-a-text-file">Saving and loading data to/from a text file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Saving data to text files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-data-to-from-non-text-files">Saving and loading data to/from non-text files</a></li>
 </ul>
 </li>
 </ul>
