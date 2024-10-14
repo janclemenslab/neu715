@@ -454,7 +454,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-and-namespace">Kernel and namespace</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-track-of-variables-and-their-values">Keeping track of variables and their values</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messing-up-and-restoring-the-namespace">Messing up and restoring the namespace</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#re-using-and-updating-variables">Re-using and updating variables</a></li>
 </ul>
@@ -817,32 +817,15 @@ Plus some weird stuff that we will ignore for now:
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correct</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;1.0&#39;</span>
-
-<span class="nb">type</span><span class="p">(</span><span class="n">correct</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(bool, int, float, str)
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="changing-variable-types">
 <h3>Changing variable types<a class="headerlink" href="#changing-variable-types" title="Link to this heading">#</a></h3>
 <p>You can change the type of a variable - <em>cast</em> it to another type - using <code class="docutils literal notranslate"><span class="pre">bool</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>,  <code class="docutils literal notranslate"><span class="pre">str</span></code> as functions, with the variable you want to cast as the argument:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_as_str</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-<span class="n">a_cast_to_float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">a_as_str</span><span class="p">)</span>  <span class="c1"># cast a from an integer to a floating point</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">a_as_str</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">a_cast_to_float</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_as_str</span> <span class="o">=</span> <span class="s1">&#39;12.4&#39;</span>
+<span class="n">b_cast_to_float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">b_as_str</span><span class="p">)</span>  <span class="c1"># cast a from a string to a floating point</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">b_as_str</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">b_cast_to_float</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -865,19 +848,21 @@ Plus some weird stuff that we will ignore for now:
 </div>
 </div>
 </div>
-<p>You can turn a string to a number using <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code>, if the string variable contains only numerical data:</p>
+<p>You can turn a string to a number using <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code>. But this works only if the string variable contains only numerical data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_as_str</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span>
 <span class="n">age_as_number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">age_as_str</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">age_as_str</span><span class="p">,</span> <span class="n">age_as_number</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">age_as_str</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">age_as_number</span><span class="p">))</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">age_as_str</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">age_as_number</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 10
-&lt;class &#39;str&#39;&gt; &lt;class &#39;int&#39;&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(str, int)
 </pre></div>
 </div>
 </div>
@@ -918,7 +903,7 @@ bool() = False
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">43</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">age_as_str</span> <span class="o">=</span> <span class="s1">&#39;10years&#39;</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">age_as_number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">age_as_str</span><span class="p">)</span>
 
@@ -937,7 +922,7 @@ bool() = False
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">44</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">age_as_str</span> <span class="o">=</span> <span class="s1">&#39;10 0&#39;</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">age_as_number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">age_as_str</span><span class="p">)</span>
 
@@ -968,10 +953,26 @@ bool() = False
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">    </span><span class="mi">10</span><span class="n">th_number</span> <span class="o">=</span> <span class="mf">3.34</span>
+     <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid decimal literal
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">+</span><span class="n">b</span> <span class="o">=</span> <span class="mi">27</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">a</span><span class="o">+</span><span class="n">b</span> <span class="o">=</span> <span class="mi">27</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: cannot assign to expression here. Maybe you meant &#39;==&#39; instead of &#39;=&#39;?
 </pre></div>
 </div>
 </div>
@@ -983,6 +984,14 @@ bool() = False
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example</span>
 <span class="k">for</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+    <span class="k">for</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
@@ -1007,10 +1016,10 @@ bool() = False
 </section>
 </section>
 </section>
-<section id="kernel-and-namespace">
-<h2>Kernel and namespace<a class="headerlink" href="#kernel-and-namespace" title="Link to this heading">#</a></h2>
-<p>The <em>kernel</em> is the thing that executes your code. It also stores your <em>namespace</em> - all variables and code that you have executed so far and that are stored in your computer memory.</p>
-<p>If you re-run your code cells out of order, it may be hard to know what’s in your namespace. In that case, you can clear and re-launch the kernel, to start from scratch, with a clean namespace. This will erase any variables stored in memory.</p>
+<section id="keeping-track-of-variables-and-their-values">
+<h2>Keeping track of variables and their values<a class="headerlink" href="#keeping-track-of-variables-and-their-values" title="Link to this heading">#</a></h2>
+<p>How do you keep track of variables and their values? The <em>kernel</em> is the thing that executes your code. It also stores your <em>namespace</em> - all variables and code that you have executed so far and that are stored in your computer memory.</p>
+<p>If you re-run your code cells out of order, it may be hard to know what’s in your namespace. In that case, you can clear and re-launch the kernel, to start from scratch, with a clean namespace. This will erase any variables stored in memory and reset python to its original state.</p>
 <p>You can list the contents of your namespace with <code class="docutils literal notranslate"><span class="pre">%whos</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1019,13 +1028,9 @@ bool() = False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable   Type     Data/Info
------------------------------
-a          float    15.6
-b          str      12.4
-c          int      9
-d          int      6
-my_var     int      3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable             Type    Data/Info
+--------------------------------------
+n_alice_mosquitoes   int     1
 </pre></div>
 </div>
 </div>
@@ -1051,7 +1056,7 @@ my_var     int      3
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
 
 <span class="ne">TypeError</span>: &#39;str&#39; object is not callable
@@ -1069,7 +1074,7 @@ my_var     int      3
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="ne">TypeError</span>: &#39;str&#39; object is not callable
@@ -1089,9 +1094,22 @@ my_var     int      3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable   Type    Data/Info
-----------------------------
-print      int     10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable                                      Type     Data/Info
+----------------------------------------------------------------
+a                                             int      1
+a_as_str                                      str      1
+a_cast_to_float                               float    1.0
+age_as_number                                 int      10
+age_as_str                                    str      10 0
+b                                             str      12.4
+b_as_str                                      str      12.4
+b_cast_to_float                               float    12.4
+concentration                                 float    0.1
+cool_variable                                 int      10
+name_of_the_first_subject_on_monday_morning   str      Thelonious
+password_123                                  str      bad
+print                                         str      no, never do this!
+subject_name                                  str      Mabel
 </pre></div>
 </div>
 </div>
@@ -1104,12 +1122,7 @@ print      int     10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">print</span><span class="p">))</span>  <span class="c1"># this will return &quot;builtin_function_or_method&quot;</span>
-
-<span class="ne">TypeError</span>: &#39;int&#39; object is not callable
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;builtin_function_or_method&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -1288,7 +1301,7 @@ We update the total count with this computation and should now have a total coun
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-and-namespace">Kernel and namespace</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-track-of-variables-and-their-values">Keeping track of variables and their values</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messing-up-and-restoring-the-namespace">Messing up and restoring the namespace</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#re-using-and-updating-variables">Re-using and updating variables</a></li>
 </ul>
