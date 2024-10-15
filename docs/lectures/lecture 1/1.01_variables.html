@@ -1164,7 +1164,7 @@ year                                          str      1968
 </div>
 </div>
 <p>Now she can perform a computation using <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code>.
-For instance, Bob has counted 10 more mosquitoes - so we add <code class="docutils literal notranslate"><span class="pre">10</span></code> to her count own count and store the result in a new variable, <code class="docutils literal notranslate"><span class="pre">n_mosquitoes</span></code>, for the total count:</p>
+For instance, Bob has counted 10 more mosquitoes - so we add <code class="docutils literal notranslate"><span class="pre">10</span></code> to her own count and store the result in a new variable, <code class="docutils literal notranslate"><span class="pre">n_mosquitoes</span></code>, for the total count:</p>
 <div class="admonition-clicker-question-mosquitoes-1-click-me-https-go-uos-de-0ypai admonition">
 <p class="admonition-title">Clicker question “mosquitoes 1” (<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
 <p>What will be the value of n_mosquitoes after executing this code after having run the cell above?</p>
@@ -1179,7 +1179,7 @@ For instance, Bob has counted 10 more mosquitoes - so we add <code class="docuti
 <div class="toggle docutils container">
 <p>What is going on here?</p>
 <p>In the above expression, <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span> <span class="pre">+</span> <span class="pre">10</span></code>, python sees the variable name, <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code>, and looks up it’s value, <code class="docutils literal notranslate"><span class="pre">1</span></code> This works since we have created and assigned a value to <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> in the previous cell.</p>
-<p>Python then substitutes the value <code class="docutils literal notranslate"><span class="pre">1</span></code> for the name <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> and performs the computation (it evaluates the expression).</p>
+<p>Python then replaces the name <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> with the value <code class="docutils literal notranslate"><span class="pre">1</span></code> and performs the computation (it evaluates the expression).</p>
 <p><code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span> <span class="pre">+</span> <span class="pre">10</span></code> is evaluated as <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">10</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">n_mosquitoes</span> <span class="pre">=</span> <span class="pre">n_alice_mosquitoes</span> <span class="pre">+</span> <span class="pre">10</span></code> means that the result of the operation, the value <code class="docutils literal notranslate"><span class="pre">11</span></code>, is saved in a new variable, with name <code class="docutils literal notranslate"><span class="pre">n_mosquitoes</span></code>.</p>
 <p>Note that above we exploited that what you do in one cell transfers to the next:</p>
@@ -1203,22 +1203,6 @@ For instance, Bob has counted 10 more mosquitoes - so we add <code class="docuti
 <p>This will throw an error, as we cannot use a variable we have not defined before: Python does not know what <code class="docutils literal notranslate"><span class="pre">n_tim_mosquitoes</span></code> refers to!</p>
 </div>
 <p>The fact that we can re-use variables across cells allows us to successively build up our analysis code, cell by cell.</p>
-<p>Suddenly, Trudy comes and claims that she found 3 more mosquitoes!!
-We update the total count with this computation and should now have a total count of 14: 1 from alice, 10 from Bob, and 3 from Trudy.</p>
-<p>But the code produces a count of 4. What’s wrong with this code??</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_mosquitoes</span> <span class="o">=</span> <span class="n">n_alice_mosquitoes</span> <span class="o">+</span> <span class="mi">3</span>   <span class="c1">#  create a new variable `n_mosquitoes` and assign to it the outcome of `n_alice_mosquitoes + 3`</span>
-<span class="n">n_mosquitoes</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 </section>
 <section id="spike-detection-with-python">
