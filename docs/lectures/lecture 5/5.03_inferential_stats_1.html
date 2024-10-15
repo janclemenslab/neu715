@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Inferential statistics &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
@@ -14,49 +15,53 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 5/5.03_inferential_stats_1';</script>
@@ -73,23 +78,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,20 +121,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,9 +141,6 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
-  
-    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -150,22 +149,10 @@
   
   
   
-  
     <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -248,7 +235,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -257,14 +244,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -289,14 +276,14 @@
       
       <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 5/5.03_inferential_stats_1.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch on Binder"
+   title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+    <img src="../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -307,14 +294,14 @@
       
       <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 5/5.03_inferential_stats_1.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
+   title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+    <img src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -388,28 +375,26 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -451,10 +436,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="inferential-statistics">
-<h1>Inferential statistics<a class="headerlink" href="#inferential-statistics" title="Link to this heading">#</a></h1>
+<h1>Inferential statistics<a class="headerlink" href="#inferential-statistics" title="Permalink to this heading">#</a></h1>
 <p>Often, we are not only interested in describing our data with descriptive statistics like the mean and standard deviation, but want to know whether two or more sets of measurements are likely to come from the same underlying distribution. We want to draw inferences from the data. This is what inferential statistics is about.</p>
 <p>To learn how to do this in python, let’s use some example data:</p>
 <p>To test whether a new wonder drug increases the eye sight, Linda and Anabel ran the following experiment with student subjects:</p>
@@ -584,7 +569,7 @@ The drug is only effective for an hour or so. To assess the effect of the drug, 
 </div></div></div>
 </div>
 <section id="what-do-we-need-to-know-about-the-data-to-choose-the-correct-statistical-tests">
-<h2>What do we need to know about the data to choose the correct statistical tests?<a class="headerlink" href="#what-do-we-need-to-know-about-the-data-to-choose-the-correct-statistical-tests" title="Link to this heading">#</a></h2>
+<h2>What do we need to know about the data to choose the correct statistical tests?<a class="headerlink" href="#what-do-we-need-to-know-about-the-data-to-choose-the-correct-statistical-tests" title="Permalink to this heading">#</a></h2>
 <p>We want to determine whether the treatment improves of eye sight.
 What is our <em>Null Hypothesis</em>, what is our <em>Alternative Hypothesis</em>?</p>
 <ul class="simple">
@@ -609,7 +594,7 @@ With some probability:</p>
 </ul>
 <p>Okay, but what is the first thing you do when you get a bunch of data? Plot it!! Why? Can’t we just look at summary statistics? No, they are not sufficient to fully describe the distribution and can be misleading!!</p>
 <p>Anscombe’s quartet is a famous example that illustrates that fact. It shows 4 sets of data:</p>
-<p><img alt="" src="../../_images/850px-Anscombe%27s_quartet_3.svg.png" /></p>
+<p><img alt="" src="../../_images/850px-Anscombe's_quartet_3.svg.png" /></p>
 <p>These four data sets are very different, but they have similar statistics:</p>
 <ul class="simple">
 <li><p>Mean of x: 9</p></li>
@@ -749,7 +734,7 @@ With some probability:</p>
 </div>
 </div>
 <section id="are-all-samples-independent-are-they-paired-or-unpaired">
-<h3>Are all samples independent? Are they paired or unpaired?<a class="headerlink" href="#are-all-samples-independent-are-they-paired-or-unpaired" title="Link to this heading">#</a></h3>
+<h3>Are all samples independent? Are they paired or unpaired?<a class="headerlink" href="#are-all-samples-independent-are-they-paired-or-unpaired" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data from design 1 - average the repeated tests for each animal</span>
@@ -885,11 +870,11 @@ With some probability:</p>
 </div>
 </section>
 <section id="one-sided-or-two-sided">
-<h3>One-sided or two-sided?<a class="headerlink" href="#one-sided-or-two-sided" title="Link to this heading">#</a></h3>
+<h3>One-sided or two-sided?<a class="headerlink" href="#one-sided-or-two-sided" title="Permalink to this heading">#</a></h3>
 <p><img alt="" src="../../_images/5.03_inferential_stats_1.png" /></p>
 </section>
 <section id="is-the-data-normally-distributed">
-<h3>Is the data normally distributed?<a class="headerlink" href="#is-the-data-normally-distributed" title="Link to this heading">#</a></h3>
+<h3>Is the data normally distributed?<a class="headerlink" href="#is-the-data-normally-distributed" title="Permalink to this heading">#</a></h3>
 <p>The t-test assumes that the data in the sample are normally distributed in the population. This means that the values within each group should follow a normal (Gaussian) distribution. This assumption is related to the parameters of the normal distribution, such as the mean and standard deviation.</p>
 <p>To check for normality, we visualize the distributions, then run a statistical test. In <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code>, there are several tests for normality. We will use <code class="docutils literal notranslate"><span class="pre">scipy.stats.normaltest</span></code>, which derives a p-values based on the skew and kurtosis of the data.</p>
 <div class="cell docutils container">
@@ -912,7 +897,7 @@ With some probability:</p>
 </div>
 </section>
 <section id="mini-exercise-test-for-normality">
-<h3>Mini exercise: Test for normality<a class="headerlink" href="#mini-exercise-test-for-normality" title="Link to this heading">#</a></h3>
+<h3>Mini exercise: Test for normality<a class="headerlink" href="#mini-exercise-test-for-normality" title="Permalink to this heading">#</a></h3>
 <p>Do we run the test on the full dataset? Or on the individual groups (treatment and control) separately?</p>
 <p>How do we interpret the p-values? What’s the null hypothesis when we test for normality?</p>
 <div class="cell docutils container">
@@ -937,14 +922,14 @@ NormaltestResult(statistic=1.3550283711604612, pvalue=0.5078779147507373)
 </ul>
 </section>
 <section id="equal-variance">
-<h3>Equal variance?<a class="headerlink" href="#equal-variance" title="Link to this heading">#</a></h3>
+<h3>Equal variance?<a class="headerlink" href="#equal-variance" title="Permalink to this heading">#</a></h3>
 <p>The independent samples t-test (and its variants) assumes that the variances within the groups being compared are equal (homoscedasticity). In other words, it assumes that the spread or dispersion of the data is consistent across groups. This assumption is also related to population parameters.</p>
 <p>However, homoscedasticity is not a hard criterion, since there exitss a variant of the t-test - Welch’s t-test - that accounts for unequal variance (heteroscedasticity).</p>
 <p>Homoscedasticity is typically tested visually - by inspecting the data distributions - and rarely tested in practice. There do exist tests that compare the variance across multiple groups, like Levene test (<code class="docutils literal notranslate"><span class="pre">scipy.stats.levene</span></code>).</p>
 <p>But, it’s best to use statistical tests that do not require equal variance, like Welch’s variant of the t-test.</p>
 </section>
 <section id="mini-exercise-run-the-tests">
-<h3>Mini Exercise: Run the tests<a class="headerlink" href="#mini-exercise-run-the-tests" title="Link to this heading">#</a></h3>
+<h3>Mini Exercise: Run the tests<a class="headerlink" href="#mini-exercise-run-the-tests" title="Permalink to this heading">#</a></h3>
 <p>We now know all we need to know about our samples to select the correct test:</p>
 <ul class="simple">
 <li><p>paired or unpaired: no</p></li>
@@ -984,7 +969,7 @@ NormaltestResult(statistic=1.3550283711604612, pvalue=0.5078779147507373)
 </div>
 </div>
 <section id="if-you-want-to-compare-more-than-two-groups">
-<h4>If you want to compare more than two groups<a class="headerlink" href="#if-you-want-to-compare-more-than-two-groups" title="Link to this heading">#</a></h4>
+<h4>If you want to compare more than two groups<a class="headerlink" href="#if-you-want-to-compare-more-than-two-groups" title="Permalink to this heading">#</a></h4>
 <p>First, detect group-level effects using</p>
 <ul class="simple">
 <li><p>Anova: <code class="docutils literal notranslate"><span class="pre">scipy.stats.f_oneway</span></code></p></li>
@@ -1026,8 +1011,8 @@ NormaltestResult(statistic=1.3550283711604612, pvalue=0.5078779147507373)
               
               
               
-                <footer class="prev-next-footer d-print-none">
-                  
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="5.02_descriptive_stats.html"
@@ -1055,7 +1040,6 @@ NormaltestResult(statistic=1.3550283711604612, pvalue=0.5078779147507373)
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1096,10 +1080,9 @@ By Jan Clemens
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1123,8 +1106,8 @@ By Jan Clemens
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>

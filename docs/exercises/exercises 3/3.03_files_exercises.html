@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Exercises 3.03 - Working with files &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
@@ -14,49 +15,53 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 3/3.03_files_exercises';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -71,23 +76,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -109,20 +119,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -137,9 +139,6 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
-  
-    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -148,22 +147,10 @@
   
   
   
-  
     <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -246,7 +233,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -255,14 +242,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -287,14 +274,14 @@
       
       <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 3/3.03_files_exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch on Binder"
+   title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+    <img src="../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -305,14 +292,14 @@
       
       <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 3/3.03_files_exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
+   title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+    <img src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -386,28 +373,26 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -466,12 +451,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercises-3-03-working-with-files">
-<h1>Exercises 3.03 - Working with files<a class="headerlink" href="#exercises-3-03-working-with-files" title="Link to this heading">#</a></h1>
+<h1>Exercises 3.03 - Working with files<a class="headerlink" href="#exercises-3-03-working-with-files" title="Permalink to this heading">#</a></h1>
 <section id="a-common-data-analysis-workflow">
-<h2>A common data analysis workflow<a class="headerlink" href="#a-common-data-analysis-workflow" title="Link to this heading">#</a></h2>
+<h2>A common data analysis workflow<a class="headerlink" href="#a-common-data-analysis-workflow" title="Permalink to this heading">#</a></h2>
 <p>In this exercise, you will implement step-by-step a common workflow for analyzing and aggregating experimental datasets:</p>
 <ul class="simple">
 <li><p>Experimental data were collected over multiple days, with the data for each day in a separate subdirectory in <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code>.</p></li>
@@ -490,7 +475,7 @@ document.write(`
 <li><p>Load and plot the results</p></li>
 </ol>
 <section id="exercise-1-processing-and-generating-file-paths">
-<h3>Exercise 1 - processing and generating file paths<a class="headerlink" href="#exercise-1-processing-and-generating-file-paths" title="Link to this heading">#</a></h3>
+<h3>Exercise 1 - processing and generating file paths<a class="headerlink" href="#exercise-1-processing-and-generating-file-paths" title="Permalink to this heading">#</a></h3>
 <p>The behavioral data is organized in the following folder structure:
 <code class="docutils literal notranslate"><span class="pre">behavioral_data/DATENAME/DATA_FILE_NAME.SUFFIX</span></code></p>
 <p>Familiarize yourself with how the directory is organized using the windows file explorer or mac file finder.</p>
@@ -498,7 +483,7 @@ document.write(`
 <code class="docutils literal notranslate"><span class="pre">behavioral_results/DATENAME/DATA_FILE_NAME.SUFFIX</span></code>. In exercise one, you will generate the paths for the results file from the paths of the data file.</p>
 <p>To make this concrete: Say the data file is at ‘behavioral_data/20230914/final_behavioral_scores.csv’. Generate a path so we can save the results file to ‘behavioral_results/20230914/final_behavioral_scores.txt’. What we need to change is the top directory from ‘behavioral_data’ to ‘behavioral_results’ and the extension from ‘csv’ to ‘txt’. We keep the names of the experiment directory and of the data file.</p>
 <section id="take-the-path-for-the-data-file-apart">
-<h4>1) Take the path for the data file apart:<a class="headerlink" href="#take-the-path-for-the-data-file-apart" title="Link to this heading">#</a></h4>
+<h4>1) Take the path for the data file apart:<a class="headerlink" href="#take-the-path-for-the-data-file-apart" title="Permalink to this heading">#</a></h4>
 <p>You are given the following path: ‘behavioral_data/20230914/final_behavioral_scores.csv’</p>
 <p>As a first step, use path manipulations to extract the following information form the path:</p>
 <ul class="simple">
@@ -528,7 +513,7 @@ file suffix: .csv
 </div>
 </section>
 <section id="reassemble-the-parts-to-form-the-path-for-the-results-file">
-<h4>2) Reassemble the parts to form the path for the results file:<a class="headerlink" href="#reassemble-the-parts-to-form-the-path-for-the-results-file" title="Link to this heading">#</a></h4>
+<h4>2) Reassemble the parts to form the path for the results file:<a class="headerlink" href="#reassemble-the-parts-to-form-the-path-for-the-results-file" title="Permalink to this heading">#</a></h4>
 <p>For the data file in ‘behavioral_data/20230914/final_behavioral_scores.csv’, the results should be in
 ‘behavioral_results/20230914/final_behavioral_scores.txt’.</p>
 <div class="cell docutils container">
@@ -546,10 +531,10 @@ file suffix: .csv
 </section>
 </section>
 <section id="exercise-2-discovering-files">
-<h3>Exercise 2 - Discovering files<a class="headerlink" href="#exercise-2-discovering-files" title="Link to this heading">#</a></h3>
+<h3>Exercise 2 - Discovering files<a class="headerlink" href="#exercise-2-discovering-files" title="Permalink to this heading">#</a></h3>
 <p>To process all data files in the folder <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code>, we first need to discover them, using <code class="docutils literal notranslate"><span class="pre">glob</span></code>.</p>
 <section id="list-all-files-in-a-folder">
-<h4>1) List all files in a folder<a class="headerlink" href="#list-all-files-in-a-folder" title="Link to this heading">#</a></h4>
+<h4>1) List all files in a folder<a class="headerlink" href="#list-all-files-in-a-folder" title="Permalink to this heading">#</a></h4>
 <p>The subfolder <code class="docutils literal notranslate"><span class="pre">20230914</span></code> in <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code> contains a bunch of files. Use <code class="docutils literal notranslate"><span class="pre">glob</span></code> to list all files in that folder:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -565,7 +550,7 @@ file suffix: .csv
 </div>
 </section>
 <section id="list-only-the-data-files-ending-in-csv-in-the-sub-folder">
-<h4>2) List only the data files (ending in .csv) in the sub folder<a class="headerlink" href="#list-only-the-data-files-ending-in-csv-in-the-sub-folder" title="Link to this heading">#</a></h4>
+<h4>2) List only the data files (ending in .csv) in the sub folder<a class="headerlink" href="#list-only-the-data-files-ending-in-csv-in-the-sub-folder" title="Permalink to this heading">#</a></h4>
 <p>The listing above yielded 3 files - two data files ending in ‘.csv’ and one garbage file called ‘broken.msg’. We only want to list the data files - not the garbage file.</p>
 <p>Modify your code that uses <code class="docutils literal notranslate"><span class="pre">glob</span></code> above to list only the ‘.csv’ files, but no other files that might exist in that folder.</p>
 <div class="cell docutils container">
@@ -582,7 +567,7 @@ file suffix: .csv
 </div>
 </section>
 <section id="list-all-data-files-ending-in-csv-in-all-sub-folders">
-<h4>3) List all data files (ending in csv) in all sub folders<a class="headerlink" href="#list-all-data-files-ending-in-csv-in-all-sub-folders" title="Link to this heading">#</a></h4>
+<h4>3) List all data files (ending in csv) in all sub folders<a class="headerlink" href="#list-all-data-files-ending-in-csv-in-all-sub-folders" title="Permalink to this heading">#</a></h4>
 <p>We want to process <em>all</em> data files - from all days in <code class="docutils literal notranslate"><span class="pre">behavioral_results</span></code>, not just the ones from the day <code class="docutils literal notranslate"><span class="pre">20230914</span></code>.</p>
 <p>Modify your code that uses <code class="docutils literal notranslate"><span class="pre">glob</span></code> above to list all the csv files in all subfolders in <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code>. Use a single command - no for loop!</p>
 <div class="cell docutils container">
@@ -600,10 +585,10 @@ file suffix: .csv
 </section>
 </section>
 <section id="exercise-3-manipulate-file-names-in-a-list">
-<h3>Exercise 3 - Manipulate file names in a list<a class="headerlink" href="#exercise-3-manipulate-file-names-in-a-list" title="Link to this heading">#</a></h3>
+<h3>Exercise 3 - Manipulate file names in a list<a class="headerlink" href="#exercise-3-manipulate-file-names-in-a-list" title="Permalink to this heading">#</a></h3>
 <p>Now that we have a listing of the data files, we can now take apart the names of the data files and generate the names for results files. We will basically apply what we have done in exercises 1 + 2 above to all paths, using a for loop.</p>
 <section id="id1">
-<h4>1) Take the path for the data file apart:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<h4>1) Take the path for the data file apart:<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <p>As a first step, take the first file in the list <code class="docutils literal notranslate"><span class="pre">data_files</span></code>.</p>
 <p>Use path manipulations to extract the following information form the path:</p>
 <ul class="simple">
@@ -629,7 +614,7 @@ file suffix: .csv
 </div>
 </section>
 <section id="reassemble-the-parts-from-the-first-file-name-form-the-path-for-the-results-file">
-<h4>2) Reassemble the parts from the first file name form the path for the results file<a class="headerlink" href="#reassemble-the-parts-from-the-first-file-name-form-the-path-for-the-results-file" title="Link to this heading">#</a></h4>
+<h4>2) Reassemble the parts from the first file name form the path for the results file<a class="headerlink" href="#reassemble-the-parts-from-the-first-file-name-form-the-path-for-the-results-file" title="Permalink to this heading">#</a></h4>
 <p>Now take the file parts and reassemble/modify them to generate the path for a results file.</p>
 <p>For the data file in ‘behavioral_data/20230912/final_behavioral_scores.csv’, the results should be in
 ‘behavioral_results/20230912/final_behavioral_scores.txt’.</p>
@@ -647,7 +632,7 @@ file suffix: .csv
 </div>
 </section>
 <section id="apply-steps-1-2-to-all-files-in-the-list">
-<h4>3) Apply steps 1 + 2 to all files in the list<a class="headerlink" href="#apply-steps-1-2-to-all-files-in-the-list" title="Link to this heading">#</a></h4>
+<h4>3) Apply steps 1 + 2 to all files in the list<a class="headerlink" href="#apply-steps-1-2-to-all-files-in-the-list" title="Permalink to this heading">#</a></h4>
 <p>Now take apart the names of the data files and reassemble them to the names of the results files for files in <code class="docutils literal notranslate"><span class="pre">data_files</span></code>.</p>
 <p>Collect the names of the results files in a new list called <code class="docutils literal notranslate"><span class="pre">results_file_names</span></code>.</p>
 <div class="cell docutils container">
@@ -691,10 +676,10 @@ behavioral_results/20230917/initial_behavioral_scores.txt
 </section>
 </section>
 <section id="exercise-4-processing-files">
-<h3>Exercise 4 - Processing files<a class="headerlink" href="#exercise-4-processing-files" title="Link to this heading">#</a></h3>
+<h3>Exercise 4 - Processing files<a class="headerlink" href="#exercise-4-processing-files" title="Permalink to this heading">#</a></h3>
 <p>We have a list of all data files in the folder <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code>. Let’s process the data.</p>
 <section id="load-data-from-a-single-file">
-<h4>1) Load data from a single file<a class="headerlink" href="#load-data-from-a-single-file" title="Link to this heading">#</a></h4>
+<h4>1) Load data from a single file<a class="headerlink" href="#load-data-from-a-single-file" title="Permalink to this heading">#</a></h4>
 <p>As a first step, take the first file in the list <code class="docutils literal notranslate"><span class="pre">data_files</span></code>.</p>
 <p>Load the data from the file using <code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code>.</p>
 <div class="cell docutils container">
@@ -719,7 +704,7 @@ behavioral_results/20230917/initial_behavioral_scores.txt
 </div>
 </section>
 <section id="compute-the-mean">
-<h4>2) Compute the mean<a class="headerlink" href="#compute-the-mean" title="Link to this heading">#</a></h4>
+<h4>2) Compute the mean<a class="headerlink" href="#compute-the-mean" title="Permalink to this heading">#</a></h4>
 <p>Compute the mean of the data loaded from the first file</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -730,7 +715,7 @@ behavioral_results/20230917/initial_behavioral_scores.txt
 </div>
 </section>
 <section id="load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-list">
-<h4>3) Load data from all files, compute the means and collect the means in a list<a class="headerlink" href="#load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-list" title="Link to this heading">#</a></h4>
+<h4>3) Load data from all files, compute the means and collect the means in a list<a class="headerlink" href="#load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-list" title="Permalink to this heading">#</a></h4>
 <p>Now let’s apply steps 1+2 to all data files using a for loop:</p>
 <ul class="simple">
 <li><p>load the data from each file using <code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code></p></li>
@@ -764,7 +749,7 @@ behavioral_results/20230917/initial_behavioral_scores.txt
 </div>
 </section>
 <section id="load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-2d-numpy-array">
-<h4>4) Load data from all files, compute the means and collect the means in a 2D numpy array<a class="headerlink" href="#load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-2d-numpy-array" title="Link to this heading">#</a></h4>
+<h4>4) Load data from all files, compute the means and collect the means in a 2D numpy array<a class="headerlink" href="#load-data-from-all-files-compute-the-means-and-collect-the-means-in-a-2d-numpy-array" title="Permalink to this heading">#</a></h4>
 <p>The goal of our analysis is the compare the intial and final score for each data, to see whether our animal made progress. Saving all results in a simple list is not very useful, since we do not now which value in the list corresponds to which day and which epoch (initial or final).</p>
 <p>Let’s arrange the data in a 2D numpy array:</p>
 <ul class="simple">
@@ -812,7 +797,7 @@ behavioral_data/20230917/initial_behavioral_scores.csv
 </div>
 </section>
 <section id="save-the-results-to-a-file">
-<h4>5) Save the results to a file<a class="headerlink" href="#save-the-results-to-a-file" title="Link to this heading">#</a></h4>
+<h4>5) Save the results to a file<a class="headerlink" href="#save-the-results-to-a-file" title="Permalink to this heading">#</a></h4>
 <p>You are given a 2D numpy array with results (first column - initial scores, second column - final scores, rows are files).</p>
 <p>Save the array to a text file in the folder <code class="docutils literal notranslate"><span class="pre">behavioral_results</span></code> as the file <code class="docutils literal notranslate"><span class="pre">scores.txt</span></code></p>
 <div class="cell docutils container">
@@ -843,7 +828,7 @@ behavioral_data/20230917/initial_behavioral_scores.csv
 </section>
 </section>
 <section id="exercise-5-load-the-results-from-the-file-you-just-saved-and-plot-the-results">
-<h3>Exercise 5 - load the results from the file you just saved and plot the results<a class="headerlink" href="#exercise-5-load-the-results-from-the-file-you-just-saved-and-plot-the-results" title="Link to this heading">#</a></h3>
+<h3>Exercise 5 - load the results from the file you just saved and plot the results<a class="headerlink" href="#exercise-5-load-the-results-from-the-file-you-just-saved-and-plot-the-results" title="Permalink to this heading">#</a></h3>
 <p>Now load the results from the file and plot them.</p>
 <p>Generate a single plot, with the initial results as a red line, and the final results as a green line.</p>
 <p>Save the plot to a file <code class="docutils literal notranslate"><span class="pre">scores.png</span></code> in the folder <code class="docutils literal notranslate"><span class="pre">behavioral_results</span></code>.</p>
@@ -890,8 +875,8 @@ behavioral_data/20230917/initial_behavioral_scores.csv
               
               
               
-                <footer class="prev-next-footer d-print-none">
-                  
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="3.02_numpy_exercises.html"
@@ -919,7 +904,6 @@ behavioral_data/20230917/initial_behavioral_scores.csv
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -977,10 +961,9 @@ By Jan Clemens
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1004,8 +987,8 @@ By Jan Clemens
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>

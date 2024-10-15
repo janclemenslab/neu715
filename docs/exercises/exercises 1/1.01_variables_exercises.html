@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Variables &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
@@ -14,49 +15,53 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 1/1.01_variables_exercises';</script>
@@ -73,23 +78,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,20 +121,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,9 +141,6 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
-  
-    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -150,22 +149,10 @@
   
   
   
-  
     <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -248,7 +235,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -257,14 +244,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -289,14 +276,14 @@
       
       <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 1/1.01_variables_exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch on Binder"
+   title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+    <img src="../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -307,14 +294,14 @@
       
       <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 1/1.01_variables_exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
+   title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+    <img src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -388,28 +375,26 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -460,12 +445,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="variables">
-<h1>Variables<a class="headerlink" href="#variables" title="Link to this heading">#</a></h1>
+<h1>Variables<a class="headerlink" href="#variables" title="Permalink to this heading">#</a></h1>
 <section id="how-do-i-use-the-exercises">
-<h2>How do I use the Exercises?<a class="headerlink" href="#how-do-i-use-the-exercises" title="Link to this heading">#</a></h2>
+<h2>How do I use the Exercises?<a class="headerlink" href="#how-do-i-use-the-exercises" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Go to the course website: [<a class="reference external" href="http://janclemenslab.org/neu715/intro">http://janclemenslab.org/neu715/intro</a>]</p></li>
 <li><p>In the table of content on the left, go to “Basics - exercises/Variables”</p></li>
@@ -478,9 +463,9 @@ document.write(`
 </ol>
 </section>
 <section id="exercise-1-variables-and-arithmetic">
-<h2>Exercise 1: Variables and arithmetic<a class="headerlink" href="#exercise-1-variables-and-arithmetic" title="Link to this heading">#</a></h2>
+<h2>Exercise 1: Variables and arithmetic<a class="headerlink" href="#exercise-1-variables-and-arithmetic" title="Permalink to this heading">#</a></h2>
 <section id="compute-the-density-of-a-whale-using-variables">
-<h3>Compute the density of a whale using variables<a class="headerlink" href="#compute-the-density-of-a-whale-using-variables" title="Link to this heading">#</a></h3>
+<h3>Compute the density of a whale using variables<a class="headerlink" href="#compute-the-density-of-a-whale-using-variables" title="Permalink to this heading">#</a></h3>
 <p>Mabel and Jolanda, our friends from the department of marine biology, ask us to help them with automating a computation for them.
 They have measured the weight and volume of Keiko, a whale they are tracking:</p>
 <ul class="simple">
@@ -507,7 +492,7 @@ They have measured the weight and volume of Keiko, a whale they are tracking:</p
 </ul>
 </section>
 <section id="improve-the-code-using-variables">
-<h3>Improve the code using variables<a class="headerlink" href="#improve-the-code-using-variables" title="Link to this heading">#</a></h3>
+<h3>Improve the code using variables<a class="headerlink" href="#improve-the-code-using-variables" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Make it flexible: Separate data and computation by creating two variables for mass and volume and by computing the density as the ratio of the two.</p></li>
 <li><p>Make it readable: Give your variables meaningful names that indicate their content - do not use <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>. Add comments to indicate the variables’ units.</p></li>
@@ -521,7 +506,7 @@ They have measured the weight and volume of Keiko, a whale they are tracking:</p
 </div>
 </section>
 <section id="compute-the-whales-combined-mass-and-volume-their-individual-densities-and-the-average-of-their-densities">
-<h3>Compute the whales’ combined mass and volume, their individual densities, and the average of their densities.<a class="headerlink" href="#compute-the-whales-combined-mass-and-volume-their-individual-densities-and-the-average-of-their-densities" title="Link to this heading">#</a></h3>
+<h3>Compute the whales’ combined mass and volume, their individual densities, and the average of their densities.<a class="headerlink" href="#compute-the-whales-combined-mass-and-volume-their-individual-densities-and-the-average-of-their-densities" title="Permalink to this heading">#</a></h3>
 <p>Mabel and Jolanda, our friends from the department of marine biology, need to ship Keiko and her mate, Moby, to the pacific. To know whether the capacity of our container is sufficient, they need to know their combined mass, their combined volume, and their average density. They need our help again!!</p>
 <p>Execute below cell once to create the variables for the whales’ individual volumes and masses.
 Then perform the computations on these variables in the cell “COMPUTATION!” below that.</p>
@@ -554,7 +539,7 @@ Then perform the computations on these variables in the cell “COMPUTATION!” 
 </section>
 </section>
 <section id="exercise-2-calculate-the-area-and-the-volume-of-a-cube">
-<h2>Exercise 2: Calculate the area and the volume of a cube.<a class="headerlink" href="#exercise-2-calculate-the-area-and-the-volume-of-a-cube" title="Link to this heading">#</a></h2>
+<h2>Exercise 2: Calculate the area and the volume of a cube.<a class="headerlink" href="#exercise-2-calculate-the-area-and-the-volume-of-a-cube" title="Permalink to this heading">#</a></h2>
 <p>Here are the formulas for the area and volume of a cube:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(A = W * D\)</span>, <span class="math notranslate nohighlight">\(A\)</span> is the area of the base of the cube, and <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(D\)</span> are the width and depth.</p></li>
@@ -577,7 +562,7 @@ Then perform the computations on these variables in the cell “COMPUTATION!” 
 </div>
 </section>
 <section id="exercise-3-calculate-the-circumference-and-area-of-a-circle-and-the-volume-of-a-sphere">
-<h2>Exercise 3: Calculate the circumference and area of a circle and the volume of a sphere<a class="headerlink" href="#exercise-3-calculate-the-circumference-and-area-of-a-circle-and-the-volume-of-a-sphere" title="Link to this heading">#</a></h2>
+<h2>Exercise 3: Calculate the circumference and area of a circle and the volume of a sphere<a class="headerlink" href="#exercise-3-calculate-the-circumference-and-area-of-a-circle-and-the-volume-of-a-sphere" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>circumference of a circle: <span class="math notranslate nohighlight">\(2*\pi*r\)</span></p></li>
 <li><p>area of a circle: <span class="math notranslate nohighlight">\(\pi * r^2\)</span></p></li>
@@ -598,9 +583,9 @@ Make your code efficient by re-using already calculated results.</p>
 </div>
 </section>
 <section id="exercise-4-variable-types-and-type-casting">
-<h2>Exercise 4: variable types and type casting<a class="headerlink" href="#exercise-4-variable-types-and-type-casting" title="Link to this heading">#</a></h2>
+<h2>Exercise 4: variable types and type casting<a class="headerlink" href="#exercise-4-variable-types-and-type-casting" title="Permalink to this heading">#</a></h2>
 <section id="adding-two-numbers-two-strings-and-a-string-and-a-number">
-<h3>Adding two numbers, two strings, and a string and a number<a class="headerlink" href="#adding-two-numbers-two-strings-and-a-string-and-a-number" title="Link to this heading">#</a></h3>
+<h3>Adding two numbers, two strings, and a string and a number<a class="headerlink" href="#adding-two-numbers-two-strings-and-a-string-and-a-number" title="Permalink to this heading">#</a></h3>
 <p>We know what happens when we add two variables that are numbers:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">58</span>
@@ -630,7 +615,7 @@ Make your code efficient by re-using already calculated results.</p>
 </div>
 </section>
 <section id="fix-the-last-error-above-using-type-casting">
-<h3>Fix the last error above using type casting<a class="headerlink" href="#fix-the-last-error-above-using-type-casting" title="Link to this heading">#</a></h3>
+<h3>Fix the last error above using type casting<a class="headerlink" href="#fix-the-last-error-above-using-type-casting" title="Permalink to this heading">#</a></h3>
 <p>In the previous exercise, you observed that adding variables of different types - for instance a string and a number does not work.</p>
 <p>You can fix this by converting the types of variables so that they match - a procedure called <em>type casting</em>.</p>
 <p>A variable can be converted:</p>
@@ -686,13 +671,13 @@ Make your code efficient by re-using already calculated results.</p>
 </section>
 </section>
 <section id="exercise-4-keeping-track-of-and-re-using-variables">
-<h2>Exercise 4: Keeping track of and re-using variables<a class="headerlink" href="#exercise-4-keeping-track-of-and-re-using-variables" title="Link to this heading">#</a></h2>
+<h2>Exercise 4: Keeping track of and re-using variables<a class="headerlink" href="#exercise-4-keeping-track-of-and-re-using-variables" title="Permalink to this heading">#</a></h2>
 <p>Since all cells in your notebook share the same namespace, you can re-use variables that you have created in another cell.
 This allows you to split your computation into multiple cells.</p>
 <p><strong>Caution</strong>: This re-use can have unexpected consequences if you run the same cell multiple times while coding or if you run your cells out of order.</p>
 <p>Let’s do some exercises about that:</p>
 <section id="what-s-the-value-of-x-at-end-of-the-program-below">
-<h3>What’s the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> at end of the program below?<a class="headerlink" href="#what-s-the-value-of-x-at-end-of-the-program-below" title="Link to this heading">#</a></h3>
+<h3>What’s the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> at end of the program below?<a class="headerlink" href="#what-s-the-value-of-x-at-end-of-the-program-below" title="Permalink to this heading">#</a></h3>
 <p>Go through the program line-by-line <em>without running it</em> and explain the value of <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
@@ -705,7 +690,7 @@ This allows you to split your computation into multiple cells.</p>
 </div>
 </section>
 <section id="what-s-the-value-of-c-if-we-run-the-code-below-what-is-the-value-of-c-if-we-run-below-code-a-second-time">
-<h3>What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code below? What is the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run below code a second time?<a class="headerlink" href="#what-s-the-value-of-c-if-we-run-the-code-below-what-is-the-value-of-c-if-we-run-below-code-a-second-time" title="Link to this heading">#</a></h3>
+<h3>What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code below? What is the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run below code a second time?<a class="headerlink" href="#what-s-the-value-of-c-if-we-run-the-code-below-what-is-the-value-of-c-if-we-run-below-code-a-second-time" title="Permalink to this heading">#</a></h3>
 <p>Try to predict what will happen before you run the code. Was your prediction you correct?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -724,7 +709,7 @@ This allows you to split your computation into multiple cells.</p>
 </div>
 </section>
 <section id="again-what-s-the-value-of-c-if-we-run-the-code-below-once-what-is-the-value-of-c-if-we-run-the-code-a-second-time">
-<h3>Again: What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code below once? What is the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code a second time?<a class="headerlink" href="#again-what-s-the-value-of-c-if-we-run-the-code-below-once-what-is-the-value-of-c-if-we-run-the-code-a-second-time" title="Link to this heading">#</a></h3>
+<h3>Again: What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code below once? What is the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code a second time?<a class="headerlink" href="#again-what-s-the-value-of-c-if-we-run-the-code-below-once-what-is-the-value-of-c-if-we-run-the-code-a-second-time" title="Permalink to this heading">#</a></h3>
 <p>Predict what will happen without running the code (you need to have run the cell above before). Explain why.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -742,7 +727,7 @@ This allows you to split your computation into multiple cells.</p>
 </div>
 </section>
 <section id="what-s-the-value-of-c-in-the-below-code">
-<h3>What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> in the below code?<a class="headerlink" href="#what-s-the-value-of-c-in-the-below-code" title="Link to this heading">#</a></h3>
+<h3>What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> in the below code?<a class="headerlink" href="#what-s-the-value-of-c-in-the-below-code" title="Permalink to this heading">#</a></h3>
 <p>Why is it not <code class="docutils literal notranslate"><span class="pre">16</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">=</span> <span class="pre">20</span></code>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -790,8 +775,8 @@ This allows you to split your computation into multiple cells.</p>
               
               
               
-                <footer class="prev-next-footer d-print-none">
-                  
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../../lectures/lecture%202/2.05_imports.html"
@@ -819,7 +804,6 @@ This allows you to split your computation into multiple cells.</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -869,10 +853,9 @@ By Jan Clemens
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -896,8 +879,8 @@ By Jan Clemens
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>

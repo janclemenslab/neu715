@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Exercises 3.2 - Numpy &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
@@ -14,49 +15,53 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 3/3.02_numpy_exercises';</script>
@@ -73,23 +78,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,20 +121,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,9 +141,6 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
-  
-    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -150,22 +149,10 @@
   
   
   
-  
     <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -248,7 +235,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -257,14 +244,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -289,14 +276,14 @@
       
       <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 3/3.02_numpy_exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch on Binder"
+   title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+    <img src="../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -307,14 +294,14 @@
       
       <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 3/3.02_numpy_exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
+   title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+    <img src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -388,28 +375,26 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -470,12 +455,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercises-3-2-numpy">
-<h1>Exercises 3.2 - Numpy<a class="headerlink" href="#exercises-3-2-numpy" title="Link to this heading">#</a></h1>
+<h1>Exercises 3.2 - Numpy<a class="headerlink" href="#exercises-3-2-numpy" title="Permalink to this heading">#</a></h1>
 <section id="exercise-1-creating-arrays">
-<h2>Exercise 1: Creating arrays<a class="headerlink" href="#exercise-1-creating-arrays" title="Link to this heading">#</a></h2>
+<h2>Exercise 1: Creating arrays<a class="headerlink" href="#exercise-1-creating-arrays" title="Permalink to this heading">#</a></h2>
 <p>Create different numpy arrays with the following properties. Use the numpy functions, no for loops!</p>
 <ol class="arabic simple">
 <li><p>4-element vector of zeros</p></li>
@@ -492,7 +477,7 @@ document.write(`
 </div>
 </section>
 <section id="exercise-2-math-with-arrays">
-<h2>Exercise 2: Math with arrays<a class="headerlink" href="#exercise-2-math-with-arrays" title="Link to this heading">#</a></h2>
+<h2>Exercise 2: Math with arrays<a class="headerlink" href="#exercise-2-math-with-arrays" title="Permalink to this heading">#</a></h2>
 <p>When creating time values for plotting before we needed lists and for loops:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -525,7 +510,7 @@ document.write(`
 </div>
 <p>Let’s do this using numpy now - without any for loops.</p>
 <section id="exercise-2a-time-axis-starting-at-0-seconds">
-<h3>Exercise 2a - time axis starting at 0 seconds<a class="headerlink" href="#exercise-2a-time-axis-starting-at-0-seconds" title="Link to this heading">#</a></h3>
+<h3>Exercise 2a - time axis starting at 0 seconds<a class="headerlink" href="#exercise-2a-time-axis-starting-at-0-seconds" title="Permalink to this heading">#</a></h3>
 <p>Our data has 10 values, sampled at an interval of 10 milliseconds, starting at 2 seconds. Use <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> function to create the array with time value for plotting in a single line. Plot the data and add proper x-axis labels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -546,7 +531,7 @@ document.write(`
 </div>
 </section>
 <section id="exercise-2b-time-axis-starting-at-2-seconds">
-<h3>Exercise 2b - time axis starting at 2 seconds<a class="headerlink" href="#exercise-2b-time-axis-starting-at-2-seconds" title="Link to this heading">#</a></h3>
+<h3>Exercise 2b - time axis starting at 2 seconds<a class="headerlink" href="#exercise-2b-time-axis-starting-at-2-seconds" title="Permalink to this heading">#</a></h3>
 <p>We just realized that we made a mistake - the data were sampled starting at 2 seconds. Add 2 to each value of the time array and replot the data with the new time axis</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -567,7 +552,7 @@ document.write(`
 </section>
 </section>
 <section id="exercise-3-z-scoring-our-data">
-<h2>Exercise 3: Z-scoring our data<a class="headerlink" href="#exercise-3-z-scoring-our-data" title="Link to this heading">#</a></h2>
+<h2>Exercise 3: Z-scoring our data<a class="headerlink" href="#exercise-3-z-scoring-our-data" title="Permalink to this heading">#</a></h2>
 <p>In a previous exercised, we have z-scored some temperature data using core python and a bunch of for loops.</p>
 <p>Remember that z-scoring amounts to for each value: subtracting the mean, <span class="math notranslate nohighlight">\(M\)</span>, and dividing by the standard deviation, <span class="math notranslate nohighlight">\(S\)</span>:
 <span class="math notranslate nohighlight">\(z_i = (x_i - M) / S\)</span></p>
@@ -648,7 +633,7 @@ document.write(`
 </div>
 </section>
 <section id="exercise-4-slice-indexing">
-<h2>Exercise 4: Slice indexing<a class="headerlink" href="#exercise-4-slice-indexing" title="Link to this heading">#</a></h2>
+<h2>Exercise 4: Slice indexing<a class="headerlink" href="#exercise-4-slice-indexing" title="Permalink to this heading">#</a></h2>
 <p>You are given a matrix. Use slice indexing to:</p>
 <ol class="arabic simple">
 <li><p>print the second row</p></li>
@@ -687,11 +672,11 @@ document.write(`
 </div>
 </section>
 <section id="exercise-5-boolean-indexing">
-<h2>Exercise 5 - Boolean indexing<a class="headerlink" href="#exercise-5-boolean-indexing" title="Link to this heading">#</a></h2>
+<h2>Exercise 5 - Boolean indexing<a class="headerlink" href="#exercise-5-boolean-indexing" title="Permalink to this heading">#</a></h2>
 <p>We are given a numpy array, <code class="docutils literal notranslate"><span class="pre">x</span></code> of data values.</p>
 <p>No for loops allowed in this exercise!</p>
 <section id="exercise-5a-comparisons-on-arrays-in-numpy">
-<h3>Exercise 5a - comparisons on arrays in numpy<a class="headerlink" href="#exercise-5a-comparisons-on-arrays-in-numpy" title="Link to this heading">#</a></h3>
+<h3>Exercise 5a - comparisons on arrays in numpy<a class="headerlink" href="#exercise-5a-comparisons-on-arrays-in-numpy" title="Permalink to this heading">#</a></h3>
 <p>Using numpy (no for loops) and comparison operators, generate an new boolean array <code class="docutils literal notranslate"><span class="pre">greater_zero</span></code> that has the value <code class="docutils literal notranslate"><span class="pre">True</span></code> at all indices for which <code class="docutils literal notranslate"><span class="pre">x</span></code> is &gt;0, and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -705,7 +690,7 @@ document.write(`
 </div>
 </section>
 <section id="exercise-5b-boolean-indexing-1">
-<h3>Exercise 5b - boolean indexing (1)<a class="headerlink" href="#exercise-5b-boolean-indexing-1" title="Link to this heading">#</a></h3>
+<h3>Exercise 5b - boolean indexing (1)<a class="headerlink" href="#exercise-5b-boolean-indexing-1" title="Permalink to this heading">#</a></h3>
 <p>Expand on your solution above. Use boolean indexing to print</p>
 <ul class="simple">
 <li><p>all values &gt;0</p></li>
@@ -723,7 +708,7 @@ document.write(`
 </div>
 </section>
 <section id="exercise-5c-boolean-indexing-2">
-<h3>Exercise 5c - boolean indexing (2)<a class="headerlink" href="#exercise-5c-boolean-indexing-2" title="Link to this heading">#</a></h3>
+<h3>Exercise 5c - boolean indexing (2)<a class="headerlink" href="#exercise-5c-boolean-indexing-2" title="Permalink to this heading">#</a></h3>
 <p>Expand again on your solution to compute the mean of:</p>
 <ul class="simple">
 <li><p>all values &gt;0</p></li>
@@ -742,9 +727,9 @@ document.write(`
 </section>
 </section>
 <section id="exercise-6-searching-arrays">
-<h2>Exercise 6: Searching arrays<a class="headerlink" href="#exercise-6-searching-arrays" title="Link to this heading">#</a></h2>
+<h2>Exercise 6: Searching arrays<a class="headerlink" href="#exercise-6-searching-arrays" title="Permalink to this heading">#</a></h2>
 <section id="exercise-6a-counting-true-values-important">
-<h3>Exercise 6a - counting True values (Important)<a class="headerlink" href="#exercise-6a-counting-true-values-important" title="Link to this heading">#</a></h3>
+<h3>Exercise 6a - counting True values (Important)<a class="headerlink" href="#exercise-6a-counting-true-values-important" title="Permalink to this heading">#</a></h3>
 <p>In the array <code class="docutils literal notranslate"><span class="pre">x</span></code>, how many values:</p>
 <ul class="simple">
 <li><p>are &lt;0</p></li>
@@ -764,7 +749,7 @@ document.write(`
 </div>
 </section>
 <section id="exercise-6b-getting-the-indices-of-true-values">
-<h3>Exercise 6b - getting the indices of True values<a class="headerlink" href="#exercise-6b-getting-the-indices-of-true-values" title="Link to this heading">#</a></h3>
+<h3>Exercise 6b - getting the indices of True values<a class="headerlink" href="#exercise-6b-getting-the-indices-of-true-values" title="Permalink to this heading">#</a></h3>
 <p>Given the following array of data values, us <code class="docutils literal notranslate"><span class="pre">np.where</span></code> get the indices at which:</p>
 <ul class="simple">
 <li><p>the data is &lt;0</p></li>
@@ -784,10 +769,10 @@ document.write(`
 </section>
 </section>
 <section id="exercise-7-spike-detection">
-<h2>Exercise 7: Spike detection<a class="headerlink" href="#exercise-7-spike-detection" title="Link to this heading">#</a></h2>
+<h2>Exercise 7: Spike detection<a class="headerlink" href="#exercise-7-spike-detection" title="Permalink to this heading">#</a></h2>
 <p>Let’s implement the simple spike detection task using numpy</p>
 <section id="exercise-7a-load-the-data">
-<h3>Exercise 7a: Load the data:<a class="headerlink" href="#exercise-7a-load-the-data" title="Link to this heading">#</a></h3>
+<h3>Exercise 7a: Load the data:<a class="headerlink" href="#exercise-7a-load-the-data" title="Permalink to this heading">#</a></h3>
 <p>The voltage and time values for each sample in the recording are saved in <code class="docutils literal notranslate"><span class="pre">data/voltage_trace.npz</span></code>. Load the data using <code class="docutils literal notranslate"><span class="pre">np.load</span></code> and plot the data (using the time and voltage values from the data file).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -826,7 +811,7 @@ document.write(`
 </div>
 </section>
 <section id="exercise-7b-detect-spikes-using-numpy">
-<h3>Exercise 7b: Detect spikes using numpy<a class="headerlink" href="#exercise-7b-detect-spikes-using-numpy" title="Link to this heading">#</a></h3>
+<h3>Exercise 7b: Detect spikes using numpy<a class="headerlink" href="#exercise-7b-detect-spikes-using-numpy" title="Permalink to this heading">#</a></h3>
 <p>This is our spike detection code, using core python:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -857,7 +842,7 @@ document.write(`
 </div>
 </section>
 <section id="exercise-7c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods">
-<h3>Exercise 7c: Plot the voltage trace and overlay the spike times generated by both methods<a class="headerlink" href="#exercise-7c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods" title="Link to this heading">#</a></h3>
+<h3>Exercise 7c: Plot the voltage trace and overlay the spike times generated by both methods<a class="headerlink" href="#exercise-7c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods" title="Permalink to this heading">#</a></h3>
 <p>The spikes detected using the old python code should be marked as vertical red lines (use <code class="docutils literal notranslate"><span class="pre">plt.axvline</span></code>), the spikes detected using numpy should be marked as green dots at their peaks. Like so:
 <img alt="" src="../../_images/voltage_trace_spikes.png" /></p>
 <p>Did you catch every spike?</p>
@@ -871,7 +856,7 @@ document.write(`
 </section>
 </section>
 <section id="exercise-8-chunking-bonus">
-<h2>Exercise 8: Chunking (bonus)<a class="headerlink" href="#exercise-8-chunking-bonus" title="Link to this heading">#</a></h2>
+<h2>Exercise 8: Chunking (bonus)<a class="headerlink" href="#exercise-8-chunking-bonus" title="Permalink to this heading">#</a></h2>
 <p>We ran an experiment in which we trained a rat to detect a short tone pip. We now tested the rat’s detection performance by presenting the tone pip at different intensities and calculating the detection probability. Load and plot the raw data and compute and plot the mean response probabiltity for each intensity.</p>
 <ul class="simple">
 <li><p>Load the data from the excel file <code class="docutils literal notranslate"><span class="pre">data/sound_expt.xlsx</span></code> and cast it to a numpy array. In parallel, open the data file in excel to determine how the data is structured (which columns hold which information)</p></li>
@@ -880,7 +865,7 @@ document.write(`
 </ul>
 <p><img alt="" src="../../_images/sound_expt.png" /></p>
 <section id="load-the-data-with-pandas-and-cast-it-to-numpy">
-<h3>1. Load the data with pandas and cast it to numpy<a class="headerlink" href="#load-the-data-with-pandas-and-cast-it-to-numpy" title="Link to this heading">#</a></h3>
+<h3>1. Load the data with pandas and cast it to numpy<a class="headerlink" href="#load-the-data-with-pandas-and-cast-it-to-numpy" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -890,7 +875,7 @@ document.write(`
 </div>
 </section>
 <section id="compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity">
-<h3>2. Compute the mean over stimulus response probabilities obtained for the same sound intensity<a class="headerlink" href="#compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity" title="Link to this heading">#</a></h3>
+<h3>2. Compute the mean over stimulus response probabilities obtained for the same sound intensity<a class="headerlink" href="#compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -900,7 +885,7 @@ document.write(`
 </div>
 </section>
 <section id="plot-the-individual-data-as-points-and-the-mean-values-as-a-curve">
-<h3>3. Plot the individual data as points and the mean values as a curve<a class="headerlink" href="#plot-the-individual-data-as-points-and-the-mean-values-as-a-curve" title="Link to this heading">#</a></h3>
+<h3>3. Plot the individual data as points and the mean values as a curve<a class="headerlink" href="#plot-the-individual-data-as-points-and-the-mean-values-as-a-curve" title="Permalink to this heading">#</a></h3>
 <p>The x-axis should be sound intensity, the y-axis response probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -940,8 +925,8 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer d-print-none">
-                  
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../../lectures/lecture%203/3.03_files.html"
@@ -969,7 +954,6 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1029,10 +1013,9 @@ By Jan Clemens
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1056,8 +1039,8 @@ By Jan Clemens
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>
