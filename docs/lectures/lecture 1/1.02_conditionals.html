@@ -469,26 +469,22 @@ document.write(`
 <p>This is done using comparison operators:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> greater than</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> smaller than</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> less than</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">==</span></code> equal (not to be confused with <code class="docutils literal notranslate"><span class="pre">=</span></code> which assigns values to variables)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> greater or equal (not to be confused with <code class="docutils literal notranslate"><span class="pre">=</span></code> which assigns values to variables)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> smaller or equal (not to be confused with <code class="docutils literal notranslate"><span class="pre">=</span></code> which assigns values to variables)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> greater or equal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> less or equal</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">voltage</span> <span class="o">=</span> <span class="o">-</span><span class="mi">40</span>
 <span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
 
-<span class="n">voltage</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">voltage</span> <span class="o">&gt;</span> <span class="n">threshold</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">voltage</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
-<span class="n">voltage</span> <span class="o">=</span> <span class="n">threshold</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">voltage</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">voltage</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">voltage</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">voltage</span> <span class="o">==</span> <span class="n">threshold</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-40 10
-10 10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True False False
 </pre></div>
 </div>
 </div>
@@ -560,7 +556,7 @@ True
 </div>
 </div>
 <ol class="arabic simple" start="4">
-<li><p>Since the condition for the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the indented code block after <code class="docutils literal notranslate"><span class="pre">if</span></code> is executed. If the condition evaluated to <code class="docutils literal notranslate"><span class="pre">False</span></code> the indented code block after <code class="docutils literal notranslate"><span class="pre">else</span></code> would be executed.</p></li>
+<li><p>Since the condition for the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the indented code block after <code class="docutils literal notranslate"><span class="pre">if</span></code> is executed. If the condition had evaluated to <code class="docutils literal notranslate"><span class="pre">False</span></code> the indented code block after <code class="docutils literal notranslate"><span class="pre">else</span></code> would have been executed.</p></li>
 </ol>
 <p>How about this?</p>
 <div class="cell docutils container">
@@ -602,7 +598,7 @@ False
 <li><p>Since the condition for the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is <code class="docutils literal notranslate"><span class="pre">False</span></code>, the code block after <code class="docutils literal notranslate"><span class="pre">if</span></code> is <em>skipped</em>.</p></li>
 <li><p>Python moves to the <code class="docutils literal notranslate"><span class="pre">else</span></code> block and executes the indented code block.</p></li>
 </ol>
-<p>Multiple conditions can be checked by using <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements (short for “else if”). Note, that the order of comparisons matters - python will only execute the first matching statement.</p>
+<p>Multiple conditions can be checked by using <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements (short for “else if”). Note, that the order of comparisons matters - python will only execute the first matching statement and skip the rest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Benton&#39;</span>
