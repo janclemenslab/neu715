@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Variables &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
@@ -15,53 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 1/1.01_variables';</script>
@@ -78,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -141,6 +139,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -149,10 +150,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -235,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -244,14 +257,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -276,14 +289,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 1/1.01_variables.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -294,14 +307,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 1/1.01_variables.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -375,26 +388,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -454,18 +469,18 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="variables">
-<h1>Variables<a class="headerlink" href="#variables" title="Permalink to this heading">#</a></h1>
+<h1>Variables<a class="headerlink" href="#variables" title="Link to this heading">#</a></h1>
 <section id="a-simple-problem-as-motivation-spike-detection">
-<h2>A simple problem as motivation - spike detection<a class="headerlink" href="#a-simple-problem-as-motivation-spike-detection" title="Permalink to this heading">#</a></h2>
+<h2>A simple problem as motivation - spike detection<a class="headerlink" href="#a-simple-problem-as-motivation-spike-detection" title="Link to this heading">#</a></h2>
 <p>To have a problem to start with, let’s assumer we want to detect the spikes in this voltage trace.</p>
 <p>A spike is a peak in the voltage trace exceeding a threshold value.</p>
 <p>More specifically, we are interested in when the spikes occur - the spikes times.</p>
 <p><img alt="" src="../../_images/voltage_trace.png" /></p>
 <section id="how-would-you-solve-this">
-<h3>How would you solve this?<a class="headerlink" href="#how-would-you-solve-this" title="Permalink to this heading">#</a></h3>
+<h3>How would you solve this?<a class="headerlink" href="#how-would-you-solve-this" title="Link to this heading">#</a></h3>
 <p>Let’s break this down into a sequence of simple steps, like a recipe:</p>
 <ol class="arabic simple">
 <li><p>weigh 100 grams flour</p></li>
@@ -482,7 +497,7 @@ document.write(`
 </ol>
 </section>
 <section id="what-do-we-need-to-know-to-detect-spikes-using-python">
-<h3>What do we need to know to detect spikes using python?<a class="headerlink" href="#what-do-we-need-to-know-to-detect-spikes-using-python" title="Permalink to this heading">#</a></h3>
+<h3>What do we need to know to detect spikes using python?<a class="headerlink" href="#what-do-we-need-to-know-to-detect-spikes-using-python" title="Link to this heading">#</a></h3>
 <ul class="contains-task-list simple">
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Present data in code (individual voltage values, manipulate them and store the results) - variables</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Compare variables (voltage to threshold) - boolean values</p></li>
@@ -496,9 +511,9 @@ document.write(`
 </section>
 </section>
 <section id="presenting-data-in-code">
-<h2>Presenting data in code<a class="headerlink" href="#presenting-data-in-code" title="Permalink to this heading">#</a></h2>
+<h2>Presenting data in code<a class="headerlink" href="#presenting-data-in-code" title="Link to this heading">#</a></h2>
 <section id="why-have-variables">
-<h3>Why have variables?<a class="headerlink" href="#why-have-variables" title="Permalink to this heading">#</a></h3>
+<h3>Why have variables?<a class="headerlink" href="#why-have-variables" title="Link to this heading">#</a></h3>
 <p>You can work directly with numbers and use python as a calculator:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -516,7 +531,7 @@ document.write(`
 <p>You can execute the code using Control+Enter.</p>
 </section>
 <section id="variables-abstract-away-specific-data-types-roles-from-the-specific-data-values">
-<h3>Variables abstract away specific data “types”/”roles” from the specific data values<a class="headerlink" href="#variables-abstract-away-specific-data-types-roles-from-the-specific-data-values" title="Permalink to this heading">#</a></h3>
+<h3>Variables abstract away specific data “types”/”roles” from the specific data values<a class="headerlink" href="#variables-abstract-away-specific-data-types-roles-from-the-specific-data-values" title="Link to this heading">#</a></h3>
 <p>Working with numeric values directly isn’t very general, since you tie your code to specific numeric values.</p>
 <p>Variables are a way to make your code more general (and thereby more useful), by separating specific data values from the general computation. You can think of the variable as a storage container: it can store information that you can access via its name and manipulate in your program.</p>
 <p>A variable is created with the syntax <code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">value</span></code>.</p>
@@ -533,7 +548,7 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="computing-firing-rates">
-<h3>Computing firing rates<a class="headerlink" href="#computing-firing-rates" title="Permalink to this heading">#</a></h3>
+<h3>Computing firing rates<a class="headerlink" href="#computing-firing-rates" title="Link to this heading">#</a></h3>
 <p>Back to neuroscience: Say we want to compute the firing rate of a neuron. We have counted the number of spikes (132) our neuron fired during a recording of 16 seconds. The firing rates - the number of spikes per second (1/s=Hz) - is given by the ratio of both:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -598,7 +613,7 @@ document.write(`
 </div>
 </section>
 <section id="dealing-with-text">
-<h3>Dealing with text<a class="headerlink" href="#dealing-with-text" title="Permalink to this heading">#</a></h3>
+<h3>Dealing with text<a class="headerlink" href="#dealing-with-text" title="Link to this heading">#</a></h3>
 <p>How about data that is not numeric, like names?</p>
 <p>Simply assigning letters to a variable does not work - this will throw an error:</p>
 <div class="cell docutils container">
@@ -633,7 +648,7 @@ Variables with text as values are called <em>strings</em>.</p>
 </div>
 <p><strong>Note on errors</strong> When you write “invalid” code, python does not make your computer crash, but generates an error with a (sometimes cryptic) description of the cause of the error. In many programming languages, errors are often called <em>exceptions</em>.</p>
 <section id="note-functions">
-<h4>Note: Functions<a class="headerlink" href="#note-functions" title="Permalink to this heading">#</a></h4>
+<h4>Note: Functions<a class="headerlink" href="#note-functions" title="Link to this heading">#</a></h4>
 <p>To print the value of variables in the notebook, we relied on jupyter’s functionality of printing the result of the last line in a cell.
 To print the value of variables whenever you want, you can use <code class="docutils literal notranslate"><span class="pre">print</span></code>, which is something new: a <strong>function</strong>.
 More about functions (and how to write them yourself) later - they are a great way of structuring and reusing your code and hiding away complexity.</p>
@@ -658,9 +673,9 @@ You can get help about how to use a function use a quotation mark: `function_nam
 </section>
 </section>
 <section id="working-with-numerical-variables-arithmetics-on-numbers">
-<h3>Working with numerical variables - arithmetics on numbers<a class="headerlink" href="#working-with-numerical-variables-arithmetics-on-numbers" title="Permalink to this heading">#</a></h3>
+<h3>Working with numerical variables - arithmetics on numbers<a class="headerlink" href="#working-with-numerical-variables-arithmetics-on-numbers" title="Link to this heading">#</a></h3>
 <p>Back to numbers. To perform computations, you need mathematical operations. These are common (and not so common) operations defined in python:</p>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Symbol</p></th>
 <th class="head"><p>Computation performed</p></th>
@@ -690,6 +705,7 @@ You can get help about how to use a function use a quotation mark: `function_nam
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Examples</span>
@@ -725,7 +741,7 @@ Plus some weird stuff that we will ignore for now:
 </div>
 </section>
 <section id="manipulating-variables">
-<h3>Manipulating variables<a class="headerlink" href="#manipulating-variables" title="Permalink to this heading">#</a></h3>
+<h3>Manipulating variables<a class="headerlink" href="#manipulating-variables" title="Link to this heading">#</a></h3>
 <p>With that we can create and manipulate variables, and print intermediate results.</p>
 <div class="admonition-clicker-question-cdcc-click-me-https-go-uos-de-0ypai admonition">
 <p class="admonition-title">Clicker question “cdcc” (<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
@@ -747,7 +763,7 @@ Plus some weird stuff that we will ignore for now:
 </div>
 </section>
 <section id="types-of-variables">
-<h3>Types of variables<a class="headerlink" href="#types-of-variables" title="Permalink to this heading">#</a></h3>
+<h3>Types of variables<a class="headerlink" href="#types-of-variables" title="Link to this heading">#</a></h3>
 <p>Variables come in different flavors - so far, we have encountered two kinds of variables: numbers and text.</p>
 <p>Kinds of variables are called <em>types</em>. These are the most important ones:</p>
 <ul class="simple">
@@ -760,7 +776,7 @@ Plus some weird stuff that we will ignore for now:
 <p>These types of variables exist in almost any programming language!</p>
 </section>
 <section id="determining-the-type-of-variables">
-<h3>Determining the type of variables<a class="headerlink" href="#determining-the-type-of-variables" title="Permalink to this heading">#</a></h3>
+<h3>Determining the type of variables<a class="headerlink" href="#determining-the-type-of-variables" title="Link to this heading">#</a></h3>
 <p>Wrong variable types can be a source of errors in your code. Below, an error is raised because one cannot add a variable of type string to a number in python. It is therefore often useful to determine the type of a variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -798,7 +814,7 @@ Plus some weird stuff that we will ignore for now:
 </div>
 </section>
 <section id="changing-variable-types">
-<h3>Changing variable types<a class="headerlink" href="#changing-variable-types" title="Permalink to this heading">#</a></h3>
+<h3>Changing variable types<a class="headerlink" href="#changing-variable-types" title="Link to this heading">#</a></h3>
 <p>You can change the type of a variable - <em>cast</em> it to another type - using <code class="docutils literal notranslate"><span class="pre">bool</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>,  <code class="docutils literal notranslate"><span class="pre">str</span></code> as functions, with the variable you want to cast as the argument:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -912,7 +928,7 @@ bool() = False
 </div>
 </section>
 <section id="naming-variables">
-<h3>Naming variables<a class="headerlink" href="#naming-variables" title="Permalink to this heading">#</a></h3>
+<h3>Naming variables<a class="headerlink" href="#naming-variables" title="Link to this heading">#</a></h3>
 <p>You can name a variable <em>almost</em> anything you want.</p>
 <p>It needs to start with a letter or “_” and can contain alphanumeric characters (letters or numbers) plus underscores (“_”):</p>
 <div class="cell docutils container">
@@ -975,7 +991,7 @@ bool() = False
 </div>
 </div>
 <section id="names-should-be-short-but-not-too-short-and-descriptive">
-<h4>Names should be short (but not too short) and descriptive<a class="headerlink" href="#names-should-be-short-but-not-too-short-and-descriptive" title="Permalink to this heading">#</a></h4>
+<h4>Names should be short (but not too short) and descriptive<a class="headerlink" href="#names-should-be-short-but-not-too-short-and-descriptive" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span></code> is very short but meaningless - it is unclear what type of information <code class="docutils literal notranslate"><span class="pre">a</span></code> stores.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">concentration</span></code> or <code class="docutils literal notranslate"><span class="pre">subject_name</span></code> is a bit longer but its meaning is evident from the name.</p></li>
@@ -995,7 +1011,7 @@ bool() = False
 </section>
 </section>
 <section id="keeping-track-of-variables-and-their-values">
-<h2>Keeping track of variables and their values<a class="headerlink" href="#keeping-track-of-variables-and-their-values" title="Permalink to this heading">#</a></h2>
+<h2>Keeping track of variables and their values<a class="headerlink" href="#keeping-track-of-variables-and-their-values" title="Link to this heading">#</a></h2>
 <p>How do you keep track of variables and their values? The <em>kernel</em> is the thing that executes your code. It also stores your <em>namespace</em> - all variables and code that you have executed so far and that are stored in your computer memory.</p>
 <p>If you re-run your code cells out of order, it may be hard to know what’s in your namespace. In that case, you can clear and re-launch the kernel, to start from scratch, with a clean namespace. This will erase any variables stored in memory and reset python to its original state.</p>
 <p>You can list the contents of your namespace with <code class="docutils literal notranslate"><span class="pre">%whos</span></code>:</p>
@@ -1030,7 +1046,7 @@ year                                          str      1968
 </div>
 </div>
 <section id="messing-up-and-restoring-the-namespace">
-<h3>Messing up and restoring the namespace<a class="headerlink" href="#messing-up-and-restoring-the-namespace" title="Permalink to this heading">#</a></h3>
+<h3>Messing up and restoring the namespace<a class="headerlink" href="#messing-up-and-restoring-the-namespace" title="Link to this heading">#</a></h3>
 <p>It is surprisingly easy to mess up you namespace. For instance, you can “overwrite” function names with variables in python.</p>
 <p>Remember the print function? Let’s create a variable named <code class="docutils literal notranslate"><span class="pre">print</span></code> and assign a value to it:</p>
 <div class="cell docutils container">
@@ -1132,7 +1148,7 @@ year                                          str      1968
 </div>
 </section>
 <section id="re-using-and-updating-variables">
-<h3>Re-using and updating variables<a class="headerlink" href="#re-using-and-updating-variables" title="Permalink to this heading">#</a></h3>
+<h3>Re-using and updating variables<a class="headerlink" href="#re-using-and-updating-variables" title="Link to this heading">#</a></h3>
 <p>Alice and Bob count mosquitoes. Alice, to store her count, creates a variable with name <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> and value <code class="docutils literal notranslate"><span class="pre">1</span></code> (she has counted only one mosquito so far).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1206,7 +1222,7 @@ We update the total count with this computation and should now have a total coun
 </section>
 </section>
 <section id="spike-detection-with-python">
-<h2>Spike detection with python<a class="headerlink" href="#spike-detection-with-python" title="Permalink to this heading">#</a></h2>
+<h2>Spike detection with python<a class="headerlink" href="#spike-detection-with-python" title="Link to this heading">#</a></h2>
 <p><img alt="" src="../../_images/voltage_trace.png" /></p>
 <ul class="contains-task-list simple">
 <li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Present data in code (individual voltage values, manipulate them and store the results) - variables</p></li>
@@ -1248,8 +1264,8 @@ We update the total count with this computation and should now have a total coun
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="1.00_notebooks.html"
@@ -1277,6 +1293,7 @@ We update the total count with this computation and should now have a total coun
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1335,9 +1352,10 @@ By Jan Clemens
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1361,8 +1379,8 @@ By Jan Clemens
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
