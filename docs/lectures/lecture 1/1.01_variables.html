@@ -982,7 +982,7 @@ bool() = False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
     <span class="k">for</span> <span class="o">=</span> <span class="mi">3</span>
         <span class="o">^</span>
 <span class="ne">SyntaxError</span>: invalid syntax
@@ -1066,7 +1066,7 @@ year                                          str      1968
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
 
 <span class="ne">TypeError</span>: &#39;str&#39; object is not callable
@@ -1084,7 +1084,7 @@ year                                          str      1968
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="ne">TypeError</span>: &#39;str&#39; object is not callable
@@ -1104,26 +1104,7 @@ year                                          str      1968
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable                                      Type     Data/Info
-----------------------------------------------------------------
-a                                             int      1
-age_as_number                                 int      10
-age_as_str                                    str      10 0
-b                                             str      12.4
-b_as_str                                      str      12.4
-b_cast_to_float                               float    12.4
-concentration                                 float    0.1
-cool_variable                                 int      10
-duration                                      int      16
-firing_rate                                   float    8.25
-n_spikes                                      int      132
-name_of_the_first_subject_on_monday_morning   str      Thelonious
-name_of_the_whale                             str      Keiko
-password_123                                  str      bad
-print                                         str      no, never do this!
-speed                                         str      Mach 2
-subject_name                                  str      Mabel
-year                                          str      1968
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function print(*args, sep=&#39; &#39;, end=&#39;\n&#39;, file=None, flush=False)&gt;
 </pre></div>
 </div>
 </div>
@@ -1136,12 +1117,7 @@ year                                          str      1968
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">print</span><span class="p">))</span>  <span class="c1"># this will return &quot;builtin_function_or_method&quot;</span>
-
-<span class="ne">TypeError</span>: &#39;str&#39; object is not callable
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;builtin_function_or_method&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -1153,12 +1129,29 @@ year                                          str      1968
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_alice_mosquitoes</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># create a new variable `n_alice_mosquitoes` and assign the value 1 to `n_alice_mosquitoes`</span>
-<span class="n">n_alice_mosquitoes</span>
+<span class="c1"># n_alice_mosquitoes</span>
+<span class="o">%</span><span class="k">whos</span>
+
+<span class="n">n_mosquitoes</span> <span class="o">=</span> <span class="n">n_tim_mosquitoes</span> <span class="o">+</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_mosquitoes</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable             Type    Data/Info
+--------------------------------------
+n_alice_mosquitoes   int     1
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># n_alice_mosquitoes</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;whos&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">n_mosquitoes</span> <span class="o">=</span> <span class="n">n_tim_mosquitoes</span> <span class="o">+</span> <span class="mi">20</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="n">n_mosquitoes</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;n_tim_mosquitoes&#39; is not defined
 </pre></div>
 </div>
 </div>
