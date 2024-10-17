@@ -438,9 +438,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-manipulations">List manipulations</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-elements-to-a-list">Adding elements to a list</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-list-elements">Deleting list elements</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outlook-numpy-arrays-are-special-lists-for-number-crunching">Outlook: Numpy arrays are special lists for number crunching</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-more-useful-functions-for-lists">Bonus: More useful functions for lists</a></li>
 </ul>
 </li>
@@ -600,7 +597,7 @@ the last element (index -1): -23
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">31354</span><span class="p">,</span> <span class="mi">235</span><span class="p">]</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">a</span><span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
 
@@ -613,7 +610,7 @@ the last element (index -1): -23
 <section id="index-arithmetic">
 <h3>Index arithmetic<a class="headerlink" href="#index-arithmetic" title="Link to this heading">#</a></h3>
 <p>We can use variables for indexing!! This allows us to perform computations on indices.</p>
-<p>For instance, given an index, we can get the list item at the preceeding or the next index:</p>
+<p>For instance, given an index, we can get the list preceeding or the following item:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">424</span><span class="p">,</span> <span class="mi">1234</span><span class="p">,</span> <span class="mi">14456</span><span class="p">]</span>
@@ -621,7 +618,6 @@ the last element (index -1): -23
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value at index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value following index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value preceeding index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value halfway between 0 and the index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># fix this</span>
 </pre></div>
 </div>
 </div>
@@ -631,29 +627,19 @@ Value following index 4 14456
 Value preceeding index 4 424
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">janc</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">CloudStorage</span><span class="o">/</span><span class="n">Dropbox</span><span class="o">/</span><span class="n">_teaching</span><span class="o">/</span><span class="mi">2023</span><span class="n">ws</span> <span class="n">python</span> <span class="n">course</span><span class="o">/</span><span class="n">neu715</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="n">lecture</span> <span class="mi">1</span><span class="o">/</span><span class="mf">1.03</span><span class="n">_lists</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">17</span> <span class="n">line</span> <span class="mi">6</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/2023ws%20python</span><span class="si">%20c</span><span class="s1">ourse/neu715/lectures/lecture%201/1.03_lists.ipynb#X22sZmlsZQ%3D%3D?line=3&#39;</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value following index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/2023ws%20python</span><span class="si">%20c</span><span class="s1">ourse/neu715/lectures/lecture%201/1.03_lists.ipynb#X22sZmlsZQ%3D%3D?line=4&#39;</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value preceeding index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/janc/Library/CloudStorage/Dropbox/_teaching/2023ws%20python</span><span class="si">%20c</span><span class="s1">ourse/neu715/lectures/lecture%201/1.03_lists.ipynb#X22sZmlsZQ%3D%3D?line=5&#39;</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value halfway between 0 and the index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># fix this</span>
-
-<span class="ne">TypeError</span>: list indices must be integers or slices, not float
-</pre></div>
-</div>
 </div>
 </div>
 </section>
 <section id="accessing-parts-of-a-list-slice-indexing">
 <h3>Accessing parts of a list - slice indexing<a class="headerlink" href="#accessing-parts-of-a-list-slice-indexing" title="Link to this heading">#</a></h3>
 <p>General form <code class="docutils literal notranslate"><span class="pre">list[start_index:stop_index:step]</span></code>.</p>
-<p>You can omit <code class="docutils literal notranslate"><span class="pre">start_index</span></code>, <code class="docutils literal notranslate"><span class="pre">stop_index</span></code>, or <code class="docutils literal notranslate"><span class="pre">step</span></code> and python will fill in defaults:</p>
+<p>You can omit <code class="docutils literal notranslate"><span class="pre">start_index</span></code>, <code class="docutils literal notranslate"><span class="pre">stop_index</span></code>, or <code class="docutils literal notranslate"><span class="pre">step</span></code> and python will fill in default values:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">start_index</span></code> as in <code class="docutils literal notranslate"><span class="pre">list[:stop_index:step]</span></code>: default is 0 (first index)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">stop_index</span></code>  as in <code class="docutils literal notranslate"><span class="pre">list[start_index::step]</span></code>: default the last element.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">step</span></code> as in  as in <code class="docutils literal notranslate"><span class="pre">list[start_index:stop_index:]</span></code>:  default is 1 (get every element)</p></li>
+<li><p>default for <code class="docutils literal notranslate"><span class="pre">start_index</span></code> is 0 (first index)</p></li>
+<li><p>default for <code class="docutils literal notranslate"><span class="pre">stop_index</span></code> is the last element.</p></li>
+<li><p>default for <code class="docutils literal notranslate"><span class="pre">step</span></code> is 1 (get every element)</p></li>
 </ul>
-<p>When specificying <code class="docutils literal notranslate"><span class="pre">stop_index</span></code> the element at the <code class="docutils literal notranslate"><span class="pre">stop_index</span></code> itself is not included.</p>
+<p>Important: When specifying <code class="docutils literal notranslate"><span class="pre">stop_index</span></code> the element at the <code class="docutils literal notranslate"><span class="pre">stop_index</span></code> itself is not included.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">424</span><span class="p">,</span> <span class="mi">1234</span><span class="p">,</span> <span class="mi">14456</span><span class="p">]</span>
@@ -675,7 +661,25 @@ Value preceeding index 4 424
 [14456, 424, 12]
 </pre></div>
 </div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 12, 235, 424, 1234, 14456]
+</pre></div>
 </div>
+</div>
+</div>
+<div class="admonition-clicker-question-lists-indexing-click-me-https-go-uos-de-0ypai admonition">
+<p class="admonition-title">Clicker question “lists indexing”(<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
+<p>Given the list <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">[10,</span> <span class="pre">20,</span> <span class="pre">30,</span> <span class="pre">40,</span> <span class="pre">50]</span></code>,
+Which of the following outputs is correct?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="mi">10</span>
+<span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="mi">40</span>
+<span class="n">a</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">a</span><span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="mi">40</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
 </section>
 <section id="getting-the-number-of-elements-in-a-list">
@@ -846,24 +850,6 @@ after: [10, 30, 20, 40]
 </pre></div>
 </div>
 </section>
-</section>
-<section id="outlook-numpy-arrays-are-special-lists-for-number-crunching">
-<h3>Outlook: Numpy arrays are special lists for number crunching<a class="headerlink" href="#outlook-numpy-arrays-are-special-lists-for-number-crunching" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,))</span>
-<span class="n">a</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])
-</pre></div>
-</div>
-</div>
-</div>
 <section id="bonus-more-useful-functions-for-lists">
 <h4>Bonus: More useful functions for lists<a class="headerlink" href="#bonus-more-useful-functions-for-lists" title="Link to this heading">#</a></h4>
 <p><a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html">https://docs.python.org/3/tutorial/datastructures.html</a></p>
@@ -972,9 +958,6 @@ after: [10, 30, 20, 40]
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-manipulations">List manipulations</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-elements-to-a-list">Adding elements to a list</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-list-elements">Deleting list elements</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outlook-numpy-arrays-are-special-lists-for-number-crunching">Outlook: Numpy arrays are special lists for number crunching</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-more-useful-functions-for-lists">Bonus: More useful functions for lists</a></li>
 </ul>
 </li>

@@ -488,7 +488,7 @@ document.write(`
 <span class="n">mass_moby</span> <span class="o">=</span> <span class="mi">43872</span>  <span class="c1"># kg</span>
 
 <span class="c1"># FIX THIS CODE</span>
-<span class="k">if</span> <span class="n">mass_keiko</span> <span class="o">&lt;</span> <span class="n">mass_moby</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">mass_keiko</span> <span class="o">&gt;</span> <span class="n">mass_moby</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Keiko is heavier than Moby. Stop giving her extra rations!&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Keiko is so skinny! She needs extra rations!&#39;</span><span class="p">)</span>
@@ -496,7 +496,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Keiko is heavier than Moby. Stop giving her extra rations!
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Keiko is so skinny! She needs extra rations!
 </pre></div>
 </div>
 </div>
@@ -517,7 +517,20 @@ If the combined mass is above 85 tons, the program should print “THE WHALES AR
 <span class="c1"># whale 2</span>
 <span class="n">mass_moby</span> <span class="o">=</span> <span class="mi">43872</span>  <span class="c1"># kg</span>
 
+
 <span class="c1"># Your solution here</span>
+<span class="n">c_mass</span> <span class="o">=</span> <span class="mi">85_000</span>  <span class="c1"># mass_keiko + mass_moby</span>
+<span class="k">if</span> <span class="n">c_mass</span> <span class="o">&lt;</span> <span class="mi">85000</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">c_mass</span> <span class="o">&gt;</span> <span class="mi">85000</span><span class="p">:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c
 </pre></div>
 </div>
 </div>
@@ -535,7 +548,15 @@ The value of the <code class="docutils literal notranslate"><span class="pre">vo
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">voltage</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># V</span>
 <span class="n">threshold</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># V</span>
 
-<span class="c1"># your code here</span>
+<span class="k">if</span> <span class="n">voltage</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;nothing&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nothing
 </pre></div>
 </div>
 </div>
