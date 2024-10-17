@@ -720,10 +720,10 @@ A has 7 elements.
 <section id="adding-elements-to-a-list">
 <h4>Adding elements to a list<a class="headerlink" href="#adding-elements-to-a-list" title="Link to this heading">#</a></h4>
 <p>To build up a list of spike times, we need to be able to add elements to a list as they are computed.</p>
-<p>This is done using the <code class="docutils literal notranslate"><span class="pre">append</span></code> method. This will add the argument to the <em>end of the list</em>.</p>
+<p>This is done using the <code class="docutils literal notranslate"><span class="pre">append</span></code> method, which will add its argument to the end of the list.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">append</span></code> method is like a function. But while functions (<code class="docutils literal notranslate"><span class="pre">print</span></code>, <code class="docutils literal notranslate"><span class="pre">len</span></code>) are independent bocks of code, methods are attached to a variable.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">append</span></code> method is attached to each list variable with a <code class="docutils literal notranslate"><span class="pre">.</span></code> - it is a method of all lists - and is used like so: <code class="docutils literal notranslate"><span class="pre">name_of_list_variable.append(new_element)</span></code>.</p>
-<p>Below, we will see that there are other list methods, like <code class="docutils literal notranslate"><span class="pre">extend</span></code> or <code class="docutils literal notranslate"><span class="pre">remove</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">append</span></code> method is attached to each list variable and is used like so: <code class="docutils literal notranslate"><span class="pre">name_of_list_variable.append(new_element)</span></code>.</p>
+<p>There are many more list methods which we will not discuss - see the bonus section below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spike_times</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># intialize an empty list</span>
@@ -784,23 +784,6 @@ A has 7 elements.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, 20, 30, 40]
 [10, 30, 40]
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can also delete list elements by specifying their value:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;before:&#39;</span><span class="p">,</span> <span class="n">my_list</span><span class="p">)</span>
-<span class="n">my_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;after:&#39;</span><span class="p">,</span> <span class="n">my_list</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>before: [10, 20, 30, 20, 40]
-after: [10, 30, 20, 40]
 </pre></div>
 </div>
 </div>
