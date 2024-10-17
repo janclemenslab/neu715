@@ -429,12 +429,13 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-printing-using-a-for-loop">Exercise 1: Printing using a for loop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-filtering-a-list-1">Exercise 2: Filtering a list (1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-convert-units">Exercise 3: Convert units</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-filtering-a-list-2">Exercise 4: Filtering a list (2)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-filtering-a-list-3">Exercise 5: Filtering a list (3)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-slice-indexing">Exercise 6: Slice indexing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-updating-a-variable">Exercise 7: Updating a variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-convert-units">Exercise 2: Convert units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-convert-units-and-append-the-results-to-a-new-list">Exercise 3: Convert units and append the results to a new list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-filtering-a-list-1">Exercise 4: Filtering a list (1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-filtering-a-list-2">Exercise 5: Filtering a list (2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-filtering-a-list-3">Exercise 6: Filtering a list (3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-slice-indexing">Exercise 7: Slice indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-updating-a-variable">Exercise 8: Updating a variable</a></li>
 </ul>
             </nav>
         </div>
@@ -450,10 +451,10 @@ document.write(`
 <h1>Loops<a class="headerlink" href="#loops" title="Link to this heading">#</a></h1>
 <section id="exercise-1-printing-using-a-for-loop">
 <h2>Exercise 1: Printing using a for loop<a class="headerlink" href="#exercise-1-printing-using-a-for-loop" title="Link to this heading">#</a></h2>
-<p>Print all list elements</p>
+<p>Use a for loop to each list element in a separate line:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="mi">432</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">780</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grams</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1243891290</span><span class="p">,</span> <span class="mi">1234129401</span><span class="p">,</span> <span class="mi">14910395130</span><span class="p">,</span> <span class="mi">1340981394</span><span class="p">]</span>
 
 <span class="c1"># your solution here</span>
 </pre></div>
@@ -461,12 +462,12 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-2-filtering-a-list-1">
-<h2>Exercise 2: Filtering a list (1)<a class="headerlink" href="#exercise-2-filtering-a-list-1" title="Link to this heading">#</a></h2>
-<p>Print all list elements greater than 10:</p>
+<section id="exercise-2-convert-units">
+<h2>Exercise 2: Convert units<a class="headerlink" href="#exercise-2-convert-units" title="Link to this heading">#</a></h2>
+<p>We have a list of weights in grams. Use a for loop to convert the weights to tons and print them one by one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="mi">432</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">780</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grams</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1243891290</span><span class="p">,</span> <span class="mi">1234129401</span><span class="p">,</span> <span class="mi">14910395130</span><span class="p">,</span> <span class="mi">1340981394</span><span class="p">]</span>
 
 <span class="c1"># your solution here</span>
 </pre></div>
@@ -474,8 +475,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-3-convert-units">
-<h2>Exercise 3: Convert units<a class="headerlink" href="#exercise-3-convert-units" title="Link to this heading">#</a></h2>
+<section id="exercise-3-convert-units-and-append-the-results-to-a-new-list">
+<h2>Exercise 3: Convert units and append the results to a new list<a class="headerlink" href="#exercise-3-convert-units-and-append-the-results-to-a-new-list" title="Link to this heading">#</a></h2>
 <p>We have a list of weights in grams - create a new list, called <code class="docutils literal notranslate"><span class="pre">tons</span></code> that contains the weights in tons.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -487,8 +488,21 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-4-filtering-a-list-2">
-<h2>Exercise 4: Filtering a list (2)<a class="headerlink" href="#exercise-4-filtering-a-list-2" title="Link to this heading">#</a></h2>
+<section id="exercise-4-filtering-a-list-1">
+<h2>Exercise 4: Filtering a list (1)<a class="headerlink" href="#exercise-4-filtering-a-list-1" title="Link to this heading">#</a></h2>
+<p>Print all list elements greater than 10:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="mi">432</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">780</span><span class="p">]</span>
+
+<span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-5-filtering-a-list-2">
+<h2>Exercise 5: Filtering a list (2)<a class="headerlink" href="#exercise-5-filtering-a-list-2" title="Link to this heading">#</a></h2>
 <p>Create a new list that contains all elements greater than 10:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -500,8 +514,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-5-filtering-a-list-3">
-<h2>Exercise 5: Filtering a list (3)<a class="headerlink" href="#exercise-5-filtering-a-list-3" title="Link to this heading">#</a></h2>
+<section id="exercise-6-filtering-a-list-3">
+<h2>Exercise 6: Filtering a list (3)<a class="headerlink" href="#exercise-6-filtering-a-list-3" title="Link to this heading">#</a></h2>
 <p>Create a new list that contains all elements greater than 10 and less than 100:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -513,8 +527,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-6-slice-indexing">
-<h2>Exercise 6: Slice indexing<a class="headerlink" href="#exercise-6-slice-indexing" title="Link to this heading">#</a></h2>
+<section id="exercise-7-slice-indexing">
+<h2>Exercise 7: Slice indexing<a class="headerlink" href="#exercise-7-slice-indexing" title="Link to this heading">#</a></h2>
 <p>The following code is supposed to generate a list that only contains the even values from the list <code class="docutils literal notranslate"><span class="pre">all_values</span></code>.</p>
 <p>Does it produce the correct result? If not, fix it!</p>
 <div class="cell docutils container">
@@ -539,8 +553,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-7-updating-a-variable">
-<h2>Exercise 7: Updating a variable<a class="headerlink" href="#exercise-7-updating-a-variable" title="Link to this heading">#</a></h2>
+<section id="exercise-8-updating-a-variable">
+<h2>Exercise 8: Updating a variable<a class="headerlink" href="#exercise-8-updating-a-variable" title="Link to this heading">#</a></h2>
 <p>The following code is supposed to compute the sum of the values in the list <code class="docutils literal notranslate"><span class="pre">all_values</span></code>.</p>
 <p>Does it produce the correct result? If not, fix it!</p>
 <div class="cell docutils container">
@@ -632,12 +646,13 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-printing-using-a-for-loop">Exercise 1: Printing using a for loop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-filtering-a-list-1">Exercise 2: Filtering a list (1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-convert-units">Exercise 3: Convert units</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-filtering-a-list-2">Exercise 4: Filtering a list (2)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-filtering-a-list-3">Exercise 5: Filtering a list (3)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-slice-indexing">Exercise 6: Slice indexing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-updating-a-variable">Exercise 7: Updating a variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-convert-units">Exercise 2: Convert units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-convert-units-and-append-the-results-to-a-new-list">Exercise 3: Convert units and append the results to a new list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-filtering-a-list-1">Exercise 4: Filtering a list (1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-filtering-a-list-2">Exercise 5: Filtering a list (2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-filtering-a-list-3">Exercise 6: Filtering a list (3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-slice-indexing">Exercise 7: Slice indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-updating-a-variable">Exercise 8: Updating a variable</a></li>
 </ul>
   </nav></div>
 
