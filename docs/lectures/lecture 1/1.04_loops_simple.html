@@ -430,7 +430,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-detection-with-python">Spike detection with python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up">Warm-up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops">“For” loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops">“For” loops</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-nested-loops">Bonus: Nested loops</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-code-patterns">Common code patterns</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-lists">Building lists</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-lists">Filtering lists</a></li>
@@ -519,9 +522,9 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">number</span> <span class="pre">in</span> <span class="pre">my_list</span></code> does the following:</p>
 <ul>
 <li><p>it creates a variable called <code class="docutils literal notranslate"><span class="pre">number</span></code> (the loop variable). the loop variable can have any name.</p></li>
-<li><p>the for loop goes through the list, element by element and in each step (“for each element”) and does the following:</p>
+<li><p>the for loop goes through the list, element by element and in each step (“for each element”) it does the following:</p>
 <ul>
-<li><p>set the value of the <code class="docutils literal notranslate"><span class="pre">number</span></code> variable to the next element</p></li>
+<li><p>set the value of the <code class="docutils literal notranslate"><span class="pre">number</span></code> variable to the current element</p></li>
 <li><p>execute the indented block (in this case print the value of <code class="docutils literal notranslate"><span class="pre">number</span></code>)</p></li>
 </ul>
 </li>
@@ -572,6 +575,8 @@ document.write(`
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
+<section id="bonus-nested-loops">
+<h3>Bonus: Nested loops<a class="headerlink" href="#bonus-nested-loops" title="Link to this heading">#</a></h3>
 <p>For loops can be nested - indentation matters:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -597,6 +602,7 @@ document.write(`
 </div>
 </div>
 <p>Sidenote: Because <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">in</span></code> are reserved words to run for loops, they are not valid variable names. Trying to create variables with those names, like <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">=</span> <span class="pre">10</span></code> or <code class="docutils literal notranslate"><span class="pre">in</span> <span class="pre">=</span> <span class="pre">&quot;yes&quot;</span></code>, will produce an error!!</p>
+</section>
 </section>
 <section id="common-code-patterns">
 <h2>Common code patterns<a class="headerlink" href="#common-code-patterns" title="Link to this heading">#</a></h2>
@@ -952,7 +958,10 @@ That way we can have ranges that do not fit in memory, e.g. <code class="docutil
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-detection-with-python">Spike detection with python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up">Warm-up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops">“For” loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops">“For” loops</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-nested-loops">Bonus: Nested loops</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-code-patterns">Common code patterns</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-lists">Building lists</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-lists">Filtering lists</a></li>
