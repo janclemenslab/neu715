@@ -445,6 +445,12 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops">While loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-content">Bonus content</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehensions">List comprehensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterating-over-multiple-lists-in-parallel-using-zip">Iterating over multiple lists in parallel using <code class="docutils literal notranslate"><span class="pre">zip</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-list-indices-and-list-elements-in-a-for-loop-using-enumerate">Getting list indices and list elements in a for loop using enumerate</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-detection-using-python">Spike detection using python</a></li>
 </ul>
             </nav>
@@ -502,15 +508,19 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="n">half</span> <span class="o">=</span> <span class="n">number</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inside the loop:&quot;</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span><span class="n">half</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;outside of the loop&quot;</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span><span class="n">half</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
-2
-3
-100
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inside the loop: 1 0.5
+inside the loop: 2 1.0
+inside the loop: 3 1.5
+inside the loop: 100 50.0
+outside of the loop 100 50.0
 </pre></div>
 </div>
 </div>
@@ -581,22 +591,25 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">outer</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">outer</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">outer</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">inner</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">outer</span><span class="p">,</span> <span class="n">inner</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   inner&#39;</span><span class="p">,</span> <span class="n">outer</span><span class="p">,</span> <span class="n">inner</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 A
-1 B
-1 C
-2 A
-2 B
-2 C
-3 A
-3 B
-3 C
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>outer 1
+   inner 1 A
+   inner 1 B
+   inner 1 C
+outer 2
+   inner 2 A
+   inner 2 B
+   inner 2 C
+outer 3
+   inner 3 A
+   inner 3 B
+   inner 3 C
 </pre></div>
 </div>
 </div>
@@ -733,8 +746,7 @@ Estelle
 <span class="nb">range</span><span class="p">(</span><span class="n">stop</span><span class="p">)</span>  <span class="c1"># integers from 0 to stop, in steps of 1</span>
 </pre></div>
 </div>
-<p>Note, that range does not return a list of indices but a special <code class="docutils literal notranslate"><span class="pre">range</span></code> object.
-That way we can have ranges that do not fit in memory, e.g. <code class="docutils literal notranslate"><span class="pre">range(1000000000000000)</span></code>:</p>
+<p>Note, that range does not return a list of indices but a special <code class="docutils literal notranslate"><span class="pre">range</span></code> object that generates the index as requested. That way we can have ranges that do not fit in memory, e.g. <code class="docutils literal notranslate"><span class="pre">range(1000000000000000)</span></code>. Ranges are used in for loops. We can turn a range into list to learn how the work:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
@@ -767,29 +779,6 @@ That way we can have ranges that do not fit in memory, e.g. <code class="docutil
 <div class="admonition-clicker-question-range-2-click-me-https-go-uos-de-0ypai admonition">
 <p class="admonition-title">Clicker question “range 2”(<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
 <p>Which range statement can be used to create the list <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">3,</span> <span class="pre">5]</span></code>?</p>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">range</span></code> can be used to create a long list of numbers:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">110</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-</pre></div>
-</div>
-</div>
 </div>
 <p>To generate a <code class="docutils literal notranslate"><span class="pre">range</span></code> for looping over a list, we combine <code class="docutils literal notranslate"><span class="pre">range</span></code> with <code class="docutils literal notranslate"><span class="pre">len</span></code>. This will generate a <code class="docutils literal notranslate"><span class="pre">range</span></code> with the same length as the list, so that we have one index for each list element:</p>
 <div class="cell docutils container">
@@ -870,6 +859,112 @@ That way we can have ranges that do not fit in memory, e.g. <code class="docutil
 </div>
 </div>
 </div>
+</section>
+<section id="bonus-content">
+<h2>Bonus content<a class="headerlink" href="#bonus-content" title="Link to this heading">#</a></h2>
+<section id="list-comprehensions">
+<h3>List comprehensions<a class="headerlink" href="#list-comprehensions" title="Link to this heading">#</a></h3>
+<p>We very often encounter code that applies a function to list elements and appends the results ina new list using a for loop:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">123</span><span class="p">,</span> <span class="mi">423</span><span class="p">,</span> <span class="mi">540</span><span class="p">]</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>List comprehensions are a way to write code like this more concisely:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">number</span> <span class="o">/</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iterating-over-multiple-lists-in-parallel-using-zip">
+<h3>Iterating over multiple lists in parallel using <code class="docutils literal notranslate"><span class="pre">zip</span></code><a class="headerlink" href="#iterating-over-multiple-lists-in-parallel-using-zip" title="Link to this heading">#</a></h3>
+<p>If we want to iterate over two lists in parallel, we can use indices produced by <code class="docutils literal notranslate"><span class="pre">range</span></code> to index into the different lists:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Ada&#39;</span><span class="p">,</span> <span class="s1">&#39;Jon&#39;</span><span class="p">]</span>
+<span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">ages</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tom 14
+Ada 16
+Jon 12
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">zip</span></code> allows you to do that directly without having to use indices. Zip returns in each iteration a tuple of the individual list elemens:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Ada&#39;</span><span class="p">,</span> <span class="s1">&#39;Jon&#39;</span><span class="p">]</span>
+<span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">ages</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tom 14
+Ada 16
+Jon 12
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-list-indices-and-list-elements-in-a-for-loop-using-enumerate">
+<h3>Getting list indices and list elements in a for loop using enumerate<a class="headerlink" href="#getting-list-indices-and-list-elements-in-a-for-loop-using-enumerate" title="Link to this heading">#</a></h3>
+<p>If you need both the list indices and the elements, you can again use range:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Ada&#39;</span><span class="p">,</span> <span class="s1">&#39;Jon&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 Tom
+1 Ada
+2 Jon
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">enumerate</span></code> returns  can be more concise, since it returns a tuple of the index and the element in each iteration:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Ada&#39;</span><span class="p">,</span> <span class="s1">&#39;Jon&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 Tom
+1 Ada
+2 Jon
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="spike-detection-using-python">
 <h2>Spike detection using python<a class="headerlink" href="#spike-detection-using-python" title="Link to this heading">#</a></h2>
@@ -973,6 +1068,12 @@ That way we can have ranges that do not fit in memory, e.g. <code class="docutil
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops">While loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-content">Bonus content</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehensions">List comprehensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterating-over-multiple-lists-in-parallel-using-zip">Iterating over multiple lists in parallel using <code class="docutils literal notranslate"><span class="pre">zip</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-list-indices-and-list-elements-in-a-for-loop-using-enumerate">Getting list indices and list elements in a for loop using enumerate</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-detection-using-python">Spike detection using python</a></li>
 </ul>
   </nav></div>
