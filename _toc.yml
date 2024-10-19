@@ -40,10 +40,10 @@ parts:
       title: Lists
     - file: exercises/exercises 1/1.04_loops_simple_exercises
       title: Loops
-    - file: exercises/exercises 2/1.05_matplotlib_exercises
-      title: Plotting
     - file: exercises/exercises 2/2.01_composites_exercises
       title: Composite data types
+    - file: exercises/exercises 2/1.05_matplotlib_exercises
+      title: Plotting
     - file: exercises/exercises 2/2.02_loops_more_exercises
       title: Loops (Part 2)
     - file: exercises/exercises 2/2.03_functions_exercises
