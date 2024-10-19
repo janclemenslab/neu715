@@ -52,6 +52,8 @@ parts:
     #   title: Handling errors
     - file: exercises/exercises 2/2.05_imports_exercises
       title: External code
+    - file: exercises/exercises 2/2.06_more_exercises
+      title: Bonus exercises
   - caption: Numerical computing
     chapters:
     - file: lectures/lecture 3/3.01_packages_and_environments
