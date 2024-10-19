@@ -594,27 +594,12 @@ document.write(`
 </div>
 <p>The stock prize data was collected at an interval of 2 months. Plot the data with the correct x-axis by generating a list of x-values that contains to the month each data point was collected. The first value in the list should be 0, the next value 2, and so on, until the last (12th) value, which shold be 12 * 2 = 24. Then plot the data with the correct x-axis, like so:</p>
 <p><img alt="" src="../../_images/1.05_matplotlib_exercises5.png" /></p>
-<p><strong>Hint:</strong> Use <code class="docutils literal notranslate"><span class="pre">range</span></code> in a for loop to generate list indices and convert the indices to months.</p>
+<p><strong>Hint:</strong> You can use <code class="docutils literal notranslate"><span class="pre">range</span></code> to generate list numbers and convert the numbers to months.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">months</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stock_price</span><span class="p">)):</span>
-    <span class="n">month</span> <span class="o">=</span>  <span class="n">index</span> <span class="o">*</span> <span class="mi">2</span>
-    <span class="n">months</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">month</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">months</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">stock_price</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Stock price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;1.05_matplotlib_exercises5.png&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24]
-</pre></div>
-</div>
-<img alt="../../_images/696ea21811b29c5f8f8c849007591c7b800832516f127ed89b67002ede7091c0.png" src="../../_images/696ea21811b29c5f8f8c849007591c7b800832516f127ed89b67002ede7091c0.png" />
 </div>
 </div>
 </section>
