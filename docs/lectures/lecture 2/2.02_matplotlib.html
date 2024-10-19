@@ -431,11 +431,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#size-and-annotate-figsize-xlabel-ylabel-title">Size and annotate - figsize, xlabel, ylabel, title</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifiy-the-values-on-the-x-axis">Specifiy the values on the x axis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-axis-limits-xlim-ylim">Change axis limits - xlim, ylim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-x-and-y-axis-labels-xticks-and-yticks">Change x and y axis labels - xticks and yticks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-and-combine-markers">Change and combine markers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlay-multiple-plots">Overlay multiple plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-panel-figures-tick-spacing-subplot-yticks">Multi-panel figures, tick spacing - subplot, yticks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legends">Legends</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-colors">Specifying colors</a></li>
 </ul>
             </nav>
         </div>
@@ -550,6 +550,25 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="change-x-and-y-axis-labels-xticks-and-yticks">
+<h2>Change x and y axis labels - xticks and yticks<a class="headerlink" href="#change-x-and-y-axis-labels-xticks-and-yticks" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_seconds</span><span class="p">,</span> <span class="n">voltage_trace</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># specify x tick labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">])</span>  <span class="c1"># change tick spacing in the lower panel</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Membrane voltage [mV]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/8091132a39b075aaf774fb2ac10f4087c6e631572bf144de4ddc857721015bef.png" src="../../_images/8091132a39b075aaf774fb2ac10f4087c6e631572bf144de4ddc857721015bef.png" />
+</div>
+</div>
+</section>
 <section id="change-and-combine-markers">
 <h2>Change and combine markers<a class="headerlink" href="#change-and-combine-markers" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -594,25 +613,17 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># first panel</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_seconds</span><span class="p">,</span> <span class="n">voltage_trace</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>  <span class="c1"># remove xticks from the upper panel</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Recording&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># second panel</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_seconds</span><span class="p">,</span> <span class="n">voltage_trace</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Membrane voltage [mV]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Subthreshold voltages&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">])</span>  <span class="c1"># change tick spacing in the lower panel</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3b09e3723034c34e22e632f7930f3607abd018ce058bfa9df76954855539d422.png" src="../../_images/3b09e3723034c34e22e632f7930f3607abd018ce058bfa9df76954855539d422.png" />
+<img alt="../../_images/e3f2d88bf69d7fe9f37d99a990b6512fa862bd86b49b529b9bf95b238c4d46bc.png" src="../../_images/e3f2d88bf69d7fe9f37d99a990b6512fa862bd86b49b529b9bf95b238c4d46bc.png" />
 </div>
 </div>
 </section>
@@ -635,12 +646,6 @@ document.write(`
 <img alt="../../_images/07558e77cec5dea32afd6d7f04b1c8d50d782ce0e03b53024cad382b0058a39d.png" src="../../_images/07558e77cec5dea32afd6d7f04b1c8d50d782ce0e03b53024cad382b0058a39d.png" />
 </div>
 </div>
-</section>
-<section id="specifying-colors">
-<h2>Specifying colors<a class="headerlink" href="#specifying-colors" title="Link to this heading">#</a></h2>
-<p>Colors can be specified by name (from the <a class="reference external" href="https://matplotlib.org/stable/gallery/color/named_colors.html#css-colors">docs</a>):
-<img alt="" src="https://matplotlib.org/stable/_images/sphx_glr_named_colors_003_2_00x.png" /></p>
-<p>Or by specifying the amount of red, green, and blue: see <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colors.html">docs</a></p>
 </section>
 </section>
 
@@ -711,11 +716,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#size-and-annotate-figsize-xlabel-ylabel-title">Size and annotate - figsize, xlabel, ylabel, title</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifiy-the-values-on-the-x-axis">Specifiy the values on the x axis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-axis-limits-xlim-ylim">Change axis limits - xlim, ylim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-x-and-y-axis-labels-xticks-and-yticks">Change x and y axis labels - xticks and yticks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-and-combine-markers">Change and combine markers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlay-multiple-plots">Overlay multiple plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-panel-figures-tick-spacing-subplot-yticks">Multi-panel figures, tick spacing - subplot, yticks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#legends">Legends</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-colors">Specifying colors</a></li>
 </ul>
   </nav></div>
 
