@@ -482,11 +482,11 @@ document.write(`
 <section id="warm-up">
 <h2>Warm-up<a class="headerlink" href="#warm-up" title="Link to this heading">#</a></h2>
 <p>To warm up, let’s do a little exercise.</p>
-<p>Here is a list: <code class="docutils literal notranslate"><span class="pre">my_list</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">100]</span></code></p>
+<p>Here is a list: <code class="docutils literal notranslate"><span class="pre">my_list</span> <span class="pre">=</span> <span class="pre">[10,</span> <span class="pre">20,</span> <span class="pre">30,</span> <span class="pre">40]</span></code></p>
 <p>Write code that divides each value in this list by 2 and prints the computed value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
 <span class="c1"># your solution here</span>
 </pre></div>
 </div>
@@ -505,7 +505,7 @@ document.write(`
 <p>The for loop automatically goes over elements of a list and allows us to apply the same computation to every element, like printing it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
     <span class="n">half</span> <span class="o">=</span> <span class="n">number</span> <span class="o">/</span> <span class="mi">2</span>
@@ -516,11 +516,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inside the loop: 1 0.5
-inside the loop: 2 1.0
-inside the loop: 3 1.5
-inside the loop: 100 50.0
-outside of the loop 100 50.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inside the loop: 10 5.0
+inside the loop: 20 10.0
+inside the loop: 30 15.0
+inside the loop: 40 20.0
+outside of the loop 40 20.0
 </pre></div>
 </div>
 </div>
@@ -528,7 +528,7 @@ outside of the loop 100 50.0
 <p>“Going over a list” or “looping over list” is also often called “iterating”.</p>
 <p>What’s going on here?</p>
 <ul class="simple">
-<li><p>we define a variable called <code class="docutils literal notranslate"><span class="pre">my_list</span></code> as a list of 4 numbers: 1, 2, 3, and 100</p></li>
+<li><p>we define a variable called <code class="docutils literal notranslate"><span class="pre">my_list</span></code> as a list of 4 numbers: 10, 20, 30, and 40</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">number</span> <span class="pre">in</span> <span class="pre">my_list</span></code> does the following:</p>
 <ul>
 <li><p>it creates a variable called <code class="docutils literal notranslate"><span class="pre">number</span></code> (the loop variable). the loop variable can have any name.</p></li>
@@ -543,7 +543,7 @@ outside of the loop 100 50.0
 </li>
 </ul>
 <p>We can “unroll” the for loop above - it corresponds to these individual steps of computation:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">100</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
 
 <span class="n">number</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
@@ -554,24 +554,6 @@ outside of the loop 100 50.0
 <span class="n">number</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
 </pre></div>
-</div>
-<p>We can do anything with each element:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">100</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">number</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5
-1.0
-1.5
-50.0
-</pre></div>
-</div>
-</div>
 </div>
 <div class="admonition-clicker-question-for-loops-1-click-me-https-go-uos-de-0ypai admonition">
 <p class="admonition-title">Clicker question “for loops 1”(<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
@@ -590,7 +572,7 @@ outside of the loop 100 50.0
 <p>For loops can be nested - indentation matters:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">outer</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">outer</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">outer</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">inner</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   inner&#39;</span><span class="p">,</span> <span class="n">outer</span><span class="p">,</span> <span class="n">inner</span><span class="p">)</span>
@@ -598,18 +580,18 @@ outside of the loop 100 50.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>outer 1
-   inner 1 A
-   inner 1 B
-   inner 1 C
-outer 2
-   inner 2 A
-   inner 2 B
-   inner 2 C
-outer 3
-   inner 3 A
-   inner 3 B
-   inner 3 C
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>outer 10
+   inner 10 A
+   inner 10 B
+   inner 10 C
+outer 20
+   inner 20 A
+   inner 20 B
+   inner 20 C
+outer 30
+   inner 30 A
+   inner 30 B
+   inner 30 C
 </pre></div>
 </div>
 </div>
@@ -625,7 +607,7 @@ outer 3
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Goal: divide by ten each element in the list &quot;data&quot;, collect the results in a new list &quot;new_data&quot;</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;data:&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
 <span class="c1"># create an empty list that we will append the results to</span>
@@ -641,8 +623,8 @@ outer 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data: [1, 2, 3]
-results: [0.1, 0.2, 0.3]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data: [10, 20, 30]
+results: [1.0, 2.0, 3.0]
 </pre></div>
 </div>
 </div>
@@ -651,7 +633,7 @@ results: [0.1, 0.2, 0.3]
 </section>
 <section id="filtering-lists">
 <h3>Filtering lists<a class="headerlink" href="#filtering-lists" title="Link to this heading">#</a></h3>
-<p>Append the results to a new list using a for loop if they match a criterion:</p>
+<p>Append the results to a new list using a for loop <em>if they match a criterion</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
