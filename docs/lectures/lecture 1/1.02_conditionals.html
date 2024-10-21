@@ -430,7 +430,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-need-to-know-to-detect-spikes-using-python">What do we need to know to detect spikes using python?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-variables">Compare variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-variables">Comparing variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-comparisons">Combining comparisons</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-different-actions-based-on-the-value-of-a-variable">Perform different actions based on the value of a variable</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-going-on">What’s going on?</a></li>
 </ul>
@@ -463,8 +466,8 @@ document.write(`
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Plot and save the results</p></li>
 </ul>
 </section>
-<section id="compare-variables">
-<h2>Compare variables<a class="headerlink" href="#compare-variables" title="Link to this heading">#</a></h2>
+<section id="comparing-variables">
+<h2>Comparing variables<a class="headerlink" href="#comparing-variables" title="Link to this heading">#</a></h2>
 <p>Until now, we know how to add, subtract, multiply, and divide variables.</p>
 <p>However, to solve our spike detection problem, we need to compare values: We need to dermine whether the voltage exceeds the threshold!</p>
 <p>This is done using comparison operators:</p>
@@ -506,6 +509,15 @@ document.write(`
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
+<section id="combining-comparisons">
+<h3>Combining comparisons<a class="headerlink" href="#combining-comparisons" title="Link to this heading">#</a></h3>
+<p>We can combine different comparisons with <code class="docutils literal notranslate"><span class="pre">and</span></code> or <code class="docutils literal notranslate"><span class="pre">or</span></code>, like so:
+<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">10</span> <span class="pre">and</span> <span class="pre">a</span> <span class="pre">&lt;</span> <span class="pre">20</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">and</span></code> returns True only if both comparisons are True</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">or</span></code> returns True if at least one of the two comparisons is True.</p></li>
+</ul>
+</section>
 </section>
 <section id="perform-different-actions-based-on-the-value-of-a-variable">
 <h2>Perform different actions based on the value of a variable<a class="headerlink" href="#perform-different-actions-based-on-the-value-of-a-variable" title="Link to this heading">#</a></h2>
@@ -742,7 +754,10 @@ How do we present sequences of numbers, like our time series of voltage values? 
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-need-to-know-to-detect-spikes-using-python">What do we need to know to detect spikes using python?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-variables">Compare variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-variables">Comparing variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-comparisons">Combining comparisons</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-different-actions-based-on-the-value-of-a-variable">Perform different actions based on the value of a variable</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-going-on">What’s going on?</a></li>
 </ul>

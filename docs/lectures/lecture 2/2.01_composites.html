@@ -462,34 +462,24 @@ document.write(`
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Lists can be cast to tuples using <code class="docutils literal notranslate"><span class="pre">tuple(list_var)</span></code>.</p>
-<p><strong>Caution</strong>: The parentheses are pure decoration - it’s the comma that makes a tuple. For instance, a trailing comma after a value is sufficient to generate a tuple - this is a frequent cause for bugs. So always use parentheses!</p>
+<p><strong>Caution</strong>: The parentheses are pure decoration - it’s the comma that makes a tuple. For instance, a trailing comma after a value is sufficient to generate a tuple - this is a frequent cause for bugs. But always use parentheses to clearly indicate in your code that you are defining a tuple!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 2, 3, 4) &lt;class &#39;tuple&#39;&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">also_a_tuple</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># note the trailing comma after 1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span>  <span class="c1"># this likes like the float 1.2 to Germans</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">),</span> <span class="n">a_tuple</span><span class="p">)</span>
+
+<span class="n">also_a_tuple</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># note the trailing comma after 1</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">also_a_tuple</span><span class="p">),</span> <span class="n">also_a_tuple</span><span class="p">)</span>
 
-<span class="n">yet_another_tuple</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">yet_another_tuple</span><span class="p">),</span> <span class="n">yet_another_tuple</span><span class="p">)</span>
+<span class="n">clearly_a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>  <span class="c1"># always use parentheses</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">clearly_a_tuple</span><span class="p">),</span> <span class="n">clearly_a_tuple</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;tuple&#39;&gt; (1,)
-&lt;class &#39;tuple&#39;&gt; (1, 2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;tuple&#39;&gt; (1, 2)
+&lt;class &#39;tuple&#39;&gt; (1,)
+&lt;class &#39;tuple&#39;&gt; (10, 20)
 </pre></div>
 </div>
 </div>
