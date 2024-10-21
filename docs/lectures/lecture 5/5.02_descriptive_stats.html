@@ -437,12 +437,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">Percentiles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skewness-and-kurtosis">Skewness and kurtosis</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skewness">Skewness</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kurtosis">Kurtosis</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-a-normal-distribution">Properties of a Normal distribution</a></li>
 </ul>
             </nav>
         </div>
@@ -456,8 +450,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="descriptive-statistics">
 <h1>Descriptive statistics<a class="headerlink" href="#descriptive-statistics" title="Link to this heading">#</a></h1>
-<p>So far we encountered the mean and the standard deviation as descriptive statistics. These two quantities are  sufficient to fully describe normally distributed data!</p>
-<p>Alas, not all data is normally distributed…</p>
+<p>So far we encountered the mean and the standard deviation as descriptive statistics. These two quantities are sufficient to fully describe normally distributed data! Alas, not all data is normally distributed so we need other measures of central tendency and dispersion.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -504,7 +497,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/835e6cfc5a7d6dcead851bf6e477d16cc77596ed01f2b2620d471578752bbb44.png" src="../../_images/835e6cfc5a7d6dcead851bf6e477d16cc77596ed01f2b2620d471578752bbb44.png" />
+<img alt="../../_images/bb4201abd3e1bb02112c5effba4d2289cb3b093e9c553e70e36e2128b1d09eb5.png" src="../../_images/bb4201abd3e1bb02112c5effba4d2289cb3b093e9c553e70e36e2128b1d09eb5.png" />
 </div>
 </div>
 </section>
@@ -562,6 +555,27 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+&lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+&lt;&gt;:30: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+&lt;&gt;:31: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+&lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+&lt;&gt;:30: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+&lt;&gt;:31: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+/var/folders/bc/5m_c7nkj1vnc2w7xmmnhpfww0000gn/T/ipykernel_96149/2088512525.py:10: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+  plt.plot([np.nanmean(pdf) - np.nanstd(pdf), np.nanmean(pdf) + np.nanstd(pdf)], [0.0023, 0.0023], c=&#39;r&#39;, label=&#39;68%, $\pm\sigma$&#39;)
+/var/folders/bc/5m_c7nkj1vnc2w7xmmnhpfww0000gn/T/ipykernel_96149/2088512525.py:11: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+  plt.plot([np.nanmean(pdf) - 2*np.nanstd(pdf), np.nanmean(pdf) + 2*np.nanstd(pdf)], [0.0006, 0.0006], c=&#39;orange&#39;, label=&#39;95%, $\pm2\sigma$&#39;)
+/var/folders/bc/5m_c7nkj1vnc2w7xmmnhpfww0000gn/T/ipykernel_96149/2088512525.py:30: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+  plt.plot([np.nanmean(pdf) - np.nanstd(pdf), np.nanmean(pdf) + np.nanstd(pdf)], [0.000013, 0.000013], c=&#39;r&#39;, label=&#39;68%, $\pm\sigma$&#39;)
+/var/folders/bc/5m_c7nkj1vnc2w7xmmnhpfww0000gn/T/ipykernel_96149/2088512525.py:31: SyntaxWarning: invalid escape sequence &#39;\p&#39;
+  plt.plot([np.nanmean(pdf) - 2*np.nanstd(pdf), np.nanmean(pdf) + 2*np.nanstd(pdf)], [0.000005, 0.000005], c=&#39;orange&#39;, label=&#39;95%, $\pm2\sigma$&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/5251019e142f6cc837f863b7fadb8a8d1d65916f9295e683704d782a4639d1c5.png" src="../../_images/5251019e142f6cc837f863b7fadb8a8d1d65916f9295e683704d782a4639d1c5.png" />
+</div>
 </div>
 <section id="mini-exercise">
 <h3>Mini Exercise<a class="headerlink" href="#mini-exercise" title="Link to this heading">#</a></h3>
@@ -571,28 +585,23 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">weibull</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="p">(</span><span class="mi">100_000</span><span class="p">))</span>  <span class="c1"># generate 100k random numbers from a probability distribution</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">weibull</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="p">(</span><span class="mi">1_000_000</span><span class="p">))</span>  <span class="c1"># generate 100k random numbers from a probability distribution</span>
 
 <span class="c1"># your solution here</span>
-<span class="n">counts</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">bars</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">counts</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">bars</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gainsboro&#39;</span><span class="p">)</span>
+
 <span class="n">mode</span> <span class="o">=</span> <span class="n">bins</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">counts</span><span class="p">)]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;mode&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9.0730e+03 1.3353e+04 1.3642e+04 1.2671e+04 1.1295e+04 9.3410e+03
- 7.5870e+03 5.9750e+03 4.5970e+03 3.5590e+03 2.6000e+03 1.8880e+03
- 1.3980e+03 9.6900e+02 6.8900e+02 4.5200e+02 3.2000e+02 2.1000e+02
- 1.2600e+02 8.1000e+01 6.8000e+01 3.8000e+01 2.7000e+01 2.0000e+01
- 1.1000e+01 4.0000e+00 0.0000e+00 1.0000e+00 4.0000e+00 0.0000e+00
- 0.0000e+00 1.0000e+00]
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x142d4deb0&gt;
-</pre></div>
-</div>
-<img alt="../../_images/7f012d03a26a0c90a99b41838657a6593956743ec46b46fa4de12dab456b9e83.png" src="../../_images/7f012d03a26a0c90a99b41838657a6593956743ec46b46fa4de12dab456b9e83.png" />
+<img alt="../../_images/3d9e9eb14bda8af2981cddc8a93c4a0bd1c6a5ff70c77c689df59828d82ab9d3.png" src="../../_images/3d9e9eb14bda8af2981cddc8a93c4a0bd1c6a5ff70c77c689df59828d82ab9d3.png" />
 </div>
 </div>
 </section>
@@ -626,115 +635,12 @@ Is the value at or below which a given percentage of all samples falls.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/35841f27a7c706ca6fd50b6c4e8ec06543b6c42c2ae097dc070ace5a6bdbf467.png" src="../../_images/35841f27a7c706ca6fd50b6c4e8ec06543b6c42c2ae097dc070ace5a6bdbf467.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2222.2
+<img alt="../../_images/aedab972cee6e0297424497ace371b0b043766edb172bed860d189d7639c4542.png" src="../../_images/aedab972cee6e0297424497ace371b0b043766edb172bed860d189d7639c4542.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2222.2)
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="skewness-and-kurtosis">
-<h2>Skewness and kurtosis<a class="headerlink" href="#skewness-and-kurtosis" title="Link to this heading">#</a></h2>
-<p>The shape of a Normal distribution is fully described by the mean and the variance. However, non-normal distributions may require more measures to describe them - two commonly used ones are the skewness and the kurtosis.</p>
-<section id="skewness">
-<h3>Skewness<a class="headerlink" href="#skewness" title="Link to this heading">#</a></h3>
-<p>Skewness measures the assymmetry of a distribution. Negative skewness means the left tail is longer, Positive skewness means the right tail is longer. Positively skewed distributions arise often when the values are bounded by 0 from below (for instance for count distributions (Poisson, Binomial)) - the values cannot grow beyond 0 into the negative, which cuts off the left tail, but they can grow into the positve. Skewness is 0 for a normal distribution.</p>
-<p>One way to define it is: <span class="math notranslate nohighlight">\(s = 1/N \sum_i^N (x_i - \hat{x})^3 / \sigma^{3/2}\)</span>.</p>
-<p>The distributions in the two leftmost panels all have the same mean and standard deviation, but different skewness. The rightmost panel shows a Poisson distribution, which is often used for spike counts and therefore restricted to positive integer values. It has a positive skew.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">cnt</span><span class="p">,</span> <span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">skewness</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">([</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="s1">&#39;crimson&#39;</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">pearson3</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">skew</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="n">size</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Normal: s=0.0&#39;</span><span class="p">)</span>
-
-    <span class="n">data</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">pearson3</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">skew</span><span class="o">=</span><span class="n">skewness</span><span class="p">,</span>  <span class="n">size</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Skewed: s=</span><span class="si">{</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">skew</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">:</span><span class="s2">1.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">cnt</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;p(x)&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="n">rv</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">rv</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Poisson: s=</span><span class="si">{</span><span class="n">rv</span><span class="o">.</span><span class="n">stats</span><span class="p">(</span><span class="n">moments</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">)</span><span class="si">:</span><span class="s2">1.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fig/5.02_descriptive_stats3.png&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/8f99bc06a19bb2940551839d680ec1dc99008b81a798a0dc5d9145aa0a554973.png" src="../../_images/8f99bc06a19bb2940551839d680ec1dc99008b81a798a0dc5d9145aa0a554973.png" />
-</div>
-</div>
-</section>
-<section id="kurtosis">
-<h3>Kurtosis<a class="headerlink" href="#kurtosis" title="Link to this heading">#</a></h3>
-<p>The kurtosis measures how heavy the tails are - the heavier the tails, the more extreme values, and the larger the kurtosis.</p>
-<p>One way to define the kurtosis is: <span class="math notranslate nohighlight">\(k = 1/N \sum_i^N (x_i - \hat{x})^4 / \sigma^2\)</span>.</p>
-<p>The kurtosis is strictly positive and has a value of 3.0 for a normal distribution.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">kurtosis</span>
-
-<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
-<span class="n">distnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;laplace&#39;</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">]</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;deepskyblue&#39;</span><span class="p">]</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">cnt</span><span class="p">,</span> <span class="p">(</span><span class="n">distname</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">distnames</span><span class="p">,</span> <span class="n">colors</span><span class="p">)):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Normal: k=3.0&#39;</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">distname</span> <span class="o">==</span> <span class="s1">&#39;uniform&#39;</span><span class="p">:</span>
-        <span class="n">dist</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">distname</span><span class="p">)(</span><span class="n">loc</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">dist</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">distname</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;p(x)&#39;</span><span class="p">)</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100_000</span><span class="p">)</span>
-    <span class="n">kur</span> <span class="o">=</span> <span class="n">kurtosis</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fisher</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">distname</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2">: k=</span><span class="si">{</span><span class="n">kur</span><span class="si">:</span><span class="s2">1.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bins</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fig/5.02_descriptive_stats4.png&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/3d6a4ae31b7891a7036b3bf7418742f641cce8b53dc0f999de936c4ef6c784d5.png" src="../../_images/3d6a4ae31b7891a7036b3bf7418742f641cce8b53dc0f999de936c4ef6c784d5.png" />
-</div>
-</div>
-</section>
-</section>
-<section id="properties-of-a-normal-distribution">
-<h2>Properties of a Normal distribution<a class="headerlink" href="#properties-of-a-normal-distribution" title="Link to this heading">#</a></h2>
-<p>The descriptive statistics of a Normal distribution have the following properties:</p>
-<ul class="simple">
-<li><p>mean, median, and mode are identical</p></li>
-<li><p>the skewness is 0.0</p></li>
-<li><p>the kurtosis is 3.0</p></li>
-</ul>
-<p>Substantial deviations from these properties indicate that the distribution is <em>not</em> Normal.</p>
-<p>Is a distribution that matches the 3 properties listed above guaranteed to by Normal?</p>
 </section>
 </section>
 
@@ -808,12 +714,6 @@ Is the value at or below which a given percentage of all samples falls.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">Percentiles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skewness-and-kurtosis">Skewness and kurtosis</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skewness">Skewness</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kurtosis">Kurtosis</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-a-normal-distribution">Properties of a Normal distribution</a></li>
 </ul>
   </nav></div>
 

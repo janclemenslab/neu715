@@ -510,9 +510,9 @@ document.write(`
 
 <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
     <span class="n">half</span> <span class="o">=</span> <span class="n">number</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inside the loop:&quot;</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span><span class="n">half</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inside the loop:&quot;</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">half</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;outside of the loop&quot;</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span><span class="n">half</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;after the loop&quot;</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">half</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -521,7 +521,7 @@ document.write(`
 inside the loop: 20 10.0
 inside the loop: 30 15.0
 inside the loop: 40 20.0
-outside of the loop 40 20.0
+after the loop 40 20.0
 </pre></div>
 </div>
 </div>
@@ -604,7 +604,7 @@ outer 30
 <h2>Common code patterns<a class="headerlink" href="#common-code-patterns" title="Link to this heading">#</a></h2>
 <section id="building-lists">
 <h3>Building lists<a class="headerlink" href="#building-lists" title="Link to this heading">#</a></h3>
-<p>So far we were able to manipulate list elements and print the result, but we did not have a way of saving the manipulated elements. You can do that by appending the results to a new list in the for loop:</p>
+<p>So far we were able to manipulate list elements and print the result, but we did not have a way of saving the manipulated elements in a new list. You can do that by appending the results to a new empty list in the for loop:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Goal: divide by ten each element in the list &quot;data&quot;, collect the results in a new list &quot;new_data&quot;</span>
@@ -653,7 +653,7 @@ results: [1.0, 2.0, 3.0]
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numbers: [1, 15, 3, 2, 11, 7, 20]
-[1, 3, 2, 7]
+[15, 11, 20]
 </pre></div>
 </div>
 </div>
@@ -719,8 +719,8 @@ Estelle
 </div>
 </div>
 </div>
-<p>Python has a special <code class="docutils literal notranslate"><span class="pre">range</span></code> function, that makes it easy to generate lists of indices.</p>
-<p>The range function generates a sequence of integer numbers with specified start, stop (non-inclusive), and step (interval) value:</p>
+<p>Above, we have manually created a list of indices for looping. This is not practical for longer lists. The <code class="docutils literal notranslate"><span class="pre">range</span></code> function can be used to generate lists of indices.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">range</span></code> function generates a sequence of integer numbers with specified start, stop (non-inclusive), and step (interval) value:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -763,7 +763,7 @@ Estelle
 <p class="admonition-title">Clicker question “range 2”(<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
 <p>Which range statement can be used to create the list <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">3,</span> <span class="pre">5]</span></code>?</p>
 </div>
-<p>To generate a <code class="docutils literal notranslate"><span class="pre">range</span></code> for looping over a list, we combine <code class="docutils literal notranslate"><span class="pre">range</span></code> with <code class="docutils literal notranslate"><span class="pre">len</span></code>. This will generate a <code class="docutils literal notranslate"><span class="pre">range</span></code> with the same length as the list, so that we have one index for each list element:</p>
+<p>To generate a <code class="docutils literal notranslate"><span class="pre">range</span></code> for looping over a list, we provide the length of the list (<code class="docutils literal notranslate"><span class="pre">len(my_list</span></code>) as an argument to <code class="docutils literal notranslate"><span class="pre">range</span></code>: <code class="docutils literal notranslate"><span class="pre">range(len(my_list))</span></code>. This will generate a <code class="docutils literal notranslate"><span class="pre">range</span></code> starting at 0 and ending at with the number <code class="docutils literal notranslate"><span class="pre">len(my_list)</span> <span class="pre">-</span> <span class="pre">1</span></code>, so that we have one index for each list element:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Estelle&#39;</span><span class="p">]</span>
@@ -816,9 +816,9 @@ Estelle
 <p>For instance, we can use a while loop to count down to zero:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># need to define the variable beforehand</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">10</span>
 
-<span class="k">while</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># apply the operation in the indented block as long as the value of `count` is greater than 0</span>
+<span class="k">while</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># apply the indented code as long as the value of `count` is greater than 0</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
     <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">-</span> <span class="mi">1</span>
 

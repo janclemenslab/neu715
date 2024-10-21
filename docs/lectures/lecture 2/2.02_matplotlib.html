@@ -429,8 +429,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#size-and-annotate-figsize-xlabel-ylabel-title">Size and annotate - figsize, xlabel, ylabel, title</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifiy-the-values-on-the-x-axis">Specifiy the values on the x axis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-size-and-annotations-figsize-xlabel-ylabel-title">Figure size and annotations - figsize, xlabel, ylabel, title</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-colors">Change colors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-x-values">Specify x values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-axis-limits-xlim-ylim">Change axis limits - xlim, ylim</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-x-and-y-axis-labels-xticks-and-yticks">Change x and y axis labels - xticks and yticks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-and-combine-markers">Change and combine markers</a></li>
@@ -491,13 +492,13 @@ document.write(`
 </div>
 </div>
 <p>By default, pyplot produces reasonably useful plots - but we can tweak and annotate them to make them even better:</p>
-<section id="size-and-annotate-figsize-xlabel-ylabel-title">
-<h2>Size and annotate - figsize, xlabel, ylabel, title<a class="headerlink" href="#size-and-annotate-figsize-xlabel-ylabel-title" title="Link to this heading">#</a></h2>
+<section id="figure-size-and-annotations-figsize-xlabel-ylabel-title">
+<h2>Figure size and annotations - figsize, xlabel, ylabel, title<a class="headerlink" href="#figure-size-and-annotations-figsize-xlabel-ylabel-title" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># create a figure with a 1:10 aspect ratio</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">voltage_trace</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">)</span>  <span class="c1"># plot the voltage trace as a black line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">voltage_trace</span><span class="p">)</span>  <span class="c1"># plot the voltage trace</span>
 
 <span class="c1"># add labels</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Membrane voltage [mV]&#39;</span><span class="p">)</span>  <span class="c1"># label the y axis</span>
@@ -509,12 +510,33 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f226e41966b25bf594a5c0518be2e69bdcb1c9eb150f2dcf6203f998ac6b6389.png" src="../../_images/f226e41966b25bf594a5c0518be2e69bdcb1c9eb150f2dcf6203f998ac6b6389.png" />
+<img alt="../../_images/154ced2b2cdb3ef2e51fee01ba856e58a12ff56e80fbbe6b558cffccfedf344f.png" src="../../_images/154ced2b2cdb3ef2e51fee01ba856e58a12ff56e80fbbe6b558cffccfedf344f.png" />
 </div>
 </div>
 </section>
-<section id="specifiy-the-values-on-the-x-axis">
-<h2>Specifiy the values on the x axis<a class="headerlink" href="#specifiy-the-values-on-the-x-axis" title="Link to this heading">#</a></h2>
+<section id="change-colors">
+<h2>Change colors<a class="headerlink" href="#change-colors" title="Link to this heading">#</a></h2>
+<p>See here for more information on specifying colors: <a class="reference internal" href="#"><span class="xref myst">https://matplotlib.org/stable/gallery/color/named_colors.html</span></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># create a figure with a 1:10 aspect ratio</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">voltage_trace</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>  <span class="c1"># change the color by providing single letter, one of rgbcymwk</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># create a figure with a 1:10 aspect ratio</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">voltage_trace</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">)</span>  <span class="c1"># by color name (see link above)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a37b50127775c42640f71fdf625074761fedb26f8d7c3d86684ce0a8b9b4d300.png" src="../../_images/a37b50127775c42640f71fdf625074761fedb26f8d7c3d86684ce0a8b9b4d300.png" />
+<img alt="../../_images/22397055adb2b6cfe92679f8c8b2bb41a66a8871176ad7f8cb08e08f09b77918.png" src="../../_images/22397055adb2b6cfe92679f8c8b2bb41a66a8871176ad7f8cb08e08f09b77918.png" />
+</div>
+</div>
+</section>
+<section id="specify-x-values">
+<h2>Specify x values<a class="headerlink" href="#specify-x-values" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
@@ -714,8 +736,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#size-and-annotate-figsize-xlabel-ylabel-title">Size and annotate - figsize, xlabel, ylabel, title</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifiy-the-values-on-the-x-axis">Specifiy the values on the x axis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-size-and-annotations-figsize-xlabel-ylabel-title">Figure size and annotations - figsize, xlabel, ylabel, title</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-colors">Change colors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-x-values">Specify x values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-axis-limits-xlim-ylim">Change axis limits - xlim, ylim</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-x-and-y-axis-labels-xticks-and-yticks">Change x and y axis labels - xticks and yticks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-and-combine-markers">Change and combine markers</a></li>
