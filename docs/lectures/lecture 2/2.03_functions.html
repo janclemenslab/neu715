@@ -430,7 +430,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-indentation">Reminder: Indentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-functions">Why functions?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-function">The anatomy of a function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-arguments">Function arguments</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-and-optional-arguments">Required and optional arguments</a></li>
@@ -459,18 +459,18 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;before the loop&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in the loop&#39;</span><span class="p">)</span>  <span class="c1"># indented so inside the loop</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in the loop: index =&#39;</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>  <span class="c1"># indented so inside the loop</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;after the loop&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>before the loop
-in the loop
-in the loop
-in the loop
-in the loop
+in the loop: index = 0
+in the loop: index = 1
+in the loop: index = 2
+in the loop: index = 3
 after the loop
 </pre></div>
 </div>
@@ -480,30 +480,31 @@ after the loop
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;before the loop&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in the loop&#39;</span><span class="p">)</span>  <span class="c1"># indented so inside the loop</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in the loop: index =&#39;</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>  <span class="c1"># indented so inside the loop</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;after the loop&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>before the loop
-in the loop
+in the loop: index = 0
 after the loop
-in the loop
+in the loop: index = 1
 after the loop
-in the loop
+in the loop: index = 2
 after the loop
-in the loop
+in the loop: index = 3
 after the loop
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="id1">
-<h2>Functions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Functions allow you to re-use your code and shorten your code. For instance, if you need to calculate the mean of values in a list in several places in your program, then you will duplicate a lot of code. Writing a <code class="docutils literal notranslate"><span class="pre">mean</span></code> function that contains the relevant code and can be re-used throughout the programming is useful.</p>
+<section id="why-functions">
+<h2>Why functions?<a class="headerlink" href="#why-functions" title="Link to this heading">#</a></h2>
+<p>We have encountered builtin functions like <code class="docutils literal notranslate"><span class="pre">print</span></code> or <code class="docutils literal notranslate"><span class="pre">len</span></code> before. Functions typically receive inputs (arguments), contain code to manipulate the inputs, and often return a result: <code class="docutils literal notranslate"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">function_name(arguments)</span></code>.</p>
+<p>Functions allow you to re-use and shorten your code. For instance, if you need to calculate the mean of values in a list in several places in your program, then you will duplicate a lot of code. Writing a <code class="docutils literal notranslate"><span class="pre">mean</span></code> function that contains the relevant code and can be applied to different lists throughout the program is useful.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">4235</span><span class="p">,</span> <span class="mi">2365</span><span class="p">,</span> <span class="mi">6346</span><span class="p">]</span>
@@ -530,12 +531,85 @@ after the loop
 </div>
 </div>
 </div>
+<p>Above, we have applied the same computation to two different lists.Let’s to make this code more general, and turn it into a function.</p>
+<p>First, we re-organize the code to separate what changes from what is the same in the two blocks of code above:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we have different lists</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">4235</span><span class="p">,</span> <span class="mi">2365</span><span class="p">,</span> <span class="mi">6346</span><span class="p">]</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3523</span><span class="p">,</span> <span class="mi">346346</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">2345243</span><span class="p">,</span> <span class="mi">5234</span><span class="p">,</span> <span class="mi">32412</span><span class="p">]</span>
+
+<span class="c1"># this is the core computation for calculating the mean that will work for any list called `data`</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data1</span>  <span class="c1"># assign the different lists to the variable data</span>
+
+<span class="c1"># compute the sum</span>
+<span class="n">data_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">data_sum</span> <span class="o">+=</span> <span class="n">d</span>
+
+<span class="c1"># convert the sum into the mean</span>
+<span class="n">data_mean</span> <span class="o">=</span> <span class="n">data_sum</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># print the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3545.25
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s put the code inside a function, that we want to call <code class="docutils literal notranslate"><span class="pre">mean</span></code>. The input to the function should be the list <code class="docutils literal notranslate"><span class="pre">data</span></code>. This will be the function argument. The output of the function should be the mean of the data, contained in the variable <code class="docutils literal notranslate"><span class="pre">data_mean</span></code> in the code above.</p>
+<p>We want a function that we can it like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">the_calculated_mean</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">my_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we have different lists</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">4235</span><span class="p">,</span> <span class="mi">2365</span><span class="p">,</span> <span class="mi">6346</span><span class="p">]</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3523</span><span class="p">,</span> <span class="mi">346346</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">2345243</span><span class="p">,</span> <span class="mi">5234</span><span class="p">,</span> <span class="mi">32412</span><span class="p">]</span>
+
+<span class="c1"># define a function with name &quot;mean&quot; and a single argument &quot;data&quot;</span>
+<span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># let&#39;s print the value of the argument here</span>
+
+    <span class="c1"># THE COMPUTATION</span>
+    <span class="c1"># compute the sum</span>
+    <span class="n">data_sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">data_sum</span> <span class="o">+=</span> <span class="n">d</span>
+
+    <span class="c1"># convert the sum into the mean</span>
+    <span class="n">data_mean</span> <span class="o">=</span> <span class="n">data_sum</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># RETURN THE RESULT</span>
+    <span class="k">return</span> <span class="n">data_mean</span>  <span class="c1"># return the result, the value of the variable &quot;data_mean&quot;.</span>
+
+<span class="n">the_mean_of_the_data1</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>  <span class="c1"># call the function by its name and provide a data list as the argument</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">the_mean_of_the_data1</span><span class="p">)</span>
+
+<span class="n">the_mean_of_the_data2</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>  <span class="c1"># call the function by its name and provide a data list as the argument</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">the_mean_of_the_data2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1235, 4235, 2365, 6346]
+3545.25
+[3523, 346346, 35, 23, 2345243, 5234, 32412]
+390402.28571428574
+</pre></div>
+</div>
+</div>
+</div>
 <p>A function has several advantages:</p>
 <ol class="arabic simple">
 <li><p>It makes your code shorter</p></li>
-<li><p>It avoids duplication of code and errors</p></li>
+<li><p>It allows you to re-use your code elsewhere</p></li>
 <li><p>It helps to further separate program logic (calculation of the mean) from your data</p></li>
-<li><p>It can be re-used elsewhere</p></li>
 </ol>
 </section>
 <section id="the-anatomy-of-a-function">
@@ -543,126 +617,19 @@ after the loop
 <ul class="simple">
 <li><p>the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code>, followed by the name of the function</p></li>
 <li><p>arguments following the name in parentheses, multiple arguments separated by commas</p></li>
-<li><p>Optional but highly recommend: A doc string explaining what the function does, the arguments (and it’s expected type) and the output. That way, anyone can learn about your function using <code class="docutils literal notranslate"><span class="pre">FUNCTION_NAME?</span></code>.</p></li>
-<li><p>The code that does what the function is supposed to do.</p></li>
+<li><p>in the definition, the arguments correspond to the names of the variables each input is assigned to inside the function.</p></li>
+<li><p>The indented code that does what the function is supposed to do.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">return</span></code> followed by the variables whose values you want the function to produce as an output. Omit the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement if you do not want to return anything. <strong>Caution:</strong> Lines of code in your function after <code class="docutils literal notranslate"><span class="pre">return</span></code> will not be executed - python will “exit” your function after return.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">argument1</span><span class="p">,</span> <span class="n">argument2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+    <span class="c1"># things to do with the arguments inside the function</span>
+    <span class="n">calculated_values</span> <span class="o">=</span> <span class="n">argument1</span> <span class="o">+</span> <span class="n">argument2</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        argument1: _description_</span>
-<span class="sd">        argument2: _description_</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        _description_</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># things to do/calculate</span>
-    <span class="c1"># you write your code here</span>
-    <span class="n">calculated_values</span> <span class="o">=</span> <span class="mi">1000</span>
-
-    <span class="c1"># if you need to get a value calculated in the function</span>
-    <span class="c1"># you need to use a return statement</span>
+    <span class="c1"># if you want to get a value calculated inside the function</span>
+    <span class="c1"># you must use a return statement</span>
     <span class="k">return</span> <span class="n">calculated_values</span>
-
-function_name<span class="o">?</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> function_name<span class=" -Color -Color-Blue">(</span>argument1<span class=" -Color -Color-Blue">,</span> argument2<span class=" -Color -Color-Blue">)</span>
-<span class=" -Color -Color-Red">Docstring:</span>
-_summary_
-
-Args:
-    argument1: _description_
-    argument2: _description_
-
-Returns:
-    _description_
-<span class=" -Color -Color-Red">File:</span>      /var/folders/bc/5m_c7nkj1vnc2w7xmmnhpfww0000gn/T/ipykernel_99939/1581233547.py
-<span class=" -Color -Color-Red">Type:</span>      function
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here is a very simple function:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">nom</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hi </span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">)</span>
-
-<span class="n">greet</span><span class="p">(</span><span class="s1">&#39;Jean&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hi Jean!
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here is a function that calculates the mean of values in a list:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>  <span class="c1"># name and input</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the mean</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        data (list): Should be a list of numbers.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        number: The mean over all items in `data`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1">#calculation</span>
-    <span class="n">data_mean</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-        <span class="n">data_mean</span> <span class="o">+=</span> <span class="n">d</span>
-    <span class="n">data_mean</span> <span class="o">=</span> <span class="n">data_mean</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">data_mean</span>  <span class="c1"># output</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>You can print the doc string using the <code class="docutils literal notranslate"><span class="pre">help</span></code> function or <code class="docutils literal notranslate"><span class="pre">?</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mean<span class="o">?</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> mean<span class=" -Color -Color-Blue">(</span>data<span class=" -Color -Color-Blue">)</span>
-<span class=" -Color -Color-Red">Docstring:</span>
-Calculate the mean
-
-Args:
-    data (list): Should be a list of numbers.
-
-Returns:
-    number: The mean over all items in `data`.
-<span class=" -Color -Color-Red">File:</span>      /var/folders/bc/5m_c7nkj1vnc2w7xmmnhpfww0000gn/T/ipykernel_99939/2853359421.py
-<span class=" -Color -Color-Red">Type:</span>      function
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">4235</span><span class="p">,</span> <span class="mi">2365</span><span class="p">,</span> <span class="mi">6346</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">data1</span><span class="p">))</span>
-
-<span class="n">data2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3523</span><span class="p">,</span> <span class="mi">346346</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">2345243</span><span class="p">,</span> <span class="mi">5234</span><span class="p">,</span><span class="mi">32412</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">data2</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3545.25
-390402.28571428574
 </pre></div>
 </div>
 </div>
@@ -915,42 +882,6 @@ None &lt;class &#39;NoneType&#39;&gt;
 </div>
 </div>
 </div>
-<p>A function can also return nothing - <code class="docutils literal notranslate"><span class="pre">None</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> is used to indicate “no value” in python.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_name_and_age</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;s age is </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years.&quot;</span><span class="p">)</span>
-
-<span class="n">print_name_and_age</span><span class="p">(</span><span class="s2">&quot;Olaf&quot;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
-
-<span class="n">output</span> <span class="o">=</span> <span class="n">print_name_and_age</span><span class="p">(</span><span class="s2">&quot;Olaf&quot;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">output</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Olaf&#39;s age is 64 years.
-Olaf&#39;s age is 64 years.
-None &lt;class &#39;NoneType&#39;&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>We’ve encountered functions that do not return anything in our introduction to lists. <code class="docutils literal notranslate"><span class="pre">append</span></code> does not return anything. So <code class="docutils literal notranslate"><span class="pre">new_list</span> <span class="pre">=</span> <span class="pre">list.append(value)</span></code> will set <code class="docutils literal notranslate"><span class="pre">new_list</span></code> to <code class="docutils literal notranslate"><span class="pre">None</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
-<span class="n">new_list</span> <span class="o">=</span> <span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">new_list</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="the-scope-of-a-variable-local-variables">
 <h2>The “scope” of a variable - local variables<a class="headerlink" href="#the-scope-of-a-variable-local-variables" title="Link to this heading">#</a></h2>
@@ -975,7 +906,7 @@ None &lt;class &#39;NoneType&#39;&gt;
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">104</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="k">return</span> <span class="n">the_area</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># we print the value returned by our function</span>
 <span class="ne">----&gt; </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi outside the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># pi only exists inside the function</span>
@@ -1011,7 +942,7 @@ The value of pi outside and after the function is 4.3
 </div>
 </div>
 </div>
-<p>But, every variable created outside is accessible inside the function</p>
+<p>But: While variables created inside a function are not accessible to the outside without returning them, every variable created outside is accessible inside the function. So things can leak into the function but not out of it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>
@@ -1116,7 +1047,7 @@ The value of pi outside and after the function is 4.3
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-indentation">Reminder: Indentation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-functions">Why functions?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-function">The anatomy of a function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-arguments">Function arguments</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-and-optional-arguments">Required and optional arguments</a></li>
