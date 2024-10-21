@@ -540,7 +540,10 @@ document.write(`
 <p>Dictionaries can hold any value, like a list.
 Unlike lists, they can have arbitrary indices, like strings or floats, not just integers.</p>
 <p>They consist of <code class="docutils literal notranslate"><span class="pre">key:value</span></code> pairs, where both the key and the value can be almost any python object (numbers, strings, tuples (but not lists)).</p>
-<p>Create with <code class="docutils literal notranslate"><span class="pre">{key1:</span> <span class="pre">value1,</span> <span class="pre">key2:</span> <span class="pre">value2,</span> <span class="pre">...}</span></code> (not to be confused with set creation, which also uses curly brackets <code class="docutils literal notranslate"><span class="pre">{value1,</span> <span class="pre">value2}</span></code>).</p>
+<p>Create with <code class="docutils literal notranslate"><span class="pre">{key1:</span> <span class="pre">value1,</span> <span class="pre">key2:</span> <span class="pre">value2,</span> <span class="pre">...}</span></code>.</p>
+<p>Access values by using the key as an index <code class="docutils literal notranslate"><span class="pre">my_dict[</span></code>key_name<code class="docutils literal notranslate"><span class="pre">]</span></code></p>
+<p>Assign new keys or overwrite existing keys in an existing dictionary simply by assignment: <code class="docutils literal notranslate"><span class="pre">my_dict['new_or_existing_key']</span> <span class="pre">=</span> <span class="pre">new_value</span></code></p>
+<p>Delete key:value pairs with <code class="docutils literal notranslate"><span class="pre">del(my_dict['key_name'])</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A phone book can be represented as two &quot;parallel&quot; lists - one with the names, and one with the phone numbers</span>
@@ -548,17 +551,18 @@ Unlike lists, they can have arbitrary indices, like strings or floats, not just 
 <span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">125324123</span><span class="p">,</span> <span class="mi">432246234</span><span class="p">]</span>
 
 <span class="c1"># We can represent the same data using a dictionary, with names as keys, and phone numbers as values</span>
-<span class="n">phone_book</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">125324123</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">:</span> <span class="mi">432246234</span><span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">)</span>
+<span class="n">phone_book</span> <span class="o">=</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">])</span>  <span class="c1"># get values using the key inside brackets</span>
+<span class="c1"># Access values using the key as in inside inside brackets</span>
 
-<span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1245264</span>  <span class="c1"># we can change the values</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">])</span>
+<span class="c1"># Change values of existing keys:</span>
 
-<span class="n">phone_book</span><span class="p">[</span><span class="s1">&#39;Bob&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">991</span>  <span class="c1"># we can add new key-value pairs to an existing list</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">phone_book</span><span class="p">)</span>
+
+<span class="c1"># Add new keys to an existing dictionary:</span>
+
+
+<span class="c1"># Delete a key:value pair</span>
 </pre></div>
 </div>
 </div>
@@ -595,9 +599,6 @@ Unlike lists, they can have arbitrary indices, like strings or floats, not just 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phone_book</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tom&#39;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span> <span class="s1">&#39;Alice&#39;</span><span class="p">:</span> <span class="mi">246234</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">:</span> <span class="mi">110</span><span class="p">}</span>
-
-<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">phone_number</span> <span class="ow">in</span> <span class="n">phone_book</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">phone_number</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
