@@ -439,7 +439,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-types-and-casting">Array types and casting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment">Assignment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#math">Math</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-arrays-and-boolean-indexing">Searching arrays and Boolean indexing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-arrays-and-boolean-indexing">Searching arrays and boolean indexing</a></li>
 </ul>
 </li>
 </ul>
@@ -470,21 +470,18 @@ document.write(`
 <li><p><em>Scipy</em> provides more advanced algorithms. We will cover the following:</p>
 <ul class="simple">
 <li><p>statistics and statistical tests (mean, std, ttest, anova, non-parametric tests) - Week 4</p></li>
-<li><p>curve fitting and optimization - Week 5</p></li>
-<li><p>frequency analyses - Week 6(?)</p></li>
+<li><p>curve fitting and optimization - Week 6</p></li>
+<li><p>frequency analyses</p></li>
 </ul>
 </li>
-<li><p><em>Pandas</em> provides a way for handling tabular data with named columns and rows, plus the ability to load/save common file formats (Week 3, Week 5)</p></li>
+<li><p><em>Pandas</em> provides a way for handling tabular data with named columns and rows, plus the ability to load/save common file formats (Week 3)</p></li>
 </ol>
 <p><em>Numpy for matlab users</em>:
 If you know Matlab, than numpy is conceptually very similar. Here is a great resource for matlab users that want to use numpy: <a class="reference external" href="https://numpy.org/doc/stable/user/numpy-for-matlab-users.html">Numpy for Matlab users</a>.</p>
 <p>Last remark - numpy, scipy, and pandas are large packages, with many functions. We will only scratch the surface of what can be done with these.</p>
 <section id="why">
 <h2>Why?<a class="headerlink" href="#why" title="Link to this heading">#</a></h2>
-<p>So far, we’ve dealt with small data sets - what if we have realistic amounts of data?
-For instance, it is now easy to record electrophysiological activity for many hours on hundreds of channels. Processing these large volumes of data should not take days!!</p>
-<p>However, python is slow for raw number crunching.</p>
-<p>As an example, take a moderately long recording - 10 hours of single channel data voltage recordings:</p>
+<p>Numpy allows you to express common computations on arrays more concisely, without needing for loops. Numpy is also much faster.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -495,74 +492,42 @@ For instance, it is now easy to record electrophysiological activity for many ho
 <span class="c1"># np.savez_compressed(&#39;data/voltage_trace_long.npz&#39;, **data)</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;data/voltage_trace_long.npz&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">spike_times_old</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">spike_voltages_old</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">voltages</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;voltage_trace&#39;</span><span class="p">]</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;times_seconds&#39;</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;voltage_trace&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;times_seconds&#39;</span><span class="p">]):</span>
-    <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
-        <span class="n">spike_voltages_old</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-        <span class="n">spike_times_old</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">spike_times_old</span><span class="p">)</span><span class="si">}</span><span class="s2"> spikes.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Detected 5270400 spikes.
-</pre></div>
-</div>
-</div>
-</div>
-<p>Detecting spikes in these data with our “old” python code takes a long time - 17 seconds.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">spike_times</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">spike_voltages</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;voltage_trace&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;times_seconds&#39;</span><span class="p">]):</span>
-    <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
-        <span class="n">spike_voltages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-        <span class="n">spike_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span><span class="si">}</span><span class="s2"> spikes.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Detected 5270400 spikes.
-CPU times: user 10.4 s, sys: 310 ms, total: 10.7 s
-Wall time: 10.9 s
 </pre></div>
 </div>
 </div>
 </div>
-<p>The same, implemented in numpy is not only faster - it takes less than two seconds - but also more concise and easier to read!</p>
-<p>Below code will make more sense at the end of this lecture.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-
-<span class="n">idx</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;voltage_trace&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span>  <span class="c1"># determine which values in voltage_trace exceed the threshold</span>
-
-<span class="n">spike_times</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;times_seconds&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>  <span class="c1"># take the time of the super-threshold values</span>
-
-<span class="n">spike_voltages</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;voltage_trace&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>  <span class="c1"># take the voltage of the super-threshold values</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">spike_times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">voltages</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">voltages</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+        <span class="n">spike_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">times</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Detected 5270400
-CPU times: user 2.12 s, sys: 339 ms, total: 2.46 s
-Wall time: 2.5 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 8.73 s, sys: 91.7 ms, total: 8.82 s
+Wall time: 8.84 s
+</pre></div>
+</div>
+</div>
+</div>
+<p>With numpy this is a one-liner and almost 100x faster:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">spike_times</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="n">voltages</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 106 ms, sys: 20 ms, total: 126 ms
+Wall time: 125 ms
 </pre></div>
 </div>
 </div>
@@ -729,7 +694,7 @@ last column: data[:, -1]=array([32, 43])
 </div>
 </div>
 </div>
-<p>One can even use arrays to index other arrays or lists:</p>
+<p>One can even use arrays or lists as indices for arrays. This was not possible with lists.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -765,7 +730,7 @@ data values at the indices: data[indices]=array([2, 4, 6])
 </pre></div>
 </div>
 </div>
-<p><strong>Important</strong>, the type of the list elements we want to use for indexing needs to be int, not float.</p>
+<p><strong>Important</strong> As with lists, the type of the indices must not be <code class="docutils literal notranslate"><span class="pre">float</span></code>. They should <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">bool</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">])</span>
@@ -780,7 +745,7 @@ data values at the indices: data[indices]=array([2, 4, 6])
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">])</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Indices are of type float: </span><span class="si">{</span><span class="n">indices</span><span class="o">.</span><span class="n">dtype</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This does not work: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -875,6 +840,24 @@ This does not work: data[indices_as_int]=array([ 2, 14, 36])
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32,
+       34, 36, 38])
+data + 10=array([10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42,
+       44, 46, 48])
+data - np.ones_like(data) * 2=array([-2,  0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30,
+       32, 34, 36])
+data - np.array([[1], [2.5]])=array([[-1. ,  1. ,  3. ,  5. ,  7. ,  9. , 11. , 13. , 15. , 17. , 19. ,
+        21. , 23. , 25. , 27. , 29. , 31. , 33. , 35. , 37. ],
+       [-2.5, -0.5,  1.5,  3.5,  5.5,  7.5,  9.5, 11.5, 13.5, 15.5, 17.5,
+        19.5, 21.5, 23.5, 25.5, 27.5, 29.5, 31.5, 33.5, 35.5]])
+data * np.array([[1], [2.5]])=array([[ 0.,  2.,  4.,  6.,  8., 10., 12., 14., 16., 18., 20., 22., 24.,
+        26., 28., 30., 32., 34., 36., 38.],
+       [ 0.,  5., 10., 15., 20., 25., 30., 35., 40., 45., 50., 55., 60.,
+        65., 70., 75., 80., 85., 90., 95.]])
+</pre></div>
+</div>
+</div>
 </div>
 <p>more functions:</p>
 <div class="cell docutils container">
@@ -885,6 +868,17 @@ This does not work: data[indices_as_int]=array([ 2, 14, 36])
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([0.        , 0.11111111, 0.22222222, 0.33333333, 0.44444444,
+       0.55555556, 0.66666667, 0.77777778, 0.88888889, 1.        ])
+np.mean(data)=np.float64(0.5)
+np.std(data)=np.float64(0.31914236925211265)
+np.prod(data)=np.float64(0.0)
+np.diff(data)=array([0.11111111, 0.11111111, 0.11111111, 0.11111111, 0.11111111,
+       0.11111111, 0.11111111, 0.11111111, 0.11111111])
 </pre></div>
 </div>
 </div>
@@ -900,10 +894,18 @@ This allows you to compute the mean only over rows, or only over columns.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([[ 1,  2,  3],
+       [10, 20, 30]])
+np.mean(data, axis=0)=array([ 5.5, 11. , 16.5])
+np.mean(data, axis=1)=array([ 2., 20.])
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="searching-arrays-and-boolean-indexing">
-<h3>Searching arrays and Boolean indexing<a class="headerlink" href="#searching-arrays-and-boolean-indexing" title="Link to this heading">#</a></h3>
+<h3>Searching arrays and boolean indexing<a class="headerlink" href="#searching-arrays-and-boolean-indexing" title="Link to this heading">#</a></h3>
 <p>Just like with math, we can also apply comparisons to all elements of an array. This creates boolean arrays:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1124,7 +1126,7 @@ data[data &lt; 10]=array([6, 9])
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-types-and-casting">Array types and casting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment">Assignment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#math">Math</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-arrays-and-boolean-indexing">Searching arrays and Boolean indexing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-arrays-and-boolean-indexing">Searching arrays and boolean indexing</a></li>
 </ul>
 </li>
 </ul>
