@@ -539,24 +539,7 @@ after the loop
 <span class="n">data1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">4235</span><span class="p">,</span> <span class="mi">2365</span><span class="p">,</span> <span class="mi">6346</span><span class="p">]</span>
 <span class="n">data2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3523</span><span class="p">,</span> <span class="mi">346346</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">2345243</span><span class="p">,</span> <span class="mi">5234</span><span class="p">,</span> <span class="mi">32412</span><span class="p">]</span>
 
-<span class="c1"># this is the core computation for calculating the mean that will work for any list called `data`</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data1</span>  <span class="c1"># assign the different lists to the variable data</span>
-
-<span class="c1"># compute the sum</span>
-<span class="n">data_sum</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="n">data_sum</span> <span class="o">+=</span> <span class="n">d</span>
-
-<span class="c1"># convert the sum into the mean</span>
-<span class="n">data_mean</span> <span class="o">=</span> <span class="n">data_sum</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="c1"># print the result</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data_mean</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3545.25
+<span class="c1"># What part of the code above is constant? What changes?</span>
 </pre></div>
 </div>
 </div>
@@ -573,34 +556,13 @@ after the loop
 <span class="n">data2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3523</span><span class="p">,</span> <span class="mi">346346</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">2345243</span><span class="p">,</span> <span class="mi">5234</span><span class="p">,</span> <span class="mi">32412</span><span class="p">]</span>
 
 <span class="c1"># define a function with name &quot;mean&quot; and a single argument &quot;data&quot;</span>
-<span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># let&#39;s print the value of the argument here</span>
 
-    <span class="c1"># THE COMPUTATION</span>
-    <span class="c1"># compute the sum</span>
-    <span class="n">data_sum</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-        <span class="n">data_sum</span> <span class="o">+=</span> <span class="n">d</span>
-
-    <span class="c1"># convert the sum into the mean</span>
-    <span class="n">data_mean</span> <span class="o">=</span> <span class="n">data_sum</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-    <span class="c1"># RETURN THE RESULT</span>
-    <span class="k">return</span> <span class="n">data_mean</span>  <span class="c1"># return the result, the value of the variable &quot;data_mean&quot;.</span>
-
+<span class="c1"># we want to use the function like so:</span>
 <span class="n">the_mean_of_the_data1</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>  <span class="c1"># call the function by its name and provide a data list as the argument</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">the_mean_of_the_data1</span><span class="p">)</span>
 
 <span class="n">the_mean_of_the_data2</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>  <span class="c1"># call the function by its name and provide a data list as the argument</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">the_mean_of_the_data2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1235, 4235, 2365, 6346]
-3545.25
-[3523, 346346, 35, 23, 2345243, 5234, 32412]
-390402.28571428574
 </pre></div>
 </div>
 </div>
