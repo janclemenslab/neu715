@@ -429,10 +429,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-immutable-tuples-vs-lists">Exercise 1: Immutable tuples vs lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-make-a-digital-phone-book-using-a-dictionary">Exercise 2: Make a digital phone book using a dictionary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-modifying-dictionaries">Exercise 3: Modifying dictionaries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-for-loops-and-dictionaries">Exercise 4: For loops and dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-rewrite-this-code-using-a-dictionary">Exercise 5: Rewrite this code using a dictionary</a></li>
 </ul>
             </nav>
         </div>
@@ -446,8 +447,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="composite-data-types">
 <h1>Composite data types<a class="headerlink" href="#composite-data-types" title="Link to this heading">#</a></h1>
-<section id="exercise-1-immutable-tuples-vs-lists">
-<h2>Exercise 1: Immutable tuples vs lists<a class="headerlink" href="#exercise-1-immutable-tuples-vs-lists" title="Link to this heading">#</a></h2>
+<section id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h2>
 <p>We are given data as a tuple. We want to set the third value to 3.
 Fix below code to make this work:</p>
 <div class="cell docutils container">
@@ -460,7 +461,7 @@ Fix below code to make this work:</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
 
@@ -535,6 +536,36 @@ We are given two lists of matching names and phone numbers. Generate a phone boo
 </div>
 </div>
 </section>
+<section id="exercise-5-rewrite-this-code-using-a-dictionary">
+<h2>Exercise 5: Rewrite this code using a dictionary<a class="headerlink" href="#exercise-5-rewrite-this-code-using-a-dictionary" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mouse_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Jerry&#39;</span><span class="p">,</span> <span class="s1">&#39;Minnie&#39;</span><span class="p">,</span> <span class="s1">&#39;Pinky&#39;</span><span class="p">,</span> <span class="s1">&#39;Brain&#39;</span><span class="p">,</span> <span class="s1">&#39;Mickey&#39;</span><span class="p">]</span>
+<span class="n">mouse_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mouse_names</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The weight of&#39;</span><span class="p">,</span> <span class="n">mouse_names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="p">,</span><span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="n">mouse_weights</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="s1">&#39;grams.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The weight of Jerry is 32 grams.
+The weight of Minnie is 29 grams.
+The weight of Pinky is 25 grams.
+The weight of Brain is 38 grams.
+The weight of Mickey is 30 grams.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -601,10 +632,11 @@ We are given two lists of matching names and phone numbers. Generate a phone boo
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-immutable-tuples-vs-lists">Exercise 1: Immutable tuples vs lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-make-a-digital-phone-book-using-a-dictionary">Exercise 2: Make a digital phone book using a dictionary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-modifying-dictionaries">Exercise 3: Modifying dictionaries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-for-loops-and-dictionaries">Exercise 4: For loops and dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-rewrite-this-code-using-a-dictionary">Exercise 5: Rewrite this code using a dictionary</a></li>
 </ul>
   </nav></div>
 
