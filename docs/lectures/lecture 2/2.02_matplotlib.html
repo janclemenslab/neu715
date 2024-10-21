@@ -491,7 +491,7 @@ document.write(`
 <img alt="../../_images/f738ba8a3d2078de0ee7165fdfc423670b593fe0967837e7af576a48b9d2f021.png" src="../../_images/f738ba8a3d2078de0ee7165fdfc423670b593fe0967837e7af576a48b9d2f021.png" />
 </div>
 </div>
-<p>By default, pyplot produces reasonably useful plots - but we can tweak and annotate them to make them even better:</p>
+<p>By default, pyplot produces reasonably useful plots - but we can tweak and annotate them to make them even better. It helps to know how different elements of a figure are named in matplotlib: Figure, axes, x and y axis, x and y axis labels, x and y axis tick marks and labels.</p>
 <section id="figure-size-and-annotations-figsize-xlabel-ylabel-title">
 <h2>Figure size and annotations - figsize, xlabel, ylabel, title<a class="headerlink" href="#figure-size-and-annotations-figsize-xlabel-ylabel-title" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -634,10 +634,10 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># first panel</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># first panel = axes</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_seconds</span><span class="p">,</span> <span class="n">voltage_trace</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># second panel</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># second panel = axes</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_seconds</span><span class="p">,</span> <span class="n">voltage_trace</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">)</span>
 
