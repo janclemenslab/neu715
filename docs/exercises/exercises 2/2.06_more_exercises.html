@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exercise 2.6 - More exercises &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Bonus exercises &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -419,7 +419,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 2.6 - More exercises</h1>
+    <h1>Bonus exercises</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -431,7 +431,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-temperature-anomalies">Exercise 1: Temperature anomalies</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-smooth-the-anomaly-values">1A) Smooth the anomaly values.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-b-smooth-the-anomaly-values-with-different-spans"><strong>BONUS</strong> B) Smooth the anomaly values with different spans.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-make-your-code-more-readable-by-using-functions">1B) Make your code more readable by using functions.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-smooth-the-anomaly-values-with-different-spans">1C) Smooth the anomaly values with different spans.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-2-change-in-temperature-anomalies"><strong>BONUS</strong> Exercise 2: Change in temperature anomalies</a></li>
 </ul>
 </li>
@@ -446,8 +447,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-2-6-more-exercises">
-<h1>Exercise 2.6 - More exercises<a class="headerlink" href="#exercise-2-6-more-exercises" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="bonus-exercises">
+<h1>Bonus exercises<a class="headerlink" href="#bonus-exercises" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXECUTE BUT DO NOT CHANGE</span>
@@ -466,6 +467,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1880, 1881, 1882, 1883, 1884, 1885, 1886, 1887, 1888, 1889]
+[np.float64(-0.1), np.float64(-0.17), np.float64(-0.11), np.float64(-0.17), np.float64(-0.28), np.float64(-0.26), np.float64(-0.27), np.float64(-0.22), np.float64(-0.09), np.float64(-0.23)]
+</pre></div>
+</div>
+</div>
 </div>
 <section id="exercise-1-temperature-anomalies">
 <h2>Exercise 1: Temperature anomalies<a class="headerlink" href="#exercise-1-temperature-anomalies" title="Link to this heading">#</a></h2>
@@ -481,7 +488,6 @@ document.write(`
 <p>Label and format the plot, and plot the raw values as dots and the smoothed values as a line, as in the figure below.</p>
 <p>Roughly like so:</p>
 <p><img alt="" src="../../_images/2.06_more_exercises_1a.png" /></p>
-<p><strong>BONUS</strong> Make your code more readable by using functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your solution here</span>
@@ -490,8 +496,11 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="bonus-b-smooth-the-anomaly-values-with-different-spans">
-<h3><strong>BONUS</strong> B) Smooth the anomaly values with different spans.<a class="headerlink" href="#bonus-b-smooth-the-anomaly-values-with-different-spans" title="Link to this heading">#</a></h3>
+<section id="b-make-your-code-more-readable-by-using-functions">
+<h3>1B) Make your code more readable by using functions.<a class="headerlink" href="#b-make-your-code-more-readable-by-using-functions" title="Link to this heading">#</a></h3>
+</section>
+<section id="c-smooth-the-anomaly-values-with-different-spans">
+<h3>1C) Smooth the anomaly values with different spans.<a class="headerlink" href="#c-smooth-the-anomaly-values-with-different-spans" title="Link to this heading">#</a></h3>
 <p>Use different spans of the moving average window (1, 2, 4, 8, 16). Overlay smoothed values for the different spans. Make a function for smoothing to simplify your code.</p>
 <p>The plot should look roughly like so:</p>
 <p><img alt="" src="../../_images/2.06_more_exercises_1b.png" /></p>
@@ -590,7 +599,8 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-temperature-anomalies">Exercise 1: Temperature anomalies</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-smooth-the-anomaly-values">1A) Smooth the anomaly values.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-b-smooth-the-anomaly-values-with-different-spans"><strong>BONUS</strong> B) Smooth the anomaly values with different spans.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-make-your-code-more-readable-by-using-functions">1B) Make your code more readable by using functions.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-smooth-the-anomaly-values-with-different-spans">1C) Smooth the anomaly values with different spans.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-exercise-2-change-in-temperature-anomalies"><strong>BONUS</strong> Exercise 2: Change in temperature anomalies</a></li>
 </ul>
 </li>
