@@ -531,45 +531,26 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">time_seconds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_seconds</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Time [s]&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/2071bb7d762f4e7aa38ac20dff5aabb3926bd5fed897fcc4d76e4cdab888547d.png" src="../../_images/2071bb7d762f4e7aa38ac20dff5aabb3926bd5fed897fcc4d76e4cdab888547d.png" />
 </div>
 </div>
 </section>
 <section id="exercise-2b-time-axis-starting-at-2-seconds">
 <h3>Exercise 2b - time axis starting at 2 seconds<a class="headerlink" href="#exercise-2b-time-axis-starting-at-2-seconds" title="Link to this heading">#</a></h3>
-<p>We just realized that we made a mistake - the data were sampled starting at 2 seconds. Add 2 to each value of the time array and replot the data with the new time axis</p>
+<p>We just realized that we made a mistake - the data were sampled starting at 2 seconds, not at 0 seconds. Add 2 to each value of the time array and replot the data with the new time axis</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_seconds</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Time [s]&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/9e985325fe210e43a702c9b47ef409c8c89f8b5c0b9c797dfb9219cc4b99b9f4.png" src="../../_images/9e985325fe210e43a702c9b47ef409c8c89f8b5c0b9c797dfb9219cc4b99b9f4.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="exercise-3-z-scoring-our-data">
 <h2>Exercise 3: Z-scoring our data<a class="headerlink" href="#exercise-3-z-scoring-our-data" title="Link to this heading">#</a></h2>
-<p>In a previous exercised, we have z-scored some temperature data using core python and a bunch of for loops.</p>
+<p>In a previous exercise, we have z-scored some temperature data using core python and a bunch of for loops.</p>
 <p>Remember that z-scoring amounts to for each value: subtracting the mean, <span class="math notranslate nohighlight">\(M\)</span>, and dividing by the standard deviation, <span class="math notranslate nohighlight">\(S\)</span>:
 <span class="math notranslate nohighlight">\(z_i = (x_i - M) / S\)</span></p>
 <div class="cell docutils container">
@@ -629,20 +610,11 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span>
 
 <span class="c1"># your solution here</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">ta_zscored</span> <span class="o">=</span> <span class="p">(</span><span class="n">temperature_anomalies</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span>
-<span class="n">ta_zscored</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.19, -0.177, -0.308, -0.289, -0.193, -0.057, 0.077, 0.026, 0.029, 0.068, 0.256, 0.342, 0.591, 0.792]
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.82200975, -0.78076195, -1.19641287, -1.13612763, -0.83152848,
-       -0.40001302,  0.02515663, -0.13666167, -0.12714295, -0.00339954,
-        0.59310712,  0.86597719,  1.65603123,  2.2937857 ])
 </pre></div>
 </div>
 </div>
@@ -804,25 +776,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">71</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># your solution here</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;data/voltage_trace.npz&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-
-<span class="nn">File ~/miniconda3/envs/neu715/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:459,</span> in <span class="ni">load</span><span class="nt">(file, mmap_mode, allow_pickle, fix_imports, encoding, max_header_size)</span>
-<span class="g g-Whitespace">    </span><span class="mi">457</span>     <span class="n">own_fid</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">    </span><span class="mi">458</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">459</span>     <span class="n">fid</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">enter_context</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">fspath</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="s2">&quot;rb&quot;</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">460</span>     <span class="n">own_fid</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">    </span><span class="mi">462</span> <span class="c1"># Code to distinguish from NumPy binary files and pickles.</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/voltage_trace.npz&#39;
-</pre></div>
-</div>
+<img alt="../../_images/74ddbccaf2ca38a91e509b9d44fcec23adbeecb076f654d0ae71eff3bade78ed.png" src="../../_images/74ddbccaf2ca38a91e509b9d44fcec23adbeecb076f654d0ae71eff3bade78ed.png" />
 </div>
 </div>
 </section>
