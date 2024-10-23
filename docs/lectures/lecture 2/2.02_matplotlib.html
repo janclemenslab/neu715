@@ -504,14 +504,14 @@ document.write(`
 <span class="c1"># add labels</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Membrane voltage [mV]&#39;</span><span class="p">)</span>  <span class="c1"># label the y axis</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample&#39;</span><span class="p">)</span>  <span class="c1"># label the x axis</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Recording&#39;</span><span class="p">)</span>  <span class="c1"># plot title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>  <span class="c1"># plot title</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bf63887ce74f4ed0e8d2e86c934060a3bccff055b93a088e87f6b1a25c29e00b.png" src="../../_images/bf63887ce74f4ed0e8d2e86c934060a3bccff055b93a088e87f6b1a25c29e00b.png" />
+<img alt="../../_images/d55df303dcf54c13f415e6f8fa3804ba0601c2ab4311df5912e7eda0b0ad7fb7.png" src="../../_images/d55df303dcf54c13f415e6f8fa3804ba0601c2ab4311df5912e7eda0b0ad7fb7.png" />
 </div>
 </div>
 </section>
@@ -541,16 +541,13 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_seconds</span><span class="p">,</span> <span class="n">voltage_trace</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>  <span class="c1"># use seconds as x-values</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Membrane voltage [mV]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [seconds]&#39;</span><span class="p">)</span>  <span class="c1"># change the time units</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39; Recording&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_seconds</span><span class="p">,</span> <span class="n">voltage_trace</span><span class="p">)</span>  <span class="c1"># use seconds as x-values</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8255673d12a45735050aa51ec1d0faff699337e282987f91112fca20caf642cc.png" src="../../_images/8255673d12a45735050aa51ec1d0faff699337e282987f91112fca20caf642cc.png" />
+<img alt="../../_images/d31ae614b42fb215e9c08b39d0b9c80b7240196847801dcf67a39b4e0b8c4f8f.png" src="../../_images/d31ae614b42fb215e9c08b39d0b9c80b7240196847801dcf67a39b4e0b8c4f8f.png" />
 </div>
 </div>
 </section>
@@ -563,14 +560,14 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Membrane voltage [mV]&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Subthreshold voltages&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">)</span>  <span class="c1"># set limits of y axis</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># set only lower limit of x axis</span>
+<span class="c1"># plt.ylim(-80, -20)  # set limits of y axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>  <span class="c1"># set only lower limit of x axis</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/580ce9cd7bb75908e57874d4befb852505d2631ec5a98c6bd2aef12e61a8149e.png" src="../../_images/580ce9cd7bb75908e57874d4befb852505d2631ec5a98c6bd2aef12e61a8149e.png" />
+<img alt="../../_images/ec984f3ff5a266611707642cbf5a1da08e85707ea4324a6a06f87e9ad4fd7a56.png" src="../../_images/ec984f3ff5a266611707642cbf5a1da08e85707ea4324a6a06f87e9ad4fd7a56.png" />
 </div>
 </div>
 </section>
@@ -635,19 +632,20 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># first panel = axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># first panel = axes</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_seconds</span><span class="p">,</span> <span class="n">voltage_trace</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># second panel = axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># second panel = axes</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_seconds</span><span class="p">,</span> <span class="n">voltage_trace</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">)</span>
+
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e3f2d88bf69d7fe9f37d99a990b6512fa862bd86b49b529b9bf95b238c4d46bc.png" src="../../_images/e3f2d88bf69d7fe9f37d99a990b6512fa862bd86b49b529b9bf95b238c4d46bc.png" />
+<img alt="../../_images/7f6cfa3a86b9bbc3fa6a6224b93ebb09be23699090c2cb2245638b5077069628.png" src="../../_images/7f6cfa3a86b9bbc3fa6a6224b93ebb09be23699090c2cb2245638b5077069628.png" />
 </div>
 </div>
 </section>
@@ -656,18 +654,18 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_seconds</span><span class="p">,</span> <span class="n">voltage_trace</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>  <span class="c1"># define legend label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>  <span class="c1"># add the legend - alternatively: plt.legend([&#39;line&#39;, &#39;dots&#39;])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_seconds</span><span class="p">,</span> <span class="n">voltage_trace</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">)</span>  <span class="c1"># define legend label</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_seconds</span><span class="p">,</span> <span class="n">voltage_trace</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dots&#39;</span><span class="p">)</span>  <span class="c1"># define legend label</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Membrane voltage [mV]&#39;</span><span class="p">)</span>  <span class="c1"># label the y axis</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>  <span class="c1"># label the y axis</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Recording&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>  <span class="c1"># add the legend - alternatively: plt.legend([&#39;line&#39;, &#39;dots&#39;])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d189ef72b5020e27b0acbbd5ab142b449a1d92dc03ad1c52aaff8939ba5f94b0.png" src="../../_images/d189ef72b5020e27b0acbbd5ab142b449a1d92dc03ad1c52aaff8939ba5f94b0.png" />
+<img alt="../../_images/9803152f9a2a40f7ca6ae0372007a8f4e82003f50bc58214f4ab9c56b5aaf6cc.png" src="../../_images/9803152f9a2a40f7ca6ae0372007a8f4e82003f50bc58214f4ab9c56b5aaf6cc.png" />
 </div>
 </div>
 </section>

@@ -440,6 +440,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-can-return-zero-one-or-multiple-variables">Functions can return zero, one, or multiple variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-scope-of-a-variable-local-variables">The “scope” of a variable - local variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documenting-functions">Documenting functions</a></li>
 </ul>
             </nav>
         </div>
@@ -577,12 +578,13 @@ after the loop
 <section id="the-anatomy-of-a-function">
 <h2>The anatomy of a function<a class="headerlink" href="#the-anatomy-of-a-function" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code>, followed by the name of the function</p></li>
-<li><p>arguments following the name in parentheses, multiple arguments separated by commas</p></li>
-<li><p>in the definition, the arguments correspond to the names of the variables each input is assigned to inside the function.</p></li>
+<li><p>The keyword <code class="docutils literal notranslate"><span class="pre">def</span></code>, followed by the name of the function.</p></li>
+<li><p>Arguments following the name in parentheses, multiple arguments separated by commas.</p></li>
+<li><p>On the definition, the arguments correspond to the names of the variables each input is assigned to inside the function.</p></li>
 <li><p>The indented code that does what the function is supposed to do.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">return</span></code> followed by the variables whose values you want the function to produce as an output. Omit the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement if you do not want to return anything. <strong>Caution:</strong> Lines of code in your function after <code class="docutils literal notranslate"><span class="pre">return</span></code> will not be executed - python will “exit” your function after return.</p></li>
 </ul>
+<p>Running the code defining the function once will make it available anywhere in the notebook - it is added to the notebook’s namespace.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">argument1</span><span class="p">,</span> <span class="n">argument2</span><span class="p">):</span>
@@ -908,6 +910,7 @@ The value of pi outside and after the function is 4.3
 </div>
 </div>
 <p>But: While variables created inside a function are not accessible to the outside without returning them, every variable created outside is accessible inside the function. So things can leak into the function but not out of it.</p>
+<p>This makes it hard to debug functions, since you don’t have easy access to variable inside the function. That’s why you should write functions from the inside out: First implement the inner logic using normal python code (so you can easily inspect the values of variables), then wrap the working code in a function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>
@@ -943,6 +946,63 @@ The value of pi outside and after the function is 4.3
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
+</div>
+</section>
+<section id="documenting-functions">
+<h2>Documenting functions<a class="headerlink" href="#documenting-functions" title="Link to this heading">#</a></h2>
+<p>How do you know what a function does? You can inspect the code and try to infer what is going on. If you are lucky, the function is well documented with a so-called “doc string”.</p>
+<p>The doc string is a block of text, enclosed by triple double quotes (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>) and must contain the following information (but you can add more information if necessary):</p>
+<ol class="arabic simple">
+<li><p>A one-sentence decription of what the function does.</p></li>
+<li><p>A block defining the function arguments and what they do.</p></li>
+<li><p>A block definign what the function returns</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the mean of a list of numbers.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (List of numbers)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The mean</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># compute the sum</span>
+    <span class="n">data_sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">data_sum</span> <span class="o">+=</span> <span class="n">d</span>
+
+    <span class="c1"># convert the sum into the mean</span>
+    <span class="n">data_mean</span> <span class="o">=</span> <span class="n">data_sum</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data_mean</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can print the doc string using the <code class="docutils literal notranslate"><span class="pre">help</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function mean in module __main__:
+
+mean(data)
+    Compute the mean of a list of numbers.
+
+    Args:
+        data (List of numbers)
+
+    Returns:
+        float: The mean
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1022,6 +1082,7 @@ The value of pi outside and after the function is 4.3
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-can-return-zero-one-or-multiple-variables">Functions can return zero, one, or multiple variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-scope-of-a-variable-local-variables">The “scope” of a variable - local variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documenting-functions">Documenting functions</a></li>
 </ul>
   </nav></div>
 

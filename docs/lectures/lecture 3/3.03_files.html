@@ -479,21 +479,8 @@ document.write(`
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">final_behavioral_scores.txt</span></code> is the file name, <code class="docutils literal notranslate"><span class="pre">final_behavioral_scores</span></code> is called the file stem, <code class="docutils literal notranslate"><span class="pre">.txt</span></code> is called the suffix or extension</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">experiments</span></code> and <code class="docutils literal notranslate"><span class="pre">experiment_1</span></code> are directories or folders. <code class="docutils literal notranslate"><span class="pre">experiments</span></code> is the parent directory of <code class="docutils literal notranslate"><span class="pre">experiment_1</span></code>. <code class="docutils literal notranslate"><span class="pre">experiment_1</span></code> is  a subdirectory of <code class="docutils literal notranslate"><span class="pre">experiments</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> is the path separator. On windows it can also be <code class="docutils literal notranslate"><span class="pre">\</span></code>. The system specific path separator can be obtained throug <code class="docutils literal notranslate"><span class="pre">os.sep</span></code>:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> is the path separator.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">sep</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/&#39;
-</pre></div>
-</div>
-</div>
-</div>
 <section id="discovering-files">
 <h2>Discovering files<a class="headerlink" href="#discovering-files" title="Link to this heading">#</a></h2>
 <p>The <a class="reference external" href="https://docs.python.org/3/library/glob.html">glob</a> module allows you to list files in a directory.</p>
@@ -569,7 +556,7 @@ os.path.dirname(path)=&#39;updir/subdir&#39;
 </div>
 </div>
 <p>We now know how to split a path in various ways. How can we assemble the parts into something new?</p>
-<p>If the parts are strings, we can use the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator to concatenate them. This will create a file name with a new suffix:</p>
+<p>Since the parts are strings, we can use the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator to concatenate them. This will create a file name with a new suffix:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;old path: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -577,7 +564,7 @@ os.path.dirname(path)=&#39;updir/subdir&#39;
 <span class="n">trunk</span> <span class="o">=</span> <span class="n">path_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">extension</span> <span class="o">=</span> <span class="n">path_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="n">new_extension</span> <span class="o">=</span> <span class="s1">&#39;.mp3&#39;</span>
+<span class="n">new_extension</span> <span class="o">=</span> <span class="s1">&#39;.csv&#39;</span>
 <span class="n">new_path</span> <span class="o">=</span> <span class="n">trunk</span> <span class="o">+</span> <span class="n">new_extension</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;new path: </span><span class="si">{</span><span class="n">new_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
@@ -585,7 +572,7 @@ os.path.dirname(path)=&#39;updir/subdir&#39;
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>old path: updir/subdir/name.txt
-new path: updir/subdir/name.mp3
+new path: updir/subdir/name.csv
 </pre></div>
 </div>
 </div>
@@ -639,7 +626,7 @@ new path: updir/subdir/name.mp3
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/mouse1.txt&#39;</span><span class="p">)</span>
 
@@ -696,7 +683,7 @@ new path: updir/subdir/name.mp3
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">]</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s1">&#39;Responses&#39;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;test.txt&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s1">&#39;Responses&#39;</span><span class="p">)</span>  <span class="c1"># the &quot;header&quot; argument is optional</span>
 </pre></div>
 </div>
 </div>
@@ -713,6 +700,92 @@ new path: updir/subdir/name.mp3
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Responses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>What’s the type of df?</p>
 <div class="cell docutils container">
@@ -727,7 +800,7 @@ new path: updir/subdir/name.mp3
 </div>
 </div>
 </div>
-<p>We don’t really know yet what to do with a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> - so let’s convert it to a numpy array:</p>
+<p>We will not cover <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> here. But we can easily convert the DataFrame to a numpy array:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>  <span class="c1"># to a numpy array</span>

@@ -500,6 +500,16 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grams</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1243891290</span><span class="p">,</span> <span class="mi">1234129401</span><span class="p">,</span> <span class="mi">14910395130</span><span class="p">,</span> <span class="mi">1340981394</span><span class="p">]</span>
 
 <span class="c1"># your solution here</span>
+<span class="n">tons</span><span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">gram</span> <span class="ow">in</span> <span class="n">grams</span><span class="p">:</span>
+    <span class="n">tons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gram</span><span class="o">/</span><span class="mi">1000000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tons</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1243.89129, 1234.129401, 14910.39513, 1340.981394]
 </pre></div>
 </div>
 </div>
@@ -513,6 +523,18 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="mi">432</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">780</span><span class="p">]</span>
 
 <span class="c1"># your solution here</span>
+
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34
+432
+780
 </pre></div>
 </div>
 </div>
@@ -526,6 +548,17 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="mi">432</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">780</span><span class="p">]</span>
 
 <span class="c1"># your solution here</span>
+<span class="n">big_a</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">big_a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="n">big_a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[34, 432, 780]
 </pre></div>
 </div>
 </div>
@@ -539,6 +572,17 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">432</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">780</span><span class="p">]</span>
 
 <span class="c1"># your solution here</span>
+<span class="n">big_a</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+            <span class="n">big_a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="n">big_a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[34, 11, 83, 50]
 </pre></div>
 </div>
 </div>
@@ -550,21 +594,13 @@ document.write(`
 <p>Does it produce the correct result? If not, fix it!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">all_values</span><span class="p">)</span>
-
-<span class="c1"># fix this code:</span>
-<span class="n">even_values</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">all_values</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]:</span>
-    <span class="n">even_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">even_values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">even_values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-[1, 3, 5, 7, 9]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 2, 4, 6, 8]
 </pre></div>
 </div>
 </div>
@@ -580,17 +616,29 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="n">all_values</span><span class="p">)</span>
 
 <span class="c1"># fix this code:</span>
-<span class="n">sum_of_values</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">all_values</span><span class="p">:</span>
-    <span class="n">sum_of_values</span> <span class="o">=</span> <span class="n">value</span>
+<span class="n">sum_of_values</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">sum_of_values</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">all_values</span><span class="p">:</span>
+    <span class="n">sum_of_values</span> <span class="o">=</span> <span class="n">sum_of_values</span> <span class="o">+</span> <span class="n">value</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sum_of_values</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;after loop:&#39;</span><span class="p">,</span> <span class="n">sum_of_values</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-9
+0 0
+1 1
+3 2
+6 3
+10 4
+15 5
+21 6
+28 7
+36 8
+45 9
+after loop: 45 9
 </pre></div>
 </div>
 </div>
