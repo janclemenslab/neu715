@@ -509,17 +509,21 @@ after the loop
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">4235</span><span class="p">,</span> <span class="mi">2365</span><span class="p">,</span> <span class="mi">6346</span><span class="p">]</span>
+<span class="c1"># compute the sum</span>
 <span class="n">data1_mean</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data1</span><span class="p">:</span>
-    <span class="n">data1_mean</span> <span class="o">+=</span> <span class="n">d</span>
+<span class="k">for</span> <span class="n">d1</span> <span class="ow">in</span> <span class="n">data1</span><span class="p">:</span>
+    <span class="n">data1_mean</span> <span class="o">+=</span> <span class="n">d1</span>
+<span class="c1"># divide sum by number of data points</span>
 <span class="n">data1_mean</span> <span class="o">=</span> <span class="n">data1_mean</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data1_mean</span><span class="p">)</span>
 
 
 <span class="n">data2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3523</span><span class="p">,</span> <span class="mi">346346</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">2345243</span><span class="p">,</span> <span class="mi">5234</span><span class="p">,</span><span class="mi">32412</span><span class="p">]</span>
+<span class="c1"># compute the sum</span>
 <span class="n">data2_mean</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data2</span><span class="p">:</span>
-    <span class="n">data2_mean</span> <span class="o">+=</span> <span class="n">d</span>
+<span class="k">for</span> <span class="n">d2</span> <span class="ow">in</span> <span class="n">data2</span><span class="p">:</span>
+    <span class="n">data2_mean</span> <span class="o">+=</span> <span class="n">d2</span>
+<span class="c1"># divide sum by number of data points</span>
 <span class="n">data2_mean</span> <span class="o">=</span> <span class="n">data2_mean</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data2_mean</span><span class="p">)</span>
 </pre></div>
