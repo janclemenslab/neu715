@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 3/3.03_files';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Exercises 3.2 - Numpy" href="../../exercises/exercises%203/3.02_numpy_exercises.html" />
+    <link rel="next" title="Numpy" href="../../exercises/exercises%203/3.02_numpy_exercises.html" />
     <link rel="prev" title="Numerical computing and data science - numpy, scipy, pandas" href="3.02_numpy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -432,17 +432,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-files">Discovering files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-paths">Manipulating paths</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-directories">Creating directories</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-data-from-files">Saving and loading data from files</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-and-saving-data-to-from-files">Loading and saving data to/from files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-text-files">Loading data from text files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-text-files">Saving data to text files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-excel-files">Loading data from excel files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-matlab-files">Loading data from matlab files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-numpy-files">Saving data to numpy files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-numpy-files">Loading data from numpy files</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-data-to-from-a-text-file">Saving and loading data to/from a text file</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Saving data to text files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-data-to-from-non-text-files">Saving and loading data to/from non-text files</a></li>
 </ul>
 </li>
 </ul>
@@ -584,8 +580,8 @@ new path: updir/subdir/name.csv
 <p><code class="docutils literal notranslate"><span class="pre">os.makedirs('tmp/sub1/sub2',</span> <span class="pre">exist_ok=True)</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">exist_ok=True</span></code> prevents an error if the directory already exists.</p>
 </section>
-<section id="saving-and-loading-data-from-files">
-<h2>Saving and loading data from files<a class="headerlink" href="#saving-and-loading-data-from-files" title="Link to this heading">#</a></h2>
+<section id="loading-and-saving-data-to-from-files">
+<h2>Loading and saving data to/from files<a class="headerlink" href="#loading-and-saving-data-to-from-files" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Text files: <code class="docutils literal notranslate"><span class="pre">.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">.csv</span></code></p></li>
 <li><p>Excel files ending in <code class="docutils literal notranslate"><span class="pre">.xls</span></code> or <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code></p></li>
@@ -594,7 +590,7 @@ new path: updir/subdir/name.csv
 </ul>
 <section id="loading-data-from-text-files">
 <h3>Loading data from text files<a class="headerlink" href="#loading-data-from-text-files" title="Link to this heading">#</a></h3>
-<p>Data in text files is typically saved as a single column of data - with one value per row/line and a column label:</p>
+<p>Data in text files is often saved as a single column of data - with one value per row/line and sometimes with a column label:</p>
 <div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>Responses
 0.561
 0.342
@@ -626,7 +622,7 @@ new path: updir/subdir/name.csv
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">67</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/mouse1.txt&#39;</span><span class="p">)</span>
 
@@ -662,7 +658,7 @@ new path: updir/subdir/name.csv
 </div>
 </div>
 <p>Open the file and inspect it! Can you guess the cause of the error?</p>
-<p>This is how to solve it. Check the documentation to understand what the <code class="docutils literal notranslate"><span class="pre">skiprows</span></code> argument does. A good google query is the package name followed by the function name: “numpy loadtxt” or straight “np.loadtxt”.</p>
+<p>This is because numpy wants to load the data into an array, but does not know how to deal with the column title in the text file (open the file in a text editor to check). We can skip the column header in the first row of the file using the <code class="docutils literal notranslate"><span class="pre">skiprows</span></code> keyword argument:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/mouse1.txt&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -691,12 +687,13 @@ new path: updir/subdir/name.csv
 </section>
 <section id="loading-data-from-excel-files">
 <h3>Loading data from excel files<a class="headerlink" href="#loading-data-from-excel-files" title="Link to this heading">#</a></h3>
-<p>We can use the pandas library to load <code class="docutils literal notranslate"><span class="pre">xls</span></code> or <code class="docutils literal notranslate"><span class="pre">xlsx</span></code> files. Pandas loads data not into a list or a dictionary but has it’s own data type - the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. We will learn next week how to work with <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>. For now, we can easily convert the data from the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> to a list or a numpy array.</p>
+<p>We can use the pandas library to load <code class="docutils literal notranslate"><span class="pre">xls</span></code> or <code class="docutils literal notranslate"><span class="pre">xlsx</span></code> files. Pandas loads data not into a list or a dictionary but has it’s own data type - the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. For now, we can easily convert the data from a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> to a list or a numpy array.</p>
+<p><strong>Caution:</strong> Depending on the format of the excel file, you may need to install an additional package (‘xlrd’) to be able to load the file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/mouse_data.xls&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Mouse1&quot;</span><span class="p">)</span>
-<span class="n">df</span>
+<span class="n">excel_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/mouse_data.xls&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Mouse1&quot;</span><span class="p">)</span>
+<span class="n">excel_data</span>
 </pre></div>
 </div>
 </div>
@@ -787,10 +784,10 @@ new path: updir/subdir/name.csv
 </table>
 </div></div></div>
 </div>
-<p>What’s the type of df?</p>
+<p>What’s the type of <code class="docutils literal notranslate"><span class="pre">excel_data</span></code>?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The type of df is </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The type of df is </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">excel_data</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -803,7 +800,7 @@ new path: updir/subdir/name.csv
 <p>We will not cover <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> here. But we can easily convert the DataFrame to a numpy array:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>  <span class="c1"># to a numpy array</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">excel_data</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>  <span class="c1"># to a numpy array</span>
 </pre></div>
 </div>
 </div>
@@ -836,81 +833,65 @@ new path: updir/subdir/name.csv
 </ul>
 <p>Both will open the file as a dictionary, with variable names as keys and the data as values.</p>
 </section>
+<section id="saving-data-to-numpy-files">
+<h3>Saving data to numpy files<a class="headerlink" href="#saving-data-to-numpy-files" title="Link to this heading">#</a></h3>
+<p>A more efficient (fast load/save, less disk space) format is the numpy file. There are two ways of saving data to numpy files.</p>
+<p>You can save a single variable using the <code class="docutils literal notranslate"><span class="pre">np.save</span></code>. The resulting file shold have the extension <code class="docutils literal notranslate"><span class="pre">npy</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;saved_single_variable.npy&#39;</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also save multiple variables to a single file using <code class="docutils literal notranslate"><span class="pre">np.savez</span></code>, which will create a file with the extension <code class="docutils literal notranslate"><span class="pre">npz</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_to_save</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">voltage_to_save</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s1">&#39;saved_multiple_variables.npz&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">time_to_save</span><span class="p">,</span> <span class="n">voltage</span><span class="o">=</span><span class="n">voltage_to_save</span><span class="p">)</span>  <span class="c1"># the keywords &quot;time&quot; and &quot;voltage&quot; will be the names associated with the saved data variables.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="loading-data-from-numpy-files">
 <h3>Loading data from numpy files<a class="headerlink" href="#loading-data-from-numpy-files" title="Link to this heading">#</a></h3>
+<p>You can load <code class="docutils literal notranslate"><span class="pre">npy</span></code> and <code class="docutils literal notranslate"><span class="pre">npz</span></code> files using <code class="docutils literal notranslate"><span class="pre">np.load</span></code>.</p>
+<p>Loading an <code class="docutils literal notranslate"><span class="pre">npy</span></code> file will return the data directly:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">loaded_npy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;saved_single_variable.npy&#39;</span><span class="p">)</span>
+<span class="n">loaded_npy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3, 4])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Loading an <code class="docutils literal notranslate"><span class="pre">npz</span></code> files will return a dictionary-like data structure. The saved variables can be accessed as in a dictionary, using the keywords used when saving as keys:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loaded_npz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;saved_multiple_variables.npz&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">loaded_npz</span><span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;dummy.npz&#39;</span><span class="p">)</span>
-<span class="n">data</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NpzFile &#39;dummy.npz&#39; with keys: data, names
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="saving-and-loading-data-to-from-a-text-file">
-<h2>Saving and loading data to/from a text file<a class="headerlink" href="#saving-and-loading-data-to-from-a-text-file" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Text files: <code class="docutils literal notranslate"><span class="pre">.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">.csv</span></code></p></li>
-<li><p>Excel files ending in <code class="docutils literal notranslate"><span class="pre">.xls</span></code> or <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code></p></li>
-<li><p>Numpy files ending in <code class="docutils literal notranslate"><span class="pre">.npy</span></code>, <code class="docutils literal notranslate"><span class="pre">.npz</span></code></p></li>
-</ul>
-<section id="id1">
-<h3>Saving data to text files<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code> loads data from a text file - guess what <code class="docutils literal notranslate"><span class="pre">np.savetxt</span></code> does! <code class="docutils literal notranslate"><span class="pre">np.savetxt</span></code> will use the <code class="docutils literal notranslate"><span class="pre">,</span></code> as the default delimiter, but you can change that.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;dummy.txt&#39;</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="saving-and-loading-data-to-from-non-text-files">
-<h3>Saving and loading data to/from non-text files<a class="headerlink" href="#saving-and-loading-data-to-from-non-text-files" title="Link to this heading">#</a></h3>
-<p>For large datasets - think hours of multi-channel electrophyiology recordings - text files become very big and slow to work with. In that case, we can save data directly as binary, non-text data:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;dummy.npy&#39;</span>
-<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3])
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can also save multiple variables to the same file:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;dummy.npz&#39;</span>
-<span class="n">data_new</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;beta&#39;</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">,</span> <span class="s1">&#39;epsilon&#39;</span><span class="p">]</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;data_new&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time:&quot;</span><span class="p">,</span> <span class="n">loaded_npz</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
 
-<span class="n">file_contents</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;What is this? </span><span class="si">{</span><span class="n">file_contents</span><span class="si">}</span><span class="s2">. Check the docs for np.load!&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;as a list: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">file_contents</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file_contents</span><span class="p">[</span><span class="s1">&#39;names&#39;</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">loaded_npz</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Variable &quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">&quot; with values &quot;</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s1">&quot;.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>What is this? NpzFile &#39;dummy.npz&#39; with keys: data, names. Check the docs for np.load!
-as a list: list(file_contents.keys())=[&#39;data&#39;, &#39;names&#39;]
-file_contents[&#39;names&#39;]=array(&#39;data_new&#39;, dtype=&#39;&lt;U8&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NpzFile &#39;saved_multiple_variables.npz&#39; with keys: time, voltage
+time: [1 2 3 4]
+Variable &quot;time&quot; with values &quot;[1 2 3 4]&quot;.
+Variable &quot;voltage&quot; with values &quot;[-60 -60  40 -60]&quot;.
 </pre></div>
 </div>
 </div>
@@ -963,7 +944,7 @@ file_contents[&#39;names&#39;]=array(&#39;data_new&#39;, dtype=&#39;&lt;U8&#39;)
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercises 3.2 - Numpy</p>
+        <p class="prev-next-title">Numpy</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -986,17 +967,13 @@ file_contents[&#39;names&#39;]=array(&#39;data_new&#39;, dtype=&#39;&lt;U8&#39;)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-files">Discovering files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-paths">Manipulating paths</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-directories">Creating directories</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-data-from-files">Saving and loading data from files</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-and-saving-data-to-from-files">Loading and saving data to/from files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-text-files">Loading data from text files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-text-files">Saving data to text files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-excel-files">Loading data from excel files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-matlab-files">Loading data from matlab files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-numpy-files">Saving data to numpy files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-numpy-files">Loading data from numpy files</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-data-to-from-a-text-file">Saving and loading data to/from a text file</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Saving data to text files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-data-to-from-non-text-files">Saving and loading data to/from non-text files</a></li>
 </ul>
 </li>
 </ul>

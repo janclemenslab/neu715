@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exercises 3.2 - Numpy &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Numpy &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -421,7 +421,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercises 3.2 - Numpy</h1>
+    <h1>Numpy</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -432,34 +432,35 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-arrays">Exercise 1: Creating arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-math-with-arrays">Exercise 2: Math with arrays</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2a-time-axis-starting-at-0-seconds">Exercise 2a - time axis starting at 0 seconds</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2b-time-axis-starting-at-2-seconds">Exercise 2b - time axis starting at 2 seconds</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-looping-through-numpy-arrays">Exercise 2: Looping through numpy arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-math-with-arrays">Exercise 3: Math with arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3a-time-axis-starting-at-0-seconds">Exercise 3a - time axis starting at 0 seconds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3b-time-axis-starting-at-2-seconds">Exercise 3b - time axis starting at 2 seconds</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-z-scoring-our-data">Exercise 3: Z-scoring our data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-slice-indexing">Exercise 4: Slice indexing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-boolean-indexing">Exercise 5 - Boolean indexing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5a-comparisons-on-arrays-in-numpy">Exercise 5a - comparisons on arrays in numpy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5b-boolean-indexing-1">Exercise 5b - boolean indexing (1)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5c-boolean-indexing-2">Exercise 5c - boolean indexing (2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-z-scoring-our-data">Exercise 4: Z-scoring our data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-slice-indexing">Exercise 5: Slice indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-boolean-indexing">Exercise 6 - Boolean indexing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6a-comparisons-on-arrays-in-numpy">Exercise 6a - comparisons on arrays in numpy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6b-boolean-indexing-1">Exercise 6b - boolean indexing (1)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6c-boolean-indexing-2">Exercise 6c - boolean indexing (2)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-searching-arrays">Exercise 6: Searching arrays</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6a-counting-true-values-important">Exercise 6a - counting True values (Important)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6b-getting-the-indices-of-true-values">Exercise 6b - getting the indices of True values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-searching-arrays">Exercise 7: Searching arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7a-counting-true-values-important">Exercise 7a - counting True values (Important)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7b-getting-the-indices-of-true-values">Exercise 7b - getting the indices of True values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-spike-detection">Exercise 7: Spike detection</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7a-load-the-data">Exercise 7a: Load the data:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7b-detect-spikes-using-numpy">Exercise 7b: Detect spikes using numpy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods">Exercise 7c: Plot the voltage trace and overlay the spike times generated by both methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-spike-detection">Exercise 8: Spike detection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8a-load-and-plot-the-data">Exercise 8a: Load and plot the data:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8b-detect-spikes-using-numpy">Exercise 8b: Detect spikes using numpy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods">Exercise 8c: Plot the voltage trace and overlay the spike times generated by both methods</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-chunking-bonus">Exercise 8: Chunking (bonus)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data-with-pandas-and-cast-it-to-numpy">1. Load the data with pandas and cast it to numpy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity">2. Compute the mean over stimulus response probabilities obtained for the same sound intensity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-individual-data-as-points-and-the-mean-values-as-a-curve">3. Plot the individual data as points and the mean values as a curve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-chunking-bonus">Exercise 9: Chunking (bonus)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9a-load-the-data-with-pandas-and-cast-it-to-numpy">Exercise 9a: Load the data with pandas and cast it to numpy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9b-compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity">Exercise 9b: Compute the mean over stimulus response probabilities obtained for the same sound intensity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9c-plot-the-individual-data-as-points-and-the-mean-values-as-a-curve">Exercise 9c: Plot the individual data as points and the mean values as a curve</a></li>
 </ul>
 </li>
 </ul>
@@ -473,8 +474,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercises-3-2-numpy">
-<h1>Exercises 3.2 - Numpy<a class="headerlink" href="#exercises-3-2-numpy" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="numpy">
+<h1>Numpy<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h1>
 <section id="exercise-1-creating-arrays">
 <h2>Exercise 1: Creating arrays<a class="headerlink" href="#exercise-1-creating-arrays" title="Link to this heading">#</a></h2>
 <p>Create different numpy arrays with the following properties. Use the numpy functions, no for loops!</p>
@@ -492,8 +493,41 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-2-math-with-arrays">
-<h2>Exercise 2: Math with arrays<a class="headerlink" href="#exercise-2-math-with-arrays" title="Link to this heading">#</a></h2>
+<section id="exercise-2-looping-through-numpy-arrays">
+<h2>Exercise 2: Looping through numpy arrays<a class="headerlink" href="#exercise-2-looping-through-numpy-arrays" title="Link to this heading">#</a></h2>
+<p>Use a for loop to:</p>
+<ol class="arabic simple">
+<li><p>Print each of the 5 rows of the matrix</p></li>
+<li><p>Print each of the 4 columns of the matrix</p></li>
+<li><p>Print each of the 20 values in the matrix individually</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+
+<span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[11 12 13 14]
+ [21 22 23 24]
+ [31 32 33 34]
+ [41 42 43 44]
+ [51 52 53 54]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-math-with-arrays">
+<h2>Exercise 3: Math with arrays<a class="headerlink" href="#exercise-3-math-with-arrays" title="Link to this heading">#</a></h2>
 <p>When creating time values for plotting before we needed lists and for loops:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -525,8 +559,8 @@ document.write(`
 </div>
 </div>
 <p>Let’s do this using numpy now - without any for loops.</p>
-<section id="exercise-2a-time-axis-starting-at-0-seconds">
-<h3>Exercise 2a - time axis starting at 0 seconds<a class="headerlink" href="#exercise-2a-time-axis-starting-at-0-seconds" title="Link to this heading">#</a></h3>
+<section id="exercise-3a-time-axis-starting-at-0-seconds">
+<h3>Exercise 3a - time axis starting at 0 seconds<a class="headerlink" href="#exercise-3a-time-axis-starting-at-0-seconds" title="Link to this heading">#</a></h3>
 <p>Our data has 10 values, sampled at an interval of 10 milliseconds, starting at 2 seconds. Use <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> function to create the array with time value for plotting in a single line. Plot the data and add proper x-axis labels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -536,8 +570,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-2b-time-axis-starting-at-2-seconds">
-<h3>Exercise 2b - time axis starting at 2 seconds<a class="headerlink" href="#exercise-2b-time-axis-starting-at-2-seconds" title="Link to this heading">#</a></h3>
+<section id="exercise-3b-time-axis-starting-at-2-seconds">
+<h3>Exercise 3b - time axis starting at 2 seconds<a class="headerlink" href="#exercise-3b-time-axis-starting-at-2-seconds" title="Link to this heading">#</a></h3>
 <p>We just realized that we made a mistake - the data were sampled starting at 2 seconds, not at 0 seconds. Add 2 to each value of the time array and replot the data with the new time axis</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -548,8 +582,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="exercise-3-z-scoring-our-data">
-<h2>Exercise 3: Z-scoring our data<a class="headerlink" href="#exercise-3-z-scoring-our-data" title="Link to this heading">#</a></h2>
+<section id="exercise-4-z-scoring-our-data">
+<h2>Exercise 4: Z-scoring our data<a class="headerlink" href="#exercise-4-z-scoring-our-data" title="Link to this heading">#</a></h2>
 <p>In a previous exercise, we have z-scored some temperature data using core python and a bunch of for loops.</p>
 <p>Remember that z-scoring amounts to for each value: subtracting the mean, <span class="math notranslate nohighlight">\(M\)</span>, and dividing by the standard deviation, <span class="math notranslate nohighlight">\(S\)</span>:
 <span class="math notranslate nohighlight">\(z_i = (x_i - M) / S\)</span></p>
@@ -620,8 +654,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-4-slice-indexing">
-<h2>Exercise 4: Slice indexing<a class="headerlink" href="#exercise-4-slice-indexing" title="Link to this heading">#</a></h2>
+<section id="exercise-5-slice-indexing">
+<h2>Exercise 5: Slice indexing<a class="headerlink" href="#exercise-5-slice-indexing" title="Link to this heading">#</a></h2>
 <p>You are given a matrix. Use slice indexing to:</p>
 <ol class="arabic simple">
 <li><p>print the second row</p></li>
@@ -659,12 +693,12 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-5-boolean-indexing">
-<h2>Exercise 5 - Boolean indexing<a class="headerlink" href="#exercise-5-boolean-indexing" title="Link to this heading">#</a></h2>
+<section id="exercise-6-boolean-indexing">
+<h2>Exercise 6 - Boolean indexing<a class="headerlink" href="#exercise-6-boolean-indexing" title="Link to this heading">#</a></h2>
 <p>We are given a numpy array, <code class="docutils literal notranslate"><span class="pre">x</span></code> of data values.</p>
 <p>No for loops allowed in this exercise!</p>
-<section id="exercise-5a-comparisons-on-arrays-in-numpy">
-<h3>Exercise 5a - comparisons on arrays in numpy<a class="headerlink" href="#exercise-5a-comparisons-on-arrays-in-numpy" title="Link to this heading">#</a></h3>
+<section id="exercise-6a-comparisons-on-arrays-in-numpy">
+<h3>Exercise 6a - comparisons on arrays in numpy<a class="headerlink" href="#exercise-6a-comparisons-on-arrays-in-numpy" title="Link to this heading">#</a></h3>
 <p>Using numpy (no for loops) and comparison operators, generate an new boolean array <code class="docutils literal notranslate"><span class="pre">greater_zero</span></code> that has the value <code class="docutils literal notranslate"><span class="pre">True</span></code> at all indices for which <code class="docutils literal notranslate"><span class="pre">x</span></code> is &gt;0, and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -677,8 +711,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-5b-boolean-indexing-1">
-<h3>Exercise 5b - boolean indexing (1)<a class="headerlink" href="#exercise-5b-boolean-indexing-1" title="Link to this heading">#</a></h3>
+<section id="exercise-6b-boolean-indexing-1">
+<h3>Exercise 6b - boolean indexing (1)<a class="headerlink" href="#exercise-6b-boolean-indexing-1" title="Link to this heading">#</a></h3>
 <p>Expand on your solution above. Use boolean indexing to print</p>
 <ul class="simple">
 <li><p>all values &gt;0</p></li>
@@ -695,8 +729,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-5c-boolean-indexing-2">
-<h3>Exercise 5c - boolean indexing (2)<a class="headerlink" href="#exercise-5c-boolean-indexing-2" title="Link to this heading">#</a></h3>
+<section id="exercise-6c-boolean-indexing-2">
+<h3>Exercise 6c - boolean indexing (2)<a class="headerlink" href="#exercise-6c-boolean-indexing-2" title="Link to this heading">#</a></h3>
 <p>Expand again on your solution to compute the mean of:</p>
 <ul class="simple">
 <li><p>all values &gt;0</p></li>
@@ -714,10 +748,10 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="exercise-6-searching-arrays">
-<h2>Exercise 6: Searching arrays<a class="headerlink" href="#exercise-6-searching-arrays" title="Link to this heading">#</a></h2>
-<section id="exercise-6a-counting-true-values-important">
-<h3>Exercise 6a - counting True values (Important)<a class="headerlink" href="#exercise-6a-counting-true-values-important" title="Link to this heading">#</a></h3>
+<section id="exercise-7-searching-arrays">
+<h2>Exercise 7: Searching arrays<a class="headerlink" href="#exercise-7-searching-arrays" title="Link to this heading">#</a></h2>
+<section id="exercise-7a-counting-true-values-important">
+<h3>Exercise 7a - counting True values (Important)<a class="headerlink" href="#exercise-7a-counting-true-values-important" title="Link to this heading">#</a></h3>
 <p>In the array <code class="docutils literal notranslate"><span class="pre">x</span></code>, how many values:</p>
 <ul class="simple">
 <li><p>are &lt;0</p></li>
@@ -736,8 +770,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-6b-getting-the-indices-of-true-values">
-<h3>Exercise 6b - getting the indices of True values<a class="headerlink" href="#exercise-6b-getting-the-indices-of-true-values" title="Link to this heading">#</a></h3>
+<section id="exercise-7b-getting-the-indices-of-true-values">
+<h3>Exercise 7b - getting the indices of True values<a class="headerlink" href="#exercise-7b-getting-the-indices-of-true-values" title="Link to this heading">#</a></h3>
 <p>Given the following array of data values, us <code class="docutils literal notranslate"><span class="pre">np.where</span></code> get the indices at which:</p>
 <ul class="simple">
 <li><p>the data is &lt;0</p></li>
@@ -756,48 +790,37 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="exercise-7-spike-detection">
-<h2>Exercise 7: Spike detection<a class="headerlink" href="#exercise-7-spike-detection" title="Link to this heading">#</a></h2>
-<p>Let’s implement the simple spike detection task using numpy</p>
-<section id="exercise-7a-load-the-data">
-<h3>Exercise 7a: Load the data:<a class="headerlink" href="#exercise-7a-load-the-data" title="Link to this heading">#</a></h3>
+<section id="exercise-8-spike-detection">
+<h2>Exercise 8: Spike detection<a class="headerlink" href="#exercise-8-spike-detection" title="Link to this heading">#</a></h2>
+<p>Let’s implement the simple spike detection task using numpy.</p>
+<section id="exercise-8a-load-and-plot-the-data">
+<h3>Exercise 8a: Load and plot the data:<a class="headerlink" href="#exercise-8a-load-and-plot-the-data" title="Link to this heading">#</a></h3>
 <p>The voltage and time values for each sample in the recording are saved in <code class="docutils literal notranslate"><span class="pre">data/voltage_trace.npz</span></code>. Load the data using <code class="docutils literal notranslate"><span class="pre">np.load</span></code> and plot the data (using the time and voltage values from the data file).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;data/voltage_trace.npz&#39;</span><span class="p">)</span>
-<span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;times_seconds&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;voltage_trace&#39;</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/74ddbccaf2ca38a91e509b9d44fcec23adbeecb076f654d0ae71eff3bade78ed.png" src="../../_images/74ddbccaf2ca38a91e509b9d44fcec23adbeecb076f654d0ae71eff3bade78ed.png" />
-</div>
 </div>
 </section>
-<section id="exercise-7b-detect-spikes-using-numpy">
-<h3>Exercise 7b: Detect spikes using numpy<a class="headerlink" href="#exercise-7b-detect-spikes-using-numpy" title="Link to this heading">#</a></h3>
+<section id="exercise-8b-detect-spikes-using-numpy">
+<h3>Exercise 8b: Detect spikes using numpy<a class="headerlink" href="#exercise-8b-detect-spikes-using-numpy" title="Link to this heading">#</a></h3>
 <p>This is our spike detection code, using core python:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">spike_times_old</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">spike_voltages_old</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;voltage_trace&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;times_seconds&#39;</span><span class="p">]):</span>
+
+<span class="c1"># IMPORTANT: For this to work you need to replace the &quot;voltages&quot; and &quot;times&quot; variables with the correct variables from the file.</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">voltages</span><span class="p">)):</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">voltages</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
         <span class="n">spike_voltages_old</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
         <span class="n">spike_times_old</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">spike_times_old</span><span class="p">)</span><span class="si">}</span><span class="s2"> spikes.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Detected 61 spikes.
 </pre></div>
 </div>
 </div>
@@ -811,8 +834,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-7c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods">
-<h3>Exercise 7c: Plot the voltage trace and overlay the spike times generated by both methods<a class="headerlink" href="#exercise-7c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods" title="Link to this heading">#</a></h3>
+<section id="exercise-8c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods">
+<h3>Exercise 8c: Plot the voltage trace and overlay the spike times generated by both methods<a class="headerlink" href="#exercise-8c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods" title="Link to this heading">#</a></h3>
 <p>The spikes detected using the old python code should be marked as vertical red lines (use <code class="docutils literal notranslate"><span class="pre">plt.axvline</span></code>), the spikes detected using numpy should be marked as green dots at their peaks. Like so:
 <img alt="" src="../../_images/voltage_trace_spikes.png" /></p>
 <p>Did you catch every spike?</p>
@@ -825,8 +848,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="exercise-8-chunking-bonus">
-<h2>Exercise 8: Chunking (bonus)<a class="headerlink" href="#exercise-8-chunking-bonus" title="Link to this heading">#</a></h2>
+<section id="exercise-9-chunking-bonus">
+<h2>Exercise 9: Chunking (bonus)<a class="headerlink" href="#exercise-9-chunking-bonus" title="Link to this heading">#</a></h2>
 <p>We ran an experiment in which we trained a rat to detect a short tone pip. We now tested the rat’s detection performance by presenting the tone pip at different intensities and calculating the detection probability. Load and plot the raw data and compute and plot the mean response probabiltity for each intensity.</p>
 <ul class="simple">
 <li><p>Load the data from the excel file <code class="docutils literal notranslate"><span class="pre">data/sound_expt.xlsx</span></code> and cast it to a numpy array. In parallel, open the data file in excel to determine how the data is structured (which columns hold which information)</p></li>
@@ -834,8 +857,8 @@ document.write(`
 <li><p>Plot the individual data points and overlay a curve with the mean responses probability per sound intensity. Roughly like so:</p></li>
 </ul>
 <p><img alt="" src="../../_images/sound_expt.png" /></p>
-<section id="load-the-data-with-pandas-and-cast-it-to-numpy">
-<h3>1. Load the data with pandas and cast it to numpy<a class="headerlink" href="#load-the-data-with-pandas-and-cast-it-to-numpy" title="Link to this heading">#</a></h3>
+<section id="exercise-9a-load-the-data-with-pandas-and-cast-it-to-numpy">
+<h3>Exercise 9a: Load the data with pandas and cast it to numpy<a class="headerlink" href="#exercise-9a-load-the-data-with-pandas-and-cast-it-to-numpy" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -844,8 +867,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity">
-<h3>2. Compute the mean over stimulus response probabilities obtained for the same sound intensity<a class="headerlink" href="#compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity" title="Link to this heading">#</a></h3>
+<section id="exercise-9b-compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity">
+<h3>Exercise 9b: Compute the mean over stimulus response probabilities obtained for the same sound intensity<a class="headerlink" href="#exercise-9b-compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -854,8 +877,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="plot-the-individual-data-as-points-and-the-mean-values-as-a-curve">
-<h3>3. Plot the individual data as points and the mean values as a curve<a class="headerlink" href="#plot-the-individual-data-as-points-and-the-mean-values-as-a-curve" title="Link to this heading">#</a></h3>
+<section id="exercise-9c-plot-the-individual-data-as-points-and-the-mean-values-as-a-curve">
+<h3>Exercise 9c: Plot the individual data as points and the mean values as a curve<a class="headerlink" href="#exercise-9c-plot-the-individual-data-as-points-and-the-mean-values-as-a-curve" title="Link to this heading">#</a></h3>
 <p>The x-axis should be sound intensity, the y-axis response probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -933,34 +956,35 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-arrays">Exercise 1: Creating arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-math-with-arrays">Exercise 2: Math with arrays</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2a-time-axis-starting-at-0-seconds">Exercise 2a - time axis starting at 0 seconds</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2b-time-axis-starting-at-2-seconds">Exercise 2b - time axis starting at 2 seconds</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-looping-through-numpy-arrays">Exercise 2: Looping through numpy arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-math-with-arrays">Exercise 3: Math with arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3a-time-axis-starting-at-0-seconds">Exercise 3a - time axis starting at 0 seconds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3b-time-axis-starting-at-2-seconds">Exercise 3b - time axis starting at 2 seconds</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-z-scoring-our-data">Exercise 3: Z-scoring our data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-slice-indexing">Exercise 4: Slice indexing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-boolean-indexing">Exercise 5 - Boolean indexing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5a-comparisons-on-arrays-in-numpy">Exercise 5a - comparisons on arrays in numpy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5b-boolean-indexing-1">Exercise 5b - boolean indexing (1)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5c-boolean-indexing-2">Exercise 5c - boolean indexing (2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-z-scoring-our-data">Exercise 4: Z-scoring our data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-slice-indexing">Exercise 5: Slice indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-boolean-indexing">Exercise 6 - Boolean indexing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6a-comparisons-on-arrays-in-numpy">Exercise 6a - comparisons on arrays in numpy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6b-boolean-indexing-1">Exercise 6b - boolean indexing (1)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6c-boolean-indexing-2">Exercise 6c - boolean indexing (2)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-searching-arrays">Exercise 6: Searching arrays</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6a-counting-true-values-important">Exercise 6a - counting True values (Important)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6b-getting-the-indices-of-true-values">Exercise 6b - getting the indices of True values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-searching-arrays">Exercise 7: Searching arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7a-counting-true-values-important">Exercise 7a - counting True values (Important)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7b-getting-the-indices-of-true-values">Exercise 7b - getting the indices of True values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-spike-detection">Exercise 7: Spike detection</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7a-load-the-data">Exercise 7a: Load the data:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7b-detect-spikes-using-numpy">Exercise 7b: Detect spikes using numpy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods">Exercise 7c: Plot the voltage trace and overlay the spike times generated by both methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-spike-detection">Exercise 8: Spike detection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8a-load-and-plot-the-data">Exercise 8a: Load and plot the data:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8b-detect-spikes-using-numpy">Exercise 8b: Detect spikes using numpy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8c-plot-the-voltage-trace-and-overlay-the-spike-times-generated-by-both-methods">Exercise 8c: Plot the voltage trace and overlay the spike times generated by both methods</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-chunking-bonus">Exercise 8: Chunking (bonus)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data-with-pandas-and-cast-it-to-numpy">1. Load the data with pandas and cast it to numpy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity">2. Compute the mean over stimulus response probabilities obtained for the same sound intensity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-individual-data-as-points-and-the-mean-values-as-a-curve">3. Plot the individual data as points and the mean values as a curve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-chunking-bonus">Exercise 9: Chunking (bonus)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9a-load-the-data-with-pandas-and-cast-it-to-numpy">Exercise 9a: Load the data with pandas and cast it to numpy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9b-compute-the-mean-over-stimulus-response-probabilities-obtained-for-the-same-sound-intensity">Exercise 9b: Compute the mean over stimulus response probabilities obtained for the same sound intensity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9c-plot-the-individual-data-as-points-and-the-mean-values-as-a-curve">Exercise 9c: Plot the individual data as points and the mean values as a curve</a></li>
 </ul>
 </li>
 </ul>
