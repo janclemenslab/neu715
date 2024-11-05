@@ -484,19 +484,25 @@ If you know Matlab, than numpy is conceptually very similar. Here is a great res
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># data = {}</span>
-<span class="c1"># data[&#39;voltage_trace&#39;] = np.load(&#39;data/voltage_trace_long.npz&#39;, allow_pickle=True)[&#39;voltage_trace&#39;][:]</span>
-<span class="c1"># data[&#39;times_seconds&#39;] = np.arange(len(data[&#39;voltage_trace&#39;])) / 10 / 60 / 60</span>
-<span class="c1"># np.savez_compressed(&#39;data/voltage_trace_long.npz&#39;, **data)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;data/voltage_trace_long.npz&#39;</span><span class="p">)</span>
 <span class="n">voltages</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;voltage_trace&#39;</span><span class="p">]</span>
 <span class="n">times</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;times_seconds&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">voltages</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">[:</span><span class="mi">2_000</span><span class="p">],</span> <span class="n">voltages</span><span class="p">[:</span><span class="mi">2_000</span><span class="p">])</span>
 
 <span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>86400000
+</pre></div>
+</div>
+<img alt="../../_images/bf1897021e457f54f3f52b1446244623554508ee6f3adbbdf34fbf83809a6a12.png" src="../../_images/bf1897021e457f54f3f52b1446244623554508ee6f3adbbdf34fbf83809a6a12.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -505,13 +511,15 @@ If you know Matlab, than numpy is conceptually very similar. Here is a great res
 <span class="n">spike_times</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">voltages</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">voltages</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
-        <span class="n">spike_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">times</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+        <span class="n">spike_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">times</span><span class="p">[</span><span class="n">index</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">spike_times</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 8.73 s, sys: 91.7 ms, total: 8.82 s
-Wall time: 8.84 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0009722222222222222, 0.0011944444444444446, 0.0018055555555555557, 0.0025833333333333333, 0.0026666666666666666, 0.0035277777777777772, 0.0038888888888888888, 0.004138888888888889, 0.005, 0.005388888888888888]
+CPU times: user 8.51 s, sys: 115 ms, total: 8.63 s
+Wall time: 8.63 s
 </pre></div>
 </div>
 </div>
@@ -521,12 +529,15 @@ Wall time: 8.84 s
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="n">spike_times</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="n">voltages</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">spike_times</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 106 ms, sys: 20 ms, total: 126 ms
-Wall time: 125 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.00097222 0.00119444 0.00180556 0.00258333 0.00266667 0.00352778
+ 0.00388889 0.00413889 0.005      0.00538889]
+CPU times: user 103 ms, sys: 12.1 ms, total: 115 ms
+Wall time: 114 ms
 </pre></div>
 </div>
 </div>
@@ -569,12 +580,12 @@ This is how it looks using core python:</p>
 <p>Wouldn’t it be nice if we could write code that is closer to how we would express the mathematical operation we want to perform, without needing a for loop?</p>
 <p>Like, <span class="math notranslate nohighlight">\(\vec{y} = \vec{x} - m(\vec{x})\)</span>, where <span class="math notranslate nohighlight">\(m\)</span> is a mathematical function that returns the mean of the elements in <span class="math notranslate nohighlight">\(\vec{x}\)</span>.</p>
 <p>You can’t do this with python lists, because python lists are a generic data type, not optimized for numerical data and computation.</p>
-<p>This is exactly where numpy comes into play - it makes working with numerical data easier and faster, by providing a specialized, numerical, data type - the numpy array - and numerical functions:</p>
+<p>This is exactly where numpy comes into play - it makes working with numerical data easier and faster, by providing a specialized numerical data type - the numpy array - and numerical functions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># this is the standard way of importing numpy, as np!</span>
 
-<span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># cast the list into a numpy array</span>
+<span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># cast the list to a numpy array</span>
 
 <span class="n">new_array</span> <span class="o">=</span> <span class="n">array</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># compute the mean and subtract it from each element in the array</span>
 <span class="n">new_array</span>
@@ -594,7 +605,7 @@ This is how it looks using core python:</p>
 <p>We will see more examples of this below.</p>
 <section id="numpy-arrays">
 <h3>Numpy arrays<a class="headerlink" href="#numpy-arrays" title="Link to this heading">#</a></h3>
-<p>A numpy array can be created from a python list using <code class="docutils literal notranslate"><span class="pre">np.array</span></code>.</p>
+<p>A numpy array can be created from a python list using <code class="docutils literal notranslate"><span class="pre">np.array(my_list)</span></code>.</p>
 <p>We can inspect the array:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -602,6 +613,7 @@ This is how it looks using core python:</p>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">24.4</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">,</span> <span class="mf">32.3</span><span class="p">,</span> <span class="mf">9.8</span><span class="p">,</span> <span class="mf">32.1</span><span class="p">,</span> <span class="mf">43.7</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Len: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This returns the size of the first dimension: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data type of the array elements </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -610,6 +622,7 @@ This is how it looks using core python:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([24.4,  6.5, 32.3,  9.8, 32.1, 43.7])
+Len: len(data)=6
 Shape: data.shape=(6,)
 This returns the size of the first dimension: len(data)=6
 Data type of the array elements data.dtype=dtype(&#39;float64&#39;)
@@ -630,6 +643,7 @@ Data type of the array elements data.dtype=dtype(&#39;float64&#39;)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">32</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">43</span><span class="p">]])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Len yields size of first dimension: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data type of the array elements </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
@@ -638,6 +652,7 @@ Data type of the array elements data.dtype=dtype(&#39;float64&#39;)
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data=array([[24,  6, 32],
        [ 9, 32, 43]])
+Len yields size of first dimension: len(data)=2
 Shape: data.shape=(2, 3)
 Data type of the array elements data.dtype=dtype(&#39;int64&#39;)
 </pre></div>
@@ -673,12 +688,35 @@ linspace: [ 0.          3.33333333  6.66666667 10.        ]
 <section id="indexing-and-slicing">
 <h3>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Link to this heading">#</a></h3>
 <p>Indexing and slicing numpy arrays works similar as for lists.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">24.4</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">,</span> <span class="mf">32.3</span><span class="p">,</span> <span class="mf">9.8</span><span class="p">,</span> <span class="mf">32.1</span><span class="p">,</span> <span class="mf">43.7</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;first element: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;first two elements: </span><span class="si">{</span><span class="n">data</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;last element: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[24.4  6.5 32.3  9.8 32.1 43.7]
+(6,)
+first element: data[0]=np.float64(24.4)
+first two elements: data[:2]=array([24.4,  6.5])
+last element: data[-1]=np.float64(43.7)
+</pre></div>
+</div>
+</div>
+</div>
 <p>However, numpy also provides multi-dimensional indexing:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">24</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">32</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">43</span><span class="p">]])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;element at second row, first column: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;first row: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">:]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;equivalent to: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -691,6 +729,7 @@ linspace: [ 0.          3.33333333  6.66666667 10.        ]
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[24  6 32]
  [ 9 32 43]]
+(2, 3)
 element at second row, first column: data[1, 0]=np.int64(9)
 first row: data[0, :]=array([24,  6, 32])
 equivalent to: data[0]=array([24,  6, 32])
@@ -824,7 +863,6 @@ data values at the indices: data[indices]=array([2, 4, 6])
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -834,7 +872,6 @@ data values at the indices: data[indices]=array([2, 4, 6])
        0.55555556, 0.66666667, 0.77777778, 0.88888889, 1.        ])
 np.mean(data)=np.float64(0.5)
 np.std(data)=np.float64(0.31914236925211265)
-np.prod(data)=np.float64(0.0)
 np.diff(data)=array([0.11111111, 0.11111111, 0.11111111, 0.11111111, 0.11111111,
        0.11111111, 0.11111111, 0.11111111, 0.11111111])
 </pre></div>
