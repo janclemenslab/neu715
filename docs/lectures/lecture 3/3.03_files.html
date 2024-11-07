@@ -429,18 +429,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-files">Discovering files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-paths">Manipulating paths</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-directories">Creating directories</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-and-saving-data-to-from-files">Loading and saving data to/from files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-text-files">Loading data from text files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-text-files">Saving data to text files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-excel-files">Loading data from excel files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-matlab-files">Loading data from matlab files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-numpy-files">Saving data to numpy files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-numpy-files">Loading data from numpy files</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-files">Discovering files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-paths">Manipulating paths</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-directories">Creating directories</a></li>
 </ul>
             </nav>
         </div>
@@ -454,132 +453,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="working-with-files">
 <h1>Working with files<a class="headerlink" href="#working-with-files" title="Link to this heading">#</a></h1>
-<p>Experimental data is saved in a bunch of files - often one file per animal or experiment. If you want to analyse the data with python you need to:</p>
+<p>Experimental data is saved in a bunch of files - often one file per animal or experiment. If you want to analyse the data for several animals or experiments with python you need to:</p>
 <ol class="arabic simple">
 <li><p>Discover and list these data files, so you can process each of them automatically in a for loop.</p></li>
-<li><p>Read the data in the files into python variables for later manipulation.</p></li>
+<li><p>Read the data in the files into python variables for later manipulation and save the results stored in python variables to results files.</p></li>
 </ol>
-<p>Say we have experimental data stored in the following directory structure:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>experiments
-├── experiment_1
-│   ├── final_behavioral_scores.txt
-│   └── initial_behavioral_scores.txt
-├── experiment_2
-│   ├── final_behavioral_scores.txt
-│   └── initial_behavioral_scores.txt
-├── information.txt
-└── mouse_names.txt
-</pre></div>
-</div>
-<p>A bit of nomenclature: Take this path <code class="docutils literal notranslate"><span class="pre">experiments/experiment_1/final_behavioral_scores.txt</span></code></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">final_behavioral_scores.txt</span></code> is the file name, <code class="docutils literal notranslate"><span class="pre">final_behavioral_scores</span></code> is called the file stem, <code class="docutils literal notranslate"><span class="pre">.txt</span></code> is called the suffix or extension</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">experiments</span></code> and <code class="docutils literal notranslate"><span class="pre">experiment_1</span></code> are directories or folders. <code class="docutils literal notranslate"><span class="pre">experiments</span></code> is the parent directory of <code class="docutils literal notranslate"><span class="pre">experiment_1</span></code>. <code class="docutils literal notranslate"><span class="pre">experiment_1</span></code> is  a subdirectory of <code class="docutils literal notranslate"><span class="pre">experiments</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> is the path separator.</p></li>
-</ul>
-<section id="discovering-files">
-<h2>Discovering files<a class="headerlink" href="#discovering-files" title="Link to this heading">#</a></h2>
-<p>The <a class="reference external" href="https://docs.python.org/3/library/glob.html">glob</a> module allows you to list files in a directory.</p>
-<p><em>Wild card</em> characters allow you to find file names matching a specific pattern:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code> matches individual characters</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> matches any string of characters</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/*&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find all files and directories in the experiments directory</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/*.txt&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find files ending in &#39;.txt&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/i*.txt&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find files and directories in &#39;experiments&#39;, starting with &#39;i&#39;, and ending in &#39;.txt&#39;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/*/&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find all subdirectories</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/*/*.txt&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find &#39;txt&#39; files in all subdirectories</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>glob(&#39;experiments/*&#39;)=[&#39;experiments/experiment_1&#39;, &#39;experiments/information.txt&#39;, &#39;experiments/mouse_names.txt&#39;, &#39;experiments/experiment_2&#39;]
-glob(&#39;experiments/*.txt&#39;)=[&#39;experiments/information.txt&#39;, &#39;experiments/mouse_names.txt&#39;]
-glob(&#39;experiments/i*.txt&#39;)=[&#39;experiments/information.txt&#39;]
-glob(&#39;experiments/*/&#39;)=[&#39;experiments/experiment_1/&#39;, &#39;experiments/experiment_2/&#39;]
-glob(&#39;experiments/*/*.txt&#39;)=[&#39;experiments/experiment_1/initial_behavioral_scores.txt&#39;, &#39;experiments/experiment_1/final_behavioral_scores.txt&#39;, &#39;experiments/experiment_2/initial_behavioral_scores.txt&#39;, &#39;experiments/experiment_2/final_behavioral_scores.txt&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="manipulating-paths">
-<h2>Manipulating paths<a class="headerlink" href="#manipulating-paths" title="Link to this heading">#</a></h2>
-<p>We often need to manipulate path names.</p>
-<p>Say we want to process the data in <code class="docutils literal notranslate"><span class="pre">initial_behavioral_scores.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">final_behavioral_scores.txt</span></code> for each experiment in <code class="docutils literal notranslate"><span class="pre">experiments</span></code>, and want to save the results in a folder called <code class="docutils literal notranslate"><span class="pre">results</span></code> that mimics the structure of the data folder: <code class="docutils literal notranslate"><span class="pre">results/experiment_1/behavior.xls</span></code>, <code class="docutils literal notranslate"><span class="pre">results/experiment_2/behavior.xls</span></code></p>
-<p>We want to generate the paths for the new results files automatically from the paths of the data files. That means we need to manipulate the path names. In one exercise, you will do just that!!</p>
-<p>There are two ways of working with paths in python</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/library/os.path.html">os.path</a> (old)</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a> (new but more complicated - we won’t cover it here)</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
-<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;updir/subdir/name.txt&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">path_parts</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="n">trunk</span> <span class="o">=</span> <span class="n">path_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">extension</span> <span class="o">=</span> <span class="n">path_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">trunk</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">extension</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># this will split off the file name from the rest of the path:</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># we can treat path as a string and use the &quot;split&quot; function to split the string at a specified sign - in this case the path separator</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>os.path.splitext(path)=(&#39;updir/subdir/name&#39;, &#39;.txt&#39;)
-path=&#39;updir/subdir/name.txt&#39;, trunk=&#39;updir/subdir/name&#39;, extension=&#39;.txt&#39;
-os.path.split(path)=(&#39;updir/subdir&#39;, &#39;name.txt&#39;)
-path.split(&#39;/&#39;)=[&#39;updir&#39;, &#39;subdir&#39;, &#39;name.txt&#39;]
-os.path.basename(path)=&#39;name.txt&#39;
-os.path.dirname(path)=&#39;updir/subdir&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>We now know how to split a path in various ways. How can we assemble the parts into something new?</p>
-<p>Since the parts are strings, we can use the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator to concatenate them. This will create a file name with a new suffix:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;old path: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">path_parts</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="n">trunk</span> <span class="o">=</span> <span class="n">path_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">extension</span> <span class="o">=</span> <span class="n">path_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="n">new_extension</span> <span class="o">=</span> <span class="s1">&#39;.csv&#39;</span>
-<span class="n">new_path</span> <span class="o">=</span> <span class="n">trunk</span> <span class="o">+</span> <span class="n">new_extension</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;new path: </span><span class="si">{</span><span class="n">new_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>old path: updir/subdir/name.txt
-new path: updir/subdir/name.csv
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="creating-directories">
-<h2>Creating directories<a class="headerlink" href="#creating-directories" title="Link to this heading">#</a></h2>
-<p>To save files to new directories, we can create them directly with python:</p>
-<p><code class="docutils literal notranslate"><span class="pre">os.makedirs('tmp/sub1/sub2',</span> <span class="pre">exist_ok=True)</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">exist_ok=True</span></code> prevents an error if the directory already exists.</p>
-</section>
 <section id="loading-and-saving-data-to-from-files">
 <h2>Loading and saving data to/from files<a class="headerlink" href="#loading-and-saving-data-to-from-files" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -616,41 +494,78 @@ new path: updir/subdir/name.csv
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+
 <span class="ne">ValueError</span>: could not convert string to float: &#39;Responses&#39;
+
+
 
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
+
+
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">67</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/mouse1.txt&#39;</span><span class="p">)</span>
 
+
+
 <span class="nn">File ~/miniconda3/envs/neu715/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1397,</span> in <span class="ni">loadtxt</span><span class="nt">(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows, quotechar, like)</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1394</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">delimiter</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1395</span>     <span class="n">delimiter</span> <span class="o">=</span> <span class="n">delimiter</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
+
 <span class="ne">-&gt; </span><span class="mi">1397</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">_read</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1398</span>             <span class="n">converters</span><span class="o">=</span><span class="n">converters</span><span class="p">,</span> <span class="n">skiplines</span><span class="o">=</span><span class="n">skiprows</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="n">usecols</span><span class="p">,</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1399</span>             <span class="n">unpack</span><span class="o">=</span><span class="n">unpack</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="n">ndmin</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1400</span>             <span class="n">max_rows</span><span class="o">=</span><span class="n">max_rows</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="n">quotechar</span><span class="p">)</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1402</span> <span class="k">return</span> <span class="n">arr</span>
 
+
+
 <span class="nn">File ~/miniconda3/envs/neu715/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1036,</span> in <span class="ni">_read</span><span class="nt">(fname, delimiter, comment, quote, imaginary_unit, usecols, skiplines, max_rows, converters, ndmin, unpack, dtype, encoding)</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1033</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">_preprocess_comments</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">comments</span><span class="p">,</span> <span class="n">encoding</span><span class="p">)</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1035</span> <span class="k">if</span> <span class="n">read_dtype_via_object_chunks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
 <span class="ne">-&gt; </span><span class="mi">1036</span>     <span class="n">arr</span> <span class="o">=</span> <span class="n">_load_from_filelike</span><span class="p">(</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1037</span>         <span class="n">data</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="n">quote</span><span class="p">,</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1038</span>         <span class="n">imaginary_unit</span><span class="o">=</span><span class="n">imaginary_unit</span><span class="p">,</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1039</span>         <span class="n">usecols</span><span class="o">=</span><span class="n">usecols</span><span class="p">,</span> <span class="n">skiplines</span><span class="o">=</span><span class="n">skiplines</span><span class="p">,</span> <span class="n">max_rows</span><span class="o">=</span><span class="n">max_rows</span><span class="p">,</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1040</span>         <span class="n">converters</span><span class="o">=</span><span class="n">converters</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1041</span>         <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">filelike</span><span class="o">=</span><span class="n">filelike</span><span class="p">,</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1042</span>         <span class="n">byte_converters</span><span class="o">=</span><span class="n">byte_converters</span><span class="p">)</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1044</span> <span class="k">else</span><span class="p">:</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1045</span>     <span class="c1"># This branch reads the file into chunks of object arrays and then</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1046</span>     <span class="c1"># casts them to the desired actual dtype.  This ensures correct</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1047</span>     <span class="c1"># string-length and datetime-unit discovery (like `arr.astype()`).</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1048</span>     <span class="c1"># Due to chunking, certain error reports are less clear, currently.</span>
+
 <span class="g g-Whitespace">   </span><span class="mi">1049</span>     <span class="k">if</span> <span class="n">filelike</span><span class="p">:</span>
+
+
 
 <span class="ne">ValueError</span>: could not convert string &#39;Responses&#39; to float64 at row 0, column 1.
 </pre></div>
@@ -835,35 +750,27 @@ new path: updir/subdir/name.csv
 </section>
 <section id="saving-data-to-numpy-files">
 <h3>Saving data to numpy files<a class="headerlink" href="#saving-data-to-numpy-files" title="Link to this heading">#</a></h3>
-<p>A more efficient (fast load/save, less disk space) format is the numpy file. There are two ways of saving data to numpy files.</p>
-<p>You can save a single variable using the <code class="docutils literal notranslate"><span class="pre">np.save</span></code>. The resulting file shold have the extension <code class="docutils literal notranslate"><span class="pre">npy</span></code>.</p>
+<p>A more efficient (faster load/save, less disk space) format is the numpy file. There are two ways of saving data to numpy files.</p>
+<p>You can save a single variable using the <code class="docutils literal notranslate"><span class="pre">np.save</span></code>. The resulting file should have the extension <code class="docutils literal notranslate"><span class="pre">npy</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;saved_single_variable.npy&#39;</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<p>You can also save multiple variables to a single file using <code class="docutils literal notranslate"><span class="pre">np.savez</span></code>, which will create a file with the extension <code class="docutils literal notranslate"><span class="pre">npz</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_to_save</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">voltage_to_save</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">])</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s1">&#39;saved_multiple_variables.npz&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">time_to_save</span><span class="p">,</span> <span class="n">voltage</span><span class="o">=</span><span class="n">voltage_to_save</span><span class="p">)</span>  <span class="c1"># the keywords &quot;time&quot; and &quot;voltage&quot; will be the names associated with the saved data variables.</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 2 3 4]
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="loading-data-from-numpy-files">
-<h3>Loading data from numpy files<a class="headerlink" href="#loading-data-from-numpy-files" title="Link to this heading">#</a></h3>
-<p>You can load <code class="docutils literal notranslate"><span class="pre">npy</span></code> and <code class="docutils literal notranslate"><span class="pre">npz</span></code> files using <code class="docutils literal notranslate"><span class="pre">np.load</span></code>.</p>
-<p>Loading an <code class="docutils literal notranslate"><span class="pre">npy</span></code> file will return the data directly:</p>
+<p>You can load the variabe from the file using <code class="docutils literal notranslate"><span class="pre">np.load</span></code>. Since the file only contained a single variable, <code class="docutils literal notranslate"><span class="pre">np.load</span></code> will return the values of the variable directly:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">loaded_npy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;saved_single_variable.npy&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loaded_npy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;saved_single_variable.npy&#39;</span><span class="p">)</span>
 <span class="n">loaded_npy</span>
 </pre></div>
 </div>
@@ -874,7 +781,18 @@ new path: updir/subdir/name.csv
 </div>
 </div>
 </div>
-<p>Loading an <code class="docutils literal notranslate"><span class="pre">npz</span></code> files will return a dictionary-like data structure. The saved variables can be accessed as in a dictionary, using the keywords used when saving as keys:</p>
+<p>You can also save multiple variables to a single file using <code class="docutils literal notranslate"><span class="pre">np.savez</span></code>, which will create a file with the extension <code class="docutils literal notranslate"><span class="pre">npz</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_to_save</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">voltage_to_save</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s1">&#39;saved_multiple_variables.npz&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">time_to_save</span><span class="p">,</span> <span class="n">voltage</span><span class="o">=</span><span class="n">voltage_to_save</span><span class="p">)</span>  <span class="c1"># the keywords &quot;time&quot; and &quot;voltage&quot; will be the names associated with the saved data variables.</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s1">&#39;saved_multiple_variables_NO.npz&#39;</span><span class="p">,</span> <span class="n">time_to_save</span><span class="p">,</span> <span class="n">voltage_to_save</span><span class="p">)</span>  <span class="c1"># the keywords &quot;time&quot; and &quot;voltage&quot; will be the names associated with the saved data variables.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Loading an <code class="docutils literal notranslate"><span class="pre">npz</span></code> files will return a dictionary-like data structure, with the names of the saved variables as keys and the variables’ data as values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loaded_npz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;saved_multiple_variables.npz&#39;</span><span class="p">)</span>
@@ -897,6 +815,150 @@ Variable &quot;voltage&quot; with values &quot;[-60 -60  40 -60]&quot;.
 </div>
 </div>
 </section>
+</section>
+<section id="discovering-files">
+<h2>Discovering files<a class="headerlink" href="#discovering-files" title="Link to this heading">#</a></h2>
+<p>If we have data from multiple experiments or animals, we want to automatically process everything with python.
+To do that we need to find a way to find out what files are on our computer and where they are so we can load them.</p>
+<p>Say we have experimental data stored in the following directory structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>experiments
+├── experiment_1
+│   ├── final_behavioral_scores.txt
+│   └── initial_behavioral_scores.txt
+├── experiment_2
+│   ├── final_behavioral_scores.txt
+│   └── initial_behavioral_scores.txt
+├── information.txt
+└── mouse_names.txt
+</pre></div>
+</div>
+<p>A bit of nomenclature: Take this path <code class="docutils literal notranslate"><span class="pre">experiments/experiment_1/final_behavioral_scores.txt</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">final_behavioral_scores.txt</span></code> is the file name, <code class="docutils literal notranslate"><span class="pre">final_behavioral_scores</span></code> is called the file stem, <code class="docutils literal notranslate"><span class="pre">.txt</span></code> is called the suffix or extension</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">experiments</span></code> and <code class="docutils literal notranslate"><span class="pre">experiment_1</span></code> are directories or folders. <code class="docutils literal notranslate"><span class="pre">experiments</span></code> is the parent directory of <code class="docutils literal notranslate"><span class="pre">experiment_1</span></code>. <code class="docutils literal notranslate"><span class="pre">experiment_1</span></code> is  a subdirectory of <code class="docutils literal notranslate"><span class="pre">experiments</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> is the path separator.</p></li>
+</ul>
+<p>The <a class="reference external" href="https://docs.python.org/3/library/glob.html">glob</a> module allows you to list directories or files in a directory.</p>
+<p><em>Wild card</em> characters allow you to find file names matching a specific pattern:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code> matches individual characters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> matches any string of characters</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/*&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find all files and directories in the experiments directory</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/*.txt&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find files ending in &#39;.txt&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/i*.txt&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find files and directories in &#39;experiments&#39;, starting with &#39;i&#39;, and ending in &#39;.txt&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/experiment_?&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find files and directories in &#39;experiments&#39;, starting with &#39;experiment_&#39;, and ending in a single unknown character.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/*/&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find all subdirectories</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/*/*.txt&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find &#39;txt&#39; files in all subdirectories</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>glob(&#39;experiments/*&#39;)=[&#39;experiments/experiment_1&#39;, &#39;experiments/information.txt&#39;, &#39;experiments/mouse_names.txt&#39;, &#39;experiments/experiment_2&#39;]
+glob(&#39;experiments/*.txt&#39;)=[&#39;experiments/information.txt&#39;, &#39;experiments/mouse_names.txt&#39;]
+glob(&#39;experiments/i*.txt&#39;)=[&#39;experiments/information.txt&#39;]
+glob(&#39;experiments/experiment_?&#39;)=[&#39;experiments/experiment_1&#39;, &#39;experiments/experiment_2&#39;]
+glob(&#39;experiments/*/&#39;)=[&#39;experiments/experiment_1/&#39;, &#39;experiments/experiment_2/&#39;]
+glob(&#39;experiments/*/*.txt&#39;)=[&#39;experiments/experiment_1/initial_behavioral_scores.txt&#39;, &#39;experiments/experiment_1/final_behavioral_scores.txt&#39;, &#39;experiments/experiment_2/initial_behavioral_scores.txt&#39;, &#39;experiments/experiment_2/final_behavioral_scores.txt&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="manipulating-paths">
+<h2>Manipulating paths<a class="headerlink" href="#manipulating-paths" title="Link to this heading">#</a></h2>
+<p>We often need to manipulate path names.</p>
+<p>Say we want to process the data in <code class="docutils literal notranslate"><span class="pre">initial_behavioral_scores.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">final_behavioral_scores.txt</span></code> for each experiment in <code class="docutils literal notranslate"><span class="pre">experiments</span></code>, and want to save the results in a folder called <code class="docutils literal notranslate"><span class="pre">results</span></code> that mimics the structure of the data folder: <code class="docutils literal notranslate"><span class="pre">results/experiment_1/behavior.xls</span></code>, <code class="docutils literal notranslate"><span class="pre">results/experiment_2/behavior.xls</span></code>.</p>
+<p>We want to generate the paths for the new results files automatically from the paths of the data files. That means we need to manipulate the path names. In one exercise, you will do just that!!</p>
+<p>There are two ways of working with paths in python</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/os.path.html">os.path</a> (old)</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a> (new but more complicated - we won’t cover it here)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+<span class="n">my_path</span> <span class="o">=</span> <span class="s1">&#39;parentdir/subdir/name.txt&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">my_path</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">my_path_parts</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">my_path</span><span class="p">)</span>
+<span class="n">trunk</span> <span class="o">=</span> <span class="n">my_path_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">extension</span> <span class="o">=</span> <span class="n">my_path_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">my_path</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">trunk</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">extension</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># this will split off the file name from the rest of the path:</span>
+<span class="n">trunk</span><span class="p">,</span> <span class="n">head</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">my_path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">trunk</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">head</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># we can split the trunk again to split off the sub directory</span>
+<span class="n">new_trunk</span><span class="p">,</span> <span class="n">new_head</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">trunk</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">new_trunk</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">new_head</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">my_path</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># returns the filename</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">my_path</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># returns the directories</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>os.path.splitext(my_path)=(&#39;parentdir/subdir/name&#39;, &#39;.txt&#39;)
+my_path=&#39;parentdir/subdir/name.txt&#39;, trunk=&#39;parentdir/subdir/name&#39;, extension=&#39;.txt&#39;
+trunk=&#39;parentdir/subdir&#39;, head=&#39;name.txt&#39;
+new_trunk=&#39;parentdir&#39;, new_head=&#39;subdir&#39;
+os.path.basename(my_path)=&#39;name.txt&#39;
+os.path.dirname(my_path)=&#39;parentdir/subdir&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now know how to split a path in various ways. How can we assemble the parts into something new?</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">os.path.join</span></code> with multiple strings as arguments to join them into a new path. This function will use the correct path separator.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;directory_name&#39;</span><span class="p">,</span> <span class="s1">&#39;subdirectory_name&#39;</span><span class="p">,</span> <span class="s1">&#39;file_name.ext&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>directory_name/subdirectory_name/file_name.ext
+</pre></div>
+</div>
+</div>
+</div>
+<p>What if we want to change the file extension?
+Say our data file is an excel file (extension ‘.xlsx’) and we want to save the results from analyzing that file to a text file (extension ‘.txt’).</p>
+<p>Since the parts are strings, we can use the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator to concatenate them. This will create a file name with a new suffix:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file_name</span> <span class="o">=</span> <span class="s1">&#39;mouse_276.xls&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Load data from&#39;</span><span class="p">,</span> <span class="n">data_file_name</span><span class="p">)</span>
+
+<span class="c1"># First split off the old extension:</span>
+<span class="n">data_file_trunk</span><span class="p">,</span> <span class="n">data_file_ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">data_file_name</span><span class="p">)</span>
+
+<span class="c1"># Then add the new extension to the file trunk</span>
+<span class="n">results_file_name</span> <span class="o">=</span> <span class="n">data_file_trunk</span> <span class="o">+</span> <span class="s1">&#39;.txt&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Save result to&#39;</span><span class="p">,</span> <span class="n">results_file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Load data from mouse_276.xls
+Save result to mouse_276.txt
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-directories">
+<h2>Creating directories<a class="headerlink" href="#creating-directories" title="Link to this heading">#</a></h2>
+<p>To save files to new directories, we can create them directly with python:</p>
+<p><code class="docutils literal notranslate"><span class="pre">os.makedirs('tmp/sub1/sub2',</span> <span class="pre">exist_ok=True)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">exist_ok=True</span></code> prevents an error if the directory already exists.</p>
 </section>
 </section>
 
@@ -964,18 +1026,17 @@ Variable &quot;voltage&quot; with values &quot;[-60 -60  40 -60]&quot;.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-files">Discovering files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-paths">Manipulating paths</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-directories">Creating directories</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-and-saving-data-to-from-files">Loading and saving data to/from files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-text-files">Loading data from text files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-text-files">Saving data to text files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-excel-files">Loading data from excel files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-matlab-files">Loading data from matlab files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data-to-numpy-files">Saving data to numpy files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-from-numpy-files">Loading data from numpy files</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-files">Discovering files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-paths">Manipulating paths</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-directories">Creating directories</a></li>
 </ul>
   </nav></div>
 
