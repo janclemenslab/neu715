@@ -440,8 +440,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distribution">Normal distribution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-random-numbers-in-python">Generating random numbers in python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-theorem">Central limit theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-random-numbers-in-python">Generating random numbers in python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Mini exercise</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-mean-and-standard-deviation">Empirical mean and standard deviation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-sample-size">Effect of sample size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-error-of-the-mean">Standard error of the mean</a></li>
@@ -463,8 +465,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="statistics-with-python">
 <h1>Statistics with python<a class="headerlink" href="#statistics-with-python" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p>Descriptive stats (today and tomorrow): Summary stats with python (mean, std, sem, CI, median, percentiles, IQR), statistical plots (hist, boxplot, violin)</p></li>
-<li><p>Inferential stats (Wednesday): Hypothesis testing (parametric/nonparametric, paired/unpaired, two-sided/one-sided, Anova)</p></li>
+<li><p>Descriptive stats: Summary stats with python (mean, std, sem, CI, median, percentiles, IQR), statistical plots (hist, boxplot, violin)</p></li>
+<li><p>Inferential stats: Hypothesis testing (parametric/nonparametric, paired/unpaired, two-sided/one-sided, Anova)</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> and numpy cover the basics. For more complex stats use the python package <a class="reference external" href="https://www.statsmodels.org/stable/index.html">statsmodels</a> or the R-language.</p>
 <div class="cell docutils container">
@@ -473,7 +475,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">scipy</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1"># plt.style.use(&#39;ncb.mplstyle&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ncb.mplstyle&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -488,44 +490,13 @@ One parameter is varied (e.g. an electrical current stimulus on a neuron), while
 <h2>Visualizing the frequency distribution of your data using histograms<a class="headerlink" href="#visualizing-the-frequency-distribution-of-your-data-using-histograms" title="Link to this heading">#</a></h2>
 <p>The frequency distribution describes how often a measured value occurs and serves to estimate the probability of that measured value.
 We estimate the frequency distribition using a histograms, which can be used to derive the underlying probability density function.</p>
-<p>Histograms show how many of the measured feature values occurred in defined, contiguous ranges (contiguous means that there is no gap between ranges). Each of those ranges (also called “classes” or “bins”) is represented graphically by a rectangle (or bar). The bar’s height represents the measured frequency (number of samples falling into each bin). The choice off the number and borders of the bins depends on the data, the sample size, and the scientific question. More samples allow more bins and more details. If too many bins are used for a given sample size, some of the bins will by chance be empty, making it difficult to judge the shape of the frequency distribution.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># HIDE</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># for reproducibility</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">200</span><span class="p">))</span>  <span class="c1"># generate 200 random numbers with standard normal distribion (mean 0, std 1)</span>
-
-<span class="c1"># different ways of plotting histograms</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of samples=</span><span class="se">\n</span><span class="s1">Frequency&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;4 bins - too few&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;16 bins - just right&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;256 bins - too many&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fig/5.01_probabilities1.png&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/12f9550f67128a64bdfceed36e634d1cffbf664f7c80cd4de98d7892723620a1.png" src="../../_images/12f9550f67128a64bdfceed36e634d1cffbf664f7c80cd4de98d7892723620a1.png" />
-</div>
-</div>
+<p>Histograms show how many of the measured feature values occurred in defined, contiguous ranges (contiguous means that there is no gap between ranges). Each of those ranges (also called “bins”) is represented graphically by a rectangle (or bar). The bar’s height represents the measured frequency (number of samples falling into each bin). The choice of the number and borders of the bins depends on the data, the sample size, and the scientific question. More samples allow more bins and more details. If too many bins are used for a given sample size, some of the bins will by chance be empty, making it difficult to judge the shape of the frequency distribution.</p>
+<p><img alt="" src="../../_images/5.01_probabilities1.png" /></p>
 </section>
 <section id="probability-density-function">
 <h2>Probability density function<a class="headerlink" href="#probability-density-function" title="Link to this heading">#</a></h2>
-<p>In contrast to the frequency distribution, which contains the absolute number of occurrences of feature values in specified classes, the probability density function indicates probabilities for the occurrence of specific feature values. For continuous numerical data, you could imagine first scaling a histogram to relative rather than absolute numbers of occurrences (i.e. giving percentages of occurrences – which refer directly to probabilities). Then, you make the bins of the scaled histogram finer and finer. In consequence, the probability for each class will also get smaller and smaller. If you continue to an infinite number of bins, each bin would have an near-zero probability, because it is very unlikely that your dataset contains samples with that exact feature value. However, the probability to find a person that is 1.70 m tall <em>is indeed</em> higher than the probability to find a person of 2.20 m (or even 2.50 m)! The probability density function reflects that: The area under the curve is scaled to 1, typically making all values pretty small, but nevertheless clearly &gt;0 in ranges where feature values can be found. Contiguous probability values from data is obtained by binning the data in a histogram and assuming that the true probability density is more or less constant for all feature values falling in that bin.</p>
+<p>In contrast to the frequency distribution, which contains the number of values in each bin, the <em>probability density function</em> indicates probabilities for the occurrence of specific feature values. For continuous numerical data, you could imagine scaling a histogram to relative rather than absolute numbers of occurrences. So that the area under the histogram is 1.0. Then, the height of the bars then corresponds to the fraction of the data points falling into each bin and is independent of the sample size.</p>
+<p><img alt="" src="../../_images/5.01_probabilities_density.png" /></p>
 </section>
 <section id="histograms-in-python">
 <h2>Histograms in python<a class="headerlink" href="#histograms-in-python" title="Link to this heading">#</a></h2>
@@ -546,10 +517,10 @@ We estimate the frequency distribition using a histograms, which can be used to 
 <p>Let’s draw some random numbers and illustrate the different ways of generating a histogram:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># for reproducibility</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">200</span><span class="p">))</span>  <span class="c1"># generate 200 random numbers with standard normal distribion (mean 0, std 1)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">200</span><span class="p">))</span>  <span class="c1"># generate 200 random numbers with standard normal distribion (mean 0, std 1)</span>
+
 <span class="c1"># different ways of plotting histograms</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">141</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of samples&#39;</span><span class="p">)</span>
@@ -571,14 +542,12 @@ We estimate the frequency distribition using a histograms, which can be used to 
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Normalized histogram</span><span class="se">\n</span><span class="s1">(+density=True)&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fig/5.01_probabilities2.png&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/80447b3a7863b998e636a3acb1f21e649c354ff96ac7543e29bb5e65d53368cd.png" src="../../_images/80447b3a7863b998e636a3acb1f21e649c354ff96ac7543e29bb5e65d53368cd.png" />
+<img alt="../../_images/654c7c0af83ba49e2a43cfea71d3b783808056f27283873927a2c1cfa58d3a18.png" src="../../_images/654c7c0af83ba49e2a43cfea71d3b783808056f27283873927a2c1cfa58d3a18.png" />
 </div>
 </div>
 <section id="mini-exercise">
@@ -658,45 +627,22 @@ We estimate the frequency distribition using a histograms, which can be used to 
 <li><p>random order: <code class="docutils literal notranslate"><span class="pre">np.random.permutation(list)</span></code></p></li>
 </ul>
 <p>We will make use of this to illustrate a couple of concepts in statistics.</p>
-<p>To get reproducible random numbers (everytime the same one), you can call <code class="docutils literal notranslate"><span class="pre">np.random.seed(seed)</span></code>. <code class="docutils literal notranslate"><span class="pre">seed</span></code> is an arbitrary integer and fixes the state of python’s random number generator.</p>
-</section>
-<section id="central-limit-theorem">
-<h2>Central limit theorem<a class="headerlink" href="#central-limit-theorem" title="Link to this heading">#</a></h2>
-<p>Why are Normal distributions so important? They are everywhere.</p>
-<p>According to the <em>central limit theorem</em>, even if the underlying distribition is not normal, the sums or means over samples from the distribution approaches a Normal distribution.</p>
-<p>If we assume that each phenomenon arises from a combination of many independent processes, then we should expect most things to be normally distributed.</p>
-<p>Take dice as an example: The pips are uniformly distributed - a fair dice will fall on one of its six sides with uniform probability <span class="math notranslate nohighlight">\(p=1/6\)</span>.
-However, the mean (or sum) of the pips over N subsequent throws approaches a Normal distribution even for moderate N!</p>
+<p>To get reproducible random numbers (everytime the same numbers), you can call <code class="docutils literal notranslate"><span class="pre">np.random.seed(seed)</span></code>. <code class="docutils literal notranslate"><span class="pre">seed</span></code> is an arbitrary integer and fixes the state of python’s random number generator.</p>
+<section id="id1">
+<h3>Mini exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Generate 1000 numbers drawn from a standard normal distribution (mean 0, std 1). Visualize the probability density using a histogram.</p></li>
+<li><p>Manipulate the same samples to change the mean to 1 and visualize the resulting density.</p></li>
+<li><p>Manipulate the same samples to change the standard deviation to 2 and visualize the resulting density.</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>  <span class="c1"># x-values for the theoretical pdf</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">cnt</span><span class="p">,</span> <span class="n">N</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">]):</span>
-    <span class="n">numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>  <span class="c1"># generate N sequences of numbers from 1 to 6 representing the pips, generate 5000 of those</span>
-    <span class="n">means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># compute the mean along axis 0 - over the N sequences - this will result in 5000 mean values</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">N</span> <span class="o">*</span> <span class="mi">7</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-    <span class="n">theoretical_dist</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.8</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>  <span class="c1"># generate theoretical distribution of means following normal pdf</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">theoretical_dist</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2"> dice&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">cnt</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Mean of dice&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Theoretical&#39;</span><span class="p">,</span> <span class="s1">&#39;Empirical&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fig/5.01_probabilities4.png&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/1265b69d35fddda247502155d76366c3411675ededffc7f962e3622538df37b0.png" src="../../_images/1265b69d35fddda247502155d76366c3411675ededffc7f962e3622538df37b0.png" />
 </div>
-</div>
+</section>
 </section>
 <section id="empirical-mean-and-standard-deviation">
 <h2>Empirical mean and standard deviation<a class="headerlink" href="#empirical-mean-and-standard-deviation" title="Link to this heading">#</a></h2>
@@ -723,68 +669,18 @@ However, the mean (or sum) of the pips over N subsequent throws approaches a Nor
 <h2>Effect of sample size<a class="headerlink" href="#effect-of-sample-size" title="Link to this heading">#</a></h2>
 <p>How close the empirical mean and standard deviation are to their true values depends on the sample size: The larger the sample size, the closer (more accurate) your estimates will be to the true values. With few samples, random outliers will strongly influence and distort the estimates.</p>
 <p>This is captured by the <em>law of large numbers</em>: It states that with increasing sample size <span class="math notranslate nohighlight">\(N\)</span>, the empirical mean (the average of the samples) tends towards the theoretical mean (the true mean of the underlying distribution). In other words: The more samples, the more the frequency of an observed event approaches the actual probability of occurrence (the probability that is theoretically expected based on the underlying probability distribution).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">nb_samples</span> <span class="o">=</span> <span class="mi">400</span>
-<span class="n">nb_trials</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="p">(</span><span class="n">nb_samples</span><span class="p">,</span> <span class="n">nb_trials</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-<span class="n">cum_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">nb_samples</span><span class="p">):</span>
-    <span class="n">cum_mean</span><span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="n">N</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cum_mean</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Cumulative number of throws&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Theoretical mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Empirical mean&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fig/5.01_probabilities5.png&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/ff012ba87d3b02f8b6ae4eab6350283516d3e95d8dd72b71420567b641677a53.png" src="../../_images/ff012ba87d3b02f8b6ae4eab6350283516d3e95d8dd72b71420567b641677a53.png" />
-</div>
-</div>
+<p><img alt="" src="../../_images/5.01_probabilities5.png" /></p>
 </section>
 <section id="standard-error-of-the-mean">
 <h2>Standard error of the mean<a class="headerlink" href="#standard-error-of-the-mean" title="Link to this heading">#</a></h2>
-<p>The standard error of the mean measures how well the available sample size allows to estimate the mean expected for the entire population (the true mean of the underlying distribution). The idea of this measure is the following: Imagine you draw N samples from the entire population and you calculate the empirical mean from the samples. That empirical mean will be different for different sets of N samples, depending on which individuals you measured (e.g. in one sample are a couple of very large individuals, and in another sample some particularly small individuals). The standard error of the mean measures how much the empirical means from different sets of samples of the same size will scatter.</p>
+<p>The standard error of the mean measures how well the available sample size allows to estimate the true mean of the underlying distribution. The idea of this measure is the following: Imagine you draw N samples from the entire population and you calculate the empirical mean from the samples. That empirical mean will be different for different sets of N samples, depending on which individuals you measured (e.g. in one sample are a couple of very large individuals, and in another sample some particularly small individuals). The standard error of the mean measures how much the empirical means from different sets of samples of the same size will scatter.</p>
 <p>The standard error of the mean (SEM) is defined as: <span class="math notranslate nohighlight">\(\sigma_{\bar{x}} = \sigma / \sqrt{N}\)</span></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\sigma\)</span>: The theoretical standard deviation (the std of the underlying probability distribution)  - the more variable the underlying distribution, the less certain the mean will be.</p></li>
-<li><p><span class="math notranslate nohighlight">\(N\)</span>: size of samples (not the number of samples - sample size corresponds roughly to the number of <em>independent</em> samples - if you measure the blood pressure in 10 mice, 10 times in a row, then you will have 100 samples but they are not all independent). Since <span class="math notranslate nohighlight">\(N\)</span> is in the denominator, the SEM shrinks with sample size. But, because of the square root, not linearly but with “diminishing returns” - doubling the sample size does not half the SEM.</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span>: size of samples. Since <span class="math notranslate nohighlight">\(N\)</span> is in the denominator, the SEM shrinks with sample size. But, because of the square root, not linearly but with “diminishing returns” - doubling the sample size does not half the SEM.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">cnt</span><span class="p">,</span> <span class="n">N</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">]):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">cnt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">)),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;frozen pdf&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean from </span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2"> samples,</span><span class="se">\n</span><span class="s2">theoretical SEM=</span><span class="si">{</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="si">:</span><span class="s2">1.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">cnt</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Mean&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Empirical&#39;</span><span class="p">,</span> <span class="s1">&#39;Theoretical&#39;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Distribution of means&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fig/5.01_probabilities6.png&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/6a356ff112537283226a920bf2a205ed70b58610f2dfd4fd0f6e70613a96db3a.png" src="../../_images/6a356ff112537283226a920bf2a205ed70b58610f2dfd4fd0f6e70613a96db3a.png" />
-</div>
-</div>
+<p>Note that <span class="math notranslate nohighlight">\(N\)</span> is not always the number of samples. Sample size corresponds roughly to the number of <em>independent</em> samples - if you measure the blood pressure in 10 mice, 10 times in a row, then you will have 100 samples but they are not all independent.</p>
+<p><img alt="" src="../../_images/5.01_probabilities6.png" /></p>
 </section>
 <section id="plots-with-error-bars">
 <h2>Plots with error bars<a class="headerlink" href="#plots-with-error-bars" title="Link to this heading">#</a></h2>
@@ -797,54 +693,22 @@ However, the mean (or sum) of the pips over N subsequent throws approaches a Nor
 <p>If you see a plot with error bars, always check what they mean. And think carefully about what measure you want to choose when plotting error bars yourself.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">std_theoretical</span> <span class="o">=</span> <span class="mf">1.5</span>
-<span class="n">Ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">160</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate toy data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="n">yerr</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="mi">4</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span> <span class="n">std_theoretical</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ns</span><span class="p">),</span> <span class="o">-</span><span class="n">std_theoretical</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ns</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;whitesmoke&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Standard error of the mean&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span> <span class="n">std_theoretical</span><span class="p">,</span> <span class="o">-</span><span class="n">std_theoretical</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;whitesmoke&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Standard deviation&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample size&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">cnt</span><span class="p">,</span> <span class="n">N</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Ns</span><span class="p">):</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">std_theoretical</span>
-    <span class="n">sem_empirical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
-    <span class="n">sem_theoretical</span> <span class="o">=</span> <span class="n">std_theoretical</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-    <span class="n">std_empirical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
-
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sem_empirical</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">ecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">std_empirical</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Theoretical SEM&#39;</span><span class="p">,</span> <span class="s1">&#39;Empirical SEM&#39;</span><span class="p">],</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.61</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Theoretical STD&#39;</span><span class="p">,</span> <span class="s1">&#39;Empirical STD&#39;</span><span class="p">],</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.61</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">Ns</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fig/5.01_probabilities7.png&#39;</span><span class="p">)</span>
+<span class="c1"># make a plot with error bars</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/69a9a410c7cebcff7172c9c768a7398103c16e028a8f95c2d2dcbfe957874fb4.png" src="../../_images/69a9a410c7cebcff7172c9c768a7398103c16e028a8f95c2d2dcbfe957874fb4.png" />
+<img alt="../../_images/dfdef628716610be609734f8a4d9d960a1aaf58b529f447b5e4626b8ff77871e.png" src="../../_images/dfdef628716610be609734f8a4d9d960a1aaf58b529f447b5e4626b8ff77871e.png" />
 </div>
 </div>
 </section>
@@ -923,8 +787,10 @@ However, the mean (or sum) of the pips over N subsequent throws approaches a Nor
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distribution">Normal distribution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-random-numbers-in-python">Generating random numbers in python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-theorem">Central limit theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-random-numbers-in-python">Generating random numbers in python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Mini exercise</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-mean-and-standard-deviation">Empirical mean and standard deviation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-sample-size">Effect of sample size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-error-of-the-mean">Standard error of the mean</a></li>
