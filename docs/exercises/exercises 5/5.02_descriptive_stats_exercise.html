@@ -429,10 +429,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-plotting-data-and-calculating-descriptive-statistics-important">Exercise 1 - Plotting data and calculating descriptive statistics  (IMPORTANT)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-interpreting-descriptive-statistics-of-a-normal-distribution-important">Exercise 2 - Interpreting descriptive statistics of a Normal distribution (IMPORTANT)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-compare-the-descriptive-statistics-of-normal-uniform-and-poisson-distributions">Exercise 3 - Compare the descriptive statistics of Normal, Uniform, and Poisson distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-bonus-check-convergence-of-different-descriptive-statistics-for-different-sample-sizes">Exercise 4 - BONUS - Check convergence of different descriptive statistics for different sample sizes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-plotting-data-and-calculating-descriptive-statistics">Exercise 1 - Plotting data and calculating descriptive statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-compare-the-descriptive-statistics-of-normal-uniform-and-poisson-distributions">Exercise 2 - Compare the descriptive statistics of Normal, Uniform, and Poisson distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-bonus-check-the-convergence-of-different-statistics-for-different-sample-sizes">Exercise 3 - BONUS - Check the convergence of different statistics for different sample sizes</a></li>
 </ul>
             </nav>
         </div>
@@ -446,28 +445,25 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-5-02-descriptive-statistics">
 <h1>Exercise 5.02 - Descriptive Statistics<a class="headerlink" href="#exercise-5-02-descriptive-statistics" title="Link to this heading">#</a></h1>
-<section id="exercise-1-plotting-data-and-calculating-descriptive-statistics-important">
-<h2>Exercise 1 - Plotting data and calculating descriptive statistics  (IMPORTANT)<a class="headerlink" href="#exercise-1-plotting-data-and-calculating-descriptive-statistics-important" title="Link to this heading">#</a></h2>
+<section id="exercise-1-plotting-data-and-calculating-descriptive-statistics">
+<h2>Exercise 1 - Plotting data and calculating descriptive statistics<a class="headerlink" href="#exercise-1-plotting-data-and-calculating-descriptive-statistics" title="Link to this heading">#</a></h2>
 <p>Write a function <code class="docutils literal notranslate"><span class="pre">distribution_analysis(x)</span></code> that expects a numpy array <code class="docutils literal notranslate"><span class="pre">x</span></code> as input argument and returns a dictionary <code class="docutils literal notranslate"><span class="pre">stats</span></code> with these statistical values as the keys:</p>
 <ol class="arabic simple">
 <li><p>mean</p></li>
 <li><p>standard deviation (biased and unbiased)</p></li>
-<li><p>skewness</p></li>
-<li><p>kurtosis</p></li>
 <li><p>median</p></li>
+<li><p>mode</p></li>
 <li><p>interquartile range</p></li>
 </ol>
 <p>Moreover, the function should generate a figure with 3 subplots, showing:</p>
 <ol class="arabic simple">
-<li><p>the raw data, plotted against the index (please note: for interpretation, it would be better to use individual markers. However, you will use this program for large amounts of data, for which the markers will overlap each other. Therefore, lines might help to visualize the data.)</p></li>
+<li><p>the raw data</p></li>
 <li><p>a histogram of the data</p></li>
 <li><p>the boxplot of the data</p></li>
 </ol>
-<p>Put that function in a file and import the function from the file.</p>
-<p>Make sure that this function is written in a general way (without fixed numbers or any other assumptions about the data that should be analyzed), because you will use this function repeatedly in this exercise and in the assignment. Test the function using samples drawn from a Normal distribution with mean 2 and std 1, stored in the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> below.</p>
-<p><strong>IMPORTANT:</strong> Make sure you import the file and call the function in a way that makes use of the function from the file, not from your notebook. To ensure that you really use the function from the file, give the function a different name - for instance, <code class="docutils literal notranslate"><span class="pre">distribution_analysis_local</span></code> for the function you define in the notebook, and <code class="docutils literal notranslate"><span class="pre">distribution_analysis</span></code> for the function you define in the file.</p>
-<p><strong>Hint:</strong> Not all of these functions are available via numpy - you find these in the scipy.stats module.</p>
-<p><strong>Note:</strong> You will need this function for the assignment. Don’t worry, we will provide a working function of the file after the exercise on Thursday, in case you didn’t have time to solve this.</p>
+<p>Make sure that this function is written in a general way (without fixed numbers or any other assumptions about the data that should be analyzed), because you will use this function repeatedly in this exercise. Test the function using samples drawn from a Normal distribution with mean -200 and std 10, stored in the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> below.</p>
+<p>Check if you understood the concepts of generating random numbers and analyzing the distribution of values in a sample:</p>
+<p><strong>Hint:</strong> Not all of these statistics can be computed using numpy - you find the missing ones in the scipy.stats module.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -478,33 +474,19 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Check if you understood the concepts of generating random numbers and analyzing the distribution of values in a sample:</p>
-<p>Use your function to compare the descriptive statistics of samples for three different distributions.</p>
 </section>
-<section id="exercise-2-interpreting-descriptive-statistics-of-a-normal-distribution-important">
-<h2>Exercise 2 - Interpreting descriptive statistics of a Normal distribution (IMPORTANT)<a class="headerlink" href="#exercise-2-interpreting-descriptive-statistics-of-a-normal-distribution-important" title="Link to this heading">#</a></h2>
-<p>First, generate 10000 samples from a normal distribution with mean 2.0 and standard deviation 1.0 as a reference. Use the function <code class="docutils literal notranslate"><span class="pre">np.random.normal</span></code>. Check the numpy documentation on how to use it.</p>
-<p>Apply your function <code class="docutils literal notranslate"><span class="pre">distribution_analysis</span></code> to this data set. Look at all output values and all subplots: Do they meet your expectation? Do the mean and std make sense? Compare the values for the mean and the median!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-3-compare-the-descriptive-statistics-of-normal-uniform-and-poisson-distributions">
-<h2>Exercise 3 - Compare the descriptive statistics of Normal, Uniform, and Poisson distributions<a class="headerlink" href="#exercise-3-compare-the-descriptive-statistics-of-normal-uniform-and-poisson-distributions" title="Link to this heading">#</a></h2>
+<section id="exercise-2-compare-the-descriptive-statistics-of-normal-uniform-and-poisson-distributions">
+<h2>Exercise 2 - Compare the descriptive statistics of Normal, Uniform, and Poisson distributions<a class="headerlink" href="#exercise-2-compare-the-descriptive-statistics-of-normal-uniform-and-poisson-distributions" title="Link to this heading">#</a></h2>
 <p>Now run the same distribution analysis for 10000 samples from a Uniform and a Poisson distribution.</p>
 <p>Generate 10000 samples from</p>
 <ol class="arabic simple">
+<li><p>A normal distribution with mean 2.0 and standard deviation 1.0 as a reference. Use the function <code class="docutils literal notranslate"><span class="pre">np.random.normal</span></code>. Check the numpy documentation on how to use it.</p></li>
 <li><p>A uniform distribution with mean 2.0 and span (difference between smallest and largest value) 1.0. Use the function <code class="docutils literal notranslate"><span class="pre">np.random.random_sample</span></code>.</p></li>
 <li><p>A Poisson distribution with mean 2.0. Use the function <code class="docutils literal notranslate"><span class="pre">np.random.poisson</span></code>. Check the numpy documentation for how to use it. Hint: The first argument, <code class="docutils literal notranslate"><span class="pre">lam</span></code>(bda) corresponds to the mean of the distribution.</p></li>
 </ol>
-<p>Visualize the data and compute the descriptive statistics using your function. Compare the descriptive statistics of your Normal distribution above to the statistics from the Uniform and Poisson distributions:</p>
+<p>Use your function to visualize the three data sets and compute the descriptive statistics. Compare the descriptive statistics of your Normal distribution to the statistics from the Uniform and Poisson distributions:</p>
 <ul class="simple">
-<li><p>Look at all output values and all subplots: Do they meet your expectation? Do mean and std make sense? Can you explain the values for the median and the IQR? Is the kurtosis greater or smaller than for a normal distribution with the same mean and std? How about the skewness?</p></li>
-<li><p>Makes sure that you know how to interpret all evidences for a normal distribution you found in this task.</p></li>
+<li><p>Look at all output values and all subplots: Do they meet your expectation? Do mean and std make sense? Can you explain the values for the median and the IQR? How about the mode?</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -514,10 +496,10 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-4-bonus-check-convergence-of-different-descriptive-statistics-for-different-sample-sizes">
-<h2>Exercise 4 - BONUS - Check convergence of different descriptive statistics for different sample sizes<a class="headerlink" href="#exercise-4-bonus-check-convergence-of-different-descriptive-statistics-for-different-sample-sizes" title="Link to this heading">#</a></h2>
+<section id="exercise-3-bonus-check-the-convergence-of-different-statistics-for-different-sample-sizes">
+<h2>Exercise 3 - BONUS - Check the convergence of different statistics for different sample sizes<a class="headerlink" href="#exercise-3-bonus-check-the-convergence-of-different-statistics-for-different-sample-sizes" title="Link to this heading">#</a></h2>
 <p>Explore how the estimates of mean and standard deviation scatter for multiple samples of different size.
-To do that we will repeatedly generate datasets of normally distributed samples, compute their statistics and then plot the distribution of these statistics.</p>
+To do that you will repeatedly generate datasets of normally distributed samples, compute their statistics and then plot the distribution of these statistics.</p>
 <p>Make a function that</p>
 <ul class="simple">
 <li><p>takes the sample size N as an input,</p></li>
@@ -530,10 +512,11 @@ To do that we will repeatedly generate datasets of normally distributed samples,
 </ul>
 </li>
 </ul>
-<p>Call that function 100 times with a sample size of 1000 and save the output values in an array (e.g. call the function 100 times to ultimately produce three vectors of 100 elements length, which contain the 100 means, and the 100 biased and unbiased standard deviations).</p>
+<p>To explore how the estimates of these statistics depend on sample size, you will estimate them from samples of 3 different sizes (10, 100, 1000).
+First, call your function 100 times with a sample size of 10 and save the three output values (mean, unbiased std, biased std).
+Now do the same, but with sample sizes 100 and 1000.</p>
+<p>Plot the histograms of the 3 empirical measures for the three sample sizes 10, 100, 1000. How do the distributions change with sample size? What is the difference between the biased and the unbiased standard deviation?</p>
 <p><strong>Bonus</strong> You can make your code more efficient by generating a matrix of 100x1000 samples at once and computing the statistics over the axis 1 of this matrix.</p>
-<p>Plot the histograms of the 3 empirical measures for sample sizes 10, 100, 1000. How do the distributions change with sample size? What is the difference between the biased and the unbiased standard deviation?</p>
-<p>Calculate the standard deviation of the vector of means for the three differet sample sizes. Does the value match the expected standard error of the mean for each sample size?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -608,10 +591,9 @@ To do that we will repeatedly generate datasets of normally distributed samples,
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-plotting-data-and-calculating-descriptive-statistics-important">Exercise 1 - Plotting data and calculating descriptive statistics  (IMPORTANT)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-interpreting-descriptive-statistics-of-a-normal-distribution-important">Exercise 2 - Interpreting descriptive statistics of a Normal distribution (IMPORTANT)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-compare-the-descriptive-statistics-of-normal-uniform-and-poisson-distributions">Exercise 3 - Compare the descriptive statistics of Normal, Uniform, and Poisson distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-bonus-check-convergence-of-different-descriptive-statistics-for-different-sample-sizes">Exercise 4 - BONUS - Check convergence of different descriptive statistics for different sample sizes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-plotting-data-and-calculating-descriptive-statistics">Exercise 1 - Plotting data and calculating descriptive statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-compare-the-descriptive-statistics-of-normal-uniform-and-poisson-distributions">Exercise 2 - Compare the descriptive statistics of Normal, Uniform, and Poisson distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-bonus-check-the-convergence-of-different-statistics-for-different-sample-sizes">Exercise 3 - BONUS - Check the convergence of different statistics for different sample sizes</a></li>
 </ul>
   </nav></div>
 
