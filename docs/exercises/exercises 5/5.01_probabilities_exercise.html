@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exercise 5.01 - Probabilities &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Probabilities &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 5/5.01_probabilities_exercise';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Exercise 5.02 - Descriptive Statistics" href="5.02_descriptive_stats_exercise.html" />
+    <link rel="next" title="Descriptive Statistics" href="5.02_descriptive_stats_exercise.html" />
     <link rel="prev" title="Inferential statistics (dataset 2)" href="../../lectures/lecture%205/5.03_inferential_stats_2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -419,7 +419,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 5.01 - Probabilities</h1>
+    <h1>Probabilities</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -429,11 +429,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-the-data-and-determine-sample-sizes">Exercise 1 - load the data and determine sample sizes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualize-the-probability-densities">Exercise 2 - visualize the probability densities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions">Exercise 3 - calculate mean, standard deviation, and standard error of the mean for both distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-plot-with-different-types-of-errorbars">Exercise 4 - plot with different types of errorbars</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-psth">Exercise 5 - PSTH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-the-data-and-determine-sample-sizes">Exercise 1: Load the data and determine sample sizes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualize-the-probability-densities">Exercise 2: Visualize the probability densities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions">Exercise 3: Calculate mean, standard deviation, and standard error of the mean for both distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-plot-with-different-types-of-errorbars">Exercise 4: Plot with different types of errorbars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-visualizing-firing-rates-using-a-psth">Exercise 5: Visualizing firing rates using a PSTH</a></li>
 </ul>
             </nav>
         </div>
@@ -445,13 +445,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-5-01-probabilities">
-<h1>Exercise 5.01 - Probabilities<a class="headerlink" href="#exercise-5-01-probabilities" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="probabilities">
+<h1>Probabilities<a class="headerlink" href="#probabilities" title="Link to this heading">#</a></h1>
 <p>You tested a new wonder drug that is supposed to increase to score of mice in a learning assay.</p>
 <p>The test scores from a group of control and of treatment animals are stored in a file.</p>
 <p>Explore the data using histograms and descriptive statistics.</p>
 <section id="exercise-1-load-the-data-and-determine-sample-sizes">
-<h2>Exercise 1 - load the data and determine sample sizes<a class="headerlink" href="#exercise-1-load-the-data-and-determine-sample-sizes" title="Link to this heading">#</a></h2>
+<h2>Exercise 1: Load the data and determine sample sizes<a class="headerlink" href="#exercise-1-load-the-data-and-determine-sample-sizes" title="Link to this heading">#</a></h2>
 <p>Download the file <code class="docutils literal notranslate"><span class="pre">5.01_probabilities_exercise.npz</span></code> from studip.
 Load and inspect the data.</p>
 <p>What are the sample sizes for the control and treatment data?</p>
@@ -464,7 +464,7 @@ Load and inspect the data.</p>
 </div>
 </section>
 <section id="exercise-2-visualize-the-probability-densities">
-<h2>Exercise 2 - visualize the probability densities<a class="headerlink" href="#exercise-2-visualize-the-probability-densities" title="Link to this heading">#</a></h2>
+<h2>Exercise 2: Visualize the probability densities<a class="headerlink" href="#exercise-2-visualize-the-probability-densities" title="Link to this heading">#</a></h2>
 <p>Plot the probability densities for the control and treatment data. Plot them in the same plot so you can directly compare them.</p>
 <p><strong>Hint:</strong> To make the overlapping histograms more easily visible, make them translucent by setting the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> argument to 0.5. Something like <code class="docutils literal notranslate"><span class="pre">plt.hist(x,</span> <span class="pre">bins=1_000,</span> <span class="pre">alpha=0.5)</span></code>.</p>
 <div class="cell docutils container">
@@ -476,7 +476,7 @@ Load and inspect the data.</p>
 </div>
 </section>
 <section id="exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions">
-<h2>Exercise 3 - calculate mean, standard deviation, and standard error of the mean for both distributions<a class="headerlink" href="#exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions" title="Link to this heading">#</a></h2>
+<h2>Exercise 3: Calculate mean, standard deviation, and standard error of the mean for both distributions<a class="headerlink" href="#exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions" title="Link to this heading">#</a></h2>
 <p>Calculate and compare the standard deviation (std) and the standard error of the mean (sem) for both data sets.</p>
 <p>Can you explain why the std is higher for the treatment data, but the sem is lower for the control data?</p>
 <p><strong>HINT</strong>: If your data is represented as a dictionary, you can use a for loop and <code class="docutils literal notranslate"><span class="pre">.items()</span></code> to compute the statistics for each key-value pair.</p>
@@ -489,7 +489,7 @@ Load and inspect the data.</p>
 </div>
 </section>
 <section id="exercise-4-plot-with-different-types-of-errorbars">
-<h2>Exercise 4 - plot with different types of errorbars<a class="headerlink" href="#exercise-4-plot-with-different-types-of-errorbars" title="Link to this heading">#</a></h2>
+<h2>Exercise 4: Plot with different types of errorbars<a class="headerlink" href="#exercise-4-plot-with-different-types-of-errorbars" title="Link to this heading">#</a></h2>
 <p>Plot the means of control and treatment data with error bars.</p>
 <p>Produce two plots with different definitions of the error bars:</p>
 <ul class="simple">
@@ -507,8 +507,8 @@ Load and inspect the data.</p>
 </div>
 </div>
 </section>
-<section id="exercise-5-psth">
-<h2>Exercise 5 - PSTH<a class="headerlink" href="#exercise-5-psth" title="Link to this heading">#</a></h2>
+<section id="exercise-5-visualizing-firing-rates-using-a-psth">
+<h2>Exercise 5: Visualizing firing rates using a PSTH<a class="headerlink" href="#exercise-5-visualizing-firing-rates-using-a-psth" title="Link to this heading">#</a></h2>
 <p>You are give a dictionary with the spike times produced by a <em>phasic</em> and a <em>tonic</em> neuron. Both were stimulated with a current injection between 200-400ms. The total duration of the recording is 1000ms.</p>
 <p>Visualize how the firing rate of each neuron changes during the recording using a Peri-Stimulus-Time-Histogram (PSTH).
 A PSTH is nothing more than a histogram of the spike times!</p>
@@ -521,24 +521,23 @@ A PSTH is nothing more than a histogram of the spike times!</p>
 <span class="n">spike_times</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;phasic&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">6</span><span class="p">))),</span>
          <span class="s1">&#39;tonic&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">20</span><span class="p">))),</span>
 <span class="p">}</span>
-<span class="n">spike_times</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span>
 <span class="c1"># your solution here:</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;phasic&#39;: array([200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 222, 224,
-        226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 246, 248, 250,
-        256, 262, 268, 274, 280, 286, 292, 298, 304, 310, 316, 322, 328,
-        334, 340, 346, 352, 358, 364, 370, 376, 382, 388, 394]),
- &#39;tonic&#39;: array([200, 204, 208, 212, 216, 220, 224, 228, 232, 236, 240, 244, 248,
-        252, 256, 260, 264, 268, 272, 276, 280, 284, 288, 292, 296, 300,
-        304, 308, 312, 316, 320, 324, 328, 332, 336, 340, 344, 348, 352,
-        356, 360, 364, 368, 372, 376, 380, 384, 388, 392, 396,   0,  20,
-         40,  60,  80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280,
-        300, 320, 340, 360, 380, 400, 420, 440, 460, 480, 500, 520, 540,
-        560, 580, 600, 620, 640, 660, 680, 700, 720, 740, 760, 780, 800,
-        820, 840, 860, 880, 900, 920, 940, 960, 980])}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;phasic&#39;: array([200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 222, 224,
+       226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 246, 248, 250,
+       256, 262, 268, 274, 280, 286, 292, 298, 304, 310, 316, 322, 328,
+       334, 340, 346, 352, 358, 364, 370, 376, 382, 388, 394]), &#39;tonic&#39;: array([200, 204, 208, 212, 216, 220, 224, 228, 232, 236, 240, 244, 248,
+       252, 256, 260, 264, 268, 272, 276, 280, 284, 288, 292, 296, 300,
+       304, 308, 312, 316, 320, 324, 328, 332, 336, 340, 344, 348, 352,
+       356, 360, 364, 368, 372, 376, 380, 384, 388, 392, 396,   0,  20,
+        40,  60,  80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280,
+       300, 320, 340, 360, 380, 400, 420, 440, 460, 480, 500, 520, 540,
+       560, 580, 600, 620, 640, 660, 680, 700, 720, 740, 760, 780, 800,
+       820, 840, 860, 880, 900, 920, 940, 960, 980])}
 </pre></div>
 </div>
 </div>
@@ -590,7 +589,7 @@ A PSTH is nothing more than a histogram of the spike times!</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercise 5.02 - Descriptive Statistics</p>
+        <p class="prev-next-title">Descriptive Statistics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -610,11 +609,11 @@ A PSTH is nothing more than a histogram of the spike times!</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-the-data-and-determine-sample-sizes">Exercise 1 - load the data and determine sample sizes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualize-the-probability-densities">Exercise 2 - visualize the probability densities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions">Exercise 3 - calculate mean, standard deviation, and standard error of the mean for both distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-plot-with-different-types-of-errorbars">Exercise 4 - plot with different types of errorbars</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-psth">Exercise 5 - PSTH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-the-data-and-determine-sample-sizes">Exercise 1: Load the data and determine sample sizes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualize-the-probability-densities">Exercise 2: Visualize the probability densities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean-for-both-distributions">Exercise 3: Calculate mean, standard deviation, and standard error of the mean for both distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-plot-with-different-types-of-errorbars">Exercise 4: Plot with different types of errorbars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-visualizing-firing-rates-using-a-psth">Exercise 5: Visualizing firing rates using a PSTH</a></li>
 </ul>
   </nav></div>
 
