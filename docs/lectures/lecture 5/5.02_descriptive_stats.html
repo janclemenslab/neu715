@@ -474,16 +474,14 @@ document.write(`
 <h3>Mini Exercise<a class="headerlink" href="#mini-exercise" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Visualize the density distribution of the data in x</p></li>
-<li><p>Calculate and plot the mean, median, and mode of the distribution as vertical lines. Why is the mean greater than the median? Why is the mode smaller than the mean?</p></li>
+<li><p>Calculate and plot the mean and the median of the distribution as vertical lines. Why is the mean greater than the median?</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ncb.mplstyle&#39;</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">weibull</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="p">(</span><span class="mi">1_000_000</span><span class="p">))</span>  <span class="c1"># generate 1M random numbers from a probability distribution</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">weibull</span><span class="p">(</span><span class="mf">.4</span><span class="p">,</span> <span class="p">(</span><span class="mi">1_000_000</span><span class="p">))</span>  <span class="c1"># generate 1M random numbers from a probability distribution</span>
 
 <span class="c1"># your solution here</span>
 </pre></div>
