@@ -515,15 +515,28 @@ Put this notebook in the same directory and open the notebook from that director
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;</span>
 
 <span class="c1"># your solution</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="n">pathparts</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">suffix</span> <span class="o">=</span> <span class="n">pathparts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">pathparts</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">pathparts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">stem</span> <span class="o">=</span> <span class="n">pathparts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">pathparts</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">pathparts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">directory</span> <span class="o">=</span> <span class="n">pathparts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">pathparts</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">pathparts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">parent</span> <span class="o">=</span> <span class="n">pathparts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">suffix</span><span class="p">,</span> <span class="n">stem</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+<span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>all parts: [&#39;behavioral_data&#39;, &#39;20230914&#39;, &#39;final_behavioral_scores.csv&#39;]
-top directory: behavioral_data
-experiment directory: 20230914
-file stem: final_behavioral_scores
-file suffix: .csv
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.csv final_behavioral_scores behavioral_data
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230914&#39;)
 </pre></div>
 </div>
 </div>
@@ -556,11 +569,16 @@ file suffix: .csv
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+
+<span class="n">glob</span><span class="p">(</span><span class="s1">&#39;behavioral_data/20230914/*&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230914/broken.msg&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230914/broken.msg&#39;]
 </pre></div>
 </div>
 </div>
@@ -573,11 +591,13 @@ file suffix: .csv
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution</span>
+<span class="n">glob</span><span class="p">(</span><span class="s1">&#39;behavioral_data/20230914/*.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;]
 </pre></div>
 </div>
 </div>
@@ -590,11 +610,23 @@ file suffix: .csv
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution</span>
+<span class="n">glob</span><span class="p">(</span><span class="s1">&#39;behavioral_data/*/*.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;behavioral_data/20230912/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230912/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230913/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230913/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230915/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230915/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230916/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230916/initial_behavioral_scores.csv&#39;, &#39;behavioral_data/20230917/final_behavioral_scores.csv&#39;, &#39;behavioral_data/20230917/initial_behavioral_scores.csv&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;behavioral_data/20230913/initial_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230913/final_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230915/initial_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230915/final_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230912/initial_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230912/final_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230917/initial_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230917/final_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230916/initial_behavioral_scores.csv&#39;,
+ &#39;behavioral_data/20230916/final_behavioral_scores.csv&#39;]
 </pre></div>
 </div>
 </div>
@@ -619,6 +651,8 @@ file suffix: .csv
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;behavioral_data/20230912/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230912/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/initial_behavioral_scores.csv&#39;</span><span class="p">]</span>
 
 <span class="c1"># your solution</span>
+<span class="k">for</span> <span class="n">data_file</span> <span class="ow">in</span> <span class="n">data_files</span><span class="p">:</span>
+    <span class="o">...</span>
 </pre></div>
 </div>
 </div>
@@ -704,17 +738,21 @@ behavioral_results/20230917/initial_behavioral_scores.txt
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;behavioral_data/20230912/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230912/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/initial_behavioral_scores.csv&#39;</span><span class="p">]</span>
 
 <span class="c1"># your solution</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">data_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">data</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.22274863 0.40350196 0.         0.56353078 0.519613   0.21905378
- 0.37689013 0.2829951  0.13681079 0.28961837 0.44172765 0.21148458
- 0.21238843 0.26258821 0.34724939 0.48806321 0.16922012 0.35973271
- 0.31101933 0.         0.20511392 0.25294518 0.26840496 0.32933391
- 0.         0.28270925 0.16205407 0.0350935  0.36238274 0.3975466
- 0.16612496 0.41540938 0.21141392 0.2860815  0.09187684 0.53908118
- 0.         0.2597579  0.39085327 0.        ]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.22274863, 0.40350196, 0.        , 0.56353078, 0.519613  ,
+       0.21905378, 0.37689013, 0.2829951 , 0.13681079, 0.28961837,
+       0.44172765, 0.21148458, 0.21238843, 0.26258821, 0.34724939,
+       0.48806321, 0.16922012, 0.35973271, 0.31101933, 0.        ,
+       0.20511392, 0.25294518, 0.26840496, 0.32933391, 0.        ,
+       0.28270925, 0.16205407, 0.0350935 , 0.36238274, 0.3975466 ,
+       0.16612496, 0.41540938, 0.21141392, 0.2860815 , 0.09187684,
+       0.53908118, 0.        , 0.2597579 , 0.39085327, 0.        ])
 </pre></div>
 </div>
 </div>
@@ -726,6 +764,12 @@ behavioral_results/20230917/initial_behavioral_scores.txt
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.2618604801587121)
 </pre></div>
 </div>
 </div>
@@ -741,25 +785,47 @@ behavioral_results/20230917/initial_behavioral_scores.txt
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;behavioral_data/20230912/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230912/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/initial_behavioral_scores.csv&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_files</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;behavioral_data/*/*.csv&#39;</span><span class="p">)</span>
 
 <span class="c1"># your solution</span>
+<span class="n">all_the_means</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">data_file</span> <span class="ow">in</span> <span class="n">data_files</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+    <span class="n">the_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">all_the_means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">the_mean</span><span class="p">)</span>
+<span class="n">all_the_means</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.2618604801587121,
- 0.08656876767920035,
- 0.4894819412043526,
- 0.2708178821903651,
- 0.6570028706902653,
- 0.47072198956329847,
- 0.8168024268485145,
- 0.5599663891082376,
- 0.9868654497357406,
- 0.8488095892472007,
- 0.9946592530266862,
- 0.9104513105983869]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>behavioral_data/20230913/initial_behavioral_scores.csv
+behavioral_data/20230913/final_behavioral_scores.csv
+behavioral_data/20230914/initial_behavioral_scores.csv
+behavioral_data/20230914/final_behavioral_scores.csv
+behavioral_data/20230915/initial_behavioral_scores.csv
+behavioral_data/20230915/final_behavioral_scores.csv
+behavioral_data/20230912/initial_behavioral_scores.csv
+behavioral_data/20230912/final_behavioral_scores.csv
+behavioral_data/20230917/initial_behavioral_scores.csv
+behavioral_data/20230917/final_behavioral_scores.csv
+behavioral_data/20230916/initial_behavioral_scores.csv
+behavioral_data/20230916/final_behavioral_scores.csv
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[np.float64(0.2708178821903651),
+ np.float64(0.4894819412043526),
+ np.float64(0.47072198956329847),
+ np.float64(0.6570028706902653),
+ np.float64(0.5599663891082376),
+ np.float64(0.8168024268485145),
+ np.float64(0.08656876767920035),
+ np.float64(0.2618604801587121),
+ np.float64(0.9104513105983869),
+ np.float64(0.9946592530266862),
+ np.float64(0.8488095892472007),
+ np.float64(0.9868654497357406)]
 </pre></div>
 </div>
 </div>
@@ -779,39 +845,6 @@ behavioral_results/20230917/initial_behavioral_scores.txt
 <li><p>load the data from each file using <code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code></p></li>
 <li><p>collect all results in a 2D numpy array structured as explained above</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;behavioral_data/20230912/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230912/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230913/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230914/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230915/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230916/initial_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/final_behavioral_scores.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;behavioral_data/20230917/initial_behavioral_scores.csv&#39;</span><span class="p">]</span>
-
-<span class="c1"># your solution</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>behavioral_data/20230912/final_behavioral_scores.csv
-behavioral_data/20230912/initial_behavioral_scores.csv
-behavioral_data/20230913/final_behavioral_scores.csv
-behavioral_data/20230913/initial_behavioral_scores.csv
-behavioral_data/20230914/final_behavioral_scores.csv
-behavioral_data/20230914/initial_behavioral_scores.csv
-behavioral_data/20230915/final_behavioral_scores.csv
-behavioral_data/20230915/initial_behavioral_scores.csv
-behavioral_data/20230916/final_behavioral_scores.csv
-behavioral_data/20230916/initial_behavioral_scores.csv
-behavioral_data/20230917/final_behavioral_scores.csv
-behavioral_data/20230917/initial_behavioral_scores.csv
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.08656877, 0.26186048],
-       [0.27081788, 0.48948194],
-       [0.47072199, 0.65700287],
-       [0.55996639, 0.81680243],
-       [0.84880959, 0.98686545],
-       [0.91045131, 0.99465925]])
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="save-the-results-to-a-file">
 <h4>5) Save the results to a file<a class="headerlink" href="#save-the-results-to-a-file" title="Link to this heading">#</a></h4>
