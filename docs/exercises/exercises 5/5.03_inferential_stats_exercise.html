@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exercise 5.03 - Inferential Statistics &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Inferential Statistics &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -418,7 +418,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 5.03 - Inferential Statistics</h1>
+    <h1>Inferential Statistics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,10 +428,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1a-p-values">Exercise 1a. P-values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1b-p-values">Exercise 1b. P-values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-statistical-tests-important">Exercise 2. Statistical tests (IMPORTANT)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-groups-bonus">3. Multiple groups (Bonus)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1a-p-values">Exercise 1a: P-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1b-p-values">Exercise 1b: P-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-statistical-tests">Exercise 2: Statistical tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-bonus-multiple-groups">Exercise 3 (bonus): Multiple groups</a></li>
 </ul>
             </nav>
         </div>
@@ -443,10 +443,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-5-03-inferential-statistics">
-<h1>Exercise 5.03 - Inferential Statistics<a class="headerlink" href="#exercise-5-03-inferential-statistics" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="inferential-statistics">
+<h1>Inferential Statistics<a class="headerlink" href="#inferential-statistics" title="Link to this heading">#</a></h1>
 <section id="exercise-1a-p-values">
-<h2>Exercise 1a. P-values<a class="headerlink" href="#exercise-1a-p-values" title="Link to this heading">#</a></h2>
+<h2>Exercise 1a: P-values<a class="headerlink" href="#exercise-1a-p-values" title="Link to this heading">#</a></h2>
 <p>The p-value indicates the likelihood of obtaining the observed results if the null hypothesis is correct.
 Small p-values indicate that the Null hypothesis is unlikely to have generated the data - a strong evidence <em>against</em> the null hypothesis.</p>
 <p>Let’s explore how the p-value behaves if we know that the null hypothesis is true.</p>
@@ -465,7 +465,7 @@ Small p-values indicate that the Null hypothesis is unlikely to have generated t
 </div>
 </section>
 <section id="exercise-1b-p-values">
-<h2>Exercise 1b. P-values<a class="headerlink" href="#exercise-1b-p-values" title="Link to this heading">#</a></h2>
+<h2>Exercise 1b: P-values<a class="headerlink" href="#exercise-1b-p-values" title="Link to this heading">#</a></h2>
 <p>Now do the same as above, but instead of generating from a Gaussian distribution, for which we cannot reject the null hypothesis of normality, let’s use samples from a <strong>uniform</strong> distribution.</p>
 <p>Do the same as above with these data:</p>
 <p>Generate 1000 datasets with a <em>Uniform</em> distribution using <code class="docutils literal notranslate"><span class="pre">np.random.rand</span></code>, each with 10000 samples. We know that these samples are <em>not</em> normally distributed!</p>
@@ -484,45 +484,34 @@ Run the normaltest repeatedly time for 1000 different datasets, and plot the dis
 </div>
 </div>
 </section>
-<section id="exercise-2-statistical-tests-important">
-<h2>Exercise 2. Statistical tests (IMPORTANT)<a class="headerlink" href="#exercise-2-statistical-tests-important" title="Link to this heading">#</a></h2>
-<p>You are given experimental data in the file <code class="docutils literal notranslate"><span class="pre">5.03_inferential_stats_exercise.npy</span></code>.</p>
+<section id="exercise-2-statistical-tests">
+<h2>Exercise 2: Statistical tests<a class="headerlink" href="#exercise-2-statistical-tests" title="Link to this heading">#</a></h2>
+<p>Download the experimental data file <code class="docutils literal notranslate"><span class="pre">5.03_inferential_stats_exercise.npy</span></code> from studip.</p>
 <ol class="arabic simple">
 <li><p>plot the distribution</p></li>
 <li><p>test for normality</p></li>
 <li><p>test whether the values differ significantly from</p></li>
 </ol>
 <ul class="simple">
-<li><p>a=3.1 (n.s.)</p></li>
-<li><p>b=3.0 (sig)</p></li>
-<li><p>b with signficance level 0.001 (n.s.)</p></li>
+<li><p>a=3.1</p></li>
+<li><p>b=3.0</p></li>
+<li><p>b with signficance level 0.001</p></li>
 <li><p>smaller than b</p></li>
 <li><p>larger than b</p></li>
 </ul>
 <p>Inspect the p-values for the different tests and try to understand their relative values (why do the tests for difference vs. smaller vs. larger produce different p-values?).</p>
-<p><strong>Hint</strong> You can use the <code class="docutils literal notranslate"><span class="pre">scipy.stats.ttest_1samp</span></code> test, to test whether a dataset’s mean differes significantly from a specific value.
-<strong>Hint</strong> Files ending in <code class="docutils literal notranslate"><span class="pre">.npy</span></code> contain a single variable only. <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> <span class="pre">np.load('some_file.npy')</span></code> will load the variable into data.</p>
+<p><strong>Hint</strong> You can use the <code class="docutils literal notranslate"><span class="pre">scipy.stats.ttest_1samp</span></code> test, to test whether a dataset’s mean differes significantly from a specific value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the data:</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;5.03_inferential_stats_exercise.npy&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="s1">&#39;Sample size:&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;numpy.ndarray&#39;&gt; Sample size: (1000,)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="multiple-groups-bonus">
-<h2>3. Multiple groups (Bonus)<a class="headerlink" href="#multiple-groups-bonus" title="Link to this heading">#</a></h2>
-<p>You are given experimental data in the file <code class="docutils literal notranslate"><span class="pre">5.03_inferential_stats_exercise_multi.npy</span></code>. The file contains a 2D array with 50 rows (samples) and 3 columns (treatments). We want to know whether the treatments have different effects.</p>
+<section id="exercise-3-bonus-multiple-groups">
+<h2>Exercise 3 (bonus): Multiple groups<a class="headerlink" href="#exercise-3-bonus-multiple-groups" title="Link to this heading">#</a></h2>
+<p>Download the data file <code class="docutils literal notranslate"><span class="pre">5.03_inferential_stats_exercise_multi.npy</span></code>. The file contains a 2D array with 50 rows (samples) and 3 columns (several different treatments). We want to know whether the treatments have different effects.</p>
 <ul class="simple">
 <li><p>Visualize the distribution of the data</p></li>
 <li><p>Test the data for normality</p></li>
@@ -603,10 +592,10 @@ Run the normaltest repeatedly time for 1000 different datasets, and plot the dis
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1a-p-values">Exercise 1a. P-values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1b-p-values">Exercise 1b. P-values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-statistical-tests-important">Exercise 2. Statistical tests (IMPORTANT)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-groups-bonus">3. Multiple groups (Bonus)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1a-p-values">Exercise 1a: P-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1b-p-values">Exercise 1b: P-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-statistical-tests">Exercise 2: Statistical tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-bonus-multiple-groups">Exercise 3 (bonus): Multiple groups</a></li>
 </ul>
   </nav></div>
 
