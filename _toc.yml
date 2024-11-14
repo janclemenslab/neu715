@@ -78,10 +78,8 @@ parts:
       title: Probability distributions
     - file: lectures/lecture 5/5.02_descriptive_stats
       title: Descriptive statistics
-    - file: lectures/lecture 5/5.03_inferential_stats_1
+    - file: lectures/lecture 5/5.03_inferential_stats
       title: Inferential statistics
-    - file: lectures/lecture 5/5.03_inferential_stats_2
-      title: Inferential statistics (dataset 2)
   - caption: Statistics exercises
     chapters:
     - file: exercises/exercises 5/5.01_probabilities_exercise
