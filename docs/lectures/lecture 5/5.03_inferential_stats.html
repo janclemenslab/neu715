@@ -475,6 +475,8 @@ To assess the effect of the drug, eye sight was scored by testing the subjectsâ€
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">scipy</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ncb.mplstyle&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -519,8 +521,9 @@ With some probability:</p>
 <li><p>Linear regression line: y = 3.00 + 0.500x</p></li>
 <li><p>Coefficient of determination of the linear regression <span class="math notranslate nohighlight">\(R^{2}\)</span>: 0.67</p></li>
 </ul>
-<!-- An even more extreme example - the data dinosaur: -->
-<!-- ![](fig/DinoSequential-1.gif) --><p>Download the two datasets from studip (files <code class="docutils literal notranslate"><span class="pre">5.03_inferential_stats_design1b.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">5.03_inferential_stats_design2b.csv</span></code>)</p>
+<p>An even more extreme example - the data dinosaur:</p>
+<p><img alt="" src="../../_images/DinoSequential-1.gif" /></p>
+<p>Download the two datasets from studip (files <code class="docutils literal notranslate"><span class="pre">5.03_inferential_stats_design1b.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">5.03_inferential_stats_design2b.csv</span></code>)</p>
 <p>Each file consists of three columns: animal number, treatment (0, 1), test score</p>
 <p>Load each dataset and make two plots:</p>
 <ol class="arabic simple">
@@ -533,8 +536,36 @@ With some probability:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<span class="n">ds1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;dat/5.03_inferential_stats_design1b.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+<span class="n">control</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">experiment</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">control</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">control</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;ok&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">experiment</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">experiment</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;or&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Animal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Score&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">control</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">control</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;ok&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">experiment</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">experiment</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;or&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Treatment&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Score&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.          0.          9.0974268 ]
+ [ 1.          0.         15.23421513]
+ [ 2.          0.         10.4258964 ]
+ [ 3.          0.         11.67558937]]
+</pre></div>
+</div>
+<img alt="../../_images/a43caab601cae382a7d05e77660c30c8a8c921025576e7a407367f0b30c81822.png" src="../../_images/a43caab601cae382a7d05e77660c30c8a8c921025576e7a407367f0b30c81822.png" />
 </div>
 </div>
 </section>
@@ -543,8 +574,31 @@ With some probability:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<span class="n">ds2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;dat/5.03_inferential_stats_design2b.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+<span class="n">control</span> <span class="o">=</span> <span class="n">ds2</span><span class="p">[</span><span class="n">ds2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">experiment</span> <span class="o">=</span> <span class="n">ds2</span><span class="p">[</span><span class="n">ds2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">control</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">control</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;ok&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">experiment</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">experiment</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;or&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Animal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Score&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">control</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">control</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;ok&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">experiment</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">experiment</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;or&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">control</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">experiment</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">control</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">experiment</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]],</span> <span class="s1">&#39;-k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Treatment&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Score&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/51cd78c334111d4dbc6870551e48fcd25583ec4379c44637f66872ee7d568c26.png" src="../../_images/51cd78c334111d4dbc6870551e48fcd25583ec4379c44637f66872ee7d568c26.png" />
 </div>
 </div>
 </section>
@@ -560,9 +614,32 @@ With some probability:</p>
 <p>To check for normality, we visualize the distributions, then run a statistical test. In <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code>, there are several tests for normality. Use the <code class="docutils literal notranslate"><span class="pre">scipy.stats.normaltest</span></code> (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html">docs</a>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># histogram the data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;dat/5.03_inferential_stats_design1b.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+<span class="n">control</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">control</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">experiment</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">experiment</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">ds1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;dat/5.03_inferential_stats_design2b.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+<span class="n">control</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">control</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">experiment</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">experiment</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5ca1049a63b9f006857fc21deb3fd2f40f7e4b862bbc74e8b23ef3d32c7b5433.png" src="../../_images/5ca1049a63b9f006857fc21deb3fd2f40f7e4b862bbc74e8b23ef3d32c7b5433.png" />
+<img alt="../../_images/5eb2e142ea630ed634e1221ff6ef3346d865fb9d2b1c3d58f78fe0b18e2eed56.png" src="../../_images/5eb2e142ea630ed634e1221ff6ef3346d865fb9d2b1c3d58f78fe0b18e2eed56.png" />
+<img alt="../../_images/5ca1049a63b9f006857fc21deb3fd2f40f7e4b862bbc74e8b23ef3d32c7b5433.png" src="../../_images/5ca1049a63b9f006857fc21deb3fd2f40f7e4b862bbc74e8b23ef3d32c7b5433.png" />
+<img alt="../../_images/e63d3bc32b90b0de8edf6c42348cbb1138831c04ca8b5e08f84ebbe3d2b284be.png" src="../../_images/e63d3bc32b90b0de8edf6c42348cbb1138831c04ca8b5e08f84ebbe3d2b284be.png" />
 </div>
 </div>
 </section>
@@ -573,7 +650,9 @@ With some probability:</p>
 <p>Check the documentation!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution </span>
+<span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.5</span>
+<span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
 </div>
@@ -613,6 +692,26 @@ There do exist tests that compare the variance across multiple groups, like the 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+
+<span class="n">ds1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;dat/5.03_inferential_stats_design1b.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+<span class="n">control</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">experiment</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">control</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">experiment</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="n">ds1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;dat/5.03_inferential_stats_design2b.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+<span class="n">control</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">experiment</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_rel</span><span class="p">(</span><span class="n">control</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">experiment</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-2.1285895327256186), pvalue=np.float64(0.03579565307532791), df=np.float64(97.99549218444012))
+TtestResult(statistic=np.float64(-4.609821463771556), pvalue=np.float64(2.90608812896104e-05), df=np.int64(49))
 </pre></div>
 </div>
 </div>

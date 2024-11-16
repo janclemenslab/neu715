@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6.01 Exercises - Linear regression &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Linear regression &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -418,7 +418,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>6.01 Exercises - Linear regression</h1>
+    <h1>Linear regression</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,11 +428,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-perform-linear-regression-on-two-data-sets">Exercise 1 - Perform linear regression on two data sets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-fit-curves-from-multiple-animals-compare-params-using-statistics">Exercise 2 - Fit curves from multiple animals, compare params using statistics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2a-perform-linear-regression-on-each-animal">Exercise 2a - Perform linear regression on each animal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2b-visualize-the-slope-parameters-for-the-control-and-treatment-animals">Exercise 2b - Visualize the slope parameters for the control and treatment animals</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2c-test-whether-the-slope-parameters-differ-between-control-and-treatment-animals">Exercise 2c - Test whether the slope parameters differ between control and treatment animals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-perform-linear-regression-on-two-data-sets">Exercise 1: Perform linear regression on two data sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-fit-curves-from-multiple-animals-compare-params-using-statistics">Exercise 2: Fit curves from multiple animals, compare params using statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2a-perform-linear-regression-on-each-animal">Exercise 2a: Perform linear regression on each animal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2b-visualize-the-regression-parameters-for-the-control-and-treatment-animals">Exercise 2b: Visualize the regression parameters for the control and treatment animals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2c-test-whether-the-regression-parameters-differ-between-control-and-treatment-animals">Exercise 2c: Test whether the regression parameters differ between control and treatment animals</a></li>
 </ul>
 </li>
 </ul>
@@ -446,10 +446,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercises-linear-regression">
-<h1>6.01 Exercises - Linear regression<a class="headerlink" href="#exercises-linear-regression" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-regression">
+<h1>Linear regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h1>
 <section id="exercise-1-perform-linear-regression-on-two-data-sets">
-<h2>Exercise 1 - Perform linear regression on two data sets<a class="headerlink" href="#exercise-1-perform-linear-regression-on-two-data-sets" title="Link to this heading">#</a></h2>
+<h2>Exercise 1: Perform linear regression on two data sets<a class="headerlink" href="#exercise-1-perform-linear-regression-on-two-data-sets" title="Link to this heading">#</a></h2>
 <p>The file <code class="docutils literal notranslate"><span class="pre">6.01_linear_regression_exercises_1.npz</span></code> contains two datasets, <code class="docutils literal notranslate"><span class="pre">y1</span></code> and <code class="docutils literal notranslate"><span class="pre">y2</span></code> with common x-values in <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
 <p>For each dataset</p>
 <ul class="simple">
@@ -461,62 +461,27 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">scipy</span>
-
-<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;6.01_linear_regression_exercises_1.npz&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">],</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">])</span>
-<span class="n">y1_pred</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">intercept</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span><span class="n">y1_pred</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;y2&#39;</span><span class="p">],</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;y2&#39;</span><span class="p">])</span>
-
-<span class="n">y2_pred</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">intercept</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span><span class="n">y2_pred</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;x&#39;, &#39;y1&#39;, &#39;y2&#39;]
-LinregressResult(slope=17.04470938034292, intercept=229.8923911126834, rvalue=0.8133304937940713, pvalue=8.724162558083852e-25, stderr=1.2316425359299343, intercept_stderr=70.575374209282)
-</pre></div>
-</div>
-<img alt="../../_images/d575b3c35eecd8b8431a1691bca31f2a21b8d679fa42effbfe3e9f579f55fc20.png" src="../../_images/d575b3c35eecd8b8431a1691bca31f2a21b8d679fa42effbfe3e9f579f55fc20.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=10.466225352206765, intercept=1.4136188743954108, rvalue=0.5792644854938792, pvalue=2.721834078364928e-10, stderr=1.4877575455240186, intercept_stderr=85.25123357221702)
-</pre></div>
-</div>
-<img alt="../../_images/eb0ee1392cc52e3578c794ff8452d8c63865148b32702a312ed26681553845e3.png" src="../../_images/eb0ee1392cc52e3578c794ff8452d8c63865148b32702a312ed26681553845e3.png" />
 </div>
 </div>
 </section>
 <section id="exercise-2-fit-curves-from-multiple-animals-compare-params-using-statistics">
-<h2>Exercise 2 - Fit curves from multiple animals, compare params using statistics<a class="headerlink" href="#exercise-2-fit-curves-from-multiple-animals-compare-params-using-statistics" title="Link to this heading">#</a></h2>
+<h2>Exercise 2: Fit curves from multiple animals, compare params using statistics<a class="headerlink" href="#exercise-2-fit-curves-from-multiple-animals-compare-params-using-statistics" title="Link to this heading">#</a></h2>
 <p>The file <code class="docutils literal notranslate"><span class="pre">6.01_linear_regression_exercises_2.npz</span></code> contains two datasets, <code class="docutils literal notranslate"><span class="pre">y_ctrl</span></code> and <code class="docutils literal notranslate"><span class="pre">y_treat</span></code> with the x-values in <code class="docutils literal notranslate"><span class="pre">x</span></code>.
 <code class="docutils literal notranslate"><span class="pre">y_ctrl</span></code> and <code class="docutils literal notranslate"><span class="pre">y_treat</span></code> are 100x10 matrices with control and treatment data from 10 animals:</p>
 <ul class="simple">
 <li><p>100 rows correspond to the y values for each of the 100 x-values</p></li>
 <li><p>10 columns correspond to data from 10 animals.</p></li>
 </ul>
-<p>Your task is in the diferent parts of this exercise are to:</p>
+<p>Your task is to:</p>
 <ul class="simple">
-<li><p>perform linear regression on each of the 10 animals for the control and treatment data. You should get 10 slope and intercept parameters for the control and for the treatment data.</p></li>
-<li><p>compare the 10 slope parameters for the control and treatment data using a plot</p></li>
-<li><p>test whether there exists a statistically significant different between the slope parameters of the control and of the treatment animals.</p></li>
+<li><p>Perform linear regression on each of the 10 animals for the control and treatment data. You should get 10 slope and intercept parameters for the control and for the treatment data (20 in total).</p></li>
+<li><p>Compare the 10 slope parameters for the control and treatment data using a plot.</p></li>
+<li><p>Test whether there exists a statistically significant difference between the regression parameters (slope or intercept) of the control and of the treatment animals.</p></li>
 </ul>
 <section id="exercise-2a-perform-linear-regression-on-each-animal">
-<h3>Exercise 2a - Perform linear regression on each animal<a class="headerlink" href="#exercise-2a-perform-linear-regression-on-each-animal" title="Link to this heading">#</a></h3>
-<p>Perform linear regression on each of the 10 animals for the control and treatment data. You should get 10 slope and intercept parameters for the control and for the treatment data. Save the 10 slope parameters for each condition - in the next part, you will plot them and run statistics on them.</p>
+<h3>Exercise 2a: Perform linear regression on each animal<a class="headerlink" href="#exercise-2a-perform-linear-regression-on-each-animal" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -525,8 +490,8 @@ LinregressResult(slope=17.04470938034292, intercept=229.8923911126834, rvalue=0.
 </div>
 </div>
 </section>
-<section id="exercise-2b-visualize-the-slope-parameters-for-the-control-and-treatment-animals">
-<h3>Exercise 2b - Visualize the slope parameters for the control and treatment animals<a class="headerlink" href="#exercise-2b-visualize-the-slope-parameters-for-the-control-and-treatment-animals" title="Link to this heading">#</a></h3>
+<section id="exercise-2b-visualize-the-regression-parameters-for-the-control-and-treatment-animals">
+<h3>Exercise 2b: Visualize the regression parameters for the control and treatment animals<a class="headerlink" href="#exercise-2b-visualize-the-regression-parameters-for-the-control-and-treatment-animals" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -535,8 +500,8 @@ LinregressResult(slope=17.04470938034292, intercept=229.8923911126834, rvalue=0.
 </div>
 </div>
 </section>
-<section id="exercise-2c-test-whether-the-slope-parameters-differ-between-control-and-treatment-animals">
-<h3>Exercise 2c - Test whether the slope parameters differ between control and treatment animals<a class="headerlink" href="#exercise-2c-test-whether-the-slope-parameters-differ-between-control-and-treatment-animals" title="Link to this heading">#</a></h3>
+<section id="exercise-2c-test-whether-the-regression-parameters-differ-between-control-and-treatment-animals">
+<h3>Exercise 2c: Test whether the regression parameters differ between control and treatment animals<a class="headerlink" href="#exercise-2c-test-whether-the-regression-parameters-differ-between-control-and-treatment-animals" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -612,11 +577,11 @@ LinregressResult(slope=17.04470938034292, intercept=229.8923911126834, rvalue=0.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-perform-linear-regression-on-two-data-sets">Exercise 1 - Perform linear regression on two data sets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-fit-curves-from-multiple-animals-compare-params-using-statistics">Exercise 2 - Fit curves from multiple animals, compare params using statistics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2a-perform-linear-regression-on-each-animal">Exercise 2a - Perform linear regression on each animal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2b-visualize-the-slope-parameters-for-the-control-and-treatment-animals">Exercise 2b - Visualize the slope parameters for the control and treatment animals</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2c-test-whether-the-slope-parameters-differ-between-control-and-treatment-animals">Exercise 2c - Test whether the slope parameters differ between control and treatment animals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-perform-linear-regression-on-two-data-sets">Exercise 1: Perform linear regression on two data sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-fit-curves-from-multiple-animals-compare-params-using-statistics">Exercise 2: Fit curves from multiple animals, compare params using statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2a-perform-linear-regression-on-each-animal">Exercise 2a: Perform linear regression on each animal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2b-visualize-the-regression-parameters-for-the-control-and-treatment-animals">Exercise 2b: Visualize the regression parameters for the control and treatment animals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2c-test-whether-the-regression-parameters-differ-between-control-and-treatment-animals">Exercise 2c: Test whether the regression parameters differ between control and treatment animals</a></li>
 </ul>
 </li>
 </ul>
