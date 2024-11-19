@@ -495,15 +495,15 @@ Our equation describing the measured relationship can be a linear equation <span
 <li><p>Other numbers in the equation are fixed for all values of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> and they are called <em>parameters</em>. They “tune” the specific form of the relation between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. For instance, in the equation <span class="math notranslate nohighlight">\(y = 10 * x + 9.3\)</span>, 10 determines the slope, and 9.3 the intercept of the line. More generally, we can write the linear equation as <span class="math notranslate nohighlight">\(y = m * x + n\)</span>, with <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> being the slope and intercept parameters. These parameters determine the type of line that describes our data.</p></li>
 </ul>
 <p><img alt="" src="../../_images/6.01_curve_fitting_1e.png" /></p>
-<p><em>Curve fitting</em> is the procedure of determining the parameters that best describe the data given a specific model. Curve fitting is also called <em>regression</em>. Fitting a line is called <em>linear regression</em> (today), fitting a nonlinear curve, is also called <em>nonlinear regression</em> (tomorrow).</p>
+<p><em>Curve fitting</em> is the procedure of determining the parameters that best describe the data given a specific model. Curve fitting is also called <em>regression</em>. Fitting a line is called <em>linear regression</em>, fitting a nonlinear curve, is called <em>nonlinear regression</em>.</p>
 <p>In curve fitting, we need:</p>
 <ol class="arabic simple">
 <li><p><em>A model</em>: Specify an adequate <em>equation</em> that has the potential to describe our data with an appropriate choice of <em>parameters</em>. A line cannot describe the curved relationship between temperature and pain in the plot above - there is no set of slopes and intercepts that produces a curve from a linear equation. So we need something more complicated, like a quadratic equation.</p></li>
 <li><p>A way to quantify the “goodness of fit”: An <em>error function</em> or <em>objective function</em> that tells us how good or bad the fit between the experimental data points and the curve produced by the model is, so we can 1) adjust the parameters to maximize the fit and 2) judge how good the fit is in the end.</p></li>
-<li><p>A way to improve the fit: A <em>fitting procedure</em> to adjust the model parameters so that the resulting line or curve fits our data best - is “as close as possible” to our data.</p></li>
+<li><p>A way to improve the fit: A <em>fitting procedure</em> to find the model parameters that result in a line or curve fits our data best - is “as close as possible” to our data.</p></li>
 </ol>
-<p>Today, we will discuss <em>linear regression</em>, in which the model is a line. Linear models are intuitive and the parameters are straightforward to understand. In addition, procedures for fitting and assessing the goodness of fit are robust and well established.</p>
-<p>In the next lecture, we will discuss <em>nonlinear regression</em>, in which the model can be of arbitrary form. This is more flexible and powerful, but also a bit more complicated.</p>
+<p>Here, we will discuss <em>linear regression</em>, in which the model is a line. Linear models are intuitive and the parameters are straightforward to understand. In addition, procedures for fitting and assessing the goodness of fit are robust and well established.</p>
+<p><em>Nonlinear regression</em>, in which the model can be of arbitrary form, is more flexible and powerful, but also a bit more complicated.</p>
 </section>
 <section id="linear-regression">
 <h2>Linear regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h2>
@@ -511,15 +511,15 @@ Our equation describing the measured relationship can be a linear equation <span
 <h3>The model<a class="headerlink" href="#the-model" title="Link to this heading">#</a></h3>
 <p>For linear regression, the model is specified by a linear function with two parameters, the slope and the intercept: <span class="math notranslate nohighlight">\(y=\text{slope} * x + \text{intercept}\)</span>. Linear models are easy to fit and interpret, but also rather constrained, since the can only capture linear relationships.</p>
 <p>Let’s load some data to have an example to work through:
-We’ve stressed two students by exposing them to free jazz by Ornette Coleman and want to quantify how quickly the cortisol levels increase in the blood as a function of Coleman exposure. To that end, we took blood at 6-minute intervals after the onset of music exposure from a jazz and a rock fan and quantified the concentration of cortisol.</p>
+We’ve stressed two students by exposing them to free jazz by Ornette Coleman and want to quantify how quickly the cortisol levels increase in the blood as a function of free-jazz exposure. To that end, we took blood at 6-minute intervals after the onset of music exposure from a jazz and a rock fan and quantified the concentration of cortisol.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">d</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;6.01_linear_regression.npz&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;rock_cortisol&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;rock fan&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;jazz_cortisol&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;coral&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;jazz fan&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;rock_cortisol&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;jazz fan&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;jazz_cortisol&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;coral&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;rock fan&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time after exposure onset [hours]&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Blood cortisol [umol/l]&#39;</span><span class="p">)</span>
@@ -529,7 +529,7 @@ We’ve stressed two students by exposing them to free jazz by Ornette Coleman a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e36f8f665804fd0a9c148f286b375913533917168a37829b664ffe5f5239a115.png" src="../../_images/e36f8f665804fd0a9c148f286b375913533917168a37829b664ffe5f5239a115.png" />
+<img alt="../../_images/7c6e1439747a99f05d7a69616eee322e79c3d21ccad407ae4d55b9a50226febe.png" src="../../_images/7c6e1439747a99f05d7a69616eee322e79c3d21ccad407ae4d55b9a50226febe.png" />
 </div>
 </div>
 </section>
@@ -538,8 +538,9 @@ We’ve stressed two students by exposing them to free jazz by Ornette Coleman a
 <h2>Quantifying goodness of fit<a class="headerlink" href="#quantifying-goodness-of-fit" title="Link to this heading">#</a></h2>
 <section id="the-mean-of-the-squared-residuals">
 <h3>The mean of the squared residuals<a class="headerlink" href="#the-mean-of-the-squared-residuals" title="Link to this heading">#</a></h3>
-<p>The mean of the squared residuals, or <strong>mean-squared error (MSE)</strong> is a commonly used error term:</p>
-<p>Let <span class="math notranslate nohighlight">\(f(x_i, \theta)\)</span> be our function (linear, exponential, quadratic), with parameters <span class="math notranslate nohighlight">\(\theta\)</span>, and <span class="math notranslate nohighlight">\(\hat{y_i} = f(x_i, \theta)\)</span> our prediction for <span class="math notranslate nohighlight">\(N\)</span> data points <span class="math notranslate nohighlight">\(x_i\)</span>.</p>
+<p>The mean of the squared residuals, or <em>mean-squared error</em> (MSE) is a commonly used error term:</p>
+<p>Let <span class="math notranslate nohighlight">\(f(x_i, \theta)\)</span> be our function (linear, exponential, quadratic), with parameters <span class="math notranslate nohighlight">\(\theta\)</span>, and <span class="math notranslate nohighlight">\(\hat{y_i} = f(x_i, \theta)\)</span> our prediction for <span class="math notranslate nohighlight">\(N\)</span> data points <span class="math notranslate nohighlight">\(x_i\)</span>.
+In linear regression <span class="math notranslate nohighlight">\(\theta\)</span> is <span class="math notranslate nohighlight">\((m, n)\)</span>, the slope and the intercept.</p>
 <p>To compute the MSE we:</p>
 <ol class="arabic simple">
 <li><p>Calculate the difference between all <span class="math notranslate nohighlight">\(N\)</span> predictions and data, <span class="math notranslate nohighlight">\(y_i - \hat{y_i}\)</span> - also called the <em>residuals</em>.</p></li>
@@ -547,36 +548,36 @@ We’ve stressed two students by exposing them to free jazz by Ornette Coleman a
 <li><p>Take the mean.</p></li>
 </ol>
 <p><img alt="" src="../../_images/6.01_curve_fitting_1g.png" /></p>
-<p>Like so: <span class="math notranslate nohighlight">\(E = 1/N \sum_i^N (y_i - \hat{y_i})^2\)</span>. This looks a lot like the formula for the variance! The MSE captures the residual variance - the variance in the data not explained by the model prediction.</p>
+<p>Mathemitcally, the erors is given by <span class="math notranslate nohighlight">\(E = 1/N \sum_i^N (y_i - \hat{y_i})^2\)</span>. This looks a lot like the formula for the variance! The MSE captures the residual variance - the variance in the data not explained by the model prediction.</p>
 </section>
 <section id="why-the-squared-residuals">
 <h3>Why the <em>squared</em> residuals?<a class="headerlink" href="#why-the-squared-residuals" title="Link to this heading">#</a></h3>
 <p>To illustrate this, let’s fit our data using a function that is just horizontal line with a constant offset for all x-values.</p>
 <p><img alt="" src="../../_images/6.01_curve_fitting_1h.png" /></p>
-<p>This is clearly not a good model for these data, but there is a value of the offset parameter for which the <em>non-squared error is zero</em>!! Not so for the squared error. A good general measure of error should therefore be symmetrical and not discriminate between positive or negative deviations between model and data.</p>
+<p>A horizontal line is clearly not a good model for these data, but there is a value of the offset parameter for which the <em>non-squared error is zero</em>!! Not so for the squared error.</p>
 </section>
 <section id="coefficient-of-determination">
 <h3>Coefficient of Determination<a class="headerlink" href="#coefficient-of-determination" title="Link to this heading">#</a></h3>
 <p>The MSE captures the match between model and data, but it is not normalized: it scales with the magnitude of the data. This makes it hard to determine what value of MSE indicates a good fit, and it makes it hard to compare MSE across data sets with different magnitudes.</p>
 <p>The Coefficient of Determination <span class="math notranslate nohighlight">\(R^2\)</span> is a normalized variant of the MSE:
 <span class="math notranslate nohighlight">\(R^2 = 1 - MSE / \sigma^2\)</span>.
-It is the ratio between the MSE - the variance of the residuals - and <span class="math notranslate nohighlight">\(\sigma^2\)</span> - the total variance of the data.</p>
-<p>If the MSE is much smaller than the data variance, then <span class="math notranslate nohighlight">\(R^2\)</span> approaches 1.0. This corresponds to a perfect linear fit, without any deviation between the data and the fitted line. Noise in the data or a mismatched model (for instance if the relationship between x and y is highly nonlinear) will decrease the <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
+It is the ratio between the MSE - the variance of the residuals - and <span class="math notranslate nohighlight">\(\sigma^2\)</span> - the total variance of the data. It therefore corresponds to the fraction of the variance in the data explained by a model.</p>
+<p>If the MSE is much smaller than the data variance, then <span class="math notranslate nohighlight">\(R^2\)</span> approaches 1.0. This corresponds to a perfect fit, without any deviation between the data and the fitted line. Noise in the data or a mismatched model (for instance if the relationship between x and y is not linear) will decrease the <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
 <p><span class="math notranslate nohighlight">\(R^2\)</span> can also be calculated as the square of Pearson’s correlation, <span class="math notranslate nohighlight">\(r\)</span>, between the data <span class="math notranslate nohighlight">\(y\)</span> and the model predictions <span class="math notranslate nohighlight">\(\hat{y}\)</span>.</p>
 </section>
 </section>
 <section id="linear-regression-using-scipy">
 <h2>Linear regression using scipy<a class="headerlink" href="#linear-regression-using-scipy" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">res</span> <span class="pre">=</span> <span class="pre">scipy.stats.linregress(x,</span> <span class="pre">y)</span></code> (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html">docs</a>)</p>
-<p><code class="docutils literal notranslate"><span class="pre">linregress</span></code> takes two main arguments: your data <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">linregress</span></code> requires two main arguments: your data <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <p>It returns a python object, <code class="docutils literal notranslate"><span class="pre">LinregressResult</span></code>, holding the results of the linear regression with information on:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">slope</span></code> and <code class="docutils literal notranslate"><span class="pre">intercept</span></code>: the fitted parameters</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rvalue</span></code>: pearson’s <span class="math notranslate nohighlight">\(r\)</span>. <span class="math notranslate nohighlight">\(r^2\)</span> is equal to the coefficient of determination.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rvalue</span></code>: pearson’s <span class="math notranslate nohighlight">\(r\)</span>. The square of <span class="math notranslate nohighlight">\(r\)</span>, <span class="math notranslate nohighlight">\(r^2\)</span>, is equal to the coefficient of determination.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code>: The p-value for a hypothesis test whose null hypothesis is that the slope is zero, using a variant of the t test.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stderr</span></code> and <code class="docutils literal notranslate"><span class="pre">intercept_stderr</span></code>: Standard errors for the estimated slope and intercept.</p></li>
 </ul>
-<p>We can generate model predictions <code class="docutils literal notranslate"><span class="pre">y_pred</span></code> using <code class="docutils literal notranslate"><span class="pre">y_pred</span> <span class="pre">=</span> <span class="pre">res.intercept</span> <span class="pre">+</span> <span class="pre">res.slope</span> <span class="pre">*</span> <span class="pre">x</span></code>.</p>
+<p>We can generate model predictions <code class="docutils literal notranslate"><span class="pre">y_pred</span></code> using the fitted parameters from the regressionr results: <code class="docutils literal notranslate"><span class="pre">y_pred</span> <span class="pre">=</span> <span class="pre">res.intercept</span> <span class="pre">+</span> <span class="pre">res.slope</span> <span class="pre">*</span> <span class="pre">x</span></code>.</p>
 <p>Let’s perform linear regression on our data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
