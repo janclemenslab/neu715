@@ -205,11 +205,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.01_packages_and_environments.html">Installing packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.02_numpy.html">Number crunching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%203/3.03_files.html">Working with files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lecture%204/4.01_pandas.html">Tabular data and pandas</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.02_numpy_exercises.html">Numerical computing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%203/3.03_files_exercises.html">Working with files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%204/4.01_pandas_exercises.html">Tabular data and connectomics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
 <ul class="nav bd-sidenav">
@@ -233,6 +235,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%206/6.01_linear_regression_exercises.html">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%206/6.02_nonlinear_regression_exercises.html">Nonlinear regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%206/6.03_neuro%20plots.html">Visualizing and analyzing neuronal and behavioral data</a></li>
 </ul>
 
     </div>
@@ -554,7 +557,7 @@ In linear regression <span class="math notranslate nohighlight">\(\theta\)</span
 <h3>Why the <em>squared</em> residuals?<a class="headerlink" href="#why-the-squared-residuals" title="Link to this heading">#</a></h3>
 <p>To illustrate this, let’s fit our data using a function that is just horizontal line with a constant offset for all x-values.</p>
 <p><img alt="" src="../../_images/6.01_curve_fitting_1h.png" /></p>
-<p>A horizontal line is clearly not a good model for these data, but there is a value of the offset parameter for which the <em>non-squared error is zero</em>!! Not so for the squared error.</p>
+<p>A horizontal line is clearly not a good model for these data, but there is a value of the offset parameter for which the mean <em>non-squared</em> error is zero!! Not so for the mean <em>squared</em> error.</p>
 </section>
 <section id="coefficient-of-determination">
 <h3>Coefficient of Determination<a class="headerlink" href="#coefficient-of-determination" title="Link to this heading">#</a></h3>
@@ -586,30 +589,24 @@ It is the ratio between the MSE - the variance of the residuals - and <span clas
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;jazz_cortisol&#39;</span><span class="p">]</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R^2 =&#39;</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">rvalue</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
 
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">res</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">x</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">res</span><span class="o">.</span><span class="n">slope</span> <span class="o">+</span> <span class="n">res</span><span class="o">.</span><span class="n">intercept</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;predictions y=</span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">slope</span><span class="si">:</span><span class="s1">1.2f</span><span class="si">}</span><span class="s1">x + </span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">intercept</span><span class="si">:</span><span class="s1">1.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [hours]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Blood cortisol&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Linear regression&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">res</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">rvalue</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=1.2445293715645902, intercept=1.358218275477359, rvalue=0.9057931143970367, pvalue=2.5177141101420217e-38, stderr=0.058808797325218536, intercept_stderr=0.3369851849823764)
-R^2 = 0.8204611660890831
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(2.5177141101420217e-38),
+ np.float64(0.9057931143970367),
+ np.float64(0.8204611660890831))
 </pre></div>
 </div>
-<img alt="../../_images/6a7553b38514735a7235f7d4daca82db992aab68f473371862fa49c38b6848e3.png" src="../../_images/6a7553b38514735a7235f7d4daca82db992aab68f473371862fa49c38b6848e3.png" />
+<img alt="../../_images/106160f0850463275949cf469b75d9b3476afdd908d1fbad11fff7f694676d03.png" src="../../_images/106160f0850463275949cf469b75d9b3476afdd908d1fbad11fff7f694676d03.png" />
 </div>
 </div>
 </section>

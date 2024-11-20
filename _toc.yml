@@ -62,16 +62,16 @@ parts:
       title: Number crunching
     - file: lectures/lecture 3/3.03_files
       title: Working with files
-    # - file: lectures/lecture 4/4.01_pandas
-    #   title: Tabular data and pandas
+    - file: lectures/lecture 4/4.01_pandas
+      title: Tabular data and pandas
   - caption: Numerical computing exercises
     chapters:
     - file: exercises/exercises 3/3.02_numpy_exercises
       title: Numerical computing
     - file: exercises/exercises 3/3.03_files_exercises
       title: Working with files
-    # - file: exercises/exercises 4/4.01_pandas_exercises
-    #   title: Tabular data and connectomics
+    - file: exercises/exercises 4/4.01_pandas_exercises
+      title: Tabular data and connectomics
   - caption: Statistics
     chapters:
     - file: lectures/lecture 5/5.01_probabilities
@@ -100,3 +100,6 @@ parts:
       title: Linear regression
     - file: exercises/exercises 6/6.02_nonlinear_regression_exercises
       title: Nonlinear regression
+    - file: exercises/exercises 6/6.03_neuro plots.ipynb
+      title: Visualizing and analyzing neuronal and behavioral data
+

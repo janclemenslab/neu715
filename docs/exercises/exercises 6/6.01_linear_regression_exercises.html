@@ -203,11 +203,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.01_packages_and_environments.html">Installing packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.02_numpy.html">Number crunching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%203/3.03_files.html">Working with files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%204/4.01_pandas.html">Tabular data and pandas</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises%203/3.02_numpy_exercises.html">Numerical computing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%203/3.03_files_exercises.html">Working with files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%204/4.01_pandas_exercises.html">Tabular data and connectomics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics</span></p>
 <ul class="nav bd-sidenav">
@@ -231,6 +233,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6.02_nonlinear_regression_exercises.html">Nonlinear regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.03_neuro%20plots.html">Visualizing and analyzing neuronal and behavioral data</a></li>
 </ul>
 
     </div>
@@ -461,8 +464,32 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;6.01_linear_regression_exercises_1.npz&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;y2&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="n">reg1</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">])</span>
+<span class="n">y1_pred</span> <span class="o">=</span> <span class="n">reg1</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">reg1</span><span class="o">.</span><span class="n">intercept</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">y1_pred</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+
+<span class="n">reg2</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;y2&#39;</span><span class="p">])</span>
+<span class="n">y2_pred</span> <span class="o">=</span> <span class="n">reg2</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">reg2</span><span class="o">.</span><span class="n">intercept</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">y2_pred</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">reg2</span><span class="o">.</span><span class="n">rvalue</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.3355473441544886)
+</pre></div>
+</div>
+<img alt="../../_images/f9e296f5268baeba1260fe192bdcd70cd2454d17ace09906c5e9f9551773c6c0.png" src="../../_images/f9e296f5268baeba1260fe192bdcd70cd2454d17ace09906c5e9f9551773c6c0.png" />
 </div>
 </div>
 </section>
@@ -485,8 +512,36 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;6.01_linear_regression_exercises_2.npz&#39;</span><span class="p">)</span>
+<span class="n">d</span>
+
+<span class="n">nb_animals</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;y_ctrl&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">slopes_ctrl</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">intercepts_ctrl</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_animals</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;y_ctrl&#39;</span><span class="p">][:,</span> <span class="n">animal</span><span class="p">])</span>
+    <span class="n">slopes_ctrl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">slope</span><span class="p">)</span>
+    <span class="n">intercepts_ctrl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">intercept</span><span class="p">)</span>
+
+
+<span class="n">slopes_treat</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">intercepts_treat</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_animals</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;y_treat&#39;</span><span class="p">][:,</span> <span class="n">animal</span><span class="p">])</span>
+    <span class="n">slopes_treat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">slope</span><span class="p">)</span>
+    <span class="n">intercepts_treat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">intercept</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nb_animals</span><span class="p">),</span> <span class="n">intercepts_ctrl</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nb_animals</span><span class="p">),</span> <span class="n">intercepts_treat</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x145930680&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/d49bd11ae8345183957d4cdad39c7e9d360503d49a57057f4d2a4a09370f7c86.png" src="../../_images/d49bd11ae8345183957d4cdad39c7e9d360503d49a57057f4d2a4a09370f7c86.png" />
 </div>
 </div>
 </section>

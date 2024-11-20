@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Imports &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Visualizing neuronal data &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -57,11 +57,10 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 2/2.05_imports_exercises';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 6/6.03_neuro plots';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Bonus exercises: Temperature anomalies" href="2.06_more_exercises.html" />
-    <link rel="prev" title="Functions" href="2.03_functions_exercises.html" />
+    <link rel="prev" title="Exercises 6.02 - Nonlinear regression" href="6.02_nonlinear_regression_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -186,17 +185,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.05_imports.html">Using external code</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics - exercises</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.01_variables_exercises.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.03_lists_exercises.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.01_composites_exercises.html">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1.05_matplotlib_exercises.html">Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.02_loops_more_exercises.html">Loops (Part 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.03_functions_exercises.html">Functions</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">External code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.06_more_exercises.html">Bonus exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.01_composites_exercises.html">Composite data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/1.05_matplotlib_exercises.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.02_loops_more_exercises.html">Loops (Part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.03_functions_exercises.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.05_imports_exercises.html">External code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.06_more_exercises.html">Bonus exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing</span></p>
 <ul class="nav bd-sidenav">
@@ -230,10 +229,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%206/6.02_nonlinear_regression.html">Nonlinear regression</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling exercises</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../exercises%206/6.01_linear_regression_exercises.html">Linear regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%206/6.02_nonlinear_regression_exercises.html">Nonlinear regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%206/6.03_neuro%20plots.html">Visualizing and analyzing neuronal and behavioral data</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="6.01_linear_regression_exercises.html">Linear regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.02_nonlinear_regression_exercises.html">Nonlinear regression</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing and analyzing neuronal and behavioral data</a></li>
 </ul>
 
     </div>
@@ -288,7 +287,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 2/2.05_imports_exercises.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 6/6.03_neuro plots.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -306,7 +305,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 2/2.05_imports_exercises.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 6/6.03_neuro plots.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -337,7 +336,7 @@
       
       
       
-      <li><a href="../../_sources/exercises/exercises 2/2.05_imports_exercises.ipynb" target="_blank"
+      <li><a href="../../_sources/exercises/exercises 6/6.03_neuro plots.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -421,7 +420,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Imports</h1>
+    <h1>Visualizing neuronal data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -431,8 +430,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-import-a-new-module">Exercise 1: Import a new module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-importing-your-own-code">Exercise 2: Importing your own code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-curves">Tuning curves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-firing-rates">Time varying firing rates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-spike-intervals">Inter-spike intervals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-and-place-cells">Grid and place cells</a></li>
 </ul>
             </nav>
         </div>
@@ -444,51 +445,51 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="imports">
-<h1>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h1>
-<section id="exercise-1-import-a-new-module">
-<h2>Exercise 1: Import a new module<a class="headerlink" href="#exercise-1-import-a-new-module" title="Link to this heading">#</a></h2>
-<p>The <a class="reference external" href="https://docs.python.org/3/library/time.html">time</a> module is part of the python standard library and can be used for many examples, for instance:</p>
-<ul class="simple">
-<li><p>get the current time, using the function <code class="docutils literal notranslate"><span class="pre">time()</span></code> in the module, or</p></li>
-<li><p>make your programm do nothing until a specific amount of time, in seconds, has passed, using the <code class="docutils literal notranslate"><span class="pre">sleep(seconds)</span></code> function in the module.</p></li>
-</ul>
-<p>Import the module and use it to 1) get the time and 2) make your computer “sleep” for 4 seconds.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="visualizing-neuronal-data">
+<h1>Visualizing neuronal data<a class="headerlink" href="#visualizing-neuronal-data" title="Link to this heading">#</a></h1>
+<section id="tuning-curves">
+<h2>Tuning curves<a class="headerlink" href="#tuning-curves" title="Link to this heading">#</a></h2>
+<p>sigmoidal, bell-shaped</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># count spikes in stimulus interval for each trial</span>
+<span class="c1"># plot intensity vs. spike count</span>
+<span class="c1"># plot trial-avg with errorbars</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-2-importing-your-own-code">
-<h2>Exercise 2: Importing your own code<a class="headerlink" href="#exercise-2-importing-your-own-code" title="Link to this heading">#</a></h2>
-<p>The function below computes the cumulative sum over the values in a list.</p>
-<p>Given a list [1,2,3], the cumulative sum is a new list with these items: [1, 1+2, 1+2+3] = [1, 3, 6].</p>
+<section id="time-varying-firing-rates">
+<h2>Time varying firing rates<a class="headerlink" href="#time-varying-firing-rates" title="Link to this heading">#</a></h2>
+<p>tonic vs phasic</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-
-<span class="n">cumulative_sum</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)):</span>
-    <span class="n">cumulative_sum</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">[:</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">cumulative_sum</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 6, 10, 13, 15, 19]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plt.hist</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Save the function to compute the cumulative sum to a new file, import the function from the file, and use it for this new list:</p>
+</section>
+<section id="inter-spike-intervals">
+<h2>Inter-spike intervals<a class="headerlink" href="#inter-spike-intervals" title="Link to this heading">#</a></h2>
+<p>bursting vs. non-bursting</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
-<span class="c1"># your solution here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute intervals</span>
+<span class="c1"># histogram</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="grid-and-place-cells">
+<h2>Grid and place cells<a class="headerlink" href="#grid-and-place-cells" title="Link to this heading">#</a></h2>
+<p>trajectories and spike times</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot trajectories</span>
+<span class="c1"># overlay spikes</span>
 </pre></div>
 </div>
 </div>
@@ -509,7 +510,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./exercises/exercises 2"
+            path: "./exercises/exercises 6"
         },
         predefinedOutput: true
     }
@@ -527,22 +528,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="2.03_functions_exercises.html"
+       href="6.02_nonlinear_regression_exercises.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Functions</p>
+        <p class="prev-next-title">Exercises 6.02 - Nonlinear regression</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="2.06_more_exercises.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bonus exercises: Temperature anomalies</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -560,8 +552,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-import-a-new-module">Exercise 1: Import a new module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-importing-your-own-code">Exercise 2: Importing your own code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-curves">Tuning curves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-firing-rates">Time varying firing rates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-spike-intervals">Inter-spike intervals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-and-place-cells">Grid and place cells</a></li>
 </ul>
   </nav></div>
 
