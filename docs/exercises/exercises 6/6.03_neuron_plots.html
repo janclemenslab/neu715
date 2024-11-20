@@ -431,7 +431,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-curves">Tuning curves</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-firing-rates">Time varying firing rates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-firing-rates">Time-varying firing rates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-spike-intervals">Inter-spike intervals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlaying-spatial-behavioral-data-and-neuronal-spike-times">Overlaying spatial behavioral data and neuronal spike times</a></li>
 </ul>
@@ -452,7 +452,7 @@ document.write(`
 <p>The file <code class="docutils literal notranslate"><span class="pre">auditory_RN.npz</span></code> contains local-field potential recordings from the auditory nerve of the fruit fly in response to a pure tone presented at 12 different intensities, 32 trials per intensity.</p>
 <ol class="arabic simple">
 <li><p>Plot stimulus intensity vs. the single-trial responses.</p></li>
-<li><p>Plot the stimulus vs. the trial-averaged response with error bars.</p></li>
+<li><p>Plot stimulus intensity vs. the trial-averaged response with error bars.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -463,10 +463,10 @@ document.write(`
 </div>
 </section>
 <section id="time-varying-firing-rates">
-<h2>Time varying firing rates<a class="headerlink" href="#time-varying-firing-rates" title="Link to this heading">#</a></h2>
+<h2>Time-varying firing rates<a class="headerlink" href="#time-varying-firing-rates" title="Link to this heading">#</a></h2>
 <p>The file <code class="docutils literal notranslate"><span class="pre">two_neurons.npz</span></code> contains the voltage trace of two different neurons. Each neuron was stimulated with a current pulse (5nA) that started at 150ms into the recording and lasted 1100ms.</p>
 <ol class="arabic simple">
-<li><p>Plot the voltage traces as a function of time. What is the difference between the neurons</p></li>
+<li><p>Plot the voltage traces as a function of time. What is the difference between the neurons?</p></li>
 <li><p>Visualize the firing pattern of the neurons using a PSTH. Choose bin positions that allow you to see when both neurons fire.</p></li>
 </ol>
 <div class="cell docutils container">
@@ -479,7 +479,7 @@ document.write(`
 </section>
 <section id="inter-spike-intervals">
 <h2>Inter-spike intervals<a class="headerlink" href="#inter-spike-intervals" title="Link to this heading">#</a></h2>
-<p>Using the same date from the file <code class="docutils literal notranslate"><span class="pre">two_neurons.npz</span></code>, compute inter-spike intervals (ISI, time between subsequent times) and visualize the ISI distributions with a histogram.</p>
+<p>Using the data from the file <code class="docutils literal notranslate"><span class="pre">two_neurons.npz</span></code>, compute inter-spike intervals (ISI, time between subsequent times) for each neuron and visualize the ISI distributions with histograms.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -490,10 +490,10 @@ document.write(`
 </section>
 <section id="overlaying-spatial-behavioral-data-and-neuronal-spike-times">
 <h2>Overlaying spatial behavioral data and neuronal spike times<a class="headerlink" href="#overlaying-spatial-behavioral-data-and-neuronal-spike-times" title="Link to this heading">#</a></h2>
-<p>The file <code class="docutils literal notranslate"><span class="pre">mouse_tracks.npz</span></code> contains data from an mouse experiment. The mouse was allowed to move in a circular arena while neurons in hippocampus were recorded. The file contains the walking trajectories (x,y position in tracks) and the spike times from two neurons. Both neurons are place cells, which fire only when the mouse is in a specific location in the arena.</p>
+<p>The file <code class="docutils literal notranslate"><span class="pre">mouse_tracks.npz</span></code> contains data from an experiment in which a mouse was allowed to move in a circular arena while neurons in hippocampus were recorded. The file contains the walking trajectories (x,y position in tracks) and the spike times from two neurons. Both neurons are place cells, which fire only when the mouse is in a specific location in the arena.</p>
 <ol class="arabic simple">
 <li><p>Plot the walking trajectories (x,y positions).</p></li>
-<li><p>Plot the location at which each neuron fired. Place a dot on the trajectory when each of the neuron fired (use different colors for the different neurons).</p></li>
+<li><p>Plot the location the mouse was in for each spike of the two neurons (use different colors for the different neurons).</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -561,7 +561,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-curves">Tuning curves</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-firing-rates">Time varying firing rates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-firing-rates">Time-varying firing rates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-spike-intervals">Inter-spike intervals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlaying-spatial-behavioral-data-and-neuronal-spike-times">Overlaying spatial behavioral data and neuronal spike times</a></li>
 </ul>
