@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Descriptive Statistics &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Visualizing neuronal data &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -57,11 +57,10 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 5/5.02_descriptive_stats_exercise';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 6/6.03_neuron_plots';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Inferential Statistics" href="5.03_inferential_stats_exercise.html" />
-    <link rel="prev" title="Probabilities" href="5.01_probabilities_exercise.html" />
+    <link rel="prev" title="Exercises 6.02 - Nonlinear regression" href="6.02_nonlinear_regression_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -219,10 +218,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%205/5.03_inferential_stats.html">Inferential statistics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics exercises</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="5.01_probabilities_exercise.html">Probability distributions</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Descriptive statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5.03_inferential_stats_exercise.html">Inferential statistics</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.01_probabilities_exercise.html">Probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.02_descriptive_stats_exercise.html">Descriptive statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.03_inferential_stats_exercise.html">Inferential statistics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling</span></p>
 <ul class="nav bd-sidenav">
@@ -230,10 +229,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%206/6.02_nonlinear_regression.html">Nonlinear regression</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling exercises</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../exercises%206/6.01_linear_regression_exercises.html">Linear regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%206/6.02_nonlinear_regression_exercises.html">Nonlinear regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%206/6.03_neuron_plots.html">Visualizing and analyzing neuronal and behavioral data</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="6.01_linear_regression_exercises.html">Linear regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.02_nonlinear_regression_exercises.html">Nonlinear regression</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing and analyzing neuronal and behavioral data</a></li>
 </ul>
 
     </div>
@@ -288,7 +287,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 5/5.02_descriptive_stats_exercise.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 6/6.03_neuron_plots.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -306,7 +305,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 5/5.02_descriptive_stats_exercise.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 6/6.03_neuron_plots.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -337,7 +336,7 @@
       
       
       
-      <li><a href="../../_sources/exercises/exercises 5/5.02_descriptive_stats_exercise.ipynb" target="_blank"
+      <li><a href="../../_sources/exercises/exercises 6/6.03_neuron_plots.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -421,7 +420,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Descriptive Statistics</h1>
+    <h1>Visualizing neuronal data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -431,9 +430,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-plotting-data-and-calculating-descriptive-statistics">Exercise 1: Plotting data and calculating descriptive statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-compare-the-descriptive-statistics-of-normal-uniform-and-poisson-distributions">Exercise 2: Compare the descriptive statistics of Normal, Uniform, and Poisson distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-bonus-check-the-convergence-of-different-statistics-for-different-sample-sizes">Exercise 3 (bonus): Check the convergence of different statistics for different sample sizes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-curves">Tuning curves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-firing-rates">Time varying firing rates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-spike-intervals">Inter-spike intervals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlaying-spatial-behavioral-data-and-neuronal-spike-times">Overlaying spatial behavioral data and neuronal spike times</a></li>
 </ul>
             </nav>
         </div>
@@ -445,50 +445,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="descriptive-statistics">
-<h1>Descriptive Statistics<a class="headerlink" href="#descriptive-statistics" title="Link to this heading">#</a></h1>
-<section id="exercise-1-plotting-data-and-calculating-descriptive-statistics">
-<h2>Exercise 1: Plotting data and calculating descriptive statistics<a class="headerlink" href="#exercise-1-plotting-data-and-calculating-descriptive-statistics" title="Link to this heading">#</a></h2>
-<p>Write a function <code class="docutils literal notranslate"><span class="pre">distribution_analysis(x)</span></code> that expects a numpy array <code class="docutils literal notranslate"><span class="pre">x</span></code> as input argument and returns a dictionary <code class="docutils literal notranslate"><span class="pre">stats</span></code> with these statistical values as the keys:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="visualizing-neuronal-data">
+<h1>Visualizing neuronal data<a class="headerlink" href="#visualizing-neuronal-data" title="Link to this heading">#</a></h1>
+<section id="tuning-curves">
+<h2>Tuning curves<a class="headerlink" href="#tuning-curves" title="Link to this heading">#</a></h2>
+<p>The file <code class="docutils literal notranslate"><span class="pre">auditory_RN.npz</span></code> contains local-field potential recordings from the auditory nerve of the fruit fly in response to a pure tone presented at 12 different intensities, 32 trials per intensity.</p>
 <ol class="arabic simple">
-<li><p>mean</p></li>
-<li><p>standard deviation (biased and unbiased)</p></li>
-<li><p>median</p></li>
-<li><p>interquartile range</p></li>
+<li><p>Plot stimulus intensity vs. the single-trial responses.</p></li>
+<li><p>Plot the stimulus vs. the trial-averaged response with error bars.</p></li>
 </ol>
-<p>Moreover, the function should generate a figure with 3 subplots, showing:</p>
-<ol class="arabic simple">
-<li><p>the raw data</p></li>
-<li><p>a histogram of the data</p></li>
-<li><p>the boxplot of the data</p></li>
-</ol>
-<p>Make sure that this function is written in a general way (without fixed numbers or any other assumptions about the data that should be analyzed), because you will use this function repeatedly in this exercise. Test the function using samples drawn from a Normal distribution with mean -200 and std 10, stored in the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> below.</p>
-<p>Check if you understood the concepts of generating random numbers and analyzing the distribution of values in a sample:</p>
-<p><strong>Hint:</strong> Not all of these statistics can be computed using numpy - you find the missing ones in the scipy.stats module.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># generate some data for testing your function</span>
-
-<span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-2-compare-the-descriptive-statistics-of-normal-uniform-and-poisson-distributions">
-<h2>Exercise 2: Compare the descriptive statistics of Normal, Uniform, and Poisson distributions<a class="headerlink" href="#exercise-2-compare-the-descriptive-statistics-of-normal-uniform-and-poisson-distributions" title="Link to this heading">#</a></h2>
-<p>Now run the same distribution analysis for 10000 samples from a Uniform and a Poisson distribution.</p>
-<p>Generate 10000 samples from</p>
-<ol class="arabic simple">
-<li><p>A normal distribution with mean 2.0 and standard deviation 1.0 as a reference. Use the function <code class="docutils literal notranslate"><span class="pre">np.random.normal</span></code>. Check the numpy documentation on how to use it.</p></li>
-<li><p>A uniform distribution with mean 2.0 and span (difference between smallest and largest value) 1.0. Use the function <code class="docutils literal notranslate"><span class="pre">np.random.random_sample</span></code>.</p></li>
-<li><p>A Poisson distribution with mean 2.0. Use the function <code class="docutils literal notranslate"><span class="pre">np.random.poisson</span></code>. Check the numpy documentation for how to use it. Hint: The first argument, <code class="docutils literal notranslate"><span class="pre">lam</span></code>(bda) corresponds to the mean of the distribution.</p></li>
-</ol>
-<p>Use your function to visualize the three data sets and compute the descriptive statistics. Compare the descriptive statistics of your Normal distribution to the statistics from the Uniform and Poisson distributions:</p>
-<ul class="simple">
-<li><p>Look at all output values and all subplots: Do they meet your expectation? Do mean and std make sense? Can you explain the values for the median and the IQR?</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -497,27 +462,39 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-3-bonus-check-the-convergence-of-different-statistics-for-different-sample-sizes">
-<h2>Exercise 3 (bonus): Check the convergence of different statistics for different sample sizes<a class="headerlink" href="#exercise-3-bonus-check-the-convergence-of-different-statistics-for-different-sample-sizes" title="Link to this heading">#</a></h2>
-<p>Explore how the estimates of mean and standard deviation scatter for multiple samples of different size.
-To do that you will repeatedly generate datasets of normally distributed samples, compute their statistics and then plot the distribution of these statistics.</p>
-<p>Make a function that</p>
-<ul class="simple">
-<li><p>takes the sample size N as an input,</p></li>
-<li><p>generates a normally distributed dataset with mean 10 and standard deviation 2 with the specified sample size,</p></li>
-<li><p>computes:</p>
-<ul>
-<li><p>the empirical mean of the generated sample of random numbers</p></li>
-<li><p>the empirical unbiased standard deviation (normalized by the sample size N)</p></li>
-<li><p>the empirical biased standard deviation (normalized by N-1)</p></li>
-</ul>
-</li>
-</ul>
-<p>To explore how the estimates of these statistics depend on sample size, you will estimate them from samples of 3 different sizes (10, 100, 1000).
-First, call your function 100 times with a sample size of 10 and save the three output values (mean, unbiased std, biased std).
-Now do the same, but with sample sizes 100 and 1000.</p>
-<p>Plot the histograms of the 3 empirical measures for the three sample sizes 10, 100, 1000. How do the distributions change with sample size? What is the difference between the biased and the unbiased standard deviation?</p>
-<p><strong>Bonus</strong> You can make your code more efficient by generating a matrix of 100x1000 samples at once and computing the statistics over the axis 1 of this matrix.</p>
+<section id="time-varying-firing-rates">
+<h2>Time varying firing rates<a class="headerlink" href="#time-varying-firing-rates" title="Link to this heading">#</a></h2>
+<p>The file <code class="docutils literal notranslate"><span class="pre">two_neurons.npz</span></code> contains the voltage trace of two different neurons. Each neuron was stimulated with a current pulse (5nA) that started at 150ms into the recording and lasted 1100ms.</p>
+<ol class="arabic simple">
+<li><p>Plot the voltage traces as a function of time. What is the difference between the neurons</p></li>
+<li><p>Visualize the firing pattern of the neurons using a PSTH. Choose bin positions that allow you to see when both neurons fire.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="inter-spike-intervals">
+<h2>Inter-spike intervals<a class="headerlink" href="#inter-spike-intervals" title="Link to this heading">#</a></h2>
+<p>Using the same date from the file <code class="docutils literal notranslate"><span class="pre">two_neurons.npz</span></code>, compute inter-spike intervals (ISI, time between subsequent times) and visualize the ISI distributions with a histogram.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="overlaying-spatial-behavioral-data-and-neuronal-spike-times">
+<h2>Overlaying spatial behavioral data and neuronal spike times<a class="headerlink" href="#overlaying-spatial-behavioral-data-and-neuronal-spike-times" title="Link to this heading">#</a></h2>
+<p>The file <code class="docutils literal notranslate"><span class="pre">mouse_tracks.npz</span></code> contains data from an mouse experiment. The mouse was allowed to move in a circular arena while neurons in hippocampus were recorded. The file contains the walking trajectories (x,y position in tracks) and the spike times from two neurons. Both neurons are place cells, which fire only when the mouse is in a specific location in the arena.</p>
+<ol class="arabic simple">
+<li><p>Plot the walking trajectories (x,y positions).</p></li>
+<li><p>Plot the location at which each neuron fired. Place a dot on the trajectory when each of the neuron fired (use different colors for the different neurons).</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -541,7 +518,7 @@ Now do the same, but with sample sizes 100 and 1000.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./exercises/exercises 5"
+            path: "./exercises/exercises 6"
         },
         predefinedOutput: true
     }
@@ -559,22 +536,13 @@ Now do the same, but with sample sizes 100 and 1000.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="5.01_probabilities_exercise.html"
+       href="6.02_nonlinear_regression_exercises.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Probabilities</p>
+        <p class="prev-next-title">Exercises 6.02 - Nonlinear regression</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="5.03_inferential_stats_exercise.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Inferential Statistics</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -592,9 +560,10 @@ Now do the same, but with sample sizes 100 and 1000.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-plotting-data-and-calculating-descriptive-statistics">Exercise 1: Plotting data and calculating descriptive statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-compare-the-descriptive-statistics-of-normal-uniform-and-poisson-distributions">Exercise 2: Compare the descriptive statistics of Normal, Uniform, and Poisson distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-bonus-check-the-convergence-of-different-statistics-for-different-sample-sizes">Exercise 3 (bonus): Check the convergence of different statistics for different sample sizes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-curves">Tuning curves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-firing-rates">Time varying firing rates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-spike-intervals">Inter-spike intervals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlaying-spatial-behavioral-data-and-neuronal-spike-times">Overlaying spatial behavioral data and neuronal spike times</a></li>
 </ul>
   </nav></div>
 

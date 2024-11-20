@@ -100,6 +100,6 @@ parts:
       title: Linear regression
     - file: exercises/exercises 6/6.02_nonlinear_regression_exercises
       title: Nonlinear regression
-    - file: exercises/exercises 6/6.03_neuro plots.ipynb
+    - file: exercises/exercises 6/6.03_neuron_plots.ipynb
       title: Visualizing and analyzing neuronal and behavioral data
 
