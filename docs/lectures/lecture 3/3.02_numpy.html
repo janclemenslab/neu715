@@ -9,20 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Numerical computing and data science - numpy, scipy, pandas &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
-  
-  
-  
+
+
+
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  
+
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 <link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-  
+
   <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-  
+
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
@@ -67,30 +67,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
-  
-  
+
+
   <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-  
-  
+
+
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
+
   <div id="pst-scroll-pixel-helper"></div>
-  
+
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-  
+
   <input type="checkbox"
           class="sidebar-toggle"
           id="pst-primary-sidebar-checkbox"/>
   <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
+
   <input type="checkbox"
           class="sidebar-toggle"
           id="pst-secondary-sidebar-checkbox"/>
   <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
+
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
@@ -116,43 +116,43 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
-  
+
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
-  
+
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
-      
-      <div class="bd-sidebar-primary bd-sidebar">
-        
 
-  
+
+
+      <div class="bd-sidebar-primary bd-sidebar">
+
+
+
   <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
+
+
+
+
   </div>
-  
+
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
-  
+
+
+
 
 <a class="navbar-brand logo" href="../../intro.html">
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
     <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
-  
+
 </a></div>
         <div class="sidebar-primary-item">
 
@@ -167,7 +167,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
+
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
@@ -241,39 +241,39 @@
     </div>
 </nav></div>
     </div>
-  
-  
+
+
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-  
+
   <div id="rtd-footer-container"></div>
 
 
       </div>
-      
+
       <main id="main-content" class="bd-main" role="main">
-        
-        
+
+
 
 <div class="sbt-scroll-pixel-helper"></div>
 
           <div class="bd-content">
             <div class="bd-article-container">
-              
+
               <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
-  
+
     <div class="header-article-items__start">
-      
+
         <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
 </button></div>
-      
+
     </div>
-  
-  
+
+
     <div class="header-article-items__end">
-      
+
         <div class="header-article-item">
 
 <div class="article-header-buttons">
@@ -287,42 +287,42 @@
     <i class="fas fa-rocket"></i>
   </button>
   <ul class="dropdown-menu">
-      
-      
-      
+
+
+
       <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 3/3.02_numpy.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
-  
+
 
 <span class="btn__icon-container">
-  
+
     <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
 </li>
-      
-      
-      
-      
+
+
+
+
       <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 3/3.02_numpy.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
-  
+
 
 <span class="btn__icon-container">
-  
+
     <img alt="Colab logo" src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
 </li>
-      
+
   </ul>
 </div>
 
@@ -336,15 +336,15 @@
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
-      
-      
-      
+
+
+
       <li><a href="../../_sources/lectures/lecture 3/3.02_numpy.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
-  
+
 
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
@@ -352,17 +352,17 @@
 <span class="btn__text-container">.ipynb</span>
 </a>
 </li>
-      
-      
-      
-      
+
+
+
+
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
   title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
-  
+
 
 <span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
@@ -370,7 +370,7 @@
 <span class="btn__text-container">.pdf</span>
 </button>
 </li>
-      
+
   </ul>
 </div>
 
@@ -382,7 +382,7 @@
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
-  
+
 
 <span class="btn__icon-container">
   <i class="fas fa-expand"></i>
@@ -414,20 +414,20 @@ document.write(`
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
-      
+
     </div>
-  
+
 </div>
 </div>
-              
-              
+
+
 
 <div id="jb-print-docs-body" class="onlyprint">
     <h1>Numerical computing and data science - numpy, scipy, pandas</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
-            
+
             <div>
                 <h2> Contents </h2>
             </div>
@@ -449,11 +449,11 @@ document.write(`
     </div>
 </div>
 
-              
-                
+
+
 <div id="searchbox"></div>
                 <article class="bd-article">
-                  
+
   <section class="tex2jax_ignore mathjax_ignore" id="numerical-computing-and-data-science-numpy-scipy-pandas">
 <h1>Numerical computing and data science - numpy, scipy, pandas<a class="headerlink" href="#numerical-computing-and-data-science-numpy-scipy-pandas" title="Link to this heading">#</a></h1>
 <p>Numpy is the foundation for numerical computing in python. It enables fast numerical operations, by moving computationally expensive computations to faster code.</p>
@@ -766,7 +766,7 @@ data values at the indices: data[indices]=array([2, 4, 6])
 </div>
 </div>
 <div class="admonition-clicker-question-numpy-indexing-click-me-https-go-uos-de-0ypai admonition">
-<p class="admonition-title">Clicker question “numpy indexing”(<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
+<p class="admonition-title">Clicker question “numpy indexing”(<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
 <p>Which of the following expressions is correct?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]])</span>
 <span class="p">[[</span> <span class="mi">1</span>  <span class="mi">2</span><span class="p">]</span>
@@ -984,7 +984,7 @@ Number of True values in each row: np.sum(data&lt;10, axis=1)=array([2, 3])
 </div>
 </div>
 <div class="admonition-clicker-question-numpy-bool-click-me-https-go-uos-de-0ypai admonition">
-<p class="admonition-title">Clicker question “numpy bool”(<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
+<p class="admonition-title">Clicker question “numpy bool”(<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
 <p>Which of the following pairs of boolean expressions and results are correct?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
@@ -1076,7 +1076,7 @@ Number of True values in each row: np.sum(data&lt;10, axis=1)=array([2, 3])
 </div>
 </div>
 <div class="admonition-clicker-question-numpy-boolean-indexing-click-me-https-go-uos-de-0ypai admonition">
-<p class="admonition-title">Clicker question “numpy boolean indexing”(<a class="reference external" href="https://go.uos.de/0ypAi">Click me!</a>)</p>
+<p class="admonition-title">Clicker question “numpy boolean indexing”(<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
 <p>Which of these statements is correct?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]):</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1114,14 +1114,14 @@ Number of True values in each row: np.sum(data&lt;10, axis=1)=array([2, 3])
     <script>kernelName = 'python3'</script>
 
                 </article>
-              
 
-              
-              
-              
-              
+
+
+
+
+
                 <footer class="prev-next-footer d-print-none">
-                  
+
 <div class="prev-next-area">
     <a class="left-prev"
        href="3.01_packages_and_environments.html"
@@ -1143,11 +1143,11 @@ Number of True values in each row: np.sum(data&lt;10, axis=1)=array([2, 3])
     </a>
 </div>
                 </footer>
-              
+
             </div>
-            
-            
-              
+
+
+
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
@@ -1171,49 +1171,49 @@ Number of True values in each row: np.sum(data&lt;10, axis=1)=array([2, 3])
   </nav></div>
 
 </div></div>
-              
-            
+
+
           </div>
           <footer class="bd-footer-content">
-            
+
 <div class="bd-footer-content__inner container">
-  
+
   <div class="footer-item">
-    
+
 <p class="component-author">
 By Jan Clemens
 </p>
 
   </div>
-  
+
   <div class="footer-item">
-    
+
 
   <p class="copyright">
-    
+
       © Copyright 2023.
       <br/>
-    
+
   </p>
 
   </div>
-  
+
   <div class="footer-item">
-    
+
   </div>
-  
+
   <div class="footer-item">
-    
+
   </div>
-  
+
 </div>
           </footer>
-        
+
 
       </main>
     </div>
   </div>
-  
+
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
