@@ -12,6 +12,8 @@ parts:
       title: Using notebooks
     - file: lectures/lecture 1/1.01_variables
       title: Variables
+    - file: lectures/lecture 1/1.02_namespaces
+      title: Working memory
     - file: lectures/lecture 1/1.02_conditionals
       title: Conditionals
     - file: lectures/lecture 1/1.03_lists
