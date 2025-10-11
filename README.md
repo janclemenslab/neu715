@@ -12,7 +12,7 @@ conda create -y -n neu715 jupyter-book matplotlib numpy
 
 ## Build
 ```shell
-jb clean
+jb clean .
 jb build .
 git commit -a -m 'COMMIT_MSG'
 git push

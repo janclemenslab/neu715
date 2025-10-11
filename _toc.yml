@@ -35,7 +35,7 @@ parts:
   - caption: Basics - exercises
     chapters:
     - file: exercises/exercises 1/1.01_variables_exercises
-      title: Variables
+      title: Variables and working memory
     - file: exercises/exercises 1/1.02_conditionals_exercises
       title: Conditionals
     - file: exercises/exercises 1/1.03_lists_exercises
