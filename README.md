@@ -7,7 +7,7 @@ To run the notebooks: [![Binder](https://mybinder.org/badge_logo.svg)](https://m
 
 ## Install
 ```shell
-conda create -y -n neu715 jupyter-book matplotlib numpy
+conda create -y -n neu715 jupyter-book matplotlib numpy fabric3
 ```
 
 ## Build

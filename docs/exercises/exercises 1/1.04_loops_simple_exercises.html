@@ -177,6 +177,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.00_notebooks.html">Using notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.01_variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.02_namespaces.html">Working memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.02_conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.03_lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.04_loops_simple.html">Loops</a></li>
@@ -187,7 +188,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics - exercises</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1.01_variables_exercises.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.01_variables_exercises.html">Variables and working memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.02_conditionals_exercises.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.03_lists_exercises.html">Lists</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Loops</a></li>
@@ -432,13 +433,19 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-printing-using-a-for-loop">Exercise 1: Printing using a for loop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-convert-units">Exercise 2: Convert units</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-convert-units-and-append-the-results-to-a-new-list">Exercise 3: Convert units and append the results to a new list</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-filtering-a-list-1">Exercise 4: Filtering a list (1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-filtering-a-list-2">Exercise 5: Filtering a list (2)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-filtering-a-list-3">Exercise 6: Filtering a list (3)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-slice-indexing">Exercise 7: Slice indexing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-updating-a-variable">Exercise 8: Updating a variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-fix-the-error">Exercise 2: Fix the error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-fix-the-errors">Exercise 2: Fix the errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-convert-units">Exercise 4: Convert units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-generating-ranges-with-a-specific-content">Exercise 5: Generating ranges with a specific content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-ranges-and-loops">Exercise 6: Ranges and loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-print-every-other-element-of-the-list-starting-with-the-second">Exercise 7: Print every other element of the list, starting with the second</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-convert-units-and-append-the-results-to-a-new-list">Exercise 8: Convert units and append the results to a new list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-filtering-a-list-1">Exercise 9: Filtering a list (1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-filtering-a-list-2">Exercise 10: Filtering a list (2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-11-filtering-a-list-3">Exercise 11: Filtering a list (3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-12-slice-indexing">Exercise 12: Slice indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-13-updating-a-variable">Exercise 13: Updating a variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-14-write-a-spike-detector">Exercise 14: Write a spike detector</a></li>
 </ul>
             </nav>
         </div>
@@ -473,8 +480,62 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-2-convert-units">
-<h2>Exercise 2: Convert units<a class="headerlink" href="#exercise-2-convert-units" title="Link to this heading">#</a></h2>
+<section id="exercise-2-fix-the-error">
+<h2>Exercise 2: Fix the error<a class="headerlink" href="#exercise-2-fix-the-error" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1243891290</span><span class="p">,</span> <span class="mi">1234129401</span><span class="p">,</span> <span class="mi">14910395130</span><span class="p">,</span> <span class="mi">1340981394</span><span class="p">]</span>
+
+<span class="c1"># your solution here</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1243891290
+1234129401
+14910395130
+1340981394
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># your solution here</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="nb">print</span><span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+
+<span class="ne">IndexError</span>: list index out of range
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2-fix-the-errors">
+<h2>Exercise 2: Fix the errors<a class="headerlink" href="#exercise-2-fix-the-errors" title="Link to this heading">#</a></h2>
+<p>Below code only prints one list element. Which is it? Can you fix the code so that each list element is printed?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1243891290</span><span class="p">,</span> <span class="mi">1234129401</span><span class="p">,</span> <span class="mi">14910395130</span><span class="p">,</span> <span class="mi">1340981394</span><span class="p">,</span> <span class="mi">1231032912</span><span class="p">,</span> <span class="mi">90000000</span><span class="p">]</span>
+
+<span class="c1"># your solution here</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90000000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4-convert-units">
+<h2>Exercise 4: Convert units<a class="headerlink" href="#exercise-4-convert-units" title="Link to this heading">#</a></h2>
 <p>We have a list of weights in grams. Use a for loop to convert the weights to tons and print them one by one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -484,66 +545,103 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1243.89129
-1234.129401
-14910.39513
-1340.981394
+</div>
+</section>
+<section id="exercise-5-generating-ranges-with-a-specific-content">
+<h2>Exercise 5: Generating ranges with a specific content<a class="headerlink" href="#exercise-5-generating-ranges-with-a-specific-content" title="Link to this heading">#</a></h2>
+<p>Create a range statement with</p>
+<ol class="arabic simple">
+<li><p>2 elements</p></li>
+<li><p>10 elements</p></li>
+<li><p>These elements: [0, 1, 2, 3, 4, 5, 6]</p></li>
+<li><p>Elements starting at 3 and ending with (including 6): [3, 4, 5, 6]</p></li>
+<li><p>Every 3rd element, up to 10: [0, 3, 6, 9]</p></li>
+<li><p>All EVEN numbers (including zero) up to and including 8: [0, 2, 4, 6, 8]</p></li>
+<li><p>All ODD numbers up to 8: [1, 3, 5, 7]</p></li>
+</ol>
+<p>Test your result by printing the contents of the range-object. You can do so by first casting it to a list, and then printing it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-3-convert-units-and-append-the-results-to-a-new-list">
-<h2>Exercise 3: Convert units and append the results to a new list<a class="headerlink" href="#exercise-3-convert-units-and-append-the-results-to-a-new-list" title="Link to this heading">#</a></h2>
+<section id="exercise-6-ranges-and-loops">
+<h2>Exercise 6: Ranges and loops<a class="headerlink" href="#exercise-6-ranges-and-loops" title="Link to this heading">#</a></h2>
+<p>The following code is supposed to generate a list that only contains the items at even indices (indices [0, 2, 4, …]) from the list <code class="docutils literal notranslate"><span class="pre">all_values</span></code>.</p>
+<p>Does it produce the correct result? If not, fix it!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">432</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">780</span><span class="p">]</span>
+
+<span class="n">even_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_values</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">all_values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">even_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">even_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5, 83, 3, 780]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-7-print-every-other-element-of-the-list-starting-with-the-second">
+<h2>Exercise 7: Print every other element of the list, starting with the second<a class="headerlink" href="#exercise-7-print-every-other-element-of-the-list-starting-with-the-second" title="Link to this heading">#</a></h2>
+<p>Use a for loop and range.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">567803</span><span class="p">,</span> <span class="mi">1243891290</span><span class="p">,</span> <span class="mi">1234129401</span><span class="p">,</span> <span class="mi">14910395130</span><span class="p">,</span> <span class="mi">1340981394</span><span class="p">,</span> <span class="mi">1231032912</span><span class="p">,</span> <span class="mi">90000000</span><span class="p">]</span>
+
+<span class="c1"># your solution here:</span>
+<span class="c1"># the code should print the following numbers [1243891290, 14910395130, 1231032912]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bonus: Now achieve the same result, but use slice indexing instead:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here:</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-8-convert-units-and-append-the-results-to-a-new-list">
+<h2>Exercise 8: Convert units and append the results to a new list<a class="headerlink" href="#exercise-8-convert-units-and-append-the-results-to-a-new-list" title="Link to this heading">#</a></h2>
 <p>We have a list of weights in grams - create a new list, called <code class="docutils literal notranslate"><span class="pre">tons</span></code> that contains the weights in tons.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grams</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1243891290</span><span class="p">,</span> <span class="mi">1234129401</span><span class="p">,</span> <span class="mi">14910395130</span><span class="p">,</span> <span class="mi">1340981394</span><span class="p">]</span>
 
 <span class="c1"># your solution here</span>
-<span class="n">tons</span><span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">gram</span> <span class="ow">in</span> <span class="n">grams</span><span class="p">:</span>
-    <span class="n">tons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gram</span><span class="o">/</span><span class="mi">1000000</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tons</span><span class="p">)</span>
-    
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1243.89129, 1234.129401, 14910.39513, 1340.981394]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-4-filtering-a-list-1">
-<h2>Exercise 4: Filtering a list (1)<a class="headerlink" href="#exercise-4-filtering-a-list-1" title="Link to this heading">#</a></h2>
+<section id="exercise-9-filtering-a-list-1">
+<h2>Exercise 9: Filtering a list (1)<a class="headerlink" href="#exercise-9-filtering-a-list-1" title="Link to this heading">#</a></h2>
 <p>Print all list elements greater than 10:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="mi">432</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">780</span><span class="p">]</span>
 
 <span class="c1"># your solution here</span>
-
-<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-    
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34
-432
-780
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-5-filtering-a-list-2">
-<h2>Exercise 5: Filtering a list (2)<a class="headerlink" href="#exercise-5-filtering-a-list-2" title="Link to this heading">#</a></h2>
+<section id="exercise-10-filtering-a-list-2">
+<h2>Exercise 10: Filtering a list (2)<a class="headerlink" href="#exercise-10-filtering-a-list-2" title="Link to this heading">#</a></h2>
 <p>Create a new list that contains all elements greater than 10:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -566,50 +664,45 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-6-filtering-a-list-3">
-<h2>Exercise 6: Filtering a list (3)<a class="headerlink" href="#exercise-6-filtering-a-list-3" title="Link to this heading">#</a></h2>
+<section id="exercise-11-filtering-a-list-3">
+<h2>Exercise 11: Filtering a list (3)<a class="headerlink" href="#exercise-11-filtering-a-list-3" title="Link to this heading">#</a></h2>
 <p>Create a new list that contains all elements greater than 10 and less than 100:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">432</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">780</span><span class="p">]</span>
 
 <span class="c1"># your solution here</span>
-<span class="n">big_a</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
-            <span class="n">big_a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-<span class="n">big_a</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[34, 11, 83, 50]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-7-slice-indexing">
-<h2>Exercise 7: Slice indexing<a class="headerlink" href="#exercise-7-slice-indexing" title="Link to this heading">#</a></h2>
-<p>The following code is supposed to generate a list that only contains the even values from the list <code class="docutils literal notranslate"><span class="pre">all_values</span></code>.</p>
+<section id="exercise-12-slice-indexing">
+<h2>Exercise 12: Slice indexing<a class="headerlink" href="#exercise-12-slice-indexing" title="Link to this heading">#</a></h2>
+<p>The following code is supposed to generate a list that only contains the items at even indices (indices [0, 2, 4, …]) from the list <code class="docutils literal notranslate"><span class="pre">all_values</span></code>.</p>
 <p>Does it produce the correct result? If not, fix it!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">even_values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">432</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">780</span><span class="p">]</span>
+
+<span class="n">even_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_values</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">all_values</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">even_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">even_values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 2, 4, 6, 8]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5, 83, 3, 780]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-8-updating-a-variable">
-<h2>Exercise 8: Updating a variable<a class="headerlink" href="#exercise-8-updating-a-variable" title="Link to this heading">#</a></h2>
+<section id="exercise-13-updating-a-variable">
+<h2>Exercise 13: Updating a variable<a class="headerlink" href="#exercise-13-updating-a-variable" title="Link to this heading">#</a></h2>
 <p>The following code is supposed to compute the sum of the values in the list <code class="docutils literal notranslate"><span class="pre">all_values</span></code>.</p>
 <p>Does it produce the correct result? If not, fix it!</p>
 <div class="cell docutils container">
@@ -641,6 +734,28 @@ document.write(`
 36 8
 45 9
 after loop: 45 9
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-14-write-a-spike-detector">
+<h2>Exercise 14: Write a spike detector<a class="headerlink" href="#exercise-14-write-a-spike-detector" title="Link to this heading">#</a></h2>
+<p>Now write a spike detector:</p>
+<ol class="arabic simple">
+<li><p>Iterate over the voltage values in <code class="docutils literal notranslate"><span class="pre">voltages</span></code> using a for loop. You will need a range object.</p></li>
+<li><p>Compare each voltage value to the <code class="docutils literal notranslate"><span class="pre">spike_threshold</span></code>,</p></li>
+<li><p>Append the indices of voltage values that exceed <code class="docutils literal notranslate"><span class="pre">spike_threshold</span></code> to the list <code class="docutils literal notranslate"><span class="pre">spike_indices</span></code></p></li>
+</ol>
+<p>Before you start coding: What are the expected results? How many spikes does <code class="docutils literal notranslate"><span class="pre">voltages</span></code> contain? At which indices?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">voltages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">spike_threshold</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">spike_indices</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># your solution here</span>
 </pre></div>
 </div>
 </div>
@@ -713,13 +828,19 @@ after loop: 45 9
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-printing-using-a-for-loop">Exercise 1: Printing using a for loop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-convert-units">Exercise 2: Convert units</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-convert-units-and-append-the-results-to-a-new-list">Exercise 3: Convert units and append the results to a new list</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-filtering-a-list-1">Exercise 4: Filtering a list (1)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-filtering-a-list-2">Exercise 5: Filtering a list (2)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-filtering-a-list-3">Exercise 6: Filtering a list (3)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-slice-indexing">Exercise 7: Slice indexing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-updating-a-variable">Exercise 8: Updating a variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-fix-the-error">Exercise 2: Fix the error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-fix-the-errors">Exercise 2: Fix the errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-convert-units">Exercise 4: Convert units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-generating-ranges-with-a-specific-content">Exercise 5: Generating ranges with a specific content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-ranges-and-loops">Exercise 6: Ranges and loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-print-every-other-element-of-the-list-starting-with-the-second">Exercise 7: Print every other element of the list, starting with the second</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-convert-units-and-append-the-results-to-a-new-list">Exercise 8: Convert units and append the results to a new list</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-filtering-a-list-1">Exercise 9: Filtering a list (1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-filtering-a-list-2">Exercise 10: Filtering a list (2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-11-filtering-a-list-3">Exercise 11: Filtering a list (3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-12-slice-indexing">Exercise 12: Slice indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-13-updating-a-variable">Exercise 13: Updating a variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-14-write-a-spike-detector">Exercise 14: Write a spike detector</a></li>
 </ul>
   </nav></div>
 

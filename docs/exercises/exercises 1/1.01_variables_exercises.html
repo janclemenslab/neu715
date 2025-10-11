@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Variables &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Variables and working memory &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -179,6 +179,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.00_notebooks.html">Using notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.01_variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.02_namespaces.html">Working memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.02_conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.03_lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%201/1.04_loops_simple.html">Loops</a></li>
@@ -189,7 +190,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics - exercises</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Variables</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Variables and working memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.02_conditionals_exercises.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.03_lists_exercises.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.04_loops_simple_exercises.html">Loops</a></li>
@@ -423,7 +424,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Variables</h1>
+    <h1>Variables and working memory</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -465,8 +466,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="variables">
-<h1>Variables<a class="headerlink" href="#variables" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="variables-and-working-memory">
+<h1>Variables and working memory<a class="headerlink" href="#variables-and-working-memory" title="Link to this heading">#</a></h1>
 <section id="how-do-i-use-the-exercises">
 <h2>How do I use the Exercises?<a class="headerlink" href="#how-do-i-use-the-exercises" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
@@ -712,15 +713,9 @@ This allows you to split your computation into multiple cells.</p>
 <p>Try to predict what will happen before you run the code. Was your prediction you correct?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># create a new variable `c` and give it a particular value (aka assign a value to `c`)</span>
-<span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">5</span>   <span class="c1">#  create a new variable `d` and assign to it the outcome of `c + 5`</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">8</span>  <span class="c1"># you can also re-assign values to existing variables - this allows you to update a variable during computation</span>
-<span class="n">c</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">8</span>
 </pre></div>
 </div>
 </div>
@@ -731,14 +726,8 @@ This allows you to split your computation into multiple cells.</p>
 <p>Predict what will happen without running the code (you need to have run the cell above before). Explain why.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">5</span>   <span class="c1">#  create a new variable `d` and assign to it the outcome of `c + 5`</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">8</span>  <span class="c1"># you can also re-assign values to existing variables - this allows you to update a variable during computation</span>
-<span class="n">c</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">8</span>
 </pre></div>
 </div>
 </div>
@@ -751,13 +740,7 @@ This allows you to split your computation into multiple cells.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">16</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">2</span>
-<span class="n">c</span> <span class="o">+</span> <span class="mi">4</span>
-<span class="n">c</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16
+<span class="n">c</span> <span class="o">+</span> <span class="mi">4</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>

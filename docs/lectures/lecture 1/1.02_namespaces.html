@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Conditionals &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>The working memory (a.k.a namespace) &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 1/1.02_conditionals';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 1/1.02_namespaces';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lists" href="1.03_lists.html" />
-    <link rel="prev" title="The working memory (a.k.a namespace)" href="1.02_namespaces.html" />
+    <link rel="next" title="Conditionals" href="1.02_conditionals.html" />
+    <link rel="prev" title="Variables" href="1.01_variables.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -177,8 +177,8 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1.00_notebooks.html">Using notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.01_variables.html">Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1.02_namespaces.html">Working memory</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Conditionals</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Working memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.02_conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.03_lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.04_loops_simple.html">Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lecture%202/2.01_composites.html">Tuples and dictionaries</a></li>
@@ -289,7 +289,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 1/1.02_conditionals.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 1/1.02_namespaces.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +307,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 1/1.02_conditionals.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 1/1.02_namespaces.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -338,7 +338,7 @@
       
       
       
-      <li><a href="../../_sources/lectures/lecture 1/1.02_conditionals.ipynb" target="_blank"
+      <li><a href="../../_sources/lectures/lecture 1/1.02_namespaces.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -422,7 +422,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Conditionals</h1>
+    <h1>The working memory (a.k.a namespace)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -432,16 +432,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-need-to-know-to-detect-spikes-using-python">What do we need to know to detect spikes using python?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-variables">Comparing variables</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-comparisons">Combining comparisons</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-different-actions-based-on-the-value-of-a-variable">Perform different actions based on the value of a variable</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-going-on">What’s going on?</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">What do we need to know to detect spikes using python?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-variables">Manipulating variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-track-of-variables-and-their-values">Keeping track of variables and their values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messing-up-and-restoring-the-namespace">Messing up and restoring the namespace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-using-and-updating-variables-across-cells">Re-using and updating variables across cells</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-detection-with-python">Spike detection with python</a></li>
 </ul>
             </nav>
         </div>
@@ -453,242 +448,212 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="conditionals">
-<h1>Conditionals<a class="headerlink" href="#conditionals" title="Link to this heading">#</a></h1>
-<section id="what-do-we-need-to-know-to-detect-spikes-using-python">
-<h2>What do we need to know to detect spikes using python?<a class="headerlink" href="#what-do-we-need-to-know-to-detect-spikes-using-python" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="the-working-memory-a-k-a-namespace">
+<h1>The working memory (a.k.a namespace)<a class="headerlink" href="#the-working-memory-a-k-a-namespace" title="Link to this heading">#</a></h1>
+<section id="manipulating-variables">
+<h2>Manipulating variables<a class="headerlink" href="#manipulating-variables" title="Link to this heading">#</a></h2>
+<div class="admonition-clicker-question-cdcc-click-me-https-go-uos-de-kjcbv admonition">
+<p class="admonition-title">Clicker question “cdcc” (<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
+<p>The code below will print four numbers. Can you predict what will be printed?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">8</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</section>
+<section id="keeping-track-of-variables-and-their-values">
+<h2>Keeping track of variables and their values<a class="headerlink" href="#keeping-track-of-variables-and-their-values" title="Link to this heading">#</a></h2>
+<p>How do you keep track of variables and their values? The <em>kernel</em> is the thing that executes your code. It also stores your <em>namespace</em> - all variables and code that you have executed so far and that are stored in your computer memory.</p>
+<p>If you re-run your code cells out of order, it may be hard to know what’s in your namespace. In that case, you can clear and re-launch the kernel, to start from scratch, with a clean namespace. This will erase any variables stored in memory and reset python to its original state.</p>
+<p>You can list the contents of your namespace with <code class="docutils literal notranslate"><span class="pre">%whos</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">whos</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Interactive namespace is empty.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="messing-up-and-restoring-the-namespace">
+<h2>Messing up and restoring the namespace<a class="headerlink" href="#messing-up-and-restoring-the-namespace" title="Link to this heading">#</a></h2>
+<p>The namespace contains not only all variables you’ve created and manipulated, but also all functions.
+It is therefore surprisingly easy to mess up you namespace. For instance, you can “overwrite” function names with variables in python.</p>
+<p>Remember the print function? Let’s create a variable named <code class="docutils literal notranslate"><span class="pre">print</span></code> and assign a value to it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="o">=</span> <span class="s1">&#39;no, never do this!&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s print the value of the <code class="docutils literal notranslate"><span class="pre">print</span></code> variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: &#39;str&#39; object is not callable
+</pre></div>
+</div>
+</div>
+</div>
+<p>That fails, as does</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: &#39;str&#39; object is not callable
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s because in the namespace of the current notebook, we have overwritten the function <code class="docutils literal notranslate"><span class="pre">print</span></code> with a string variable of the same name.</p>
+<p>Why is this happening? Let’s first inspect the namespace. This confirms that print is of type string now, and not a function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>builtin_function_or_method
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">whos</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Interactive namespace is empty.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-clicker-question-namespace-click-me-https-go-uos-de-kjcbv admonition">
+<p class="admonition-title">Clicker question “namespace”(<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
+<p>What do you do now?</p>
+</div>
+<p>After restarting the kernel, we will see that the type of print is now “builtin_function_or_method”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>  <span class="c1"># this will return &quot;builtin_function_or_method&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>builtin_function_or_method
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="re-using-and-updating-variables-across-cells">
+<h2>Re-using and updating variables across cells<a class="headerlink" href="#re-using-and-updating-variables-across-cells" title="Link to this heading">#</a></h2>
+<p>Not that the order of <strong>execution</strong> matters, not order in which cells appear in the notebook!</p>
+<p>Alice and Bob count mosquitoes. Alice, to store her count, creates a variable with name <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> and value <code class="docutils literal notranslate"><span class="pre">1</span></code> (she has counted only one mosquito so far).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_alice_mosquitoes</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># create a new variable `n_alice_mosquitoes` and assign the value 1 to `n_alice_mosquitoes`</span>
+<span class="o">%</span><span class="k">whos</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable             Type    Data/Info
+--------------------------------------
+n_alice_mosquitoes   int     1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now she can perform a computation using <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code>.
+For instance, Bob has counted 10 more mosquitoes - so we add <code class="docutils literal notranslate"><span class="pre">10</span></code> to her own count and store the result in a new variable, <code class="docutils literal notranslate"><span class="pre">n_mosquitoes</span></code>, for the total count:</p>
+<div class="admonition-clicker-question-mosquitoes-1-click-me-https-go-uos-de-kjcbv admonition">
+<p class="admonition-title">Clicker question “mosquitoes 1” (<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
+<p>What will be the value of n_mosquitoes after executing this code after having run the cell above?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_mosquitoes</span> <span class="o">=</span> <span class="n">n_alice_mosquitoes</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_mosquitoes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<p>What is going on here?</p>
+<p>In the above expression, <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span> <span class="pre">+</span> <span class="pre">10</span></code>, python sees the variable name, <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code>, and looks up it’s value, <code class="docutils literal notranslate"><span class="pre">1</span></code> This works since we have created and assigned a value to <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> in the previous cell.</p>
+<p>Python then replaces the name <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> with the value <code class="docutils literal notranslate"><span class="pre">1</span></code> and performs the computation (it evaluates the expression).</p>
+<p><code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span> <span class="pre">+</span> <span class="pre">10</span></code> is evaluated as <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">10</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">n_mosquitoes</span> <span class="pre">=</span> <span class="pre">n_alice_mosquitoes</span> <span class="pre">+</span> <span class="pre">10</span></code> means that the result of the operation, the value <code class="docutils literal notranslate"><span class="pre">11</span></code>, is saved in a new variable, with name <code class="docutils literal notranslate"><span class="pre">n_mosquitoes</span></code>.</p>
+<p>Note that above we exploited that what you do in one cell transfers to the next:</p>
+<ul class="simple">
+<li><p>we defined <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> in one cell</p></li>
+<li><p>and used it in a computation in the next cell</p></li>
+</ul>
+</div>
+<div class="admonition-clicker-question-mosquitoes-2-click-me-https-go-uos-de-kjcbv admonition">
+<p class="admonition-title">Clicker question “mosquitoes 2” (<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
+<p>What will be the value of n_mosquitoes after executing this code after having run the first and second cells above?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_mosquitoes</span> <span class="o">=</span> <span class="n">n_tim_mosquitoes</span> <span class="o">+</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_mosquitoes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="toggle docutils container">
+<p>This will throw an error, as we cannot use a variable we have not defined before: Python does not know what <code class="docutils literal notranslate"><span class="pre">n_tim_mosquitoes</span></code> refers to!</p>
+</div>
+<p>The fact that we can re-use variables across cells allows us to successively build up our analysis code, cell by cell.</p>
+</section>
+<section id="spike-detection-with-python">
+<h2>Spike detection with python<a class="headerlink" href="#spike-detection-with-python" title="Link to this heading">#</a></h2>
 <p><img alt="" src="../../_images/voltage_trace.png" /></p>
 <ul class="contains-task-list simple">
 <li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Present data in code (individual voltage values, manipulate them and store the results) - variables</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Compare variables (voltage to threshold) - boolean operations</strong></p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <strong>Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements</strong></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Compare variables (voltage to threshold) - boolean values</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Present and access data in a time series of voltage values - lists</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Perform an action for each element in a sequence of values (inspect voltage values one-by-one) - for loops</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Separate data and logic so we can use the same code for new recordings - functions</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Apply this to multi data files</p></li>
 <li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Plot and save the results</p></li>
 </ul>
-</section>
-<section id="comparing-variables">
-<h2>Comparing variables<a class="headerlink" href="#comparing-variables" title="Link to this heading">#</a></h2>
-<p>Until now, we know how to add, subtract, multiply, and divide variables.</p>
-<p>However, to solve our spike detection problem, we need to compare values: We need to dermine whether the voltage exceeds the threshold!</p>
-<p>This is done using comparison operators:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> greater than</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> less than</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">==</span></code> equal (not to be confused with <code class="docutils literal notranslate"><span class="pre">=</span></code> which assigns values to variables)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> greater or equal</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> less or equal</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">voltage</span> <span class="o">=</span> <span class="o">-</span><span class="mi">40</span>
-<span class="n">threshold</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">voltage</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">voltage</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">voltage</span> <span class="o">==</span> <span class="n">threshold</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True False False
-</pre></div>
-</div>
-</div>
-</div>
-<p>The result of a comparison is not a number, but <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-<p>We call the resulting variables <em>boolean</em> variables after George Boole.</p>
-<div class="admonition-clicker-question-comparisons-click-me-https-go-uos-de-kjcbv admonition">
-<p class="admonition-title">Clicker question “comparisons”(<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
-<p>Let’s define two variables: <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">10;</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">20</span></code>. Which of these statements evaluate to True?</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">==</span> <span class="mi">10</span>
-<span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span>
-<span class="n">b</span> <span class="o">&lt;=</span> <span class="mi">20</span>
-<span class="n">b</span> <span class="o">&lt;</span> <span class="mi">20</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
-</pre></div>
-</div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<section id="combining-comparisons">
-<h3>Combining comparisons<a class="headerlink" href="#combining-comparisons" title="Link to this heading">#</a></h3>
-<p>We can combine different comparisons with <code class="docutils literal notranslate"><span class="pre">and</span></code> or <code class="docutils literal notranslate"><span class="pre">or</span></code>, like so:
-<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">10</span> <span class="pre">and</span> <span class="pre">a</span> <span class="pre">&lt;</span> <span class="pre">20</span></code>.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">and</span></code> returns True only if both comparisons are True</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">or</span></code> returns True if at least one of the two comparisons is True.</p></li>
-</ul>
-</section>
-</section>
-<section id="perform-different-actions-based-on-the-value-of-a-variable">
-<h2>Perform different actions based on the value of a variable<a class="headerlink" href="#perform-different-actions-based-on-the-value-of-a-variable" title="Link to this heading">#</a></h2>
-<p>Yay - we can now figure out whether our voltage exceeds the threshold!</p>
-<p>But that alone is pretty useless - we want to perform specific computations based on the outcome of this comparison, for instance, if the voltage value exceeds the threshold, then we want to print it’s time point.</p>
-<p>This can be done using so-called “if-else” statements. The basic logic of these statements is this: <code class="docutils literal notranslate"><span class="pre">if</span></code> EXPRESSION is True, then we do one thing, <code class="docutils literal notranslate"><span class="pre">else</span></code> we do something else:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_name</span> <span class="o">=</span> <span class="s1">&#39;Anton&#39;</span>
-
-<span class="k">if</span> <span class="n">first_name</span> <span class="o">==</span> <span class="s1">&#39;Anton&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The first name is &quot;Anton&quot;.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The first name is NOT &quot;Anton&quot;.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The first name is &quot;Anton&quot;.
-</pre></div>
-</div>
-</div>
-</div>
-<p>A couple of new things:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> keywords. <code class="docutils literal notranslate"><span class="pre">if</span></code> is followed by the expression whos <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code> value determines what is done.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">:</span></code> - marks the end of a special statement like <code class="docutils literal notranslate"><span class="pre">if</span></code> or <code class="docutils literal notranslate"><span class="pre">else</span></code>.</p></li>
-<li><p>Indentation marks code blocks that are executed after each statement, based on the <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code> value of the expression after <code class="docutils literal notranslate"><span class="pre">if</span></code>.</p></li>
-</ul>
-<section id="what-s-going-on">
-<h3>What’s going on?<a class="headerlink" href="#what-s-going-on" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p>We create a variable with name <code class="docutils literal notranslate"><span class="pre">first_name</span></code> and value <code class="docutils literal notranslate"><span class="pre">Anton</span></code>.</p></li>
-<li><p>Python checks whether the value of the variable <code class="docutils literal notranslate"><span class="pre">first_name</span></code> equals (<code class="docutils literal notranslate"><span class="pre">==</span></code>) <code class="docutils literal notranslate"><span class="pre">Anton</span></code> (not to be confused with the <code class="docutils literal notranslate"><span class="pre">=</span></code> used for assigning values to variables).</p></li>
-<li><p>It does evalute to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first_name</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">first_name</span> <span class="o">==</span> <span class="s1">&#39;Anton&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Anton
-True
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="arabic simple" start="4">
-<li><p>Since the condition for the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the indented code block after <code class="docutils literal notranslate"><span class="pre">if</span></code> is executed. If the condition had evaluated to <code class="docutils literal notranslate"><span class="pre">False</span></code> the indented code block after <code class="docutils literal notranslate"><span class="pre">else</span></code> would have been executed.</p></li>
-</ol>
-<p>How about this?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_name</span> <span class="o">=</span> <span class="s1">&#39;Benton&#39;</span>
-<span class="k">if</span> <span class="n">first_name</span> <span class="o">==</span> <span class="s1">&#39;Anton&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First name starts with &quot;A&quot;.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No!
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="arabic simple">
-<li><p>We create a variable with name <code class="docutils literal notranslate"><span class="pre">first_name</span></code> and value <code class="docutils literal notranslate"><span class="pre">Benton</span></code>.</p></li>
-<li><p>Python checks whether the value of the variable <code class="docutils literal notranslate"><span class="pre">first_name</span></code> equals (<code class="docutils literal notranslate"><span class="pre">==</span></code>) <code class="docutils literal notranslate"><span class="pre">Anton</span></code></p></li>
-<li><p>It does not - it evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>:</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first_name</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">first_name</span> <span class="o">==</span> <span class="s1">&#39;Anton&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Benton
-False
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="arabic simple" start="4">
-<li><p>Since the condition for the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is <code class="docutils literal notranslate"><span class="pre">False</span></code>, the code block after <code class="docutils literal notranslate"><span class="pre">if</span></code> is <em>skipped</em>.</p></li>
-<li><p>Python moves to the <code class="docutils literal notranslate"><span class="pre">else</span></code> block and executes the indented code block.</p></li>
-</ol>
-<p>Multiple conditions can be checked by using <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements (short for “else if”). Note, that the order of comparisons matters - python will only execute the first matching statement and skip the rest.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Benton&#39;</span>
-<span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Anton&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Name starts with &quot;A&quot;.&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Benton&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Name starts with &quot;B&quot;.&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Canton&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Name starts with &quot;C&quot;.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name starts with &quot;B&quot;.
-</pre></div>
-</div>
-</div>
-</div>
-<p>Lastly, the <code class="docutils literal notranslate"><span class="pre">else</span></code> statement is optional. You can use <code class="docutils literal notranslate"><span class="pre">if</span></code> without the <code class="docutils literal notranslate"><span class="pre">else</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today</span> <span class="o">=</span> <span class="s2">&quot;Monday&quot;</span>
-<span class="k">if</span> <span class="n">today</span> <span class="o">==</span> <span class="s2">&quot;Monday&quot;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I hate Mondays!&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I hate Mondays!
-</pre></div>
-</div>
-</div>
-</div>
-<div class="admonition-clicker-question-if-statements-click-me-https-go-uos-de-kjcbv admonition">
-<p class="admonition-title">Clicker question “if statements”(<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
-<p>What will be printed?</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">size</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="k">if</span> <span class="n">size</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;too big!&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">size</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;not too big!)</span>
-<span class="k">elif</span> <span class="n">size</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;perfect&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;no result&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="id1">
-<h2>What do we need to know to detect spikes using python?<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p><img alt="" src="../../_images/voltage_trace.png" /></p>
-<ul class="contains-task-list simple">
-<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <em>Present data in code (individual voltage values, manipulate them and store the results) - variables</em></p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <strong>Compare variables (voltage to threshold) - boolean values</strong></p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <strong>Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements</strong></p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Present and access data in a time series of voltage values - lists</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Perform an action for each element in a sequence of values (inspect voltage values one-by-one) - for loops</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Separate data and logic so we can use the same code for new recordings - functions</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Apply this to multi data files</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Plot and save the results</p></li>
-</ul>
-<p>The core computation of the spike detection problem is solved!! (You will put the individual steps together during the exercise.)</p>
-<p>Now we need to learn how to process the whole time series of voltage values!
-We could manually read the numbers from the text file and enter different values of the <code class="docutils literal notranslate"><span class="pre">voltage</span></code> variable but this would be tedious.</p>
-<p>So far all variables held single values - numbers or strings.
-How do we present sequences of numbers, like our time series of voltage values? And how do we work through a sequence and apply the spike detection to each individual value in the sequence?</p>
 </section>
 </section>
 
@@ -723,20 +688,20 @@ How do we present sequences of numbers, like our time series of voltage values? 
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="1.02_namespaces.html"
+       href="1.01_variables.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">The working memory (a.k.a namespace)</p>
+        <p class="prev-next-title">Variables</p>
       </div>
     </a>
     <a class="right-next"
-       href="1.03_lists.html"
+       href="1.02_conditionals.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lists</p>
+        <p class="prev-next-title">Conditionals</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -756,16 +721,11 @@ How do we present sequences of numbers, like our time series of voltage values? 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-need-to-know-to-detect-spikes-using-python">What do we need to know to detect spikes using python?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-variables">Comparing variables</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-comparisons">Combining comparisons</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-different-actions-based-on-the-value-of-a-variable">Perform different actions based on the value of a variable</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-going-on">What’s going on?</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">What do we need to know to detect spikes using python?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-variables">Manipulating variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-track-of-variables-and-their-values">Keeping track of variables and their values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messing-up-and-restoring-the-namespace">Messing up and restoring the namespace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-using-and-updating-variables-across-cells">Re-using and updating variables across cells</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-detection-with-python">Spike detection with python</a></li>
 </ul>
   </nav></div>
 

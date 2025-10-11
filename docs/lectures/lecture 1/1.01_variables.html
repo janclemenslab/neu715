@@ -9,20 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Variables &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
-
-
-
+  
+  
+  
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-
+  
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 <link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-
+  
   <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
@@ -62,35 +62,35 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture 1/1.01_variables';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Conditionals" href="1.02_conditionals.html" />
+    <link rel="next" title="The working memory (a.k.a namespace)" href="1.02_namespaces.html" />
     <link rel="prev" title="Intro to notebooks" href="1.00_notebooks.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
-
-
+  
+  
   <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-
-
+  
+  
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-
+  
   <div id="pst-scroll-pixel-helper"></div>
-
+  
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-
+  
   <input type="checkbox"
           class="sidebar-toggle"
           id="pst-primary-sidebar-checkbox"/>
   <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-
+  
   <input type="checkbox"
           class="sidebar-toggle"
           id="pst-secondary-sidebar-checkbox"/>
   <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-
+  
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
@@ -116,43 +116,43 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
-
+  
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
-
+  
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-
-
-
+      
+      
+      
       <div class="bd-sidebar-primary bd-sidebar">
+        
 
-
-
+  
   <div class="sidebar-header-items sidebar-primary__section">
-
-
-
-
+    
+    
+    
+    
   </div>
-
+  
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-
-
-
+  
+    
+  
 
 <a class="navbar-brand logo" href="../../intro.html">
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
     <p class="title logo__title">Neu715 - Neuroscientific Data Analysis using Python</p>
-
+  
 </a></div>
         <div class="sidebar-primary-item">
 
@@ -167,7 +167,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-
+        
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
@@ -179,6 +179,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1.00_notebooks.html">Using notebooks</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.02_namespaces.html">Working memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.02_conditionals.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.03_lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.04_loops_simple.html">Loops</a></li>
@@ -189,7 +190,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics - exercises</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.01_variables_exercises.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.01_variables_exercises.html">Variables and working memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.03_lists_exercises.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
@@ -241,39 +242,39 @@
     </div>
 </nav></div>
     </div>
-
-
+  
+  
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-
+  
   <div id="rtd-footer-container"></div>
 
 
       </div>
-
+      
       <main id="main-content" class="bd-main" role="main">
-
-
+        
+        
 
 <div class="sbt-scroll-pixel-helper"></div>
 
           <div class="bd-content">
             <div class="bd-article-container">
-
+              
               <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
-
+  
     <div class="header-article-items__start">
-
+      
         <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
 </button></div>
-
+      
     </div>
-
-
+  
+  
     <div class="header-article-items__end">
-
+      
         <div class="header-article-item">
 
 <div class="article-header-buttons">
@@ -287,42 +288,42 @@
     <i class="fas fa-rocket"></i>
   </button>
   <ul class="dropdown-menu">
-
-
-
+      
+      
+      
       <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/lectures/lecture 1/1.01_variables.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
-
+  
 
 <span class="btn__icon-container">
-
+  
     <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
 </li>
-
-
-
-
+      
+      
+      
+      
       <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/lectures/lecture 1/1.01_variables.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
-
+  
 
 <span class="btn__icon-container">
-
+  
     <img alt="Colab logo" src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
 </li>
-
+      
   </ul>
 </div>
 
@@ -336,15 +337,15 @@
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
-
-
-
+      
+      
+      
       <li><a href="../../_sources/lectures/lecture 1/1.01_variables.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
-
+  
 
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
@@ -352,17 +353,17 @@
 <span class="btn__text-container">.ipynb</span>
 </a>
 </li>
-
-
-
-
+      
+      
+      
+      
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
   title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
-
+  
 
 <span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
@@ -370,7 +371,7 @@
 <span class="btn__text-container">.pdf</span>
 </button>
 </li>
-
+      
   </ul>
 </div>
 
@@ -382,7 +383,7 @@
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
-
+  
 
 <span class="btn__icon-container">
   <i class="fas fa-expand"></i>
@@ -414,20 +415,20 @@ document.write(`
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
-
+      
     </div>
-
+  
 </div>
 </div>
-
-
+              
+              
 
 <div id="jb-print-docs-body" class="onlyprint">
     <h1>Variables</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
-
+            
             <div>
                 <h2> Contents </h2>
             </div>
@@ -435,19 +436,17 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-problem-as-motivation-spike-detection">A simple problem as motivation - spike detection</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-would-you-solve-this">How would you solve this?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-need-to-know-to-detect-spikes-using-python">What do we need to know to detect spikes using python?</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presenting-data-in-code">Presenting data in code</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-have-variables">Why have variables?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-abstract-away-specific-data-types-roles-from-the-specific-data-values">Variables abstract away specific data “types”/”roles” from the specific data values</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-firing-rates">Computing firing rates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-numerical-variables-arithmetics-on-numbers">Working with numerical variables - arithmetics on numbers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-text">Dealing with text</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#note-functions">Note: Functions</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-numerical-variables-arithmetics-on-numbers">Working with numerical variables - arithmetics on numbers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-variables">Manipulating variables</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-variables">Types of variables</a><ul class="nav section-nav flex-column">
@@ -457,11 +456,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#names-should-be-short-but-not-too-short-and-descriptive">Names should be short (but not too short) and descriptive</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-track-of-variables-and-their-values">Keeping track of variables and their values</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messing-up-and-restoring-the-namespace">Messing up and restoring the namespace</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#re-using-and-updating-variables">Re-using and updating variables</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-detection-with-python">Spike detection with python</a></li>
 </ul>
             </nav>
@@ -469,11 +463,11 @@ document.write(`
     </div>
 </div>
 
-
-
+              
+                
 <div id="searchbox"></div>
                 <article class="bd-article">
-
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="variables">
 <h1>Variables<a class="headerlink" href="#variables" title="Link to this heading">#</a></h1>
 <section id="a-simple-problem-as-motivation-spike-detection">
@@ -498,20 +492,15 @@ document.write(`
 <li></li>
 <li></li>
 </ol>
-</section>
-<section id="what-do-we-need-to-know-to-detect-spikes-using-python">
-<h3>What do we need to know to detect spikes using python?<a class="headerlink" href="#what-do-we-need-to-know-to-detect-spikes-using-python" title="Link to this heading">#</a></h3>
-<ul class="contains-task-list simple">
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Present data in code (individual voltage values, manipulate them and store the results) - variables</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Compare variables (voltage to threshold) - boolean values</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Present and access data in a time series of voltage values - lists</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Perform an action for each element in a sequence of values (inspect voltage values one-by-one) - for loops</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Separate data and logic so we can use the same code for new recordings - functions</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Apply this to multi data files</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Plot and save the results</p></li>
-</ul>
-</section>
+<!-- ### What do we need to know to detect spikes using python?
+- [ ] Present data in code (individual voltage values, manipulate them and store the results) - variables
+- [ ] Compare variables (voltage to threshold) - boolean values
+- [ ] Perform different actions based on the value of a variable (only keep the position if the voltage exceeds the threshold) - if-else statements
+- [ ] Present and access data in a time series of voltage values - lists
+- [ ] Perform an action for each element in a sequence of values (inspect voltage values one-by-one) - for loops
+- [ ] Separate data and logic so we can use the same code for new recordings - functions
+- [ ] Apply this to multi data files
+- [ ] Plot and save the results --></section>
 </section>
 <section id="presenting-data-in-code">
 <h2>Presenting data in code<a class="headerlink" href="#presenting-data-in-code" title="Link to this heading">#</a></h2>
@@ -603,7 +592,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">duration</span></code> in <code class="docutils literal notranslate"><span class="pre">132</span> <span class="pre">/</span> <span class="pre">duration</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">16</span></code>. The expression is now <code class="docutils literal notranslate"><span class="pre">132</span> <span class="pre">/</span> <span class="pre">16</span></code></p></li>
 <li><p>The computation is performed and the result, <code class="docutils literal notranslate"><span class="pre">8.25</span></code> assigned the variable <code class="docutils literal notranslate"><span class="pre">firing_rate</span></code>.</p></li>
 </ol>
-<div class="admonition-clicker-question-my-var-click-me-https-go-uos-de-0ypai admonition">
+<div class="admonition-clicker-question-my-var-click-me-https-go-uos-de-kjcbv admonition">
 <p class="admonition-title">Clicker question “my_var” (<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
 <p>What will be the value of x after executing this code?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_var</span> <span class="o">=</span> <span class="mi">2</span>
@@ -614,66 +603,6 @@ document.write(`
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-</section>
-<section id="dealing-with-text">
-<h3>Dealing with text<a class="headerlink" href="#dealing-with-text" title="Link to this heading">#</a></h3>
-<p>How about data that is not numeric, like names?</p>
-<p>Simply assigning letters to a variable does not work - this will throw an error:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_of_the_whale</span> <span class="o">=</span> <span class="n">Keiko</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">name_of_the_whale</span> <span class="o">=</span> <span class="n">Keiko</span>
-
-<span class="ne">NameError</span>: name &#39;Keiko&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
-<p>This is because letters and words are interpreted as variable names.
-In the above example, python assumes that Keiko is a variable and looks up the value of the <code class="docutils literal notranslate"><span class="pre">Keiko</span></code> variable, but a variable with the name <code class="docutils literal notranslate"><span class="pre">Keiko</span></code> does not exist! Hence the <code class="docutils literal notranslate"><span class="pre">NameError</span></code></p>
-<p>To tell python that the value of your variable is text, we wrap it in <code class="docutils literal notranslate"><span class="pre">'...'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;...&quot;</span></code>.
-Variables with text as values are called <em>strings</em>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_of_the_whale</span> <span class="o">=</span> <span class="s1">&#39;Keiko&#39;</span>
-<span class="n">speed</span> <span class="o">=</span> <span class="s2">&quot;Mach 2&quot;</span>
-<span class="n">year</span> <span class="o">=</span> <span class="s2">&quot;1968&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Note on errors</strong> When you write “invalid” code, python does not make your computer crash, but generates an error with a (sometimes cryptic) description of the cause of the error. In many programming languages, errors are often called <em>exceptions</em>.</p>
-<section id="note-functions">
-<h4>Note: Functions<a class="headerlink" href="#note-functions" title="Link to this heading">#</a></h4>
-<p>To print the value of variables in the notebook, we relied on jupyter’s functionality of printing the result of the last line in a cell.
-To print the value of variables whenever you want, you can use <code class="docutils literal notranslate"><span class="pre">print</span></code>, which is something new: a <strong>function</strong>.
-More about functions (and how to write them yourself) later - they are a great way of structuring and reusing your code and hiding away complexity.</p>
-<p>For now, you only need to know this:</p>
-<ul class="simple">
-<li><p>To print the value of a variable put the variable name in parentheses after <code class="docutils literal notranslate"><span class="pre">print</span></code>: <code class="docutils literal notranslate"><span class="pre">print(variable_name)</span></code>.</p></li>
-<li><p>To print the value of multiple variables, separate them by commas: <code class="docutils literal notranslate"><span class="pre">print(variable_name1,</span> <span class="pre">variable_name2)</span></code>.</p></li>
-<li><p>You can also print text directly, for instance, to combine descriptive text with printing a variable: <code class="docutils literal notranslate"><span class="pre">print(&quot;This</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">aptly</span> <span class="pre">named</span> <span class="pre">variable</span> <span class="pre">'variable_name1'</span> <span class="pre">is&quot;,</span> <span class="pre">variable_name1)</span></code></p></li>
-</ul>
-<!--
-- The general form of a function is `output = function_name(input)`. Print does not produce an explicit output, all it does is print its input.
-- In python, the input is called the _argument_, the output is called the _return value_.
-- Like many functions, `print` accepts multiple arguments. Multiple arguments are separated by commas: `print(arg1, arg2)`.
-- Using a function is also termed "to call a function".
-
-So, to print the value of a variable: `print(variable_name)`.
-
-To print the value of multiple variables: `print(variable_name1, variable_name2)`.
-
-You can get help about how to use a function use a quotation mark: `function_name?`. The result may be very technical. Google is your friend!
--->
-</section>
 </section>
 <section id="working-with-numerical-variables-arithmetics-on-numbers">
 <h3>Working with numerical variables - arithmetics on numbers<a class="headerlink" href="#working-with-numerical-variables-arithmetics-on-numbers" title="Link to this heading">#</a></h3>
@@ -743,27 +672,70 @@ Plus some weird stuff that we will ignore for now:
 </div>
 </div>
 </section>
-<section id="manipulating-variables">
-<h3>Manipulating variables<a class="headerlink" href="#manipulating-variables" title="Link to this heading">#</a></h3>
-<p>With that we can create and manipulate variables, and print intermediate results.</p>
-<div class="admonition-clicker-question-cdcc-click-me-https-go-uos-de-0ypai admonition">
-<p class="admonition-title">Clicker question “cdcc” (<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
-<p>The code below will print four numbers. Can you predict what will be printed?</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-
-<span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">5</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">8</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<section id="dealing-with-text">
+<h3>Dealing with text<a class="headerlink" href="#dealing-with-text" title="Link to this heading">#</a></h3>
+<p>How about data that is not numeric, like names?</p>
+<p>Simply assigning letters to a variable does not work - this will throw an error:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_of_the_whale</span> <span class="o">=</span> <span class="n">Keiko</span>
 </pre></div>
 </div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">name_of_the_whale</span> <span class="o">=</span> <span class="n">Keiko</span>
+
+
+
+<span class="ne">NameError</span>: name &#39;Keiko&#39; is not defined
 </pre></div>
 </div>
+</div>
+</div>
+<p>This is because letters and words are interpreted as variable names.
+In the above example, python assumes that Keiko is a variable and looks up the value of the <code class="docutils literal notranslate"><span class="pre">Keiko</span></code> variable, but a variable with the name <code class="docutils literal notranslate"><span class="pre">Keiko</span></code> does not exist! Hence the <code class="docutils literal notranslate"><span class="pre">NameError</span></code></p>
+<p>To tell python that the value of your variable is text, we wrap it in <code class="docutils literal notranslate"><span class="pre">'...'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;...&quot;</span></code>.
+Variables with text as values are called <em>strings</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_of_the_whale</span> <span class="o">=</span> <span class="s1">&#39;Keiko&#39;</span>
+<span class="n">speed</span> <span class="o">=</span> <span class="s2">&quot;Mach 2&quot;</span>
+<span class="n">year</span> <span class="o">=</span> <span class="s2">&quot;1968&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note on errors:</strong> When you write “invalid” code, python does not make your computer crash, but generates an error with a (sometimes cryptic) description of the cause of the error. In many programming languages, errors are often called <em>exceptions</em>.</p>
+<section id="note-functions">
+<h4>Note: Functions<a class="headerlink" href="#note-functions" title="Link to this heading">#</a></h4>
+<p>To print the value of variables in the notebook, we relied on jupyter’s functionality of printing the result of the last line in a cell.
+To print the value of variables whenever you want, you can use <code class="docutils literal notranslate"><span class="pre">print</span></code>, which is something new: a <strong>function</strong>.
+More about functions (and how to write them yourself) later - they are a great way of structuring and reusing your code and hiding away complexity.</p>
+<p>For now, you only need to know this:</p>
+<ul class="simple">
+<li><p>To print the value of a variable put the variable name in parentheses after <code class="docutils literal notranslate"><span class="pre">print</span></code>: <code class="docutils literal notranslate"><span class="pre">print(variable_name)</span></code>.</p></li>
+<li><p>To print the value of multiple variables, separate them by commas: <code class="docutils literal notranslate"><span class="pre">print(variable_name1,</span> <span class="pre">variable_name2)</span></code>.</p></li>
+<li><p>You can also print text directly, for instance, to combine descriptive text with printing a variable: <code class="docutils literal notranslate"><span class="pre">print(&quot;This</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">aptly</span> <span class="pre">named</span> <span class="pre">variable</span> <span class="pre">'variable_name1'</span> <span class="pre">is&quot;,</span> <span class="pre">variable_name1)</span></code></p></li>
+</ul>
+<!-- 
+- The general form of a function is `output = function_name(input)`. Print does not produce an explicit output, all it does is print its input.
+- In python, the input is called the _argument_, the output is called the _return value_.
+- Like many functions, `print` accepts multiple arguments. Multiple arguments are separated by commas: `print(arg1, arg2)`.
+- Using a function is also termed "to call a function".
+
+So, to print the value of a variable: `print(variable_name)`.
+
+To print the value of multiple variables: `print(variable_name1, variable_name2)`. 
+
+You can get help about how to use a function use a quotation mark: `function_name?`. The result may be very technical. Google is your friend!
+-->
+</section>
 </section>
 </section>
 <section id="types-of-variables">
@@ -1013,194 +985,6 @@ bool() = False
 </div>
 </section>
 </section>
-<section id="keeping-track-of-variables-and-their-values">
-<h2>Keeping track of variables and their values<a class="headerlink" href="#keeping-track-of-variables-and-their-values" title="Link to this heading">#</a></h2>
-<p>How do you keep track of variables and their values? The <em>kernel</em> is the thing that executes your code. It also stores your <em>namespace</em> - all variables and code that you have executed so far and that are stored in your computer memory.</p>
-<p>If you re-run your code cells out of order, it may be hard to know what’s in your namespace. In that case, you can clear and re-launch the kernel, to start from scratch, with a clean namespace. This will erase any variables stored in memory and reset python to its original state.</p>
-<p>You can list the contents of your namespace with <code class="docutils literal notranslate"><span class="pre">%whos</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">whos</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable                                      Type     Data/Info
-----------------------------------------------------------------
-a                                             int      1
-age_as_number                                 int      10
-age_as_str                                    str      10 0
-b                                             str      12.4
-b_as_str                                      str      12.4
-b_cast_to_float                               float    12.4
-concentration                                 float    0.1
-cool_variable                                 int      10
-duration                                      int      16
-firing_rate                                   float    8.25
-n_spikes                                      int      132
-name_of_the_first_subject_on_monday_morning   str      Thelonious
-name_of_the_whale                             str      Keiko
-password_123                                  str      bad
-speed                                         str      Mach 2
-subject_name                                  str      Mabel
-year                                          str      1968
-</pre></div>
-</div>
-</div>
-</div>
-<section id="messing-up-and-restoring-the-namespace">
-<h3>Messing up and restoring the namespace<a class="headerlink" href="#messing-up-and-restoring-the-namespace" title="Link to this heading">#</a></h3>
-<p>It is surprisingly easy to mess up you namespace. For instance, you can “overwrite” function names with variables in python.</p>
-<p>Remember the print function? Let’s create a variable named <code class="docutils literal notranslate"><span class="pre">print</span></code> and assign a value to it:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="o">=</span> <span class="s1">&#39;no, never do this!&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now let’s print the value of the <code class="docutils literal notranslate"><span class="pre">print</span></code> variable:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: &#39;str&#39; object is not callable
-</pre></div>
-</div>
-</div>
-</div>
-<p>That fails, as does</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: &#39;str&#39; object is not callable
-</pre></div>
-</div>
-</div>
-</div>
-<div class="admonition-clicker-question-namespace-click-me-https-go-uos-de-0ypai admonition">
-<p class="admonition-title">Clicker question “namespace”(<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
-<p>What do you do now?</p>
-</div>
-<p>Why is this happening? Let’s first inspect the namespace. This reveals that print is of type string now, and not a function.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">whos</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function print(*args, sep=&#39; &#39;, end=&#39;\n&#39;, file=None, flush=False)&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>After restarting the kernel, we will see that the type of print is now “builtin_function_or_method”:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">print</span><span class="p">))</span>  <span class="c1"># this will return &quot;builtin_function_or_method&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;builtin_function_or_method&#39;&gt;
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="re-using-and-updating-variables">
-<h3>Re-using and updating variables<a class="headerlink" href="#re-using-and-updating-variables" title="Link to this heading">#</a></h3>
-<p>Alice and Bob count mosquitoes. Alice, to store her count, creates a variable with name <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> and value <code class="docutils literal notranslate"><span class="pre">1</span></code> (she has counted only one mosquito so far).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_alice_mosquitoes</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># create a new variable `n_alice_mosquitoes` and assign the value 1 to `n_alice_mosquitoes`</span>
-<span class="c1"># n_alice_mosquitoes</span>
-<span class="o">%</span><span class="k">whos</span>
-
-<span class="n">n_mosquitoes</span> <span class="o">=</span> <span class="n">n_tim_mosquitoes</span> <span class="o">+</span> <span class="mi">20</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">n_mosquitoes</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable             Type    Data/Info
---------------------------------------
-n_alice_mosquitoes   int     1
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># n_alice_mosquitoes</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;whos&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">n_mosquitoes</span> <span class="o">=</span> <span class="n">n_tim_mosquitoes</span> <span class="o">+</span> <span class="mi">20</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="n">n_mosquitoes</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;n_tim_mosquitoes&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now she can perform a computation using <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code>.
-For instance, Bob has counted 10 more mosquitoes - so we add <code class="docutils literal notranslate"><span class="pre">10</span></code> to her own count and store the result in a new variable, <code class="docutils literal notranslate"><span class="pre">n_mosquitoes</span></code>, for the total count:</p>
-<div class="admonition-clicker-question-mosquitoes-1-click-me-https-go-uos-de-0ypai admonition">
-<p class="admonition-title">Clicker question “mosquitoes 1” (<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
-<p>What will be the value of n_mosquitoes after executing this code after having run the cell above?</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_mosquitoes</span> <span class="o">=</span> <span class="n">n_alice_mosquitoes</span> <span class="o">+</span> <span class="mi">10</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">n_mosquitoes</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="toggle docutils container">
-<p>What is going on here?</p>
-<p>In the above expression, <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span> <span class="pre">+</span> <span class="pre">10</span></code>, python sees the variable name, <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code>, and looks up it’s value, <code class="docutils literal notranslate"><span class="pre">1</span></code> This works since we have created and assigned a value to <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> in the previous cell.</p>
-<p>Python then replaces the name <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> with the value <code class="docutils literal notranslate"><span class="pre">1</span></code> and performs the computation (it evaluates the expression).</p>
-<p><code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span> <span class="pre">+</span> <span class="pre">10</span></code> is evaluated as <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">10</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">n_mosquitoes</span> <span class="pre">=</span> <span class="pre">n_alice_mosquitoes</span> <span class="pre">+</span> <span class="pre">10</span></code> means that the result of the operation, the value <code class="docutils literal notranslate"><span class="pre">11</span></code>, is saved in a new variable, with name <code class="docutils literal notranslate"><span class="pre">n_mosquitoes</span></code>.</p>
-<p>Note that above we exploited that what you do in one cell transfers to the next:</p>
-<ul class="simple">
-<li><p>we defined <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> in one cell</p></li>
-<li><p>and used it in a computation in the next cell</p></li>
-</ul>
-</div>
-<div class="admonition-clicker-question-mosquitoes-2-click-me-https-go-uos-de-0ypai admonition">
-<p class="admonition-title">Clicker question “mosquitoes 2” (<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
-<p>What will be the value of n_mosquitoes after executing this code after having run the first and second cells above?</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_mosquitoes</span> <span class="o">=</span> <span class="n">n_tim_mosquitoes</span> <span class="o">+</span> <span class="mi">20</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">n_mosquitoes</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="toggle docutils container">
-<p>This will throw an error, as we cannot use a variable we have not defined before: Python does not know what <code class="docutils literal notranslate"><span class="pre">n_tim_mosquitoes</span></code> refers to!</p>
-</div>
-<p>The fact that we can re-use variables across cells allows us to successively build up our analysis code, cell by cell.</p>
-</section>
-</section>
 <section id="spike-detection-with-python">
 <h2>Spike detection with python<a class="headerlink" href="#spike-detection-with-python" title="Link to this heading">#</a></h2>
 <p><img alt="" src="../../_images/voltage_trace.png" /></p>
@@ -1238,14 +1022,14 @@ For instance, Bob has counted 10 more mosquitoes - so we add <code class="docuti
     <script>kernelName = 'python3'</script>
 
                 </article>
+              
 
-
-
-
-
-
+              
+              
+              
+              
                 <footer class="prev-next-footer d-print-none">
-
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="1.00_notebooks.html"
@@ -1257,21 +1041,21 @@ For instance, Bob has counted 10 more mosquitoes - so we add <code class="docuti
       </div>
     </a>
     <a class="right-next"
-       href="1.02_conditionals.html"
+       href="1.02_namespaces.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Conditionals</p>
+        <p class="prev-next-title">The working memory (a.k.a namespace)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
-
+              
             </div>
-
-
-
+            
+            
+              
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
@@ -1283,19 +1067,17 @@ For instance, Bob has counted 10 more mosquitoes - so we add <code class="docuti
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-problem-as-motivation-spike-detection">A simple problem as motivation - spike detection</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-would-you-solve-this">How would you solve this?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-need-to-know-to-detect-spikes-using-python">What do we need to know to detect spikes using python?</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presenting-data-in-code">Presenting data in code</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-have-variables">Why have variables?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-abstract-away-specific-data-types-roles-from-the-specific-data-values">Variables abstract away specific data “types”/”roles” from the specific data values</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-firing-rates">Computing firing rates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-numerical-variables-arithmetics-on-numbers">Working with numerical variables - arithmetics on numbers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-text">Dealing with text</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#note-functions">Note: Functions</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-numerical-variables-arithmetics-on-numbers">Working with numerical variables - arithmetics on numbers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-variables">Manipulating variables</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-variables">Types of variables</a><ul class="nav section-nav flex-column">
@@ -1305,59 +1087,54 @@ For instance, Bob has counted 10 more mosquitoes - so we add <code class="docuti
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#names-should-be-short-but-not-too-short-and-descriptive">Names should be short (but not too short) and descriptive</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-track-of-variables-and-their-values">Keeping track of variables and their values</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messing-up-and-restoring-the-namespace">Messing up and restoring the namespace</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#re-using-and-updating-variables">Re-using and updating variables</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-detection-with-python">Spike detection with python</a></li>
 </ul>
   </nav></div>
 
 </div></div>
-
-
+              
+            
           </div>
           <footer class="bd-footer-content">
-
+            
 <div class="bd-footer-content__inner container">
-
+  
   <div class="footer-item">
-
+    
 <p class="component-author">
 By Jan Clemens
 </p>
 
   </div>
-
+  
   <div class="footer-item">
-
+    
 
   <p class="copyright">
-
+    
       © Copyright 2023.
       <br/>
-
+    
   </p>
 
   </div>
-
+  
   <div class="footer-item">
-
+    
   </div>
-
+  
   <div class="footer-item">
-
+    
   </div>
-
+  
 </div>
           </footer>
-
+        
 
       </main>
     </div>
   </div>
-
+  
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
