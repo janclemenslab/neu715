@@ -711,16 +711,13 @@ Variables with text as values are called <em>strings</em>.</p>
 </section>
 <section id="types-of-variables">
 <h2>Types of variables<a class="headerlink" href="#types-of-variables" title="Link to this heading">#</a></h2>
-<p>Variables come in different flavors - so far, we have encountered two kinds of variables: numbers and text.</p>
-<p>Kinds of variables are called <em>types</em>. These are the most important ones:</p>
+<p>Variables come in different flavors - so far, we have encountered three types of variables:</p>
 <ul class="simple">
 <li><p>integer numbers: <code class="docutils literal notranslate"><span class="pre">int</span></code> - number without a decimal point (1, 2, 103241)</p></li>
 <li><p>floating point numbers: <code class="docutils literal notranslate"><span class="pre">float</span></code> - number with a decimal point (3.141)</p></li>
-<li><p>(complex numbers - not covered here: <code class="docutils literal notranslate"><span class="pre">complex</span></code>)</p></li>
 <li><p>string: <code class="docutils literal notranslate"><span class="pre">str</span></code>: sequence of characters (“yes”, ‘no’)</p></li>
-<li><p>boolean variables: <code class="docutils literal notranslate"><span class="pre">bool</span></code>- only two values: <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
 </ul>
-<p>These types of variables exist in almost any programming language!</p>
+<p>These types of variables exist in every programming language!</p>
 <section id="determining-the-type-of-variables">
 <h3>Determining the type of variables<a class="headerlink" href="#determining-the-type-of-variables" title="Link to this heading">#</a></h3>
 <p>Wrong variable types can be a source of errors in your code.</p>
@@ -775,20 +772,6 @@ Variables with text as values are called <em>strings</em>.</p>
 <p>You can turn a string to a number using <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code>. But this works only if the string variable contains only numerical data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_as_str</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span>
-<span class="n">age_as_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">age_as_str</span><span class="p">)</span>
-<span class="n">age_as_str</span><span class="p">,</span> <span class="n">age_as_int</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">age_as_str</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">age_as_int</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;10&#39;, 10, str, int)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;12.4&#39;</span>
 <span class="n">b_as_float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># cast a from a string to a floating point</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">b_as_float</span><span class="p">)</span>
@@ -797,6 +780,20 @@ Variables with text as values are called <em>strings</em>.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(str, float)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_as_str</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span>
+<span class="n">age_as_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">age_as_str</span><span class="p">)</span>
+<span class="n">age_as_str</span><span class="p">,</span> <span class="n">age_as_int</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">age_as_str</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">age_as_int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;10&#39;, 10, str, int)
 </pre></div>
 </div>
 </div>
