@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -594,7 +594,7 @@ after the loop
 <p>Running the code defining the function once will make it available anywhere in the notebook - it is added to the notebook’s namespace.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">argument1</span><span class="p">,</span> <span class="n">argument2</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">function_name</span><span class="p">(</span><span class="n">argument1</span><span class="p">,</span> <span class="n">argument2</span><span class="p">):</span>
     <span class="c1"># things to do with the arguments inside the function</span>
     <span class="n">calculated_values</span> <span class="o">=</span> <span class="n">argument1</span> <span class="o">+</span> <span class="n">argument2</span>
 
@@ -614,7 +614,7 @@ after the loop
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># function with zero arguments</span>
-<span class="k">def</span> <span class="nf">error</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">error</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ERRRRROOOOR&#39;</span><span class="p">)</span>
 
 <span class="n">error</span><span class="p">()</span>
@@ -630,7 +630,7 @@ after the loop
 <p>A function with three arguments:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_total</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">discount</span><span class="p">,</span> <span class="n">tax</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_total</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">discount</span><span class="p">,</span> <span class="n">tax</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the total cost after applying discount and tax.&quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Arguments </span><span class="si">{</span><span class="n">price</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">discount</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">tax</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># print the values of the arguments for illustration</span>
     <span class="n">price_after_discount</span> <span class="o">=</span> <span class="n">price</span> <span class="o">-</span> <span class="p">(</span><span class="n">price</span> <span class="o">*</span> <span class="n">discount</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
@@ -690,7 +690,7 @@ Arguments price=100, discount=19, tax=10
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if an argument is followed by a value in the function definition, that argument is now optional - if you omit it, it will have the default value given in the def statement.</span>
-<span class="k">def</span> <span class="nf">calculate_total</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tax</span><span class="o">=</span><span class="mi">19</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_total</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tax</span><span class="o">=</span><span class="mi">19</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the total cost after applying discount and tax.&quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Arguments </span><span class="si">{</span><span class="n">price</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">discount</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">tax</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># print the values of the arguments for illustration</span>
     <span class="n">price_after_discount</span> <span class="o">=</span> <span class="n">price</span> <span class="o">-</span> <span class="p">(</span><span class="n">price</span> <span class="o">*</span> <span class="n">discount</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
@@ -770,7 +770,7 @@ Arguments price=100, discount=20, tax=9
 <div class="admonition-clicker-question-functions-args-click-me-https-go-uos-de-kjcbv admonition">
 <p class="admonition-title">Clicker question “functions args”(<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
 <p>Let’s define the following function. Which of these statements work?</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
 
 <span class="n">my_fun</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -791,7 +791,7 @@ Arguments price=100, discount=20, tax=9
 <p>Anything can be an argument: floats, strings, int, lists, tuples, any other objects. The return statement is optional, too.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_name_and_age</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_name_and_age</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> was born </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years ago.&quot;</span><span class="p">)</span>
 
 <span class="n">print_name_and_age</span><span class="p">(</span><span class="s2">&quot;Tom&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
@@ -811,7 +811,7 @@ Arguments price=100, discount=20, tax=9
 <p>Functions without a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement or with a blank <code class="docutils literal notranslate"><span class="pre">return</span></code> statement do not return anything:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_name_and_age</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_name_and_age</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> was born </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years ago.&quot;</span><span class="p">)</span>
     <span class="c1"># functions with no return statement (or blank return statement) will return nothing</span>
 
@@ -843,7 +843,7 @@ None &lt;class &#39;NoneType&#39;&gt;
 <p>To return one or multiple variables from inside the function, add their names in the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement, with mutiple return values separated by a comma: <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">var1,</span> <span class="pre">var2</span></code>. You then “catch” the returned variables like so: <code class="docutils literal notranslate"><span class="pre">returned_var1,</span> <span class="pre">returned_var2</span> <span class="pre">=</span> <span class="pre">my_function()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_and_diff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sum_and_diff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="n">the_sum</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
     <span class="n">the_diff</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
     <span class="k">return</span> <span class="n">the_sum</span><span class="p">,</span> <span class="n">the_diff</span>  <span class="c1"># return two variables from inside the function</span>
@@ -862,7 +862,7 @@ None &lt;class &#39;NoneType&#39;&gt;
 <p>Why do we need to <code class="docutils literal notranslate"><span class="pre">return</span></code> variables from inside the function? It is because what you define inside a function is not accessible outside: all variables created inside functions are <em>local</em> variables for that function. To access these <em>local</em> variables outside of the function, you need to return them to the outside.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
     <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="c1"># inside the function we change the value of pi, but this is another pi</span>
     <span class="n">the_area</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span> <span class="c1"># We calculate the area using the pi inside the function</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi inside the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># we print the pi inside the function</span>
@@ -896,7 +896,7 @@ None &lt;class &#39;NoneType&#39;&gt;
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span><span class="o">=</span><span class="mf">4.3</span>  <span class="c1"># we define pi outside the function giving it a value</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi outside and before the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># we print the pi outside the function</span>
 
-<span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
     <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="c1"># inside the function we change the value of pi, but this is another pi</span>
     <span class="n">the_area</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span> <span class="c1"># We calculate the area using the pi inside the function</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi inside the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># we print the pi inside the function</span>
@@ -921,7 +921,7 @@ The value of pi outside and after the function is 4.3
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>
-<span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi inside the function is </span><span class="si">{</span><span class="n">pi</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># we print the pi inside the function</span>
     <span class="n">area</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span> <span class="c1"># because we are not defining any new pi inside the function, python searches the one outside the function</span>
     <span class="k">return</span> <span class="n">area</span>
@@ -943,7 +943,7 @@ The value of pi outside and after the function is 4.3
 <p class="admonition-title">Clicker question “functions scope”(<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
 <p>What is the value of x at the end of this code?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="k">def</span> <span class="nf">my_fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="n">d</span> <span class="o">=</span> <span class="mi">100</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span>
 
@@ -966,7 +966,7 @@ The value of pi outside and after the function is 4.3
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the mean of a list of numbers.</span>
 
 <span class="sd">    Args:</span>

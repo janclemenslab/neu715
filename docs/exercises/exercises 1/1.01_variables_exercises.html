@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Variables and working memory &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Variables and notebook memory &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -424,7 +424,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Variables and working memory</h1>
+    <h1>Variables and notebook memory</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -448,11 +448,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-the-last-error-above-using-type-casting">Fix the last error above using type casting</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-keeping-track-of-and-re-using-variables">Exercise 4: Keeping track of and re-using variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-keeping-track-of-and-re-using-variables">Exercise 5: Keeping track of and re-using variables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-the-value-of-x-at-end-of-the-program-below">What’s the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> at end of the program below?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-the-value-of-c-if-we-run-the-code-below-what-is-the-value-of-c-if-we-run-below-code-a-second-time">What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code below? What is the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run below code a second time?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#again-what-s-the-value-of-c-if-we-run-the-code-below-once-what-is-the-value-of-c-if-we-run-the-code-a-second-time">Again: What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code below once? What is the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code a second time?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-the-value-of-c-in-the-below-code">What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> in the below code?</a></li>
 </ul>
 </li>
 </ul>
@@ -466,8 +465,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="variables-and-working-memory">
-<h1>Variables and working memory<a class="headerlink" href="#variables-and-working-memory" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="variables-and-notebook-memory">
+<h1>Variables and notebook memory<a class="headerlink" href="#variables-and-notebook-memory" title="Link to this heading">#</a></h1>
 <section id="how-do-i-use-the-exercises">
 <h2>How do I use the Exercises?<a class="headerlink" href="#how-do-i-use-the-exercises" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
@@ -643,28 +642,13 @@ Make your code efficient by re-using already calculated results.</p>
 <li><p>to an integer number via the <code class="docutils literal notranslate"><span class="pre">int</span></code> function,</p></li>
 <li><p>to a floating point number via the <code class="docutils literal notranslate"><span class="pre">float</span></code> function.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&quot;str&quot; turns a variable into a string&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="mf">10.0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&quot;int&quot; turns a variable into an integer number&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;10&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&quot;float&quot; turns a variable into an floating point number&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;10.0&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;str&quot; turns a variable into a string 10.0
-&quot;int&quot; turns a variable into an integer number 10
-&quot;float&quot; turns a variable into an floating point number 10.0
-</pre></div>
-</div>
-</div>
-</div>
-<p>Fix below code by casting the variables</p>
+<p>Fix below code by casting the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code></p>
 <ol class="arabic simple">
 <li><p>to text using <code class="docutils literal notranslate"><span class="pre">str()</span></code> and</p></li>
 <li><p>to numbers using <code class="docutils literal notranslate"><span class="pre">float()</span></code> or <code class="docutils literal notranslate"><span class="pre">int()</span></code></p></li>
 </ol>
 <p>Remember, functions are used via their name, followed by the input argument in parentheses: <code class="docutils literal notranslate"><span class="pre">output</span> <span class="pre">=</span> <span class="pre">function(input)</span></code></p>
+<p>Can you explain the result you get when casting both variables to string?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># FIXME!</span>
@@ -677,7 +661,7 @@ Make your code efficient by re-using already calculated results.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;20&#39;</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
@@ -689,8 +673,8 @@ Make your code efficient by re-using already calculated results.</p>
 </div>
 </section>
 </section>
-<section id="exercise-4-keeping-track-of-and-re-using-variables">
-<h2>Exercise 4: Keeping track of and re-using variables<a class="headerlink" href="#exercise-4-keeping-track-of-and-re-using-variables" title="Link to this heading">#</a></h2>
+<section id="exercise-5-keeping-track-of-and-re-using-variables">
+<h2>Exercise 5: Keeping track of and re-using variables<a class="headerlink" href="#exercise-5-keeping-track-of-and-re-using-variables" title="Link to this heading">#</a></h2>
 <p>Since all cells in your notebook share the same namespace, you can re-use variables that you have created in another cell.
 This allows you to split your computation into multiple cells.</p>
 <p><strong>Caution</strong>: This re-use can have unexpected consequences if you run the same cell multiple times while coding or if you run your cells out of order.</p>
@@ -710,7 +694,9 @@ This allows you to split your computation into multiple cells.</p>
 </section>
 <section id="what-s-the-value-of-c-if-we-run-the-code-below-what-is-the-value-of-c-if-we-run-below-code-a-second-time">
 <h3>What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code below? What is the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run below code a second time?<a class="headerlink" href="#what-s-the-value-of-c-if-we-run-the-code-below-what-is-the-value-of-c-if-we-run-below-code-a-second-time" title="Link to this heading">#</a></h3>
-<p>Try to predict what will happen before you run the code. Was your prediction you correct?</p>
+<p>Try to predict the result without running the code first.
+Then test your prediction by running the code.</p>
+<p>Was your prediction you correct?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
@@ -723,24 +709,13 @@ This allows you to split your computation into multiple cells.</p>
 </section>
 <section id="again-what-s-the-value-of-c-if-we-run-the-code-below-once-what-is-the-value-of-c-if-we-run-the-code-a-second-time">
 <h3>Again: What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code below once? What is the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code a second time?<a class="headerlink" href="#again-what-s-the-value-of-c-if-we-run-the-code-below-once-what-is-the-value-of-c-if-we-run-the-code-a-second-time" title="Link to this heading">#</a></h3>
-<p>Predict what will happen without running the code (you need to have run the cell above before). Explain why.</p>
+<p>After you’ve run the code above, try to predict the result of the code below.
+Then test your prediction by running the code.</p>
+<p>Why is the result different from runing the code above?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">5</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">8</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="what-s-the-value-of-c-in-the-below-code">
-<h3>What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> in the below code?<a class="headerlink" href="#what-s-the-value-of-c-in-the-below-code" title="Link to this heading">#</a></h3>
-<p>Why is it not <code class="docutils literal notranslate"><span class="pre">16</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">=</span> <span class="pre">20</span></code>?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">16</span>
-<span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">2</span>
-<span class="n">c</span> <span class="o">+</span> <span class="mi">4</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -827,11 +802,10 @@ This allows you to split your computation into multiple cells.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fix-the-last-error-above-using-type-casting">Fix the last error above using type casting</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-keeping-track-of-and-re-using-variables">Exercise 4: Keeping track of and re-using variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-keeping-track-of-and-re-using-variables">Exercise 5: Keeping track of and re-using variables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-the-value-of-x-at-end-of-the-program-below">What’s the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> at end of the program below?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-the-value-of-c-if-we-run-the-code-below-what-is-the-value-of-c-if-we-run-below-code-a-second-time">What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code below? What is the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run below code a second time?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#again-what-s-the-value-of-c-if-we-run-the-code-below-once-what-is-the-value-of-c-if-we-run-the-code-a-second-time">Again: What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code below once? What is the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> if we run the code a second time?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-the-value-of-c-in-the-below-code">What’s the value of <code class="docutils literal notranslate"><span class="pre">c</span></code> in the below code?</a></li>
 </ul>
 </li>
 </ul>

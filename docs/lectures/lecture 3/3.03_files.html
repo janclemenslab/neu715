@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -490,7 +490,7 @@ document.write(`
 <p>We can use numpy or the <a class="reference external" href="https://pandas.pydata.org">pandas library</a> for loading and saving data. Numpy and pandas are numerical computation packages, and come with function for data IO.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/mouse1.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -512,7 +512,7 @@ document.write(`
 
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">67</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/mouse1.txt&#39;</span><span class="p">)</span>
 
@@ -609,7 +609,7 @@ document.write(`
 <p><strong>Caution:</strong> Depending on the format of the excel file, you may need to install an additional package (‘xlrd’) to be able to load the file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">excel_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/mouse_data.xls&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Mouse1&quot;</span><span class="p">)</span>
 <span class="n">excel_data</span>
 </pre></div>
@@ -757,7 +757,7 @@ document.write(`
 <p>You can save a single variable using the <code class="docutils literal notranslate"><span class="pre">np.save</span></code>. The resulting file should have the extension <code class="docutils literal notranslate"><span class="pre">npy</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;saved_single_variable.npy&#39;</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
@@ -849,7 +849,7 @@ To do that we need to find a way to find out what files are on our computer and 
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/*&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find all files and directories in the experiments directory</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/*.txt&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find files ending in &#39;.txt&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;experiments/i*.txt&#39;</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># find files and directories in &#39;experiments&#39;, starting with &#39;i&#39;, and ending in &#39;.txt&#39;</span>
@@ -884,7 +884,7 @@ glob(&#39;experiments/*/*.txt&#39;)=[&#39;experiments/experiment_1/initial_behav
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os.path</span>
 <span class="n">my_path</span> <span class="o">=</span> <span class="s1">&#39;parentdir/subdir/name.txt&#39;</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">my_path</span><span class="p">)</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>The working memory (a.k.a namespace) &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>The memory of your notebook (a.k.a namespace) &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -422,7 +422,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>The working memory (a.k.a namespace)</h1>
+    <h1>The memory of your notebook (a.k.a namespace)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -432,10 +432,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-variables">Manipulating variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-variables">Updating variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-track-of-variables-and-their-values">Keeping track of variables and their values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messing-up-and-restoring-the-namespace">Messing up and restoring the namespace</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-using-and-updating-variables-across-cells">Re-using and updating variables across cells</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messing-up-and-restoring-the-namespace">Messing up and restoring the namespace</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-detection-with-python">Spike detection with python</a></li>
 </ul>
             </nav>
@@ -448,34 +448,69 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="the-working-memory-a-k-a-namespace">
-<h1>The working memory (a.k.a namespace)<a class="headerlink" href="#the-working-memory-a-k-a-namespace" title="Link to this heading">#</a></h1>
-<section id="manipulating-variables">
-<h2>Manipulating variables<a class="headerlink" href="#manipulating-variables" title="Link to this heading">#</a></h2>
-<div class="admonition-clicker-question-cdcc-click-me-https-go-uos-de-kjcbv admonition">
-<p class="admonition-title">Clicker question “cdcc” (<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
-<p>The code below will print four numbers. Can you predict what will be printed?</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-
-<span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">5</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">8</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="the-memory-of-your-notebook-a-k-a-namespace">
+<h1>The memory of your notebook (a.k.a namespace)<a class="headerlink" href="#the-memory-of-your-notebook-a-k-a-namespace" title="Link to this heading">#</a></h1>
+<p>Why does the code below produce an error?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_variable</span>
 </pre></div>
 </div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">my_variable</span>
+
+<span class="ne">NameError</span>: name &#39;my_variable&#39; is not defined
 </pre></div>
+</div>
+</div>
+</div>
+<p>Why does that code work?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_variable</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">my_variable</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now go back and run the first cell containing only (<code class="docutils literal notranslate"><span class="pre">my_variable</span></code>).</p>
+<p>Why is the result different from the first time you ran it?</p>
+<section id="updating-variables">
+<h2>Updating variables<a class="headerlink" href="#updating-variables" title="Link to this heading">#</a></h2>
+<p>Since the notebook remembers all commands you ran since the notebook was started,
+you can update variables across different cells. The fact that we can re-use variables across cells allows us to successively build up our analysis code, cell by cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="c1"># What&#39;s the value of b?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">100</span>
+<span class="c1"># What&#39;s the value of b now?</span>
+<span class="c1"># What is the value of b when I run this cell a second time?</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="keeping-track-of-variables-and-their-values">
 <h2>Keeping track of variables and their values<a class="headerlink" href="#keeping-track-of-variables-and-their-values" title="Link to this heading">#</a></h2>
-<p>How do you keep track of variables and their values? The <em>kernel</em> is the thing that executes your code. It also stores your <em>namespace</em> - all variables and code that you have executed so far and that are stored in your computer memory.</p>
-<p>If you re-run your code cells out of order, it may be hard to know what’s in your namespace. In that case, you can clear and re-launch the kernel, to start from scratch, with a clean namespace. This will erase any variables stored in memory and reset python to its original state.</p>
-<p>You can list the contents of your namespace with <code class="docutils literal notranslate"><span class="pre">%whos</span></code>:</p>
+<p>It can be hard to keep track of the notebooks memory after a while.
+To help, you can list the contents of your namespace with <code class="docutils literal notranslate"><span class="pre">%whos</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">whos</span>
@@ -483,111 +518,24 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Interactive namespace is empty.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable   Type    Data/Info
+----------------------------
+a          int     60
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="messing-up-and-restoring-the-namespace">
-<h2>Messing up and restoring the namespace<a class="headerlink" href="#messing-up-and-restoring-the-namespace" title="Link to this heading">#</a></h2>
-<p>The namespace contains not only all variables you’ve created and manipulated, but also all functions.
-It is therefore surprisingly easy to mess up you namespace. For instance, you can “overwrite” function names with variables in python.</p>
-<p>Remember the print function? Let’s create a variable named <code class="docutils literal notranslate"><span class="pre">print</span></code> and assign a value to it:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="o">=</span> <span class="s1">&#39;no, never do this!&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now let’s print the value of the <code class="docutils literal notranslate"><span class="pre">print</span></code> variable:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: &#39;str&#39; object is not callable
-</pre></div>
-</div>
-</div>
-</div>
-<p>That fails, as does</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: &#39;str&#39; object is not callable
-</pre></div>
-</div>
-</div>
-</div>
-<p>That’s because in the namespace of the current notebook, we have overwritten the function <code class="docutils literal notranslate"><span class="pre">print</span></code> with a string variable of the same name.</p>
-<p>Why is this happening? Let’s first inspect the namespace. This confirms that print is of type string now, and not a function.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>builtin_function_or_method
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">whos</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Interactive namespace is empty.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="admonition-clicker-question-namespace-click-me-https-go-uos-de-kjcbv admonition">
-<p class="admonition-title">Clicker question “namespace”(<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
-<p>What do you do now?</p>
-</div>
-<p>After restarting the kernel, we will see that the type of print is now “builtin_function_or_method”:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>  <span class="c1"># this will return &quot;builtin_function_or_method&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>builtin_function_or_method
-</pre></div>
-</div>
-</div>
-</div>
+<p>The “memory” of the notebook is also called <em>namespace</em>.
+It contains all variables and code that you have executed since starting the notebook.</p>
+<p>To wipe the memory, you can restart the notebook (technically, the <em>kernel</em> that runs your notebooks in the background). This will erase any variables and code stored in memory and you start from scratch, with a clean namespace.</p>
 </section>
 <section id="re-using-and-updating-variables-across-cells">
 <h2>Re-using and updating variables across cells<a class="headerlink" href="#re-using-and-updating-variables-across-cells" title="Link to this heading">#</a></h2>
-<p>Not that the order of <strong>execution</strong> matters, not order in which cells appear in the notebook!</p>
+<p>Not that the order of <strong>execution</strong> matters, not the order in which cells appear in the notebook!</p>
 <p>Alice and Bob count mosquitoes. Alice, to store her count, creates a variable with name <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code> and value <code class="docutils literal notranslate"><span class="pre">1</span></code> (she has counted only one mosquito so far).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_alice_mosquitoes</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># create a new variable `n_alice_mosquitoes` and assign the value 1 to `n_alice_mosquitoes`</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_alice_mosquitoes</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="o">%</span><span class="k">whos</span>
 </pre></div>
 </div>
@@ -595,18 +543,16 @@ It is therefore surprisingly easy to mess up you namespace. For instance, you ca
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable             Type    Data/Info
 --------------------------------------
+a                    int     60
 n_alice_mosquitoes   int     1
 </pre></div>
 </div>
 </div>
 </div>
-<p>Now she can perform a computation using <code class="docutils literal notranslate"><span class="pre">n_alice_mosquitoes</span></code>.
-For instance, Bob has counted 10 more mosquitoes - so we add <code class="docutils literal notranslate"><span class="pre">10</span></code> to her own count and store the result in a new variable, <code class="docutils literal notranslate"><span class="pre">n_mosquitoes</span></code>, for the total count:</p>
 <div class="admonition-clicker-question-mosquitoes-1-click-me-https-go-uos-de-kjcbv admonition">
 <p class="admonition-title">Clicker question “mosquitoes 1” (<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
-<p>What will be the value of n_mosquitoes after executing this code after having run the cell above?</p>
+<p>What will be the value of n_mosquitoes after running the cell above?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_mosquitoes</span> <span class="o">=</span> <span class="n">n_alice_mosquitoes</span> <span class="o">+</span> <span class="mi">10</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">n_mosquitoes</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -629,7 +575,6 @@ For instance, Bob has counted 10 more mosquitoes - so we add <code class="docuti
 <p class="admonition-title">Clicker question “mosquitoes 2” (<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
 <p>What will be the value of n_mosquitoes after executing this code after having run the first and second cells above?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_mosquitoes</span> <span class="o">=</span> <span class="n">n_tim_mosquitoes</span> <span class="o">+</span> <span class="mi">20</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">n_mosquitoes</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -639,7 +584,137 @@ For instance, Bob has counted 10 more mosquitoes - so we add <code class="docuti
 <div class="toggle docutils container">
 <p>This will throw an error, as we cannot use a variable we have not defined before: Python does not know what <code class="docutils literal notranslate"><span class="pre">n_tim_mosquitoes</span></code> refers to!</p>
 </div>
-<p>The fact that we can re-use variables across cells allows us to successively build up our analysis code, cell by cell.</p>
+</section>
+<section id="messing-up-and-restoring-the-namespace">
+<h2>Messing up and restoring the namespace<a class="headerlink" href="#messing-up-and-restoring-the-namespace" title="Link to this heading">#</a></h2>
+<p>The namespace contains not only all variables you’ve created and manipulated, but also all functions.
+It is therefore surprisingly easy to mess up you namespace. For instance, you can “overwrite” function names with variables in python.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">print</span></code> allows you to print the value of a variable. That way, we can also print intermediate results in a cell, not just the last one:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">30</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
+60
+</pre></div>
+</div>
+</div>
+</div>
+<p>To illustrate how easy it is to mess up your namespace, let’s create a variable named <code class="docutils literal notranslate"><span class="pre">print</span></code> and assign a value to it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="o">=</span> <span class="s1">&#39;no, never do this!&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: &#39;str&#39; object is not callable
+</pre></div>
+</div>
+</div>
+</div>
+<p>That fails, as does</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: &#39;str&#39; object is not callable
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s because in the namespace of the current notebook, we have overwritten the function <code class="docutils literal notranslate"><span class="pre">print</span></code> with a string variable of the same name.</p>
+<p>Why is this happening? Let’s first inspect the namespace. This confirms that print is of type string now, and not a function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">whos</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable             Type    Data/Info
+--------------------------------------
+a                    int     60
+n_alice_mosquitoes   int     1
+print                str     no, never do this!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-clicker-question-namespace-click-me-https-go-uos-de-kjcbv admonition">
+<p class="admonition-title">Clicker question “namespace”(<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
+<p>What do you do now?</p>
+</div>
+<p>After restarting the kernel, we will see that the type of print is now “builtin_function_or_method”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>  <span class="c1"># this will return &quot;builtin_function_or_method&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>builtin_function_or_method
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-clicker-question-cdcc-click-me-https-go-uos-de-kjcbv admonition">
+<p class="admonition-title">Clicker question “cdcc” (<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)</p>
+<p>The code below will print four numbers. Can you predict what will be printed?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">8</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </section>
 <section id="spike-detection-with-python">
 <h2>Spike detection with python<a class="headerlink" href="#spike-detection-with-python" title="Link to this heading">#</a></h2>
@@ -721,10 +796,10 @@ For instance, Bob has counted 10 more mosquitoes - so we add <code class="docuti
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-variables">Manipulating variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-variables">Updating variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-track-of-variables-and-their-values">Keeping track of variables and their values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messing-up-and-restoring-the-namespace">Messing up and restoring the namespace</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-using-and-updating-variables-across-cells">Re-using and updating variables across cells</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messing-up-and-restoring-the-namespace">Messing up and restoring the namespace</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-detection-with-python">Spike detection with python</a></li>
 </ul>
   </nav></div>

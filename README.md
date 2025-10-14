@@ -7,13 +7,10 @@ To run the notebooks: [![Binder](https://mybinder.org/badge_logo.svg)](https://m
 
 ## Install
 ```shell
-conda create -y -n neu715 jupyter-book matplotlib numpy fabric3
+conda create -y -n neu715 jupyter-book matplotlib numpy scipy pandas jupyterlab fabric3
 ```
 
-## Build
+## Deploy
 ```shell
-jb clean .
-jb build .
-git commit -a -m 'COMMIT_MSG'
-git push
+fab all
 ```
