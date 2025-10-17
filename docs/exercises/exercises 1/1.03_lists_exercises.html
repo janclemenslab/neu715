@@ -454,18 +454,18 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mf">1.0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mf">1.0</span><span class="p">])</span>
 
-<span class="ne">IndexError</span>: list index out of range
+<span class="ne">TypeError</span>: list indices must be integers or slices, not float
 </pre></div>
 </div>
 </div>
@@ -477,8 +477,13 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ta</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.19</span><span class="p">,</span><span class="o">-</span><span class="mf">0.177</span><span class="p">,</span><span class="o">-</span><span class="mf">0.308</span><span class="p">,</span><span class="o">-</span><span class="mf">0.289</span><span class="p">,</span><span class="o">-</span><span class="mf">0.193</span><span class="p">,</span><span class="o">-</span><span class="mf">0.057</span><span class="p">,</span><span class="mf">0.077</span><span class="p">,</span><span class="mf">0.026</span><span class="p">,</span><span class="mf">0.029</span><span class="p">,</span><span class="mf">0.068</span><span class="p">,</span><span class="mf">0.256</span><span class="p">,</span> <span class="mf">0.342</span><span class="p">,</span> <span class="mf">0.591</span><span class="p">,</span> <span class="mf">0.792</span><span class="p">]</span>
-
+<span class="n">ta</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ta</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">ta</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> 
 <span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.19, 0.591, 0.792)
 </pre></div>
 </div>
 </div>

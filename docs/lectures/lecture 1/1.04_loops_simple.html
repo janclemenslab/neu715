@@ -595,7 +595,7 @@ Item: 50
 </div>
 </div>
 </div>
-<p>Note that range works a bit like indexing: It starts at zero, and ends before the argument. <code class="docutils literal notranslate"><span class="pre">range(5)</span></code> produces integers starting at 0 and ending with 4. To generate a range-object with as many indices as in our current list, we can provide <code class="docutils literal notranslate"><span class="pre">len(my_list)</span></code> as the argument to range. This will produces indices ending with the index of the last element of our list:</p>
+<p>Note that range works a bit like indexing: It starts at zero, and ends before the argument. <code class="docutils literal notranslate"><span class="pre">range(5)</span></code> produces integers starting at 0 and ending with 4. To generate a range-object with as many indices as the list we want to loop over, we can provide <code class="docutils literal notranslate"><span class="pre">len(my_list)</span></code> as the argument to range. This will produce indices ending with the index of the last element of our list:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length_of_list</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
@@ -654,6 +654,7 @@ Result: 25.0
 <li><p>Specifying not only the end but also the start: <code class="docutils literal notranslate"><span class="pre">range(start,</span> <span class="pre">stop)</span></code></p></li>
 <li><p>Specifying the start, the end, and a step size: <code class="docutils literal notranslate"><span class="pre">range(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code></p></li>
 </ol>
+<p>You may have noticed that specifying a range works a bit specifying slice indexes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># stop=5: [0, 1, 2, 3, 4]</span>
@@ -689,7 +690,7 @@ Result: 25.0
 </div>
 </div>
 <p>Note above, that we access the elements of <code class="docutils literal notranslate"><span class="pre">indices</span></code>, one after the other, in the for loop. We then use the indices, to access the elements of <code class="docutils literal notranslate"><span class="pre">my_list</span></code>.
-You may wonder: Way don’t we access the elements of <code class="docutils literal notranslate"><span class="pre">my_list</span></code> directly in the for loop:</p>
+You may wonder: Can we access the elements of <code class="docutils literal notranslate"><span class="pre">my_list</span></code> directly in the for loop? Yes, we can!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
@@ -708,7 +709,7 @@ You may wonder: Way don’t we access the elements of <code class="docutils lite
 </div>
 </div>
 </div>
-<p>This is the standard way of accessing list elements using for loops in python. Range objects are typically used only if the index is needed for the computation. We will encounter these cases below. One example: When spike sorting, we want to compare each voltage value in our list of voltages to a threshold. In that case, we don’t care about the voltage value itself (=spike amplituge), but about the times (=indices) the threshold was crossed. In that case, you would need to use a range object. You can use either way of accessing list elements, using ranges or directly, whatever you find easier.</p>
+<p>This is the standard way of accessing list elements using for loops in python. Range objects are typically used only if the index is needed for the computation. We will encounter these cases below. One example: When spike sorting, we want to compare each voltage value in our list of voltages to a threshold. In that case, we don’t care about the voltage value itself (=spike amplitude), but about the times (=indices) the threshold was crossed. In that case, you would need to use a range object. You can use either way of accessing list elements, using ranges or directly, whatever you find easier.</p>
 </section>
 <section id="different-ways-of-looping-over-lists">
 <h2>Different ways of looping over lists<a class="headerlink" href="#different-ways-of-looping-over-lists" title="Link to this heading">#</a></h2>
@@ -793,7 +794,6 @@ outer 30
 </div>
 </div>
 </div>
-<p>Sidenote: Because <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">in</span></code> are reserved words to run for loops, they are not valid variable names. Trying to create variables with those names, like <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">=</span> <span class="pre">10</span></code> or <code class="docutils literal notranslate"><span class="pre">in</span> <span class="pre">=</span> <span class="pre">&quot;yes&quot;</span></code>, will produce an error!!</p>
 </section>
 </section>
 <section id="common-code-patterns">
@@ -826,7 +826,7 @@ results: [1.0, 2.0, 3.0]
 </div>
 </div>
 </div>
-<p><strong>Important:</strong> <code class="docutils literal notranslate"><span class="pre">append</span></code> modifies the list in-place, it does not return a new list. This <em>DOES NOT WORK</em>: <code class="docutils literal notranslate"> <span class="pre">a</span> <span class="pre">=</span> <span class="pre">b.append(c)</span></code></p>
+<p><strong>Important:</strong> <code class="docutils literal notranslate"><span class="pre">append</span></code> modifies the list in-place, it does not return a new list. This <code class="docutils literal notranslate"> <span class="pre">a</span> <span class="pre">=</span> <span class="pre">b.append(c)</span></code> <em>DOES NOT WORK</em>!</p>
 </section>
 <section id="filtering-lists">
 <h3>Filtering lists<a class="headerlink" href="#filtering-lists" title="Link to this heading">#</a></h3>

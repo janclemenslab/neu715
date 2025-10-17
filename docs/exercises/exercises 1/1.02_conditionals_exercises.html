@@ -521,12 +521,19 @@ If the combined mass is above 85 tons, the program should print “THE WHALES AR
 <span class="c1"># whale 2</span>
 <span class="n">mass_moby</span> <span class="o">=</span> <span class="mi">43872</span>  <span class="c1"># kg</span>
 
-<span class="c1"># Your solution here</span>
+<span class="c1"># Your solution </span>
+<span class="n">combined_mass</span><span class="o">=</span> <span class="n">mass_keiko</span><span class="o">+</span><span class="n">mass_moby</span>
+
+<span class="k">if</span> <span class="n">combined_mass</span> <span class="o">&lt;</span> <span class="mi">85000</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+    
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b
 </pre></div>
 </div>
 </div>
@@ -541,10 +548,15 @@ If the combined mass is above 85 tons, the program should print “THE WHALES AR
 The value of the <code class="docutils literal notranslate"><span class="pre">voltage</span></code> variable is currently 10. Ensure that your program is working correctly by changing the value (to -10 or 0 or +10).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">voltage</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># V</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">voltage</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span>  <span class="c1"># V</span>
 <span class="n">threshold</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># V</span>
 
 <span class="c1"># your solution here</span>
+<span class="k">if</span> <span class="n">voltage</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">voltage</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;alternative&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

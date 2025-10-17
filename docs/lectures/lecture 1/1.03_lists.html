@@ -492,13 +492,13 @@ How do we present sequences of numbers? And how do we work through a sequence an
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]</span>
+<span class="n">number</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-10, -12, -23, -45, 10, -12, -23]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, &#39;name&#39;, True, 4.0]
 </pre></div>
 </div>
 </div>
@@ -509,7 +509,7 @@ Do you understand what is happening here?</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">outlier</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1_000</span>
+<span class="n">outlier</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1_000_000</span>
 
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">outlier</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
@@ -539,19 +539,16 @@ Do you understand what is happening here?</p>
 <p>Lists can even contain other lists as items - this will results in a list of lists, or a so-called <em>nested list</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zinc&#39;</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="s1">&#39;radium&#39;</span><span class="p">]</span>
-<span class="n">atomic_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span><span class="mi">79</span><span class="p">,</span><span class="mi">88</span><span class="p">]</span>
-<span class="n">nested_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">elements</span><span class="p">,</span> <span class="n">atomic_numbers</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;elements:&#39;</span><span class="p">,</span> <span class="n">nested_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;atomic numbers:&#39;</span><span class="p">,</span> <span class="n">nested_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;nested_list:&#39;</span><span class="p">,</span> <span class="n">nested_list</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zinc&#39;</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="s1">&#39;silver&#39;</span><span class="p">]</span>
+<span class="n">atomic_number</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span>
+
+<span class="n">periodic_table</span> <span class="o">=</span> <span class="p">[</span><span class="n">elements</span><span class="p">,</span> <span class="n">atomic_number</span><span class="p">]</span>
+<span class="n">periodic_table</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>elements: [&#39;zinc&#39;, &#39;gold&#39;, &#39;radium&#39;]
-atomic numbers: [30, 79, 88]
-nested_list: [[&#39;zinc&#39;, &#39;gold&#39;, &#39;radium&#39;], [30, 79, 88]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;zinc&#39;, &#39;gold&#39;, &#39;silver&#39;], [40, 50, 60]]
 </pre></div>
 </div>
 </div>
@@ -573,21 +570,19 @@ nested_list: [[&#39;zinc&#39;, &#39;gold&#39;, &#39;radium&#39;], [30, 79, 88]]
 <p>The index (position) of the first element is <code class="docutils literal notranslate"><span class="pre">0</span></code>, not <code class="docutils literal notranslate"><span class="pre">1</span></code>!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the full list:&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the first element (index 0):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the second element (index 1):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the fifth element (index 5):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the last element (index -1):&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the full list: [-10, -12, -23, -45, 10, -12, -23]
-the first element (index 0): -10
-the second element (index 1): -12
-the fifth element (index 5): 10
-the last element (index -1): -23
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="ne">IndexError</span>: list index out of range
 </pre></div>
 </div>
 </div>
@@ -596,18 +591,14 @@ the last element (index -1): -23
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">31354</span><span class="p">,</span> <span class="mi">235</span><span class="p">]</span>
-<span class="n">a</span><span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">b_as_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="n">b_as_int</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1235</span><span class="p">,</span> <span class="mi">31354</span><span class="p">,</span> <span class="mi">235</span><span class="p">]</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">a</span><span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
-
-<span class="ne">TypeError</span>: list indices must be integers or slices, not float
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1235
 </pre></div>
 </div>
 </div>
@@ -620,18 +611,12 @@ the last element (index -1): -23
 <p>For instance, given an index, we can get the list preceeding or the following item:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">424</span><span class="p">,</span> <span class="mi">1234</span><span class="p">,</span> <span class="mi">14456</span><span class="p">]</span>
-<span class="n">idx</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value at index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value following index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value preceeding index&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">424</span><span class="p">,</span> <span class="mi">1234</span><span class="p">,</span> <span class="mi">14456</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Value at index 4 1234
-Value following index 4 14456
-Value preceeding index 4 424
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tuple
 </pre></div>
 </div>
 </div>
@@ -650,24 +635,11 @@ Value preceeding index 4 424
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">424</span><span class="p">,</span> <span class="mi">1234</span><span class="p">,</span> <span class="mi">14456</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">:])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[::</span><span class="mi">2</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">a</span><span class="p">[::]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 12, 235, 424]
-[1234, 14456]
-[1, 235, 1234]
-[12, 424, 14456]
-[12, 424]
-[14456, 424, 12]
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 12, 235, 424, 1234, 14456]
 </pre></div>
 </div>
@@ -695,14 +667,12 @@ Which of the following outputs is correct?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">23</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A has&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="s2">&quot;elements.&quot;</span><span class="p">)</span>
+<span class="n">a</span><span class="p">[</span><span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-10, -12, -23, -45, 10, -12, -23]
-A has 7 elements.
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-23
 </pre></div>
 </div>
 </div>
@@ -733,21 +703,14 @@ A has 7 elements.
 <p>There are many more list methods which we will not discuss - see the bonus section below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spike_times</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># intialize an empty list</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span>
-<span class="n">time_of_first_spike</span> <span class="o">=</span> <span class="mf">10.3</span>
-<span class="n">spike_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_of_first_spike</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span>
-<span class="n">time_of_second_spike</span> <span class="o">=</span> <span class="mf">50.3</span>
-<span class="n">spike_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_of_second_spike</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">spike_times</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spike_times</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23432</span><span class="p">,</span> <span class="mi">235235</span><span class="p">]</span>
+<span class="n">spike_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">24.2</span><span class="p">)</span>
+<span class="n">spike_times</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-[10.3]
-[10.3, 50.3]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[23432, 235235, 24.2]
 </pre></div>
 </div>
 </div>
@@ -783,16 +746,13 @@ A has 7 elements.
 <p>We can remove elements using the <code class="docutils literal notranslate"><span class="pre">del</span></code> function with the list element we want to delete as an argument:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
-<span class="k">del</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="s1">&#39;a&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, 20, 30, 40]
-[10, 30, 40]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
