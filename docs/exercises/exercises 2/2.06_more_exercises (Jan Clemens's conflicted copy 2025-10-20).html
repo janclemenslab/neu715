@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Composite data types &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Bonus exercises: Temperature anomalies &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 2/2.01_composites_exercises';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 2/2.06_more_exercises';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Plotting" href="1.05_matplotlib_exercises.html" />
-    <link rel="prev" title="Loops" href="../exercises%201/1.04_loops_simple_exercises.html" />
+    <link rel="next" title="Package managment and environments" href="../../lectures/lecture%203/3.01_packages_and_environments.html" />
+    <link rel="prev" title="Imports" href="2.05_imports_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -192,12 +192,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.03_lists_exercises.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Composite data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.01_composites_exercises.html">Composite data types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.05_matplotlib_exercises.html">Plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2.02_loops_more_exercises.html">Loops (Part 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2.03_functions_exercises.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2.05_imports_exercises.html">External code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.06_more_exercises.html">Bonus exercises</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bonus exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing</span></p>
 <ul class="nav bd-sidenav">
@@ -289,7 +289,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 2/2.01_composites_exercises.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 2/2.06_more_exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +307,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 2/2.01_composites_exercises.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 2/2.06_more_exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -338,7 +338,7 @@
       
       
       
-      <li><a href="../../_sources/exercises/exercises 2/2.01_composites_exercises.ipynb" target="_blank"
+      <li><a href="../../_sources/exercises/exercises 2/2.06_more_exercises.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -422,7 +422,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Composite data types</h1>
+    <h1>Bonus exercises: Temperature anomalies</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -432,11 +432,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-make-a-digital-phone-book-using-a-dictionary">Exercise 2: Make a digital phone book using a dictionary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-modifying-dictionaries">Exercise 3: Modifying dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-for-loops-and-dictionaries">Exercise 4: For loops and dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-rewrite-this-code-using-a-dictionary">Exercise 5: Rewrite this code using a dictionary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-smooth-the-anomaly-values">Exercise 1: Smooth the anomaly values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-make-your-code-more-readable-by-using-functions">Exercise 2: Make your code more readable by using functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-smooth-the-anomaly-values-with-different-spans">Exercise 3: Smooth the anomaly values with different spans</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-change-in-temperature-anomalies">Exercise 4: Change in temperature anomalies</a></li>
 </ul>
             </nav>
         </div>
@@ -448,122 +447,90 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="composite-data-types">
-<h1>Composite data types<a class="headerlink" href="#composite-data-types" title="Link to this heading">#</a></h1>
-<section id="exercise-1">
-<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h2>
-<p>We are given data as a tuple. We want to set the third value to 3.
-Fix below code to make this work:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="bonus-exercises-temperature-anomalies">
+<h1>Bonus exercises: Temperature anomalies<a class="headerlink" href="#bonus-exercises-temperature-anomalies" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EXECUTE BUT DO NOT CHANGE</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_anomalies</span><span class="p">():</span>
+    <span class="c1"># Load the full anomaly data set</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;temperature.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]]</span>  <span class="c1"># unpack the table and cast years to int</span>
+    <span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># unpack the table</span>
+    <span class="k">return</span> <span class="n">years</span><span class="p">,</span> <span class="n">temperature_anomalies</span>
+
+<span class="n">years</span><span class="p">,</span> <span class="n">temperature_anomalies</span> <span class="o">=</span> <span class="n">load_anomalies</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">years</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="ne">TypeError</span>: &#39;tuple&#39; object does not support item assignment
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1880, 1881, 1882, 1883, 1884, 1885, 1886, 1887, 1888, 1889]
+[np.float64(-0.1), np.float64(-0.17), np.float64(-0.11), np.float64(-0.17), np.float64(-0.28), np.float64(-0.26), np.float64(-0.27), np.float64(-0.22), np.float64(-0.09), np.float64(-0.23)]
 </pre></div>
 </div>
 </div>
 </div>
+<section id="exercise-1-smooth-the-anomaly-values">
+<h2>Exercise 1: Smooth the anomaly values<a class="headerlink" href="#exercise-1-smooth-the-anomaly-values" title="Link to this heading">#</a></h2>
+<p>Smooth using a moving average window spanning +/-4 of the neighbouring values.</p>
+<p>To smooth with a span of 4, you replace each data point with the average value of 9 values:</p>
+<ul class="simple">
+<li><p>the datapoint itself,</p></li>
+<li><p>the 4 preceeding, and</p></li>
+<li><p>the 4 following values.</p></li>
+</ul>
+<p>Label and format the plot, and plot the raw values as dots and the smoothed values as a line, as in the figure below.</p>
+<p>Roughly like so:</p>
+<p><img alt="" src="../../_images/2.06_more_exercises_1a.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fix the code here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your solution here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-2-make-a-digital-phone-book-using-a-dictionary">
-<h2>Exercise 2: Make a digital phone book using a dictionary<a class="headerlink" href="#exercise-2-make-a-digital-phone-book-using-a-dictionary" title="Link to this heading">#</a></h2>
-<p>Make a phone book using a dictionary, so we can easily look up phone numbers using the name as the key.
-We are given two lists of matching names and phone numbers. Generate a phone book dictionary that has each name as a key and the associated phone number as a value.</p>
+<section id="exercise-2-make-your-code-more-readable-by-using-functions">
+<h2>Exercise 2: Make your code more readable by using functions<a class="headerlink" href="#exercise-2-make-your-code-more-readable-by-using-functions" title="Link to this heading">#</a></h2>
+<p>Write function that smooths its inputs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Francoise&#39;</span><span class="p">,</span> <span class="s1">&#39;Alan&#39;</span><span class="p">]</span>
-<span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">432246234</span><span class="p">,</span> <span class="mi">190998010</span><span class="p">,</span> <span class="mi">984703</span><span class="p">,</span> <span class="mi">123156</span><span class="p">,</span> <span class="mi">9630</span><span class="p">]</span>
-
-<span class="c1"># your solution here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your solution here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-3-modifying-dictionaries">
-<h2>Exercise 3: Modifying dictionaries<a class="headerlink" href="#exercise-3-modifying-dictionaries" title="Link to this heading">#</a></h2>
-<p>We are given a dictionary with the name of chemical elements and the associated atomic number (number of protons in the nucleus).</p>
+<section id="exercise-3-smooth-the-anomaly-values-with-different-spans">
+<h2>Exercise 3: Smooth the anomaly values with different spans<a class="headerlink" href="#exercise-3-smooth-the-anomaly-values-with-different-spans" title="Link to this heading">#</a></h2>
+<p>Use different spans of the moving average window (1, 2, 4, 8, 16). Overlay smoothed values for the different spans. Make a function for smoothing to simplify your code.</p>
+<p>The plot should look roughly like so:</p>
+<p><img alt="" src="../../_images/2.06_more_exercises_1b.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4-change-in-temperature-anomalies">
+<h2>Exercise 4: Change in temperature anomalies<a class="headerlink" href="#exercise-4-change-in-temperature-anomalies" title="Link to this heading">#</a></h2>
+<p>Plot the year-over-year change in anomaly values.</p>
 <ol class="arabic simple">
-<li><p>Delete vibranium from the list dictionary.</p></li>
-<li><p>Add the element silver and it’s atomic number to the dictionary</p></li>
+<li><p>Smooth the change using a moving average window spanning +/-2 neighbouring values.</p></li>
+<li><p>Compute the difference between the smoothed and the raw values.</p></li>
 </ol>
-<p>Print the dictionary to check your results</p>
+<p>Plot the raw change as dots and the smoothed change as lines.</p>
+<p>Roughly like so:</p>
+<p><img alt="" src="../../_images/2.06_more_exercises_1c.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atomic_numbers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;zinc&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="s1">&#39;vibranium&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;radium&#39;</span><span class="p">:</span> <span class="mi">88</span><span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">atomic_numbers</span><span class="p">)</span>
-
-<span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;zinc&#39;: 30, &#39;gold&#39;: 79, &#39;vibranium&#39;: 1000, &#39;radium&#39;: 88}
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-4-for-loops-and-dictionaries">
-<h2>Exercise 4: For loops and dictionaries<a class="headerlink" href="#exercise-4-for-loops-and-dictionaries" title="Link to this heading">#</a></h2>
-<p>Now use a for loop to loop over the key:value pairs of the <em>modified</em> dictionary and print the element name and it’s atomic number in a nicely formatted way (“The atomic number for ELEMENT_NAME is ATOMIC_NUMBER.”), each element in a separate line.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atomic_numbers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;zinc&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="s1">&#39;vibranium&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;radium&#39;</span><span class="p">:</span> <span class="mi">88</span><span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">atomic_numbers</span><span class="p">)</span>
-
-<span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;zinc&#39;: 30, &#39;gold&#39;: 79, &#39;vibranium&#39;: 1000, &#39;radium&#39;: 88}
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-5-rewrite-this-code-using-a-dictionary">
-<h2>Exercise 5: Rewrite this code using a dictionary<a class="headerlink" href="#exercise-5-rewrite-this-code-using-a-dictionary" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mouse_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Jerry&#39;</span><span class="p">,</span> <span class="s1">&#39;Minnie&#39;</span><span class="p">,</span> <span class="s1">&#39;Pinky&#39;</span><span class="p">,</span> <span class="s1">&#39;Brain&#39;</span><span class="p">,</span> <span class="s1">&#39;Mickey&#39;</span><span class="p">]</span>
-<span class="n">mouse_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mouse_names</span><span class="p">)):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The weight of&#39;</span><span class="p">,</span> <span class="n">mouse_names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="p">,</span><span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="n">mouse_weights</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="s1">&#39;grams.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The weight of Jerry is 32 grams.
-The weight of Minnie is 29 grams.
-The weight of Pinky is 25 grams.
-The weight of Brain is 38 grams.
-The weight of Mickey is 30 grams.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution</span>
 </pre></div>
 </div>
 </div>
@@ -602,20 +569,20 @@ The weight of Mickey is 30 grams.
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../exercises%201/1.04_loops_simple_exercises.html"
+       href="2.05_imports_exercises.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Loops</p>
+        <p class="prev-next-title">Imports</p>
       </div>
     </a>
     <a class="right-next"
-       href="1.05_matplotlib_exercises.html"
+       href="../../lectures/lecture%203/3.01_packages_and_environments.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Plotting</p>
+        <p class="prev-next-title">Package managment and environments</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -635,11 +602,10 @@ The weight of Mickey is 30 grams.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-make-a-digital-phone-book-using-a-dictionary">Exercise 2: Make a digital phone book using a dictionary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-modifying-dictionaries">Exercise 3: Modifying dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-for-loops-and-dictionaries">Exercise 4: For loops and dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-rewrite-this-code-using-a-dictionary">Exercise 5: Rewrite this code using a dictionary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-smooth-the-anomaly-values">Exercise 1: Smooth the anomaly values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-make-your-code-more-readable-by-using-functions">Exercise 2: Make your code more readable by using functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-smooth-the-anomaly-values-with-different-spans">Exercise 3: Smooth the anomaly values with different spans</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-change-in-temperature-anomalies">Exercise 4: Change in temperature anomalies</a></li>
 </ul>
   </nav></div>
 

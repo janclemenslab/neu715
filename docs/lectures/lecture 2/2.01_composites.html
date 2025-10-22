@@ -468,21 +468,21 @@ document.write(`
 <p><strong>Caution</strong>: The parentheses are pure decoration - it’s the comma that makes a tuple. For instance, a trailing comma after a value is sufficient to generate a tuple - this is a frequent cause for bugs. But always use parentheses to clearly indicate in your code that you are defining a tuple!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a_tuple = 1,2  # this may look like the float 1.2 to some of you</span>
-<span class="c1"># print(type(a_tuple), a_tuple)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span>  <span class="c1"># this may look like the float 1.2 to some of you</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">),</span> <span class="n">a_tuple</span><span class="p">)</span>
 
-<span class="c1"># also_a_tuple = 1,  # note the trailing comma after 1</span>
-<span class="c1"># print(type(also_a_tuple), also_a_tuple)</span>
+<span class="n">also_a_tuple</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># note the trailing comma after 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">also_a_tuple</span><span class="p">),</span> <span class="n">also_a_tuple</span><span class="p">)</span>
 
-<span class="c1"># clearly_a_tuple = (10, 20)  # always use parentheses</span>
-<span class="c1"># print(type(clearly_a_tuple), clearly_a_tuple)</span>
-
-<span class="n">a_tuple</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">clearly_a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>  <span class="c1"># always use parentheses</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">clearly_a_tuple</span><span class="p">),</span> <span class="n">clearly_a_tuple</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((1,), tuple)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;tuple&#39;&gt; (1, 2)
+&lt;class &#39;tuple&#39;&gt; (1,)
+&lt;class &#39;tuple&#39;&gt; (10, 20)
 </pre></div>
 </div>
 </div>
@@ -492,12 +492,18 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
-<span class="nb">len</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span>
+<span class="n">a_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">a_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="ne">TypeError</span>: &#39;tuple&#39; object does not support item assignment
 </pre></div>
 </div>
 </div>
@@ -509,8 +515,6 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">list_from_tuple</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span>  <span class="c1"># cast tuple to list</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">list_from_tuple</span><span class="p">))</span>
-
-<span class="n">list_from_tuple</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># this works</span>
 </pre></div>
 </div>
 </div>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Composite data types &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
+    <title>Inferential Statistics &#8212; Neu715 - Neuroscientific Data Analysis using Python</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 2/2.01_composites_exercises';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/exercises 5/5.03_inferential_stats_exercise';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Plotting" href="1.05_matplotlib_exercises.html" />
-    <link rel="prev" title="Loops" href="../exercises%201/1.04_loops_simple_exercises.html" />
+    <link rel="next" title="Regression analysis (a.k.a curve fitting)" href="../../lectures/lecture%206/6.01_linear%20regression.html" />
+    <link rel="prev" title="Descriptive Statistics" href="5.02_descriptive_stats_exercise.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,17 +187,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%202/2.05_imports.html">Using external code</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics - exercises</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.01_variables_exercises.html">Variables and notebook memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.02_conditionals_exercises.html">Conditionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.03_lists_exercises.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.04_loops_simple_exercises.html">Loops</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Composite data types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1.05_matplotlib_exercises.html">Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.02_loops_more_exercises.html">Loops (Part 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.03_functions_exercises.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.05_imports_exercises.html">External code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.06_more_exercises.html">Bonus exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.01_composites_exercises.html">Composite data types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/1.05_matplotlib_exercises.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.02_loops_more_exercises.html">Loops (Part 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.03_functions_exercises.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.05_imports_exercises.html">External code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.06_more_exercises.html">Bonus exercises</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical computing</span></p>
 <ul class="nav bd-sidenav">
@@ -220,10 +220,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/lecture%205/5.03_inferential_stats.html">Inferential statistics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Statistics exercises</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.01_probabilities_exercise.html">Probability distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.02_descriptive_stats_exercise.html">Descriptive statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.03_inferential_stats_exercise.html">Inferential statistics</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="5.01_probabilities_exercise.html">Probability distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5.02_descriptive_stats_exercise.html">Descriptive statistics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Inferential statistics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modeling</span></p>
 <ul class="nav bd-sidenav">
@@ -289,7 +289,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 2/2.01_composites_exercises.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/janclemenslab/neu715/main?urlpath=tree/docs/_sources/exercises/exercises 5/5.03_inferential_stats_exercise.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +307,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 2/2.01_composites_exercises.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/janclemenslab/neu715/blob/main/docs/_sources/exercises/exercises 5/5.03_inferential_stats_exercise.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -338,7 +338,7 @@
       
       
       
-      <li><a href="../../_sources/exercises/exercises 2/2.01_composites_exercises.ipynb" target="_blank"
+      <li><a href="../../_sources/exercises/exercises 5/5.03_inferential_stats_exercise.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -422,7 +422,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Composite data types</h1>
+    <h1>Inferential Statistics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -432,11 +432,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-make-a-digital-phone-book-using-a-dictionary">Exercise 2: Make a digital phone book using a dictionary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-modifying-dictionaries">Exercise 3: Modifying dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-for-loops-and-dictionaries">Exercise 4: For loops and dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-rewrite-this-code-using-a-dictionary">Exercise 5: Rewrite this code using a dictionary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1a-p-values">Exercise 1a: P-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1b-p-values">Exercise 1b: P-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-statistical-tests">Exercise 2: Statistical tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-bonus-multiple-groups">Exercise 3 (bonus): Multiple groups</a></li>
 </ul>
             </nav>
         </div>
@@ -448,119 +447,81 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="composite-data-types">
-<h1>Composite data types<a class="headerlink" href="#composite-data-types" title="Link to this heading">#</a></h1>
-<section id="exercise-1">
-<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h2>
-<p>We are given data as a tuple. We want to set the third value to 3.
-Fix below code to make this work:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-
-<span class="ne">TypeError</span>: &#39;tuple&#39; object does not support item assignment
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fix the code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-2-make-a-digital-phone-book-using-a-dictionary">
-<h2>Exercise 2: Make a digital phone book using a dictionary<a class="headerlink" href="#exercise-2-make-a-digital-phone-book-using-a-dictionary" title="Link to this heading">#</a></h2>
-<p>Make a phone book using a dictionary, so we can easily look up phone numbers using the name as the key.
-We are given two lists of matching names and phone numbers. Generate a phone book dictionary that has each name as a key and the associated phone number as a value.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Francoise&#39;</span><span class="p">,</span> <span class="s1">&#39;Alan&#39;</span><span class="p">]</span>
-<span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">432246234</span><span class="p">,</span> <span class="mi">190998010</span><span class="p">,</span> <span class="mi">984703</span><span class="p">,</span> <span class="mi">123156</span><span class="p">,</span> <span class="mi">9630</span><span class="p">]</span>
-
-<span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-3-modifying-dictionaries">
-<h2>Exercise 3: Modifying dictionaries<a class="headerlink" href="#exercise-3-modifying-dictionaries" title="Link to this heading">#</a></h2>
-<p>We are given a dictionary with the name of chemical elements and the associated atomic number (number of protons in the nucleus).</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="inferential-statistics">
+<h1>Inferential Statistics<a class="headerlink" href="#inferential-statistics" title="Link to this heading">#</a></h1>
+<section id="exercise-1a-p-values">
+<h2>Exercise 1a: P-values<a class="headerlink" href="#exercise-1a-p-values" title="Link to this heading">#</a></h2>
+<p>The p-value indicates the likelihood of obtaining the observed results if the null hypothesis is correct.
+Small p-values indicate that the Null hypothesis is unlikely to have generated the data - a strong evidence <em>against</em> the null hypothesis.</p>
+<p>Let’s explore how the p-value behaves if we know that the null hypothesis is true.</p>
+<p>Generate 1000 datasets with a <em>Normal</em> distribution using <code class="docutils literal notranslate"><span class="pre">np.random.randn</span></code>, each with 10000 samples, with mean 0 and standard deviation 1. We know that the samples are normally distributed!</p>
 <ol class="arabic simple">
-<li><p>Delete vibranium from the list dictionary.</p></li>
-<li><p>Add the element silver and it’s atomic number to the dictionary</p></li>
+<li><p>For each of the 1000 datasets (each of them with 10000 samples), run a test for normality, <code class="docutils literal notranslate"><span class="pre">scipyt.stats.normaltest</span></code>, and store the obtained p-value in array. You should have a set of 1000 p-values.</p></li>
+<li><p>Plot the distribution of p-values. Does it look as you expected?</p></li>
+<li><p>What fraction of p-values fall below 0.05? In other words, what is the likelihood of the normaltest producing a wrong result (p&lt;0.05 indicates that the data is <em>not</em> normally distributed)?</p></li>
 </ol>
-<p>Print the dictionary to check your results</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atomic_numbers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;zinc&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="s1">&#39;vibranium&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;radium&#39;</span><span class="p">:</span> <span class="mi">88</span><span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">atomic_numbers</span><span class="p">)</span>
-
-<span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;zinc&#39;: 30, &#39;gold&#39;: 79, &#39;vibranium&#39;: 1000, &#39;radium&#39;: 88}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-4-for-loops-and-dictionaries">
-<h2>Exercise 4: For loops and dictionaries<a class="headerlink" href="#exercise-4-for-loops-and-dictionaries" title="Link to this heading">#</a></h2>
-<p>Now use a for loop to loop over the key:value pairs of the <em>modified</em> dictionary and print the element name and it’s atomic number in a nicely formatted way (“The atomic number for ELEMENT_NAME is ATOMIC_NUMBER.”), each element in a separate line.</p>
+<section id="exercise-1b-p-values">
+<h2>Exercise 1b: P-values<a class="headerlink" href="#exercise-1b-p-values" title="Link to this heading">#</a></h2>
+<p>Now do the same as above, but instead of generating from a Gaussian distribution, for which we cannot reject the null hypothesis of normality, let’s use samples from a <strong>uniform</strong> distribution.</p>
+<p>Do the same as above with these data:</p>
+<p>Generate 1000 datasets with a <em>Uniform</em> distribution using <code class="docutils literal notranslate"><span class="pre">np.random.rand</span></code>, each with 10000 samples. We know that these samples are <em>not</em> normally distributed!</p>
+<ol class="arabic simple">
+<li><p>For each of the 1000 datasets (each of them with 10000 samples), run a test for normality, <code class="docutils literal notranslate"><span class="pre">scipyt.stats.normaltest</span></code>, and store the obtained p-value in array. You should have a set of 1000 p-values.</p></li>
+<li><p>Plot the distribution of p-values. Does it look as you expected?</p></li>
+<li><p>What fraction of p-values fall below 0.05? In other words, what is the likelihood of the normaltest producing a wrong result (p&lt;0.05 indicates that the data is <em>not</em> normally distributed)?
+Run the normaltest repeatedly time for 1000 different datasets, and plot the distribution of the resulting p values.</p></li>
+</ol>
+<p>Does the distribution look as expected?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atomic_numbers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;zinc&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="s1">&#39;vibranium&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;radium&#39;</span><span class="p">:</span> <span class="mi">88</span><span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">atomic_numbers</span><span class="p">)</span>
-
-<span class="c1"># your solution here</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;zinc&#39;: 30, &#39;gold&#39;: 79, &#39;vibranium&#39;: 1000, &#39;radium&#39;: 88}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-5-rewrite-this-code-using-a-dictionary">
-<h2>Exercise 5: Rewrite this code using a dictionary<a class="headerlink" href="#exercise-5-rewrite-this-code-using-a-dictionary" title="Link to this heading">#</a></h2>
+<section id="exercise-2-statistical-tests">
+<h2>Exercise 2: Statistical tests<a class="headerlink" href="#exercise-2-statistical-tests" title="Link to this heading">#</a></h2>
+<p>Download the experimental data file <code class="docutils literal notranslate"><span class="pre">5.03_inferential_stats_exercise.npy</span></code> from studip.</p>
+<ol class="arabic simple">
+<li><p>plot the distribution</p></li>
+<li><p>test for normality</p></li>
+<li><p>test whether the values differ significantly from</p></li>
+</ol>
+<ul class="simple">
+<li><p>a=3.1</p></li>
+<li><p>b=3.0</p></li>
+<li><p>b with signficance level 0.001</p></li>
+<li><p>smaller than b</p></li>
+<li><p>larger than b</p></li>
+</ul>
+<p>Inspect the p-values for the different tests and try to understand their relative values (why do the tests for difference vs. smaller vs. larger produce different p-values?).</p>
+<p><strong>Hint</strong> You can use the <code class="docutils literal notranslate"><span class="pre">scipy.stats.ttest_1samp</span></code> test, to test whether a dataset’s mean differes significantly from a specific value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mouse_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Jerry&#39;</span><span class="p">,</span> <span class="s1">&#39;Minnie&#39;</span><span class="p">,</span> <span class="s1">&#39;Pinky&#39;</span><span class="p">,</span> <span class="s1">&#39;Brain&#39;</span><span class="p">,</span> <span class="s1">&#39;Mickey&#39;</span><span class="p">]</span>
-<span class="n">mouse_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mouse_names</span><span class="p">)):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The weight of&#39;</span><span class="p">,</span> <span class="n">mouse_names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="p">,</span><span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="n">mouse_weights</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="s1">&#39;grams.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The weight of Jerry is 32 grams.
-The weight of Minnie is 29 grams.
-The weight of Pinky is 25 grams.
-The weight of Brain is 38 grams.
-The weight of Mickey is 30 grams.
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="exercise-3-bonus-multiple-groups">
+<h2>Exercise 3 (bonus): Multiple groups<a class="headerlink" href="#exercise-3-bonus-multiple-groups" title="Link to this heading">#</a></h2>
+<p>Download the data file <code class="docutils literal notranslate"><span class="pre">5.03_inferential_stats_exercise_multi.npy</span></code>. The file contains a 2D array with 50 rows (samples) and 3 columns (several different treatments). We want to know whether the treatments have different effects.</p>
+<ul class="simple">
+<li><p>Visualize the distribution of the data</p></li>
+<li><p>Test the data for normality</p></li>
+<li><p>Run an ANOVA to check whether there is any treatment effect (<code class="docutils literal notranslate"><span class="pre">scipy.stats.f_oneway</span></code>).</p></li>
+<li><p>Run a post-hoc test to determine which treatments differ from each other (<code class="docutils literal notranslate"><span class="pre">scipy.stats.tukey_hsd</span></code>).</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
@@ -584,7 +545,7 @@ The weight of Mickey is 30 grams.
         },
         kernelOptions: {
             name: "python3",
-            path: "./exercises/exercises 2"
+            path: "./exercises/exercises 5"
         },
         predefinedOutput: true
     }
@@ -602,20 +563,20 @@ The weight of Mickey is 30 grams.
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../exercises%201/1.04_loops_simple_exercises.html"
+       href="5.02_descriptive_stats_exercise.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Loops</p>
+        <p class="prev-next-title">Descriptive Statistics</p>
       </div>
     </a>
     <a class="right-next"
-       href="1.05_matplotlib_exercises.html"
+       href="../../lectures/lecture%206/6.01_linear%20regression.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Plotting</p>
+        <p class="prev-next-title">Regression analysis (a.k.a curve fitting)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -635,11 +596,10 @@ The weight of Mickey is 30 grams.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-make-a-digital-phone-book-using-a-dictionary">Exercise 2: Make a digital phone book using a dictionary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-modifying-dictionaries">Exercise 3: Modifying dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-for-loops-and-dictionaries">Exercise 4: For loops and dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-rewrite-this-code-using-a-dictionary">Exercise 5: Rewrite this code using a dictionary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1a-p-values">Exercise 1a: P-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1b-p-values">Exercise 1b: P-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-statistical-tests">Exercise 2: Statistical tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-bonus-multiple-groups">Exercise 3 (bonus): Multiple groups</a></li>
 </ul>
   </nav></div>
 
