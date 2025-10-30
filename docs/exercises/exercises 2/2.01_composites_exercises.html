@@ -490,7 +490,22 @@ We are given two lists of matching names and phone numbers. Generate a phone boo
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Yolanda&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Francoise&#39;</span><span class="p">,</span> <span class="s1">&#39;Alan&#39;</span><span class="p">]</span>
 <span class="n">phone_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">432246234</span><span class="p">,</span> <span class="mi">190998010</span><span class="p">,</span> <span class="mi">984703</span><span class="p">,</span> <span class="mi">123156</span><span class="p">,</span> <span class="mi">9630</span><span class="p">]</span>
 
-<span class="c1"># your solution here</span>
+<span class="c1"># your solution here\</span>
+<span class="n">phone_book</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>
+    <span class="n">phone_book</span><span class="p">[</span><span class="n">names</span><span class="p">[</span><span class="n">idx</span><span class="p">]]</span> <span class="o">=</span> <span class="n">phone_numbers</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+<span class="n">phone_book</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Alice&#39;: 432246234,
+ &#39;Yolanda&#39;: 190998010,
+ &#39;Tom&#39;: 984703,
+ &#39;Francoise&#39;: 123156,
+ &#39;Alan&#39;: 9630}
 </pre></div>
 </div>
 </div>
@@ -510,11 +525,18 @@ We are given two lists of matching names and phone numbers. Generate a phone boo
 <span class="nb">print</span><span class="p">(</span><span class="n">atomic_numbers</span><span class="p">)</span>
 
 <span class="c1"># your solution here</span>
+<span class="k">del</span> <span class="n">atomic_numbers</span><span class="p">[</span><span class="s1">&#39;vibranium&#39;</span><span class="p">]</span>
+<span class="n">atomic_numbers</span><span class="p">[</span><span class="s1">&#39;silver&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">108</span>
+
+<span class="n">atomic_numbers</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;zinc&#39;: 30, &#39;gold&#39;: 79, &#39;vibranium&#39;: 1000, &#39;radium&#39;: 88}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;zinc&#39;: 30, &#39;gold&#39;: 79, &#39;radium&#39;: 88, &#39;silver&#39;: 108}
 </pre></div>
 </div>
 </div>
@@ -525,15 +547,13 @@ We are given two lists of matching names and phone numbers. Generate a phone boo
 <p>Now use a for loop to loop over the key:value pairs of the <em>modified</em> dictionary and print the element name and it’s atomic number in a nicely formatted way (“The atomic number for ELEMENT_NAME is ATOMIC_NUMBER.”), each element in a separate line.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atomic_numbers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;zinc&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">:</span> <span class="mi">79</span><span class="p">,</span> <span class="s1">&#39;vibranium&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;radium&#39;</span><span class="p">:</span> <span class="mi">88</span><span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">atomic_numbers</span><span class="p">)</span>
-
-<span class="c1"># your solution here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The number is </span><span class="si">{</span><span class="n">num</span><span class="si">:</span><span class="s1">1.2f</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;zinc&#39;: 30, &#39;gold&#39;: 79, &#39;vibranium&#39;: 1000, &#39;radium&#39;: 88}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number is 0.33.
 </pre></div>
 </div>
 </div>
@@ -546,17 +566,16 @@ We are given two lists of matching names and phone numbers. Generate a phone boo
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mouse_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Jerry&#39;</span><span class="p">,</span> <span class="s1">&#39;Minnie&#39;</span><span class="p">,</span> <span class="s1">&#39;Pinky&#39;</span><span class="p">,</span> <span class="s1">&#39;Brain&#39;</span><span class="p">,</span> <span class="s1">&#39;Mickey&#39;</span><span class="p">]</span>
 <span class="n">mouse_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mouse_names</span><span class="p">)):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The weight of&#39;</span><span class="p">,</span> <span class="n">mouse_names</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="p">,</span><span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="n">mouse_weights</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="s1">&#39;grams.&#39;</span><span class="p">)</span>
+<span class="n">mw</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mouse_names</span><span class="p">)):</span>
+    <span class="n">mw</span><span class="p">[</span><span class="n">mouse_names</span><span class="p">[</span><span class="n">idx</span><span class="p">]]</span> <span class="o">=</span> <span class="n">mouse_weights</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<span class="n">mw</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The weight of Jerry is 32 grams.
-The weight of Minnie is 29 grams.
-The weight of Pinky is 25 grams.
-The weight of Brain is 38 grams.
-The weight of Mickey is 30 grams.
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Jerry&#39;: 32, &#39;Minnie&#39;: 29, &#39;Pinky&#39;: 25, &#39;Brain&#39;: 38, &#39;Mickey&#39;: 30}
 </pre></div>
 </div>
 </div>
@@ -564,6 +583,17 @@ The weight of Mickey is 30 grams.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">mw</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jerry 32
+Minnie 29
+Pinky 25
+Brain 38
+Mickey 30
 </pre></div>
 </div>
 </div>
