@@ -494,10 +494,6 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 6, 10, 13, 15, 19]
-[1, 3, 6, 10, 13, 15, 19]
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 0, -2]
 </pre></div>
 </div>
 </div>
@@ -543,7 +539,7 @@ This should produce three curves, each with 100 data points.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.19, -0.177, -0.308, -0.289, -0.193, -0.057, 0.077, 0.026, 0.029, 0.068, 0.256, 0.342, 0.591, 0.792]
 </pre></div>
 </div>
-<img alt="../../_images/333de93f3649c1da3a36ebb7a30cb5340464dd1a7b6f9add7aa50b0f1f8a36a8.png" src="../../_images/333de93f3649c1da3a36ebb7a30cb5340464dd1a7b6f9add7aa50b0f1f8a36a8.png" />
+<img alt="../../_images/13e4ac450cbf89ea2a1602ec88ec7b47808440dc910cebc77b5eca0acf80cd0d.png" src="../../_images/13e4ac450cbf89ea2a1602ec88ec7b47808440dc910cebc77b5eca0acf80cd0d.png" />
 </div>
 </div>
 <p>For an analysis, we need to z-score the data:</p>
@@ -576,6 +572,19 @@ This should produce three curves, each with 100 data points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">added</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+        <span class="n">added</span> <span class="o">=</span> <span class="n">added</span> <span class="o">+</span> <span class="n">element</span>
+    <span class="k">return</span> <span class="n">added</span>
+
+<span class="nb">sum</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9670000000000001
 </pre></div>
 </div>
 </div>
@@ -588,6 +597,18 @@ This should produce three curves, each with 100 data points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">the_mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">the_mean</span>
+
+<span class="n">averaged</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">)</span>
+<span class="n">averaged</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06907142857142858
 </pre></div>
 </div>
 </div>
@@ -603,6 +624,18 @@ This should produce three curves, each with 100 data points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">years</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">years</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">1920</span> <span class="ow">and</span> <span class="n">years</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">1960</span><span class="p">:</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temperature_anomalies</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+<span class="n">mean</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.0236
 </pre></div>
 </div>
 </div>
