@@ -9,19 +9,19 @@ parts:
         title: Notebooks
       - file: lectures 1/1.01_variables
         title: Variables — lecture
-      - file: exercise 1/1.01_variables_exercises
+      - file: exercises 1/1.01_variables_exercises
         title: Variables — exercises
       - file: lectures 1/1.02_conditionals
         title: Conditionals — lecture
-      - file: exercise 1/1.02_conditionals_exercises
+      - file: exercises 1/1.02_conditionals_exercises
         title: Conditionals — exercises
       - file: lectures 1/1.03_namespaces
         title: Notebook memory — lecture
-      - file: exercise 1/1.03_namespaces_exercises
+      - file: exercises 1/1.03_namespaces_exercises
         title: Notebook memory — exercises
       - file: lectures 1/1.04_lists
         title: Lists — lecture
-      - file: exercise 1/1.04_lists_exercises
+      - file: exercises 1/1.04_lists_exercises
         title: Lists — exercises
   - caption: Week 2
     chapters:

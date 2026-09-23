@@ -3,10 +3,10 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Conditionals" href="../lectures%201/1.02_conditionals.html"><link rel="prev" title="Variables" href="../lectures%201/1.01_variables.html">
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Lists" href="../lectures%201/1.04_lists.html"><link rel="prev" title="The memory of your notebook" href="../lectures%201/1.03_namespaces.html">
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
-        <title>Variables — exercises - NEU715 — Neuroscientific Data Analysis using Python</title>
+        <title>Namespaces — exercises - NEU715 — Neuroscientific Data Analysis using Python</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
@@ -201,11 +201,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../lectures%201/week_1_plan.html">Week 1 plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.00_notebooks.html">Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.01_variables.html">Variables — lecture</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Variables — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.01_variables_exercises.html">Variables — exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.02_conditionals.html">Conditionals — lecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.02_conditionals_exercises.html">Conditionals — exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.03_namespaces.html">Notebook memory — lecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1.03_namespaces_exercises.html">Notebook memory — exercises</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Notebook memory — exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.04_lists.html">Lists — lecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.04_lists_exercises.html">Lists — exercises</a></li>
 </ul>
@@ -240,7 +240,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="../_sources/exercise 1/1.01_variables_exercises.ipynb" title="View this page">
+  <a class="muted-link" href="../_sources/exercises 1/1.03_namespaces_exercises.ipynb" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -258,109 +258,65 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section class="tex2jax_ignore mathjax_ignore" id="variables-exercises">
-<h1>Variables — exercises<a class="headerlink" href="#variables-exercises" title="Link to this heading">¶</a></h1>
+          <section class="tex2jax_ignore mathjax_ignore" id="namespaces-exercises">
+<h1>Namespaces — exercises<a class="headerlink" href="#namespaces-exercises" title="Link to this heading">¶</a></h1>
 <p>Work in the answer cells below. Predict an answer before running code, then
 compare the result with your prediction. The code cells provide starting
 values, not completed solutions. Deliberately faulty code is shown as text;
 copy it into an answer cell when you are ready to repair it.</p>
 <p>Every complete exercise session has <strong>40 trials</strong>. <code class="docutils literal notranslate"><span class="pre">1</span></code> means correct and <code class="docutils literal notranslate"><span class="pre">0</span></code>
-means incorrect. The exercise training rule is <strong>accuracy &gt; 0.66</strong> (no 0.75 as in the lectures). Because
+means incorrect. The exercise training rule is <strong>accuracy &gt; 0.66</strong>. Because
 one response is 1/40 = 0.025 of the session, 26/40 = 0.65 does not qualify,
-whereas 27/40 = 0.675 does.</p>
-<section id="exercise-1-make-the-calculation-readable">
-<h2>Exercise 1: make the calculation readable<a class="headerlink" href="#exercise-1-make-the-calculation-readable" title="Link to this heading">¶</a></h2>
-<p>An animal called Milo answered 29 of 40 trials correctly. This calculation
-works, but the two numbers do not explain themselves:</p>
+whereas 27/40 = 0.675 does. Short practice excerpts are labelled separately.</p>
+<section id="exercise-1-stored-values">
+<h2>Exercise 1: stored values<a class="headerlink" href="#exercise-1-stored-values" title="Link to this heading">¶</a></h2>
+<p>Predict the three printed values before running the cell. Which assignment
+would you need to rerun to make the accuracy agree with the updated count?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">29</span> <span class="o">/</span> <span class="mi">40</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_correct</span> <span class="o">=</span> <span class="mi">26</span>
+<span class="n">n_trials</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">n_correct</span> <span class="o">/</span> <span class="n">n_trials</span>
+<span class="n">saved_count</span> <span class="o">=</span> <span class="n">n_correct</span>
+<span class="n">n_correct</span> <span class="o">=</span> <span class="mi">27</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_correct</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saved_count</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.725
-</pre></div>
 </div>
-</div>
-</div>
-<p>Store the animal’s name as <code class="docutils literal notranslate"><span class="pre">animal_name</span></code>, the correct count as <code class="docutils literal notranslate"><span class="pre">n_correct</span></code>,
-and the total count as <code class="docutils literal notranslate"><span class="pre">n_trials</span></code>. Calculate <code class="docutils literal notranslate"><span class="pre">accuracy</span></code> from the named values.
-Display the name and accuracy. Explain why the name needs quotes.</p>
-<p><strong>Check after writing your code:</strong> 29/40 is 0.725. Then use 26 and 27 correct
-responses. Predict both decisions under <code class="docutils literal notranslate"><span class="pre">accuracy</span> <span class="pre">&gt;</span> <span class="pre">0.66</span></code> before calculating.</p>
+<p><strong>Your prediction and explanation:</strong> …</p>
+<p>In the next cell, recalculate and update <code class="docutils literal notranslate"><span class="pre">accuracy</span></code> and <code class="docutils literal notranslate"><span class="pre">saved_count</span></code>, then display both.</p>
 <div class="cell tag_exercise docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here.</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-2-put-two-blocks-together">
-<h2>Exercise 2: put two blocks together<a class="headerlink" href="#exercise-2-put-two-blocks-together" title="Link to this heading">¶</a></h2>
-<p>The same session consists of two blocks of 20 trials. The animal was correct
-15 times in the first block and 12 times in the second.</p>
-<p>Calculate and display:</p>
-<ol class="arabic simple">
-<li><p>The total correct count summed over both blocks, <code class="docutils literal notranslate"><span class="pre">n_correct</span></code>.</p></li>
-<li><p>The incorrect count (trials count - correct count), <code class="docutils literal notranslate"><span class="pre">n_incorrect</span></code>.</p></li>
-<li><p>The accuracy, <code class="docutils literal notranslate"><span class="pre">accuracy</span></code> = correct count / trial count.</p></li>
-<li><p>The percentage correct, <code class="docutils literal notranslate"><span class="pre">percent_correct</span></code> = accuracy × 100.</p></li>
-</ol>
-<p>Reuse your calculated values. Check that correct and incorrect counts add to 40.</p>
-<div class="cell tag_exercise docutils container">
+<section id="exercise-2-rerunning-a-cell">
+<h2>Exercise 2: rerunning a cell<a class="headerlink" href="#exercise-2-rerunning-a-cell" title="Link to this heading">¶</a></h2>
+<p>Predict what happens when you run both cells below once and then run only the
+second cell a second time. These are counts while scoring a session, not yet a
+completed 40-trial result.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_block_correct</span> <span class="o">=</span> <span class="mi">15</span>
-<span class="n">second_block_correct</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="n">n_trials</span> <span class="o">=</span> <span class="mi">40</span>
-<span class="c1"># Your calculations here.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_correct_so_far</span> <span class="o">=</span> <span class="mi">5</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="exercise-3-compare-two-sessions">
-<h2>Exercise 3: compare two sessions<a class="headerlink" href="#exercise-3-compare-two-sessions" title="Link to this heading">¶</a></h2>
-<p>Nori completed one 40-trial session on each of two days. It answered 23 trials
-correctly on the first day and 28 on the second day.</p>
-<p>Calculate each day’s accuracy and how many more correct responses occurred
-on the second day. Use descriptive names and print the results.</p>
-<p>In which session did the animal perform better? Which session meets the
-exercise rule <code class="docutils literal notranslate"><span class="pre">accuracy</span> <span class="pre">&gt;</span> <span class="pre">0.66</span></code>?</p>
-<div class="cell tag_exercise docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_day_correct</span> <span class="o">=</span> <span class="mi">23</span>
-<span class="n">second_day_correct</span> <span class="o">=</span> <span class="mi">28</span>
-<span class="n">n_trials</span> <span class="o">=</span> <span class="mi">40</span>
-<span class="c1"># Your code here.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_correct_so_far</span> <span class="o">=</span> <span class="n">n_correct_so_far</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_correct_so_far</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="exercise-4-choose-the-needed-type-conversion">
-<h2>Exercise 4: choose the needed type conversion<a class="headerlink" href="#exercise-4-choose-the-needed-type-conversion" title="Link to this heading">¶</a></h2>
-<p>Given the variables below, write:</p>
-<ol class="arabic simple">
-<li><p>One expression that produces the <strong>number</strong> <code class="docutils literal notranslate"><span class="pre">9</span></code>.</p></li>
-<li><p>One expression that produces the <strong>text</strong> <code class="docutils literal notranslate"><span class="pre">&quot;72&quot;</span></code>.</p></li>
-</ol>
-<p>Use <code class="docutils literal notranslate"><span class="pre">int(...)</span></code> or <code class="docutils literal notranslate"><span class="pre">str(...)</span></code> where needed. Predict the type of each result,
-then print each result and its type.</p>
-<p>Finally, convert <code class="docutils literal notranslate"><span class="pre">count_as_text</span></code> to a number and calculate its accuracy for
-a 40-trial session.</p>
-<div class="cell tag_exercise docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">"7"</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">count_as_text</span> <span class="o">=</span> <span class="s2">"27"</span>
-<span class="n">n_trials</span> <span class="o">=</span> <span class="mi">40</span>
-<span class="c1"># Write the two expressions, then convert the count and calculate accuracy.</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p><strong>Your explanation:</strong> …</p>
 </section>
 </section>
 
@@ -377,7 +333,7 @@ a 40-trial session.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./exercise 1"
+            path: "./exercises 1"
         },
         predefinedOutput: true
     }
@@ -388,23 +344,23 @@ a 40-trial session.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../lectures%201/1.02_conditionals.html">
+          <a class="next-page" href="../lectures%201/1.04_lists.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Conditionals</div>
+                <div class="title">Lists</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../lectures%201/1.01_variables.html">
+          <a class="prev-page" href="../lectures%201/1.03_namespaces.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Variables</div>
+                <div class="title">The memory of your notebook</div>
                 
               </div>
             </a>
@@ -438,11 +394,9 @@ a 40-trial session.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Variables — exercises</a><ul>
-<li><a class="reference internal" href="#exercise-1-make-the-calculation-readable">Exercise 1: make the calculation readable</a></li>
-<li><a class="reference internal" href="#exercise-2-put-two-blocks-together">Exercise 2: put two blocks together</a></li>
-<li><a class="reference internal" href="#exercise-3-compare-two-sessions">Exercise 3: compare two sessions</a></li>
-<li><a class="reference internal" href="#exercise-4-choose-the-needed-type-conversion">Exercise 4: choose the needed type conversion</a></li>
+<li><a class="reference internal" href="#">Namespaces — exercises</a><ul>
+<li><a class="reference internal" href="#exercise-1-stored-values">Exercise 1: stored values</a></li>
+<li><a class="reference internal" href="#exercise-2-rerunning-a-cell">Exercise 2: rerunning a cell</a></li>
 </ul>
 </li>
 </ul>

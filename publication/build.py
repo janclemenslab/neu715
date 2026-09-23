@@ -10,7 +10,7 @@ import tempfile
 
 HERE = Path(__file__).resolve().parent
 SOURCE = HERE.parent
-PUBLIC_DIRS = ("lectures 1", "lectures 2", "exercise 1", "exercises 2")
+PUBLIC_DIRS = ("lectures 1", "lectures 2", "exercises 1", "exercises 2")
 
 
 def run(*command, cwd=HERE):

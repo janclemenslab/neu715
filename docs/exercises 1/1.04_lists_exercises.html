@@ -3,10 +3,10 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Lists" href="../lectures%201/1.04_lists.html"><link rel="prev" title="The memory of your notebook" href="../lectures%201/1.03_namespaces.html">
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Week 2 plan" href="../lectures%202/week_2_plan.html"><link rel="prev" title="Lists" href="../lectures%201/1.04_lists.html">
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
-        <title>Namespaces — exercises - NEU715 — Neuroscientific Data Analysis using Python</title>
+        <title>Lists — exercises - NEU715 — Neuroscientific Data Analysis using Python</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
@@ -205,9 +205,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.02_conditionals.html">Conditionals — lecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1.02_conditionals_exercises.html">Conditionals — exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.03_namespaces.html">Notebook memory — lecture</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Notebook memory — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.03_namespaces_exercises.html">Notebook memory — exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.04_lists.html">Lists — lecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1.04_lists_exercises.html">Lists — exercises</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Lists — exercises</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul>
@@ -240,7 +240,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="../_sources/exercise 1/1.03_namespaces_exercises.ipynb" title="View this page">
+  <a class="muted-link" href="../_sources/exercises 1/1.04_lists_exercises.ipynb" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -258,8 +258,8 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section class="tex2jax_ignore mathjax_ignore" id="namespaces-exercises">
-<h1>Namespaces — exercises<a class="headerlink" href="#namespaces-exercises" title="Link to this heading">¶</a></h1>
+          <section class="tex2jax_ignore mathjax_ignore" id="lists-exercises">
+<h1>Lists — exercises<a class="headerlink" href="#lists-exercises" title="Link to this heading">¶</a></h1>
 <p>Work in the answer cells below. Predict an answer before running code, then
 compare the result with your prediction. The code cells provide starting
 values, not completed solutions. Deliberately faulty code is shown as text;
@@ -268,55 +268,122 @@ copy it into an answer cell when you are ready to repair it.</p>
 means incorrect. The exercise training rule is <strong>accuracy &gt; 0.66</strong>. Because
 one response is 1/40 = 0.025 of the session, 26/40 = 0.65 does not qualify,
 whereas 27/40 = 0.675 does. Short practice excerpts are labelled separately.</p>
-<section id="exercise-1-stored-values">
-<h2>Exercise 1: stored values<a class="headerlink" href="#exercise-1-stored-values" title="Link to this heading">¶</a></h2>
-<p>Predict the three printed values before running the cell. Which assignment
-would you need to rerun to make the accuracy agree with the updated count?</p>
+<section id="session-data">
+<h2>Session data<a class="headerlink" href="#session-data" title="Link to this heading">¶</a></h2>
+<p>Run this cell before the exercises that use <code class="docutils literal notranslate"><span class="pre">outcomes</span></code>. It contains all
+40 trial outcomes for one session, in trial order.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_correct</span> <span class="o">=</span> <span class="mi">26</span>
-<span class="n">n_trials</span> <span class="o">=</span> <span class="mi">40</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="n">n_correct</span> <span class="o">/</span> <span class="n">n_trials</span>
-<span class="n">saved_count</span> <span class="o">=</span> <span class="n">n_correct</span>
-<span class="n">n_correct</span> <span class="o">=</span> <span class="mi">27</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">n_correct</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">saved_count</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Your prediction and explanation:</strong> …</p>
-<p>In the next cell, recalculate and update <code class="docutils literal notranslate"><span class="pre">accuracy</span></code> and <code class="docutils literal notranslate"><span class="pre">saved_count</span></code>, then display both.</p>
-<div class="cell tag_exercise docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcomes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-2-rerunning-a-cell">
-<h2>Exercise 2: rerunning a cell<a class="headerlink" href="#exercise-2-rerunning-a-cell" title="Link to this heading">¶</a></h2>
-<p>Predict what happens when you run both cells below once and then run only the
-second cell a second time. These are counts while scoring a session, not yet a
-completed 40-trial result.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_correct_so_far</span> <span class="o">=</span> <span class="mi">5</span>
+<section id="exercise-1-explain-and-fix-indexing-errors">
+<h2>Exercise 1: explain and fix indexing errors<a class="headerlink" href="#exercise-1-explain-and-fix-indexing-errors" title="Link to this heading">¶</a></h2>
+<p>What is wrong with each of these expressions?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">outcomes</span><span class="p">[</span><span class="mf">2.0</span><span class="p">]</span>
+<span class="n">outcomes</span><span class="p">[</span><span class="mi">40</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_correct_so_far</span> <span class="o">=</span> <span class="n">n_correct_so_far</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">n_correct_so_far</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>Replace the first with an expression that retrieves <strong>trial 2</strong>, and the
+second with one that retrieves <strong>trial 40</strong>. Print the two results.</p>
 <p><strong>Your explanation:</strong> …</p>
+<div class="cell tag_exercise docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your repaired expressions here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2-access-particular-trials">
+<h2>Exercise 2: access particular trials<a class="headerlink" href="#exercise-2-access-particular-trials" title="Link to this heading">¶</a></h2>
+<p>Print the first, second, last, and second-to-last outcomes, in that order.
+Use negative indices for the final two. Verify each answer against the list.</p>
+<div class="cell tag_exercise docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-select-blocks">
+<h2>Exercise 3: select blocks<a class="headerlink" href="#exercise-3-select-blocks" title="Link to this heading">¶</a></h2>
+<p>Use slicing to store:</p>
+<ol class="arabic simple">
+<li><p>Trials 1–20 as <code class="docutils literal notranslate"><span class="pre">first_half</span></code>.</p></li>
+<li><p>Trials 21–40 as <code class="docutils literal notranslate"><span class="pre">second_half</span></code>.</p></li>
+<li><p>Trials 16–25 as <code class="docutils literal notranslate"><span class="pre">middle_block</span></code>.</p></li>
+</ol>
+<p>Print each list and its length. Expected lengths: 20, 20, and 10.</p>
+<div class="cell tag_exercise docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4-correct-a-recording-mistake">
+<h2>Exercise 4: correct a recording mistake<a class="headerlink" href="#exercise-4-correct-a-recording-mistake" title="Link to this heading">¶</a></h2>
+<p>In the following independent copy of a 40-trial record, trial 2 was mistakenly
+scored as incorrect. Change <strong>only that trial</strong> from 0 to 1.
+Print the corrected list and its length; it should still contain 40 items.</p>
+<div class="cell tag_exercise docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrected_outcomes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="c1"># Correct trial 2 here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-5-add-the-final-trial">
+<h2>Exercise 5: add the final trial<a class="headerlink" href="#exercise-5-add-the-final-trial" title="Link to this heading">¶</a></h2>
+<p>This record is <strong>in progress</strong> and contains 39 outcomes. The final trial was
+correct. Append its outcome, then print the list and its length.</p>
+<p><strong>Check:</strong> after the append there should be exactly 40 items. Rerun the
+whole cell when testing, so repeated appends do not create extra trials.</p>
+<div class="cell tag_exercise docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcomes_so_far</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Append the final outcome and display the result.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="optional-exercise-6-every-other-trial">
+<h2>Optional Exercise 6: every other trial<a class="headerlink" href="#optional-exercise-6-every-other-trial" title="Link to this heading">¶</a></h2>
+<p>Use slices to print outcomes from odd-numbered trials (1, 3, …, 39), then
+even-numbered trials (2, 4, …, 40). Print the complete list in reverse order.
+Explain why odd trial numbers correspond to even Python indices.</p>
+<div class="cell tag_exercise docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="optional-exercise-7-score-and-append-a-response">
+<h2>Optional Exercise 7: score and append a response<a class="headerlink" href="#optional-exercise-7-score-and-append-a-response" title="Link to this heading">¶</a></h2>
+<p>Start <code class="docutils literal notranslate"><span class="pre">scored_outcomes</span></code> as an empty list. Compare the target and response
+below; append 1 if they match, otherwise append 0. Print the result.</p>
+<p>This is just the first trial of a new session, not a completed session.
+Test a matching and a non-matching response. No loop is needed.</p>
+<div class="cell tag_exercise docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="s2">"no sound"</span>
+<span class="n">response</span> <span class="o">=</span> <span class="s2">"sound"</span>
+<span class="c1"># Create the list, score the trial, and append its outcome.</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -333,7 +400,7 @@ completed 40-trial result.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./exercise 1"
+            path: "./exercises 1"
         },
         predefinedOutput: true
     }
@@ -344,23 +411,23 @@ completed 40-trial result.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../lectures%201/1.04_lists.html">
+          <a class="next-page" href="../lectures%202/week_2_plan.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Lists</div>
+                <div class="title">Week 2 plan</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../lectures%201/1.03_namespaces.html">
+          <a class="prev-page" href="../lectures%201/1.04_lists.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">The memory of your notebook</div>
+                <div class="title">Lists</div>
                 
               </div>
             </a>
@@ -394,9 +461,15 @@ completed 40-trial result.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Namespaces — exercises</a><ul>
-<li><a class="reference internal" href="#exercise-1-stored-values">Exercise 1: stored values</a></li>
-<li><a class="reference internal" href="#exercise-2-rerunning-a-cell">Exercise 2: rerunning a cell</a></li>
+<li><a class="reference internal" href="#">Lists — exercises</a><ul>
+<li><a class="reference internal" href="#session-data">Session data</a></li>
+<li><a class="reference internal" href="#exercise-1-explain-and-fix-indexing-errors">Exercise 1: explain and fix indexing errors</a></li>
+<li><a class="reference internal" href="#exercise-2-access-particular-trials">Exercise 2: access particular trials</a></li>
+<li><a class="reference internal" href="#exercise-3-select-blocks">Exercise 3: select blocks</a></li>
+<li><a class="reference internal" href="#exercise-4-correct-a-recording-mistake">Exercise 4: correct a recording mistake</a></li>
+<li><a class="reference internal" href="#exercise-5-add-the-final-trial">Exercise 5: add the final trial</a></li>
+<li><a class="reference internal" href="#optional-exercise-6-every-other-trial">Optional Exercise 6: every other trial</a></li>
+<li><a class="reference internal" href="#optional-exercise-7-score-and-append-a-response">Optional Exercise 7: score and append a response</a></li>
 </ul>
 </li>
 </ul>
