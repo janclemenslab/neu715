@@ -72,11 +72,11 @@
     },
     {
       "content": null,
-      "created": "2026-09-23T17:06:51.155790Z",
+      "created": "2026-09-23T17:15:40.095004Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-09-23T17:06:51.192396Z",
+      "last_modified": "2026-09-23T17:15:40.132254Z",
       "mimetype": null,
       "name": "assets",
       "path": "exercises 2/assets",
@@ -99,11 +99,11 @@
       "writable": true
     }
   ],
-  "created": "2026-09-23T17:06:51.152254Z",
+  "created": "2026-09-23T17:15:40.091448Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2026-09-23T17:06:51.196707Z",
+  "last_modified": "2026-09-23T17:15:40.136828Z",
   "mimetype": null,
   "name": "exercises 2",
   "path": "exercises 2",
