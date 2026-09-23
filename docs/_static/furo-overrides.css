@@ -1,0 +1,20 @@
+@media (max-width: 63em) {
+  .mobile-header .header-center {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .mobile-header .header-center a,
+  .mobile-header .brand {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobile-header .header-right {
+    align-items: center;
+    flex-shrink: 0;
+    gap: 0.5rem;
+  }
+}

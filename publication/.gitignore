@@ -1,0 +1,5 @@
+.venv/
+_build/
+__pycache__/
+.jupyterlite.doit.db
+.DS_Store

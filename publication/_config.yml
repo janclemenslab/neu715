@@ -1,0 +1,31 @@
+title: NEU715 — Neuroscientific Data Analysis using Python
+author: Jan Clemens
+only_build_toc_files: true
+exclude_patterns:
+  - .venv
+  - .venv/**
+
+execute:
+  execute_notebooks: "off"
+
+html:
+  use_issues_button: false
+  use_repository_button: false
+  use_multitoc_numbering: false
+
+sphinx:
+  config:
+    html_theme: furo
+    html_theme_options: {}
+    html_css_files:
+      - furo-overrides.css
+    html_js_files:
+      - jupyterlite-link.js
+
+repository:
+  url: https://github.com/janclemenslab/neu715
+  path_to_book: publication
+  branch: main
+launch_buttons:
+  binderhub_url: https://mybinder.org
+  colab_url: https://colab.research.google.com

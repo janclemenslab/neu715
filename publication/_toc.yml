@@ -1,0 +1,53 @@
+format: jb-book
+root: intro
+parts:
+  - caption: Week 1 — lectures
+    chapters:
+      - file: lectures 1/week_1_plan
+        title: Week 1 plan
+      - file: lectures 1/1.00_notebooks
+        title: Notebooks
+      - file: lectures 1/1.01_variables
+        title: Variables
+      - file: lectures 1/1.02_conditionals
+        title: Conditionals
+      - file: lectures 1/1.03_namespaces
+        title: Notebook memory
+      - file: lectures 1/1.04_lists
+        title: Lists
+  - caption: Week 1 — exercises
+    chapters:
+      - file: exercise 1/1.01_variables_exercises
+        title: Variables
+      - file: exercise 1/1.02_conditionals_exercises
+        title: Conditionals
+      - file: exercise 1/1.03_namespaces_exercises
+        title: Notebook memory
+      - file: exercise 1/1.04_lists_exercises
+        title: Lists
+  - caption: Week 2 — loops
+    chapters:
+      - file: lectures 2/week_2_plan
+        title: Week 2 plan
+      - file: lectures 2/2.01_loops_simple
+        title: Loops
+      - file: exercises 2/2.01_loops_simple_exercises
+        title: Loops
+  - caption: Week 2 — Dungeon Escape
+    chapters:
+      - file: exercises 2/2.03_dungeon_escape_exercises
+        title: Dungeon Escape
+  - caption: Week 2 — functions and plotting
+    chapters:
+      - file: lectures 2/2.02_functions
+        title: Functions
+      - file: exercises 2/2.02_functions_exercises
+        title: Functions
+      - file: lectures 2/2.04_plotting
+        title: Plotting
+      - file: exercises 2/2.04_plotting_exercises
+        title: Plotting
+  - caption: Week 2 — spike sorting
+    chapters:
+      - file: exercises 2/2.05_spike_detection_exercises
+        title: Spike sorting

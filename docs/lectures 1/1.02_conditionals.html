@@ -1,0 +1,654 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="The memory of your notebook" href="1.03_namespaces.html"><link rel="prev" title="Variables" href="1.01_variables.html">
+
+    <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
+        <title>Conditionals - NEU715 — Neuroscientific Data Analysis using Python</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/furo-overrides.css?v=b5f76c3e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../intro.html"><div class="brand">NEU715 — Neuroscientific Data Analysis using Python</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../intro.html">
+  
+  <span class="sidebar-brand-text">NEU715 — Neuroscientific Data Analysis using Python</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Week 1 — lectures</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="week_1_plan.html">Week 1 plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.00_notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.01_variables.html">Variables</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.03_namespaces.html">Notebook memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1.04_lists.html">Lists</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 1 — exercises</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../exercise%201/1.01_variables_exercises.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise%201/1.02_conditionals_exercises.html">Conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise%201/1.03_namespaces_exercises.html">Notebook memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise%201/1.04_lists_exercises.html">Lists</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 2 — loops</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/week_2_plan.html">Week 2 plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.01_loops_simple.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.01_loops_simple_exercises.html">Loops</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 2 — Dungeon Escape</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.03_dungeon_escape_exercises.html">Dungeon Escape</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 2 — functions and plotting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.02_functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.02_functions_exercises.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.04_plotting.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.04_plotting_exercises.html">Plotting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 2 — spike sorting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.05_spike_detection_exercises.html">Spike sorting</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/lectures 1/1.02_conditionals.ipynb" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="conditionals">
+<h1>Conditionals<a class="headerlink" href="#conditionals" title="Link to this heading">¶</a></h1>
+<p>Learn to compare values and use conditional statements to choose between different actions.</p>
+<section id="our-question-does-the-animal-meet-the-training-rule">
+<h2>Our question: does the animal meet the training rule?<a class="headerlink" href="#our-question-does-the-animal-meet-the-training-rule" title="Link to this heading">¶</a></h2>
+<p>An animal performs <strong>20 trials</strong> of a sound-detection task. On each trial,
+a sound is either played or not played. The animal chooses one of two
+response ports to report <strong>“sound”</strong> or <strong>“no sound”</strong>.</p>
+<p>A response is <strong>correct when it matches what happened</strong>, including reporting
+“no sound” when no sound was played.</p>
+<p>For this exercise, we label an animal <strong>well-trained</strong> when it is correct on
+<strong>more than 75%</strong> of the 20 trials: <strong>more than 15 correct</strong>, or an accuracy
+<strong>greater than 0.75</strong>. Exactly 15 correct does <strong>not</strong> meet the rule.
+This is the definition we use for this classroom task.</p>
+</section>
+<section id="is-a-response-correct">
+<h2>Is a response correct?<a class="headerlink" href="#is-a-response-correct" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">target</span></code> records what happened: <code class="docutils literal notranslate"><span class="pre">&quot;sound&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;no</span> <span class="pre">sound&quot;</span></code>.
+<code class="docutils literal notranslate"><span class="pre">response</span></code> records the animal’s report using the same labels.
+A correct response matches the target.</p>
+<p><code class="docutils literal notranslate"><span class="pre">==</span></code> compares two values. It is different from <code class="docutils literal notranslate"><span class="pre">=</span></code>, which assigns a value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="s2">"sound"</span>
+<span class="n">response</span> <span class="o">=</span> <span class="s2">"sound"</span>
+<span class="n">correct</span> <span class="o">=</span> <span class="n">response</span> <span class="o">==</span> <span class="n">target</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">correct</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A comparison produces <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. This type is called <code class="docutils literal notranslate"><span class="pre">bool</span></code>, short
+for Boolean. Predict the result if <code class="docutils literal notranslate"><span class="pre">response</span></code> becomes <code class="docutils literal notranslate"><span class="pre">&quot;no</span> <span class="pre">sound&quot;</span></code>.
+Then change both labels to <code class="docutils literal notranslate"><span class="pre">&quot;no</span> <span class="pre">sound&quot;</span></code>. Why is that a correct response too?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">correct</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comparing-numbers">
+<h2>Comparing numbers<a class="headerlink" href="#comparing-numbers" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operator</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>greater than</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>less than</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>equal to</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>not equal to</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>greater than or equal to</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>less than or equal to</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The training rule says <strong>more than 15 correct</strong>, so we use <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, not <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>.
+Predict both results at the boundary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_correct</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_correct</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_correct</span> <span class="o">&gt;=</span> <span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+True
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Try it:</strong> use 14, 15, and 16. For which input do the two comparisons disagree?</p>
+<p>Accuracy expresses the same rule as a fraction of the 20 trials.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_correct</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">n_trials</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">n_correct</span> <span class="o">/</span> <span class="n">n_trials</span>
+<span class="n">well_trained</span> <span class="o">=</span> <span class="n">accuracy</span> <span class="o">&gt;</span> <span class="mf">0.75</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">well_trained</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8
+True
+</pre></div>
+</div>
+</div>
+</div>
+<section id="clicker-question-comparisons-click-me">
+<h3>Clicker question “comparisons”(<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)<a class="headerlink" href="#clicker-question-comparisons-click-me" title="Link to this heading">¶</a></h3>
+<p>Let’s define two variables: <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">10;</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">20</span></code>. Which of these statements evaluate to True?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">==</span> <span class="mi">10</span>
+<span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span>
+<span class="n">b</span> <span class="o">&lt;=</span> <span class="mi">20</span>
+<span class="n">b</span> <span class="o">&lt;</span> <span class="mi">20</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</section>
+<section id="most-important-simple-variable-types">
+<h3>Most important simple variable types<a class="headerlink" href="#most-important-simple-variable-types" title="Link to this heading">¶</a></h3>
+<p>WIth the boolean type, we have now encountered all of the important so-called “simple” variable types (“simple” because they only hold a single value, not a collection of values):</p>
+<ul class="simple">
+<li><p>integer numbers: <code class="docutils literal notranslate"><span class="pre">int</span></code> - number without a decimal point (1, 2, 103241)</p></li>
+<li><p>floating point numbers: <code class="docutils literal notranslate"><span class="pre">float</span></code> - number with a decimal point (3.141)</p></li>
+<li><p>string: <code class="docutils literal notranslate"><span class="pre">str</span></code>: sequence of characters (“yes”, ‘no’)</p></li>
+<li><p>boolean variables: <code class="docutils literal notranslate"><span class="pre">bool</span></code> - only two values: <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="choose-an-action-with-if-and-else">
+<h2>Choose an action with if and else<a class="headerlink" href="#choose-an-action-with-if-and-else" title="Link to this heading">¶</a></h2>
+<p>We can choose an action depending on the outcome of a comparison using <code class="docutils literal notranslate"><span class="pre">if</span></code>/<code class="docutils literal notranslate"><span class="pre">else</span></code>. The basic logic of these statements is this: <code class="docutils literal notranslate"><span class="pre">if</span></code> EXPRESSION is True, then we do one thing, <code class="docutils literal notranslate"><span class="pre">else</span></code> we do something else:</p>
+<p>The code below stores <strong>1 for correct</strong> and <strong>0 for incorrect</strong> trial outcomes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="s2">"sound"</span>
+<span class="n">response</span> <span class="o">=</span> <span class="s2">"no sound"</span>
+
+<span class="k">if</span> <span class="n">response</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+    <span class="n">outcome</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Correct"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">outcome</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Incorrect"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">outcome</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Incorrect
+0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Three parts of an <code class="docutils literal notranslate"><span class="pre">if</span></code>/<code class="docutils literal notranslate"><span class="pre">else</span></code> statement are new:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code>:</strong> The condition after <code class="docutils literal notranslate"><span class="pre">if</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. If it is <code class="docutils literal notranslate"><span class="pre">True</span></code>, Python runs the code under <code class="docutils literal notranslate"><span class="pre">if</span></code>. Otherwise, it runs the code under <code class="docutils literal notranslate"><span class="pre">else</span></code>. Only one of these two blocks runs.</p></li>
+<li><p><strong>The colon (<code class="docutils literal notranslate"><span class="pre">:</span></code>):</strong> A colon after the condition and after <code class="docutils literal notranslate"><span class="pre">else</span></code> tells Python that a block of code follows.</p></li>
+<li><p><strong>Indentation:</strong> Indenting lines—usually with four spaces—shows which block they belong to. Lines that return to the original indentation are outside both blocks and run after the decision.</p></li>
+</ul>
+</section>
+<section id="apply-the-session-rule">
+<h2>Apply the session rule<a class="headerlink" href="#apply-the-session-rule" title="Link to this heading">¶</a></h2>
+<p>Here the count is already supplied. Predict the response. Go through the code line by line and explain whether it is run and what it does.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_correct</span> <span class="o">=</span> <span class="mi">14</span>
+
+<span class="k">if</span> <span class="n">n_correct</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">:</span>
+    <span class="n">training_status</span> <span class="o">=</span> <span class="s2">"well-trained"</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">training_status</span> <span class="o">=</span> <span class="s2">"criterion not met"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">training_status</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="your-turn">
+<h2>Your turn<a class="headerlink" href="#your-turn" title="Link to this heading">¶</a></h2>
+<p>A target is <code class="docutils literal notranslate"><span class="pre">&quot;no</span> <span class="pre">sound&quot;</span></code> and the animal reports <code class="docutils literal notranslate"><span class="pre">&quot;no</span> <span class="pre">sound&quot;</span></code>.
+Write an if/else statement that stores and prints the outcome as 1 or 0.
+Then change the report to <code class="docutils literal notranslate"><span class="pre">&quot;sound&quot;</span></code> and check again.</p>
+<div class="cell tag_exercise docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="s2">"no sound"</span>
+<span class="n">response</span> <span class="o">=</span> <span class="s2">"no sound"</span>
+<span class="c1"># Your if/else statement here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ask-ai-how-to-handle-three-cases">
+<h2>Ask AI how to handle three cases<a class="headerlink" href="#ask-ai-how-to-handle-three-cases" title="Link to this heading">¶</a></h2>
+<p>So far, <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> let us choose between two cases. Now we want to
+describe three cases separately.</p>
+<p>Specifically, we want to discriminate three different cases - below .75, exactly 0.75, above 0.75.
+Ask a chatbot to suggest a solution. Try to understand the answer - ask the chatbot for more explanation if necessary.</p>
+<p><strong>Mini exercise:</strong> use the chatbot’s answer to complete the next cell. The code
+should print a different message for each of the three cases. Test it with
+<code class="docutils literal notranslate"><span class="pre">0.70</span></code>, <code class="docutils literal notranslate"><span class="pre">0.75</span></code>, and <code class="docutils literal notranslate"><span class="pre">0.80</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="mf">0.75</span>
+
+<span class="c1"># Fill in the solution suggested by the chatbot.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">elif</span></code> is short for “else if”. Python checks the conditions from top to
+bottom, runs the first block whose condition is <code class="docutils literal notranslate"><span class="pre">True</span></code>, and skips the remaining
+branches. This means that the order of the comparisons matters.</p>
+<section id="clicker-question-if-statements-click-me">
+<h3>Clicker question “if statements”(<a class="reference external" href="https://go.uos.de/kjcBV">Click me!</a>)<a class="headerlink" href="#clicker-question-if-statements-click-me" title="Link to this heading">¶</a></h3>
+<p>What will be printed?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">size</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">if</span> <span class="n">size</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s1">'too big!'</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">size</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s1">'not too big!)</span>
+<span class="k">elif</span> <span class="n">size</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s1">'perfect'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s1">'no result'</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="optional-combine-comparisons">
+<h2>Optional: combine comparisons<a class="headerlink" href="#optional-combine-comparisons" title="Link to this heading">¶</a></h2>
+<p>We can combine multiple boolean values using <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code>.
+<code class="docutils literal notranslate"><span class="pre">and</span></code> requires both comparisons to be True; <code class="docutils literal notranslate"><span class="pre">or</span></code> requires at least one.
+For a completed 20-trial session, a correct-response count must be between
+0 and 20, including both ends.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_correct</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_correct</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">n_correct</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_correct</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n_correct</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures 1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="1.03_namespaces.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">The memory of your notebook</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="1.01_variables.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Variables</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Conditionals</a><ul>
+<li><a class="reference internal" href="#our-question-does-the-animal-meet-the-training-rule">Our question: does the animal meet the training rule?</a></li>
+<li><a class="reference internal" href="#is-a-response-correct">Is a response correct?</a></li>
+<li><a class="reference internal" href="#comparing-numbers">Comparing numbers</a><ul>
+<li><a class="reference internal" href="#clicker-question-comparisons-click-me">Clicker question “comparisons”(Click me!)</a></li>
+<li><a class="reference internal" href="#most-important-simple-variable-types">Most important simple variable types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#choose-an-action-with-if-and-else">Choose an action with if and else</a></li>
+<li><a class="reference internal" href="#apply-the-session-rule">Apply the session rule</a></li>
+<li><a class="reference internal" href="#your-turn">Your turn</a></li>
+<li><a class="reference internal" href="#ask-ai-how-to-handle-three-cases">Ask AI how to handle three cases</a><ul>
+<li><a class="reference internal" href="#clicker-question-if-statements-click-me">Clicker question “if statements”(Click me!)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#optional-combine-comparisons">Optional: combine comparisons</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/jupyterlite-link.js?v=7ae7fb5c"></script>
+    </body>
+</html>

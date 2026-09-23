@@ -1,2 +1,0 @@
-experiment1 Tuesday
-experiment2 Wednesday
