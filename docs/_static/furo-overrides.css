@@ -18,3 +18,8 @@
     gap: 0.5rem;
   }
 }
+
+/* Notebook launch links use this element to locate the source. */
+.view-this-page {
+  display: none;
+}
