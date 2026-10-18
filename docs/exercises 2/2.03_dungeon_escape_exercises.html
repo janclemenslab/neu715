@@ -262,9 +262,7 @@
 <h1>Dungeon Escape<a class="headerlink" href="#dungeon-escape" title="Link to this heading">¶</a></h1>
 <section id="setup-and-command-reference">
 <h2>Setup and command reference<a class="headerlink" href="#setup-and-command-reference" title="Link to this heading">¶</a></h2>
-<p>Run the supplied setup. The first room is fully visible (<code class="docutils literal notranslate"><span class="pre">visible=True</span></code>).
-Rooms are visible by default. Use <code class="docutils literal notranslate"><span class="pre">visible=False</span></code> for darkness; moving then reveals floor tiles.
-Imports make the game commands available. You do not need to write the setup.</p>
+<p>Run the setup cell below - this will make all functions available to you.</p>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -280,7 +278,7 @@ Imports make the game commands available. You do not need to write the setup.</p
 <td><p>Turn without moving.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reset()</span></code></p></td>
-<td><p></p></td>
+<td><p>Returns you to the starting position and direction in the current room.</p></td>
 </tr>
 </tbody>
 </table>
@@ -291,12 +289,8 @@ Imports make the game commands available. You do not need to write the setup.</p
     <span class="n">forward</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">reset</span><span class="p">,</span>
     <span class="n">load</span><span class="p">,</span> <span class="n">new_practice_room</span><span class="p">,</span> <span class="n">new_hallway</span><span class="p">,</span> <span class="n">new_twisty_room</span><span class="p">,</span> <span class="n">toss_dice</span>
 <span class="p">)</span>
-<span class="n">load</span><span class="p">([</span><span class="s2">"#######"</span><span class="p">,</span> <span class="s2">"#&gt;..E##"</span><span class="p">,</span> <span class="s2">"#######"</span><span class="p">],</span> <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/c60d3a6126735cbe4475aff9de39daa5795c9cf1b2f88c94d7b49d8b34ebf1f6.png" src="../_images/c60d3a6126735cbe4475aff9de39daa5795c9cf1b2f88c94d7b49d8b34ebf1f6.png" />
 </div>
 </div>
 </section>
@@ -349,9 +343,11 @@ Then implement your escape plan.</p>
 </div>
 </div>
 </section>
-<section id="exercise-3-automate-this">
-<h3>Exercise 3: Automate this!!<a class="headerlink" href="#exercise-3-automate-this" title="Link to this heading">¶</a></h3>
-<p>Let’s use the solution from exercise 2 as a starting point. Write a for loop in which you only run forward and save and print result of each step (this isthe solution to exercise 2).</p>
+<section id="exercise-4-automate-this">
+<h3>Exercise 4: Automate this!!<a class="headerlink" href="#exercise-4-automate-this" title="Link to this heading">¶</a></h3>
+<p>Let’s use the solution from Exercise 2 as a starting point. As a first step,
+write a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that only moves forward, saving and printing the result
+of each step (the same code as your solution to Exercise 2).</p>
 <p>This obviously does not work because you have to turn right when hitting the wall.</p>
 <p>Add an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement inside the for-loop that makes you turn right if you hit the wall.</p>
 <div class="cell docutils container">
@@ -367,8 +363,8 @@ Then implement your escape plan.</p>
 </div>
 </div>
 </section>
-<section id="exercise-4-adapt-your-solution-to-a-new-room">
-<h3>Exercise 4: Adapt your solution to a new room<a class="headerlink" href="#exercise-4-adapt-your-solution-to-a-new-room" title="Link to this heading">¶</a></h3>
+<section id="exercise-5-adapt-your-solution-to-a-new-room">
+<h3>Exercise 5: Adapt your solution to a new room<a class="headerlink" href="#exercise-5-adapt-your-solution-to-a-new-room" title="Link to this heading">¶</a></h3>
 <p>Here’s a different room. Test the solution from previous exercise. Why does it fail?</p>
 <p>Modify it to escape!</p>
 <div class="cell docutils container">
@@ -384,8 +380,8 @@ Then implement your escape plan.</p>
 </div>
 </div>
 </section>
-<section id="optional-exercise-5-find-a-more-general-solution">
-<h3>Optional Exercise 5: Find a more general solution<a class="headerlink" href="#optional-exercise-5-find-a-more-general-solution" title="Link to this heading">¶</a></h3>
+<section id="optional-exercise-6-find-a-more-general-solution">
+<h3>Optional Exercise 6: Find a more general solution<a class="headerlink" href="#optional-exercise-6-find-a-more-general-solution" title="Link to this heading">¶</a></h3>
 <p>Here’s a yet another room for which neither of the above exit strategies work.</p>
 <p>Solve it using a for loop!</p>
 <p>Hint: One strategy is to turn left or right randomly if you run in the a wall. <code class="docutils literal notranslate"><span class="pre">toss_dice()</span></code> returns True or False at random. You can use it to make your strategy more variable.</p>
@@ -485,9 +481,9 @@ Then implement your escape plan.</p>
 <li><a class="reference internal" href="#exercise-1-a-straight-corridor">Exercise 1: A straight corridor</a></li>
 <li><a class="reference internal" href="#exercise-2-don-t-repeat-yourself">Exercise 2: Don’t repeat yourself</a><ul>
 <li><a class="reference internal" href="#exercise-3-a-corridor-with-two-corners">Exercise 3: A corridor with two corners</a></li>
-<li><a class="reference internal" href="#exercise-3-automate-this">Exercise 3: Automate this!!</a></li>
-<li><a class="reference internal" href="#exercise-4-adapt-your-solution-to-a-new-room">Exercise 4: Adapt your solution to a new room</a></li>
-<li><a class="reference internal" href="#optional-exercise-5-find-a-more-general-solution">Optional Exercise 5: Find a more general solution</a></li>
+<li><a class="reference internal" href="#exercise-4-automate-this">Exercise 4: Automate this!!</a></li>
+<li><a class="reference internal" href="#exercise-5-adapt-your-solution-to-a-new-room">Exercise 5: Adapt your solution to a new room</a></li>
+<li><a class="reference internal" href="#optional-exercise-6-find-a-more-general-solution">Optional Exercise 6: Find a more general solution</a></li>
 </ul>
 </li>
 </ul>
