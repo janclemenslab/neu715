@@ -341,20 +341,8 @@ Finished
 </div>
 </div>
 <p><strong>Predict:</strong> which numbers will <code class="docutils literal notranslate"><span class="pre">list(range(5))</span></code> produce? Explain why.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4]
-</pre></div>
-</div>
-</div>
-</div>
 <p>The length of <code class="docutils literal notranslate"><span class="pre">letters</span></code> is 5. <code class="docutils literal notranslate"><span class="pre">range(len(letters))</span></code> therefore supplies
-every valid index, from 0 through 4. This also works if the list grows.</p>
+every valid index, from 0 through 4.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">letters</span><span class="p">)):</span>
@@ -380,14 +368,6 @@ difference between <code class="docutils literal notranslate"><span class="pre">
 <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">other_letters</span><span class="p">)):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">other_letters</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Finished"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p
-q
-r
-Finished
 </pre></div>
 </div>
 </div>
@@ -502,18 +482,10 @@ Training status: criterion not met
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grams</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">]</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">gram</span> <span class="ow">in</span> <span class="n">grams</span><span class="p">:</span>
-    <span class="n">kg</span> <span class="o">=</span> <span class="n">gram</span> <span class="o">/</span> <span class="mi">1_000</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grams</span><span class="p">)):</span>
+    <span class="n">kg</span> <span class="o">=</span> <span class="n">grams</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000</span>
     <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kg</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">kg</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 [1.0]
-2.0 [1.0, 2.0]
-3.0 [1.0, 2.0, 3.0]
-4.0 [1.0, 2.0, 3.0, 4.0]
 </pre></div>
 </div>
 </div>
@@ -524,33 +496,25 @@ Training status: criterion not met
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grams</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">]</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">gram</span> <span class="ow">in</span> <span class="n">grams</span><span class="p">:</span>
-    <span class="n">kg</span> <span class="o">=</span> <span class="n">gram</span> <span class="o">/</span> <span class="mi">1_000</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grams</span><span class="p">)):</span>
+    <span class="n">kg</span> <span class="o">=</span> <span class="n">grams</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000</span>
     <span class="k">if</span> <span class="n">kg</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
         <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kg</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">kg</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 []
-2.0 []
-3.0 [3.0]
-4.0 [3.0, 4.0]
-</pre></div>
 </div>
-</div>
-</div>
-<p>What would happen if we change the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement to     <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">kg</span> <span class="pre">&gt;</span> <span class="pre">1000</span></code>?</p>
+<p>What would happen if we change the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement to     <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">kg</span> <span class="pre">&lt;</span> <span class="pre">3</span></code>?</p>
 <section id="clicker-question-filtering-click-me">
 <h3>Clicker question “filtering”(<a class="reference external" href="https://go.uos.de/dAkbs">Click me!</a>)<a class="headerlink" href="#clicker-question-filtering-click-me" title="Link to this heading">¶</a></h3>
 <p>What is the content of big_numbers at the end of this code?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">all_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">28</span><span class="p">]</span>
 <span class="n">big_numbers</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="n">big_numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_numbers</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">all_numbers</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">big_numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">all_numbers</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">big_numbers</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -607,64 +571,6 @@ Explain why.</p>
 2
 1
 0
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="optional-an-alternative-way-of-using-for-loops">
-<h2>Optional: An alternative way of using for loops<a class="headerlink" href="#optional-an-alternative-way-of-using-for-loops" title="Link to this heading">¶</a></h2>
-<p>Above, we have used range objects to generate indices to access list elements in a for loop.</p>
-<p>We access the elements of <code class="docutils literal notranslate"><span class="pre">indices</span></code>, one after the other, in the for loop. We then use the indices, to access the elements of <code class="docutils literal notranslate"><span class="pre">my_list</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"c"</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">letters</span><span class="p">)):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a
-b
-c
-</pre></div>
-</div>
-</div>
-</div>
-<p>However, we can access the list elements directly in a for loop:</p>
-<div class="cell tag_optional-value-loop docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">letters</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a
-b
-c
-a
-b
-c
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Predict:</strong> what will the direct loop print for <code class="docutils literal notranslate"><span class="pre">[&quot;d&quot;,</span> <span class="pre">&quot;a&quot;,</span> <span class="pre">&quot;e&quot;]</span></code>?
-Explain why <code class="docutils literal notranslate"><span class="pre">letter</span></code> is not a list position.</p>
-<div class="cell tag_optional-value-loop docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">other_letters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"d"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">,</span> <span class="s2">"e"</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">other_letters</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d
-a
-e
 </pre></div>
 </div>
 </div>
@@ -794,7 +700,6 @@ e
 </ul>
 </li>
 <li><a class="reference internal" href="#optional-while-loops">Optional: <code class="docutils literal notranslate"><span class="pre">While</span></code> loops</a></li>
-<li><a class="reference internal" href="#optional-an-alternative-way-of-using-for-loops">Optional: An alternative way of using for loops</a></li>
 <li><a class="reference internal" href="#optional-generating-more-flexible-ranges">Optional: Generating more flexible ranges</a></li>
 </ul>
 </li>

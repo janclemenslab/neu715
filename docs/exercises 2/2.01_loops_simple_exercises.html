@@ -305,7 +305,9 @@ and fix the code so that each outcome is printed. Next, move one line so that
 </section>
 <section id="exercise-3-repair-the-counter">
 <h2>Exercise 3: repair the counter<a class="headerlink" href="#exercise-3-repair-the-counter" title="Link to this heading">¶</a></h2>
-<p>Trace this short practice excerpt. This code is supposed to through <code class="docutils literal notranslate"><span class="pre">practice_outcomes</span></code> and print “Correct”, if the outcome is 1. What does the code actually print? Fix the code?</p>
+<p>Trace this short practice excerpt. The code is supposed to loop through
+<code class="docutils literal notranslate"><span class="pre">practice_outcomes</span></code> and print <code class="docutils literal notranslate"><span class="pre">&quot;Correct!&quot;</span></code> for every entry that is 1.
+What does the code actually print? Fix it so that it works as intended.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">practice_outcomes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">practice_outcomes</span><span class="p">)):</span>
     <span class="n">outcome</span> <span class="o">=</span> <span class="mi">0</span>
@@ -362,7 +364,7 @@ it for each correct outcome. Display the final count after the loop.</p>
 <p>Put the full analysis in the cell below. Start from its supplied data so
 the cell works even if Exercise 4 has not been run.</p>
 <ol class="arabic simple">
-<li><p>Initialise a correct-response count.</p></li>
+<li><p>Initialise a variable for storing the correct-response count.</p></li>
 <li><p>Loop over the outcomes and update the count for correct trials.</p></li>
 <li><p>Determine <code class="docutils literal notranslate"><span class="pre">n_trials</span></code> from the list length.</p></li>
 <li><p>Calculate <code class="docutils literal notranslate"><span class="pre">accuracy</span> <span class="pre">=</span> <span class="pre">n_correct</span> <span class="pre">/</span> <span class="pre">n_trials</span></code>.</p></li>
@@ -388,7 +390,7 @@ stay the same rather than accumulating another session’s count.</p>
 <section id="exercise-7-build-readable-labels">
 <h2>Exercise 7: build readable labels<a class="headerlink" href="#exercise-7-build-readable-labels" title="Link to this heading">¶</a></h2>
 <p>For this practice excerpt, build a list called <code class="docutils literal notranslate"><span class="pre">labels</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;correct&quot;</span></code>
-for each 1 and <code class="docutils literal notranslate"><span class="pre">&quot;incorrect&quot;</span></code> for each 0. Preserve trial order.</p>
+for each 1 and <code class="docutils literal notranslate"><span class="pre">&quot;incorrect&quot;</span></code> for each 0.</p>
 <p>Check that the output length matches the input length. Explain why the
 empty output list belongs before the loop.</p>
 <div class="cell tag_exercise docutils container">
