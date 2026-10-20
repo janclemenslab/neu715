@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -262,7 +262,7 @@
 <h1>Dungeon Escape<a class="headerlink" href="#dungeon-escape" title="Link to this heading">¶</a></h1>
 <section id="setup-and-command-reference">
 <h2>Setup and command reference<a class="headerlink" href="#setup-and-command-reference" title="Link to this heading">¶</a></h2>
-<p>Run the setup cell below - this will make all functions available to you.</p>
+<p>Run the setup cell below to make the game commands available.</p>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -272,7 +272,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">forward()</span></code></p></td>
-<td><p>Returns <code class="docutils literal notranslate"><span class="pre">&quot;success&quot;</span></code> after moving, <code class="docutils literal notranslate"><span class="pre">&quot;wall&quot;</span></code> when blocked, or <code class="docutils literal notranslate"><span class="pre">&quot;exit&quot;</span></code> when moving into the exit door.</p></td>
+<td><p>Returns <code class="docutils literal notranslate"><span class="pre">&quot;moved&quot;</span></code> after moving, <code class="docutils literal notranslate"><span class="pre">&quot;wall&quot;</span></code> when blocked, or <code class="docutils literal notranslate"><span class="pre">&quot;exit&quot;</span></code> when moving onto the exit tile.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">left()</span></code>, <code class="docutils literal notranslate"><span class="pre">right()</span></code></p></td>
 <td><p>Turn without moving.</p></td>
@@ -296,12 +296,11 @@
 </section>
 <section id="exercise-1-a-straight-corridor">
 <h2>Exercise 1: A straight corridor<a class="headerlink" href="#exercise-1-a-straight-corridor" title="Link to this heading">¶</a></h2>
-<p>Predict the instructions need to reach the exit.
-Then implement your escape plan.</p>
+<p>Predict the instructions needed to reach the exit.
+Then implement your escape plan using individual commands.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">([</span><span class="s2">"######"</span><span class="p">,</span> <span class="s2">"#&gt;..E#"</span><span class="p">,</span> <span class="s2">"######"</span><span class="p">],</span> <span class="n">theme</span><span class="o">=</span><span class="s1">'turtle'</span><span class="p">)</span>
-<span class="c1"># Write your escape plan with a for loop</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">([</span><span class="s2">"# Write your escape plan using individual commands.</span>
 </pre></div>
 </div>
 </div>
@@ -312,9 +311,9 @@ Then implement your escape plan.</p>
 </section>
 <section id="exercise-2-don-t-repeat-yourself">
 <h2>Exercise 2: Don’t repeat yourself<a class="headerlink" href="#exercise-2-don-t-repeat-yourself" title="Link to this heading">¶</a></h2>
-<p>We are running the same command repeatedly. This become tedious for long corridors.</p>
-<p>Define the number of forward steps to reach the exit and implement your plan using a for loop.</p>
-<p>In each step, save the result of your forward movement (moved, wall, exit) and print it.</p>
+<p>We are running the same command repeatedly. This becomes tedious for long corridors.</p>
+<p>Determine the number of forward steps needed to reach the exit and implement your plan using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
+<p>At each step, save and print the result of <code class="docutils literal notranslate"><span class="pre">forward()</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;moved&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;wall&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;exit&quot;</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">([</span><span class="s2">"#############"</span><span class="p">,</span> <span class="s2">"#&gt;.........E#"</span><span class="p">,</span> <span class="s2">"#############"</span><span class="p">],</span> <span class="n">theme</span><span class="o">=</span><span class="s1">'beetle'</span><span class="p">)</span>
@@ -326,15 +325,14 @@ Then implement your escape plan.</p>
 <img alt="../_images/14b3c8d98c75ed829538c59e9c20a3c6398a9ed10ee64eb33a6d88e0ee1283b1.png" src="../_images/14b3c8d98c75ed829538c59e9c20a3c6398a9ed10ee64eb33a6d88e0ee1283b1.png" />
 </div>
 </div>
+</section>
 <section id="exercise-3-a-corridor-with-two-corners">
-<h3>Exercise 3: A corridor with two corners<a class="headerlink" href="#exercise-3-a-corridor-with-two-corners" title="Link to this heading">¶</a></h3>
+<h2>Exercise 3: A corridor with two corners<a class="headerlink" href="#exercise-3-a-corridor-with-two-corners" title="Link to this heading">¶</a></h2>
 <p>We now have a room with two corners.</p>
-<p>Again, plan your escape. Then implement the plan with individual instructions.</p>
+<p>Again, plan your escape. Then implement the plan using individual commands.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">([</span><span class="s2">"#####"</span><span class="p">,</span> <span class="s2">"#&gt;..#"</span><span class="p">,</span>  <span class="s2">"###.#"</span><span class="p">,</span> <span class="s2">"##E.#"</span><span class="p">,</span> <span class="s2">"#####"</span><span class="p">],</span> <span class="n">theme</span><span class="o">=</span><span class="s1">'mouse'</span><span class="p">)</span>
-
-<span class="c1"># Automate the plan</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">([</span><span class="s2">"# Write your escape plan using individual commands.</span>
 </pre></div>
 </div>
 </div>
@@ -344,17 +342,15 @@ Then implement your escape plan.</p>
 </div>
 </section>
 <section id="exercise-4-automate-this">
-<h3>Exercise 4: Automate this!!<a class="headerlink" href="#exercise-4-automate-this" title="Link to this heading">¶</a></h3>
-<p>Let’s use the solution from Exercise 2 as a starting point. As a first step,
+<h2>Exercise 4: Automate this!<a class="headerlink" href="#exercise-4-automate-this" title="Link to this heading">¶</a></h2>
+<p>Use your solution from Exercise 2 as a starting point. First,
 write a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that only moves forward, saving and printing the result
 of each step (the same code as your solution to Exercise 2).</p>
-<p>This obviously does not work because you have to turn right when hitting the wall.</p>
-<p>Add an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement inside the for-loop that makes you turn right if you hit the wall.</p>
+<p>This does not reach the exit because you need to turn right when you hit a wall.</p>
+<p>Add an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement inside the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to turn right if you hit a wall.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">([</span><span class="s2">"#####"</span><span class="p">,</span> <span class="s2">"#&gt;..#"</span><span class="p">,</span>  <span class="s2">"###.#"</span><span class="p">,</span> <span class="s2">"##E.#"</span><span class="p">,</span> <span class="s2">"#####"</span><span class="p">],</span> <span class="n">theme</span><span class="o">=</span><span class="s1">'fox'</span><span class="p">)</span>
-
-<span class="c1"># first copy your solution from the previous exercise, inspect its behavior and modify it to reach the exit.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">([</span><span class="s2">"# Copy your solution from Exercise 2, inspect its behavior, and modify it to reach the exit.</span>
 </pre></div>
 </div>
 </div>
@@ -364,14 +360,12 @@ of each step (the same code as your solution to Exercise 2).</p>
 </div>
 </section>
 <section id="exercise-5-adapt-your-solution-to-a-new-room">
-<h3>Exercise 5: Adapt your solution to a new room<a class="headerlink" href="#exercise-5-adapt-your-solution-to-a-new-room" title="Link to this heading">¶</a></h3>
-<p>Here’s a different room. Test the solution from previous exercise. Why does it fail?</p>
+<h2>Exercise 5: Adapt your solution to a new room<a class="headerlink" href="#exercise-5-adapt-your-solution-to-a-new-room" title="Link to this heading">¶</a></h2>
+<p>Here’s a different room. Test your solution from the previous exercise. Why does it fail?</p>
 <p>Modify it to escape!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">([</span><span class="s2">"#####"</span><span class="p">,</span> <span class="s2">"##E.#"</span><span class="p">,</span> <span class="s2">"###.#"</span><span class="p">,</span> <span class="s2">"#&gt;..#"</span><span class="p">,</span>  <span class="s2">"#####"</span><span class="p">],</span> <span class="n">theme</span><span class="o">=</span><span class="s1">'robot'</span><span class="p">)</span>
-
-<span class="c1"># first copy your solution from the previous exercise, inspect its behavior and modify it to reach the exit.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">([</span><span class="s2">"# Copy your solution from the previous exercise, inspect its behavior, and modify it to reach the exit.</span>
 </pre></div>
 </div>
 </div>
@@ -381,16 +375,16 @@ of each step (the same code as your solution to Exercise 2).</p>
 </div>
 </section>
 <section id="optional-exercise-6-find-a-more-general-solution">
-<h3>Optional Exercise 6: Find a more general solution<a class="headerlink" href="#optional-exercise-6-find-a-more-general-solution" title="Link to this heading">¶</a></h3>
-<p>Here’s a yet another room for which neither of the above exit strategies work.</p>
-<p>Solve it using a for loop!</p>
-<p>Hint: One strategy is to turn left or right randomly if you run in the a wall. <code class="docutils literal notranslate"><span class="pre">toss_dice()</span></code> returns True or False at random. You can use it to make your strategy more variable.</p>
-<p>The random turning strategy may let you escape, but it is obviously not optimal. Can you come up with an even better strategy?</p>
+<h2>Optional Exercise 6: Find a more general solution<a class="headerlink" href="#optional-exercise-6-find-a-more-general-solution" title="Link to this heading">¶</a></h2>
+<p>Here’s another room that neither of the previous escape strategies can solve.</p>
+<p>Solve it using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop!</p>
+<p>Hint: One strategy is to turn left or right at random when you hit a wall. <code class="docutils literal notranslate"><span class="pre">toss_dice()</span></code> returns <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> at random. You can use it to vary the direction of your turns.</p>
+<p>The random turning strategy may let you escape, but it is not optimal. Can you come up with a better strategy?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_twisty_room</span><span class="p">(</span><span class="n">theme</span><span class="o">=</span><span class="s2">"penguin"</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># generates random layouts, delay=0 makes running the program faster.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_twisty_room</span><span class="p">(</span><span class="n">theme</span><span class="o">=</span><span class="s2">"penguin"</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Generate a random layout; delay=0 makes the program run faster.</span>
 
-<span class="c1"># define a variable strategy!</span>
+<span class="c1"># Write a strategy that varies the direction of turns.</span>
 </pre></div>
 </div>
 </div>
@@ -398,7 +392,6 @@ of each step (the same code as your solution to Exercise 2).</p>
 <img alt="../_images/7da443b363c9769af5442b86dea6c134c0725fe810ff9923fdccbd598e501eab.png" src="../_images/7da443b363c9769af5442b86dea6c134c0725fe810ff9923fdccbd598e501eab.png" />
 </div>
 </div>
-</section>
 </section>
 </section>
 
@@ -479,13 +472,11 @@ of each step (the same code as your solution to Exercise 2).</p>
 <li><a class="reference internal" href="#">Dungeon Escape</a><ul>
 <li><a class="reference internal" href="#setup-and-command-reference">Setup and command reference</a></li>
 <li><a class="reference internal" href="#exercise-1-a-straight-corridor">Exercise 1: A straight corridor</a></li>
-<li><a class="reference internal" href="#exercise-2-don-t-repeat-yourself">Exercise 2: Don’t repeat yourself</a><ul>
+<li><a class="reference internal" href="#exercise-2-don-t-repeat-yourself">Exercise 2: Don’t repeat yourself</a></li>
 <li><a class="reference internal" href="#exercise-3-a-corridor-with-two-corners">Exercise 3: A corridor with two corners</a></li>
-<li><a class="reference internal" href="#exercise-4-automate-this">Exercise 4: Automate this!!</a></li>
+<li><a class="reference internal" href="#exercise-4-automate-this">Exercise 4: Automate this!</a></li>
 <li><a class="reference internal" href="#exercise-5-adapt-your-solution-to-a-new-room">Exercise 5: Adapt your solution to a new room</a></li>
 <li><a class="reference internal" href="#optional-exercise-6-find-a-more-general-solution">Optional Exercise 6: Find a more general solution</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
