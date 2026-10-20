@@ -30,15 +30,15 @@
     },
     {
       "content": null,
-      "created": "2026-10-20T10:38:54.851830Z",
+      "created": "2026-10-20T11:17:35.153464Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-20T10:38:54.851830Z",
+      "last_modified": "2026-10-20T11:17:35.153464Z",
       "mimetype": null,
       "name": "2.02_functions.ipynb",
       "path": "lectures 2/2.02_functions.ipynb",
-      "size": 9645,
+      "size": 9767,
       "type": "notebook",
       "writable": true
     },
@@ -71,11 +71,11 @@
       "writable": true
     }
   ],
-  "created": "2026-10-20T10:39:49.890913Z",
+  "created": "2026-10-20T11:18:08.265560Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2026-10-20T10:39:49.893191Z",
+  "last_modified": "2026-10-20T11:18:08.267110Z",
   "mimetype": null,
   "name": "lectures 2",
   "path": "lectures 2",

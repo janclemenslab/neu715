@@ -271,7 +271,7 @@ A function lets us write that calculation once and reuse it.</p>
 sends a result back to the code that called it.</p>
 <div class="cell tag_accuracy-function docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">):</span>
     <span class="n">accuracy</span> <span class="o">=</span> <span class="n">n_correct</span> <span class="o">/</span> <span class="n">n_trials</span>
     <span class="k">return</span> <span class="n">accuracy</span>
 </pre></div>
@@ -282,7 +282,7 @@ sends a result back to the code that called it.</p>
 the function with values for its inputs, in the same order as the parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -299,7 +299,7 @@ the function with values for its inputs, in the same order as the parameters.</p
 <p>These calls all return the same accuracy:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>                       <span class="c1"># positional arguments</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>                       <span class="c1"># positional arguments</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>    <span class="c1"># keyword arguments</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_correct</span><span class="o">=</span><span class="mi">14</span><span class="p">))</span>    <span class="c1"># keywords identify the inputs</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>              <span class="c1"># a mixture</span>
@@ -308,27 +308,25 @@ the function with values for its inputs, in the same order as the parameters.</p
 </div>
 </div>
 </section>
-<section id="ask-ai-to-explain-an-error">
-<h2>Ask AI to explain an error<a class="headerlink" href="#ask-ai-to-explain-an-error" title="Link to this heading">¶</a></h2>
+<section id="explain-the-error">
+<h2>Explain the error<a class="headerlink" href="#explain-the-error" title="Link to this heading">¶</a></h2>
 <p>Run the next cell. It is meant to produce an error. Read the final line of the
 error message and try to interpret it.</p>
-<p>Then copy the function call and the error message into an AI chatbot and ask:</p>
+<p>You can ask google or an AI chatbot by pasting the function call and the error message and asking:</p>
 <blockquote>
 <div><p>What does this error mean, and how can I fix it?</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Use the chatbot’s explanation to repair the call in two ways: once using
-only keyword arguments, and once mixing positional and keyword arguments.
+<p>Repair the call in two ways: once using only keyword arguments, and once mixing positional and keyword arguments.
 Run both versions and check that they return the same result.</p>
 <p>Then explain in your own words: <strong>when mixing positional and keyword arguments
-in a function call, what rule must their order follow?</strong> Ask AI for another
-example and check the rule yourself.</p>
+in a function call, what rule must their order follow?</strong></p>
 </section>
 <section id="required-inputs-and-optional-inputs-with-defaults">
 <h2>Required inputs and optional inputs with defaults<a class="headerlink" href="#required-inputs-and-optional-inputs-with-defaults" title="Link to this heading">¶</a></h2>
@@ -340,7 +338,7 @@ It is then optional in a call: if we leave it out, Python uses <code class="docu
 <p>Using a keyword does not make an input optional; having a default does.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
     <span class="n">accuracy</span> <span class="o">=</span> <span class="n">n_correct</span> <span class="o">/</span> <span class="n">n_trials</span>
     <span class="k">return</span> <span class="n">accuracy</span>
 </pre></div>
@@ -349,7 +347,7 @@ It is then optional in a call: if we leave it out, Python uses <code class="docu
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">14</span><span class="p">))</span>                          <span class="c1"># use the default trial total</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">14</span><span class="p">))</span>                          <span class="c1"># use the default trial total</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="o">=</span><span class="mi">14</span><span class="p">))</span>                <span class="c1"># required input supplied by keyword</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>                      <span class="c1"># override the default by position</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">40</span><span class="p">))</span>   <span class="c1"># override the default by keyword</span>
@@ -362,7 +360,7 @@ It is then optional in a call: if we leave it out, Python uses <code class="docu
 <p><strong>Predict:</strong> what will these calls display? Explain which input changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -375,7 +373,7 @@ It is then optional in a call: if we leave it out, Python uses <code class="docu
 The lecture rule remains accuracy greater than 0.75.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">accuracy</span> <span class="o">&gt;</span> <span class="mf">0.75</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"well-trained"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
@@ -393,7 +391,7 @@ caller. With no <code class="docutils literal notranslate"><span class="pre">ret
 contain? Explain why.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">show_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">show_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">n_correct</span> <span class="o">/</span> <span class="n">n_trials</span><span class="p">)</span>
 
 <span class="n">saved_result</span> <span class="o">=</span> <span class="n">show_accuracy</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
@@ -406,7 +404,7 @@ contain? Explain why.</p>
 calculation. Assign a call to <code class="docutils literal notranslate"><span class="pre">saved_result</span></code>, then print <code class="docutils literal notranslate"><span class="pre">saved_result</span> <span class="pre">*</span> <span class="pre">100</span></code>.</p>
 <div class="cell tag_exercise docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the repaired function and use its returned result.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the repaired function and use its returned result.</span>
 </pre></div>
 </div>
 </div>
@@ -419,7 +417,7 @@ new count. The result is returned after every trial has been inspected.
 The input must contain at least one trial; an empty session has no accuracy.</p>
 <div class="cell tag_session-function docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">session_accuracy</span><span class="p">(</span><span class="n">outcomes</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">session_accuracy</span><span class="p">(</span><span class="n">outcomes</span><span class="p">):</span>
     <span class="n">n_correct</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)):</span>
         <span class="k">if</span> <span class="n">outcomes</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -432,7 +430,7 @@ The input must contain at least one trial; an empty session has no accuracy.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">outcomes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcomes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">session_accuracy</span><span class="p">(</span><span class="n">outcomes</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -447,7 +445,7 @@ receives the returned value, not the function’s whole memory.</p>
 value named <code class="docutils literal notranslate"><span class="pre">n_correct</span></code> outside the function is unchanged.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_correct</span> <span class="o">=</span> <span class="mi">99</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_correct</span> <span class="o">=</span> <span class="mi">99</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">session_accuracy</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">n_correct</span><span class="p">)</span>
@@ -535,7 +533,7 @@ value named <code class="docutils literal notranslate"><span class="pre">n_corre
 <li><a class="reference internal" href="#">Functions</a><ul>
 <li><a class="reference internal" href="#give-a-familiar-calculation-a-name">Give a familiar calculation a name</a></li>
 <li><a class="reference internal" href="#positional-and-keyword-arguments">Positional and keyword arguments</a></li>
-<li><a class="reference internal" href="#ask-ai-to-explain-an-error">Ask AI to explain an error</a></li>
+<li><a class="reference internal" href="#explain-the-error">Explain the error</a></li>
 <li><a class="reference internal" href="#required-inputs-and-optional-inputs-with-defaults">Required inputs and optional inputs with defaults</a></li>
 <li><a class="reference internal" href="#use-the-returned-result">Use the returned result</a></li>
 <li><a class="reference internal" href="#displaying-and-returning-are-different">Displaying and returning are different</a></li>
