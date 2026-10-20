@@ -1,7 +1,8 @@
 # Week 2 plan
 
 After Week 2, you should be able to trace short programs that use loops and
-functions, write or repair a few lines of code, and make and check simple plots.
+functions, write or repair a few lines of code, make and check simple plots,
+and work with tuples and dictionaries.
 
 ## Loops
 
@@ -28,3 +29,10 @@ functions, write or repair a few lines of code, and make and check simple plots.
 ## Spike detection
 
 - use loops, functions, and plots to inspect a toy voltage recording.
+
+## Composites — end of Week 2
+
+- distinguish mutable lists from immutable tuples;
+- create a dictionary and look up, add, change, or delete entries by key;
+- build a dictionary from matching lists using an index-based loop; and
+- loop over dictionary items and display values using f-strings.

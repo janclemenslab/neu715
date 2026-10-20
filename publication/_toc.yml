@@ -43,3 +43,7 @@ parts:
         title: Plotting — exercise
       - file: exercises 2/2.05_spike_detection_exercises
         title: Spike detection — exercise
+      - file: lectures 2/2.06_composites
+        title: Composites — lecture
+      - file: exercises 2/2.06_composites_exercises
+        title: Composites — exercises

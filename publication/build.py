@@ -58,7 +58,7 @@ def main():
         )
 
     notebooks = list(HERE.glob("* */*.ipynb"))
-    assert len(notebooks) == 17, f"expected 17 public notebooks, found {len(notebooks)}"
+    assert len(notebooks) == 19, f"expected 19 public notebooks, found {len(notebooks)}"
     assert (HERE / "_build/html/index.html").is_file()
     assert (HERE / "_build/html/lite/lab/index.html").is_file()
     lite_config = json.loads((HERE / "_build/html/lite/jupyter-lite.json").read_text())
@@ -67,7 +67,7 @@ def main():
     ]["loadPyodideOptions"]["packages"]
     assert "pillow" in packages, "JupyterLite must preload Pillow for Dungeon Escape"
     assert not any((HERE / name).exists() for name in ("tests", "instructor 1", "instructor 2"))
-    print("Built _build/html with 17 notebooks; no tests or instructor files included.")
+    print("Built _build/html with 19 notebooks; no tests or instructor files included.")
 
 
 if __name__ == "__main__":

@@ -220,6 +220,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.04_plotting.html">Plotting — lecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2.04_plotting_exercises.html">Plotting — exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2.05_spike_detection_exercises.html">Spike detection — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.06_composites.html">Composites — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.06_composites_exercises.html">Composites — exercises</a></li>
 </ul>
 
 </div>
@@ -273,8 +275,41 @@ returned result and whether it meets the exercise rule.</p>
 </div>
 </div>
 </section>
-<section id="exercise-2-repair-a-returned-result">
-<h2>Exercise 2: repair a returned result<a class="headerlink" href="#exercise-2-repair-a-returned-result" title="Link to this heading">¶</a></h2>
+<section id="exercise-2-turn-this-code-into-a-function">
+<h2>Exercise 2: Turn this code into a function<a class="headerlink" href="#exercise-2-turn-this-code-into-a-function" title="Link to this heading">¶</a></h2>
+<p>The code below computes the cumulative sum of the values in a list.</p>
+<p>Given a list <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>, the cumulative sum is a new list with these items:
+<code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">1+2,</span> <span class="pre">1+2+3]</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">3,</span> <span class="pre">6]</span></code>.</p>
+<p>Turn this code into a function with the following properties:</p>
+<ul class="simple">
+<li><p>name: <code class="docutils literal notranslate"><span class="pre">cumsum</span></code></p></li>
+<li><p>argument: a list</p></li>
+<li><p>returns: the cumulative sum as a new list</p></li>
+</ul>
+<p>Test your function by making up a new list and calculating the cumulative sum of its values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="n">cumsum</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)):</span>
+    <span class="n">cumsum</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">[:</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cumsum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your solution here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-repair-a-returned-result">
+<h2>Exercise 3: repair a returned result<a class="headerlink" href="#exercise-3-repair-a-returned-result" title="Link to this heading">¶</a></h2>
 <p>The code displays an accuracy but stores <code class="docutils literal notranslate"><span class="pre">None</span></code>. Change the function so
 the returned value can be multiplied by 100. Copy it into the answer cell.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">):</span>
@@ -293,8 +328,8 @@ function returns 0.5 for a 40-trial session.</p>
 </div>
 </div>
 </section>
-<section id="exercise-3-reuse-your-counting-loop">
-<h2>Exercise 3: reuse your counting loop<a class="headerlink" href="#exercise-3-reuse-your-counting-loop" title="Link to this heading">¶</a></h2>
+<section id="exercise-4-reuse-your-counting-loop">
+<h2>Exercise 4: reuse your counting loop<a class="headerlink" href="#exercise-4-reuse-your-counting-loop" title="Link to this heading">¶</a></h2>
 <p>Write <code class="docutils literal notranslate"><span class="pre">session_accuracy(outcomes)</span></code>. Initialise a count inside the
 function, inspect each index, and return the accuracy after the loop.
 Use <code class="docutils literal notranslate"><span class="pre">len(outcomes)</span></code> rather than a fixed trial total.</p>
@@ -309,8 +344,8 @@ rule. Call your function twice on the same list: should the answer change?</p>
 </div>
 </div>
 </section>
-<section id="exercise-4-check-new-inputs">
-<h2>Exercise 4: check new inputs<a class="headerlink" href="#exercise-4-check-new-inputs" title="Link to this heading">¶</a></h2>
+<section id="exercise-5-check-new-inputs">
+<h2>Exercise 5: check new inputs<a class="headerlink" href="#exercise-5-check-new-inputs" title="Link to this heading">¶</a></h2>
 <p>Use your function for these complete sessions. Check both the accuracy
 and training decision. Explain which result would expose a counter that
 was not reset for each call.</p>
@@ -359,8 +394,8 @@ was not reset for each call.</p>
 </div>
 </div>
 </section>
-<section id="exercise-5-return-selected-positions">
-<h2>Exercise 5: return selected positions<a class="headerlink" href="#exercise-5-return-selected-positions" title="Link to this heading">¶</a></h2>
+<section id="exercise-6-return-selected-positions">
+<h2>Exercise 6: return selected positions<a class="headerlink" href="#exercise-6-return-selected-positions" title="Link to this heading">¶</a></h2>
 <p>Write <code class="docutils literal notranslate"><span class="pre">incorrect_indices(outcomes)</span></code>, returning a list of the indices
 where the outcome is 0. Use <code class="docutils literal notranslate"><span class="pre">range(len(outcomes))</span></code> and <code class="docutils literal notranslate"><span class="pre">append</span></code>.
 Check it on the practice excerpt below.</p>
@@ -453,10 +488,11 @@ indices are <code class="docutils literal notranslate"><span class="pre">[1,</sp
             <ul>
 <li><a class="reference internal" href="#">Functions — exercises</a><ul>
 <li><a class="reference internal" href="#exercise-1-a-function-with-two-inputs">Exercise 1: a function with two inputs</a></li>
-<li><a class="reference internal" href="#exercise-2-repair-a-returned-result">Exercise 2: repair a returned result</a></li>
-<li><a class="reference internal" href="#exercise-3-reuse-your-counting-loop">Exercise 3: reuse your counting loop</a></li>
-<li><a class="reference internal" href="#exercise-4-check-new-inputs">Exercise 4: check new inputs</a></li>
-<li><a class="reference internal" href="#exercise-5-return-selected-positions">Exercise 5: return selected positions</a></li>
+<li><a class="reference internal" href="#exercise-2-turn-this-code-into-a-function">Exercise 2: Turn this code into a function</a></li>
+<li><a class="reference internal" href="#exercise-3-repair-a-returned-result">Exercise 3: repair a returned result</a></li>
+<li><a class="reference internal" href="#exercise-4-reuse-your-counting-loop">Exercise 4: reuse your counting loop</a></li>
+<li><a class="reference internal" href="#exercise-5-check-new-inputs">Exercise 5: check new inputs</a></li>
+<li><a class="reference internal" href="#exercise-6-return-selected-positions">Exercise 6: return selected positions</a></li>
 </ul>
 </li>
 </ul>

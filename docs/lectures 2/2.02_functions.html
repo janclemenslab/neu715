@@ -220,6 +220,8 @@
 <li class="toctree-l1"><a class="reference internal" href="2.04_plotting.html">Plotting — lecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.04_plotting_exercises.html">Plotting — exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.05_spike_detection_exercises.html">Spike detection — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.06_composites.html">Composites — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.06_composites_exercises.html">Composites — exercises</a></li>
 </ul>
 
 </div>
@@ -287,6 +289,25 @@ the function with values for its inputs, in the same order as the parameters.</p
 </div>
 </div>
 </section>
+<section id="positional-and-keyword-arguments">
+<h2>Positional and keyword arguments<a class="headerlink" href="#positional-and-keyword-arguments" title="Link to this heading">¶</a></h2>
+<p><strong>Parameter = argument name</strong>, such as <code class="docutils literal notranslate"><span class="pre">n_correct</span></code> or <code class="docutils literal notranslate"><span class="pre">n_trials</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Positional arguments</strong> are matched to parameters by their position.</p></li>
+<li><p><strong>Keyword arguments</strong> (often called <em>kwargs</em>) use <code class="docutils literal notranslate"><span class="pre">name=value</span></code> to say which parameter receives the value.</p></li>
+</ul>
+<p>These calls all return the same accuracy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>                       <span class="c1"># positional arguments</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>    <span class="c1"># keyword arguments</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_correct</span><span class="o">=</span><span class="mi">14</span><span class="p">))</span>    <span class="c1"># keywords identify the inputs</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>              <span class="c1"># a mixture</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="ask-ai-to-explain-an-error">
 <h2>Ask AI to explain an error<a class="headerlink" href="#ask-ai-to-explain-an-error" title="Link to this heading">¶</a></h2>
 <p>Run the next cell. It is meant to produce an error. Read the final line of the
@@ -302,22 +323,47 @@ error message and try to interpret it.</p>
 </div>
 </div>
 </div>
-<p>After the chatbot has explained the terms <em>positional argument</em> and
-<em>keyword argument</em>, change the function call so it runs. Can you explain why
-your correction fixes the error?</p>
+<p>Use the chatbot’s explanation to repair the call in two ways: once using
+only keyword arguments, and once mixing positional and keyword arguments.
+Run both versions and check that they return the same result.</p>
+<p>Then explain in your own words: <strong>when mixing positional and keyword arguments
+in a function call, what rule must their order follow?</strong> Ask AI for another
+example and check the rule yourself.</p>
+</section>
+<section id="required-inputs-and-optional-inputs-with-defaults">
+<h2>Required inputs and optional inputs with defaults<a class="headerlink" href="#required-inputs-and-optional-inputs-with-defaults" title="Link to this heading">¶</a></h2>
+<p>In our first definition, neither parameter has a default: both inputs are
+<strong>required</strong>, whether we supply them by position or by keyword.</p>
+<p>We can give <code class="docutils literal notranslate"><span class="pre">n_trials</span></code> a <strong>default value</strong> of <code class="docutils literal notranslate"><span class="pre">20</span></code> in the definition below.
+It is then optional in a call: if we leave it out, Python uses <code class="docutils literal notranslate"><span class="pre">20</span></code>.
+<code class="docutils literal notranslate"><span class="pre">n_correct</span></code> has no default and is still required.</p>
+<p>Using a keyword does not make an input optional; having a default does.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">n_correct</span> <span class="o">/</span> <span class="n">n_trials</span>
+    <span class="k">return</span> <span class="n">accuracy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">14</span><span class="p">))</span>                          <span class="c1"># use the default trial total</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="o">=</span><span class="mi">14</span><span class="p">))</span>                <span class="c1"># required input supplied by keyword</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>                      <span class="c1"># override the default by position</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="n">n_correct</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">40</span><span class="p">))</span>   <span class="c1"># override the default by keyword</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Predict:</strong> what will <code class="docutils literal notranslate"><span class="pre">calculate_accuracy(18)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">calculate_accuracy(18,</span> <span class="pre">n_trials=40)</span></code> return? Which trial total does each use?</p>
 <p><strong>Predict:</strong> what will these calls display? Explain which input changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">calculate_accuracy</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Work backwards:</strong> write a call for a 20-trial session that returns 0.8.</p>
-<div class="cell tag_exercise docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your function call here.</span>
 </pre></div>
 </div>
 </div>
@@ -388,25 +434,6 @@ The input must contain at least one trial; an empty session has no accuracy.</p>
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">outcomes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">session_accuracy</span><span class="p">(</span><span class="n">outcomes</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Predict:</strong> what will the function return for each practice excerpt?
-Explain why the second call starts a fresh count.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">session_accuracy</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">session_accuracy</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Work backwards:</strong> create a five-trial practice excerpt whose accuracy is
-0.8. Check it with a function call.</p>
-<div class="cell tag_exercise docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an excerpt and call session_accuracy.</span>
 </pre></div>
 </div>
 </div>
@@ -507,7 +534,9 @@ value named <code class="docutils literal notranslate"><span class="pre">n_corre
             <ul>
 <li><a class="reference internal" href="#">Functions</a><ul>
 <li><a class="reference internal" href="#give-a-familiar-calculation-a-name">Give a familiar calculation a name</a></li>
+<li><a class="reference internal" href="#positional-and-keyword-arguments">Positional and keyword arguments</a></li>
 <li><a class="reference internal" href="#ask-ai-to-explain-an-error">Ask AI to explain an error</a></li>
+<li><a class="reference internal" href="#required-inputs-and-optional-inputs-with-defaults">Required inputs and optional inputs with defaults</a></li>
 <li><a class="reference internal" href="#use-the-returned-result">Use the returned result</a></li>
 <li><a class="reference internal" href="#displaying-and-returning-are-different">Displaying and returning are different</a></li>
 <li><a class="reference internal" href="#put-a-familiar-loop-inside-a-function">Put a familiar loop inside a function</a></li>
