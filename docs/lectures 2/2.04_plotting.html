@@ -262,7 +262,7 @@
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="plotting">
 <h1>Plotting<a class="headerlink" href="#plotting" title="Link to this heading">¶</a></h1>
-<p>Learn to make and label simple plots.</p>
+<p>Learn to make and label simple plots and arrange them in subplots.</p>
 <section id="plot-a-short-voltage-recording">
 <h2>Plot a short voltage recording<a class="headerlink" href="#plot-a-short-voltage-recording" title="Link to this heading">¶</a></h2>
 <p>Matplotlib supplies plotting functions. The import makes them available
@@ -362,6 +362,115 @@ coordinates. Why is the axis label misleading for these uneven time points?</p>
 </div>
 </div>
 </section>
+<section id="put-plots-in-separate-panels">
+<h2>Put plots in separate panels<a class="headerlink" href="#put-plots-in-separate-panels" title="Link to this heading">¶</a></h2>
+<p>Subplots let us compare plots within one figure. Start a new figure with
+<code class="docutils literal notranslate"><span class="pre">plt.figure()</span></code>, then select a panel with <code class="docutils literal notranslate"><span class="pre">plt.subplot(rows,</span> <span class="pre">columns,</span> <span class="pre">position)</span></code>.
+The position starts at <strong>1</strong>, counting left to right across each row, then down.</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.subplot(1,</span> <span class="pre">2,</span> <span class="pre">1)</span></code> selects the left panel in a grid with one row and two columns;
+<code class="docutils literal notranslate"><span class="pre">plt.subplot(1,</span> <span class="pre">2,</span> <span class="pre">2)</span></code> selects the right panel.
+All following plotting calls, labels, titles, and limits apply to the selected panel.</p>
+<p>Here, both panels show the same recording, but the right panel zooms in on the spike.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_ms</span><span class="p">,</span> <span class="n">voltage_mv</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Time (ms)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Membrane voltage (mV)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Full recording"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">70</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_ms</span><span class="p">,</span> <span class="n">voltage_mv</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Time (ms)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Membrane voltage (mV)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Spike close-up"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">70</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">figsize=(8,</span> <span class="pre">3)</span></code> sets the figure width and height in inches.
+<code class="docutils literal notranslate"><span class="pre">plt.title</span></code> names the selected panel. <code class="docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code> adjusts spacing
+so labels fit; call it after setting up all panels and before <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>.
+Use one <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> after all panels are complete.</p>
+<p><strong>Predict:</strong> if you remove <code class="docutils literal notranslate"><span class="pre">plt.subplot(1,</span> <span class="pre">2,</span> <span class="pre">2)</span></code>, where will the second line,
+title, and x-axis limits go? Will there still be two panels? Explain why.</p>
+<p><strong>Your turn:</strong> copy the example and stack the panels vertically instead.
+Use two rows and one column, with the full recording above the close-up.
+Choose a taller figure with <code class="docutils literal notranslate"><span class="pre">figsize=(5,</span> <span class="pre">6)</span></code>.</p>
+<div class="cell tag_exercise docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the figure, select each panel, and add the plots and labels.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="locate-panels-in-a-grid">
+<h2>Locate panels in a grid<a class="headerlink" href="#locate-panels-in-a-grid" title="Link to this heading">¶</a></h2>
+<p>For a 2 × 2 grid, keep the first two arguments the same for every panel:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Position</p></th>
+<th class="head"><p>Panel</p></th>
+<th class="head"><p>Selection</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>top left</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plt.subplot(2,</span> <span class="pre">2,</span> <span class="pre">1)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>top right</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plt.subplot(2,</span> <span class="pre">2,</span> <span class="pre">2)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>bottom left</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plt.subplot(2,</span> <span class="pre">2,</span> <span class="pre">3)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>bottom right</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">plt.subplot(2,</span> <span class="pre">2,</span> <span class="pre">4)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Predict:</strong> which panel does <code class="docutils literal notranslate"><span class="pre">plt.subplot(2,</span> <span class="pre">3,</span> <span class="pre">5)</span></code> select?
+How many panel positions are available in that grid?</p>
+<p><strong>Repair:</strong> the code below should put one line in the top-left panel and one
+in the bottom-right panel of a 2 × 2 grid. Instead, it puts both lines in the
+same panel. Copy it and fix the panel selection. Explain which argument you changed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times_ms</span><span class="p">,</span> <span class="n">voltage_mv</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Time (ms)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Membrane voltage (mV)"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">other_times_ms</span><span class="p">,</span> <span class="n">other_voltage_mv</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Time (ms)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Membrane voltage (mV)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="cell tag_exercise docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy and repair the panel selection here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -443,6 +552,8 @@ coordinates. Why is the axis label misleading for these uneven time points?</p>
 <li><a class="reference internal" href="#choose-the-visible-range">Choose the visible range</a></li>
 <li><a class="reference internal" href="#check-a-plot-against-a-known-point">Check a plot against a known point</a></li>
 <li><a class="reference internal" href="#mark-a-point">Mark a point</a></li>
+<li><a class="reference internal" href="#put-plots-in-separate-panels">Put plots in separate panels</a></li>
+<li><a class="reference internal" href="#locate-panels-in-a-grid">Locate panels in a grid</a></li>
 </ul>
 </li>
 </ul>

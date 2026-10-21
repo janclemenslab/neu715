@@ -2,15 +2,15 @@
   "content": [
     {
       "content": null,
-      "created": "2026-09-20T09:46:20.578101Z",
+      "created": "2026-10-21T10:19:19.799628Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-09-20T09:46:20.578101Z",
+      "last_modified": "2026-10-21T10:19:19.799628Z",
       "mimetype": null,
       "name": "2.04_plotting_exercises.ipynb",
       "path": "exercises 2/2.04_plotting_exercises.ipynb",
-      "size": 2973,
+      "size": 5491,
       "type": "notebook",
       "writable": true
     },
@@ -72,11 +72,11 @@
     },
     {
       "content": null,
-      "created": "2026-10-20T11:18:08.212728Z",
+      "created": "2026-10-21T10:26:01.143724Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-20T11:18:08.255135Z",
+      "last_modified": "2026-10-21T10:26:01.197264Z",
       "mimetype": null,
       "name": "assets",
       "path": "exercises 2/assets",
@@ -113,11 +113,11 @@
       "writable": true
     }
   ],
-  "created": "2026-10-20T11:18:08.208062Z",
+  "created": "2026-10-21T10:26:01.137009Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2026-10-20T11:18:08.262221Z",
+  "last_modified": "2026-10-21T10:26:01.203708Z",
   "mimetype": null,
   "name": "exercises 2",
   "path": "exercises 2",

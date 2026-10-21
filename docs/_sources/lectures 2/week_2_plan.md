@@ -23,8 +23,9 @@ and work with tuples and dictionaries.
 
 ## Plotting
 
-- plot paired x and y values in the correct order; and
-- label axes and check plotted points against the data.
+- plot paired x and y values in the correct order;
+- label axes and check plotted points against the data; and
+- arrange and label subplots in rows, columns, and a 2 × 2 grid.
 
 ## Spike detection
 
