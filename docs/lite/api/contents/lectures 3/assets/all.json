@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-01-26T18:05:40.335006Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-01-26T18:05:40.335006Z",
+      "mimetype": "image/png",
+      "name": "coffee.png",
+      "path": "lectures 3/assets/coffee.png",
+      "size": 466706,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-22T14:38:33.554401Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-22T14:38:33.554401Z",
+      "mimetype": null,
+      "name": "README.md",
+      "path": "lectures 3/assets/README.md",
+      "size": 350,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-22T14:50:33.626462Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-22T14:50:33.626849Z",
+  "mimetype": null,
+  "name": "assets",
+  "path": "lectures 3/assets",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

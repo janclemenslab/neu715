@@ -47,3 +47,19 @@ parts:
         title: Composites — lecture
       - file: exercises 2/2.06_composites_exercises
         title: Composites — exercises
+  - caption: Week 3
+    chapters:
+      - file: lectures 3/week_3_plan
+        title: Week 3 plan
+      - file: lectures 3/3.01_imports
+        title: Imports — lecture
+      - file: exercises 3/3.01_imports_exercises
+        title: Imports — exercises
+      - file: lectures 3/3.02_numpy_selection
+        title: NumPy arrays and selection — lecture
+      - file: exercises 3/3.02_numpy_selection_exercises
+        title: NumPy arrays and selection — exercises
+      - file: lectures 3/3.03_numpy_dimensions
+        title: NumPy dimensions and images — lecture
+      - file: exercises 3/3.03_numpy_dimensions_exercises
+        title: NumPy dimensions and images — exercises

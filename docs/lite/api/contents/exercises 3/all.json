@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-22T14:49:43.870720Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-22T14:49:43.870720Z",
+      "mimetype": null,
+      "name": "3.03_numpy_dimensions_exercises.ipynb",
+      "path": "exercises 3/3.03_numpy_dimensions_exercises.ipynb",
+      "size": 540418,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-22T14:49:42.788810Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-22T14:49:42.788810Z",
+      "mimetype": null,
+      "name": "3.02_numpy_selection_exercises.ipynb",
+      "path": "exercises 3/3.02_numpy_selection_exercises.ipynb",
+      "size": 23704,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-22T14:49:41.732907Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-22T14:49:41.732907Z",
+      "mimetype": null,
+      "name": "3.01_imports_exercises.ipynb",
+      "path": "exercises 3/3.01_imports_exercises.ipynb",
+      "size": 5473,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-22T14:50:33.614555Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-22T14:50:33.616631Z",
+      "mimetype": null,
+      "name": "assets",
+      "path": "exercises 3/assets",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-22T14:50:33.611981Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-22T14:50:33.614561Z",
+  "mimetype": null,
+  "name": "exercises 3",
+  "path": "exercises 3",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

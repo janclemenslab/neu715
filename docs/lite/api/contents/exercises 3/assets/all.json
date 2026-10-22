@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-01-26T18:05:40.330758Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-01-26T18:05:40.330758Z",
+      "mimetype": "image/png",
+      "name": "astronaut.png",
+      "path": "exercises 3/assets/astronaut.png",
+      "size": 791555,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-22T14:37:34.999678Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-22T14:37:34.999678Z",
+      "mimetype": "image/png",
+      "name": "flies_chamber.png",
+      "path": "exercises 3/assets/flies_chamber.png",
+      "size": 1783043,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-22T14:39:31.385716Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-22T14:39:31.385716Z",
+      "mimetype": null,
+      "name": "README.md",
+      "path": "exercises 3/assets/README.md",
+      "size": 2384,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-22T14:50:33.614555Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-22T14:50:33.616631Z",
+  "mimetype": null,
+  "name": "assets",
+  "path": "exercises 3/assets",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

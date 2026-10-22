@@ -10,7 +10,7 @@ import tempfile
 
 HERE = Path(__file__).resolve().parent
 SOURCE = HERE.parent
-PUBLIC_DIRS = ("lectures 1", "lectures 2", "exercises 1", "exercises 2")
+PUBLIC_DIRS = ("lectures 1", "lectures 2", "lectures 3", "exercises 1", "exercises 2", "exercises 3")
 
 
 def run(*command, cwd=HERE):
@@ -58,7 +58,7 @@ def main():
         )
 
     notebooks = list(HERE.glob("* */*.ipynb"))
-    assert len(notebooks) == 19, f"expected 19 public notebooks, found {len(notebooks)}"
+    assert len(notebooks) == 25, f"expected 25 public notebooks, found {len(notebooks)}"
     assert (HERE / "_build/html/index.html").is_file()
     assert (HERE / "_build/html/lite/lab/index.html").is_file()
     lite_config = json.loads((HERE / "_build/html/lite/jupyter-lite.json").read_text())
@@ -66,8 +66,10 @@ def main():
         "@jupyterlite/pyodide-kernel-extension:kernel"
     ]["loadPyodideOptions"]["packages"]
     assert "pillow" in packages, "JupyterLite must preload Pillow for Dungeon Escape"
-    assert not any((HERE / name).exists() for name in ("tests", "instructor 1", "instructor 2"))
-    print("Built _build/html with 19 notebooks; no tests or instructor files included.")
+    assert not any((HERE / name).exists() for name in ("tests", "instructor 1", "instructor 2", "instructor 3", "draft_preview_week3"))
+    for folder, asset in (("lectures 3", "coffee.png"), ("exercises 3", "astronaut.png"), ("exercises 3", "flies_chamber.png")):
+        assert (HERE / "_build/html/lite/files" / folder / "assets" / asset).is_file()
+    print("Built _build/html with 25 notebooks; no tests or instructor files included.")
 
 
 if __name__ == "__main__":

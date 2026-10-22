@@ -1,6 +1,7 @@
 # NEU715 — Neuroscientific Data Analysis using Python
 
-These lectures and exercises cover the first two weeks of the course.
+These lectures and exercises cover the first three weeks of the course.
+Week 3 currently covers Monday to Wednesday; Thursday remains open.
 
 ## Run the notebooks
 
