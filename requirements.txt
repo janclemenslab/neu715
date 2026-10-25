@@ -6,3 +6,4 @@ jupyter-server
 matplotlib
 numpy
 pillow
+scipy

@@ -3,7 +3,10 @@
     "litePluginSettings": {
       "@jupyterlite/pyodide-kernel-extension:kernel": {
         "loadPyodideOptions": {
-          "packages": ["pillow"]
+          "packages": [
+            "pillow",
+            "scipy"
+          ]
         }
       }
     }

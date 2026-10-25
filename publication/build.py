@@ -66,8 +66,9 @@ def main():
         "@jupyterlite/pyodide-kernel-extension:kernel"
     ]["loadPyodideOptions"]["packages"]
     assert "pillow" in packages, "JupyterLite must preload Pillow for Dungeon Escape"
+    assert "scipy" in packages, "JupyterLite must preload SciPy for WAV loading"
     assert not any((HERE / name).exists() for name in ("tests", "instructor 1", "instructor 2", "instructor 3", "draft_preview_week3"))
-    for folder, asset in (("lectures 3", "coffee.png"), ("exercises 3", "astronaut.png"), ("exercises 3", "flies_chamber.png")):
+    for folder, asset in (("lectures 3", "coffee.png"), ("exercises 3", "astronaut.png"), ("exercises 3", "fly.png"), ("exercises 3", "fly_source.png"), ("exercises 3", "speech.wav")):
         assert (HERE / "_build/html/lite/files" / folder / "assets" / asset).is_file()
     print("Built _build/html with 25 notebooks; no tests or instructor files included.")
 

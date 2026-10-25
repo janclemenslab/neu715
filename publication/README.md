@@ -1,7 +1,10 @@
-# Local website preview
+# Course website publication
 
-This folder is the publication candidate. The build copies only lectures and
-exercises from the parent folder; tests and instructor files are excluded.
+This folder builds the published course website. The build copies only lectures
+and exercises from Weeks 1–3; tests and local review files are excluded.
+
+[Published course](https://janclemenslab.org/neu715/). Week 3 covers Monday to
+Wednesday; Thursday remains open.
 
 From this folder:
 
@@ -16,8 +19,9 @@ Then open <http://localhost:8000>. Stop the server with Control-C.
 
 The **Run all notebooks directly in your browser** link opens JupyterLite. Its
 first start downloads the browser-based Python runtime and may take a moment.
-Test the plotting and Dungeon Escape notebooks as well as a simple Week 1
-notebook. Nothing in this workflow publishes or uploads files.
+Test the plotting, Dungeon Escape, and NumPy image/audio notebooks as well as
+a simple Week 1 notebook. SciPy is preloaded for WAV loading; the image and
+audio assets are bundled beside the exercise notebook. Nothing in this workflow publishes or uploads files.
 
-Before publication, add the final GitHub repository URL and enable the Binder
-and Colab settings in `_config.yml`.
+The repository URL and Binder/Colab settings are configured in `_config.yml`.
+The live site is served from `main` → `docs/` in `janclemenslab/neu715`.

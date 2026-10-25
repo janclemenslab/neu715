@@ -400,7 +400,8 @@
       "@jupyterlite/pyodide-kernel-extension:kernel": {
         "loadPyodideOptions": {
           "packages": [
-            "pillow"
+            "pillow",
+            "scipy"
           ]
         },
         "pipliteUrls": [
