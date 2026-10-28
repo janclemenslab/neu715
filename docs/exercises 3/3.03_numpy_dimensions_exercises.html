@@ -393,7 +393,7 @@
 <section id="optional-find-the-fly-s-position">
 <h3>Optional: find the fly’s position<a class="headerlink" href="#optional-find-the-fly-s-position" title="Link to this heading">¶</a></h3>
 <p>Use the coordinates of the selected pixels to estimate one position for the fly. The following line returns the row and column indices where the mask is <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">fly_mask</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fly_mask</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic simple">
