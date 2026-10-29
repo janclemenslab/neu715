@@ -63,3 +63,9 @@ parts:
         title: NumPy dimensions and images — lecture
       - file: exercises 3/3.03_numpy_dimensions_exercises
         title: NumPy dimensions and images — exercises
+  - caption: Week 4
+    chapters:
+      - file: lectures 4/4.01_files_batch_analysis
+        title: Files and batch analysis — lecture
+      - file: exercises 4/4.01_files_batch_analysis_exercises
+        title: Files and batch analysis — exercises

@@ -401,7 +401,8 @@
         "loadPyodideOptions": {
           "packages": [
             "pillow",
-            "scipy"
+            "scipy",
+            "pandas"
           ]
         },
         "pipliteUrls": [

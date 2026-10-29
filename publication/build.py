@@ -11,6 +11,10 @@ import tempfile
 HERE = Path(__file__).resolve().parent
 SOURCE = HERE.parent
 PUBLIC_DIRS = ("lectures 1", "lectures 2", "lectures 3", "exercises 1", "exercises 2", "exercises 3")
+WEEK4_FILES = {
+    "lectures 4": ("4.01_files_batch_analysis.ipynb", "data/demo_sessions", "data/demo_mouse_A.xlsx", "data/demo_mouse_A.mat", "data/README.md"),
+    "exercises 4": ("4.01_files_batch_analysis_exercises.ipynb", "data/behavioral_data", "data/README.md"),
+}
 
 
 def run(*command, cwd=HERE):
@@ -28,6 +32,19 @@ def sync_content():
             target,
             ignore=shutil.ignore_patterns(".DS_Store", ".ipynb_checkpoints", ".mypy_cache", "__pycache__"),
         )
+    # Week 4 is released one topic at a time; copy only the files lesson.
+    for folder, paths in WEEK4_FILES.items():
+        target = HERE / folder
+        if target.exists():
+            shutil.rmtree(target)
+        for path in paths:
+            source = SOURCE / folder / path
+            destination = target / path
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            if source.is_dir():
+                shutil.copytree(source, destination, ignore=shutil.ignore_patterns(".DS_Store", "scores.png"))
+            else:
+                shutil.copy2(source, destination)
 
 
 def main():
@@ -46,7 +63,7 @@ def main():
         files = lite_dir / "files"
         files.mkdir()
         shutil.copy2(HERE / "jupyter-lite.json", lite_dir)
-        for name in PUBLIC_DIRS:
+        for name in (*PUBLIC_DIRS, *WEEK4_FILES):
             shutil.copytree(HERE / name, files / name)
         run(
             str(jupyter),
@@ -58,7 +75,11 @@ def main():
         )
 
     notebooks = list(HERE.glob("* */*.ipynb"))
-    assert len(notebooks) == 25, f"expected 25 public notebooks, found {len(notebooks)}"
+    assert len(notebooks) == 27, f"expected 27 public notebooks, found {len(notebooks)}"
+    for folder, paths in WEEK4_FILES.items():
+        assert sorted(p.name for p in (HERE / folder).glob("*.ipynb")) == [paths[0]]
+        for path in paths:
+            assert (HERE / "_build/html/lite/files" / folder / path).exists()
     assert (HERE / "_build/html/index.html").is_file()
     assert (HERE / "_build/html/lite/lab/index.html").is_file()
     lite_config = json.loads((HERE / "_build/html/lite/jupyter-lite.json").read_text())
@@ -67,10 +88,11 @@ def main():
     ]["loadPyodideOptions"]["packages"]
     assert "pillow" in packages, "JupyterLite must preload Pillow for Dungeon Escape"
     assert "scipy" in packages, "JupyterLite must preload SciPy for WAV loading"
-    assert not any((HERE / name).exists() for name in ("tests", "instructor 1", "instructor 2", "instructor 3", "draft_preview_week3"))
+    assert "pandas" in packages, "JupyterLite must preload pandas for the Excel example"
+    assert not any((HERE / name).exists() for name in ("tests", "instructor 1", "instructor 2", "instructor 3", "instructor_week4", "draft_preview_week3", "draft_preview_week4"))
     for folder, asset in (("lectures 3", "coffee.png"), ("exercises 3", "astronaut.png"), ("exercises 3", "fly.png"), ("exercises 3", "fly_source.png"), ("exercises 3", "speech.wav")):
         assert (HERE / "_build/html/lite/files" / folder / "assets" / asset).is_file()
-    print("Built _build/html with 25 notebooks; no tests or instructor files included.")
+    print("Built _build/html with 27 notebooks; no tests or instructor files included.")
 
 
 if __name__ == "__main__":

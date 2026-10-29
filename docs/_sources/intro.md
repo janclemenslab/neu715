@@ -1,7 +1,7 @@
 # NEU715 — Neuroscientific Data Analysis using Python
 
-These lectures and exercises cover the first three weeks of the course.
-Week 3 currently covers Monday to Wednesday; Thursday remains open.
+These lectures and exercises cover Weeks 1–3 and the first topic of Week 4:
+files and batch analysis, including CSV, Excel, and MATLAB files.
 
 ## Run the notebooks
 

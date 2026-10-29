@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-29T17:00:41.854437Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-29T17:00:41.854437Z",
+      "mimetype": null,
+      "name": "README.md",
+      "path": "lectures 4/data/README.md",
+      "size": 391,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-29T17:03:13.190457Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-29T17:03:13.191158Z",
+      "mimetype": null,
+      "name": "demo_sessions",
+      "path": "lectures 4/data/demo_sessions",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-29T15:35:38.865299Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-29T15:35:38.865299Z",
+      "mimetype": null,
+      "name": "demo_mouse_A.mat",
+      "path": "lectures 4/data/demo_mouse_A.mat",
+      "size": 416,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-29T15:35:38.864768Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-29T15:35:38.864768Z",
+      "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "name": "demo_mouse_A.xlsx",
+      "path": "lectures 4/data/demo_mouse_A.xlsx",
+      "size": 5548,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-29T17:03:13.189490Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-29T17:03:13.190463Z",
+  "mimetype": null,
+  "name": "data",
+  "path": "lectures 4/data",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

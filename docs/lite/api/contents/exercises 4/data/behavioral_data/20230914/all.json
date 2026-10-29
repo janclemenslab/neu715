@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-29T16:59:54.894973Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-29T16:59:54.894973Z",
+      "mimetype": "text/csv",
+      "name": "initial_behavioral_scores.csv",
+      "path": "exercises 4/data/behavioral_data/20230914/initial_behavioral_scores.csv",
+      "size": 1000,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-29T16:59:54.894792Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-29T16:59:54.894792Z",
+      "mimetype": "text/csv",
+      "name": "final_behavioral_scores.csv",
+      "path": "exercises 4/data/behavioral_data/20230914/final_behavioral_scores.csv",
+      "size": 1000,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-29T16:59:55.550775Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-29T16:59:55.550775Z",
+      "mimetype": null,
+      "name": "broken.msg",
+      "path": "exercises 4/data/behavioral_data/20230914/broken.msg",
+      "size": 6,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-29T17:03:13.176030Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-29T17:03:13.176810Z",
+  "mimetype": null,
+  "name": "20230914",
+  "path": "exercises 4/data/behavioral_data/20230914",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

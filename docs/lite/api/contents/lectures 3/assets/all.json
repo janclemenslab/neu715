@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2026-10-25T16:50:13.942303Z",
+      "created": "2026-10-29T16:59:05.521587Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-25T16:50:13.942303Z",
+      "last_modified": "2026-10-29T16:59:05.521587Z",
       "mimetype": "image/png",
       "name": "coffee.png",
       "path": "lectures 3/assets/coffee.png",
@@ -16,11 +16,11 @@
     },
     {
       "content": null,
-      "created": "2026-10-25T16:50:13.941978Z",
+      "created": "2026-10-29T16:59:05.521234Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-25T16:50:13.941978Z",
+      "last_modified": "2026-10-29T16:59:05.521234Z",
       "mimetype": null,
       "name": "README.md",
       "path": "lectures 3/assets/README.md",
@@ -29,11 +29,11 @@
       "writable": true
     }
   ],
-  "created": "2026-10-25T16:51:32.994505Z",
+  "created": "2026-10-29T17:03:13.186557Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2026-10-25T16:51:32.994904Z",
+  "last_modified": "2026-10-29T17:03:13.187020Z",
   "mimetype": null,
   "name": "assets",
   "path": "lectures 3/assets",

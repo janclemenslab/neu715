@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-29T17:03:05.825336Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-29T17:03:05.825336Z",
+      "mimetype": null,
+      "name": "4.01_files_batch_analysis.ipynb",
+      "path": "lectures 4/4.01_files_batch_analysis.ipynb",
+      "size": 14254,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-29T17:03:13.189490Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-29T17:03:13.190463Z",
+      "mimetype": null,
+      "name": "data",
+      "path": "lectures 4/data",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-29T17:03:13.189069Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-29T17:03:13.189492Z",
+  "mimetype": null,
+  "name": "lectures 4",
+  "path": "lectures 4",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
