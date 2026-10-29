@@ -26,5 +26,5 @@ pandas is preloaded for the Week 4 Excel example; its cell installs openpyxl
 in JupyterLite using piplite. The image and
 audio assets are bundled beside the exercise notebook. Nothing in this workflow publishes or uploads files.
 
-The repository URL and Binder/Colab settings are configured in `_config.yml`.
+The repository URL is configured in `_config.yml`.
 The live site is served from `main` → `docs/` in `janclemenslab/neu715`.

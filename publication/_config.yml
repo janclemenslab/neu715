@@ -26,6 +26,3 @@ repository:
   url: https://github.com/janclemenslab/neu715
   path_to_book: publication
   branch: main
-launch_buttons:
-  binderhub_url: https://mybinder.org
-  colab_url: https://colab.research.google.com

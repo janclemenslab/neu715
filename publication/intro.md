@@ -9,9 +9,7 @@ files and batch analysis, including CSV, Excel, and MATLAB files.
 No account or Python installation is needed. Browser work is stored on this
 device; download your notebook before clearing browser data or changing computers.
 
-The rendered pages remain useful for reading and downloading notebooks. Colab
-and Binder launch buttons will be enabled after the public repository address
-has been chosen.
+The rendered pages remain useful for reading and downloading notebooks.
 
 ```{tableofcontents}
 ```
