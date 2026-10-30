@@ -12,7 +12,7 @@ HERE = Path(__file__).resolve().parent
 SOURCE = HERE.parent
 PUBLIC_DIRS = ("lectures 1", "lectures 2", "lectures 3", "exercises 1", "exercises 2", "exercises 3")
 WEEK4_FILES = {
-    "lectures 4": ("4.01_files_batch_analysis.ipynb", "data/demo_sessions", "data/demo_mouse_A.xlsx", "data/demo_mouse_A.mat", "data/README.md"),
+    "lectures 4": ("4.01_files_batch_analysis.ipynb", "4.02_distributions_summary_stats.ipynb", "4.04_statistical_tests.ipynb", "fig", "data/independent.csv", "data/paired.csv", "data/demo_sessions", "data/demo_mouse_A.xlsx", "data/demo_mouse_A.mat", "data/README.md"),
     "exercises 4": ("4.01_files_batch_analysis_exercises.ipynb", "data/behavioral_data", "data/README.md"),
 }
 
@@ -32,7 +32,7 @@ def sync_content():
             target,
             ignore=shutil.ignore_patterns(".DS_Store", ".ipynb_checkpoints", ".mypy_cache", "__pycache__"),
         )
-    # Week 4 is released one topic at a time; copy only the files lesson.
+    # Week 4 is released one topic at a time; copy only the listed materials.
     for folder, paths in WEEK4_FILES.items():
         target = HERE / folder
         if target.exists():
@@ -75,9 +75,9 @@ def main():
         )
 
     notebooks = list(HERE.glob("* */*.ipynb"))
-    assert len(notebooks) == 27, f"expected 27 public notebooks, found {len(notebooks)}"
+    assert len(notebooks) == 29, f"expected 29 public notebooks, found {len(notebooks)}"
     for folder, paths in WEEK4_FILES.items():
-        assert sorted(p.name for p in (HERE / folder).glob("*.ipynb")) == [paths[0]]
+        assert sorted(p.name for p in (HERE / folder).glob("*.ipynb")) == sorted(p for p in paths if p.endswith(".ipynb"))
         for path in paths:
             assert (HERE / "_build/html/lite/files" / folder / path).exists()
     assert (HERE / "_build/html/index.html").is_file()
@@ -92,7 +92,7 @@ def main():
     assert not any((HERE / name).exists() for name in ("tests", "instructor 1", "instructor 2", "instructor 3", "instructor_week4", "draft_preview_week3", "draft_preview_week4"))
     for folder, asset in (("lectures 3", "coffee.png"), ("exercises 3", "astronaut.png"), ("exercises 3", "fly.png"), ("exercises 3", "fly_source.png"), ("exercises 3", "speech.wav")):
         assert (HERE / "_build/html/lite/files" / folder / "assets" / asset).is_file()
-    print("Built _build/html with 27 notebooks; no tests or instructor files included.")
+    print("Built _build/html with 29 notebooks; no tests or instructor files included.")
 
 
 if __name__ == "__main__":

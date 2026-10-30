@@ -1,7 +1,8 @@
 # NEU715 — Neuroscientific Data Analysis using Python
 
-These lectures and exercises cover Weeks 1–3 and the first topic of Week 4:
-files and batch analysis, including CSV, Excel, and MATLAB files.
+These lectures and exercises cover Weeks 1–3 and the released topics of Week 4:
+files and batch analysis, including CSV, Excel, and MATLAB files, plus the
+descriptive and inferential statistics lectures.
 
 ## Run the notebooks
 

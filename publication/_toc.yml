@@ -69,3 +69,7 @@ parts:
         title: Files and batch analysis — lecture
       - file: exercises 4/4.01_files_batch_analysis_exercises
         title: Files and batch analysis — exercises
+      - file: lectures 4/4.02_distributions_summary_stats
+        title: Descriptive statistics — lecture
+      - file: lectures 4/4.04_statistical_tests
+        title: Inferential statistics — lecture

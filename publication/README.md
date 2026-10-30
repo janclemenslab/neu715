@@ -1,7 +1,8 @@
 # Course website publication
 
 This folder builds the published course website. The build copies only lectures
-and exercises from Weeks 1–3 and the files lecture/exercise from Week 4.
+and exercises from Weeks 1–3, the files lecture/exercise from Week 4, and the
+descriptive and inferential statistics lectures with their figures and data.
 Week 4 uses an explicit file list so later topics, tests, and local review files
 are excluded.
 
