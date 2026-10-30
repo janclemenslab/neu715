@@ -13,7 +13,7 @@ SOURCE = HERE.parent
 PUBLIC_DIRS = ("lectures 1", "lectures 2", "lectures 3", "exercises 1", "exercises 2", "exercises 3")
 WEEK4_FILES = {
     "lectures 4": ("4.01_files_batch_analysis.ipynb", "4.02_distributions_summary_stats.ipynb", "4.04_statistical_tests.ipynb", "fig", "data/independent.csv", "data/paired.csv", "behavioral_data", "format_examples", "4.01_files_data.zip"),
-    "exercises 4": ("4.01_files_batch_analysis_exercises.ipynb", "training_data", "4.01_files_exercises_data.zip"),
+    "exercises 4": ("4.01_files_batch_analysis_exercises.ipynb", "training_data", "4.01_files_exercises_data.zip", "5.01_probabilities_exercise.ipynb", "5.02_descriptive_stats_exercise.ipynb", "5.03_inferential_stats_exercise.ipynb", "5.01_probabilities_exercise.npz", "5.01_probabilities_exercise4.png", "5.01_probabilities_exercise5.png", "5.03_inferential_stats_exercise.npy", "5.03_inferential_stats_exercise_multi.npy", "ncb.mplstyle", "statistics_exercises_data.zip"),
 }
 
 
@@ -93,7 +93,7 @@ def main():
         )
 
     notebooks = list(HERE.glob("* */*.ipynb"))
-    assert len(notebooks) == 29, f"expected 29 public notebooks, found {len(notebooks)}"
+    assert len(notebooks) == 32, f"expected 32 public notebooks, found {len(notebooks)}"
     for folder, paths in WEEK4_FILES.items():
         assert sorted(p.name for p in (HERE / folder).glob("*.ipynb")) == sorted(p for p in paths if p.endswith(".ipynb"))
         for path in paths:
@@ -110,7 +110,7 @@ def main():
     assert not any((HERE / name).exists() for name in ("tests", "instructor 1", "instructor 2", "instructor 3", "instructor_week4", "draft_preview_week3", "draft_preview_week4"))
     for folder, asset in (("lectures 3", "coffee.png"), ("exercises 3", "astronaut.png"), ("exercises 3", "fly.png"), ("exercises 3", "fly_source.png"), ("exercises 3", "speech.wav")):
         assert (HERE / "_build/html/lite/files" / folder / "assets" / asset).is_file()
-    print("Built _build/html with 29 notebooks; no tests or instructor files included.")
+    print("Built _build/html with 32 notebooks; no tests or instructor files included.")
 
 
 if __name__ == "__main__":

@@ -71,5 +71,11 @@ parts:
         title: Files and batch analysis — exercises
       - file: lectures 4/4.02_distributions_summary_stats
         title: Descriptive statistics — lecture
+      - file: exercises 4/5.01_probabilities_exercise
+        title: Probabilities — exercises
+      - file: exercises 4/5.02_descriptive_stats_exercise
+        title: Descriptive statistics — exercises
       - file: lectures 4/4.04_statistical_tests
         title: Inferential statistics — lecture
+      - file: exercises 4/5.03_inferential_stats_exercise
+        title: Inferential statistics — exercises

@@ -2,7 +2,7 @@
 
 This folder builds the published course website. The build copies only lectures
 and exercises from Weeks 1–3, the files lecture/exercise from Week 4, and the
-descriptive and inferential statistics lectures with their figures and data.
+descriptive and inferential statistics lectures and exercises with their figures and data.
 Week 4 uses an explicit file list so later topics, tests, and local review files
 are excluded.
 
@@ -28,7 +28,10 @@ missing reader, the notebook notes explain how to install openpyxl in JupyterLit
 The 4.01 notebooks link to separate lecture and exercise data ZIPs; extracted
 input files are also included for browser use. Their published copies have saved
 execution outputs cleared. The image and
-audio assets are bundled beside the exercise notebook. Nothing in this workflow publishes or uploads files.
+audio assets are bundled beside the exercise notebook. The statistics exercises
+also link to `statistics_exercises_data.zip`; the extracted data, example images,
+and `ncb.mplstyle` are included beside the browser notebooks.
+Nothing in this workflow publishes or uploads files.
 
 The repository URL is configured in `_config.yml`.
 The live site is served from `main` → `docs/` in `janclemenslab/neu715`.

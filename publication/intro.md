@@ -2,7 +2,7 @@
 
 These lectures and exercises cover Weeks 1–3 and the released topics of Week 4:
 files and batch analysis, including CSV, Excel, and MATLAB files, plus the
-descriptive and inferential statistics lectures.
+descriptive and inferential statistics lectures and their exercises.
 
 ## Run the notebooks
 
