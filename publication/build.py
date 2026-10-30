@@ -12,8 +12,8 @@ HERE = Path(__file__).resolve().parent
 SOURCE = HERE.parent
 PUBLIC_DIRS = ("lectures 1", "lectures 2", "lectures 3", "exercises 1", "exercises 2", "exercises 3")
 WEEK4_FILES = {
-    "lectures 4": ("4.01_files_batch_analysis.ipynb", "4.02_distributions_summary_stats.ipynb", "4.04_statistical_tests.ipynb", "fig", "data/independent.csv", "data/paired.csv", "data/demo_sessions", "data/demo_mouse_A.xlsx", "data/demo_mouse_A.mat", "data/README.md"),
-    "exercises 4": ("4.01_files_batch_analysis_exercises.ipynb", "data/behavioral_data", "data/README.md"),
+    "lectures 4": ("4.01_files_batch_analysis.ipynb", "4.02_distributions_summary_stats.ipynb", "4.04_statistical_tests.ipynb", "fig", "data/independent.csv", "data/paired.csv", "behavioral_data", "format_examples", "4.01_files_data.zip"),
+    "exercises 4": ("4.01_files_batch_analysis_exercises.ipynb", "training_data", "4.01_files_exercises_data.zip"),
 }
 
 
@@ -45,6 +45,20 @@ def sync_content():
                 shutil.copytree(source, destination, ignore=shutil.ignore_patterns(".DS_Store", "scores.png"))
             else:
                 shutil.copy2(source, destination)
+            if source.suffix == ".ipynb" and source.name.startswith("4.01_"):
+                notebook = json.loads(destination.read_text())
+                archive = next(name for name in paths if name.endswith(".zip"))
+                for cell in notebook["cells"]:
+                    if cell["cell_type"] == "code":
+                        cell["outputs"] = []
+                        cell["execution_count"] = None
+                    elif cell["cell_type"] == "markdown":
+                        text = "".join(cell["source"])
+                        text = text.replace(f"**`{archive}`**", f"[**{archive}**]({archive})")
+                        if "conda install openpyxl" in text and "browser version and get this error" not in text:
+                            text += "\n\nIf you are using the browser version and get this error, run `%pip install openpyxl` in a new code cell, then rerun the loading cell."
+                        cell["source"] = text.splitlines(keepends=True)
+                destination.write_text(json.dumps(notebook, indent=1, ensure_ascii=False) + "\n")
 
 
 def main():
@@ -57,6 +71,10 @@ def main():
 
     run(str(book), "clean", ".")
     run(str(book), "build", ".")
+    for folder, paths in WEEK4_FILES.items():
+        for path in paths:
+            if path.endswith(".zip"):
+                shutil.copy2(HERE / folder / path, HERE / "_build/html" / folder / path)
 
     with tempfile.TemporaryDirectory(prefix="neu715-lite-") as temporary:
         lite_dir = Path(temporary)

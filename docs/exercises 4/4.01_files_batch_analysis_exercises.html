@@ -3,10 +3,10 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Descriptive statistics" href="../lectures%204/4.02_distributions_summary_stats.html"><link rel="prev" title="Working with files and batch analysis" href="../lectures%204/4.01_files_batch_analysis.html">
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Descriptive statistics" href="../lectures%204/4.02_distributions_summary_stats.html"><link rel="prev" title="Working with files" href="../lectures%204/4.01_files_batch_analysis.html">
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
-        <title>Files and batch analysis — exercises - NEU715 — Neuroscientific Data Analysis using Python</title>
+        <title>Exercises 4.01 — Working with Excel files - NEU715 — Neuroscientific Data Analysis using Python</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
@@ -277,94 +277,128 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section class="tex2jax_ignore mathjax_ignore" id="files-and-batch-analysis-exercises">
-<h1>Files and batch analysis — exercises<a class="headerlink" href="#files-and-batch-analysis-exercises" title="Link to this heading">¶</a></h1>
-<p>Based on the previous <code class="docutils literal notranslate"><span class="pre">3.03_files_exercises</span></code> and its original behavioral-score files. Keep <code class="docutils literal notranslate"><span class="pre">data</span></code> beside the notebook. Work through the core exercises in order. Restart and run your completed notebook from top to bottom.</p>
-<section id="the-data-and-the-question">
-<h2>The data and the question<a class="headerlink" href="#the-data-and-the-question" title="Link to this heading">¶</a></h2>
-<p>One animal was tested on six days. Each day has 40 initial and 40 final <strong>continuous behavioral scores</strong>, saved in <code class="docutils literal notranslate"><span class="pre">data/behavioral_data/YYYYMMDD/</span></code>. A score lies between 0 and 1; these are not binary correct/incorrect trials.</p>
-<p>We want one initial mean and one final mean for each day. The files have one numeric column and no header.</p>
+          <section class="tex2jax_ignore mathjax_ignore" id="exercises-4-01-working-with-excel-files">
+<h1>Exercises 4.01 — Working with Excel files<a class="headerlink" href="#exercises-4-01-working-with-excel-files" title="Link to this heading">¶</a></h1>
+<p><strong>Goal:</strong> Analyze initial and final behavioral accuracy across six training sessions.</p>
+<p>This is a new dataset. An animal completes 30 test trials before training and 30 afterwards in each session.</p>
+<p>The workflow stays the same: <strong>discover files → load and analyze → collect labeled results → save → reload and plot</strong>.</p>
+<section id="before-you-start-extract-and-inspect-the-data">
+<h2>Before you start: extract and inspect the data<a class="headerlink" href="#before-you-start-extract-and-inspect-the-data" title="Link to this heading">¶</a></h2>
+<p>Download this notebook and the separate <a class="reference download internal" download="" href="../_downloads/c95310c6840d4275c42041ca7c978d74/4.01_files_exercises_data.zip"><span class="xref download myst"><strong>4.01_files_exercises_data.zip</strong></span></a>. Extract the ZIP and place <code class="docutils literal notranslate"><span class="pre">training_data</span></code> beside this notebook. If extraction adds an enclosing folder, move <code class="docutils literal notranslate"><span class="pre">training_data</span></code> out of it. Browsing inside a ZIP is not the same as extracting it.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>working_folder/
+├── 4.01_files_batch_analysis_exercises.ipynb
+├── 4.01_files_exercises_data.zip
+└── training_data/
+    ├── session_01/
+    │   └── measurements.xlsx
+    ├── session_02/
+    │   └── measurements.xlsx
+    ├── session_03/
+    │   ├── measurements.xlsx
+    │   └── notes.txt
+    ├── session_04/
+    │   └── measurements.xlsx
+    ├── session_05/
+    │   └── measurements.xlsx
+    └── session_06/
+        └── measurements.xlsx
+</pre></div>
+</div>
+<p>Open one workbook in Excel or another spreadsheet viewer. Each workbook has sheets named <strong><code class="docutils literal notranslate"><span class="pre">Before</span></code></strong> and <strong><code class="docutils literal notranslate"><span class="pre">After</span></code></strong>, with columns <strong><code class="docutils literal notranslate"><span class="pre">Trial</span></code></strong> and <strong><code class="docutils literal notranslate"><span class="pre">Accuracy</span></code></strong>. The first row contains column names; 30 data rows follow. Sheet order varies between workbooks, so select sheets by <strong>name</strong>, not position.</p>
+<p>There is now <strong>one workbook per session</strong>, containing both phases. The numbered session folder identifies the record; every workbook has the same filename. Sessions are zero-padded so alphabetical sorting gives session order.</p>
+<p>Complete the tasks in order using <code class="docutils literal notranslate"><span class="pre">os.path</span></code>, <code class="docutils literal notranslate"><span class="pre">glob</span></code>, pandas, and NumPy. Keep answers in the provided cells. Worked answers are supplied separately to the instructor.</p>
+<p><strong>Only if Excel loading reports a missing reader:</strong> install <code class="docutils literal notranslate"><span class="pre">openpyxl</span></code> in the notebook’s Python environment with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">openpyxl</span></code>, then add <code class="docutils literal notranslate"><span class="pre">engine=&quot;openpyxl&quot;</span></code> to the failing <code class="docutils literal notranslate"><span class="pre">pd.read_excel(...)</span></code> or <code class="docutils literal notranslate"><span class="pre">pd.ExcelFile(...)</span></code> call. If loading works, no installation or engine argument is needed.</p>
+<p>If you are using the browser version and get this error, run <code class="docutils literal notranslate"><span class="pre">%pip</span> <span class="pre">install</span> <span class="pre">openpyxl</span></code> in a new code cell, then rerun the loading cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Working directory:"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Data folder found:"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">"training_data"</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-1-inspect-one-file">
-<h2>Exercise 1 — inspect one file<a class="headerlink" href="#exercise-1-inspect-one-file" title="Link to this heading">¶</a></h2>
-<p>Load <code class="docutils literal notranslate"><span class="pre">data/behavioral_data/20230914/initial_behavioral_scores.csv</span></code>. Print its shape, first five scores, minimum, maximum, and mean. Explain what one row represents.</p>
-<p><strong>Check:</strong> there should be 40 scores, all between 0 and 1. Why is <code class="docutils literal notranslate"><span class="pre">skiprows=1</span></code> wrong for this file?</p>
-<div class="cell tag_student-answer docutils container">
+<section id="discover-files">
+<h2>1. Discover files<a class="headerlink" href="#discover-files" title="Link to this heading">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">sorted(glob(...))</span></code> to find:</p>
+<ol class="arabic simple">
+<li><p>Everything inside <code class="docutils literal notranslate"><span class="pre">training_data/session_03</span></code> — <strong>2 files</strong>.</p></li>
+<li><p>Only the Excel workbook in that folder — <strong>1 file</strong>, excluding <code class="docutils literal notranslate"><span class="pre">notes.txt</span></code>.</p></li>
+<li><p>All <code class="docutils literal notranslate"><span class="pre">measurements.xlsx</span></code> workbooks in all session folders with one pattern and no loop — <strong>6 files</strong>. Store the last list in <code class="docutils literal notranslate"><span class="pre">data_files</span></code>.</p></li>
+</ol>
+<p>Print a few matches to check your pattern. Do not type the six input paths manually.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load and inspect one file.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your solution: three patterns; store the third result in data_files.</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-2-discover-only-the-data">
-<h2>Exercise 2 — discover only the data<a class="headerlink" href="#exercise-2-discover-only-the-data" title="Link to this heading">¶</a></h2>
-<p>Use <code class="docutils literal notranslate"><span class="pre">glob</span></code> and <code class="docutils literal notranslate"><span class="pre">sorted</span></code> to find (a) everything in the <code class="docutils literal notranslate"><span class="pre">20230914</span></code> folder, (b) just its CSV files, and (c) all CSV files across all days. Store (c) as <code class="docutils literal notranslate"><span class="pre">data_files</span></code>.</p>
-<p><strong>Check:</strong> 2 CSV files for one day; 12 across all six days.</p>
-<div class="cell tag_student-answer docutils container">
+<section id="load-analyze-and-collect-results">
+<h2>2. Load, analyze, and collect results<a class="headerlink" href="#load-analyze-and-collect-results" title="Link to this heading">¶</a></h2>
+<section id="a-start-with-one-sheet">
+<h3>a. Start with one sheet<a class="headerlink" href="#a-start-with-one-sheet" title="Link to this heading">¶</a></h3>
+<p>Load the <strong><code class="docutils literal notranslate"><span class="pre">After</span></code></strong> sheet of <code class="docutils literal notranslate"><span class="pre">example_file</span></code> with <code class="docutils literal notranslate"><span class="pre">pd.read_excel</span></code>. Inspect its column names and first five rows, then convert it to a NumPy array with <code class="docutils literal notranslate"><span class="pre">.to_numpy()</span></code>.</p>
+<p>Select only the accuracy column and calculate <code class="docutils literal notranslate"><span class="pre">mean_accuracy</span></code>.</p>
+<p><strong>Check:</strong> array shape <strong>(30, 2)</strong>; mean accuracy <strong>0.470</strong>. Why would averaging the entire table give a meaningless result?</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find files using three patterns.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">example_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"training_data"</span><span class="p">,</span> <span class="s2">"session_03"</span><span class="p">,</span> <span class="s2">"measurements.xlsx"</span><span class="p">)</span>
+<span class="c1"># Your solution: load After, inspect, convert to NumPy, and calculate mean_accuracy.</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-3-generate-a-result-path">
-<h2>Exercise 3 — generate a result path<a class="headerlink" href="#exercise-3-generate-a-result-path" title="Link to this heading">¶</a></h2>
-<p>Starting with the path below, extract the day, filename stem, and extension. Build <code class="docutils literal notranslate"><span class="pre">results/20230914/final_behavioral_scores_mean.txt</span></code> with <code class="docutils literal notranslate"><span class="pre">os.path.join</span></code>.</p>
-<p>Then repeat for every path in <code class="docutils literal notranslate"><span class="pre">data_files</span></code>, collecting the output paths. Do not create the result files yet.</p>
-<div class="cell tag_student-answer docutils container">
+<section id="b-repeat-for-every-workbook">
+<h3>b. Repeat for every workbook<a class="headerlink" href="#b-repeat-for-every-workbook" title="Link to this heading">¶</a></h3>
+<p>Process all workbooks in <code class="docutils literal notranslate"><span class="pre">data_files</span></code> and calculate the mean accuracy before and after training for each session. Collect the results directly in a data structure of your choice for the next exercise. Do not save per-session result files.</p>
+<p><strong>Check:</strong> results for six sessions; session 03 has initial mean <strong>0.49</strong> and final mean <strong>0.47</strong>.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">'data/behavioral_data/20230914/final_behavioral_scores.csv'</span>
-<span class="c1"># Extract parts, then build a new path.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your solution here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-4-analyze-every-file">
-<h2>Exercise 4 — analyze every file<a class="headerlink" href="#exercise-4-analyze-every-file" title="Link to this heading">¶</a></h2>
-<p>Load each file in <code class="docutils literal notranslate"><span class="pre">data_files</span></code>, compute its mean, and append it to <code class="docutils literal notranslate"><span class="pre">means</span></code>. Print each path beside its mean. Verify the result for one file using Exercise 1.</p>
-<p><strong>Explain:</strong> why does an unlabeled list of 12 means make it easy to confuse initial and final scores?</p>
-<div class="cell tag_student-answer docutils container">
+</section>
+<section id="save-and-reload-a-summary-table">
+<h2>3. Save and reload a summary table<a class="headerlink" href="#save-and-reload-a-summary-table" title="Link to this heading">¶</a></h2>
+<p>Build a NumPy array called <code class="docutils literal notranslate"><span class="pre">summary</span></code> from your collected results, with one row per session in order and columns <strong>Session, Initial, Final</strong>.</p>
+<p>For this numeric output table, extract the session number: <code class="docutils literal notranslate"><span class="pre">int(session.split(&quot;_&quot;)[1])</span></code> converts <code class="docutils literal notranslate"><span class="pre">&quot;session_03&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">3</span></code>. Session numbers identify records; do not average them with accuracy.</p>
+<p>Create <code class="docutils literal notranslate"><span class="pre">training_results</span></code> if needed. Save <code class="docutils literal notranslate"><span class="pre">training_results/scores.csv</span></code> with a comma delimiter, header <code class="docutils literal notranslate"><span class="pre">Session,Initial,Final</span></code>, and <code class="docutils literal notranslate"><span class="pre">comments=&quot;&quot;</span></code>. Write session numbers as integers and means with six decimal places. Reload with <code class="docutils literal notranslate"><span class="pre">np.loadtxt(...,</span> <span class="pre">delimiter=&quot;,&quot;,</span> <span class="pre">skiprows=1)</span></code>.</p>
+<p>The <strong>inputs are Excel files</strong>; a CSV is convenient for sharing this small output table.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write the load–analyze–collect loop.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your solution: build summary, save it, reload it, and check the values.</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-5-build-a-matched-summary">
-<h2>Exercise 5 — build a matched summary<a class="headerlink" href="#exercise-5-build-a-matched-summary" title="Link to this heading">¶</a></h2>
-<p>Find the six day folders with <code class="docutils literal notranslate"><span class="pre">sorted(glob('data/behavioral_data/*/'))</span></code>. For each folder, construct the initial and final filenames explicitly, load both, and append <code class="docutils literal notranslate"><span class="pre">[day_id,</span> <span class="pre">initial_mean,</span> <span class="pre">final_mean]</span></code> to <code class="docutils literal notranslate"><span class="pre">summary</span></code>. Convert the final list into a NumPy array.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">os.path.basename(os.path.normpath(folder))</span></code> to obtain the day name without its trailing separator; <code class="docutils literal notranslate"><span class="pre">int(day_name)</span></code> converts it to a numeric ID.</p>
-<p><strong>Check:</strong> shape <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">3)</span></code>; one row per day. Verify both means in the row for 20230914. Do not pair two unrelated file lists.</p>
-<div class="cell tag_student-answer docutils container">
+<section id="plot-the-saved-results">
+<h2>4. Plot the saved results<a class="headerlink" href="#plot-the-saved-results" title="Link to this heading">¶</a></h2>
+<p>Use the <strong>reloaded</strong> table to make one plot:</p>
+<ul class="simple">
+<li><p>Session number on the horizontal axis; mean accuracy on the vertical axis.</p></li>
+<li><p>Initial means: red solid line with circle markers.</p></li>
+<li><p>Final means: green dashed line with square markers.</p></li>
+<li><p>A legend, a useful title, and one tick for each session.</p></li>
+</ul>
+<p>Save <code class="docutils literal notranslate"><span class="pre">training_results/scores.png</span></code>. Both lines must have six points in session order.</p>
+<p>Does final accuracy exceed initial accuracy in every session? Identify the exception. What can this descriptive plot show, and what does it not establish about the cause of changes?</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Collect one row per day, preserving the day ID.</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="exercise-6-save-reload-plot">
-<h2>Exercise 6 — save, reload, plot<a class="headerlink" href="#exercise-6-save-reload-plot" title="Link to this heading">¶</a></h2>
-<p>Create <code class="docutils literal notranslate"><span class="pre">results</span></code> and save <code class="docutils literal notranslate"><span class="pre">summary</span></code> as <code class="docutils literal notranslate"><span class="pre">results/behavioral_summary.csv</span></code>, with a header naming all three columns. Reload it and verify that the values agree.</p>
-<p>Plot initial and final means against day number 1–6, with the actual day IDs as tick labels. Label the axes and add a legend. Save the figure as <code class="docutils literal notranslate"><span class="pre">results/behavioral_scores.png</span></code>.</p>
-<p>Write two sentences describing the pattern. Does the plot establish that training caused any change?</p>
-<div class="cell tag_student-answer docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save a numeric table and a labeled figure.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your solution: plot the reloaded summary and save the figure.</span>
 </pre></div>
 </div>
 </div>
@@ -412,7 +446,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Working with files and batch analysis</div>
+                <div class="title">Working with files</div>
                 
               </div>
             </a>
@@ -446,14 +480,16 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Files and batch analysis — exercises</a><ul>
-<li><a class="reference internal" href="#the-data-and-the-question">The data and the question</a></li>
-<li><a class="reference internal" href="#exercise-1-inspect-one-file">Exercise 1 — inspect one file</a></li>
-<li><a class="reference internal" href="#exercise-2-discover-only-the-data">Exercise 2 — discover only the data</a></li>
-<li><a class="reference internal" href="#exercise-3-generate-a-result-path">Exercise 3 — generate a result path</a></li>
-<li><a class="reference internal" href="#exercise-4-analyze-every-file">Exercise 4 — analyze every file</a></li>
-<li><a class="reference internal" href="#exercise-5-build-a-matched-summary">Exercise 5 — build a matched summary</a></li>
-<li><a class="reference internal" href="#exercise-6-save-reload-plot">Exercise 6 — save, reload, plot</a></li>
+<li><a class="reference internal" href="#">Exercises 4.01 — Working with Excel files</a><ul>
+<li><a class="reference internal" href="#before-you-start-extract-and-inspect-the-data">Before you start: extract and inspect the data</a></li>
+<li><a class="reference internal" href="#discover-files">1. Discover files</a></li>
+<li><a class="reference internal" href="#load-analyze-and-collect-results">2. Load, analyze, and collect results</a><ul>
+<li><a class="reference internal" href="#a-start-with-one-sheet">a. Start with one sheet</a></li>
+<li><a class="reference internal" href="#b-repeat-for-every-workbook">b. Repeat for every workbook</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#save-and-reload-a-summary-table">3. Save and reload a summary table</a></li>
+<li><a class="reference internal" href="#plot-the-saved-results">4. Plot the saved results</a></li>
 </ul>
 </li>
 </ul>

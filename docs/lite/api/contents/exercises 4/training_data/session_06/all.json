@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-30T13:06:18.157015Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-30T13:06:18.157015Z",
+      "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "name": "measurements.xlsx",
+      "path": "exercises 4/training_data/session_06/measurements.xlsx",
+      "size": 5223,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-30T13:54:44.888267Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-30T13:54:44.888369Z",
+  "mimetype": null,
+  "name": "session_06",
+  "path": "exercises 4/training_data/session_06",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

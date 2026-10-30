@@ -3,10 +3,10 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Files and batch analysis — exercises" href="../exercises%204/4.01_files_batch_analysis_exercises.html"><link rel="prev" title="NumPy — dimensions, image, and audio exercises" href="../exercises%203/3.03_numpy_dimensions_exercises.html">
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Exercises 4.01 — Working with Excel files" href="../exercises%204/4.01_files_batch_analysis_exercises.html"><link rel="prev" title="NumPy — dimensions, image, and audio exercises" href="../exercises%203/3.03_numpy_dimensions_exercises.html">
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
-        <title>Working with files and batch analysis - NEU715 — Neuroscientific Data Analysis using Python</title>
+        <title>Working with files - NEU715 — Neuroscientific Data Analysis using Python</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
@@ -277,241 +277,421 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section class="tex2jax_ignore mathjax_ignore" id="working-with-files-and-batch-analysis">
-<h1>Working with files and batch analysis<a class="headerlink" href="#working-with-files-and-batch-analysis" title="Link to this heading">¶</a></h1>
-<p>Adapted from the previous files lecture and its batch-analysis revision. Keep the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder beside this notebook. Start Jupyter in this folder. Lecture questions are for discussion; the exercises contain the independent practice.</p>
-<section id="from-one-file-to-a-dataset">
-<h2>From one file to a dataset<a class="headerlink" href="#from-one-file-to-a-dataset" title="Link to this heading">¶</a></h2>
-<p>Experimental data often live in one file per animal, day, or condition. Our workflow is:</p>
+          <section class="tex2jax_ignore mathjax_ignore" id="working-with-files">
+<h1>Working with files<a class="headerlink" href="#working-with-files" title="Link to this heading">¶</a></h1>
+<p><strong>Question:</strong> How do an animal’s average behavioral scores differ before and after training on each day?</p>
+<p>An animal completed 40 test trials before training (<em>initial</em>) and 40 after training (<em>final</em>) on each of six days. Each phase has its own file. A higher response is a higher behavioral score.</p>
+<p>We will build one workflow: <strong>inspect → discover → load → analyze → save → reload and plot</strong>.</p>
+<p>By the end of this lecture, you will be able to find data files, select the right column, keep each result associated with its day and phase, and generate output paths automatically.</p>
+<section id="find-your-bearings">
+<h2>1. Find your bearings<a class="headerlink" href="#find-your-bearings" title="Link to this heading">¶</a></h2>
+<p>Download the notebook and the separate <a class="reference download internal" download="" href="../_downloads/9700da8fe61fe0fdf13080e104b7f653/4.01_files_data.zip"><span class="xref download myst"><strong>4.01_files_data.zip</strong></span></a> archive into a working folder of your choice.</p>
 <ol class="arabic simple">
-<li><p>Inspect and load one file.</p></li>
-<li><p>Compute a result and check it.</p></li>
-<li><p>Find the other files and repeat the same analysis.</p></li>
-<li><p>Save a summary with enough information to identify each row.</p></li>
+<li><p>Extract the ZIP using your file manager. Browsing inside a ZIP is not the same as extracting it.</p></li>
+<li><p>Find the extracted <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code> folder and place it beside this notebook. If extraction created an extra enclosing folder, move <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code> out of it.</p></li>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">behavioral_data/20230914</span></code> in your file manager. You should see two CSV files and <code class="docutils literal notranslate"><span class="pre">broken.msg</span></code>.</p></li>
+<li><p>Start the notebook from your working folder and run the directory check below. <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">folder</span> <span class="pre">found</span></code> should be <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ol>
-<p>The demonstration uses two invented animals, each tested on five trials before and after training.</p>
+<p>The ZIP stores the files for transport; the analysis reads the extracted files. Keep the ZIP as the original download.</p>
+<p>After extraction, your working folder should contain:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>working_folder/
+├── 4.01_files_batch_analysis.ipynb
+├── 4.01_files_data.zip
+└── behavioral_data/
+</pre></div>
+</div>
+<p>Inside <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>behavioral_data/
+├── 20230912/
+│   ├── initial_behavioral_scores.csv
+│   └── final_behavioral_scores.csv
+├── 20230913/
+│   ├── initial_behavioral_scores.csv
+│   └── final_behavioral_scores.csv
+├── 20230914/
+│   ├── initial_behavioral_scores.csv
+│   ├── final_behavioral_scores.csv
+│   └── broken.msg
+└── ... three more dated folders, through 20230917
+</pre></div>
+</div>
+<p>A bit of nomenclature: Take this path <code class="docutils literal notranslate"><span class="pre">experiments/experiment_1/final_behavioral_scores.txt</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">final_behavioral_scores.txt</span></code> is the file name, <code class="docutils literal notranslate"><span class="pre">final_behavioral_scores</span></code> is called the file stem, <code class="docutils literal notranslate"><span class="pre">.txt</span></code> is called the suffix or extension</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">experiments</span></code> and <code class="docutils literal notranslate"><span class="pre">experiment_1</span></code> are directories or folders. <code class="docutils literal notranslate"><span class="pre">experiments</span></code> is the parent directory of <code class="docutils literal notranslate"><span class="pre">experiment_1</span></code>. <code class="docutils literal notranslate"><span class="pre">experiment_1</span></code> is  a subdirectory of <code class="docutils literal notranslate"><span class="pre">experiments</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> is the path separator. On windows, the path separator is ‘’.</p></li>
+</ul>
+<p>We can now list all data files, ending in <code class="docutils literal notranslate"><span class="pre">.txt</span></code> in the <code class="docutils literal notranslate"><span class="pre">experiment_*</span></code> subfolders:</p>
+<p>Dates use <code class="docutils literal notranslate"><span class="pre">YYYYMMDD</span></code>. Alphabetical sorting therefore also gives chronological order.</p>
+<p>A <strong>relative path</strong> starts at Python’s current working directory. That directory is not necessarily the notebook’s directory. Check it below if a file cannot be found.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="paths-and-the-working-directory">
-<h2>Paths and the working directory<a class="headerlink" href="#paths-and-the-working-directory" title="Link to this heading">¶</a></h2>
-<p>A relative path starts at the notebook’s working directory. An absolute path starts at the filesystem root. <code class="docutils literal notranslate"><span class="pre">data/demo_sessions/mouse_A/initial.csv</span></code> means: enter <code class="docutils literal notranslate"><span class="pre">data</span></code>, then <code class="docutils literal notranslate"><span class="pre">demo_sessions</span></code>, then <code class="docutils literal notranslate"><span class="pre">mouse_A</span></code>, and open <code class="docutils literal notranslate"><span class="pre">initial.csv</span></code>.</p>
-<p>Run this cell and inspect the returned location. If loading fails, check the working directory and whether you extracted the whole folder.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">'data/demo_sessions/mouse_A/initial.csv'</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="load-one-text-file">
-<h2>Load one text file<a class="headerlink" href="#load-one-text-file" title="Link to this heading">¶</a></h2>
-<p>Open <code class="docutils literal notranslate"><span class="pre">data/demo_sessions/mouse_A/initial.csv</span></code> in a text editor. Its first line is <code class="docutils literal notranslate"><span class="pre">trial,correct</span></code>; the following rows contain trial numbers and 0/1 outcomes. A comma separates columns (the <strong>delimiter</strong>).</p>
-<p><code class="docutils literal notranslate"><span class="pre">skiprows=1</span></code> skips the header. <code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code> returns an array. <strong>Predict:</strong> what will its shape be?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">'data/demo_sessions/mouse_A/initial.csv'</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Each row is a trial; column 0 is the trial number and column 1 is the outcome. Average the outcomes, not both columns.</p>
-<p><strong>Ask:</strong> why would <code class="docutils literal notranslate"><span class="pre">np.mean(data)</span></code> give the wrong answer? <strong>Reverse:</strong> which column would you select to print trial numbers?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Accuracy:'</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="load-an-excel-workbook">
-<h2>Load an Excel workbook<a class="headerlink" href="#load-an-excel-workbook" title="Link to this heading">¶</a></h2>
-<p>An Excel workbook can contain several named sheets. <code class="docutils literal notranslate"><span class="pre">data/demo_mouse_A.xlsx</span></code> contains <code class="docutils literal notranslate"><span class="pre">initial</span></code> and <code class="docutils literal notranslate"><span class="pre">final</span></code> sheets with the same invented mouse A trials as our CSV files. Each sheet has column labels <code class="docutils literal notranslate"><span class="pre">trial</span></code> and <code class="docutils literal notranslate"><span class="pre">correct</span></code>.</p>
-<p>Use pandas to read a sheet into a <strong>DataFrame</strong>: a table with row and column labels. The first row supplies the column names by default. For this <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code> example, pandas uses the <code class="docutils literal notranslate"><span class="pre">openpyxl</span></code> package. If needed, install <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">openpyxl</span></code> into your notebook’s Python environment before class (for example, <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pandas</span> <span class="pre">openpyxl</span></code> in its activated environment).</p>
-<p>In JupyterLite, the next cell installs the Excel reader automatically; the first run needs an internet connection.</p>
-<p><strong>Predict:</strong> how many rows and columns should the <code class="docutils literal notranslate"><span class="pre">initial</span></code> sheet contain?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
-<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s2">"emscripten"</span><span class="p">:</span>  <span class="c1"># JupyterLite runs Python in the browser.</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">piplite</span>
-    <span class="k">await</span> <span class="n">piplite</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s2">"openpyxl"</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="n">excel_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">'data/demo_mouse_A.xlsx'</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">'initial'</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">'openpyxl'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">excel_table</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">excel_table</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">excel_table</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Convert the numeric table with <code class="docutils literal notranslate"><span class="pre">.to_numpy()</span></code> to use the array indexing we already know. The column labels are not part of the resulting array: column 0 is <code class="docutils literal notranslate"><span class="pre">trial</span></code> and column 1 is <code class="docutils literal notranslate"><span class="pre">correct</span></code>.</p>
-<p><strong>Ask:</strong> why must we check the column order before selecting column 1? <strong>Reverse:</strong> load the <code class="docutils literal notranslate"><span class="pre">final</span></code> sheet and calculate its accuracy.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">excel_values</span> <span class="o">=</span> <span class="n">excel_table</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">excel_values</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Accuracy:'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">excel_values</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Working directory:"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Data folder found:"</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">"behavioral_data"</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="load-a-matlab-file">
-<h2>Load a MATLAB file<a class="headerlink" href="#load-a-matlab-file" title="Link to this heading">¶</a></h2>
-<p>A <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file can store several named variables. The supplied <code class="docutils literal notranslate"><span class="pre">data/demo_mouse_A.mat</span></code> contains <code class="docutils literal notranslate"><span class="pre">initial</span></code> and <code class="docutils literal notranslate"><span class="pre">final</span></code>, each a five-row, two-column array with trial number and outcome. These are the same invented trials as in the Excel workbook and CSV files.</p>
-<p><code class="docutils literal notranslate"><span class="pre">scipy.io.loadmat</span></code> returns a dictionary. Inspect its keys, then retrieve the array by its variable name. Keys such as <code class="docutils literal notranslate"><span class="pre">__header__</span></code> describe the file; they are not measurements. SciPy is already used elsewhere in Week 4.</p>
-<p><strong>Predict:</strong> will loading the file return an array directly, or a collection containing arrays?</p>
+<section id="inspect-and-load-one-file">
+<h2>2. Inspect and load one file<a class="headerlink" href="#inspect-and-load-one-file" title="Link to this heading">¶</a></h2>
+<p>Open <code class="docutils literal notranslate"><span class="pre">behavioral_data/20230914/final_behavioral_scores.csv</span></code> in a text editor. Its first line is <code class="docutils literal notranslate"><span class="pre">Trial,Response</span></code>, followed by 40 rows of numbers.</p>
+<p>The comma is the <strong>delimiter</strong>, separating the two columns. The header describes the columns; it is not numerical data. A <code class="docutils literal notranslate"><span class="pre">.csv</span></code> or <code class="docutils literal notranslate"><span class="pre">.txt</span></code> extension is a naming convention: always inspect the contents.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">loadmat</span>
-
-<span class="n">matlab_data</span> <span class="o">=</span> <span class="n">loadmat</span><span class="p">(</span><span class="s1">'data/demo_mouse_A.mat'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">matlab_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="n">matlab_values</span> <span class="o">=</span> <span class="n">matlab_data</span><span class="p">[</span><span class="s1">'initial'</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">matlab_values</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">matlab_values</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Accuracy:'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">matlab_values</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"behavioral_data"</span><span class="p">,</span> <span class="s2">"20230914"</span><span class="p">,</span> <span class="s2">"final_behavioral_scores.csv"</span><span class="p">)</span>
+<span class="n">example_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">example_file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Shape:"</span><span class="p">,</span> <span class="n">example_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">example_data</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>The loaded arrays use Python’s zero-based indexing: the second column is <code class="docutils literal notranslate"><span class="pre">[:,</span> <span class="pre">1]</span></code>. <code class="docutils literal notranslate"><span class="pre">loadmat</span></code> normally preserves two-dimensional row/column vectors, so inspect <code class="docutils literal notranslate"><span class="pre">.shape</span></code> before indexing.</p>
-<p><strong>Ask:</strong> what is the difference between <code class="docutils literal notranslate"><span class="pre">matlab_data['initial']</span></code> and <code class="docutils literal notranslate"><span class="pre">matlab_values[:,</span> <span class="pre">1]</span></code>? <strong>Reverse:</strong> retrieve <code class="docutils literal notranslate"><span class="pre">final</span></code> and compute its accuracy.</p>
-<p><strong>File-version note:</strong> this example uses the MAT v5 format. SciPy reads MATLAB formats through v7.2; v7.3 files use HDF5 and need an HDF5-aware reader such as <code class="docutils literal notranslate"><span class="pre">h5py</span></code>. MATLAB structs and cell arrays require additional interpretation, so the example deliberately uses numeric matrices.</p>
-<p>Reference: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html">pandas.read_excel</a> and <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.loadmat.html">scipy.io.loadmat</a>.</p>
-</section>
-<section id="discover-files-with-glob">
-<h2>Discover files with glob<a class="headerlink" href="#discover-files-with-glob" title="Link to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">glob</span></code> finds paths matching a pattern. <code class="docutils literal notranslate"><span class="pre">*</span></code> matches any sequence of characters, and <code class="docutils literal notranslate"><span class="pre">?</span></code> matches one character. Results are not guaranteed to arrive in a useful order; <code class="docutils literal notranslate"><span class="pre">sorted</span></code> makes the order predictable.</p>
-<p><strong>Predict:</strong> which of these patterns finds only final-session files?</p>
+<p><code class="docutils literal notranslate"><span class="pre">skiprows=1</span></code> skips the header. The array has 40 rows and two columns.</p>
+<p><strong>Predict:</strong> Which expression selects all responses: <code class="docutils literal notranslate"><span class="pre">example_data[1,</span> <span class="pre">:]</span></code> or <code class="docutils literal notranslate"><span class="pre">example_data[:,</span> <span class="pre">1]</span></code>?</p>
+<p><strong>Mini exercise:</strong> Calculate the average response for the data in the loaded file. Save it in the variable <code class="docutils literal notranslate"><span class="pre">mean_response</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s1">'data/demo_sessions/*'</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s1">'data/demo_sessions/*/*.csv'</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s1">'data/demo_sessions/*/final.csv'</span><span class="p">)))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<span class="n">mean_response</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>This is the mean for one phase on one day. Next, let’s find the other files without typing every filename.</p>
 </section>
-<section id="repeat-the-same-analysis">
-<h2>Repeat the same analysis<a class="headerlink" href="#repeat-the-same-analysis" title="Link to this heading">¶</a></h2>
-<p>Start with an empty list, load each file, select its outcome column, and collect one mean per file. Here index-based iteration follows the earlier loop lessons.</p>
-<p><strong>Ask:</strong> how many results should there be? <strong>Reverse:</strong> change the pattern to analyze the initial sessions.</p>
+<section id="discover-files-with-patterns">
+<h2>3. Discover files with patterns<a class="headerlink" href="#discover-files-with-patterns" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">glob</span></code> returns matching paths. <code class="docutils literal notranslate"><span class="pre">*</span></code> matches zero or more characters within one path component; <code class="docutils literal notranslate"><span class="pre">?</span></code> matches one character. It does not guarantee a particular order, so use <code class="docutils literal notranslate"><span class="pre">sorted</span></code> when order matters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s1">'data/demo_sessions/*/final.csv'</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data_files</span><span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_files</span><span class="p">)):</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">data_files</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Everything in one day:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"behavioral_data"</span><span class="p">,</span> <span class="s2">"20230914"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">))))</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="split-and-assemble-paths">
-<h2>Split and assemble paths<a class="headerlink" href="#split-and-assemble-paths" title="Link to this heading">¶</a></h2>
-<p>Use <code class="docutils literal notranslate"><span class="pre">os.path</span></code> rather than splitting strings at <code class="docutils literal notranslate"><span class="pre">/</span></code>: the path separator can differ between operating systems. A filename has a <strong>stem</strong> and an <strong>extension</strong>. A path also identifies its parent folder.</p>
+<p>Check the files listed above. Do they all look like valid data files?</p>
+<p><strong>Mini exercise:</strong> Modify the <code class="docutils literal notranslate"><span class="pre">glob</span></code> statement to only list <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files in that day.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">data_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your soliution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Mini exercise:</strong> Thus far, we list files for a single day. Let’s list all csv files from all days:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are <strong>12</strong> data files: six days × two phases. The pattern excludes <code class="docutils literal notranslate"><span class="pre">broken.msg</span></code>. Notice that alphabetically <code class="docutils literal notranslate"><span class="pre">final</span></code> comes before <code class="docutils literal notranslate"><span class="pre">initial</span></code>; file order does not tell us which phase belongs in which result column.</p>
+<p>An empty list usually means the folder or pattern is wrong. Check the working directory and inspect a few matches before starting an analysis.</p>
+</section>
+<section id="take-paths-apart-and-build-result-paths">
+<h2>4. Take paths apart and build result paths<a class="headerlink" href="#take-paths-apart-and-build-result-paths" title="Link to this heading">¶</a></h2>
+<p>For <code class="docutils literal notranslate"><span class="pre">behavioral_data/20230914/final_behavioral_scores.csv</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code> is the data root; <code class="docutils literal notranslate"><span class="pre">20230914</span></code> is the day folder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">final_behavioral_scores.csv</span></code> is the filename.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">final_behavioral_scores</span></code> is the stem; <code class="docutils literal notranslate"><span class="pre">.csv</span></code> is the extension.</p></li>
+</ul>
+<p>We use <code class="docutils literal notranslate"><span class="pre">os.path</span></code> throughout this lecture. <code class="docutils literal notranslate"><span class="pre">pathlib</span></code> is another standard-library option; one consistent approach is enough here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">folder</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">example_file</span><span class="p">)</span>
+<span class="n">data_root</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
 <span class="n">stem</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-<span class="n">animal</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">'results'</span><span class="p">,</span> <span class="n">animal</span><span class="p">,</span> <span class="n">stem</span> <span class="o">+</span> <span class="s1">'_summary.txt'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">stem</span><span class="p">,</span> <span class="n">extension</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Data root:"</span><span class="p">,</span> <span class="n">data_root</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Day:"</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Stem:"</span><span class="p">,</span> <span class="n">stem</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Extension:"</span><span class="p">,</span> <span class="n">extension</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Ask:</strong> which part changes if the input is <code class="docutils literal notranslate"><span class="pre">initial.csv</span></code>? <strong>Reverse:</strong> construct a path with the same animal folder but filename <code class="docutils literal notranslate"><span class="pre">accuracy.csv</span></code>.</p>
-</section>
-<section id="keep-related-measurements-together">
-<h2>Keep related measurements together<a class="headerlink" href="#keep-related-measurements-together" title="Link to this heading">¶</a></h2>
-<p>Never assume that two separate file lists are correctly paired by position. Discover each animal’s folder, then build both filenames from that folder. This preserves animal identity. A missing file then gives a useful error instead of silently shifting the pairs.</p>
+<p><strong>Goal:</strong> Save this file’s mean in <code class="docutils literal notranslate"><span class="pre">behavioral_results/20230914/final_behavioral_scores.txt</span></code>.</p>
+<p>Keep the day and stem, change the root and extension. <code class="docutils literal notranslate"><span class="pre">os.path.join</span></code> uses the appropriate separator on your computer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">animal_folders</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="s1">'data/demo_sessions/*/'</span><span class="p">))</span>
-<span class="n">summary</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">animal_names</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">animal_folders</span><span class="p">)):</span>
-    <span class="n">folder</span> <span class="o">=</span> <span class="n">animal_folders</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-    <span class="n">initial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s1">'initial.csv'</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">final</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s1">'final.csv'</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">summary</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">initial</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">final</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])])</span>
-    <span class="n">animal_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">folder</span><span class="p">)))</span>
-<span class="n">summary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">animal_names</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"behavioral_results"</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+<span class="n">result_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result_folder</span><span class="p">,</span> <span class="n">stem</span> <span class="o">+</span> <span class="s2">".txt"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A path is just a string; building one does not create a folder or file. We therefore need to create the folder before saving. <code class="docutils literal notranslate"><span class="pre">exist_ok=True</span></code> allows rerunning the cell when the folder already exists.</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.savetxt</span></code> accepts a one- or two-dimensional array (or list), so put our single mean in a list. By default it prefixes header text with <code class="docutils literal notranslate"><span class="pre">#</span></code>; <code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code> ignores those comment lines.</p>
+<p><strong>Rerunning save cells replaces files at the same output paths.</strong> All outputs here go into <code class="docutils literal notranslate"><span class="pre">behavioral_results</span></code>, separate from the input data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">result_folder</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">result_file</span><span class="p">,</span> <span class="p">[</span><span class="n">mean_response</span><span class="p">],</span> <span class="n">header</span><span class="o">=</span><span class="s2">"Mean_response"</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">"</span><span class="si">%.6f</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Saved:"</span><span class="p">,</span> <span class="n">result_file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Reloaded mean:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">result_file</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="save-reload-and-check">
-<h2>Save, reload, and check<a class="headerlink" href="#save-reload-and-check" title="Link to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">os.makedirs(...,</span> <span class="pre">exist_ok=True)</span></code> creates a folder, including missing parent folders. <code class="docutils literal notranslate"><span class="pre">np.savetxt</span></code> saves a numeric table. Here the header records the row order.</p>
-<p>Running these cells again replaces the generated files inside <code class="docutils literal notranslate"><span class="pre">results</span></code>; the input data are kept separately.</p>
+<section id="first-attempt-parallel-lists">
+<h2>5. First attempt: parallel lists<a class="headerlink" href="#first-attempt-parallel-lists" title="Link to this heading">¶</a></h2>
+<p>We now want to analyze all data and collect the results using python.</p>
+<p>Let’s list all data files. For this complete dataset, sorting both file lists puts them in matching date order. <code class="docutils literal notranslate"><span class="pre">zip</span></code> lets us visit corresponding items together. It stops at the end of the shorter list, so it does not warn us about missing files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">'results'</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">header</span> <span class="o">=</span> <span class="s1">'row order: '</span> <span class="o">+</span> <span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">animal_names</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">initial_accuracy,final_accuracy'</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">'results/demo_summary.csv'</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
-<span class="n">loaded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">'results/demo_summary.csv'</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">loaded</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">loaded</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s1">'o-'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">'Initial'</span><span class="p">,</span> <span class="s1">'Final'</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Accuracy'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">'results/demo_accuracy.png'</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">'tight'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">initial_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"behavioral_data"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">,</span> <span class="s2">"initial_behavioral_scores.csv"</span><span class="p">)))</span>
+<span class="n">final_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"behavioral_data"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">,</span> <span class="s2">"final_behavioral_scores.csv"</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">initial_files</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">final_files</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">np.savetxt</span></code> starts header lines with <code class="docutils literal notranslate"><span class="pre">#</span></code> by default; <code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code> skips those comment lines.</p>
-<p><strong>Ask:</strong> why must a summary record which animal each row describes?</p>
-</section>
-<section id="numpy-files-arrays-and-named-collections">
-<h2>NumPy files: arrays and named collections<a class="headerlink" href="#numpy-files-arrays-and-named-collections" title="Link to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">.npy</span></code> stores one array; <code class="docutils literal notranslate"><span class="pre">.npz</span></code> stores several named arrays. Unlike a text table, these formats preserve array shapes and numeric types. The <code class="docutils literal notranslate"><span class="pre">.npz</span></code> result is dictionary-like; use a key to retrieve an array.</p>
+<p>Now design the workflow:</p>
+<ol class="arabic simple">
+<li><p>for each day, we have to load the initlal and final scores</p></li>
+<li><p>compute initial and final means</p></li>
+<li><p>collect the initial and final means in a data structure.</p></li>
+</ol>
+<p><strong>Mini exercise:</strong> Implement step 1 (load all files using a for loop). Then add step 2 (calculation of means) to the for loop.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'results/accuracy.npy'</span><span class="p">,</span> <span class="n">summary</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'results/accuracy.npy'</span><span class="p">))</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s1">'results/accuracy.npz'</span><span class="p">,</span> <span class="n">scores</span><span class="o">=</span><span class="n">summary</span><span class="p">,</span> <span class="n">animals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">animal_names</span><span class="p">))</span>
-<span class="n">archive</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'results/accuracy.npz'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">archive</span><span class="o">.</span><span class="n">files</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">archive</span><span class="p">[</span><span class="s1">'animals'</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">archive</span><span class="p">[</span><span class="s1">'scores'</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For step 3, we need to think about how to organize the results. A straightforward approach for representing the different results is to keep separate lists of days, initial means, and final means. We call them <strong>parallel lists</strong> because position <code class="docutils literal notranslate"><span class="pre">i</span></code> must refer to the same day in every list.</p>
+<p><strong>Mini exercise:</strong> Append the results as well as the day (extract it from the file path using <code class="docutils literal notranslate"><span class="pre">os.path.split</span></code>) to the respective lists.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_days</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">initial_means</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">final_means</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-better-representation-a-dictionary-of-daily-results">
+<h2>6. A better representation: a dictionary of daily results<a class="headerlink" href="#a-better-representation-a-dictionary-of-daily-results" title="Link to this heading">¶</a></h2>
+<p>An alternative is to use dictionaries with one key per day to organize the results. That way, the association between days and results is explicit.</p>
+<p>Use the date as a dictionary key. Store the two means under the names <code class="docutils literal notranslate"><span class="pre">initial</span></code> and <code class="docutils literal notranslate"><span class="pre">final</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span><span class="p">[</span><span class="s2">"20230912"</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"initial"</span><span class="p">:</span> <span class="mf">0.087</span><span class="p">,</span> <span class="s2">"final"</span><span class="p">:</span> <span class="mf">0.262</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Then <code class="docutils literal notranslate"><span class="pre">scores[&quot;20230912&quot;][&quot;final&quot;]</span></code> says exactly which value we want. To build this safely, discover the day folders once, then construct both input filenames inside <strong>the same folder</strong>. We do not pair independent file lists by position.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">day_folders</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"behavioral_data"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">)))</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">day_folder</span> <span class="ow">in</span> <span class="n">day_folders</span><span class="p">:</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">day_folder</span><span class="p">)</span>
+    <span class="n">initial_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">day_folder</span><span class="p">,</span> <span class="s2">"initial_behavioral_scores.csv"</span><span class="p">)</span>
+    <span class="n">final_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">day_folder</span><span class="p">,</span> <span class="s2">"final_behavioral_scores.csv"</span><span class="p">)</span>
+    <span class="n">initial_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">initial_file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">final_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">final_file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">scores</span><span class="p">[</span><span class="n">day</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"initial"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">initial_data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]),</span>
+        <span class="s2">"final"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">final_data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]),</span>
+    <span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s2">"20230912"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Final mean on September 12:"</span><span class="p">,</span> <span class="n">scores</span><span class="p">[</span><span class="s2">"20230912"</span><span class="p">][</span><span class="s2">"final"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parallel lists</p></th>
+<th class="head"><p>Dictionary of daily records</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Simple to create and pass to plotting functions</p></td>
+<td><p>Names make each value’s meaning explicit</p></td>
+</tr>
+<tr class="row-odd"><td><p>Every list must be reordered and filtered together</p></td>
+<td><p>Sorting keys retrieves complete daily records</p></td>
+</tr>
+<tr class="row-even"><td><p>Matching positions can silently refer to different days</p></td>
+<td><p>Nested indexing and conversion to a table take an extra step</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="save-a-table-with-its-day-labels">
+<h2>7. Save a table with its day labels<a class="headerlink" href="#save-a-table-with-its-day-labels" title="Link to this heading">¶</a></h2>
+<p>A dictionary is useful during analysis. A rectangular table is convenient for sharing. Build each row from <strong>one dictionary entry</strong>: day, initial mean, final mean.</p>
+<p>Dates remain strings in the dictionary. For this numeric text table only, we write each <code class="docutils literal notranslate"><span class="pre">YYYYMMDD</span></code> label as an integer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">scores</span><span class="p">):</span>
+    <span class="n">daily_scores</span> <span class="o">=</span> <span class="n">scores</span><span class="p">[</span><span class="n">day</span><span class="p">]</span>
+    <span class="n">summary_rows</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">day</span><span class="p">),</span> <span class="n">daily_scores</span><span class="p">[</span><span class="s2">"initial"</span><span class="p">],</span> <span class="n">daily_scores</span><span class="p">[</span><span class="s2">"final"</span><span class="p">]])</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">summary_rows</span><span class="p">)</span>
+
+<span class="n">summary_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"behavioral_results"</span><span class="p">,</span> <span class="s2">"scores.csv"</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span>
+    <span class="n">summary_file</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s2">"Day,Initial,Final"</span><span class="p">,</span>
+    <span class="n">comments</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="p">[</span><span class="s2">"</span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="si">%.6f</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="si">%.6f</span><span class="s2">"</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Saved rows:"</span><span class="p">,</span> <span class="n">summary</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first column preserves which day each row represents. <code class="docutils literal notranslate"><span class="pre">fmt</span></code> writes the date without decimals and the means to six decimal places. <code class="docutils literal notranslate"><span class="pre">comments=&quot;&quot;</span></code> writes the header without <code class="docutils literal notranslate"><span class="pre">#</span></code>, so we skip it when reloading.</p>
+<p>Reload the file using <code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code> to check what we saved before plotting it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loaded_summary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">summary_file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">loaded_summary</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">0.0000005</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">loaded_summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Mini exercise:</strong> Plot the results - days are on the x-axis, two lines with the initial and final scores across days.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solition</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each point summarizes 40 trials in one phase on one day. In these data, the final mean is higher on every day. The plot describes the observed scores; by itself it does not establish a causal effect of training.</p>
+</section>
+<section id="save-numpy-arrays-npy-and-npz">
+<h2>8. Save NumPy arrays: <code class="docutils literal notranslate"><span class="pre">.npy</span></code> and <code class="docutils literal notranslate"><span class="pre">.npz</span></code><a class="headerlink" href="#save-numpy-arrays-npy-and-npz" title="Link to this heading">¶</a></h2>
+<p>Text tables are easy to inspect and share. NumPy’s binary formats preserve array shape and dtype without choosing a decimal text format.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">.npy</span></code> for one array. Here we save the two-column example table.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"behavioral_results"</span><span class="p">,</span> <span class="s2">"example_data.npy"</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">array_file</span><span class="p">,</span> <span class="n">example_data</span><span class="p">)</span>
+<span class="n">loaded_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">array_file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">loaded_array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">.npz</span></code> for several <strong>named arrays</strong>. Keep the dates and means together in one file. We are saving arrays, not the nested dictionary itself.</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.load</span></code> returns a dictionary-like archive for <code class="docutils literal notranslate"><span class="pre">.npz</span></code>. Call <code class="docutils literal notranslate"><span class="pre">archive.close()</span></code> after retrieving the arrays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">archive_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"behavioral_results"</span><span class="p">,</span> <span class="s2">"scores.npz"</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="n">archive_file</span><span class="p">,</span> <span class="n">days</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">scores</span><span class="p">)),</span> <span class="n">means</span><span class="o">=</span><span class="n">summary</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:])</span>
+
+<span class="n">archive</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">archive_file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">archive</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">archive</span><span class="p">[</span><span class="s2">"days"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">archive</span><span class="p">[</span><span class="s2">"means"</span><span class="p">])</span>
 <span class="n">archive</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="loading-excel-data">
+<h2>9. Loading Excel data<a class="headerlink" href="#loading-excel-data" title="Link to this heading">¶</a></h2>
+<p>Excel workbooks contain sheets, each of which can hold a table. We can load a sheet with pandas and convert its table to a NumPy array.</p>
+<p>The updated <a class="reference download internal" download="" href="../_downloads/9700da8fe61fe0fdf13080e104b7f653/4.01_files_data.zip"><span class="xref download myst"><strong>4.01_files_data.zip</strong></span></a> also contains <code class="docutils literal notranslate"><span class="pre">format_examples</span></code>. Extract it beside <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code>, so both folders are beside this notebook. The Excel file is the simple mouse-response workbook from the original lecture, separate from our dated behavioral dataset.</p>
+<p>First try loading the workbook with pandas; it normally selects an Excel reader automatically. The example is supplied as <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>. <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html">pandas documentation</a></p>
+<p><strong>Only if you get an error about a missing Excel reader:</strong> install <code class="docutils literal notranslate"><span class="pre">openpyxl</span></code> in your notebook’s Python environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>openpyxl
+</pre></div>
+</div>
+<p>If you are using the browser version and get this error, run <code class="docutils literal notranslate"><span class="pre">%pip</span> <span class="pre">install</span> <span class="pre">openpyxl</span></code> in a new code cell, then rerun the loading cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">excel_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"format_examples"</span><span class="p">,</span> <span class="s2">"mouse_data.xlsx"</span><span class="p">)</span>
+<span class="n">workbook</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="n">excel_file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">workbook</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
+<span class="n">workbook</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Load the sheet named <code class="docutils literal notranslate"><span class="pre">Mouse1</span></code>. By default, pandas uses the first row as column names; no delimiter is needed.</p>
+<p>The result is a <strong>DataFrame</strong>: a table with named columns, rather than a NumPy array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">excel_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">"Mouse1"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">excel_data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">excel_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">.to_numpy()</span></code> to continue with the NumPy operations we already know. This sheet contains only one column, <code class="docutils literal notranslate"><span class="pre">Responses</span></code>, so it is column <code class="docutils literal notranslate"><span class="pre">0</span></code>. Conversion keeps the values but leaves the column names behind.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">excel_array</span> <span class="o">=</span> <span class="n">excel_data</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Shape:"</span><span class="p">,</span> <span class="n">excel_array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean response:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">excel_array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Mini exercise:</strong> Load the <code class="docutils literal notranslate"><span class="pre">Mouse2</span></code> sheet from the same workbook. Inspect its columns, convert it to a NumPy array, and calculate the mean response.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loading-matlab-data">
+<h2>10. Loading MATLAB data<a class="headerlink" href="#loading-matlab-data" title="Link to this heading">¶</a></h2>
+<p>A MATLAB <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file can store several named variables. <code class="docutils literal notranslate"><span class="pre">scipy.io.loadmat</span></code> returns a <strong>dictionary</strong>, with variable names as keys and their values as arrays.</p>
+<p>The example contains <code class="docutils literal notranslate"><span class="pre">initial</span></code> and <code class="docutils literal notranslate"><span class="pre">final</span></code>: the two-column trial/response tables for <strong>20230914</strong>, copied from our CSV files. Inspect the keys before choosing a variable. <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.loadmat.html">SciPy documentation</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">loadmat</span>
+
+<span class="n">matlab_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">"format_examples"</span><span class="p">,</span> <span class="s2">"behavioral_scores_20230914.mat"</span><span class="p">)</span>
+<span class="n">matlab_data</span> <span class="o">=</span> <span class="n">loadmat</span><span class="p">(</span><span class="n">matlab_file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matlab_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Keys such as <code class="docutils literal notranslate"><span class="pre">__header__</span></code> and <code class="docutils literal notranslate"><span class="pre">__version__</span></code> describe the file. Our data variables are <code class="docutils literal notranslate"><span class="pre">initial</span></code> and <code class="docutils literal notranslate"><span class="pre">final</span></code>.</p>
+<p>Select the final table by name, inspect its shape, and select the response column before calculating a mean. MATLAB arrays can retain two dimensions, even when they contain a single row or column, so check the shape rather than assuming it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matlab_final</span> <span class="o">=</span> <span class="n">matlab_data</span><span class="p">[</span><span class="s2">"final"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Shape:"</span><span class="p">,</span> <span class="n">matlab_final</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matlab_final</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean final response:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">matlab_final</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>MATLAB format note:</strong> <code class="docutils literal notranslate"><span class="pre">loadmat</span></code> supports v4 and v6–v7.2 MAT-files. MATLAB v7.3 uses HDF5 and needs another reader; <code class="docutils literal notranslate"><span class="pre">h5py</span></code> can access its datasets, but MATLAB structs and cell arrays may need additional decoding. This example uses the format supported by SciPy. <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.loadmat.html">Format support</a></p>
 </section>
 </section>
 
@@ -544,7 +724,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Files and batch analysis — exercises</div>
+                <div class="title">Exercises 4.01 — Working with Excel files</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -589,18 +769,17 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Working with files and batch analysis</a><ul>
-<li><a class="reference internal" href="#from-one-file-to-a-dataset">From one file to a dataset</a></li>
-<li><a class="reference internal" href="#paths-and-the-working-directory">Paths and the working directory</a></li>
-<li><a class="reference internal" href="#load-one-text-file">Load one text file</a></li>
-<li><a class="reference internal" href="#load-an-excel-workbook">Load an Excel workbook</a></li>
-<li><a class="reference internal" href="#load-a-matlab-file">Load a MATLAB file</a></li>
-<li><a class="reference internal" href="#discover-files-with-glob">Discover files with glob</a></li>
-<li><a class="reference internal" href="#repeat-the-same-analysis">Repeat the same analysis</a></li>
-<li><a class="reference internal" href="#split-and-assemble-paths">Split and assemble paths</a></li>
-<li><a class="reference internal" href="#keep-related-measurements-together">Keep related measurements together</a></li>
-<li><a class="reference internal" href="#save-reload-and-check">Save, reload, and check</a></li>
-<li><a class="reference internal" href="#numpy-files-arrays-and-named-collections">NumPy files: arrays and named collections</a></li>
+<li><a class="reference internal" href="#">Working with files</a><ul>
+<li><a class="reference internal" href="#find-your-bearings">1. Find your bearings</a></li>
+<li><a class="reference internal" href="#inspect-and-load-one-file">2. Inspect and load one file</a></li>
+<li><a class="reference internal" href="#discover-files-with-patterns">3. Discover files with patterns</a></li>
+<li><a class="reference internal" href="#take-paths-apart-and-build-result-paths">4. Take paths apart and build result paths</a></li>
+<li><a class="reference internal" href="#first-attempt-parallel-lists">5. First attempt: parallel lists</a></li>
+<li><a class="reference internal" href="#a-better-representation-a-dictionary-of-daily-results">6. A better representation: a dictionary of daily results</a></li>
+<li><a class="reference internal" href="#save-a-table-with-its-day-labels">7. Save a table with its day labels</a></li>
+<li><a class="reference internal" href="#save-numpy-arrays-npy-and-npz">8. Save NumPy arrays: <code class="docutils literal notranslate"><span class="pre">.npy</span></code> and <code class="docutils literal notranslate"><span class="pre">.npz</span></code></a></li>
+<li><a class="reference internal" href="#loading-excel-data">9. Loading Excel data</a></li>
+<li><a class="reference internal" href="#loading-matlab-data">10. Loading MATLAB data</a></li>
 </ul>
 </li>
 </ul>
