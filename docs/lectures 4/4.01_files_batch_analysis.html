@@ -295,7 +295,7 @@
 <li><p>Open <code class="docutils literal notranslate"><span class="pre">behavioral_data/20230914</span></code> in your file manager. You should see two CSV files and <code class="docutils literal notranslate"><span class="pre">broken.msg</span></code>.</p></li>
 <li><p>Start the notebook from your working folder and run the directory check below. <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">folder</span> <span class="pre">found</span></code> should be <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ol>
-<p>The ZIP stores the files for transport; the analysis reads the extracted files. Keep the ZIP as the original download.</p>
+<p>The ZIP stores the files for transport; the analysis reads the extracted files. Keep the ZIP after extraction.</p>
 <p>After extraction, your working folder should contain:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>working_folder/
 ├── 4.01_files_batch_analysis.ipynb
@@ -618,7 +618,7 @@
 <section id="loading-excel-data">
 <h2>9. Loading Excel data<a class="headerlink" href="#loading-excel-data" title="Link to this heading">¶</a></h2>
 <p>Excel workbooks contain sheets, each of which can hold a table. We can load a sheet with pandas and convert its table to a NumPy array.</p>
-<p>The updated <a class="reference download internal" download="" href="../_downloads/9700da8fe61fe0fdf13080e104b7f653/4.01_files_data.zip"><span class="xref download myst"><strong>4.01_files_data.zip</strong></span></a> also contains <code class="docutils literal notranslate"><span class="pre">format_examples</span></code>. Extract it beside <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code>, so both folders are beside this notebook. The Excel file is the simple mouse-response workbook from the original lecture, separate from our dated behavioral dataset.</p>
+<p>The <a class="reference download internal" download="" href="../_downloads/9700da8fe61fe0fdf13080e104b7f653/4.01_files_data.zip"><span class="xref download myst"><strong>4.01_files_data.zip</strong></span></a> archive contains <code class="docutils literal notranslate"><span class="pre">format_examples</span></code>. Extract it beside <code class="docutils literal notranslate"><span class="pre">behavioral_data</span></code>, so both folders are beside this notebook. The Excel workbook contains response measurements for two mice.</p>
 <p>First try loading the workbook with pandas; it normally selects an Excel reader automatically. The example is supplied as <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>. <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html">pandas documentation</a></p>
 <p><strong>Only if you get an error about a missing Excel reader:</strong> install <code class="docutils literal notranslate"><span class="pre">openpyxl</span></code> in your notebook’s Python environment:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>openpyxl

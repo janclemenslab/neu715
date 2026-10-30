@@ -285,7 +285,7 @@
 <p>Descriptive statistics summarize the measurements we have. Inferential statistics use those measurements to ask questions about a population.</p>
 <section id="does-a-treatment-improve-eyesight">
 <h2>Does a treatment improve eyesight?<a class="headerlink" href="#does-a-treatment-improve-eyesight" title="Link to this heading">¶</a></h2>
-<p>Return to Linda and Anabel’s hypothetical experiment from the earlier lecture. A larger test score means better eyesight.</p>
+<p>Consider Linda and Anabel’s hypothetical experiment. A larger test score means better eyesight.</p>
 <ol class="arabic simple">
 <li><p><strong>Linda:</strong> 100 subjects; 50 receive saline (control), and 50 receive a treatment. Each subject is measured once.</p></li>
 <li><p><strong>Anabel:</strong> 50 subjects; each is measured before and after treatment.</p></li>
@@ -412,7 +412,7 @@ Why would sorting the two conditions independently <strong>by score</strong> cha
 <h2>One-sided or two-sided?<a class="headerlink" href="#one-sided-or-two-sided" title="Link to this heading">¶</a></h2>
 <p>A two-sided test asks whether a mean difference is nonzero in either direction.
 A one-sided test for improvement asks whether the difference is positive; its null includes zero and negative differences.</p>
-<p>Choose the direction <strong>before looking at the results</strong>. We use two-sided tests here; the earlier lecture’s directional question becomes a short exercise.</p>
+<p>Choose the direction <strong>before looking at the results</strong>. We use two-sided tests here.</p>
 <p>In SciPy, <code class="docutils literal notranslate"><span class="pre">alternative='greater'</span></code> compares the <strong>first argument minus the second</strong> against zero.
 For <code class="docutils literal notranslate"><span class="pre">stats.ttest_ind(treatment,</span> <span class="pre">control,</span> <span class="pre">...)</span></code>, “greater” means higher treatment scores.</p>
 </section>
