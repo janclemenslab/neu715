@@ -372,6 +372,46 @@ Use the same bins for both neurons: 0 to 1000 ms, with a bin width of 20 ms.</p>
 </div>
 </div>
 </section>
+<section id="exercise-6-visualize-repeated-spike-trains-with-a-raster-plot">
+<h2>Exercise 6: Visualize repeated spike trains with a raster plot<a class="headerlink" href="#exercise-6-visualize-repeated-spike-trains-with-a-raster-plot" title="Link to this heading">¶</a></h2>
+<p>A <strong>spike raster plot</strong> shows when a neuron fires across repeated trials. Each horizontal row is one trial, and each short vertical tick marks one spike. The tick’s horizontal position gives the spike time; its height does not represent spike size or duration. Dense groups of ticks indicate more spiking, and aligned ticks across rows reveal responses with similar timing. Unlike a histogram, a raster keeps the individual spike times and trials visible.</p>
+<p>The supplied <strong>synthetic data</strong> contain responses from five different cells to the <strong>same stimulus</strong> (a pure tone). Each cell was recorded for 10 repeated presentations. The trials are grouped by cell: trials 1–10 are from cell 1, trials 11–20 from cell 2, and so on, giving 50 trials in total. The cells have different firing patterns, making their responses easy to compare.</p>
+<p>Each trial lasts <strong>1 second</strong>, and the stimulus is on from <strong>0.2 to 0.6 seconds</strong>. Spike times are measured in <strong>seconds from the start of each trial</strong> (the preceding PSTH exercise uses milliseconds).</p>
+<p>Run the loading cell below. As in assignment 1, there is one spike-time sequence and one matching label per trial. Here, the label identifies the cell:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data['spike_times'][i]</span></code> is a list of spike times for trial <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data['cell_ids'][i]</span></code> identifies the cell recorded in that same trial.</p></li>
+<li><p>Python index <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">0</span></code> corresponds to plotted trial number 1. Trials can contain different numbers of spikes, so keep their spike-time sequences separate.</p></li>
+</ul>
+<p>Plot all 50 trials in a single raster, keeping their original block order. Label the axes with units, mark stimulus onset and offset at 0.2 and 0.6 seconds, and make the five blocks identifiable using labels, colors, or separating lines. Use the example below as a guide; you do not need to match its styling exactly.</p>
+<p><img alt="Example spike raster: five cells responding to the same stimulus, with 10 trials per cell, stimulus onset at 0.2 s and offset at 0.6 s." src="../_images/5.01_probabilities_exercise_raster.png" /></p>
+<p><em>Each row shows a different trial. Colors and labels identify the five cells; the gray region marks the time when the same stimulus is on in every trial.</em></p>
+<p><strong>Hints</strong></p>
+<ol class="arabic simple">
+<li><p>Matplotlib’s <code class="docutils literal notranslate"><span class="pre">plt.eventplot</span></code> draws ticks from spike-time sequences. For example, <code class="docutils literal notranslate"><span class="pre">plt.eventplot(data['spike_times'][0],</span> <span class="pre">lineoffsets=1)</span></code> draws the first trial at row 1. You can also pass multiple spike-time sequences at once and use <code class="docutils literal notranslate"><span class="pre">lineoffsets</span></code> to specify their row positions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.axvline</span></code> draws a vertical line across the plot. Its first argument is the x position of the line. Use it to mark stimulus onset and offset.</p></li>
+</ol>
+<p>Compare the five cells: which responses are brief or sustained, which start late, and which show fewer spikes during stimulation or more spikes after it ends? What trial-to-trial differences can you see that would be hidden by pooling all trials in a histogram?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the supplied synthetic data; the object array holds variable-length lists.</span>
+<span class="c1"># allow_pickle=True is needed for these lists; use it only with trusted files.</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'5.01_probabilities_exercise_raster.npz'</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">'spike_times'</span><span class="p">])</span><span class="si">}</span><span class="s2"> spike trains, one per trial"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Cell IDs:'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">'cell_ids'</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -454,6 +494,7 @@ Use the same bins for both neurons: 0 to 1000 ms, with a bin width of 20 ms.</p>
 <li><a class="reference internal" href="#exercise-3-calculate-mean-standard-deviation-and-standard-error-of-the-mean">Exercise 3: Calculate mean, standard deviation, and standard error of the mean</a></li>
 <li><a class="reference internal" href="#exercise-4-plot-different-types-of-error-bars">Exercise 4: Plot different types of error bars</a></li>
 <li><a class="reference internal" href="#exercise-5-visualize-spike-counts-with-a-psth">Exercise 5: Visualize spike counts with a PSTH</a></li>
+<li><a class="reference internal" href="#exercise-6-visualize-repeated-spike-trains-with-a-raster-plot">Exercise 6: Visualize repeated spike trains with a raster plot</a></li>
 </ul>
 </li>
 </ul>
