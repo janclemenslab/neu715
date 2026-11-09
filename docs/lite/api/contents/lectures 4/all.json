@@ -2,15 +2,15 @@
   "content": [
     {
       "content": null,
-      "created": "2026-10-30T14:03:29.778711Z",
+      "created": "2026-11-09T17:04:49.384791Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-30T14:03:29.778711Z",
+      "last_modified": "2026-11-09T17:04:49.384791Z",
       "mimetype": null,
       "name": "4.04_statistical_tests.ipynb",
       "path": "lectures 4/4.04_statistical_tests.ipynb",
-      "size": 15726,
+      "size": 15868,
       "type": "notebook",
       "writable": true
     },

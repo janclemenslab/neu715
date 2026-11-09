@@ -282,6 +282,7 @@
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="inferential-statistics">
 <h1>Inferential statistics<a class="headerlink" href="#inferential-statistics" title="Link to this heading">¶</a></h1>
+<p><strong>Data downloads:</strong> <a class="reference external" href="https://janclemenslab.org/neu715/lite/files/lectures%204/data/independent.csv">independent.csv</a> and <a class="reference external" href="https://janclemenslab.org/neu715/lite/files/lectures%204/data/paired.csv">paired.csv</a>. Save both files in a folder named <code class="docutils literal notranslate"><span class="pre">data</span></code> beside this notebook.</p>
 <p>Descriptive statistics summarize the measurements we have. Inferential statistics use those measurements to ask questions about a population.</p>
 <section id="does-a-treatment-improve-eyesight">
 <h2>Does a treatment improve eyesight?<a class="headerlink" href="#does-a-treatment-improve-eyesight" title="Link to this heading">¶</a></h2>
@@ -359,38 +360,44 @@ Use the row arrays above to select the appropriate columns. Why should we not jo
 </section>
 <section id="design-2-paired-observations">
 <h3>Design 2: Paired observations<a class="headerlink" href="#design-2-paired-observations" title="Link to this heading">¶</a></h3>
-<p>Each subject occurs twice. Match observations by ID before calculating changes.
-The matching checks below also catch missing counterparts and repeated IDs within a condition.</p>
+<p>Each subject occurs twice. In this file, both conditions list subjects in the same order.
+Compare the subject IDs in the first five rows below before calculating the changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">'data/paired.csv'</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">)</span>
 <span class="n">before_rows</span> <span class="o">=</span> <span class="n">ds2</span><span class="p">[</span><span class="n">ds2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">after_rows</span> <span class="o">=</span> <span class="n">ds2</span><span class="p">[</span><span class="n">ds2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Before (ID, condition, score):</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">before_rows</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'After (ID, condition, score):</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">after_rows</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 
-<span class="c1"># Match by subject ID, never by score or an assumed row order.</span>
-<span class="n">before_rows</span> <span class="o">=</span> <span class="n">before_rows</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">before_rows</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])]</span>
-<span class="n">after_rows</span> <span class="o">=</span> <span class="n">after_rows</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">after_rows</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])]</span>
-<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">before_rows</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">after_rows</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">before_rows</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]))</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">before_rows</span><span class="p">)</span>
 <span class="n">before</span> <span class="o">=</span> <span class="n">before_rows</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="n">after</span> <span class="o">=</span> <span class="n">after_rows</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="n">changes</span> <span class="o">=</span> <span class="n">after</span> <span class="o">-</span> <span class="n">before</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Paired subjects:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">changes</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Paired subjects: 50
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before (ID, condition, score):
+ [[ 0.          0.          9.0974268 ]
+ [ 1.          0.         15.23421513]
+ [ 2.          0.         10.4258964 ]
+ [ 3.          0.         11.67558937]
+ [ 4.          0.         13.97232372]]
+After (ID, condition, score):
+ [[ 0.          1.         10.19482698]
+ [ 1.          1.         16.84242244]
+ [ 2.          1.          8.8698208 ]
+ [ 3.          1.         15.10432874]
+ [ 4.          1.         16.82383602]]
 </pre></div>
 </div>
 </div>
 </div>
 <p><img alt="Scores before and after treatment, with a line connecting each subject's paired measurements." src="../_images/paired.png" /></p>
 </section>
-<section id="mini-exercise-preserve-the-pairing">
-<h3>Mini exercise: Preserve the pairing<a class="headerlink" href="#mini-exercise-preserve-the-pairing" title="Link to this heading">¶</a></h3>
-<p>Reconstruct this plot. Connect each subject’s before and after score.
-Why would sorting the two conditions independently <strong>by score</strong> change the analysis?</p>
+<section id="mini-exercise-plot-paired-data">
+<h3>Mini exercise: Plot paired data<a class="headerlink" href="#mini-exercise-plot-paired-data" title="Link to this heading">¶</a></h3>
+<p>Reconstruct this plot. Connect each subject’s before and after score.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your plotting solution here.</span>
@@ -403,8 +410,8 @@ Why would sorting the two conditions independently <strong>by score</strong> cha
 <section id="are-the-observations-independent-paired-or-unpaired">
 <h2>Are the observations independent? Paired or unpaired?<a class="headerlink" href="#are-the-observations-independent-paired-or-unpaired" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Linda:</strong> two independent groups, with 50 subjects in each. No meaningful control/treatment pairing.</p></li>
-<li><p><strong>Anabel:</strong> 50 independent subjects, each providing a pair. The analysis uses the 50 within-subject differences.</p></li>
+<li><p><strong>Linda:</strong> two independent groups, with 50 subjects in each. Each individual is either control or treatment.</p></li>
+<li><p><strong>Anabel:</strong> 50 independent subjects, each before and after treatment.</p></li>
 </ul>
 <p><strong>Discuss:</strong> Anabel has no untreated comparison over time. Even if scores improve, can this design alone distinguish a treatment effect from practice or another time effect?</p>
 </section>
@@ -426,7 +433,7 @@ Strong skew, extreme observations, and small samples need particular care.</p>
 <h3>Mini exercise: Test for normality<a class="headerlink" href="#mini-exercise-test-for-normality" title="Link to this heading">¶</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">stats.normaltest</span></code> on <code class="docutils literal notranslate"><span class="pre">control</span></code>, <code class="docutils literal notranslate"><span class="pre">treatment</span></code>, and <code class="docutils literal notranslate"><span class="pre">changes</span></code>.
 Its null is that the observations come from a normal distribution. The function requires at least eight observations.</p>
-<p>What would a small p-value mean here? Why does a large one not prove normality?
+<p>What hypothesis does a test for normality test? What would a small p-value mean here? Why does a large one not prove normality?
 Do not automatically switch tests based on this single p-value: consider the plots, sample size, design, and scientific question together.</p>
 <p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html">SciPy: normality test</a></p>
 <div class="cell docutils container">
@@ -498,8 +505,8 @@ What changes if the argument order is reversed?</p>
 </div>
 </section>
 </section>
-<section id="if-you-want-to-compare-more-than-two-groups-optional">
-<h2>If you want to compare more than two groups — optional<a class="headerlink" href="#if-you-want-to-compare-more-than-two-groups-optional" title="Link to this heading">¶</a></h2>
+<section id="if-you-want-to-compare-more-than-two-groups">
+<h2>If you want to compare more than two groups<a class="headerlink" href="#if-you-want-to-compare-more-than-two-groups" title="Link to this heading">¶</a></h2>
 <p>For independent groups, conventional one-way ANOVA (<code class="docutils literal notranslate"><span class="pre">stats.f_oneway</span></code>) tests equality of population means under its independence, normal-error, and equal-variance assumptions.
 Kruskal–Wallis (<code class="docutils literal notranslate"><span class="pre">stats.kruskal</span></code>) offers a rank-based comparison with a different null and its own assumptions.</p>
 <p>A significant omnibus test gives evidence that not all groups are alike under the tested hypothesis; it does not say which pairs differ.
@@ -594,7 +601,7 @@ Use comparisons appropriate to the design and control multiple testing. Tukey’
 <li><a class="reference internal" href="#design-1-independent-groups">Design 1: Independent groups</a></li>
 <li><a class="reference internal" href="#mini-exercise-reconstruct-the-plot">Mini exercise: Reconstruct the plot</a></li>
 <li><a class="reference internal" href="#design-2-paired-observations">Design 2: Paired observations</a></li>
-<li><a class="reference internal" href="#mini-exercise-preserve-the-pairing">Mini exercise: Preserve the pairing</a></li>
+<li><a class="reference internal" href="#mini-exercise-plot-paired-data">Mini exercise: Plot paired data</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#are-the-observations-independent-paired-or-unpaired">Are the observations independent? Paired or unpaired?</a></li>
@@ -609,7 +616,7 @@ Use comparisons appropriate to the design and control multiple testing. Tukey’
 <li><a class="reference internal" href="#mini-exercise-return-to-the-directional-question">Mini exercise: Return to the directional question</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#if-you-want-to-compare-more-than-two-groups-optional">If you want to compare more than two groups — optional</a></li>
+<li><a class="reference internal" href="#if-you-want-to-compare-more-than-two-groups">If you want to compare more than two groups</a></li>
 <li><a class="reference internal" href="#what-should-we-report">What should we report?</a></li>
 </ul>
 </li>
