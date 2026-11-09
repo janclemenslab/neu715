@@ -1,0 +1,574 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Linear regression" href="../exercises%205/5.01_linear_regression_exercises.html"><link rel="prev" title="Week 5 — regression" href="week_5_plan.html">
+
+    <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
+        <title>Regression analysis (a.k.a curve fitting) - NEU715 — Neuroscientific Data Analysis using Python</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/furo-overrides.css?v=0c59c1ca" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../intro.html"><div class="brand">NEU715 — Neuroscientific Data Analysis using Python</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../intro.html">
+  
+  <span class="sidebar-brand-text">NEU715 — Neuroscientific Data Analysis using Python</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Week 1</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/week_1_plan.html">Week 1 plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.00_notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.01_variables.html">Variables — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.01_variables_exercises.html">Variables — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.02_conditionals.html">Conditionals — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.02_conditionals_exercises.html">Conditionals — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.03_namespaces.html">Notebook memory — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.03_namespaces_exercises.html">Notebook memory — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.04_lists.html">Lists — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.04_lists_exercises.html">Lists — exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/week_2_plan.html">Week 2 plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.01_loops_simple.html">Loops — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.01_loops_simple_exercises.html">Loops — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.03_dungeon_escape_exercises.html">Dungeon Escape — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.02_functions.html">Functions — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.02_functions_exercises.html">Functions — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.04_plotting.html">Plotting — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.04_plotting_exercises.html">Plotting — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.05_spike_detection_exercises.html">Spike detection — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.06_composites.html">Composites — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.06_composites_exercises.html">Composites — exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%203/week_3_plan.html">Week 3 plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%203/3.01_imports.html">Imports — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%203/3.01_imports_exercises.html">Imports — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%203/3.02_numpy_selection.html">NumPy arrays and selection — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%203/3.02_numpy_selection_exercises.html">NumPy arrays and selection — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%203/3.03_numpy_dimensions.html">NumPy dimensions and images — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%203/3.03_numpy_dimensions_exercises.html">NumPy dimensions and images — exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 4</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%204/4.01_files_batch_analysis.html">Files and batch analysis — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%204/4.01_files_batch_analysis_exercises.html">Files and batch analysis — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%204/4.02_distributions_summary_stats.html">Descriptive statistics — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%204/5.01_probabilities_exercise.html">Probabilities — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%204/5.02_descriptive_stats_exercise.html">Descriptive statistics — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%204/4.04_statistical_tests.html">Inferential statistics — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%204/5.03_inferential_stats_exercise.html">Inferential statistics — exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 5</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="week_5_plan.html">Week 5 plan</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Linear regression — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.01_linear_regression_exercises.html">Linear regression — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5.02_nonlinear_regression.html">Nonlinear regression — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.02_nonlinear_regression_exercises.html">Nonlinear regression — exercises</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/lectures 5/5.01_linear_regression.ipynb" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="regression-analysis-a-k-a-curve-fitting">
+<h1>Regression analysis (a.k.a curve fitting)<a class="headerlink" href="#regression-analysis-a-k-a-curve-fitting" title="Link to this heading">¶</a></h1>
+<section id="what-is-a-model">
+<h2>What is a model?<a class="headerlink" href="#what-is-a-model" title="Link to this heading">¶</a></h2>
+<p>The goal of a scientific experiment is to identify the relationship between two phenomena - for instance, temperature and pain.
+To do so, we typically manipulate one of them and measure the effect on the other - change temperature, measure the pain level.</p>
+<p>We represent this relationship graphically, by plotting the manipulated variable (temperature) vs. the observed feature (pain level):</p>
+<p><img alt="" src="../_images/6.01_curve_fitting_1a.png" /></p>
+<p><strong>Download for local use:</strong> <a class="reference download internal" download="" href="../_downloads/0f2b2c98dc98f8ffae5bcd670c929afc/week_5_lectures.zip"><span class="xref download myst">week_5_lectures.zip</span></a>. Extract the bundle to keep the notebooks and their data together. The lecture bundle also includes the figures and week plan.</p>
+<p>Scientific modeling describes these dependencies quantitatively, using mathematics. It answers the question: How does property y depend on variable x?
+This question is often answered using curve fitting: The idea is that the measured data points <span class="math notranslate nohighlight">\(y_i\)</span> depend systematically on variable x (independent variable) with some noise and can be written down as a (more or less) simple equation.</p>
+<p><img alt="" src="../_images/6.01_curve_fitting_1b.png" /></p>
+</section>
+<section id="what-is-a-model-good-for">
+<h2>What is a model good for?<a class="headerlink" href="#what-is-a-model-good-for" title="Link to this heading">¶</a></h2>
+<p>One thing we can do with a model is <em>prediction</em>:  The mathematical function determined with curve fitting allows us predict the property for new, untested values of the variable. That is, the equation acts as a stand-in for the process that generates the property based on our variable - we can <em>simulate</em> the process. The model’s predictions can then be tested experimentally. If the predictions do not match well the experimental measurements, the model (i.e. the formula describing the dependency) has to be adjusted.</p>
+<p>There are two types of simulation:</p>
+<ul class="simple">
+<li><p><em>Interpolation</em> predicts the property for values of the variable between those already tested.</p></li>
+<li><p><em>Extrapolation</em> predicts how the property will develop outside the tested variable range. This application is particularly useful, but also more dangerous, because it relies on assumptions that cannot be verified at the moment the predictions are calculated. This becomes obvious for predictions into the future, e.g. climate models.</p></li>
+</ul>
+<p><img alt="" src="../_images/6.01_curve_fitting_1c.png" /></p>
+<p>Another use of curve fitting is to <em>quantify the change</em> in a relationship. For instance, different sensory neurons have different preferred stimuli - we can measure and present that preference in a tuning curve. Or we measure the effect of a treatment - inactivating inhibitory inputs to a neuron may change that neuron’s tuning curve.</p>
+<p><img alt="" src="../_images/6.01_curve_fitting_1d.png" /></p>
+<p>While we can describe the changes in the curves with words, curving fitting allows us to quantiatively describe these differences:</p>
+<ul class="simple">
+<li><p>We can fit Gaussians to the tuning curves on the left. The mean parameter specifies the preferred orientation (the position of the peak) - it is 115, 160 and 206 degrees. The standard deviation parameter corresponds to the width. It is identical for all three cells at 115 degrees.</p></li>
+<li><p>We can fit a sigmoidal function to the intensity curves on the right. Removing inhibition increases the steepness of the curve (the slope parameter) from 10 to 20, and makes the cell more sensitive - it shifts the curve to the left with a midpoint (intensity at which 50% of the maximal response is elicited) from 50 to 30 dB. The maximal response rate does not change.</p></li>
+</ul>
+<p>Curve fitting therefore allows us to summarize many data points in terms of curve parameters - and we can do statistics on these parameters, to determine whether experimental manipulations change ithe parameters.</p>
+</section>
+<section id="regression-analysis">
+<h2>Regression analysis<a class="headerlink" href="#regression-analysis" title="Link to this heading">¶</a></h2>
+<p>So how does curve fitting work, conceptually?
+Our equation describing the measured relationship can be a linear equation <span class="math notranslate nohighlight">\(y = 10 * x + 9.3\)</span> or a quadratic equation <span class="math notranslate nohighlight">\(y = (x - 102)^2 / 3 + 18\)</span> or something else. The equations have three components:</p>
+<ul class="simple">
+<li><p>Our manipulated variable(s) <span class="math notranslate nohighlight">\(x\)</span> and our measured variable(s) <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p>Mathematical operations like <span class="math notranslate nohighlight">\(+\)</span> or <span class="math notranslate nohighlight">\(-\)</span> or the square (<span class="math notranslate nohighlight">\(^2\)</span>) etc. These operations are fixed and define the structure of the equation and thereby the types of dependencies the equation can capture. A linear equation can only produce lines, a quadratic equation can only produce parabolas.</p></li>
+<li><p>Other numbers in the equation are fixed for all values of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> and they are called <em>parameters</em>. They “tune” the specific form of the relation between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. For instance, in the equation <span class="math notranslate nohighlight">\(y = 10 * x + 9.3\)</span>, 10 determines the slope, and 9.3 the intercept of the line. More generally, we can write the linear equation as <span class="math notranslate nohighlight">\(y = m * x + n\)</span>, with <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> being the slope and intercept parameters. These parameters determine the type of line that describes our data.</p></li>
+</ul>
+<p><img alt="" src="../_images/6.01_curve_fitting_1e.png" /></p>
+<p><em>Curve fitting</em> is the procedure of determining the parameters that best describe the data given a specific model. Curve fitting is also called <em>regression</em>. Fitting a line is called <em>linear regression</em>, fitting a nonlinear curve, is called <em>nonlinear regression</em>.</p>
+<p>In curve fitting, we need:</p>
+<ol class="arabic simple">
+<li><p><em>A model</em>: Specify an adequate <em>equation</em> that has the potential to describe our data with an appropriate choice of <em>parameters</em>. A line cannot describe the curved relationship between temperature and pain in the plot above - there is no set of slopes and intercepts that produces a curve from a linear equation. So we need something more complicated, like a quadratic equation.</p></li>
+<li><p>A way to quantify the “goodness of fit”: An <em>error function</em> or <em>objective function</em> that tells us how good or bad the fit between the experimental data points and the curve produced by the model is, so we can 1) adjust the parameters to maximize the fit and 2) judge how good the fit is in the end.</p></li>
+<li><p>A way to improve the fit: A <em>fitting procedure</em> to find parameter values that result in a line or curve fits our data best - is “as close as possible” to our data.</p></li>
+</ol>
+<p>Here, we will discuss <em>linear regression</em>, in which the model is a line. Linear models are intuitive and the parameters are straightforward to understand. In addition, procedures for fitting and assessing the goodness of fit are robust and well established.</p>
+<p><em>Nonlinear regression</em>, in which the model can be of arbitrary form, is more flexible and powerful, but also a bit more complicated.</p>
+</section>
+<section id="linear-regression">
+<h2>Linear regression<a class="headerlink" href="#linear-regression" title="Link to this heading">¶</a></h2>
+<section id="the-model">
+<h3>The model<a class="headerlink" href="#the-model" title="Link to this heading">¶</a></h3>
+<p>For linear regression, the model is specified by a linear function with two parameters, the slope and the intercept: <span class="math notranslate nohighlight">\(y=\text{slope} * x + \text{intercept}\)</span>. Linear models are easy to fit and interpret, but also rather constrained, since the can only capture linear relationships.</p>
+<p>Let’s load some data to have an example to work through:
+We’ve stressed two students by exposing them to free jazz by Ornette Coleman and want to quantify how quickly the cortisol levels increase in the blood as a function of free-jazz exposure. To that end, we took blood at 6-minute intervals after the onset of music exposure from our subject and quantified the concentration of cortisol.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">d</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'5.01_linear_regression.npz'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'time'</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">'jazz_cortisol'</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'dodgerblue'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time after exposure onset [hours]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Blood cortisol [umol/l]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="quantifying-goodness-of-fit">
+<h2>Quantifying goodness of fit<a class="headerlink" href="#quantifying-goodness-of-fit" title="Link to this heading">¶</a></h2>
+<section id="the-mean-of-the-squared-residuals">
+<h3>The mean of the squared residuals<a class="headerlink" href="#the-mean-of-the-squared-residuals" title="Link to this heading">¶</a></h3>
+<p>The mean of the squared residuals, or <em>mean-squared error</em> (MSE) is a commonly used error term:</p>
+<p>Let <span class="math notranslate nohighlight">\(f(x_i, \theta)\)</span> be our function (linear, exponential, quadratic), with parameters <span class="math notranslate nohighlight">\(\theta\)</span>, and <span class="math notranslate nohighlight">\(\hat{y_i} = f(x_i, \theta)\)</span> our prediction for <span class="math notranslate nohighlight">\(N\)</span> data points <span class="math notranslate nohighlight">\(x_i\)</span>.
+In linear regression <span class="math notranslate nohighlight">\(\theta\)</span> is <span class="math notranslate nohighlight">\((m, n)\)</span>, the slope and the intercept.</p>
+<p>To compute the MSE we:</p>
+<ol class="arabic simple">
+<li><p>Calculate the difference between all <span class="math notranslate nohighlight">\(N\)</span> predictions and data, <span class="math notranslate nohighlight">\(y_i - \hat{y_i}\)</span> - also called the <em>residuals</em>.</p></li>
+<li><p>Square each residual to get the <em>squared residuals</em>.</p></li>
+<li><p>Take the mean.</p></li>
+</ol>
+<p><img alt="" src="../_images/6.01_curve_fitting_1g.png" /></p>
+<p>Mathematically, the error is given by <span class="math notranslate nohighlight">\(E = 1/N \sum_i^N (y_i - \hat{y_i})^2\)</span>. This looks a lot like the formula for the variance! The MSE captures the residual variance - the variance in the data not explained by the model prediction.</p>
+</section>
+<section id="why-the-squared-residuals">
+<h3>Why the <em>squared</em> residuals?<a class="headerlink" href="#why-the-squared-residuals" title="Link to this heading">¶</a></h3>
+<p>To illustrate this, let’s fit our data using a function that is just horizontal line with a constant offset for all x-values.</p>
+<p><img alt="" src="../_images/6.01_curve_fitting_1h.png" /></p>
+<p>A horizontal line is clearly not a good model for these data, but there is a value of the offset parameter for which the mean <em>non-squared</em> error is zero!! Not so for the mean <em>squared</em> error.</p>
+</section>
+<section id="coefficient-of-determination">
+<h3>Coefficient of Determination<a class="headerlink" href="#coefficient-of-determination" title="Link to this heading">¶</a></h3>
+<p>The MSE captures the match between model and data, but it is not normalized: it scales with the magnitude of the data. This makes it hard to determine what value of MSE indicates a good fit, and it makes it hard to compare MSE across data sets with different magnitudes.</p>
+<p>The Coefficient of Determination <span class="math notranslate nohighlight">\(R^2\)</span> is a normalized variant of the MSE:
+<span class="math notranslate nohighlight">\(R^2 = 1 - MSE / \sigma^2\)</span>.
+Here, <span class="math notranslate nohighlight">\(\sigma^2\)</span> is the mean squared deviation of the observations from their mean (<code class="docutils literal notranslate"><span class="pre">np.var(y,</span> <span class="pre">ddof=0)</span></code>). Equivalently, <span class="math notranslate nohighlight">\(R^2 = 1 - \frac{\sum_i (y_i - \hat{y_i})^2}{\sum_i (y_i - \bar{y})^2}\)</span>. It compares the fitted predictions with predicting the mean for every observation. An <span class="math notranslate nohighlight">\(R^2\)</span> of 0 means the fit is no better than that mean prediction; it can be negative if the fit is worse.</p>
+<p>If the MSE is much smaller than the data variance, then <span class="math notranslate nohighlight">\(R^2\)</span> approaches 1.0. This corresponds to a perfect fit, without any deviation between the data and the fitted line. Noise in the data or a mismatched model (for instance if the relationship between x and y is not linear) will decrease the <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
+<p>For ordinary least-squares linear regression with an intercept, evaluated on the fitted data, <span class="math notranslate nohighlight">\(R^2\)</span> also equals the square of Pearson’s correlation, <span class="math notranslate nohighlight">\(r\)</span>, between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. This shortcut does not hold for arbitrary model predictions; use the residual formula above in general.</p>
+</section>
+</section>
+<section id="linear-regression-using-scipy">
+<h2>Linear regression using scipy<a class="headerlink" href="#linear-regression-using-scipy" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">res</span> <span class="pre">=</span> <span class="pre">scipy.stats.linregress(x,</span> <span class="pre">y)</span></code> (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html">docs</a>)</p>
+<p><code class="docutils literal notranslate"><span class="pre">linregress</span></code> requires two main arguments: your data <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<p>It returns a python object, <code class="docutils literal notranslate"><span class="pre">LinregressResult</span></code>, holding the results of the linear regression with information on:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">slope</span></code> and <code class="docutils literal notranslate"><span class="pre">intercept</span></code>: the fitted parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rvalue</span></code>: Pearson’s <span class="math notranslate nohighlight">\(r\)</span> between <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>. The square of <span class="math notranslate nohighlight">\(r\)</span>, <span class="math notranslate nohighlight">\(r^2\)</span>, is equal to the coefficient of determination.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pvalue</span></code>: The p-value for a hypothesis test whose null hypothesis is that the slope is zero, using a variant of the t test.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stderr</span></code> and <code class="docutils literal notranslate"><span class="pre">intercept_stderr</span></code>: Standard errors for the estimated slope and intercept.</p></li>
+</ul>
+<p>We can generate model predictions <code class="docutils literal notranslate"><span class="pre">y_pred</span></code> using the fitted parameters from the regression results: <code class="docutils literal notranslate"><span class="pre">y_pred</span> <span class="pre">=</span> <span class="pre">res.intercept</span> <span class="pre">+</span> <span class="pre">res.slope</span> <span class="pre">*</span> <span class="pre">x</span></code>.</p>
+<p>Let’s perform linear regression on our data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">'time'</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">'jazz_cortisol'</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">yp</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">res</span><span class="o">.</span><span class="n">intercept</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time after exposure onset [hours]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Blood cortisol [umol/l]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">res</span><span class="o">.</span><span class="n">slope</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">intercept</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">residuals</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">yp</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">residuals</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">r_squared</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">residuals</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"MSE = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">; R² = </span><span class="si">{</span><span class="n">r_squared</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">residuals</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time after exposure onset [hours]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Residual cortisol [umol/l]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures 5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../exercises%205/5.01_linear_regression_exercises.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Linear regression</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="week_5_plan.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Week 5 — regression</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Regression analysis (a.k.a curve fitting)</a><ul>
+<li><a class="reference internal" href="#what-is-a-model">What is a model?</a></li>
+<li><a class="reference internal" href="#what-is-a-model-good-for">What is a model good for?</a></li>
+<li><a class="reference internal" href="#regression-analysis">Regression analysis</a></li>
+<li><a class="reference internal" href="#linear-regression">Linear regression</a><ul>
+<li><a class="reference internal" href="#the-model">The model</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quantifying-goodness-of-fit">Quantifying goodness of fit</a><ul>
+<li><a class="reference internal" href="#the-mean-of-the-squared-residuals">The mean of the squared residuals</a></li>
+<li><a class="reference internal" href="#why-the-squared-residuals">Why the <em>squared</em> residuals?</a></li>
+<li><a class="reference internal" href="#coefficient-of-determination">Coefficient of Determination</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#linear-regression-using-scipy">Linear regression using scipy</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/jupyterlite-link.js?v=877384c7"></script>
+    </body>
+</html>

@@ -1,0 +1,672 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Exercises 5.02 - Nonlinear regression" href="../exercises%205/5.02_nonlinear_regression_exercises.html"><link rel="prev" title="Linear regression" href="../exercises%205/5.01_linear_regression_exercises.html">
+
+    <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
+        <title>Nonlinear Regression - NEU715 — Neuroscientific Data Analysis using Python</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/furo-overrides.css?v=0c59c1ca" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../intro.html"><div class="brand">NEU715 — Neuroscientific Data Analysis using Python</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../intro.html">
+  
+  <span class="sidebar-brand-text">NEU715 — Neuroscientific Data Analysis using Python</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Week 1</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/week_1_plan.html">Week 1 plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.00_notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.01_variables.html">Variables — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.01_variables_exercises.html">Variables — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.02_conditionals.html">Conditionals — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.02_conditionals_exercises.html">Conditionals — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.03_namespaces.html">Notebook memory — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.03_namespaces_exercises.html">Notebook memory — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.04_lists.html">Lists — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.04_lists_exercises.html">Lists — exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/week_2_plan.html">Week 2 plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.01_loops_simple.html">Loops — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.01_loops_simple_exercises.html">Loops — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.03_dungeon_escape_exercises.html">Dungeon Escape — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.02_functions.html">Functions — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.02_functions_exercises.html">Functions — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.04_plotting.html">Plotting — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.04_plotting_exercises.html">Plotting — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.05_spike_detection_exercises.html">Spike detection — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.06_composites.html">Composites — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.06_composites_exercises.html">Composites — exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%203/week_3_plan.html">Week 3 plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%203/3.01_imports.html">Imports — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%203/3.01_imports_exercises.html">Imports — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%203/3.02_numpy_selection.html">NumPy arrays and selection — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%203/3.02_numpy_selection_exercises.html">NumPy arrays and selection — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%203/3.03_numpy_dimensions.html">NumPy dimensions and images — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%203/3.03_numpy_dimensions_exercises.html">NumPy dimensions and images — exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 4</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%204/4.01_files_batch_analysis.html">Files and batch analysis — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%204/4.01_files_batch_analysis_exercises.html">Files and batch analysis — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%204/4.02_distributions_summary_stats.html">Descriptive statistics — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%204/5.01_probabilities_exercise.html">Probabilities — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%204/5.02_descriptive_stats_exercise.html">Descriptive statistics — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%204/4.04_statistical_tests.html">Inferential statistics — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%204/5.03_inferential_stats_exercise.html">Inferential statistics — exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 5</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="week_5_plan.html">Week 5 plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5.01_linear_regression.html">Linear regression — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.01_linear_regression_exercises.html">Linear regression — exercises</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Nonlinear regression — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.02_nonlinear_regression_exercises.html">Nonlinear regression — exercises</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/lectures 5/5.02_nonlinear_regression.ipynb" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="nonlinear-regression">
+<h1>Nonlinear Regression<a class="headerlink" href="#nonlinear-regression" title="Link to this heading">¶</a></h1>
+<p><strong>Download for local use:</strong> <a class="reference download internal" download="" href="../_downloads/0f2b2c98dc98f8ffae5bcd670c929afc/week_5_lectures.zip"><span class="xref download myst">week_5_lectures.zip</span></a>. Extract the bundle to keep the notebooks and their data together. The lecture bundle also includes the figures and week plan.</p>
+<p>in the last lecture and exercise, we have seen that curve fitting allows us to:</p>
+<ul class="simple">
+<li><p>make predictions (extrapolation and interpolation)</p></li>
+<li><p>summarize our data through parameters</p></li>
+<li><p>quantify complex changes in our data after a treatment.</p></li>
+</ul>
+<p>Why is linear regression not enough? The relation between manipulated and observable variables are often not linear!</p>
+<ul class="simple">
+<li><p>For instance, biological variables like firing rates or concentrations often have minimal (often 0) and maximal values: We can fit a sigmoidal function to the intensity curves on the right. Removing inhibition increases the steepness of the curve (the slope parameter) from 10 to 20, and makes the cell more sensitive - it shifts the curve to the left with a midpoint (intensity at which 50 of the maximal response is elicited) from 50 to 30 dB. The maximal response rate does not change.</p></li>
+<li><p>Or they have optimum-like curves, where a single value gives a maximal response: We can fit Gaussians to the tuning curves on the left. The mean parameter specifies the preferred orientation (the position of the peak) - it is 115, 160 and 206 degrees. The standard deviation parameters corresponds to the width. It identical for all three cells at 115 degrees.</p></li>
+</ul>
+<p><img alt="" src="../_images/6.01_curve_fitting_1d.png" /></p>
+<p>Nonlinear regression is more powerful than linear regression, since we can freely specify the relationship in our data. But this power makes it also more complicated.</p>
+<section id="id1">
+<h2>Nonlinear regression<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>So how does nonlinear regression work in python?</p>
+<p>We need these three ingredients:</p>
+<ol class="arabic simple">
+<li><p>A model: Specify an adequate <em>equation</em> that has the potential to describe our data with an appropriate choice of <em>parameters</em>. A line cannot describe the curved relationship between temperature and pain in the plot above - there is no set of slopes and interecepts that produces a curve from a linear equation. So we need something more complicated, like a quadratic equation. Whereas the model was fixed to a line, in nonlinear regression, <strong>we need to specify the equation in a python function</strong>.</p></li>
+<li><p>A way to improve the fit and a measure of goodness of fit: A <em>fitting procedure</em> to adjust the equation’s parameters so that the resulting line or curve fits our data best - is “as close as possible” to our data. <strong>We will use so called “least-squares” fitting</strong>, which minimizes the mean-squared error of between the data and the model predictions.</p></li>
+<li><p>A way to quantify the “goodness of fit”: An <em>error function</em> or <em>objective function</em> that tells us how good the fit between the experimental data points and the curve produced by the function is, so we can adjust the parameters to maximize the fit. As in linear regression, <strong>we will use the coefficient of determination</strong>, which quantifies how much of the variance in the data is captured by the model.</p></li>
+</ol>
+<section id="the-model">
+<h3>The model<a class="headerlink" href="#the-model" title="Link to this heading">¶</a></h3>
+<p>The function determines the type of relationship you can capture in your data:</p>
+<ul class="simple">
+<li><p>linear functions capture linear relationships (see above): <span class="math notranslate nohighlight">\(y=\text{slope} * x + \text{intercept}\)</span></p></li>
+<li><p>exponential functions capture exponential growth or decay: <span class="math notranslate nohighlight">\(y=\text{baseline}+\text{gain}*e^{-x/\tau}\)</span></p></li>
+<li><p>quadratic functions capture parabolic relationships: <span class="math notranslate nohighlight">\(y=a+bx+cx^2\)</span></p></li>
+<li><p>sigmoidal functions capture sigmoidal relationships: <span class="math notranslate nohighlight">\(y=\text{baseline} + \frac{\text{gain}}{1 + e^{(-\text{slope}(x - \text{midpoint}))}}\)</span></p></li>
+</ul>
+<p>Here is an example of what the different parametes of the sigmoidal (Boltzmann) function do:</p>
+<p><img alt="" src="../_images/6.01_curve_fitting_1f.png" /></p>
+<p>There exist “universal function approximators”, that can capture any relationship in your data:</p>
+<ul class="simple">
+<li><p>Polynomial functions are sums of polynomials of increasing degrees (a generalization of the quadratic equation to higher exponents). With sufficient degree, they can approximate any function (Taylor expansion), : <span class="math notranslate nohighlight">\(y = w_0 + w_1x + _w2x^2 + w_3x^3 ... = \sum_i w_i x^i\)</span></p></li>
+<li><p>Fourier series are sums of sines and cosines of increasing frequencies. They can also approximate any (periodic) function: <span class="math notranslate nohighlight">\(y = w_0 + \sum_n w_n sin(nx) + v_i cos(nx)\)</span></p></li>
+</ul>
+<p>However, the flexibility of these “universal function approximators” comes at the cost of potentially many, barely interpretable parameters. It is therefore better to try and find a simple equation that matches your problem.</p>
+<p>Let’s load some data to have an example to work through:</p>
+<p>We’ve stressed an animal by exposing them to Ornette Coleman and want to quantify how quickly cortisol levels decrease in the blood. To that end, we took blood at random intervals after the end of the music exposure from males and females and quantified the concentration of cortisol.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">d</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'5.02_nonlinear_regression.npz'</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">'y2'</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'dodgerblue'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'male'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'coral'</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'female'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time [hours]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Blood cortisol [umol/l]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In nonlinear regression, the model can be anything. We have to use biological intuition to choose the right one. Since this is a decay/removal process, we hypothesize that an exponentially decaying function should capture the relationship between time and blood cortisol:</p>
+<p><span class="math notranslate nohighlight">\(y=\text{gain}*e^{-x/\tau}\)</span></p>
+<p>Or as python code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">exp_fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">gain</span><span class="p">,</span> <span class="n">tau</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">gain</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">/</span> <span class="n">tau</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p><strong>Important:</strong> We have to check that assumption after fitting - if we cannot find a good fit with our data, we might have chosen the wrong function.</p>
+<p><img alt="" src="../_images/6.02_nonlinear_regression_a.png" /></p>
+</section>
+</section>
+<section id="error-term">
+<h2>Error term<a class="headerlink" href="#error-term" title="Link to this heading">¶</a></h2>
+<p>The error term should be:</p>
+<ul class="simple">
+<li><p><em>non-negative</em>: A perfect fit has zero error. We want to minimize the magnitude of the error and typically do not care whether we undershoot or overshoot with our fit.</p></li>
+<li><p><em>symmetrical</em>: It should reflect the difference between the prediction and the actual data, for both pos. and neg. deviations</p></li>
+</ul>
+<p>We will here use “least-squares” curve fitting, which minimizes the mean of the squared residuals, also called the <strong>mean-squared error (MSE)</strong>. It is called <em>least squares</em> fitting, because we get parameters with the “least” of the squared error.</p>
+<p>Let <span class="math notranslate nohighlight">\(f(x_i, \theta)\)</span> be our function (linear, exponential, quadratic), with parameters <span class="math notranslate nohighlight">\(\theta\)</span>, and <span class="math notranslate nohighlight">\(\hat{y_i} = f(x_i, \theta)\)</span> our prediction for <span class="math notranslate nohighlight">\(N\)</span> data points <span class="math notranslate nohighlight">\(x_i\)</span>. The MSE is then given by: <span class="math notranslate nohighlight">\(E = \frac{1}{N} \sum_i^N (y_i - \hat{y_i})^2\)</span>. The sum of squared residuals omits the factor <span class="math notranslate nohighlight">\(1/N\)</span>; for a fixed dataset, minimizing either gives the same fitted parameters.</p>
+</section>
+<section id="nonlinear-regression-using-scipy">
+<h2>Nonlinear regression using scipy<a class="headerlink" href="#nonlinear-regression-using-scipy" title="Link to this heading">¶</a></h2>
+<p>Least-squares nonlinear regression in scipy can be done using <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">popt,</span> <span class="pre">pcov</span> <span class="pre">=</span> <span class="pre">scipy.optimize.curve_fit(fun,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">p0=initial_params,</span> <span class="pre">bounds=bounds)</span></code> (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html#scipy.optimize.curve_fit">docs</a>)</p>
+<p><code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> takes these arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fun</span></code>: The “name” of the function specifying the model. But <em>not</em> as a string! We treat the model function as a variable and pass it as an argument to the function. The model function should take the x values and parameters as arguments and return the predictions: <code class="docutils literal notranslate"><span class="pre">y_pred</span> <span class="pre">=</span> <span class="pre">fun(x,</span> <span class="pre">param1,</span> <span class="pre">param2,</span> <span class="pre">...)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>: your data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">initial_params</span></code>: The initial values for the function parameters as a numpy array or as a list. The order of the parameters in the list should match the order of parameters in the model function. For the exponential decay model, this would be the gain and the tau, for instance <code class="docutils literal notranslate"><span class="pre">[1.0,</span> <span class="pre">10.1]</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bounds</span></code> (optional): Lower and upper bounds for the values of the parameters. Restricting the range of values the parameters can come from can make fits more robust/faster (check docs for details).</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> returns two arrays:</p>
+<ul class="simple">
+<li><p>the fitted parameters <code class="docutils literal notranslate"><span class="pre">popt</span></code> as a numpy array, in the same order as the arguments to the model function.</p></li>
+<li><p>the estimated covariance matrix of the fitted parameters (<code class="docutils literal notranslate"><span class="pre">pcov</span></code>)</p></li>
+</ul>
+<p>To check how well the fitted curve reproduces our data, calculate the residuals and <span class="math notranslate nohighlight">\(R^2 = 1 - \frac{\sum_i (y_i - \hat{y_i})^2}{\sum_i (y_i - \bar{y})^2}\)</span>, where <span class="math notranslate nohighlight">\(\hat{y}=f(x, \theta)\)</span> uses the fitted parameters. Squaring the correlation between observations and predictions does not in general give this <span class="math notranslate nohighlight">\(R^2\)</span>. Also inspect the residuals: a systematic pattern can reveal a poor model even when <span class="math notranslate nohighlight">\(R^2\)</span> is high.</p>
+<p>Let’s first specify the model function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the function specifying the model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">exp_fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">gain</span><span class="p">,</span> <span class="n">tau</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Exponential function</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x (np.ndarray): Values at which the function should be evaluated.</span>
+<span class="sd">        gain (float): Gain parameter</span>
+<span class="sd">        tau (float): Tau parameter</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray: Predictions, one for each value in x.</span>
+<span class="sd">    """</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">gain</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">/</span> <span class="n">tau</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">prediction</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">exp_fun</span><span class="si">}</span><span class="s2"> of type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">exp_fun</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The starting values for the parameters can be specified as a list [gain, tau], with the values being in the same order as provided in the model function <code class="docutils literal notranslate"><span class="pre">exp_fun</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gain0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">tau0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">initial_parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">gain0</span><span class="p">,</span> <span class="n">tau0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="mini-exercise-writing-model-functions-for-curve-fit">
+<h3>Mini-Exercise: Writing model functions for <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code><a class="headerlink" href="#mini-exercise-writing-model-functions-for-curve-fit" title="Link to this heading">¶</a></h3>
+<p>Let’s practice writing the model function in the way that works with <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code>.</p>
+<p>Say we want to fit a sinusoidal model: <span class="math notranslate nohighlight">\(y = \sin(2 \pi \cdot \text{frequency} \cdot x + \text{phase})\)</span>. The model has two parameters, frequency and phase.</p>
+<p>Write a function that you can use as an input to <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code>, with the first argument the x values, and the following arguments the parameters of the function. The function should return the predictions, y.</p>
+<p>Then specify initial values of the parameters, frequency=10 and phase=0, for use with <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sin_fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">phase</span><span class="p">):</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequency</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">phase</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">predictions</span>
+
+<span class="c1"># the sinusoidal function in numpy can be used via "np.sin(...)"</span>
+<span class="n">freq0</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># Hz</span>
+<span class="n">phase0</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">initial_parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">freq0</span><span class="p">,</span> <span class="n">phase0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fit-and-print-and-plot">
+<h3>Fit and print and plot<a class="headerlink" href="#fit-and-print-and-plot" title="Link to this heading">¶</a></h3>
+<p>After fitting, inspect the residuals and calculate R² from the residual sums of squares.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.optimize</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'5.02_nonlinear_regression.npz'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+<span class="c1"># specify the initial parameters</span>
+<span class="n">gain0</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">tau0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">initial_parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">gain0</span><span class="p">,</span> <span class="n">tau0</span><span class="p">]</span>
+
+<span class="c1"># first, fit for y1, the male data</span>
+<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">exp_fun</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">],</span> <span class="n">initial_parameters</span><span class="p">)</span>
+<span class="n">popt</span>
+
+<span class="n">pred</span> <span class="o">=</span> <span class="n">exp_fun</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">popt</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">popt</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">pred</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time [hours]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Blood cortisol [umol/l]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">residuals</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">]</span> <span class="o">-</span> <span class="n">pred</span>
+<span class="n">r_squared</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">residuals</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">]))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Goodness of fit: R² = </span><span class="si">{</span><span class="n">r_squared</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">residuals</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time [hours]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Residual cortisol [umol/l]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">popt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="optional-specifying-parameter-bounds">
+<h3>Optional: Specifying parameter bounds<a class="headerlink" href="#optional-specifying-parameter-bounds" title="Link to this heading">¶</a></h3>
+<p>You can make the fits more robust and faster by providing constraints in the form of upper and lower bounds for each parameter.</p>
+<p>For instance, in our example, we wanted to model concentrations - concentrations are always positive, and hence the first data values, which are specified by the gain are also always positive - the minimal gain value should therefore be 0. In addition, the first data values are typically smaller than 10. The maximal gain value can therefore also be constrained. This allows us to bound the gain parameter between 0 and 10.</p>
+<p>We can also constrain the decay parameter: First, we specified the function as <code class="docutils literal notranslate"><span class="pre">gain</span> <span class="pre">*</span> <span class="pre">np.exp(-x/tau)</span></code>. Since the function always decays, we want only positive tau values (neg. tau values would lead to exponentially increasing functions. The minimal tau value should therefore also be positive; we use 0.001 hours to keep it away from zero, where the model is undefined. We can also specify an upper bound for tau: Tau corresponds to the time it takes for the data to decay to 1/e (about 0.37) of its initial value. Looking at the data, we see that it is near-zero after 10 hours. 10 it therefore a safe upper bound for the tau parameter. The tau parameter is therefore also bound between 0 and 10.</p>
+<p>But careful - if you constrain the parameter values too much, you can prevent the algorithm from finding a good solution! So always make sure that your optimal values do not “hit” your bounds.</p>
+<p>This is one way of specifying the bounds in for <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> - as a nested list of lower and upper values for each parameter:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gain_lower</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">gain_upper</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">tau_lower</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">tau_upper</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="p">[[</span><span class="n">gain_lower</span><span class="p">,</span> <span class="n">tau_lower</span><span class="p">],</span> <span class="p">[</span><span class="n">gain_upper</span><span class="p">,</span> <span class="n">tau_upper</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bounds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bounds are not necessary to make fitting the example data work, but just for completeness, here is the same fit with the bounds specified:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># first, fit for y1, the male data</span>
+<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">exp_fun</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">],</span> <span class="n">initial_parameters</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Fitted parameters: gain=</span><span class="si">{</span><span class="n">popt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.2f</span><span class="si">}</span><span class="s2">, tau=</span><span class="si">{</span><span class="n">popt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">1.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">y1_hat</span> <span class="o">=</span> <span class="n">exp_fun</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="o">*</span><span class="n">popt</span><span class="p">)</span>  <span class="c1"># generate the predictions</span>
+
+<span class="n">r_squared</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">]</span> <span class="o">-</span> <span class="n">y1_hat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">]))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Goodness of fit: R² = </span><span class="si">{</span><span class="n">r_squared</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'dodgerblue'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'male'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">y1_hat</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'dodgerblue'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+
+<span class="c1"># second, fit for y2, the female data</span>
+<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">exp_fun</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">'y2'</span><span class="p">],</span> <span class="n">initial_parameters</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Fitted parameters: gain=</span><span class="si">{</span><span class="n">popt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">1.2f</span><span class="si">}</span><span class="s2">, tau=</span><span class="si">{</span><span class="n">popt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">1.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">y2_hat</span> <span class="o">=</span> <span class="n">exp_fun</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="o">*</span><span class="n">popt</span><span class="p">)</span>  <span class="c1"># generate the predictions</span>
+
+<span class="n">r_squared</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">d</span><span class="p">[</span><span class="s1">'y2'</span><span class="p">]</span> <span class="o">-</span> <span class="n">y2_hat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">d</span><span class="p">[</span><span class="s1">'y2'</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'y2'</span><span class="p">]))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Goodness of fit: R² = </span><span class="si">{</span><span class="n">r_squared</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">'y2'</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'coral'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'female'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">y2_hat</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'coral'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time [hours]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Blood cortisol [umol/l]'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures 5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../exercises%205/5.02_nonlinear_regression_exercises.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Exercises 5.02 - Nonlinear regression</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../exercises%205/5.01_linear_regression_exercises.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Linear regression</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Nonlinear Regression</a><ul>
+<li><a class="reference internal" href="#id1">Nonlinear regression</a><ul>
+<li><a class="reference internal" href="#the-model">The model</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#error-term">Error term</a></li>
+<li><a class="reference internal" href="#nonlinear-regression-using-scipy">Nonlinear regression using scipy</a><ul>
+<li><a class="reference internal" href="#mini-exercise-writing-model-functions-for-curve-fit">Mini-Exercise: Writing model functions for <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code></a></li>
+<li><a class="reference internal" href="#fit-and-print-and-plot">Fit and print and plot</a></li>
+<li><a class="reference internal" href="#optional-specifying-parameter-bounds">Optional: Specifying parameter bounds</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/jupyterlite-link.js?v=877384c7"></script>
+    </body>
+</html>

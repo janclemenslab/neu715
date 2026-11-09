@@ -3,6 +3,7 @@
 This folder builds the published course website. The build copies only lectures
 and exercises from Weeks 1–3, the files lecture/exercise from Week 4, and the
 descriptive and inferential statistics lectures and exercises with their figures and data.
+It also includes Week 5 regression lectures, exercises, data, figures, and week plan.
 Week 4 uses an explicit file list so later topics, tests, and local review files
 are excluded.
 
@@ -31,6 +32,10 @@ execution outputs cleared. The image and
 audio assets are bundled beside the exercise notebook. The statistics exercises
 also link to `statistics_exercises_data.zip`; the extracted data, example images,
 and `ncb.mplstyle` are included beside the browser notebooks.
+Week 5 pages link to `week_5_lectures.zip` and `week_5_exercises.zip` for local
+use. These bundles include the notebooks and data; the lecture bundle also
+contains the original figures and week plan. Individual data files and figures
+are copied to the static site, and all Week 5 materials are bundled in JupyterLite.
 Nothing in this workflow publishes or uploads files.
 
 The repository URL is configured in `_config.yml`.

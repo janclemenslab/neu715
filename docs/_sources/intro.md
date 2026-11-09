@@ -3,6 +3,9 @@
 These lectures and exercises cover Weeks 1–3 and the released topics of Week 4:
 files and batch analysis, including CSV, Excel, and MATLAB files, plus the
 descriptive and inferential statistics lectures and their exercises.
+Week 5 covers linear regression and nonlinear curve fitting, with lectures,
+exercises, and a week plan. Download bundles on the Week 5 pages include the
+notebooks and their data; the lecture bundle also includes the figures and plan.
 
 ## Run the notebooks
 

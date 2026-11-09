@@ -79,3 +79,15 @@ parts:
         title: Inferential statistics — lecture
       - file: exercises 4/5.03_inferential_stats_exercise
         title: Inferential statistics — exercises
+  - caption: Week 5
+    chapters:
+      - file: lectures 5/week_5_plan
+        title: Week 5 plan
+      - file: lectures 5/5.01_linear_regression
+        title: Linear regression — lecture
+      - file: exercises 5/5.01_linear_regression_exercises
+        title: Linear regression — exercises
+      - file: lectures 5/5.02_nonlinear_regression
+        title: Nonlinear regression — lecture
+      - file: exercises 5/5.02_nonlinear_regression_exercises
+        title: Nonlinear regression — exercises
