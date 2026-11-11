@@ -14,7 +14,7 @@ SOURCE = HERE.parent
 PUBLIC_DIRS = ("lectures 1", "lectures 2", "lectures 3", "exercises 1", "exercises 2", "exercises 3")
 WEEK4_FILES = {
     "lectures 4": ("4.01_files_batch_analysis.ipynb", "4.02_distributions_summary_stats.ipynb", "4.04_statistical_tests.ipynb", "fig", "data/independent.csv", "data/paired.csv", "behavioral_data", "format_examples", "4.01_files_data.zip"),
-    "exercises 4": ("4.01_files_batch_analysis_exercises.ipynb", "training_data", "4.01_files_exercises_data.zip", "5.01_probabilities_exercise.ipynb", "5.02_descriptive_stats_exercise.ipynb", "5.03_inferential_stats_exercise.ipynb", "5.01_probabilities_exercise.npz", "5.01_probabilities_exercise4.png", "5.01_probabilities_exercise5.png", "5.01_probabilities_exercise_raster.npz", "5.01_probabilities_exercise_raster.png", "5.03_inferential_stats_exercise.npy", "5.03_inferential_stats_exercise_multi.npy", "ncb.mplstyle", "statistics_exercises_data.zip"),
+    "exercises 4": ("4.01_files_batch_analysis_exercises.ipynb", "training_data", "4.01_files_exercises_data.zip", "5.01_probabilities_exercise.ipynb", "5.02_descriptive_stats_exercise.ipynb", "5.03_inferential_stats_exercise.ipynb", "5.01_probabilities_exercise.npz", "5.01_probabilities_exercise4.png", "5.01_probabilities_exercise5.png", "5.01_probabilities_exercise_raster.npz", "5.01_probabilities_exercise_raster.png", "5.03_inferential_stats_exercise.npy", "5.03_inferential_stats_exercise_multi.npy", "5.03_inferential_stats_exercise_paired.npy", "ncb.mplstyle", "statistics_exercises_data.zip"),
 }
 WEEK5_FILES = {
     "lectures 5": ("5.01_linear_regression.ipynb", "5.02_nonlinear_regression.ipynb", "5.01_linear_regression.npz", "5.02_nonlinear_regression.npz", "fig", "week_5_plan.md"),

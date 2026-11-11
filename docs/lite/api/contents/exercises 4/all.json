@@ -30,15 +30,15 @@
     },
     {
       "content": null,
-      "created": "2026-10-30T14:06:20.374637Z",
+      "created": "2026-11-11T08:48:47.431386Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-30T14:06:20.374637Z",
+      "last_modified": "2026-11-11T08:47:48.325551Z",
       "mimetype": null,
       "name": "5.03_inferential_stats_exercise.ipynb",
       "path": "exercises 4/5.03_inferential_stats_exercise.ipynb",
-      "size": 2859,
+      "size": 4342,
       "type": "notebook",
       "writable": true
     },
@@ -128,15 +128,15 @@
     },
     {
       "content": null,
-      "created": "2026-11-04T12:07:54.614241Z",
+      "created": "2026-11-11T08:48:47.433282Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-11-04T12:07:54.614241Z",
+      "last_modified": "2026-11-11T08:45:17.871027Z",
       "mimetype": "application/zip",
       "name": "statistics_exercises_data.zip",
       "path": "exercises 4/statistics_exercises_data.zip",
-      "size": 117540,
+      "size": 118617,
       "type": "file",
       "writable": true
     },
@@ -207,6 +207,20 @@
       "name": "5.01_probabilities_exercise_raster.png",
       "path": "exercises 4/5.01_probabilities_exercise_raster.png",
       "size": 65996,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-11-11T08:48:47.432546Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-11-11T08:45:17.867843Z",
+      "mimetype": null,
+      "name": "5.03_inferential_stats_exercise_paired.npy",
+      "path": "exercises 4/5.03_inferential_stats_exercise_paired.npy",
+      "size": 1568,
       "type": "file",
       "writable": true
     }

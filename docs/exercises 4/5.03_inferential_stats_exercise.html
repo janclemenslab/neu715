@@ -290,14 +290,14 @@
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="inferential-statistics">
 <h1>Inferential statistics<a class="headerlink" href="#inferential-statistics" title="Link to this heading">¶</a></h1>
-<p><a class="reference download internal" download="" href="../_downloads/48930c2e98194a2a892b2f6edd7eb5fa/statistics_exercises_data.zip"><span class="xref download myst">Download accompanying files</span></a></p>
+<p><strong>Data download:</strong> <a class="reference external" href="https://raw.githubusercontent.com/janclemenslab/neu715/main/exercises%204/statistics_exercises_data.zip">statistics_exercises_data.zip</a>. Extract the ZIP contents directly into the folder containing this notebook. This package is shared by all three statistics exercises.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">'ncb.mplstyle'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ncb.mplstyle&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -322,16 +322,25 @@
 <p><strong>Hint:</strong> <code class="docutils literal notranslate"><span class="pre">scipy.stats.ttest_1samp</span></code> compares a population mean with a specified reference value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'5.03_inferential_stats_exercise.npy'</span><span class="p">)</span>
-
-<span class="c1"># your solution here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="exercise-2-bonus-multiple-groups">
-<h2>Exercise 2 (bonus): Multiple groups<a class="headerlink" href="#exercise-2-bonus-multiple-groups" title="Link to this heading">¶</a></h2>
+<section id="exercise-2-before-during-and-after-a-task">
+<h2>Exercise 2: Before, during, and after a task<a class="headerlink" href="#exercise-2-before-during-and-after-a-task" title="Link to this heading">¶</a></h2>
+<p>In a simulated experiment, 30 participants are each measured before, during, and after a mental arithmetic task. Each value is the participant’s mean breathing rate (breaths/min) over a one-minute phase.</p>
+<p><code class="docutils literal notranslate"><span class="pre">5.03_inferential_stats_exercise_paired.npy</span></code> (in the data ZIP) has two columns: subject ID and breathing rate (breaths/min). Rows are interleaved as <code class="docutils literal notranslate"><span class="pre">before_1,</span> <span class="pre">during_1,</span> <span class="pre">after_1,</span> <span class="pre">before_2,</span> <span class="pre">during_2,</span> <span class="pre">after_2,</span> <span class="pre">...</span></code>.</p>
+<ol class="arabic simple">
+<li><p>Load the file and split it into <code class="docutils literal notranslate"><span class="pre">before</span></code>, <code class="docutils literal notranslate"><span class="pre">during</span></code>, and <code class="docutils literal notranslate"><span class="pre">after</span></code> arrays using slicing, preserving subject order. Plot the paired measurements.</p></li>
+<li><p>Choose and run appropriate statistical tests for before vs during and during vs after. Justify your choice. Report each mean change (later minus earlier) and p-value. Apply the Bonferroni correction for multiple comparisons at an overall significance level of 0.05. Why is this correction needed?</p></li>
+<li><p>Briefly interpret the results.</p></li>
+</ol>
+<p><strong>Bonus:</strong> Compare all three phases using ANOVA. Explain your choice of ANOVA.</p>
+</section>
+<section id="exercise-3-bonus-multiple-groups">
+<h2>Exercise 3 (bonus): Multiple groups<a class="headerlink" href="#exercise-3-bonus-multiple-groups" title="Link to this heading">¶</a></h2>
 <p>Load <code class="docutils literal notranslate"><span class="pre">5.03_inferential_stats_exercise_multi.npy</span></code>, included with this notebook. It contains 50 rows of observations and three columns, one per treatment group.
 Assume independent observations and equal population variances for this exercise.</p>
 <ul class="simple">
@@ -426,7 +435,8 @@ Assume independent observations and equal population variances for this exercise
             <ul>
 <li><a class="reference internal" href="#">Inferential statistics</a><ul>
 <li><a class="reference internal" href="#exercise-1-statistical-tests">Exercise 1: Statistical tests</a></li>
-<li><a class="reference internal" href="#exercise-2-bonus-multiple-groups">Exercise 2 (bonus): Multiple groups</a></li>
+<li><a class="reference internal" href="#exercise-2-before-during-and-after-a-task">Exercise 2: Before, during, and after a task</a></li>
+<li><a class="reference internal" href="#exercise-3-bonus-multiple-groups">Exercise 3 (bonus): Multiple groups</a></li>
 </ul>
 </li>
 </ul>
