@@ -2,15 +2,15 @@
   "content": [
     {
       "content": null,
-      "created": "2026-11-09T17:20:54.028300Z",
+      "created": "2026-11-12T14:54:26.193525Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-11-09T17:20:54.028300Z",
+      "last_modified": "2026-11-12T14:54:26.193525Z",
       "mimetype": "application/zip",
       "name": "week_5_exercises.zip",
       "path": "exercises 5/week_5_exercises.zip",
-      "size": 24157,
+      "size": 23628,
       "type": "file",
       "writable": true
     },
@@ -44,15 +44,15 @@
     },
     {
       "content": null,
-      "created": "2026-11-09T17:20:54.021530Z",
+      "created": "2026-11-12T14:54:26.186443Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-11-09T17:20:54.021530Z",
+      "last_modified": "2026-11-12T14:54:26.186443Z",
       "mimetype": null,
       "name": "5.02_nonlinear_regression_exercises.ipynb",
       "path": "exercises 5/5.02_nonlinear_regression_exercises.ipynb",
-      "size": 4080,
+      "size": 3460,
       "type": "notebook",
       "writable": true
     },
@@ -86,15 +86,15 @@
     },
     {
       "content": null,
-      "created": "2026-11-09T17:20:54.021336Z",
+      "created": "2026-11-12T14:54:26.186244Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-11-09T17:20:54.021336Z",
+      "last_modified": "2026-11-12T14:54:26.186244Z",
       "mimetype": null,
       "name": "5.01_linear_regression_exercises.ipynb",
       "path": "exercises 5/5.01_linear_regression_exercises.ipynb",
-      "size": 5415,
+      "size": 3735,
       "type": "notebook",
       "writable": true
     }
