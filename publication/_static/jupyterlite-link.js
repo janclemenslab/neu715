@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const [root, notebook] = source.getAttribute("href").split("_sources/");
   if (!notebook) return;
+  if (decodeURIComponent(notebook).startsWith("lectures 6/")) return;
   themeToggles.forEach((themeToggle) => {
     const link = document.createElement("a");
     link.className = "muted-link";

@@ -91,3 +91,9 @@ parts:
         title: Nonlinear regression — lecture
       - file: exercises 5/5.02_nonlinear_regression_exercises
         title: Nonlinear regression — exercises
+  - caption: Week 6
+    chapters:
+      - file: lectures 6/6.01_conda_environments
+        title: Python environments — setup
+      - file: lectures 6/6.02_mnist_cnn
+        title: Recognizing handwritten digits — lecture

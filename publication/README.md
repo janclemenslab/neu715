@@ -4,6 +4,8 @@ This folder builds the published course website. The build copies only lectures
 and exercises from Weeks 1–3, the files lecture/exercise from Week 4, and the
 descriptive and inferential statistics lectures and exercises with their figures and data.
 It also includes Week 5 regression lectures, exercises, data, figures, and week plan.
+Week 6 includes the environment setup and MNIST CNN notebooks with the three
+`fig_*.png` figures, using an explicit file list to exclude figure drafts and scripts.
 Week 4 uses an explicit file list so later topics, tests, and local review files
 are excluded.
 
@@ -37,6 +39,11 @@ use. These bundles include the notebooks and data; the lecture bundle also
 contains the original figures and week plan. Individual data files and figures
 are copied to the static site, and all Week 5 materials are bundled in JupyterLite.
 Nothing in this workflow publishes or uploads files.
+
+Week 6 is published as reading pages with notebook downloads and a
+`week_6_lectures.zip` bundle containing the two original notebooks and three figures.
+It is excluded from JupyterLite because it requires a local Keras/PyTorch
+environment, and its pages do not show the JupyterLite run button.
 
 The repository URL is configured in `_config.yml`.
 The live site is served from `main` → `docs/` in `janclemenslab/neu715`.

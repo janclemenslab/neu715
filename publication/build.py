@@ -21,6 +21,10 @@ WEEK5_FILES = {
     "exercises 5": ("5.01_linear_regression_exercises.ipynb", "5.02_nonlinear_regression_exercises.ipynb", "5.01_linear_regression_exercises_1.npz", "5.01_linear_regression_exercises_2.npz", "5.02_nonlinear_regression_exercises_1.npz", "5.02_nonlinear_regression_exercises_2.npz"),
 }
 WEEK5_ARCHIVES = {"lectures 5": "week_5_lectures.zip", "exercises 5": "week_5_exercises.zip"}
+WEEK6_FILES = {
+    "lectures 6": ("6.01_conda_environments.ipynb", "6.02_mnist_cnn.ipynb", "fig_convolution_relu.png", "fig_max_pooling.png", "fig_flatten_dense.png"),
+}
+WEEK6_ARCHIVE = "week_6_lectures.zip"
 
 
 def run(*command, cwd=HERE):
@@ -100,6 +104,28 @@ def sync_content():
             for path in files:
                 bundle.write(path, path.relative_to(target))
 
+    # Week 6 requires local Keras/PyTorch; publish reading pages and downloads.
+    for folder, paths in WEEK6_FILES.items():
+        target = HERE / folder
+        if target.exists():
+            shutil.rmtree(target)
+        target.mkdir(parents=True)
+        for path in paths:
+            destination = target / path
+            shutil.copy2(SOURCE / folder / path, destination)
+            if destination.suffix == ".ipynb":
+                notebook = json.loads(destination.read_text())
+                first = next(cell for cell in notebook["cells"] if cell["cell_type"] == "markdown")
+                first["source"] = ("".join(first["source"]).rstrip() +
+                    f"\n\n**Download for local use:** [{WEEK6_ARCHIVE}]({WEEK6_ARCHIVE}). "
+                    "Extract both notebooks and all three figures into the same folder. "
+                    "Week 6 uses a local Python environment; follow the environment notebook before running the MNIST notebook.\n").splitlines(keepends=True)
+                destination.write_text(json.dumps(notebook, indent=1, ensure_ascii=False) + "\n")
+        with zipfile.ZipFile(target / WEEK6_ARCHIVE, "w", compression=zipfile.ZIP_DEFLATED) as bundle:
+            # The bundle contains the original notebooks without site-only links.
+            for path in paths:
+                bundle.write(SOURCE / folder / path, path)
+
 
 def main():
     sync_content()
@@ -123,6 +149,13 @@ def main():
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(source, target)
 
+    for folder in WEEK6_FILES:
+        for source in (HERE / folder).iterdir():
+            if source.suffix in (".png", ".zip"):
+                target = HERE / "_build/html" / folder / source.name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(source, target)
+
     with tempfile.TemporaryDirectory(prefix="neu715-lite-") as temporary:
         lite_dir = Path(temporary)
         files = lite_dir / "files"
@@ -140,7 +173,7 @@ def main():
         )
 
     notebooks = list(HERE.glob("* */*.ipynb"))
-    assert len(notebooks) == 36, f"expected 36 public notebooks, found {len(notebooks)}"
+    assert len(notebooks) == 38, f"expected 38 public notebooks, found {len(notebooks)}"
     for folder, paths in WEEK4_FILES.items():
         assert sorted(p.name for p in (HERE / folder).glob("*.ipynb")) == sorted(p for p in paths if p.endswith(".ipynb"))
         for path in paths:
@@ -156,6 +189,18 @@ def main():
                 assert (HERE / "_build/html" / folder / relative.with_suffix(".html")).is_file()
             else:
                 assert (HERE / "_build/html" / folder / relative).is_file()
+    for folder, paths in WEEK6_FILES.items():
+        assert sorted(p.name for p in (HERE / folder).glob("*.ipynb")) == sorted(p for p in paths if p.endswith(".ipynb"))
+        assert not (HERE / "_build/html/lite/files" / folder).exists()
+        for path in paths:
+            source = HERE / folder / path
+            if source.suffix == ".ipynb":
+                assert (HERE / "_build/html" / folder / source.with_suffix(".html").name).is_file()
+                assert (HERE / "_build/html/_sources" / folder / source.name).is_file()
+            else:
+                assert (HERE / "_build/html" / folder / source.name).is_file()
+        with zipfile.ZipFile(HERE / "_build/html" / folder / WEEK6_ARCHIVE) as bundle:
+            assert sorted(bundle.namelist()) == sorted(paths)
     assert (HERE / "_build/html/index.html").is_file()
     assert (HERE / "_build/html/lite/lab/index.html").is_file()
     lite_config = json.loads((HERE / "_build/html/lite/jupyter-lite.json").read_text())
@@ -168,7 +213,7 @@ def main():
     assert not any((HERE / name).exists() for name in ("tests", "instructor 1", "instructor 2", "instructor 3", "instructor_week4", "draft_preview_week3", "draft_preview_week4"))
     for folder, asset in (("lectures 3", "coffee.png"), ("exercises 3", "astronaut.png"), ("exercises 3", "fly.png"), ("exercises 3", "fly_source.png"), ("exercises 3", "speech.wav")):
         assert (HERE / "_build/html/lite/files" / folder / "assets" / asset).is_file()
-    print("Built _build/html with 36 notebooks, including Week 5 and its download bundles; no tests or instructor files included.")
+    print("Built _build/html with 38 notebooks, including Week 6 reading pages and its local-use download bundle; no tests or instructor files included.")
 
 
 if __name__ == "__main__":

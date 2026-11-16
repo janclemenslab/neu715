@@ -6,10 +6,13 @@ descriptive and inferential statistics lectures and their exercises.
 Week 5 covers linear regression and nonlinear curve fitting, with lectures,
 exercises, and a week plan. Download bundles on the Week 5 pages include the
 notebooks and their data; the lecture bundle also includes the figures and plan.
+Week 6 introduces Python environments and handwritten digit classification with
+a convolutional neural network. Its download bundle includes both notebooks and
+the three figures. Run Week 6 locally using the environment setup notebook.
 
 ## Run the notebooks
 
-<a href="./lite/lab/index.html">Run all notebooks directly in your browser</a>.
+<a href="./lite/lab/index.html">Run the Weeks 1–5 notebooks directly in your browser</a>.
 No account or Python installation is needed. Browser work is stored on this
 device; download your notebook before clearing browser data or changing computers.
 

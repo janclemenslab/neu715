@@ -1,0 +1,739 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="prev" title="Set up Python for machine learning" href="6.01_conda_environments.html">
+
+    <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
+        <title>Recognizing handwritten digits with a neural network - NEU715 — Neuroscientific Data Analysis using Python</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=6a604523" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/furo-overrides.css?v=0c59c1ca" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../intro.html"><div class="brand">NEU715 — Neuroscientific Data Analysis using Python</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../intro.html">
+  
+  <span class="sidebar-brand-text">NEU715 — Neuroscientific Data Analysis using Python</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Week 1</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/week_1_plan.html">Week 1 plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.00_notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.01_variables.html">Variables — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.01_variables_exercises.html">Variables — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.02_conditionals.html">Conditionals — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.02_conditionals_exercises.html">Conditionals — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.03_namespaces.html">Notebook memory — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.03_namespaces_exercises.html">Notebook memory — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%201/1.04_lists.html">Lists — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%201/1.04_lists_exercises.html">Lists — exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/week_2_plan.html">Week 2 plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.01_loops_simple.html">Loops — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.01_loops_simple_exercises.html">Loops — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.03_dungeon_escape_exercises.html">Dungeon Escape — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.02_functions.html">Functions — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.02_functions_exercises.html">Functions — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.04_plotting.html">Plotting — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.04_plotting_exercises.html">Plotting — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.05_spike_detection_exercises.html">Spike detection — exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%202/2.06_composites.html">Composites — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%202/2.06_composites_exercises.html">Composites — exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 3</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%203/week_3_plan.html">Week 3 plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%203/3.01_imports.html">Imports — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%203/3.01_imports_exercises.html">Imports — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%203/3.02_numpy_selection.html">NumPy arrays and selection — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%203/3.02_numpy_selection_exercises.html">NumPy arrays and selection — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%203/3.03_numpy_dimensions.html">NumPy dimensions and images — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%203/3.03_numpy_dimensions_exercises.html">NumPy dimensions and images — exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 4</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%204/4.01_files_batch_analysis.html">Files and batch analysis — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%204/4.01_files_batch_analysis_exercises.html">Files and batch analysis — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%204/4.02_distributions_summary_stats.html">Descriptive statistics — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%204/5.01_probabilities_exercise.html">Probabilities — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%204/5.02_descriptive_stats_exercise.html">Descriptive statistics — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%204/4.04_statistical_tests.html">Inferential statistics — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%204/5.03_inferential_stats_exercise.html">Inferential statistics — exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 5</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%205/week_5_plan.html">Week 5 plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%205/5.01_linear_regression.html">Linear regression — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.01_linear_regression_exercises.html">Linear regression — exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures%205/5.02_nonlinear_regression.html">Nonlinear regression — lecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises%205/5.02_nonlinear_regression_exercises.html">Nonlinear regression — exercises</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Week 6</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="6.01_conda_environments.html">Python environments — setup</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Recognizing handwritten digits — lecture</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/lectures 6/6.02_mnist_cnn.ipynb" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="recognizing-handwritten-digits-with-a-neural-network">
+<h1>Recognizing handwritten digits with a neural network<a class="headerlink" href="#recognizing-handwritten-digits-with-a-neural-network" title="Link to this heading">¶</a></h1>
+<p>Last week, we fitted a line or curve to data. We chose a model, adjusted its parameters, and looked at its predictions. Today we use the same idea to recognize handwritten digits.</p>
+<p>By the end, you should be able to load images, train a small convolutional neural network (CNN), and check its predictions on new images.</p>
+<p>Complete <a class="reference internal" href="6.01_conda_environments.html"><span class="std std-doc">the environment setup</span></a> first, then run this notebook from top to bottom in that environment. A GPU is not required.</p>
+<p><strong>Download for local use:</strong> <a class="reference download internal" download="" href="../_downloads/12cc722c51483f684fdc2fa3d9f0b657/week_6_lectures.zip"><span class="xref download myst">week_6_lectures.zip</span></a>. Extract both notebooks and all three figures into the same folder. Week 6 uses a local Python environment; follow the environment notebook before running the MNIST notebook.</p>
+<section id="from-regression-to-classification">
+<h2>1. From regression to classification<a class="headerlink" href="#from-regression-to-classification" title="Link to this heading">¶</a></h2>
+<p>In Week 5, a model predicted a number, such as cortisol concentration. This is <em>regression</em>. Our new model predicts a category: which digit, 0–9, appears in an image. This is <em>classification</em>.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Week 5</p></th>
+<th class="head"><p>Today</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Input: time or stimulus intensity</p></td>
+<td><p>Input: pixel intensities in an image</p></td>
+</tr>
+<tr class="row-odd"><td><p>Known output: a measured quantity</p></td>
+<td><p>Known output: the digit label</p></td>
+</tr>
+<tr class="row-even"><td><p>Model: a line or curve</p></td>
+<td><p>Model: a neural network</p></td>
+</tr>
+<tr class="row-odd"><td><p>Parameters: slope, intercept, etc.</p></td>
+<td><p>Parameters: weights and biases</p></td>
+</tr>
+<tr class="row-even"><td><p>Fitting</p></td>
+<td><p>Training</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Machine learning</em> means learning patterns from examples. Here, each training image comes with its correct digit label. This is called <em>supervised learning</em>. AI is the broader field of making computers perform tasks such as recognizing images and understanding language.</p>
+<p>Like curve fitting, training adjusts parameters so predictions agree better with the known outputs. The important question is whether the model also works on examples it did not learn from.</p>
+</section>
+<section id="what-is-a-cnn">
+<h2>2. What is a CNN?<a class="headerlink" href="#what-is-a-cnn" title="Link to this heading">¶</a></h2>
+<p>A neural network passes its inputs through a series of <em>layers</em>. Each layer performs a calculation, and the layers with adjustable weights learn during training. Weights multiply inputs and a bias adds an offset, like <code class="docutils literal notranslate"><span class="pre">slope</span> <span class="pre">*</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">intercept</span></code> in Week 5.</p>
+<p>A CNN uses small <em>filters</em> to look for local patterns in an image. Each filter slides across the image using the same weights at each position. Training changes those weights so the filters become useful for recognizing digits.</p>
+<p>Our network has four steps:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>image → convolution + ReLU → pooling → flatten → dense + softmax
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Convolution:</strong> apply filters to small image patches. We use eight filters, each looking at a 3 × 3 patch. Each produces an array of responses called a <em>feature map</em>.</p></li>
+<li><p><strong>Pooling:</strong> keep the largest value in each 2 × 2 region, making the maps smaller.</p></li>
+<li><p><strong>Flatten:</strong> rearrange the maps into one list of values.</p></li>
+<li><p><strong>Dense:</strong> combine those values into ten scores, one for each digit; softmax converts the scores into probabilities.</p></li>
+</ul>
+<p>Two activation functions appear in our code:</p>
+<ul class="simple">
+<li><p><strong>ReLU</strong> replaces negative values with zero, letting the network express nonlinear relationships.</p></li>
+<li><p><strong>Softmax</strong> turns the final ten scores into probabilities that sum to one.</p></li>
+</ul>
+<p><strong>Convolution and ReLU</strong></p>
+<p>These example filters show how different filter shapes produce different feature maps from the same image. ReLU then replaces negative responses with zero.</p>
+<p><img alt="An MNIST digit processed with four filters, showing each feature map before and after ReLU." src="../_images/fig_convolution_relu.png" /></p>
+<p><strong>Max pooling</strong></p>
+<p>Each 2 × 2 block contributes its largest value, outlined below. A 4 × 4 crop becomes 2 × 2 pooled values.</p>
+<p><img alt="Max pooling reduces a 4 by 4 feature-map crop to 2 by 2 values by keeping the maximum in each block." src="../_images/fig_max_pooling.png" /></p>
+<p><strong>Flattening and the dense output layer</strong></p>
+<p>Flatten rearranges a 3D array of feature maps into one vector without changing its values. With our channels-last layout, it keeps the channel values of each pixel together. Every value in this vector connects to each of the ten dense outputs through a learned weight. Each output also has a learned bias. Softmax converts the ten resulting scores into digit probabilities.</p>
+<p>The figure uses a small numerical example with illustrative weights. In our CNN, each image produces pooled feature maps with shape <code class="docutils literal notranslate"><span class="pre">(13,</span> <span class="pre">13,</span> <span class="pre">8)</span></code>, which become a vector of <code class="docutils literal notranslate"><span class="pre">13</span> <span class="pre">*</span> <span class="pre">13</span> <span class="pre">*</span> <span class="pre">8</span> <span class="pre">=</span> <span class="pre">1352</span></code> values and then ten digit probabilities.</p>
+<p><img alt="Three 2 by 2 feature maps flattened into twelve values, connected to ten dense outputs, then converted to probabilities by softmax." src="../_images/fig_flatten_dense.png" /></p>
+</section>
+<section id="start-python">
+<h2>3. Start Python<a class="headerlink" href="#start-python" title="Link to this heading">¶</a></h2>
+<p>Set the backend before importing Keras. If Keras has already been imported with another backend, restart the kernel first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"KERAS_BACKEND"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"torch"</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">keras</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-and-inspect-mnist">
+<h2>4. Load and inspect MNIST<a class="headerlink" href="#load-and-inspect-mnist" title="Link to this heading">¶</a></h2>
+<p>MNIST contains handwritten digits as 28 × 28 grayscale images. Each pixel has an intensity from 0 to 255. Each image also has a <em>label</em>: the correct digit, from 0 to 9.</p>
+<p>The loader gives us 60,000 images for developing the model and a separate <em>test set</em> of 10,000 images. We keep the test set aside until training is finished. The first run downloads the data; later runs use the saved copy.</p>
+<p>We use the standard names <code class="docutils literal notranslate"><span class="pre">x</span></code> for inputs and <code class="docutils literal notranslate"><span class="pre">y</span></code> for labels. The suffix <code class="docutils literal notranslate"><span class="pre">_raw</span></code> marks the original data, which we keep for inspection and preparation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">x_train_raw</span><span class="p">,</span> <span class="n">y_train_raw</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test_raw</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Image array:"</span><span class="p">,</span> <span class="n">x_train_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Label array:"</span><span class="p">,</span> <span class="n">y_train_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">(60000,</span> <span class="pre">28,</span> <span class="pre">28)</span></code>, the axes are image number, row, and column. Selecting <code class="docutils literal notranslate"><span class="pre">x_train_raw[0]</span></code> gives the first image. Its label is <code class="docutils literal notranslate"><span class="pre">y_train_raw[0]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x_train_raw</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Digit label: </span><span class="si">{</span><span class="n">y_train_raw</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 1 — inspect multiple images</strong></p>
+<p>We want to inspect multiple images at once. Use <code class="docutils literal notranslate"><span class="pre">x_train_raw</span></code> and <code class="docutils literal notranslate"><span class="pre">y_train_raw</span></code> to display 16 images with their digit labels in a 4 × 4 grid.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display 16 labeled images in a 4 × 4 grid here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prepare-the-images">
+<h2>5. Prepare the images<a class="headerlink" href="#prepare-the-images" title="Link to this heading">¶</a></h2>
+<p>We use 15,000 of the available images to keep training short. Keras will hold back 20% of these — 3,000 images — as <em>validation data</em>. The other 12,000 images will train the model.</p>
+<ul class="simple">
+<li><p><strong>Training data:</strong> examples used to adjust the weights.</p></li>
+<li><p><strong>Validation data:</strong> examples used to check progress and choose how long to train.</p></li>
+<li><p><strong>Test data:</strong> separate examples used for the final evaluation.</p></li>
+</ul>
+<p>First, convert the pixels to floating-point numbers and divide by 255 to put them between 0 and 1. Then add a final dimension for the single grayscale channel. The network expects <strong>(image, row, column, channel)</strong>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">reshape</span></code> changes the arrangement of the array without changing its pixel values. <code class="docutils literal notranslate"><span class="pre">len(x_train)</span></code> keeps the existing number of images. We prepare the images from the raw arrays, so rerunning the next cell does not scale already normalized images a second time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train_raw</span><span class="p">[:</span><span class="mi">15000</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"float32"</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train_raw</span><span class="p">[:</span><span class="mi">15000</span><span class="p">]</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test_raw</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"float32"</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_train</span><span class="p">),</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_test</span><span class="p">),</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Network input shape:"</span><span class="p">,</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="build-the-network">
+<h2>6. Build the network<a class="headerlink" href="#build-the-network" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Sequential</span></code> applies the layers in order. <code class="docutils literal notranslate"><span class="pre">Input</span></code> specifies the shape of one image. The last layer has <strong>ten outputs</strong>, because there are ten possible digit labels.</p>
+<p>The random seed gives us the same starting weights when we rebuild the model for the training exercise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="mi">715</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"softmax"</span><span class="p">),</span>
+<span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>End of Session 1:</strong> point to each layer in the code and explain its job. Which parts contain weights that training will change?</p>
+<p>If you close the notebook between sessions, rerun the cells above before continuing.</p>
+</section>
+<section id="train-the-network">
+<h2>7. Train the network<a class="headerlink" href="#train-the-network" title="Link to this heading">¶</a></h2>
+<p>First, <code class="docutils literal notranslate"><span class="pre">compile</span></code> sets up training:</p>
+<ul class="simple">
+<li><p><strong>Optimizer:</strong> <code class="docutils literal notranslate"><span class="pre">adam</span></code> is the algorithm that adjusts the weights.</p></li>
+<li><p><strong>Loss:</strong> a number measuring how poorly predictions match the correct labels. Lower is better. In Week 5 we used MSE; here we use <code class="docutils literal notranslate"><span class="pre">sparse_categorical_crossentropy</span></code>, a loss for classification with integer labels.</p></li>
+<li><p><strong>Metric:</strong> <code class="docutils literal notranslate"><span class="pre">accuracy</span></code> is the fraction of images classified correctly. An accuracy of 0.95 means 95% correct.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="s2">"adam"</span><span class="p">,</span>
+    <span class="n">loss</span><span class="o">=</span><span class="s2">"sparse_categorical_crossentropy"</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">"accuracy"</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fit</span></code> trains the model. One <em>epoch</em> is one pass through the training images. A <em>batch</em> is a smaller group of images processed for one weight update.</p>
+<p>We start with three epochs and batches of 128 images. <code class="docutils literal notranslate"><span class="pre">validation_split=0.2</span></code> holds aside the last 20% of our 15,000 images before training. Validation images do not update the weights.</p>
+<p><code class="docutils literal notranslate"><span class="pre">history</span></code> stores the training results so we can plot them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+    <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="check-learning-progress">
+<h2>8. Check learning progress<a class="headerlink" href="#check-learning-progress" title="Link to this heading">¶</a></h2>
+<p>Compare accuracy on the training and validation images. We want the model to improve on images it did not train on.</p>
+<p>Training accuracy is averaged during each epoch. Validation accuracy is measured afterward, using the updated weights.</p>
+<p>If training performance improves while validation performance gets worse, the model may be <em>overfitting</em>: learning details specific to the training examples. Our short run may not show this pattern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">"accuracy"</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">"accuracy"</span><span class="p">],</span> <span class="s2">"o-"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Training"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">"val_accuracy"</span><span class="p">],</span> <span class="s2">"o-"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Validation"</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Epoch"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Accuracy"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 2 — does more training help?</strong></p>
+<p>Record the final training and validation accuracy after three epochs. Repeat the experiment with <code class="docutils literal notranslate"><span class="pre">epochs=30</span></code> and then <code class="docutils literal notranslate"><span class="pre">epochs=100</span></code> in <code class="docutils literal notranslate"><span class="pre">fit</span></code>. Longer runs may take several minutes on your computer.</p>
+<p><strong>For each experiment, start again from Section 6</strong>, which creates a fresh model, and rerun Sections 6–8. Repeating only <code class="docutils literal notranslate"><span class="pre">fit</span></code> would continue training the existing model.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Epochs</p></th>
+<th class="head"><p>Training accuracy</p></th>
+<th class="head"><p>Validation accuracy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>30</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Did validation accuracy improve? Choose which training duration to keep before going on to the test set. If your chosen duration differs from the last run, set <code class="docutils literal notranslate"><span class="pre">epochs</span></code> to that duration and rebuild and train the model again from Section 6. Use this chosen model in Section 9.</p>
+</section>
+<section id="evaluate-new-images">
+<h2>9. Evaluate new images<a class="headerlink" href="#evaluate-new-images" title="Link to this heading">¶</a></h2>
+<p>Now evaluate the chosen model on the 10,000 test images. <code class="docutils literal notranslate"><span class="pre">evaluate</span></code> calculates loss and accuracy without changing the weights.</p>
+<p>For comparison, guessing uniformly among ten digits gives about 10% correct on average.</p>
+<p>Use test results to report final performance. Changing the model to improve this score would make the test set part of model development.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_accuracy</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Test loss: </span><span class="si">{</span><span class="n">test_loss</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Test accuracy: </span><span class="si">{</span><span class="n">test_accuracy</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="look-at-individual-predictions">
+<h2>10. Look at individual predictions<a class="headerlink" href="#look-at-individual-predictions" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">predict</span></code> returns one row per image and ten columns, one for each digit. <code class="docutils literal notranslate"><span class="pre">argmax(axis=1)</span></code> gives the column with the largest probability in each row. That column number is the predicted digit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">probabilities</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">probabilities</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_number</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="n">image_number</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Actual: </span><span class="si">{</span><span class="n">y_test</span><span class="p">[</span><span class="n">image_number</span><span class="p">]</span><span class="si">}</span><span class="s2">, predicted: </span><span class="si">{</span><span class="n">predictions</span><span class="p">[</span><span class="n">image_number</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The bar plot shows the probabilities assigned to the ten digits for this image. A large value means the model favors that digit; a confident guess can still be wrong.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">probabilities</span><span class="p">[</span><span class="n">image_number</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Digit"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Model probability"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 3 — inspect a mistake</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">np.where</span></code> below finds the image indices where the prediction differs from the label. We print the first ten of those indices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wrong</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">predictions</span> <span class="o">!=</span> <span class="n">y_test</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Misclassified image indices:"</span><span class="p">,</span> <span class="n">wrong</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If any indices are printed, choose one as <code class="docutils literal notranslate"><span class="pre">image_number</span></code> and rerun the image and bar-plot cells above.</p>
+<ul class="simple">
+<li><p>Can you see why the model might have confused the digit?</p></li>
+<li><p>Is the largest probability close to 1, or is the model uncertain?</p></li>
+<li><p>What can this example tell you that overall accuracy cannot?</p></li>
+</ul>
+<p>Use these errors to describe this model. If you use them to redesign it, you will need a new untouched test set for an independent final evaluation.</p>
+</section>
+<section id="recap">
+<h2>Recap<a class="headerlink" href="#recap" title="Link to this heading">¶</a></h2>
+<p>We chose a model, fitted its parameters, and checked its predictions — the same basic process as Week 5. Our inputs were images, and our predictions were digit categories.</p>
+<p>Explain in your own words:</p>
+<ol class="arabic simple">
+<li><p>What does training change in the network?</p></li>
+<li><p>Why are there ten outputs?</p></li>
+<li><p>What are the different jobs of training, validation, and test data?</p></li>
+</ol>
+<p>A good MNIST score describes performance on similar handwritten digits. It does not guarantee success on different kinds of images.</p>
+<p>Further reading: <a class="reference external" href="https://keras.io/examples/vision/mnist_convnet/">Keras MNIST example</a> and <a class="reference external" href="https://keras.io/guides/training_with_built_in_methods/">training and evaluation</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures 6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="6.01_conda_environments.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Set up Python for machine learning</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Recognizing handwritten digits with a neural network</a><ul>
+<li><a class="reference internal" href="#from-regression-to-classification">1. From regression to classification</a></li>
+<li><a class="reference internal" href="#what-is-a-cnn">2. What is a CNN?</a></li>
+<li><a class="reference internal" href="#start-python">3. Start Python</a></li>
+<li><a class="reference internal" href="#load-and-inspect-mnist">4. Load and inspect MNIST</a></li>
+<li><a class="reference internal" href="#prepare-the-images">5. Prepare the images</a></li>
+<li><a class="reference internal" href="#build-the-network">6. Build the network</a></li>
+<li><a class="reference internal" href="#train-the-network">7. Train the network</a></li>
+<li><a class="reference internal" href="#check-learning-progress">8. Check learning progress</a></li>
+<li><a class="reference internal" href="#evaluate-new-images">9. Evaluate new images</a></li>
+<li><a class="reference internal" href="#look-at-individual-predictions">10. Look at individual predictions</a></li>
+<li><a class="reference internal" href="#recap">Recap</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../_static/design-tabs.js?v=fcb327ea"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/jupyterlite-link.js?v=213d9647"></script>
+    </body>
+</html>
