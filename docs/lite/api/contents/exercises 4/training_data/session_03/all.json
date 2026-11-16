@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2026-10-30T13:06:18.158215Z",
+      "created": "2026-10-30T13:06:18Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-30T13:06:18.158215Z",
+      "last_modified": "2026-10-30T13:06:18Z",
       "mimetype": "text/plain",
       "name": "notes.txt",
       "path": "exercises 4/training_data/session_03/notes.txt",
@@ -16,11 +16,11 @@
     },
     {
       "content": null,
-      "created": "2026-10-30T13:06:18.074821Z",
+      "created": "2026-10-30T13:06:18Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-30T13:06:18.074821Z",
+      "last_modified": "2026-10-30T13:06:18Z",
       "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "name": "measurements.xlsx",
       "path": "exercises 4/training_data/session_03/measurements.xlsx",
@@ -29,11 +29,11 @@
       "writable": true
     }
   ],
-  "created": "2026-10-30T13:54:44.886757Z",
+  "created": "2026-11-16T08:28:50.888211Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2026-10-30T13:54:44.887167Z",
+  "last_modified": "2026-11-16T08:28:50.888484Z",
   "mimetype": null,
   "name": "session_03",
   "path": "exercises 4/training_data/session_03",

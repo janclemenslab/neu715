@@ -297,7 +297,7 @@
 <ul class="simple">
 <li><p>Fit a quadratic function of the form  <span class="math notranslate nohighlight">\(y = a + b * (x + c)^2\)</span> to describe the relationship between x and y.</p></li>
 <li><p>Generate predictions (one for each x-value) and overlay them on the data. Is your curve a good fit to the data?</p></li>
-<li><p>Quantify the goodness of fit using the residual-based <span class="math notranslate nohighlight">\(R^2\)</span> from the lecture and inspect the residuals.</p></li>
+<li><p>Quantify the goodness of fit using the simplified formula from the lecture: <code class="docutils literal notranslate"><span class="pre">r_squared</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">np.mean(residuals**2)</span> <span class="pre">/</span> <span class="pre">np.var(y)</span></code>, where <code class="docutils literal notranslate"><span class="pre">residuals</span> <span class="pre">=</span> <span class="pre">y</span> <span class="pre">-</span> <span class="pre">pred</span></code> and <code class="docutils literal notranslate"><span class="pre">pred</span></code> contains the model predictions. This is one minus the mean-squared error divided by the variance of the observations. Inspect the residuals as well.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -307,8 +307,8 @@
 </div>
 </div>
 </section>
-<section id="exercise-2-specifying-initial-parameter-values">
-<h2>Exercise 2 - Specifying initial parameter values<a class="headerlink" href="#exercise-2-specifying-initial-parameter-values" title="Link to this heading">¶</a></h2>
+<section id="exercise-2-optional-specifying-initial-parameter-values">
+<h2>Exercise 2 (Optional) - Specifying initial parameter values<a class="headerlink" href="#exercise-2-optional-specifying-initial-parameter-values" title="Link to this heading">¶</a></h2>
 <p>Below code attempts to fit an exponential function to the data. However, as you can see, the prediction does not match the data. Modify the initial parameter values used for fitting to make it work.</p>
 <p>To do so, think about what how the different function parameters relate to specific properties of the data. Your function is <span class="math notranslate nohighlight">\(y = g * e^{-x/\tau}\)</span>.</p>
 <ul class="simple">
@@ -415,7 +415,7 @@
             <ul>
 <li><a class="reference internal" href="#">Exercises 5.02 - Nonlinear regression</a><ul>
 <li><a class="reference internal" href="#exercise-1-fitting-a-quadratic-function">Exercise 1 - Fitting a quadratic function</a></li>
-<li><a class="reference internal" href="#exercise-2-specifying-initial-parameter-values">Exercise 2 - Specifying initial parameter values</a></li>
+<li><a class="reference internal" href="#exercise-2-optional-specifying-initial-parameter-values">Exercise 2 (Optional) - Specifying initial parameter values</a></li>
 </ul>
 </li>
 </ul>

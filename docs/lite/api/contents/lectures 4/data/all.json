@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2026-10-30T13:51:45.098634Z",
+      "created": "2024-11-14T09:20:52Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-30T13:51:45.098634Z",
+      "last_modified": "2024-11-14T09:20:52Z",
       "mimetype": "text/csv",
       "name": "paired.csv",
       "path": "lectures 4/data/paired.csv",
@@ -16,11 +16,11 @@
     },
     {
       "content": null,
-      "created": "2026-10-30T13:51:45.098536Z",
+      "created": "2024-11-14T08:48:49Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-30T13:51:45.098536Z",
+      "last_modified": "2024-11-14T08:48:49Z",
       "mimetype": "text/csv",
       "name": "independent.csv",
       "path": "lectures 4/data/independent.csv",
@@ -29,11 +29,11 @@
       "writable": true
     }
   ],
-  "created": "2026-10-30T13:54:44.902481Z",
+  "created": "2026-11-16T08:28:50.900163Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2026-10-30T13:54:44.902927Z",
+  "last_modified": "2026-11-16T08:28:50.900425Z",
   "mimetype": null,
   "name": "data",
   "path": "lectures 4/data",

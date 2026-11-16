@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2026-10-30T12:54:39.601395Z",
+      "created": "2026-10-30T12:54:39Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-30T12:54:39.601395Z",
+      "last_modified": "2026-10-30T12:54:39Z",
       "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "name": "mouse_data.xlsx",
       "path": "lectures 4/format_examples/mouse_data.xlsx",
@@ -16,11 +16,11 @@
     },
     {
       "content": null,
-      "created": "2026-10-30T12:50:58.952980Z",
+      "created": "2026-10-30T12:50:58Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-30T12:50:58.952980Z",
+      "last_modified": "2026-10-30T12:50:58Z",
       "mimetype": null,
       "name": "behavioral_scores_20230914.mat",
       "path": "lectures 4/format_examples/behavioral_scores_20230914.mat",
@@ -29,11 +29,11 @@
       "writable": true
     }
   ],
-  "created": "2026-10-30T13:54:44.922213Z",
+  "created": "2026-11-16T08:28:50.913610Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2026-10-30T13:54:44.922599Z",
+  "last_modified": "2026-11-16T08:28:50.913870Z",
   "mimetype": null,
   "name": "format_examples",
   "path": "lectures 4/format_examples",

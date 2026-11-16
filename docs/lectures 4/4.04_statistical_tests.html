@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
     <link rel="stylesheet" type="text/css" href="../_static/furo-overrides.css?v=0c59c1ca" />
     
@@ -338,16 +338,9 @@ In design 1, condition means control/treatment; in design 2, it means before/aft
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">'data/independent.csv'</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">)</span>
-<span class="n">control_rows</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">treatment_rows</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">control</span> <span class="o">=</span> <span class="n">control_rows</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">treatment</span> <span class="o">=</span> <span class="n">treatment_rows</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Control:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">control</span><span class="p">),</span> <span class="s1">'Treatment:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">treatment</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Control: 50 Treatment: 50
+<span class="n">controls</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">experimentals</span> <span class="o">=</span> <span class="n">ds1</span><span class="p">[</span><span class="n">ds1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># ds1</span>
 </pre></div>
 </div>
 </div>
@@ -361,8 +354,19 @@ Use the row arrays above to select the appropriate columns. Why should we not jo
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your plotting solution here. Import matplotlib.pyplot as plt if needed.</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">controls</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">controls</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">experimentals</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">experimentals</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">controls</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">experimentals</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(10.856049968760688), np.float64(11.687973020080785))
+</pre></div>
+</div>
+<img alt="../_images/a5c64e54d35f7ccd0a2915bfe0a74d358c0c6c55c4f09cf2fae2cfcb649ae2be.png" src="../_images/a5c64e54d35f7ccd0a2915bfe0a74d358c0c6c55c4f09cf2fae2cfcb649ae2be.png" />
 </div>
 </div>
 </section>
@@ -373,30 +377,8 @@ Compare the subject IDs in the first five rows below before calculating the chan
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">'data/paired.csv'</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">','</span><span class="p">)</span>
-<span class="n">before_rows</span> <span class="o">=</span> <span class="n">ds2</span><span class="p">[</span><span class="n">ds2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">after_rows</span> <span class="o">=</span> <span class="n">ds2</span><span class="p">[</span><span class="n">ds2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Before (ID, condition, score):</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">before_rows</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'After (ID, condition, score):</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">after_rows</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
-
-<span class="n">before</span> <span class="o">=</span> <span class="n">before_rows</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">after</span> <span class="o">=</span> <span class="n">after_rows</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">changes</span> <span class="o">=</span> <span class="n">after</span> <span class="o">-</span> <span class="n">before</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before (ID, condition, score):
- [[ 0.          0.          9.0974268 ]
- [ 1.          0.         15.23421513]
- [ 2.          0.         10.4258964 ]
- [ 3.          0.         11.67558937]
- [ 4.          0.         13.97232372]]
-After (ID, condition, score):
- [[ 0.          1.         10.19482698]
- [ 1.          1.         16.84242244]
- [ 2.          1.          8.8698208 ]
- [ 3.          1.         15.10432874]
- [ 4.          1.         16.82383602]]
+<span class="n">before</span> <span class="o">=</span> <span class="n">ds2</span><span class="p">[</span><span class="n">ds2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">after</span> <span class="o">=</span> <span class="n">ds2</span><span class="p">[</span><span class="n">ds2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -409,6 +391,20 @@ After (ID, condition, score):
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your plotting solution here.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">before</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">before</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">after</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">after</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">before</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">before</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">after</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="n">c</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">before</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">after</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/954cbb510fea23ed05b5414aa06a3c96dbbf6112667e57bd72d48532e103f8f6.png" src="../_images/954cbb510fea23ed05b5414aa06a3c96dbbf6112667e57bd72d48532e103f8f6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.856049968760688 11.896611957373182
 </pre></div>
 </div>
 </div>
@@ -495,6 +491,17 @@ Write one sentence about the evidence, and one about what the design cannot esta
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your solution here.</span>
 <span class="c1"># Linda: treatment minus control.</span>
 <span class="c1"># Anabel: after minus before, with subjects matched by ID.</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">stats</span><span class="o">.</span><span class="n">normaltest</span><span class="p">(</span><span class="n">before</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">after</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">wilcoxon</span><span class="p">(</span><span class="n">before</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">after</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">alternative</span><span class="o">=</span><span class="s1">'less'</span><span class="p">)</span>
+
+<span class="c1"># plt.hist(before[:,2]-after[:,2])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WilcoxonResult(statistic=np.float64(239.0), pvalue=np.float64(3.103159256134802e-05))
 </pre></div>
 </div>
 </div>
@@ -649,7 +656,7 @@ Use comparisons appropriate to the design and control multiple testing. Tukey’
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../_static/design-tabs.js?v=fcb327ea"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>

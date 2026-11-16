@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
     <link rel="stylesheet" type="text/css" href="../_static/furo-overrides.css?v=0c59c1ca" />
     
@@ -291,26 +291,26 @@
           <section class="tex2jax_ignore mathjax_ignore" id="nonlinear-regression">
 <h1>Nonlinear Regression<a class="headerlink" href="#nonlinear-regression" title="Link to this heading">¶</a></h1>
 <p><strong>Download for local use:</strong> <a class="reference download internal" download="" href="../_downloads/0f2b2c98dc98f8ffae5bcd670c929afc/week_5_lectures.zip"><span class="xref download myst">week_5_lectures.zip</span></a>. Extract the bundle to keep the notebooks and their data together. The lecture bundle also includes the figures and week plan.</p>
-<p>in the last lecture and exercise, we have seen that curve fitting allows us to:</p>
+<p>In the last lecture and exercise, we have seen that curve fitting allows us to:</p>
 <ul class="simple">
 <li><p>make predictions (extrapolation and interpolation)</p></li>
 <li><p>summarize our data through parameters</p></li>
 <li><p>quantify complex changes in our data after a treatment.</p></li>
 </ul>
-<p>Why is linear regression not enough? The relation between manipulated and observable variables are often not linear!</p>
+<p>Why is linear regression not enough? The relation between manipulated and observable variables is often not linear!</p>
 <ul class="simple">
-<li><p>For instance, biological variables like firing rates or concentrations often have minimal (often 0) and maximal values: We can fit a sigmoidal function to the intensity curves on the right. Removing inhibition increases the steepness of the curve (the slope parameter) from 10 to 20, and makes the cell more sensitive - it shifts the curve to the left with a midpoint (intensity at which 50 of the maximal response is elicited) from 50 to 30 dB. The maximal response rate does not change.</p></li>
-<li><p>Or they have optimum-like curves, where a single value gives a maximal response: We can fit Gaussians to the tuning curves on the left. The mean parameter specifies the preferred orientation (the position of the peak) - it is 115, 160 and 206 degrees. The standard deviation parameters corresponds to the width. It identical for all three cells at 115 degrees.</p></li>
+<li><p>For instance, biological variables like firing rates or concentrations often have minimal (often 0) and maximal values: We can fit a sigmoidal function to the intensity curves on the right. Removing inhibition increases the steepness of the curve (the slope parameter) from 10 to 20, and makes the cell more sensitive - it shifts the curve to the left with a midpoint (intensity at which 50% of the maximal response is elicited) from 50 to 30 dB. The maximal response rate does not change.</p></li>
+<li><p>Or they have optimum-like curves, where a single value gives a maximal response: We can fit Gaussians to the tuning curves on the left. The mean parameter specifies the preferred orientation (the position of the peak) - it is 115, 160 and 206 degrees. The standard deviation parameter corresponds to the width. It is identical for all three cells at 115 degrees.</p></li>
 </ul>
 <p><img alt="" src="../_images/6.01_curve_fitting_1d.png" /></p>
-<p>Nonlinear regression is more powerful than linear regression, since we can freely specify the relationship in our data. But this power makes it also more complicated.</p>
+<p>Nonlinear regression is more powerful than linear regression, since we can freely specify the relationship in our data. But this power also makes it more complicated.</p>
 <section id="id1">
 <h2>Nonlinear regression<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
-<p>So how does nonlinear regression work in python?</p>
+<p>So how does nonlinear regression work in Python?</p>
 <p>We need these three ingredients:</p>
 <ol class="arabic simple">
-<li><p>A model: Specify an adequate <em>equation</em> that has the potential to describe our data with an appropriate choice of <em>parameters</em>. A line cannot describe the curved relationship between temperature and pain in the plot above - there is no set of slopes and interecepts that produces a curve from a linear equation. So we need something more complicated, like a quadratic equation. Whereas the model was fixed to a line, in nonlinear regression, <strong>we need to specify the equation in a python function</strong>.</p></li>
-<li><p>A way to improve the fit and a measure of goodness of fit: A <em>fitting procedure</em> to adjust the equation’s parameters so that the resulting line or curve fits our data best - is “as close as possible” to our data. <strong>We will use so called “least-squares” fitting</strong>, which minimizes the mean-squared error of between the data and the model predictions.</p></li>
+<li><p>A model: Specify an adequate <em>equation</em> that has the potential to describe our data with an appropriate choice of <em>parameters</em>. A line cannot describe the curved relationship between temperature and pain in the plot above - there is no set of slopes and intercepts that produces a curve from a linear equation. So we need something more complicated, like a quadratic equation. Whereas the model was fixed to a line, in nonlinear regression, <strong>we need to specify the equation in a Python function</strong>.</p></li>
+<li><p>A way to improve the fit and a measure of goodness of fit: A <em>fitting procedure</em> to adjust the equation’s parameters so that the resulting line or curve fits our data best - is “as close as possible” to our data. <strong>We will use so-called “least-squares” fitting</strong>, which minimizes the mean-squared error between the data and the model predictions.</p></li>
 <li><p>A way to quantify the “goodness of fit”: An <em>error function</em> or <em>objective function</em> that tells us how good the fit between the experimental data points and the curve produced by the function is, so we can adjust the parameters to maximize the fit. As in linear regression, <strong>we will use the coefficient of determination</strong>, which quantifies how much of the variance in the data is captured by the model.</p></li>
 </ol>
 <section id="the-model">
@@ -322,16 +322,16 @@
 <li><p>quadratic functions capture parabolic relationships: <span class="math notranslate nohighlight">\(y=a+bx+cx^2\)</span></p></li>
 <li><p>sigmoidal functions capture sigmoidal relationships: <span class="math notranslate nohighlight">\(y=\text{baseline} + \frac{\text{gain}}{1 + e^{(-\text{slope}(x - \text{midpoint}))}}\)</span></p></li>
 </ul>
-<p>Here is an example of what the different parametes of the sigmoidal (Boltzmann) function do:</p>
+<p>Here is an example of what the different parameters of the sigmoidal (Boltzmann) function do:</p>
 <p><img alt="" src="../_images/6.01_curve_fitting_1f.png" /></p>
 <p>There exist “universal function approximators”, that can capture any relationship in your data:</p>
 <ul class="simple">
-<li><p>Polynomial functions are sums of polynomials of increasing degrees (a generalization of the quadratic equation to higher exponents). With sufficient degree, they can approximate any function (Taylor expansion), : <span class="math notranslate nohighlight">\(y = w_0 + w_1x + _w2x^2 + w_3x^3 ... = \sum_i w_i x^i\)</span></p></li>
-<li><p>Fourier series are sums of sines and cosines of increasing frequencies. They can also approximate any (periodic) function: <span class="math notranslate nohighlight">\(y = w_0 + \sum_n w_n sin(nx) + v_i cos(nx)\)</span></p></li>
+<li><p>Polynomial functions are sums of polynomials of increasing degrees (a generalization of the quadratic equation to higher exponents). With sufficient degree, they can approximate any function (Taylor expansion): <span class="math notranslate nohighlight">\(y = w_0 + w_1x + w_2x^2 + w_3x^3 ... = \sum_i w_i x^i\)</span></p></li>
+<li><p>Fourier series are sums of sines and cosines of increasing frequencies. They can also approximate any (periodic) function: <span class="math notranslate nohighlight">\(y = w_0 + \sum_n w_n \sin(nx) + v_n \cos(nx)\)</span></p></li>
 </ul>
 <p>However, the flexibility of these “universal function approximators” comes at the cost of potentially many, barely interpretable parameters. It is therefore better to try and find a simple equation that matches your problem.</p>
 <p>Let’s load some data to have an example to work through:</p>
-<p>We’ve stressed an animal by exposing them to Ornette Coleman and want to quantify how quickly cortisol levels decrease in the blood. To that end, we took blood at random intervals after the end of the music exposure from males and females and quantified the concentration of cortisol.</p>
+<p>We’ve stressed mice by exposing them to images of cats and want to quantify how quickly cortisol levels decrease in the blood. To that end, we took blood from male and female mice at random intervals after the end of the exposure and quantified the concentration of cortisol.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -353,7 +353,7 @@
 </div>
 <p>In nonlinear regression, the model can be anything. We have to use biological intuition to choose the right one. Since this is a decay/removal process, we hypothesize that an exponentially decaying function should capture the relationship between time and blood cortisol:</p>
 <p><span class="math notranslate nohighlight">\(y=\text{gain}*e^{-x/\tau}\)</span></p>
-<p>Or as python code:</p>
+<p>Or as Python code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">exp_fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">gain</span><span class="p">,</span> <span class="n">tau</span><span class="p">):</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">gain</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">/</span> <span class="n">tau</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">y</span>
@@ -374,19 +374,19 @@
 <p>Let <span class="math notranslate nohighlight">\(f(x_i, \theta)\)</span> be our function (linear, exponential, quadratic), with parameters <span class="math notranslate nohighlight">\(\theta\)</span>, and <span class="math notranslate nohighlight">\(\hat{y_i} = f(x_i, \theta)\)</span> our prediction for <span class="math notranslate nohighlight">\(N\)</span> data points <span class="math notranslate nohighlight">\(x_i\)</span>. The MSE is then given by: <span class="math notranslate nohighlight">\(E = \frac{1}{N} \sum_i^N (y_i - \hat{y_i})^2\)</span>. The sum of squared residuals omits the factor <span class="math notranslate nohighlight">\(1/N\)</span>; for a fixed dataset, minimizing either gives the same fitted parameters.</p>
 </section>
 <section id="nonlinear-regression-using-scipy">
-<h2>Nonlinear regression using scipy<a class="headerlink" href="#nonlinear-regression-using-scipy" title="Link to this heading">¶</a></h2>
-<p>Least-squares nonlinear regression in scipy can be done using <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code>:</p>
+<h2>Nonlinear regression using SciPy<a class="headerlink" href="#nonlinear-regression-using-scipy" title="Link to this heading">¶</a></h2>
+<p>Least-squares nonlinear regression in SciPy can be done using <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code>:</p>
 <p><code class="docutils literal notranslate"><span class="pre">popt,</span> <span class="pre">pcov</span> <span class="pre">=</span> <span class="pre">scipy.optimize.curve_fit(fun,</span> <span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">p0=initial_params,</span> <span class="pre">bounds=bounds)</span></code> (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html#scipy.optimize.curve_fit">docs</a>)</p>
 <p><code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> takes these arguments:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">fun</span></code>: The “name” of the function specifying the model. But <em>not</em> as a string! We treat the model function as a variable and pass it as an argument to the function. The model function should take the x values and parameters as arguments and return the predictions: <code class="docutils literal notranslate"><span class="pre">y_pred</span> <span class="pre">=</span> <span class="pre">fun(x,</span> <span class="pre">param1,</span> <span class="pre">param2,</span> <span class="pre">...)</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>: your data.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">initial_params</span></code>: The initial values for the function parameters as a numpy array or as a list. The order of the parameters in the list should match the order of parameters in the model function. For the exponential decay model, this would be the gain and the tau, for instance <code class="docutils literal notranslate"><span class="pre">[1.0,</span> <span class="pre">10.1]</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">initial_params</span></code>: The initial values for the function parameters as a NumPy array or as a list. The order of the parameters in the list should match the order of parameters in the model function. For the exponential decay model, this would be the gain and the tau, for instance <code class="docutils literal notranslate"><span class="pre">[1.0,</span> <span class="pre">10.1]</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bounds</span></code> (optional): Lower and upper bounds for the values of the parameters. Restricting the range of values the parameters can come from can make fits more robust/faster (check docs for details).</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> returns two arrays:</p>
 <ul class="simple">
-<li><p>the fitted parameters <code class="docutils literal notranslate"><span class="pre">popt</span></code> as a numpy array, in the same order as the arguments to the model function.</p></li>
+<li><p>the fitted parameters <code class="docutils literal notranslate"><span class="pre">popt</span></code> as a NumPy array, in the same order as the arguments to the model function.</p></li>
 <li><p>the estimated covariance matrix of the fitted parameters (<code class="docutils literal notranslate"><span class="pre">pcov</span></code>)</p></li>
 </ul>
 <p>To check how well the fitted curve reproduces our data, calculate the residuals and <span class="math notranslate nohighlight">\(R^2 = 1 - \frac{\sum_i (y_i - \hat{y_i})^2}{\sum_i (y_i - \bar{y})^2}\)</span>, where <span class="math notranslate nohighlight">\(\hat{y}=f(x, \theta)\)</span> uses the fitted parameters. Squaring the correlation between observations and predictions does not in general give this <span class="math notranslate nohighlight">\(R^2\)</span>. Also inspect the residuals: a systematic pattern can reveal a poor model even when <span class="math notranslate nohighlight">\(R^2\)</span> is high.</p>
@@ -432,15 +432,8 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your solution here</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">sin_fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">phase</span><span class="p">):</span>
-    <span class="n">predictions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequency</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">phase</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">predictions</span>
 
 <span class="c1"># the sinusoidal function in numpy can be used via "np.sin(...)"</span>
-<span class="n">freq0</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># Hz</span>
-<span class="n">phase0</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="n">initial_parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">freq0</span><span class="p">,</span> <span class="n">phase0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -448,7 +441,7 @@
 </section>
 <section id="fit-and-print-and-plot">
 <h3>Fit and print and plot<a class="headerlink" href="#fit-and-print-and-plot" title="Link to this heading">¶</a></h3>
-<p>After fitting, inspect the residuals and calculate R² from the residual sums of squares.</p>
+<p>After fitting, inspect the residuals and calculate R² as one minus the mean-squared error divided by the variance of the observations. <code class="docutils literal notranslate"><span class="pre">np.var</span></code> uses <code class="docutils literal notranslate"><span class="pre">ddof=0</span></code> by default, so both quantities are averages over the same number of observations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.optimize</span>
@@ -478,7 +471,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">residuals</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">]</span> <span class="o">-</span> <span class="n">pred</span>
-<span class="n">r_squared</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">residuals</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">]))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">r_squared</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">residuals</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Goodness of fit: R² = </span><span class="si">{</span><span class="n">r_squared</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">residuals</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">)</span>
@@ -495,10 +488,10 @@
 <section id="optional-specifying-parameter-bounds">
 <h3>Optional: Specifying parameter bounds<a class="headerlink" href="#optional-specifying-parameter-bounds" title="Link to this heading">¶</a></h3>
 <p>You can make the fits more robust and faster by providing constraints in the form of upper and lower bounds for each parameter.</p>
-<p>For instance, in our example, we wanted to model concentrations - concentrations are always positive, and hence the first data values, which are specified by the gain are also always positive - the minimal gain value should therefore be 0. In addition, the first data values are typically smaller than 10. The maximal gain value can therefore also be constrained. This allows us to bound the gain parameter between 0 and 10.</p>
-<p>We can also constrain the decay parameter: First, we specified the function as <code class="docutils literal notranslate"><span class="pre">gain</span> <span class="pre">*</span> <span class="pre">np.exp(-x/tau)</span></code>. Since the function always decays, we want only positive tau values (neg. tau values would lead to exponentially increasing functions. The minimal tau value should therefore also be positive; we use 0.001 hours to keep it away from zero, where the model is undefined. We can also specify an upper bound for tau: Tau corresponds to the time it takes for the data to decay to 1/e (about 0.37) of its initial value. Looking at the data, we see that it is near-zero after 10 hours. 10 it therefore a safe upper bound for the tau parameter. The tau parameter is therefore also bound between 0 and 10.</p>
-<p>But careful - if you constrain the parameter values too much, you can prevent the algorithm from finding a good solution! So always make sure that your optimal values do not “hit” your bounds.</p>
-<p>This is one way of specifying the bounds in for <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> - as a nested list of lower and upper values for each parameter:</p>
+<p>For instance, in our example, we wanted to model concentrations - concentrations are always positive, and hence the first data values, which are specified by the gain, are also always positive - the minimal gain value should therefore be 0. In addition, the first data values are typically smaller than 10. The maximal gain value can therefore also be constrained. This allows us to bound the gain parameter between 0 and 10.</p>
+<p>We can also constrain the decay parameter: First, we specified the function as <code class="docutils literal notranslate"><span class="pre">gain</span> <span class="pre">*</span> <span class="pre">np.exp(-x/tau)</span></code>. Since the function always decays, we want only positive tau values (negative tau values would lead to exponentially increasing functions). The minimal tau value should therefore also be positive; we use 0.001 hours to keep it away from zero, where the model is undefined. We can also specify an upper bound for tau: Tau corresponds to the time it takes for the data to decay to 1/e (about 0.37) of its initial value. Looking at the data, we see that it is near-zero after 10 hours. 10 is therefore a safe upper bound for the tau parameter. The tau parameter is therefore also bounded between 0 and 10.</p>
+<p>But be careful - if you constrain the parameter values too much, you can prevent the algorithm from finding a good solution! So always make sure that your optimal values do not “hit” your bounds.</p>
+<p>This is one way of specifying the bounds for <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> - as a nested list of lower and upper values for each parameter:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gain_lower</span> <span class="o">=</span> <span class="mi">0</span>
@@ -520,7 +513,7 @@
 
 <span class="n">y1_hat</span> <span class="o">=</span> <span class="n">exp_fun</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="o">*</span><span class="n">popt</span><span class="p">)</span>  <span class="c1"># generate the predictions</span>
 
-<span class="n">r_squared</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">]</span> <span class="o">-</span> <span class="n">y1_hat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">]))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">r_squared</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">]</span> <span class="o">-</span> <span class="n">y1_hat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Goodness of fit: R² = </span><span class="si">{</span><span class="n">r_squared</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">'y1'</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'dodgerblue'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'male'</span><span class="p">)</span>
@@ -533,7 +526,7 @@
 
 <span class="n">y2_hat</span> <span class="o">=</span> <span class="n">exp_fun</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="o">*</span><span class="n">popt</span><span class="p">)</span>  <span class="c1"># generate the predictions</span>
 
-<span class="n">r_squared</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">d</span><span class="p">[</span><span class="s1">'y2'</span><span class="p">]</span> <span class="o">-</span> <span class="n">y2_hat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">d</span><span class="p">[</span><span class="s1">'y2'</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'y2'</span><span class="p">]))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">r_squared</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">d</span><span class="p">[</span><span class="s1">'y2'</span><span class="p">]</span> <span class="o">-</span> <span class="n">y2_hat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'y2'</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Goodness of fit: R² = </span><span class="si">{</span><span class="n">r_squared</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s1">'y2'</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'coral'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'female'</span><span class="p">)</span>
@@ -631,7 +624,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#error-term">Error term</a></li>
-<li><a class="reference internal" href="#nonlinear-regression-using-scipy">Nonlinear regression using scipy</a><ul>
+<li><a class="reference internal" href="#nonlinear-regression-using-scipy">Nonlinear regression using SciPy</a><ul>
 <li><a class="reference internal" href="#mini-exercise-writing-model-functions-for-curve-fit">Mini-Exercise: Writing model functions for <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code></a></li>
 <li><a class="reference internal" href="#fit-and-print-and-plot">Fit and print and plot</a></li>
 <li><a class="reference internal" href="#optional-specifying-parameter-bounds">Optional: Specifying parameter bounds</a></li>
@@ -660,7 +653,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../_static/design-tabs.js?v=fcb327ea"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>

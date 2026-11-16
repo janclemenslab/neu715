@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2026-10-30T09:48:20.765190Z",
+      "created": "2026-10-30T09:48:20Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-30T09:48:20.765190Z",
+      "last_modified": "2026-10-30T09:48:20Z",
       "mimetype": "text/csv",
       "name": "initial_behavioral_scores.csv",
       "path": "lectures 4/behavioral_data/20230915/initial_behavioral_scores.csv",
@@ -16,11 +16,11 @@
     },
     {
       "content": null,
-      "created": "2026-10-30T09:48:20.764729Z",
+      "created": "2026-10-30T09:48:20Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-30T09:48:20.764729Z",
+      "last_modified": "2026-10-30T09:48:20Z",
       "mimetype": "text/csv",
       "name": "final_behavioral_scores.csv",
       "path": "lectures 4/behavioral_data/20230915/final_behavioral_scores.csv",
@@ -29,11 +29,11 @@
       "writable": true
     }
   ],
-  "created": "2026-10-30T13:54:44.900488Z",
+  "created": "2026-11-16T08:28:50.898803Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2026-10-30T13:54:44.900920Z",
+  "last_modified": "2026-11-16T08:28:50.899087Z",
   "mimetype": null,
   "name": "20230915",
   "path": "lectures 4/behavioral_data/20230915",

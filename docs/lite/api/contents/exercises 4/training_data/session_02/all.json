@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2026-10-30T13:06:18.048036Z",
+      "created": "2026-10-30T13:06:18Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2026-10-30T13:06:18.048036Z",
+      "last_modified": "2026-10-30T13:06:18Z",
       "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "name": "measurements.xlsx",
       "path": "exercises 4/training_data/session_02/measurements.xlsx",
@@ -15,11 +15,11 @@
       "writable": true
     }
   ],
-  "created": "2026-10-30T13:54:44.886395Z",
+  "created": "2026-11-16T08:28:50.887972Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2026-10-30T13:54:44.886503Z",
+  "last_modified": "2026-11-16T08:28:50.888042Z",
   "mimetype": null,
   "name": "session_02",
   "path": "exercises 4/training_data/session_02",
